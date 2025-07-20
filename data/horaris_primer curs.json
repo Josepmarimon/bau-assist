@@ -1,0 +1,745 @@
+[
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "1er",
+    "dia_setmana": 1,
+    "franja_horaria": "09:00-11:30",
+    "assignatura": "Fonaments del Disseny I",
+    "aula": "P1.5"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "1er",
+    "dia_setmana": 1,
+    "franja_horaria": "13:30-14:30",
+    "assignatura": "Tutories",
+    "aula": "P1.5"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "1er",
+    "dia_setmana": 2,
+    "franja_horaria": "09:00-11:30",
+    "assignatura": "Taller de Dibuix Artístic",
+    "aula": "L0.1"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "1er",
+    "dia_setmana": 2,
+    "franja_horaria": "13:30-14:30",
+    "assignatura": "Tutories",
+    "aula": "L0.1"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "1er",
+    "dia_setmana": 3,
+    "franja_horaria": "09:00-11:30",
+    "assignatura": "Taller d'Expressió i Comunicació",
+    "aula": "G1.1"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "1er",
+    "dia_setmana": 3,
+    "franja_horaria": "11:30-13:30",
+    "assignatura": "Iconografia i Comunicació",
+    "aula": "P0.12"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "1er",
+    "dia_setmana": 3,
+    "franja_horaria": "13:30-14:30",
+    "assignatura": "Tutories",
+    "aula": "P0.12"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "1er",
+    "dia_setmana": 4,
+    "franja_horaria": "09:00-11:30",
+    "assignatura": "Iconografia i Comunicació",
+    "aula": "P0.12"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "1er",
+    "dia_setmana": 4,
+    "franja_horaria": "11:30-13:30",
+    "assignatura": "Taller d'Expressió i Comunicació",
+    "aula": "G1.1"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "1er",
+    "dia_setmana": 4,
+    "franja_horaria": "13:30-14:30",
+    "assignatura": "Tutories",
+    "aula": "G1.1"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "1er",
+    "dia_setmana": 5,
+    "franja_horaria": "09:00-11:30",
+    "assignatura": "Eines Informàtiques I",
+    "aula": "P1.2+P1.3+P1.8+P1.12+G2.1+Platós+Sala"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "1er",
+    "dia_setmana": 5,
+    "franja_horaria": "13:30-14:30",
+    "assignatura": "Tutories",
+    "aula": ""
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "2on",
+    "dia_setmana": 1,
+    "franja_horaria": "09:00-11:30",
+    "assignatura": "Fonaments del Disseny II",
+    "aula": "P1.5"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "2on",
+    "dia_setmana": 1,
+    "franja_horaria": "13:30-14:30",
+    "assignatura": "Tutories",
+    "aula": "P1.5"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "2on",
+    "dia_setmana": 2,
+    "franja_horaria": "09:00-11:30",
+    "assignatura": "Taller de Color",
+    "aula": "L0.1"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "2on",
+    "dia_setmana": 2,
+    "franja_horaria": "13:30-14:30",
+    "assignatura": "Tutories",
+    "aula": "L0.1"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "2on",
+    "dia_setmana": 3,
+    "franja_horaria": "09:00-11:30",
+    "assignatura": "Antropologia Sociocultural",
+    "aula": "P1.16"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "2on",
+    "dia_setmana": 3,
+    "franja_horaria": "13:30-14:30",
+    "assignatura": "Tutories",
+    "aula": "P1.16"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "2on",
+    "dia_setmana": 4,
+    "franja_horaria": "09:00-11:30",
+    "assignatura": "Estètica i Teoria de les Arts",
+    "aula": "P1.16"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "2on",
+    "dia_setmana": 4,
+    "franja_horaria": "13:30-14:30",
+    "assignatura": "Tutories",
+    "aula": "P1.16"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "2on",
+    "dia_setmana": 5,
+    "franja_horaria": "09:00-11:30",
+    "assignatura": "Eines Informàtiques II",
+    "aula": "P1.2+P1.3+P1.12+P1.8+G2.1+Platós+Sala Carolines"
+  },
+  {
+    "grau": "disseny",
+    "curs": "1er",
+    "grup": "M1",
+    "semestre": "2on",
+    "dia_setmana": 5,
+    "franja_horaria": "13:30-14:30",
+    "assignatura": "Tutories",
+    "aula": ""
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "09:00-11:30","assignatura": "Fonaments del Disseny I","aula": "P0.8"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P0.8"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "09:00-11:30","assignatura": "Taller de Dibuix Artístic","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "1er",
+    "dia_setmana": 3,"franja_horaria": "09:00-11:30","assignatura": "Iconografia i Comunicació","aula": "P0.12"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "1er",
+    "dia_setmana": 3,"franja_horaria": "11:30-13:30","assignatura": "Taller d'Expressió i Comunicació","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "1er",
+    "dia_setmana": 3,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "1er",
+    "dia_setmana": 4,"franja_horaria": "09:00-11:30","assignatura": "Taller d'Expressió i Comunicació","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "1er",
+    "dia_setmana": 4,"franja_horaria": "11:30-13:30","assignatura": "Iconografia i Comunicació","aula": "P0.12"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "1er",
+    "dia_setmana": 4,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P0.12"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "1er",
+    "dia_setmana": 5,"franja_horaria": "09:00-11:30","assignatura": "Eines Informàtiques I","aula": "P1.2+P1.3+P1.8+P1.12+G2.1+Platós+Sala"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "1er",
+    "dia_setmana": 5,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": ""
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "2on",
+    "dia_setmana": 1,"franja_horaria": "09:00-11:30","assignatura": "Fonaments del Disseny II","aula": "P0.8"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "2on",
+    "dia_setmana": 1,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P0.8"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "2on",
+    "dia_setmana": 2,"franja_horaria": "09:00-11:30","assignatura": "Taller de Color","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "2on",
+    "dia_setmana": 2,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "2on",
+    "dia_setmana": 3,"franja_horaria": "09:00-11:30","assignatura": "Antropologia Sociocultural","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "2on",
+    "dia_setmana": 3,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "2on",
+    "dia_setmana": 4,"franja_horaria": "09:00-11:30","assignatura": "Estètica i Teoria de les Arts","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "2on",
+    "dia_setmana": 4,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "2on",
+    "dia_setmana": 5,"franja_horaria": "09:00-11:30","assignatura": "Eines Informàtiques II","aula": "P1.2+P1.3+P1.12+P1.8+G2.1+Platós+Sala Carolines"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M2","semestre": "2on",
+    "dia_setmana": 5,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": ""
+  },
+
+  // — M3 —
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "09:00-11:30","assignatura": "Taller de Dibuix Artístic","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "09:00-11:30","assignatura": "Fonaments del Disseny I","aula": "P0.2/0.4"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P0.2/0.4"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "1er",
+    "dia_setmana": 3,"franja_horaria": "09:00-11:30","assignatura": "Antropologia Sociocultural","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "1er",
+    "dia_setmana": 3,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "1er",
+    "dia_setmana": 4,"franja_horaria": "09:00-11:30","assignatura": "Estètica i Teoria de les Arts","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "1er",
+    "dia_setmana": 4,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "1er",
+    "dia_setmana": 5,"franja_horaria": "09:00-11:30","assignatura": "Eines Informàtiques I","aula": "P1.2+P1.3+P1.8+P1.12+G2.1+Platós+Sala Carolines"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "1er",
+    "dia_setmana": 5,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": ""
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "2on",
+    "dia_setmana": 1,"franja_horaria": "09:00-11:30","assignatura": "Taller de Color","aula": ""
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "2on",
+    "dia_setmana": 1,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "2on",
+    "dia_setmana": 2,"franja_horaria": "09:00-11:30","assignatura": "Fonaments del Disseny II","aula": "P0.2/0.4"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "2on",
+    "dia_setmana": 2,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P0.2/0.4"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "2on",
+    "dia_setmana": 3,"franja_horaria": "09:00-11:30","assignatura": "Taller d'Expressió i Comunicació","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "2on",
+    "dia_setmana": 3,"franja_horaria": "11:30-13:30","assignatura": "Iconografia i Comunicació","aula": "P0.12"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "2on",
+    "dia_setmana": 3,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P0.12"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "2on",
+    "dia_setmana": 4,"franja_horaria": "09:00-11:30","assignatura": "Iconografia i Comunicació","aula": "P0.12"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "2on",
+    "dia_setmana": 4,"franja_horaria": "11:30-13:30","assignatura": "Taller d'Expressió i Comunicació","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "2on",
+    "dia_setmana": 4,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "2on",
+    "dia_setmana": 5,"franja_horaria": "09:00-11:30","assignatura": "Eines Informàtiques II","aula": "P1.2+P1.3+P1.12+P1.8+G2.1+Platós+Sala Carolines"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M3","semestre": "2on",
+    "dia_setmana": 5,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": ""
+  },
+
+  // — M4 —
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "09:00-11:30","assignatura": "Taller de Dibuix Artístic","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "09:00-11:30","assignatura": "Estètica i Teoria de les Arts","aula": "P1.9"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P1.9"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "1er",
+    "dia_setmana": 3,"franja_horaria": "09:00-11:30","assignatura": "Fonaments del Disseny I","aula": "P1.7"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "1er",
+    "dia_setmana": 3,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P1.7"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "1er",
+    "dia_setmana": 4,"franja_horaria": "09:00-11:30","assignatura": "Antropologia Sociocultural","aula": "P1.9"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "1er",
+    "dia_setmana": 4,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P1.9"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "1er",
+    "dia_setmana": 5,"franja_horaria": "09:00-11:30","assignatura": "Eines Informàtiques II","aula": "P1.2+P1.3+P1.8+P1.12+G2.1+Platós+Sala Carolines"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "1er",
+    "dia_setmana": 5,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": ""
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "2on",
+    "dia_setmana": 1,"franja_horaria": "09:00-11:30","assignatura": "Taller de Color","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "2on",
+    "dia_setmana": 1,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "2on",
+    "dia_setmana": 2,"franja_horaria": "09:00-11:30","assignatura": "Fonaments del Disseny II","aula": "P1.7"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "2on",
+    "dia_setmana": 2,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P1.7"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "2on",
+    "dia_setmana": 3,"franja_horaria": "09:00-11:30","assignatura": "Iconografia i Comunicació","aula": "P0.12"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "2on",
+    "dia_setmana": 3,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P0.12"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "2on",
+    "dia_setmana": 4,"franja_horaria": "09:00-11:30","assignatura": "Taller d'Expressió i Comunicació","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "2on",
+    "dia_setmana": 4,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "2on",
+    "dia_setmana": 5,"franja_horaria": "09:00-11:30","assignatura": "Eines Informàtiques I","aula": "P1.2+P1.3+P1.12+P1.8+G2.1+Platós+Sala Carolines"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M4","semestre": "2on",
+    "dia_setmana": 5,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": ""
+  },
+
+  // — M5 —
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "09:00-11:30","assignatura": "Taller d'Expressió i Comunicació","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "11:30-13:30","assignatura": "Iconografia i Comunicació","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "09:00-11:30","assignatura": "Iconografia i Comunicació","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "11:30-13:30","assignatura": "Taller d'Expressió i Comunicació","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "1er",
+    "dia_setmana": 3,"franja_horaria": "09:00-11:30","assignatura": "Fonaments del Disseny I","aula": "P1.5"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "1er",
+    "dia_setmana": 3,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P1.5"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "1er",
+    "dia_setmana": 4,"franja_horaria": "09:00-11:30","assignatura": "Taller de Dibuix Artístic","aula": "L0.2"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "1er",
+    "dia_setmana": 4,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "L0.2"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "1er",
+    "dia_setmana": 5,"franja_horaria": "09:00-11:30","assignatura": "Eines Informàtiques II","aula": "P1.2+P1.3+P1.8+P1.12+G2.1+Platós+Sala Carolines"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "1er",
+    "dia_setmana": 5,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": ""
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "2on",
+    "dia_setmana": 1,"franja_horaria": "09:00-11:30","assignatura": "Estètica i Teoria de les Arts","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "2on",
+    "dia_setmana": 1,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "2on",
+    "dia_setmana": 2,"franja_horaria": "09:00-11:30","assignatura": "Antropologia Sociocultural","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "2on",
+    "dia_setmana": 2,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "2on",
+    "dia_setmana": 3,"franja_horaria": "09:00-11:30","assignatura": "Fonaments del Disseny II","aula": "P1.5"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "2on",
+    "dia_setmana": 3,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "P1.5"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "2on",
+    "dia_setmana": 4,"franja_horaria": "09:00-11:30","assignatura": "Taller de Color","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "2on",
+    "dia_setmana": 4,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "2on",
+    "dia_setmana": 5,"franja_horaria": "09:00-11:30","assignatura": "Eines Informàtiques I","aula": "P1.2+P1.3+P1.12+P1.8+G2.1+Platós+Sala Carolines"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "M5","semestre": "2on",
+    "dia_setmana": 5,"franja_horaria": "13:30-14:30","assignatura": "Tutories","aula": ""
+  },
+
+  // — T1 —
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "15:00-17:00","assignatura": "Iconografia i Comunicació","aula": "P0.12"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "17:30-19:30","assignatura": "Taller d'Expressió i Comunicació","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "15:00-17:00","assignatura": "Taller d'Expressió i Comunicació","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "17:30-19:30","assignatura": "Iconografia i Comunicació","aula": "P0.12"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "P0.12"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "1er",
+    "dia_setmana": 3,"franja_horaria": "15:00-19:30","assignatura": "Fonaments del Disseny I","aula": "L1.2"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "1er",
+    "dia_setmana": 3,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "L1.2"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "1er",
+    "dia_setmana": 4,"franja_horaria": "15:00-17:00","assignatura": "Taller de Dibuix Artístic","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "1er",
+    "dia_setmana": 4,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "1er",
+    "dia_setmana": 5,"franja_horaria": "15:00-19:30","assignatura": "Eines Informàtiques I","aula": "P1.2+P1.3+G2.1+P1.12+Platós+Sala Carolines"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "1er",
+    "dia_setmana": 5,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": ""
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "2on",
+    "dia_setmana": 1,"franja_horaria": "15:00-17:00","assignatura": "Antropologia Sociocultural","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "2on",
+    "dia_setmana": 1,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "2on",
+    "dia_setmana": 2,"franja_horaria": "15:00-17:00","assignatura": "Estètica i Teoria de les Arts","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "2on",
+    "dia_setmana": 2,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "2on",
+    "dia_setmana": 3,"franja_horaria": "15:00-17:00","assignatura": "Fonaments del Disseny II","aula": "L1.2"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "2on",
+    "dia_setmana": 3,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "L1.2"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "2on",
+    "dia_setmana": 4,"franja_horaria": "15:00-17:00","assignatura": "Taller de Color","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "2on",
+    "dia_setmana": 4,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "2on",
+    "dia_setmana": 5,"franja_horaria": "15:00-19:30","assignatura": "Eines Informàtiques II","aula": "P1.2+P1.3+G2.1+P1.12+Platós+Sala Carolines"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T1","semestre": "2on",
+    "dia_setmana": 5,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": ""
+  },
+
+  // — T2 —
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "15:00-19:30","assignatura": "Estètica i Teoria de les Arts","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "1er",
+    "dia_setmana": 1,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "15:00-17:00","assignatura": "Antropologia Sociocultural","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "1er",
+    "dia_setmana": 2,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "P1.16"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "1er",
+    "dia_setmana": 3,"franja_horaria": "15:00-17:00","assignatura": "Fonaments del Disseny I","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "1er",
+    "dia_setmana": 3,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "1er",
+    "dia_setmana": 4,"franja_horaria": "15:00-17:00","assignatura": "Taller de Dibuix Artístic","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "1er",
+    "dia_setmana": 4,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "1er",
+    "dia_setmana": 5,"franja_horaria": "15:00-19:30","assignatura": "Eines Informàtiques II","aula": "P1.2+P1.3+G2.1+P1.12+Platós+Sala Carolines"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "1er",
+    "dia_setmana": 5,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": ""
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "2on",
+    "dia_setmana": 1,"franja_horaria": "15:00-17:00","assignatura": "Iconografia i Comunicació","aula": "P0.12"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "2on",
+    "dia_setmana": 1,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "2on",
+    "dia_setmana": 2,"franja_horaria": "15:00-17:00","assignatura": "Taller d'Expressió i Comunicació","aula": "G1.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "2on",
+    "dia_setmana": 2,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "P0.12"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "2on",
+    "dia_setmana": 3,"franja_horaria": "15:00-17:00","assignatura": "Fonaments del Disseny II","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "2on",
+    "dia_setmana": 3,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "2on",
+    "dia_setmana": 4,"franja_horaria": "15:00-17:00","assignatura": "Taller de Color","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "2on",
+    "dia_setmana": 4,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": "L0.1"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "2on",
+    "dia_setmana": 5,"franja_horaria": "15:00-19:30","assignatura": "Eines Informàtiques I","aula": "P1.2+P1.3+G2.1+P1.12+Platós+Sala Carolines"
+  },
+  {
+    "grau": "disseny","curs": "1er","grup": "T2","semestre": "2on",
+    "dia_setmana": 5,"franja_horaria": "19:30-20:30","assignatura": "Tutories","aula": ""
+  }
+]
+```

@@ -1,0 +1,2564 @@
+{
+  "academic_year": "2025-2026",
+  "extraction_date": "2025-07-11 18:01:11",
+  "total_schedules": 23,
+  "schedules": [
+    {
+      "degree": "Grau en Disseny",
+      "course": 1,
+      "specialization": null,
+      "group": "1r Matí (6 M1)",
+      "group_code": "6 M1",
+      "classes": [
+        {
+          "subject": "Taller de Dibuix Artístic",
+          "teacher": null,
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller de Dibuix Artístic",
+          "teacher": null,
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller d’Expressió",
+          "teacher": "Marta Camps",
+          "classroom": "G.1.1",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller d’Expressió",
+          "teacher": "Marta Camps",
+          "classroom": "G.1.1",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Iconografia i Comunicació",
+          "teacher": "Jorge Luis Marzo",
+          "classroom": "P.0.12",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Iconografia i Comunicació",
+          "teacher": "Jorge Luis Marzo",
+          "classroom": "P.0.12",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller de Color Montse",
+          "teacher": null,
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller de Color Montse",
+          "teacher": null,
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Antropologia Sociocultural",
+          "teacher": "Marina Riera",
+          "classroom": "P.1.16",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Antropologia Sociocultural",
+          "teacher": "Marina Riera",
+          "classroom": "P.1.16",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 1,
+      "specialization": null,
+      "group": "1r Matí (6 M2)",
+      "group_code": "6 M2",
+      "classes": [
+        {
+          "subject": "Taller de Dibuix Artístic",
+          "teacher": "Laura Gual",
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller de Dibuix Artístic",
+          "teacher": "Laura Gual",
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Iconografia i Comunicació",
+          "teacher": "Jorge Luis Marzo",
+          "classroom": "P.0.12",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Iconografia i Comunicació",
+          "teacher": "Jorge Luis Marzo",
+          "classroom": "P.0.12",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller d’Expressió i",
+          "teacher": "Marta Camps",
+          "classroom": "G.1.1",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller d’Expressió i",
+          "teacher": "Marta Camps",
+          "classroom": "G.1.1",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller de Color",
+          "teacher": "Laura Gual",
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller de Color",
+          "teacher": "Laura Gual",
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 1,
+      "specialization": null,
+      "group": "1r Matí (6 M3)",
+      "group_code": "6 M3",
+      "classes": [
+        {
+          "subject": "Taller de Dibuix Artístic",
+          "teacher": null,
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Antropologia Sociocultural",
+          "teacher": "Marina Riera",
+          "classroom": "P.1.16",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Antropologia Sociocultural",
+          "teacher": "Marina Riera",
+          "classroom": "P.1.16",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller de Color Montse",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller d’Expressió i",
+          "teacher": "Elida Pérez",
+          "classroom": "G.1.1",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller d’Expressió i",
+          "teacher": "Elida Pérez",
+          "classroom": "G.1.1",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Comunicació",
+          "teacher": "Iconografia i",
+          "classroom": "P.0.12",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Comunicació",
+          "teacher": "Iconografia i",
+          "classroom": "P.0.12",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 1,
+      "specialization": null,
+      "group": "1r Matí (6 M4)",
+      "group_code": "6 M4",
+      "classes": [
+        {
+          "subject": "Taller de Dibuix Artístic",
+          "teacher": "Anna Clemente",
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "de les Arts",
+          "teacher": "Estètica i Teoria",
+          "classroom": "P.1.9",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "de les Arts",
+          "teacher": "Estètica i Teoria",
+          "classroom": "P.1.9",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller de Color",
+          "teacher": "Anna Clemente",
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Comunicació",
+          "teacher": "Iconografia i",
+          "classroom": "P.0.12",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Comunicació",
+          "teacher": "Iconografia i",
+          "classroom": "P.0.12",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller d’Expressió i",
+          "teacher": "Elida Pérez",
+          "classroom": "G.1.1",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller d’Expressió i",
+          "teacher": "Elida Pérez",
+          "classroom": "G.1.1",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 1,
+      "specialization": null,
+      "group": "1r Matí (6 M5)",
+      "group_code": "6 M5",
+      "classes": [
+        {
+          "subject": "Taller de Dibuix Artístic",
+          "teacher": "Laura Gual",
+          "classroom": "L.0.2",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Taller de Dibuix Artístic",
+          "teacher": "Laura Gual",
+          "classroom": "L.0.2",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "de les Arts",
+          "teacher": "Estètica i Teoria",
+          "classroom": "P.1.16",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Antropologia Sociocultural",
+          "teacher": "Marina Riera",
+          "classroom": "P.1.16",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        },
+        {
+          "subject": "Antropologia Sociocultural",
+          "teacher": "Marina Riera",
+          "classroom": "P.1.16",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "13:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 1,
+      "specialization": null,
+      "group": "1r Matí (6 T1)",
+      "group_code": "6 T1",
+      "classes": [
+        {
+          "subject": "Taller de Dibuix Artístic",
+          "teacher": null,
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Taller de Dibuix Artístic",
+          "teacher": null,
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Taller d’Expressió i",
+          "teacher": "Crisal Rodriguez",
+          "classroom": "G.1.1",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Comunicació",
+          "teacher": "Iconografia i",
+          "classroom": "P.0.12",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Antropologia Sociocultural",
+          "teacher": "Mafe Moscoso",
+          "classroom": "P.1.16",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "de les Arts",
+          "teacher": "Estètica i Teoria",
+          "classroom": "P.1.16",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "de les Arts",
+          "teacher": "Estètica i Teoria",
+          "classroom": "P.1.16",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 1,
+      "specialization": null,
+      "group": "1r Tarda (6 T2)",
+      "group_code": "6 T2",
+      "classes": [
+        {
+          "subject": "de les Arts",
+          "teacher": "Estètica i Teoria",
+          "classroom": "P.1.16",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Antropologia Sociocultural",
+          "teacher": "Marina Riera",
+          "classroom": "P.1.16",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Antropologia Sociocultural",
+          "teacher": "Marina Riera",
+          "classroom": "P.1.16",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Comunicació",
+          "teacher": "Iconografia i",
+          "classroom": "P.0.12",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Taller d’Expressió i",
+          "teacher": "Crisal Rodriguez",
+          "classroom": "G.1.1",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Taller d’Expressió i",
+          "teacher": "Crisal Rodriguez",
+          "classroom": "G.1.1",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Taller d’Expressió i",
+          "teacher": "Crisal Rodriguez",
+          "classroom": "G.1.1",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Comunicació",
+          "teacher": "Iconografia i",
+          "classroom": "P.0.12",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Comunicació",
+          "teacher": "Iconografia i",
+          "classroom": "P.0.12",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 2,
+      "specialization": null,
+      "group": "2n Matí (6 M1)",
+      "group_code": "6 M1",
+      "classes": [
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Taller Tridimensional",
+          "teacher": null,
+          "classroom": "G.0.2",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Taller Tridimensional",
+          "teacher": null,
+          "classroom": "G.0.2",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Taller de Creativitat",
+          "teacher": "Anna Moreno",
+          "classroom": "G.1.3",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Taller de Creativitat",
+          "teacher": "Anna Moreno",
+          "classroom": "G.1.3",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 2,
+      "specialization": null,
+      "group": "2n Matí (6 M2)",
+      "group_code": "6 M2",
+      "classes": [
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Taller Tridimensional",
+          "teacher": "Jaume Ferrete",
+          "classroom": "G.1.3",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Taller Tridimensional",
+          "teacher": "Jaume Ferrete",
+          "classroom": "G.1.3",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Taller de Creativitat",
+          "teacher": "Marta Velasco",
+          "classroom": "G.0.2",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Taller de Creativitat",
+          "teacher": "Marta Velasco",
+          "classroom": "G.0.2",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 2,
+      "specialization": null,
+      "group": "2n Matí (6 M3)",
+      "group_code": "6 M3",
+      "classes": [
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Llenguatges",
+          "teacher": "Audiovisuals I",
+          "classroom": "L.1.2",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Llenguatges",
+          "teacher": "Audiovisuals I",
+          "classroom": "L.1.2",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Llenguatges",
+          "teacher": "Audiovisuals II",
+          "classroom": "P.0.2/0.4",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Llenguatges",
+          "teacher": "Audiovisuals II",
+          "classroom": "P.0.2/0.4",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 2,
+      "specialization": null,
+      "group": "2n Matí (6 M4)",
+      "group_code": "6 M4",
+      "classes": [
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Llenguatges",
+          "teacher": "Audiovisuals II",
+          "classroom": "P.0.2/0.4",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Llenguatges",
+          "teacher": "Audiovisuals II",
+          "classroom": "P.0.2/0.4",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Llenguatges",
+          "teacher": "Audiovisuals I",
+          "classroom": "L.1.2",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Llenguatges",
+          "teacher": "Audiovisuals I",
+          "classroom": "L.1.2",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 2,
+      "specialization": null,
+      "group": "2n Matí (6 M5)",
+      "group_code": "6 M5",
+      "classes": [
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Economia,",
+          "teacher": "Empresa i",
+          "classroom": "P.0.6",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Economia,",
+          "teacher": "Empresa i",
+          "classroom": "P.0.6",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Història del",
+          "classroom": "P.1.7",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Història del",
+          "classroom": "P.1.7",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 2,
+      "specialization": null,
+      "group": "2n Matí (6 T1)",
+      "group_code": "6 T1",
+      "classes": [
+        {
+          "subject": "Taller Tridimensional",
+          "teacher": null,
+          "classroom": "G.2.2",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Llenguatges",
+          "teacher": "Audiovisuals I",
+          "classroom": "L.1.2",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Llenguatges",
+          "teacher": "Audiovisuals I",
+          "classroom": "L.1.2",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Taller de Creativitat",
+          "teacher": "Camila Maggi",
+          "classroom": "G.1.3",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Història del",
+          "classroom": "P.0.6",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Història del",
+          "classroom": "P.0.6",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 2,
+      "specialization": null,
+      "group": "2n Tarda (6 T2)",
+      "group_code": "6 T2",
+      "classes": [
+        {
+          "subject": "Taller",
+          "teacher": "Tridimensional i",
+          "classroom": "G.1.3",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Història del",
+          "classroom": "P.0.6",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Història del",
+          "classroom": "P.0.6",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica I",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Taller de Creativitat",
+          "teacher": "Marta Velasco",
+          "classroom": "G.2.2",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Llenguatges",
+          "teacher": "Audiovisuals II",
+          "classroom": "P.0.5/0.7",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Llenguatges",
+          "teacher": "Audiovisuals II",
+          "classroom": "P.0.5/0.7",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        },
+        {
+          "subject": "Expressió Gràfica",
+          "teacher": "Gràfica II",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:30"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 3,
+      "specialization": null,
+      "group": "3n Tarda (3\nCUR)",
+      "group_code": "3 CUR",
+      "classes": [
+        {
+          "subject": "Taller de Gràfic i Comunicació",
+          "teacher": "Visual I",
+          "classroom": "P.1.7",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "P.0.10",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "P.0.10",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Gm1b",
+          "teacher": null,
+          "classroom": "P.0.10",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Taller de Gràfic i Comunicació",
+          "teacher": "Visual II",
+          "classroom": "P.1.7",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "P.0.5/0.7",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "P.0.5/0.7",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "P.0.5/0.7",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "P.0.5/0.7",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "SALA_CAROLINES",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "SALA_CAROLINES",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Taller d’Audiovisual I",
+          "teacher": "Luis Colaço",
+          "classroom": "P.1.12",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Animació",
+          "teacher": "Digital I",
+          "classroom": "L.1.4",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Animació",
+          "teacher": "Digital I",
+          "classroom": "L.1.4",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Taller d’Audiovisual II",
+          "teacher": "Núria Font",
+          "classroom": "L12",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "L.1.2",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "L.1.2",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "28/04)",
+          "teacher": null,
+          "classroom": "P.1.2 (a partir",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Taller d’Audiovisual I",
+          "teacher": "Luis Colaço",
+          "classroom": "P.1.12",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Taller d’Audiovisual I",
+          "teacher": "Luis Colaço",
+          "classroom": "P.1.12",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Animació",
+          "teacher": "Digital I",
+          "classroom": "L.1.4",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Animació",
+          "teacher": "Digital I",
+          "classroom": "L.1.4",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "L.1.2",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Taller d’Audiovisual II",
+          "teacher": "Núria Font",
+          "classroom": "L12",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Taller d’Audiovisual II",
+          "teacher": "Núria Font",
+          "classroom": "L12",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "22/04)",
+          "teacher": null,
+          "classroom": "P.1.6 (a partir",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "22/04)",
+          "teacher": null,
+          "classroom": "P.1.6 (a partir",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Taller de Moda I",
+          "teacher": "Núria Costa",
+          "classroom": "P.2.1",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Taller de Moda I",
+          "teacher": "Núria Costa",
+          "classroom": "P.2.1",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Taller de Moda II",
+          "teacher": "Núria Costa",
+          "classroom": "P.2.1",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "Taller de Moda II",
+          "teacher": "Núria Costa",
+          "classroom": "P.2.1",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:30"
+        },
+        {
+          "subject": "dels Teixits",
+          "teacher": "Anàlisi i Teoria",
+          "classroom": "P.1.3 (octubre)",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "dels Teixits",
+          "teacher": "Anàlisi i Teoria",
+          "classroom": "P.1.3 (octubre)",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Comunicació",
+          "teacher": "Imatge i",
+          "classroom": "P.2.1",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Comunicació",
+          "teacher": "Imatge i",
+          "classroom": "P.2.1",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 3,
+      "specialization": "Gràfic",
+      "group": "3r Gràfic Matí (3 Gm)",
+      "group_code": "3 Gm",
+      "classes": [
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "P.1.5",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "P.1.5",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "P.1.5",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "P.1.5",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 3,
+      "specialization": "Gràfic",
+      "group": "3r Gràfic Matí (1\nG1)",
+      "group_code": "1 G1",
+      "classes": [
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "G.1.3",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Tècniques",
+          "teacher": "Infogràfiques I",
+          "classroom": "P.1.12",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Tècniques",
+          "teacher": "Infogràfiques I",
+          "classroom": "P.1.12",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Taller d’Espai I",
+          "teacher": "Camila Maggi",
+          "classroom": "G.0.4",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Taller d’Espai I",
+          "teacher": "Camila Maggi",
+          "classroom": "G.0.4",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Taller d’Espai II",
+          "teacher": "Cristina Noguer",
+          "classroom": "G.0.4",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Tècniques",
+          "teacher": "Infogràfiques II",
+          "classroom": "P.1.12",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Tècniques",
+          "teacher": "Infogràfiques II",
+          "classroom": "P.1.12",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "G.0.4",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "G.0.4",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 3,
+      "specialization": "Gràfic",
+      "group": "3r Gràfic Tarda (6 G0)",
+      "group_code": "6 G0",
+      "classes": [
+        {
+          "subject": "Tècniques",
+          "teacher": "Infogràfiques I",
+          "classroom": "P.1.12",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Taller d’Espai I",
+          "teacher": "Camila Maggi",
+          "classroom": "G.0.4",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Taller d’Espai I",
+          "teacher": "Camila Maggi",
+          "classroom": "G.0.4",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Tècniques",
+          "teacher": "Infogràfiques II",
+          "classroom": "P.1.12",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "G.0.4",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "G.0.4",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Taller d’Espai II",
+          "teacher": "Cristina Noguer",
+          "classroom": "G.0.4",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Taller d’Espai II",
+          "teacher": "Cristina Noguer",
+          "classroom": "G.0.4",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 4,
+      "specialization": null,
+      "group": "4n Tarda (4\nCUR)",
+      "group_code": "4 CUR",
+      "classes": [
+        {
+          "subject": "Publicitat",
+          "teacher": "Disseny i",
+          "classroom": "P.0.8",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Publicitat",
+          "teacher": "Disseny i",
+          "classroom": "P.0.8",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Taller de Gràfic i Comunicació",
+          "teacher": "Visual III",
+          "classroom": "P.0.5/0.7",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Taller de Gràfic i Comunicació",
+          "teacher": "Visual III",
+          "classroom": "P.0.5/0.7",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "a Dissenyadors",
+          "teacher": "Programació per",
+          "classroom": "P.1.6",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Publicitat",
+          "teacher": "Disseny i",
+          "classroom": "P.0.8",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Publicitat",
+          "teacher": "Disseny i",
+          "classroom": "P.0.8",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "a Dissenyadors",
+          "teacher": "Programació per",
+          "classroom": "P.1.6",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Taller d’Audiovisual III",
+          "teacher": null,
+          "classroom": "L.1.2",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Moviment",
+          "teacher": "Tipografia en",
+          "classroom": "P.1.2",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Moviment",
+          "teacher": "Tipografia en",
+          "classroom": "P.1.2",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Animació",
+          "teacher": "Digital III",
+          "classroom": "P.1.12",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Animació",
+          "teacher": "Digital III",
+          "classroom": "P.1.12",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Taller d’Audiovisual III",
+          "teacher": null,
+          "classroom": "SALA_CAROLINES",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Moviment",
+          "teacher": "Tipografia en",
+          "classroom": "P.1.8",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Moviment",
+          "teacher": "Tipografia en",
+          "classroom": "P.1.8",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Animació",
+          "teacher": "Digital III",
+          "classroom": "P.1.12",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        },
+        {
+          "subject": "Animació",
+          "teacher": "Digital III",
+          "classroom": "P.1.12",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "15:00",
+          "end_time": "17:00"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Disseny",
+      "course": 4,
+      "specialization": "Gràfic",
+      "group": "4r Gràfic Tarda (1 G0)",
+      "group_code": "1 G0",
+      "classes": [
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "P.2.1",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Taller de Moda III",
+          "teacher": "Joan Ros",
+          "classroom": "P.2.2",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Taller de Moda III",
+          "teacher": "Joan Ros",
+          "classroom": "P.2.2",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Taller d’Espai III Eduard",
+          "teacher": null,
+          "classroom": "Im2 G.0.2",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Gestió",
+          "teacher": "Kike Macías",
+          "classroom": "G.1.3",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Gestió",
+          "teacher": "Kike Macías",
+          "classroom": "G.1.3",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "G.0.1",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Disseny",
+          "teacher": "Projectes de",
+          "classroom": "G.0.1",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Belles Arts",
+      "course": 1,
+      "specialization": null,
+      "group": "1r Matí (1 M1)",
+      "group_code": "1 M1",
+      "classes": [
+        {
+          "subject": "2D, Llenguatges, Tècniques",
+          "teacher": null,
+          "classroom": "G.1.2",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "10:00"
+        },
+        {
+          "subject": "Documentation",
+          "teacher": "Visualisation and",
+          "classroom": "L.0.2",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "10:00"
+        },
+        {
+          "subject": "Documentation",
+          "teacher": "Visualisation and",
+          "classroom": "L.0.2",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "10:00"
+        },
+        {
+          "subject": "4D, Llenguatges, Tècniques",
+          "teacher": null,
+          "classroom": "SALA_CAROLINES",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "10:00"
+        },
+        {
+          "subject": "4D, Llenguatges, Tècniques",
+          "teacher": null,
+          "classroom": "SALA_CAROLINES",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "10:00"
+        },
+        {
+          "subject": "Taller de Dibuix II",
+          "teacher": "Núria Inés",
+          "classroom": "G.1.2",
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "10:00"
+        },
+        {
+          "subject": "3D, Llenguatges, Tècniques",
+          "teacher": null,
+          "classroom": "G.0.3",
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "10:00"
+        },
+        {
+          "subject": "3D, Llenguatges, Tècniques",
+          "teacher": null,
+          "classroom": "G.0.3",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "10:00"
+        },
+        {
+          "subject": "Estètica",
+          "teacher": "Alejandra López",
+          "classroom": "P.0.6",
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "10:00"
+        },
+        {
+          "subject": "Estètica",
+          "teacher": "Alejandra López",
+          "classroom": "P.0.6",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "10:00"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Belles Arts",
+      "course": 3,
+      "specialization": null,
+      "group": "3n Matí (3 M1)",
+      "group_code": "3 M1",
+      "classes": [
+        {
+          "subject": "Optativitat",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Optativitat",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Pràctiques",
+          "teacher": "Artístiques i",
+          "classroom": "G.2.1",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Optativitat",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Optativitat",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Optativitat",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Optativitat",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 1,
+          "day_name": "Dilluns",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Optativitat",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Laboratori de Processos",
+          "teacher": "Sergi Alvarez",
+          "classroom": "L.0.1",
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Optativitat",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Optativitat",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 4,
+          "day_name": "Dijous",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        }
+      ]
+    },
+    {
+      "degree": "Grau en Belles Arts",
+      "course": 4,
+      "specialization": null,
+      "group": "4n Matí (4 M1)",
+      "group_code": "4 M1",
+      "classes": [
+        {
+          "subject": "Optativitat",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Optativitat",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Laboratori de Processos",
+          "teacher": "Lúa Corderch",
+          "classroom": "G.2.2",
+          "semester": 2,
+          "day_of_week": 5,
+          "day_name": "Divendres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Optativitat",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 2,
+          "day_name": "Dimarts",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Optativitat",
+          "teacher": null,
+          "classroom": null,
+          "semester": 2,
+          "day_of_week": 3,
+          "day_name": "Dimecres",
+          "start_time": "09:00",
+          "end_time": "11:00"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "verified_at": "2025-07-14T16:21:35.935Z",
+  "results": [
+    {
+      "category": "Subjects",
+      "total": 205,
+      "issues": [
+        "44 subjects (year 3+) missing itinerari"
+      ],
+      "status": "WARNING"
+    },
+    {
+      "category": "Teachers",
+      "total": 161,
+      "issues": [
+        "1 potential duplicate teacher names"
+      ],
+      "status": "WARNING"
+    },
+    {
+      "category": "Classrooms",
+      "total": 68,
+      "issues": [],
+      "status": "OK"
+    }
+  ],
+  "fully_harmonized": false
+}

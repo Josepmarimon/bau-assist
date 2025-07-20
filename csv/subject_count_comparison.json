@@ -1,0 +1,21 @@
+{
+  "generated_at": "2025-07-14T16:47:52.076Z",
+  "summary": {
+    "excel": {
+      "total": 168,
+      "by_degree": {
+        "UNKNOWN": 168
+      }
+    },
+    "database": {
+      "total": 175,
+      "by_degree": {
+        "OTHER": 37,
+        "GBA (Belles Arts)": 62,
+        "GDIS (Disseny)": 98,
+        "Interiors": 2
+      }
+    },
+    "subjects_only_in_db": 39
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "version": "2.0",
+  "description": "Plantilla d'importació d'horaris amb IDs únics per garantir matching 100%",
+  "instructions": {
+    "important": "TOTS els camps d'ID són OBLIGATORIS per garantir el matching correcte",
+    "student_group_id": "ID únic del grup d'estudiants (UUID)",
+    "subject_id": "ID únic de l'assignatura (UUID)",
+    "semester_id": "ID únic del semestre (UUID)",
+    "teacher_ids": "Array d'IDs únics dels professors (UUIDs)",
+    "classroom_ids": "Array d'IDs únics de les aules (UUIDs)",
+    "day_of_week": "1=Dilluns, 2=Dimarts, 3=Dimecres, 4=Dijous, 5=Divendres",
+    "start_time": "Format HH:MM:SS (24h)",
+    "end_time": "Format HH:MM:SS (24h)",
+    "group_type": "tipus del grup d'assignatura: THEORY, PRACTICE, LABORATORY, SEMINAR",
+    "notes": "Notes opcionals sobre l'assignació"
+  },
+  "how_to_get_ids": {
+    "step_1": "Executa: npm run export-ids",
+    "step_2": "Consulta el fitxer generat: data/database-ids-YYYY-MM-DD.json",
+    "step_3": "Copia els IDs exactes de cada entitat",
+    "step_4": "Utilitza el fitxer database-lookup-YYYY-MM-DD.json per cercar per nom"
+  },
+  "schedules": [
+    {
+      "student_group_id": "550e8400-e29b-41d4-a716-446655440001",
+      "semester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "classes": [
+        {
+          "subject_id": "550e8400-e29b-41d4-a716-446655440003",
+          "group_type": "THEORY",
+          "teacher_ids": ["550e8400-e29b-41d4-a716-446655440004"],
+          "classroom_ids": ["550e8400-e29b-41d4-a716-446655440005"],
+          "day_of_week": 1,
+          "start_time": "09:00:00",
+          "end_time": "11:00:00",
+          "notes": "Classe de teoria al matí"
+        },
+        {
+          "subject_id": "550e8400-e29b-41d4-a716-446655440003",
+          "group_type": "PRACTICE",
+          "teacher_ids": [
+            "550e8400-e29b-41d4-a716-446655440004",
+            "550e8400-e29b-41d4-a716-446655440006"
+          ],
+          "classroom_ids": [
+            "550e8400-e29b-41d4-a716-446655440007",
+            "550e8400-e29b-41d4-a716-446655440008"
+          ],
+          "day_of_week": 3,
+          "start_time": "15:00:00",
+          "end_time": "18:00:00",
+          "notes": "Pràctica amb co-docència i dues aules"
+        }
+      ]
+    }
+  ],
+  "validation_rules": {
+    "required_fields": [
+      "student_group_id",
+      "semester_id",
+      "subject_id",
+      "group_type",
+      "teacher_ids",
+      "classroom_ids",
+      "day_of_week",
+      "start_time",
+      "end_time"
+    ],
+    "uuid_format": "Tots els IDs han de ser UUIDs vàlids (format: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX)",
+    "time_format": "HH:MM:SS en format 24 hores",
+    "day_range": "day_of_week entre 1 i 5",
+    "group_types": ["THEORY", "PRACTICE", "LABORATORY", "SEMINAR"],
+    "array_fields": "teacher_ids i classroom_ids han de ser arrays, encara que només tinguin un element"
+  },
+  "example_with_real_structure": {
+    "comment": "Aquest és un exemple amb l'estructura real esperada",
+    "student_group_id": "{{ID del grup '1r Matí M1' de database-ids.json}}",
+    "semester_id": "{{ID del 'Semester 1 - 2025/2026' de database-ids.json}}",
+    "classes": [
+      {
+        "subject_id": "{{ID de 'Fonaments del Disseny' de database-ids.json}}",
+        "group_type": "THEORY",
+        "teacher_ids": ["{{ID de 'Joan Pérez' de database-ids.json}}"],
+        "classroom_ids": ["{{ID de 'P.05' de database-ids.json}}"],
+        "day_of_week": 1,
+        "start_time": "09:00:00",
+        "end_time": "11:00:00"
+      }
+    ]
+  }
+}

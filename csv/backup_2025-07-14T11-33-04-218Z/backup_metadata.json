@@ -1,0 +1,13 @@
+{
+  "created_at": "2025-07-14T11:33:05.527Z",
+  "tables_backed_up": [
+    "subjects",
+    "classrooms",
+    "teachers",
+    "assignments",
+    "subject_groups",
+    "student_groups"
+  ],
+  "backup_reason": "Pre-synchronization backup",
+  "success": true
+}

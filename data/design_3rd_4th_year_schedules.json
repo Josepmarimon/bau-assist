@@ -1,0 +1,1501 @@
+{
+  "3rd_year": {
+    "Gm1": {
+      "1st_semester": [
+        {
+          "subject": "Taller de Gràfic i Comunicació Visual I",
+          "teachers": ["David Torrents"],
+          "group": "Gm1a",
+          "classroom": "P1.7",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "11:00",
+          "semester": 1
+        },
+        {
+          "subject": "Taller de Gràfic i Comunicació Visual I",
+          "teachers": ["Alba Font Villar"],
+          "group": "Gm1b",
+          "classroom": "P0.10",
+          "day": 1,
+          "startTime": "11:30",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Cultura de la Imatge I",
+          "teachers": ["Mª Àngels Fortea"],
+          "classroom": "P0.10",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Projectes de Disseny Gràfic I",
+          "teachers": ["Pau de Riba"],
+          "classroom": "P0.10",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Infografia I",
+          "teachers": ["Isabel Quiles"],
+          "classroom": "P1.6",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Tipografia I",
+          "teachers": ["Jesus Morentin"],
+          "classroom": "P0.5/0.7",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Taller de Gràfic i Comunicació Visual II",
+          "teachers": ["Arnau Pi", "Adrià Molins"],
+          "classroom": "P1.7",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Cultura de la Imatge II",
+          "teachers": ["Mª Àngels Fortea"],
+          "classroom": "P0.10",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Projectes de Disseny Gràfic II",
+          "teachers": ["Nadia Speranza"],
+          "classroom": "P0.5/0.7",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Infografia II",
+          "teachers": ["Isabel Quiles"],
+          "classroom": "P1.6",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Tipografia II",
+          "teachers": ["Jesus Morentin"],
+          "classroom": "P0.5/0.7",
+          "note": "5 darreres sessions",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        }
+      ]
+    },
+    "Gm2": {
+      "1st_semester": [
+        {
+          "subject": "Tipografia I",
+          "teachers": ["Jesus Morentin"],
+          "classroom": "P0.5/0.7",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Projectes de Disseny Gràfic I",
+          "teachers": ["Pau de Riba"],
+          "classroom": "P1.5",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Infografia I",
+          "teachers": ["Isabel Quiles"],
+          "classroom": "P1.6",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Cultura de la Imatge I",
+          "teachers": ["Mª Àngels Fortea"],
+          "classroom": "P0.10",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Taller de Gràfic i Comunicació Visual I",
+          "teachers": ["David Torrents"],
+          "classroom": "P0.2/0.4",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Tipografia II",
+          "teachers": ["Jesus Morentin"],
+          "classroom": "P0.5/0.7",
+          "note": "5 darreres sessions",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Projectes de Disseny Gràfic II",
+          "teachers": ["Nadia Speranza"],
+          "classroom": "P1.5",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Infografia II",
+          "teachers": ["Isabel Quiles"],
+          "classroom": "P1.6",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Cultura de la Imatge II",
+          "teachers": ["Mª Àngels Fortea"],
+          "classroom": "P0.10",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Taller de Gràfic i Comunicació Visual II",
+          "teachers": ["Arnau Pi", "Adrià Molins"],
+          "classroom": "P0.2/0.4",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        }
+      ]
+    },
+    "Gt": {
+      "1st_semester": [
+        {
+          "subject": "Tipografia I",
+          "teachers": ["Jesus Morentin"],
+          "classroom": "P0.5/0.7",
+          "day": 1,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Projectes de Disseny Gràfic I",
+          "teachers": ["Pau de Riba"],
+          "classroom": "P0.5/0.7",
+          "day": 2,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Cultura de la Imatge I",
+          "teachers": ["Nataly del Pozzo"],
+          "classroom": "P1.16",
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Infografia I",
+          "teachers": ["Isabel Quiles"],
+          "classroom": "P1.6",
+          "day": 4,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Taller de Gràfic i Comunicació Visual I",
+          "teachers": ["David Torrents"],
+          "classroom": "P0.5/0.7",
+          "day": 5,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Tipografia II",
+          "teachers": ["Jesus Morentin"],
+          "classroom": "P0.5/0.7",
+          "note": "5 darreres sessions",
+          "day": 1,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Projectes de Disseny Gràfic II",
+          "teachers": ["Ruben Pater", "Nadia Speranza", "Sala Carolines"],
+          "day": 2,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Cultura de la Imatge II",
+          "teachers": ["Nataly del Pozzo"],
+          "classroom": "P1.16",
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Infografia II",
+          "teachers": ["Isabel Quiles"],
+          "classroom": "P1.6",
+          "day": 4,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Taller de Gràfic i Comunicació Visual II",
+          "teachers": ["Arnau Pi", "Adrià Molins"],
+          "classroom": "P0.5/0.7",
+          "day": 5,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        }
+      ]
+    },
+    "Am": {
+      "1st_semester": [
+        {
+          "subject": "Taller d'Audiovisual I",
+          "teachers": ["Luis Colaco", "Jose Ramon", "Madrid"],
+          "classroom": "P1.12",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Projectes de Disseny Audiovisual I",
+          "teachers": ["Josep M. Marimon"],
+          "classroom": "L1.2",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Animació Digital I",
+          "teachers": ["Frank Maria"],
+          "classroom": "L1.4",
+          "additionalClassroom": "Lt1.3 + Lt1.4",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Creació i Autoria Digital I",
+          "teachers": ["Roger Vicente"],
+          "classroom": "P1.8",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Cultura Audiovisual I",
+          "teachers": ["Ricardo Icar"],
+          "classroom": "P0.12",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Taller d'Audiovisual II",
+          "teachers": ["Núria Font", "Jose Ramon", "Madrid"],
+          "classroom": "L1.2",
+          "additionalClassroom": "P1.2 (a partir 28/04)",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Projectes de Disseny Audiovisual II",
+          "teachers": ["Guillem Castellví"],
+          "classroom": "L1.2",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Creació i Autoria Digital II",
+          "teachers": ["Àlex Valverde", "Jorge Caballero", "Mª José Díaz"],
+          "classroom": "P1.12",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Cultura Audiovisual II",
+          "teachers": ["Núria Nia"],
+          "classroom": "P1.9",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Animació Digital II",
+          "teachers": ["Albert Gavaldà"],
+          "classroom": "P1.4",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        }
+      ]
+    },
+    "At": {
+      "1st_semester": [
+        {
+          "subject": "Projectes de Disseny Audiovisual I",
+          "teachers": ["Josep M. Marimon"],
+          "classroom": "L1.2",
+          "day": 1,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Taller d'Audiovisual I",
+          "teachers": ["Luis Colaco", "Jose Ramon", "Madrid"],
+          "classroom": "P1.12",
+          "day": 2,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Animació Digital I",
+          "teachers": ["Frank Maria"],
+          "classroom": "L1.4",
+          "additionalClassroom": "Lt1.3 + Lt1.4",
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Creació i Autoria Digital I",
+          "teachers": ["Roger Vicente"],
+          "classroom": "P1.12",
+          "day": 4,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Cultura Audiovisual I",
+          "teachers": ["Ricardo Icar"],
+          "classroom": "P0.12",
+          "day": 5,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Projectes de Disseny Audiovisual II",
+          "teachers": ["Guillem Castellví"],
+          "classroom": "L1.2",
+          "day": 1,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Taller d'Audiovisual II",
+          "teachers": ["Núria Font", "Jose Ramon", "Madrid"],
+          "classroom": "L1.2",
+          "additionalClassroom": "P1.6 (a partir 22/04)",
+          "day": 2,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Creació i Autoria Digital II",
+          "teachers": ["Àlex Valverde", "Jorge Caballero", "Mª José Díaz"],
+          "classroom": "P1.8",
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Cultura Audiovisual II",
+          "teachers": ["Núria Nia"],
+          "classroom": "P1.16",
+          "day": 4,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Animació Digital II",
+          "teachers": ["Albert Gavaldà"],
+          "classroom": "P1.4",
+          "day": 5,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        }
+      ]
+    },
+    "Mm": {
+      "1st_semester": [
+        {
+          "subject": "Projectes de Disseny de Moda I",
+          "teachers": ["Joan Martorello"],
+          "classroom": "P2.2",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Història de la Moda I",
+          "teachers": ["Sílvia Rosés"],
+          "classroom": "P0.6",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Taller de Moda I",
+          "teachers": ["Núria Costa"],
+          "classroom": "P2.1",
+          "additionalClassroom": "+ portàtils",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Patronatge I",
+          "teachers": ["Josep Pagà"],
+          "classroom": "Pt.2",
+          "additionalClassroom": "+ portàtils",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Anàlisi i Teoria dels Teixits",
+          "teachers": ["Claudia Marzà"],
+          "classroom": "LO.4",
+          "additionalClassroom": "Portàtils (octubre)",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Projectes de Disseny de Moda II",
+          "teachers": ["Elisa Amann"],
+          "classroom": "P2.2",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Història de la Moda II",
+          "teachers": ["Sílvia Rosés"],
+          "classroom": "P0.6",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Taller de Moda II",
+          "teachers": ["Núria Costa"],
+          "classroom": "P2.1",
+          "additionalClassroom": "+ portàtils",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Patronatge II",
+          "teachers": ["Josep Pagà"],
+          "classroom": "Pt.2",
+          "additionalClassroom": "+ portàtils",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Imatge i Comunicació",
+          "teachers": ["Núria Gómez Gabriel"],
+          "classroom": "P2.1",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        }
+      ]
+    },
+    "Mt": {
+      "1st_semester": [
+        {
+          "subject": "Projectes de Disseny de Moda I",
+          "teachers": ["Joan Martorello"],
+          "classroom": "P2.2",
+          "day": 1,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Història de la Moda I",
+          "teachers": ["Sílvia Rosés"],
+          "classroom": "P2.2",
+          "day": 2,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Anàlisi i Teoria dels Teixits",
+          "teachers": ["Claudia Marzà"],
+          "classroom": "LO.4",
+          "additionalClassroom": "P1.3 (octubre)",
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Patronatge I",
+          "teachers": ["Josep Pagà"],
+          "classroom": "Pt.2",
+          "additionalClassroom": "+ portàtils",
+          "day": 4,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Taller de Moda I",
+          "teachers": ["Claudia Marzà"],
+          "classroom": "P2.2",
+          "additionalClassroom": "+ portàtils",
+          "day": 5,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Projectes de Disseny de Moda II",
+          "teachers": ["Elisa Amann"],
+          "classroom": "P2.2",
+          "day": 1,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Història de la Moda II",
+          "teachers": ["Sílvia Rosés"],
+          "classroom": "P2.2",
+          "day": 2,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Imatge i Comunicació",
+          "teachers": ["Núria Gómez Gabriel"],
+          "classroom": "P2.1",
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Patronatge II",
+          "teachers": ["Josep Pagà"],
+          "classroom": "Pt.2",
+          "additionalClassroom": "+ portàtils",
+          "day": 4,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Taller de Moda II",
+          "teachers": ["Claudia Marzà"],
+          "classroom": "P2.2",
+          "additionalClassroom": "+ portàtils",
+          "day": 5,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        }
+      ]
+    },
+    "Im": {
+      "1st_semester": [
+        {
+          "subject": "Projectes de Disseny d'Interiors I",
+          "teachers": ["Claudia Raurell"],
+          "classroom": "G1.3",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Tècniques Infogràfiques I",
+          "teachers": ["Ricard Marimon"],
+          "classroom": "P1.12",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Taller d'Espai I",
+          "teachers": ["Camila Maggi"],
+          "classroom": "G0.4",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Història del Disseny d'Interiors I",
+          "teachers": ["Nataly del Pozzo"],
+          "classroom": "P0.6",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Construcció i Instal·lacions I",
+          "teachers": ["David Ortega"],
+          "classroom": "P2.1",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Taller d'Espai II",
+          "teachers": ["Cristina Noguer"],
+          "classroom": "G0.4",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Tècniques Infogràfiques II",
+          "teachers": ["Ricard Marimon"],
+          "classroom": "P1.12",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Projectes de Disseny d'Interiors II",
+          "teachers": ["Miguel Maure"],
+          "classroom": "G0.4",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Història del Disseny d'Interiors II",
+          "teachers": ["María García Ruiz"],
+          "classroom": "P0.6",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Construcció i Instal·lacions II",
+          "teachers": ["Mariel Fuentes"],
+          "classroom": "L1.2",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        }
+      ]
+    },
+    "It": {
+      "1st_semester": [
+        {
+          "subject": "Tècniques Infogràfiques I",
+          "teachers": ["Ricard Marimon"],
+          "classroom": "P1.12",
+          "day": 1,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Taller d'Espai I",
+          "teachers": ["Camila Maggi"],
+          "classroom": "G0.4",
+          "day": 2,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Construcció i Instal·lacions I",
+          "teachers": ["David Ortega"],
+          "classroom": "P2.1",
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Història del Disseny d'Interiors I",
+          "teachers": ["Nataly del Pozzo"],
+          "classroom": "P0.6",
+          "day": 4,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Projectes de Disseny d'Interiors I",
+          "teachers": ["Claudia Raurell"],
+          "classroom": "G0.4",
+          "day": 5,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Tècniques Infogràfiques II",
+          "teachers": ["Ricard Marimon"],
+          "classroom": "P1.12",
+          "day": 1,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Projectes de Disseny d'Interiors II",
+          "teachers": ["Miguel Maure"],
+          "classroom": "G0.4",
+          "day": 2,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Taller d'Espai II",
+          "teachers": ["Cristina Noguer"],
+          "classroom": "G0.4",
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Història del Disseny d'Interiors II",
+          "teachers": ["María García Ruiz"],
+          "classroom": "P0.6",
+          "day": 4,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Construcció i Instal·lacions II",
+          "teachers": ["Mariel Fuentes"],
+          "classroom": "L1.2",
+          "day": 5,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        }
+      ]
+    }
+  },
+  "4th_year": {
+    "Gm1": {
+      "1st_semester": [
+        {
+          "subject": "Introducció al Disseny Web",
+          "teachers": ["Jordi Galobart"],
+          "classroom": "P1.6",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Disseny i Publicitat",
+          "teachers": ["Gabriel Ventura"],
+          "classroom": "P0.8",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Taller de Gràfic i Comunicació Visual III",
+          "teachers": ["David Ortiz"],
+          "classroom": "P0.5/0.7",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Projectes de Disseny Gràfic III",
+          "teachers": ["Roc Albalat"],
+          "classroom": "P0.2/0.4",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Programació per a Dissenyadors",
+          "teachers": ["Lucía Segurajáuregui"],
+          "classroom": "P1.4",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Disseny i Comunicació",
+          "teachers": ["Mireia Carbonell"],
+          "classroom": "P0.8",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Treball Final de Grau",
+          "teachers": ["David Torrents", "Roc Albalat", "Marina Gil", "David Ortiz", "Ruben Pater"],
+          "classroom": "P0.3, P2.2, P1.7, P1.14, P1.10",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        }
+      ]
+    },
+    "Gm2": {
+      "1st_semester": [
+        {
+          "subject": "Programació per a Dissenyadors",
+          "teachers": ["Anna Carreras"],
+          "classroom": "P1.6",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Projectes de Disseny Gràfic III",
+          "teachers": ["Roc Albalat"],
+          "classroom": "P1.7",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Disseny i Publicitat",
+          "teachers": ["Gabriel Ventura"],
+          "classroom": "P0.8",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Taller de Gràfic i Comunicació Visual III",
+          "teachers": ["David Ortiz"],
+          "classroom": "P0.5/0.7",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Introducció al Disseny Web",
+          "teachers": ["Jordi Galobart"],
+          "classroom": "P1.6",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Disseny i Comunicació",
+          "teachers": ["Mireia Carbonell"],
+          "classroom": "P0.8",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Treball Final de Grau",
+          "teachers": ["David Torrents", "Roc Albalat", "Marina Gil", "David Ortiz", "Ruben Pater"],
+          "classroom": "P0.3, P0.14, P1.7, P2.2, P1.10",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        }
+      ]
+    },
+    "Gt": {
+      "1st_semester": [
+        {
+          "subject": "Programació per a Dissenyadors",
+          "teachers": ["Lucía Segurajáuregui"],
+          "classroom": "P1.6",
+          "day": 1,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Introducció al Disseny Web",
+          "teachers": ["Jordi Galobart"],
+          "classroom": "P1.6",
+          "day": 2,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Projectes de Disseny Gràfic III",
+          "teachers": ["Ruben Pater"],
+          "classroom": "P0.6",
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Taller de Gràfic i Comunicació Visual III",
+          "teachers": ["David Ortiz"],
+          "classroom": "P0.5/0.7",
+          "day": 4,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Disseny i Publicitat",
+          "teachers": ["Tiago Alves Costa"],
+          "classroom": "P0.6",
+          "day": 5,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Disseny i Comunicació",
+          "teachers": ["Mariona Ribas"],
+          "classroom": "P1.5",
+          "day": 2,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Treball Final de Grau",
+          "teachers": ["Mònica Mestanza", "David Ortiz"],
+          "classroom": "P0.5/0.7, P1.5",
+          "day": 4,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        }
+      ]
+    },
+    "Am": {
+      "1st_semester": [
+        {
+          "subject": "Taller d'Audiovisual III",
+          "teachers": [],
+          "classroom": "L1.2",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Tipografia en Moviment",
+          "teachers": ["Raül Maldonado"],
+          "classroom": "P1.2",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Animació Digital III",
+          "teachers": ["Xavier Maixenchs"],
+          "classroom": "P1.12",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Creació i Autoria Digital III",
+          "teachers": ["Citlali Hernández"],
+          "classroom": "P1.12",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Projectes de Disseny Audiovisual III",
+          "teachers": ["Núria Nia"],
+          "classroom": "L1.2",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Creació i Autoria Digital IV",
+          "teachers": ["Mònica Rikic", "Luis Colaco", "Sala Carolines"],
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Treball Final de Grau",
+          "teachers": ["Laura Ginés", "Núria Nia", "Taller interactiu", "Sala Carolines"],
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        }
+      ]
+    },
+    "At": {
+      "1st_semester": [
+        {
+          "subject": "Taller d'Audiovisual III",
+          "teachers": ["Sala Carolines"],
+          "day": 1,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Tipografia en Moviment",
+          "teachers": ["Raül Maldonado"],
+          "classroom": "P1.8",
+          "day": 2,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Animació Digital III",
+          "teachers": ["Xavier Maixenchs"],
+          "classroom": "P1.12",
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Projectes de Disseny Audiovisual III",
+          "teachers": ["Núria Nia", "Sala Carolines"],
+          "day": 4,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Creació i Autoria Digital III",
+          "teachers": ["Citlali Hernández"],
+          "classroom": "P1.12",
+          "day": 5,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Creació i Autoria Digital IV",
+          "teachers": ["Mònica Rikic", "Luis Colaco", "Sala Carolines"],
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Treball Final de Grau",
+          "teachers": ["Laura Ginés", "Núria Nia", "Sala Carolines"],
+          "day": 4,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        }
+      ]
+    },
+    "Mm": {
+      "1st_semester": [
+        {
+          "subject": "Projectes de Disseny de Moda III",
+          "teachers": ["Ingrid Pou"],
+          "classroom": "P2.1",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Taller de Moda III",
+          "teachers": ["Joan Ros"],
+          "classroom": "P2.2",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Patronatge III",
+          "teachers": ["Josep Pagà"],
+          "classroom": "Pt.2",
+          "additionalClassroom": "Portàtils",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Marqueting i Moda",
+          "teachers": ["Jordi Álvarez"],
+          "classroom": "P2.1",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Manipulació i Estampació de Teixits",
+          "teachers": ["Núria Costa"],
+          "classroom": "G0.2",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Treball Final de Grau",
+          "teachers": ["Claudia Marzà"],
+          "note": "(a partir 3a sessió)",
+          "classroom": "Patronatge IV: Marta Martorello, Pt.2",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Patronatge IV",
+          "teachers": ["Josep Pagà"],
+          "note": "(1a i 2a sessió)",
+          "classroom": "Pt.2 + portàtils",
+          "additionalNote": "(a partir 3a sessió)",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Treball Final de Grau",
+          "teachers": ["Joan Ros", "Patronatge IV: Marta Martorello"],
+          "classroom": "Pt.2",
+          "note": "(1a i 2a sessió)",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Treball Final de Grau",
+          "teachers": ["Joan Ros", "Claudia Marzà"],
+          "classroom": "P2.1",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        }
+      ]
+    },
+    "Mt": {
+      "1st_semester": [
+        {
+          "subject": "Projectes de Disseny de Moda III",
+          "teachers": ["Ingrid Pou"],
+          "classroom": "P2.1",
+          "day": 1,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Patronatge III",
+          "teachers": ["Josep Pagà"],
+          "classroom": "Pt.2",
+          "additionalClassroom": "Portàtils",
+          "day": 2,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Taller de Moda III",
+          "teachers": ["Joan Ros"],
+          "classroom": "P2.2",
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Manipulació i Estampació de Teixits",
+          "teachers": ["Núria Costa"],
+          "classroom": "G0.2",
+          "additionalClassroom": "Portàtils",
+          "day": 4,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        },
+        {
+          "subject": "Marqueting i Moda",
+          "teachers": ["Bet Coll-Vinent"],
+          "classroom": "P2.1",
+          "day": 5,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Patronatge IV",
+          "teachers": ["Marta Martorello"],
+          "note": "(1a i 2a sessió)",
+          "classroom": "Pt.2",
+          "additionalClassroom": "Portàtils",
+          "day": 1,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Treball Final de Grau",
+          "teachers": ["Núria Costa"],
+          "note": "(a partir 3a sessió)",
+          "classroom": "Patronatge IV: Josep Pagà, Pt.2",
+          "day": 1,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Treball Final de Grau",
+          "teachers": ["Joan Martorello"],
+          "note": "(a partir 3a sessió)",
+          "classroom": "Patronatge IV: Marta Martorello, Pt.2",
+          "day": 2,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Treball Final de Grau",
+          "teachers": ["Joan Ros"],
+          "classroom": "P2.2",
+          "note": "(1a i 2a sessió)",
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        },
+        {
+          "subject": "Patronatge IV",
+          "teachers": ["Josep Pagà"],
+          "classroom": "Pt.2",
+          "note": "(a partir 3a sessió)",
+          "day": 3,
+          "startTime": "15:00",
+          "endTime": "19:30",
+          "semester": 2
+        }
+      ]
+    },
+    "Im": {
+      "1st_semester": [
+        {
+          "subject": "Taller d'Espai III",
+          "teachers": ["Eduard Fernàndez"],
+          "classroom": "Im1: G0.4, Im2: G0.2",
+          "day": 1,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Gestió",
+          "teachers": ["Kike Macías"],
+          "classroom": "G1.3",
+          "day": 2,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Projectes de Disseny d'Interiors III",
+          "teachers": ["Aina Roca"],
+          "classroom": "G0.1",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Construcció i Instal·lacions III",
+          "teachers": ["David Ortega"],
+          "classroom": "G0.1",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        },
+        {
+          "subject": "Producte",
+          "teachers": ["Miguel Maure"],
+          "classroom": "G0.4",
+          "day": 5,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 1
+        }
+      ],
+      "2nd_semester": [
+        {
+          "subject": "Construcció i Instal·lacions IV",
+          "teachers": ["Kike Macías"],
+          "classroom": "G0.1",
+          "day": 3,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        },
+        {
+          "subject": "Treball Final de Grau",
+          "teachers": ["Pierino dal Pozzo", "Eduard Fernàndez", "Camila Maggi"],
+          "classroom": "G0.1, G0.3, G0.4",
+          "day": 4,
+          "startTime": "09:00",
+          "endTime": "13:30",
+          "semester": 2
+        }
+      ]
+    }
+  }
+}

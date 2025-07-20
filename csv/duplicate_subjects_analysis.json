@@ -1,0 +1,3397 @@
+{
+  "generated_at": "2025-07-14T16:14:31.002Z",
+  "summary": {
+    "exact_matches": 131,
+    "high_similarity": 90,
+    "medium_similarity": 61,
+    "total_potential_duplicates": 151
+  },
+  "exact_matches": [
+    {
+      "dbSubject": {
+        "id": "31b030a4-916b-4be6-8d0a-6c50081a47f9",
+        "code": "2D.LLENGU",
+        "name": "2D. Llenguatges, Tècniques i Tecnologies",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "2d llenguatges tècn ques tecnolog es",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "95fca7c8-e633-4c59-b733-01c8d224bf6a",
+        "code": "BA101",
+        "name": "2D. Llenguatges, Tècniques i Tecnologies",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "2d llenguatges tècn ques tecnolog es",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "3cb300de-9644-47c2-84ee-d82ee924a20e",
+        "code": "BA202",
+        "name": "2D. Llenguatges, Tècniques i Tecnologies Instal·lades",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "2d llenguatges tècn ques tecnolog es nstal.lades",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "fbe9eb18-fae6-4186-8053-0ab378e50c1c",
+        "code": "BA107",
+        "name": "3D. Llenguatges, Tècniques i Tecnologies",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "3d llenguatges tècn ques tecnolog es",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "168eef4c-b260-4c98-835a-701f96bb5755",
+        "code": "3D.LLENGU",
+        "name": "3D. Llenguatges, Tècniques i Tecnologies",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "3d llenguatges tècn ques tecnolog es",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "7b21b2bf-9775-475c-91ed-0fb479b91c6e",
+        "code": "BA210",
+        "name": "3D. Llenguatges, Tècniques i Tecnologies Instal·lades",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "3d llenguatges tècn ques tecnolog es nstal.lades",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "b06e0f51-10a2-401d-ab0a-a878866fdb6e",
+        "code": "4D.LLENGU",
+        "name": "4D. Llenguatges, Tècniques i Tecnologies",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "423a971a-b59c-4a26-ac8f-abc7b10ed67f",
+        "code": "BA103",
+        "name": "4D. Llenguatges, Tècniques i Tecnologies",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "7a443518-fcbf-4658-925a-8db7de75b900",
+        "code": "BA201",
+        "name": "4D. Llenguatges, Tècniques i Tecnologies Instal·lades",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es nstal.lades",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "8dc0e030-fe98-41d1-a269-6b4f60040142",
+        "code": "GDVM23",
+        "name": "Anàlisi i Teoria dels Teixits",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "anàl s  teor a dels te x ts",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "9ca88e73-3e28-461c-b00d-f704d289bb53",
+        "code": "ANIMACIÓD",
+        "name": "Animació Digital I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "an mac ó d g tal ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "126efa73-d238-4020-9bce-9a0d5be6b8fc",
+        "code": "GDVA03",
+        "name": "Animació Digital I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "an mac ó d g tal ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "2ede690e-680c-4e3a-84a1-2ce61f5e412e",
+        "code": "GDVA53",
+        "name": "Animació Digital II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "an mac ó d g tal  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "5795405c-1e71-4d17-942c-c9021b37e16c",
+        "code": "GDVA04",
+        "name": "Animació Digital III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "an mac ó d g tal   ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "9b121af5-5b61-4af3-858a-965c0108248f",
+        "code": "GBA3_8728",
+        "name": "Anna Moreno G0.1",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "anna moreno g01",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "6d269d66-d65d-474a-a858-7094b3aacb16",
+        "code": "BA206",
+        "name": "Antropologia",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "antropolog a",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "8884723e-8328-4a6b-84de-2784403e95ec",
+        "code": "ANTROPOLOG",
+        "name": "Antropologia",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "antropolog a",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "82c563f0-8fb7-4e12-8b30-29ac5a89dd48",
+        "code": "GDF031",
+        "name": "Antropologia Sociocultural",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "antropolog a soc ocultural",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "941d85ef-9d4a-4bd6-b243-58873170005a",
+        "code": "BA304",
+        "name": "Art Practices in Context Seminar I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "art pract ces n context sem nar ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "4b8ed99d-3bf7-4c9f-90ea-38df5c274b7b",
+        "code": "ARTPRACTI",
+        "name": "Art Practices in Context Seminar I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "art pract ces n context sem nar ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "5dde63ae-7b45-4724-82ab-0faa87287613",
+        "code": "BA401",
+        "name": "Art Practices in Context Seminar II",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "art pract ces n context sem nar  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "6b6f335d-2fdc-48de-bff4-1156bf4c3ad8",
+        "code": "BA109",
+        "name": "Art, Institució i Mercat",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "art nst tuc ó mercat",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "878cb3eb-af8c-487b-b79a-279dab4e51c6",
+        "code": "CONSTRUCCI",
+        "name": "Construcció i Instal·lacions I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "construcc ó  nstal.lac ons ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "6dd56d4a-b498-47a7-b9da-cc81dd80afbd",
+        "code": "GDVI43",
+        "name": "Construcció i Instal·lacions I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "construcc ó  nstal.lac ons ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "71837a44-2124-4015-9c74-6873d8f32737",
+        "code": "GDVI54",
+        "name": "Construcció i Instal·lacions IV",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "construcc ó  nstal.lac ons v",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "5860e869-cc38-4301-9f57-0ced7479f260",
+        "code": "GDVA13",
+        "name": "Creació i Autoria Digital I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "creac ó autor a d g tal ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "7cec98ec-95be-4620-af61-78ab55528c5c",
+        "code": "CREACIÓI",
+        "name": "Creació i Autoria Digital I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "creac ó autor a d g tal ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "848e27fb-cbf2-4143-b152-9089b0d3ea3a",
+        "code": "GDVA63",
+        "name": "Creació i Autoria Digital II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "creac ó autor a d g tal  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "8113a657-1a2f-4e3b-8e8b-8648296776f8",
+        "code": "GDVA14",
+        "name": "Creació i Autoria Digital III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "creac ó autor a d g tal   ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "b9d90ceb-81e6-47db-b4b8-c0cd46253d88",
+        "code": "GDVA54",
+        "name": "Creació i Autoria Digital IV",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "creac ó autor a d g tal v",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "b494e0d3-4f5c-4149-87c6-5df6729b6417",
+        "code": "CULTURAAU",
+        "name": "Cultura Audiovisual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "cultura aud ov sual ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "d150db97-8ba7-489a-9da9-c2de7dbdbd8e",
+        "code": "GDVA23",
+        "name": "Cultura Audiovisual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "cultura aud ov sual ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "616101eb-0feb-45db-af48-a81d016206b6",
+        "code": "GDVA73",
+        "name": "Cultura Audiovisual II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "cultura aud ov sual  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "b6f1804b-6434-4638-979b-7e7a0c86030c",
+        "code": "CULTURADE",
+        "name": "Cultura de la Imatge I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "cultura de la matge ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "bea26b5b-054f-4a3c-a260-0ba581124735",
+        "code": "GDVG33",
+        "name": "Cultura de la Imatge I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "cultura de la matge ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "f1a75b3f-561c-40d3-95e7-1dd253c3fa21",
+        "code": "GDVG83",
+        "name": "Cultura de la Imatge II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "cultura de la matge  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "19b8626b-7ef2-46af-8d4c-940eb4548b2b",
+        "code": "GBA3_5181",
+        "name": "d’Artista",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "d’art sta",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "87f11746-830b-4285-90c6-b0d292cf0a32",
+        "code": "GBA2_4544",
+        "name": "Daniel Pitarch Paula Bruna G2.1",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "dan el p tarch paula bruna g21",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "a33885b4-2cba-46e0-813f-937f0472b22b",
+        "code": "GBA1_5722",
+        "name": "David Ortiz Irene Visa L0.2",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "dav d ort z rene v sa l02",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "021d3f03-6dbe-4395-9ea2-9e5a9e9500e9",
+        "code": "GBA3_1877",
+        "name": "Debats Contemporanis en les Arts i les Ciències Socials",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "debats contemporan s en les arts les c ènc es soc als",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "ae92b0df-9c98-4cbf-b08d-67f605b8321b",
+        "code": "GBA3_1834",
+        "name": "Debats Contemporanis en les Arts i les Humanitats",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "debats contemporan s en les arts les human tats",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "573ff9ad-cfcf-4b9d-946a-c9f86743ebb4",
+        "code": "GBA3_3084",
+        "name": "Debats Contemporanis en les Arts, les Ciències i les Tecnologies",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "debats contemporan s en les arts les c ènc es les tecnolog es",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "c68536b4-f632-438c-88eb-cf4d5d65d004",
+        "code": "GDVG54",
+        "name": "Disseny i Publicitat",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "d sseny publ c tat",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "a34a5025-9f79-459b-9c41-0acd473ea494",
+        "code": "GDB052",
+        "name": "Economia, Empresa i Disseny",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "econom a empresa d sseny",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "bf4a7ec9-56ec-4a85-8459-c930cefd7a68",
+        "code": "GDF071",
+        "name": "Estètica i Teoria de les Arts",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "estèt ca teor a de les arts",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "1dfba2c5-dbf7-49f9-8e0f-9bb8760d8a27",
+        "code": "GBA2_0416",
+        "name": "Eulalia Rovira Michael Lawton Gl.3",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "eulal a rov ra m chael lawton gl3",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "288d911b-0641-4063-a4f6-75251bd9b52d",
+        "code": "GDF022",
+        "name": "Expressió Gràfica I",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "express ó gràf ca ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "900373a1-88b1-44bb-9d25-69afe6e2a082",
+        "code": "GDF032",
+        "name": "Expressió Gràfica II",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "express ó gràf ca  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "1d62a557-54be-483d-afe7-3834a5d8ab4f",
+        "code": "GBA1_5736",
+        "name": "Federica Matelli P0.6",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "feder ca matell p06",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "ae841d31-00da-44c6-9017-59e9acd12b3b",
+        "code": "GBA4_0374",
+        "name": "Federica Matelli10:00 P0.6",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "feder ca matell 1000 p06",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "32bb6821-495c-4641-8848-0305c44cbd2b",
+        "code": "GDB001",
+        "name": "Fonaments del Disseny I",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "fonaments del d sseny ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "51b28c0a-4242-4da8-bebb-f9c2d1b234d0",
+        "code": "GDB011",
+        "name": "Fonaments del Disseny II",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "fonaments del d sseny  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "d4cb6cf4-8bd6-4412-95d0-8c97ce1bf416",
+        "code": "GDI3_8907",
+        "name": "Gm1a\nDavid Torrents P1.7",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "gm1a dav d torrents p17",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "92506275-c656-4740-b992-800d807bf6fa",
+        "code": "GDVM33",
+        "name": "Història de la Moda I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "h stòr a de la moda ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "abbdde7c-e723-4a02-bd89-b0b9a607d4a2",
+        "code": "GDVM83",
+        "name": "Història de la Moda II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "h stòr a de la moda  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "465361e3-d17c-4679-b898-381dfa5de8be",
+        "code": "GDB032",
+        "name": "Història del Disseny",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "h stòr a del d sseny",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "66e6c72e-e5ee-43ef-9f07-471e03f0b576",
+        "code": "HISTÒRIA_D",
+        "name": "Història del Disseny",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "h stòr a del d sseny",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "0c1254b5-0382-4511-9780-752e945d4145",
+        "code": "HISTÒRIAD",
+        "name": "Història del Disseny",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "h stòr a del d sseny",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "267d33e7-d81d-49aa-ab89-f4af4ff76363",
+        "code": "GDF061",
+        "name": "Iconografia i Comunicació",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": " conograf a comun cac ó",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "edcfd9f0-7fb4-45cb-b2a8-06d295ecb6d1",
+        "code": "GDVM73",
+        "name": "Imatge i Comunicació",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": " matge comun cac ó",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "8be06f3a-f3db-4a2c-be15-ef7f1f3c0d8e",
+        "code": "GDP012",
+        "name": "Iniciació als Projectes de Disseny I",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": " n c ac ó als projectes de d sseny ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "09707df7-9eb1-474b-8040-6bee3d0e8240",
+        "code": "GDP022",
+        "name": "Iniciació als Projectes de Disseny II",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": " n c ac ó als projectes de d sseny  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "7dc69e4b-3f3d-4648-9303-e556a34ed82e",
+        "code": "GDVG34",
+        "name": "Introducció al Disseny Web",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": " ntroducc ó al d sseny web",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "1dd6059b-1c66-45f9-ab49-1f730ac453f0",
+        "code": "GBA3_5390",
+        "name": "Irena Visa G.2.2",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": " rena v sa g22",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "3eb79cf2-faaa-44e8-9984-045ac6b8819a",
+        "code": "GBA3_8043",
+        "name": "Jaron Rowan Silvia Zayas G2.1",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "jaron rowan s lv a zayas g21",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "3b02fc6c-2610-49f4-b840-c6964a237515",
+        "code": "GBA2_4111",
+        "name": "Jaume Ferrete Vázquez Agustín Ortiz HerreraSala Carolines",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "jaume ferrete vázquez agustín ort z herrerasala carol nes",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "19ad83c3-7e75-4db2-8c75-278cfa5f96c2",
+        "code": "GBA1_1047",
+        "name": "Jonathan Millán G1.2",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "jonathan m llán g12",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "bd143adf-6489-4492-9b84-da71ac7a36c7",
+        "code": "GBA3_9675",
+        "name": "Juan David Galindo",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "juan dav d gal ndo",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "46a70e9e-5948-4833-a3d4-ca6b0376a908",
+        "code": "BA110",
+        "name": "Laboratori de Processos i Projectes I",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "laborator de processos projectes ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "c26f54b1-d25d-4ac1-8bc3-20edaed432e2",
+        "code": "LABORATORI",
+        "name": "Laboratori de Processos i Projectes I",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "laborator de processos projectes ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "d462d73e-a89d-4d94-b5f6-564d9eb6a857",
+        "code": "BA203",
+        "name": "Laboratori de Processos i Projectes II",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "laborator de processos projectes  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "4510c275-5800-4071-86e7-d02fc8951d47",
+        "code": "BA302",
+        "name": "Laboratori de Processos i Projectes IV",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "laborator de processos projectes v",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "9cd2f73f-8ef5-4cbe-8648-040285117766",
+        "code": "BA303",
+        "name": "Laboratori de Processos i Projectes V",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "laborator de processos projectes v",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "a4c079a9-ad32-46ca-833c-bedee9ee6f10",
+        "code": "BA402",
+        "name": "Laboratori de Processos i Projectes VI",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "laborator de processos projectes v ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "1ad54088-7bc1-4b9f-a898-aeea5b35f76d",
+        "code": "GBA2_6306",
+        "name": "Lara Fluxa Mercedes Pimiento G0.3",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "lara fluxa mercedes p m ento g03",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "496d0baa-3a6a-48a7-bb8f-747ca861c6d2",
+        "code": "LLENGUATGE",
+        "name": "Llenguatges Audiovisuals I",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "llenguatges aud ov suals ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "c43631ff-2b98-4444-b5bb-f8c8d79c08f8",
+        "code": "GDB002",
+        "name": "Llenguatges Audiovisuals I",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "llenguatges aud ov suals ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "25585b59-bda7-4a21-962e-c3e1bfe807e2",
+        "code": "GDB042",
+        "name": "Llenguatges Audiovisuals II",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "llenguatges aud ov suals  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "bb267d4d-dfcd-407d-94f7-2d0fdb915bc2",
+        "code": "GBA4_3813",
+        "name": "Lúa Coderch Anna Moreno Michael Lawton G1.2",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "lúa coderch anna moreno m chael lawton g12",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "55e9e7e3-4f49-436a-87f4-f2c569c34cb9",
+        "code": "GBA1_9330",
+        "name": "Lúa Coderch G0.2",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "lúa coderch g02",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "277761bf-83a8-435e-9ef6-7152ae7c3c5e",
+        "code": "GBA4_3051",
+        "name": "Lúa Corderch G2.2",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "lúa corderch g22",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "570649eb-5c18-4436-9f8a-b860c094ab9b",
+        "code": "GBA1_7745",
+        "name": "Ludovica Carbotta Julieta Dentone G0.3",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "ludov ca carbotta jul eta dentone g03",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "f06b62fe-3620-40a6-b533-3e832743ee38",
+        "code": "GBA2_9906",
+        "name": "Luz Broto Gl.3",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "luz broto gl3",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "29f7857c-9036-4340-9724-cb1664c62160",
+        "code": "GBA2_5787",
+        "name": "Mafe Moscoso P0.10",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "mafe moscoso p010",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "ecf104ab-ef8e-4741-b7c1-234785e1c26d",
+        "code": "GDVM34",
+        "name": "Manipulació i Estampació de Teixits",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "man pulac ó estampac ó de te x ts",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "ad63095b-bae6-40de-b2af-234c24bcc917",
+        "code": "GBA1_8168",
+        "name": "Mariona Moncunill P0.2/0.4",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "mar ona moncun ll p02/04",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "0a6f3c59-9d76-4047-a496-17a40541cbd4",
+        "code": "BA403",
+        "name": "Metodologies Transdisciplinàries i Experimentals",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "metodolog es transd sc pl nàr es exper mentals",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "0be5a08d-cc4d-4664-b72f-7ddb4cedc3ce",
+        "code": "GBA2_8741",
+        "name": "Núria Gómez GabrielPO.a",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "núr a gómez gabr elpoa",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "7dc0c9c1-215a-43d7-95aa-ba0cc7bd1c0d",
+        "code": "GBA1_9598",
+        "name": "Oriol Vilapuig L0.1",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "or ol v lapu g l01",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "8e2bd325-fdc8-46b8-bdf5-5491ad51ebb8",
+        "code": "BA204",
+        "name": "Pensament Contemporani i Pràctiques Crítiques",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "pensament contemporan  pràct ques crít ques",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "d28addba-bb31-4ca8-996a-4a4c13ce65be",
+        "code": "BA105",
+        "name": "Pensament Modern i Pràctiques Artístiques",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "pensament modern pràct ques artíst ques",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "5204e7d8-5a29-4c91-bcc2-e8314327853f",
+        "code": "GBA2_0583",
+        "name": "Pep Vidal G2.1",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "pep v dal g21",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "bfdff4cc-37cf-4638-860e-b00a091ff1a5",
+        "code": "GBA3_1631",
+        "name": "Pràctiques  Crítiques en les Arts i les Humanitats",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "pràct ques crít ques en les arts les human tats",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "cf2f301f-3dc7-4c28-8eed-19e7a6cb851f",
+        "code": "BA301",
+        "name": "Pràctiques Artístiques i Recerca",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "pràct ques artíst ques recerca",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "f2ab7fdf-d891-4298-ab37-ee950ea411d7",
+        "code": "GBA3_0270",
+        "name": "Pràctiques Crítiques  en les Arts i les Ciències Socials",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "pràct ques crít ques en les arts les c ènc es soc als",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "8f78a14c-1578-4b76-9787-7018254d0991",
+        "code": "GBA3_4282",
+        "name": "Pràctiques Crítiques  en les Arts, les Ciències i les Tecnologies",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "pràct ques crít ques en les arts les c ènc es les tecnolog es",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "4328043e-ce24-4689-b9a8-c721444c28e0",
+        "code": "PROGRAMACI",
+        "name": "Programació per a Dissenyadors",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "programac ó per a d ssenyadors",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "1ba98137-4869-4466-a1da-9f94c2139faa",
+        "code": "GDVA33",
+        "name": "Projectes de Disseny Audiovisual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny aud ov sual ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "0e20ad43-da69-47ae-b2b4-badd58dcf268",
+        "code": "GDVA83",
+        "name": "Projectes de Disseny Audiovisual II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny aud ov sual  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "54df595e-8dc6-4784-aed7-9bc18cbe1a52",
+        "code": "GDVA24",
+        "name": "Projectes de Disseny Audiovisual III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny aud ov sual   ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "fe61c0b7-2ae6-4e6d-8806-d905b2b53ef8",
+        "code": "GDVM03",
+        "name": "Projectes de Disseny de Moda I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny de moda ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "8b3181d5-a555-48b8-b95d-5da744e698b1",
+        "code": "GDVM53",
+        "name": "Projectes de Disseny de Moda II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny de moda  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "75fc7dbb-6716-466f-8861-31ab33395a70",
+        "code": "GDVM04",
+        "name": "Projectes de Disseny de Moda III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny de moda   ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "033536a7-869d-47f3-8c19-c05a3f0fc13e",
+        "code": "PROJECTES",
+        "name": "Projectes de Disseny Gràfic I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny gràf c ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "fbd60160-1de4-4d26-b1f3-6f7cfc8f5cd5",
+        "code": "GDVG03",
+        "name": "Projectes de Disseny Gràfic I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny gràf c ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "14267ff4-8573-439c-9080-a4f58706a9fc",
+        "code": "GDVG53",
+        "name": "Projectes de Disseny Gràfic II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny gràf c  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "96594d88-5741-4738-97b9-6726b02f526a",
+        "code": "GDVG04",
+        "name": "Projectes de Disseny Gràfic III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny gràf c   ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "fc0b70b0-eec0-4eab-b37b-5a4effde9531",
+        "code": "GBA2_5104",
+        "name": "Quim Packard Pl.5",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "qu m packard pl5",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "528c174f-0723-4d31-80a4-72a5786edbfd",
+        "code": "GBA1_9101",
+        "name": "Rebecca Gil Rasmus Nilausen G1.2",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "rebecca g l rasmus n lausen g12",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "3ea9f4a4-3228-443a-8954-949802c01925",
+        "code": "GBA2_0947",
+        "name": "Regina Gimenez Anna Clemente L0.4 (5 sessions) Gl.2",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "reg na g menez anna clemente l04 (5 sess ons) gl2",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "2fbacf87-c99c-4540-8225-e524cc9dd5e6",
+        "code": "GBA1_4721",
+        "name": "Serafín Álvarez Ariadna Guiteras Sala Carolines",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "serafín álvarez ar adna gu teras sala carol nes",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "c9ce6949-1b06-4f0b-8b67-47f67021afb5",
+        "code": "GBA3_1966",
+        "name": "Sergi Alvarez L0.1",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "serg alvarez l01",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "812130fc-4071-45f8-a9fd-5d923718b7f1",
+        "code": "TALLER_D’A",
+        "name": "Taller d’Audiovisual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller d’aud ov sual ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "299f9887-7adf-4a23-8af3-51047c82cfb8",
+        "code": "GDF041",
+        "name": "Taller de Color",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de color",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "fea1551d-3a22-4c11-9293-a3b003cacc4a",
+        "code": "GDF012",
+        "name": "Taller de Creativitat",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de creat v tat",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "de979b70-df99-412e-b485-3a6963d7cc23",
+        "code": "GDF001",
+        "name": "Taller de Dibuix Artístic",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de d bu x artíst c",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "a29dfac7-65fa-4333-9dde-77e58879d7e2",
+        "code": "BA104",
+        "name": "Taller de Dibuix I",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de d bu x ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "7abea42c-d662-4d52-90c0-98178ac27e2d",
+        "code": "TALLERDE",
+        "name": "Taller de Gràfic i Comunicació Visual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de gràf c comun cac ó v sual ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "8faf0c10-f28d-4e8c-91bb-785bfda9be12",
+        "code": "GDVG13",
+        "name": "Taller de Gràfic i Comunicació Visual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de gràf c comun cac ó v sual ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "a1005a0c-c317-4058-a6d5-7353fc6f7fed",
+        "code": "GDVG63",
+        "name": "Taller de Gràfic i Comunicació Visual II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de gràf c comun cac ó v sual  ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "3d5a0ba3-6973-4d9b-9a85-01ac70574484",
+        "code": "GDVG14",
+        "name": "Taller de Gràfic i Comunicació Visual III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de gràf c comun cac ó v sual   ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "d5165128-1a61-489c-96a0-53c7af7a80f9",
+        "code": "GDVM14",
+        "name": "Taller de Moda III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de moda   ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "52eed065-d3aa-47ef-b4f6-e14ca4aa07fc",
+        "code": "TÈCNIQUES",
+        "name": "Tècniques Infogràfiques I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "tècn ques nfogràf ques ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "18194012-080b-4c2b-a117-744e703fa560",
+        "code": "GDVI23",
+        "name": "Tècniques Infogràfiques I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "tècn ques nfogràf ques ",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "33003480-646b-4f2c-9582-e75fbc6d8032",
+        "code": "GDVA44",
+        "name": "Tipografia en Moviment",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "t pograf a en mov ment",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "d9956fdd-8e30-44fa-b5f4-bfe1ddea2f5b",
+        "code": "BA404",
+        "name": "Treball Final de Grau",
+        "year": 4,
+        "type": "tfg"
+      },
+      "excelName": "treball f nal de grau",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "38abd16c-728a-4330-9f8d-cfa454d7ffc6",
+        "code": "TREBALLFI",
+        "name": "Treball Final de Grau",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "treball f nal de grau",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "9d4be2f9-a946-44ea-bb4a-93a060883bcd",
+        "code": "GD499",
+        "name": "Treball Final de Grau",
+        "year": 4,
+        "type": "tfg"
+      },
+      "excelName": "treball f nal de grau",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "115e15fb-2c85-43ae-ac8a-79f69dd4f436",
+        "code": "GDT074",
+        "name": "Treball Final de Grau",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "treball f nal de grau",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "f0d338dc-d643-483a-9ebf-692fe5ad2d80",
+        "code": "BA102",
+        "name": "Visualisation and Documentation Workshop",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "v sual sat on and documentat on workshop",
+      "similarity": 100,
+      "matchType": "exact"
+    },
+    {
+      "dbSubject": {
+        "id": "a8be8869-1a37-4063-8ee9-aad60170681c",
+        "code": "BA205",
+        "name": "Writing and Communication Workshop",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "wr t ng and commun cat on workshop",
+      "similarity": 100,
+      "matchType": "exact"
+    }
+  ],
+  "potential_duplicates": [
+    {
+      "dbSubject": {
+        "id": "fca3e19f-8de7-4104-b10a-a7680e99baf6",
+        "code": "2D,_LLENGU",
+        "name": "2D, Llenguatges, Tècniques",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "31b030a4-916b-4be6-8d0a-6c50081a47f9",
+        "code": "2D.LLENGU",
+        "name": "2D. Llenguatges, Tècniques i Tecnologies",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "95fca7c8-e633-4c59-b733-01c8d224bf6a",
+        "code": "BA101",
+        "name": "2D. Llenguatges, Tècniques i Tecnologies",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "3cb300de-9644-47c2-84ee-d82ee924a20e",
+        "code": "BA202",
+        "name": "2D. Llenguatges, Tècniques i Tecnologies Instal·lades",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es nstal.lades",
+      "similarity": 98,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "f03a7821-06cd-4e7e-86ec-a8e10093bbfd",
+        "code": "3D,_LLENGU",
+        "name": "3D, Llenguatges, Tècniques",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "fbe9eb18-fae6-4186-8053-0ab378e50c1c",
+        "code": "BA107",
+        "name": "3D. Llenguatges, Tècniques i Tecnologies",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "168eef4c-b260-4c98-835a-701f96bb5755",
+        "code": "3D.LLENGU",
+        "name": "3D. Llenguatges, Tècniques i Tecnologies",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "7b21b2bf-9775-475c-91ed-0fb479b91c6e",
+        "code": "BA210",
+        "name": "3D. Llenguatges, Tècniques i Tecnologies Instal·lades",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es nstal.lades",
+      "similarity": 98,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "35bd881f-9ebb-419b-b778-093a0f84f2dc",
+        "code": "4D,_LLENGU",
+        "name": "4D, Llenguatges, Tècniques",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "b06e0f51-10a2-401d-ab0a-a878866fdb6e",
+        "code": "4D.LLENGU",
+        "name": "4D. Llenguatges, Tècniques i Tecnologies",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "2d llenguatges tècn ques tecnolog es",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "423a971a-b59c-4a26-ac8f-abc7b10ed67f",
+        "code": "BA103",
+        "name": "4D. Llenguatges, Tècniques i Tecnologies",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "2d llenguatges tècn ques tecnolog es",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "7a443518-fcbf-4658-925a-8db7de75b900",
+        "code": "BA201",
+        "name": "4D. Llenguatges, Tècniques i Tecnologies Instal·lades",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "2d llenguatges tècn ques tecnolog es nstal.lades",
+      "similarity": 98,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "9ca88e73-3e28-461c-b00d-f704d289bb53",
+        "code": "ANIMACIÓD",
+        "name": "Animació Digital I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "an mac ó d g tal  ",
+      "similarity": 94,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "126efa73-d238-4020-9bce-9a0d5be6b8fc",
+        "code": "GDVA03",
+        "name": "Animació Digital I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "an mac ó d g tal  ",
+      "similarity": 94,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "2ede690e-680c-4e3a-84a1-2ce61f5e412e",
+        "code": "GDVA53",
+        "name": "Animació Digital II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "an mac ó d g tal   ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "5795405c-1e71-4d17-942c-c9021b37e16c",
+        "code": "GDVA04",
+        "name": "Animació Digital III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "an mac ó d g tal  ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "9b121af5-5b61-4af3-858a-965c0108248f",
+        "code": "GBA3_8728",
+        "name": "Anna Moreno G0.1",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "lúa coderch anna moreno m chael lawton g12",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "6d269d66-d65d-474a-a858-7094b3aacb16",
+        "code": "BA206",
+        "name": "Antropologia",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "antropolog a soc ocultural",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "8884723e-8328-4a6b-84de-2784403e95ec",
+        "code": "ANTROPOLOG",
+        "name": "Antropologia",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "antropolog a soc ocultural",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "82c563f0-8fb7-4e12-8b30-29ac5a89dd48",
+        "code": "GDF031",
+        "name": "Antropologia Sociocultural",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "antropolog a",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "941d85ef-9d4a-4bd6-b243-58873170005a",
+        "code": "BA304",
+        "name": "Art Practices in Context Seminar I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "art pract ces n context sem nar  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "4b8ed99d-3bf7-4c9f-90ea-38df5c274b7b",
+        "code": "ARTPRACTI",
+        "name": "Art Practices in Context Seminar I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "art pract ces n context sem nar  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "5dde63ae-7b45-4724-82ab-0faa87287613",
+        "code": "BA401",
+        "name": "Art Practices in Context Seminar II",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "art pract ces n context sem nar ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "49cf0eca-5831-4a65-848c-103b8f4e0e5d",
+        "code": "BA209",
+        "name": "Art, Activisme, Mediació i Pedagogia",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "art act v sme med ac ó peda­ gog a",
+      "similarity": 94,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "a8ada208-5bb7-40f2-a33a-172bb300553c",
+        "code": "ARTÍSTIQUE",
+        "name": "Artístiques i Pràctiques",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "pràct ques crít ques en les arts les human tats",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "6c4e43f3-e634-4d8b-be0e-5d137f04e8cc",
+        "code": "AUDIOVISUA",
+        "name": "Audiovisuals I Llenguatges",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "llenguatges aud ov suals ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "878cb3eb-af8c-487b-b79a-279dab4e51c6",
+        "code": "CONSTRUCCI",
+        "name": "Construcció i Instal·lacions I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "construcc ó  nstal.lac ons v",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "6dd56d4a-b498-47a7-b9da-cc81dd80afbd",
+        "code": "GDVI43",
+        "name": "Construcció i Instal·lacions I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "construcc ó  nstal.lac ons v",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "cdabcf9a-9fb0-4d23-aba2-b8310aafc0f4",
+        "code": "GDVI93",
+        "name": "Construcció i Instal·lacions II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "construcc ó  nstal.lac ons ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "4776595d-ffbc-4eca-8f29-7cc36104f548",
+        "code": "GDVI24",
+        "name": "Construcció i Instal·lacions III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "construcc ó  nstal.lac ons ",
+      "similarity": 93,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "71837a44-2124-4015-9c74-6873d8f32737",
+        "code": "GDVI54",
+        "name": "Construcció i Instal·lacions IV",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "construcc ó  nstal.lac ons ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "5860e869-cc38-4301-9f57-0ced7479f260",
+        "code": "GDVA13",
+        "name": "Creació i Autoria Digital I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "creac ó autor a d g tal  ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "7cec98ec-95be-4620-af61-78ab55528c5c",
+        "code": "CREACIÓI",
+        "name": "Creació i Autoria Digital I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "creac ó autor a d g tal  ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "848e27fb-cbf2-4143-b152-9089b0d3ea3a",
+        "code": "GDVA63",
+        "name": "Creació i Autoria Digital II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "creac ó autor a d g tal ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "8113a657-1a2f-4e3b-8e8b-8648296776f8",
+        "code": "GDVA14",
+        "name": "Creació i Autoria Digital III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "creac ó autor a d g tal  ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "b9d90ceb-81e6-47db-b4b8-c0cd46253d88",
+        "code": "GDVA54",
+        "name": "Creació i Autoria Digital IV",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "creac ó autor a d g tal ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "b494e0d3-4f5c-4149-87c6-5df6729b6417",
+        "code": "CULTURAAU",
+        "name": "Cultura Audiovisual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "cultura aud ov sual  ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "d150db97-8ba7-489a-9da9-c2de7dbdbd8e",
+        "code": "GDVA23",
+        "name": "Cultura Audiovisual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "cultura aud ov sual  ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "616101eb-0feb-45db-af48-a81d016206b6",
+        "code": "GDVA73",
+        "name": "Cultura Audiovisual II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "cultura aud ov sual ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "b6f1804b-6434-4638-979b-7e7a0c86030c",
+        "code": "CULTURADE",
+        "name": "Cultura de la Imatge I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "cultura de la matge  ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "bea26b5b-054f-4a3c-a260-0ba581124735",
+        "code": "GDVG33",
+        "name": "Cultura de la Imatge I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "cultura de la matge  ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "f1a75b3f-561c-40d3-95e7-1dd253c3fa21",
+        "code": "GDVG83",
+        "name": "Cultura de la Imatge II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "cultura de la matge ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "021d3f03-6dbe-4395-9ea2-9e5a9e9500e9",
+        "code": "GBA3_1877",
+        "name": "Debats Contemporanis en les Arts i les Ciències Socials",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "debats contemporan s en les arts les c ènc es les tecnolog es",
+      "similarity": 82,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "ae92b0df-9c98-4cbf-b08d-67f605b8321b",
+        "code": "GBA3_1834",
+        "name": "Debats Contemporanis en les Arts i les Humanitats",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "debats contemporan s en les arts les c ènc es soc als",
+      "similarity": 75,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "573ff9ad-cfcf-4b9d-946a-c9f86743ebb4",
+        "code": "GBA3_3084",
+        "name": "Debats Contemporanis en les Arts, les Ciències i les Tecnologies",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "debats contemporan s en les arts les c ènc es soc als",
+      "similarity": 82,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "b62126bf-6e99-432b-945b-249a7aa28bad",
+        "code": "GD404",
+        "name": "Disseny d'Identitat Visual",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "d sseny ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "ceaf6483-d60f-43b1-9226-9aa7ead5e339",
+        "code": "GDVG24",
+        "name": "Disseny i Comunicació",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "d sseny ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "c68536b4-f632-438c-88eb-cf4d5d65d004",
+        "code": "GDVG54",
+        "name": "Disseny i Publicitat",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "d sseny ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "a34a5025-9f79-459b-9c41-0acd473ea494",
+        "code": "GDB052",
+        "name": "Economia, Empresa i Disseny",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "d sseny ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "00dc4867-679c-443a-ab89-fcfc3868f813",
+        "code": "GDF011",
+        "name": "Eines Informàtiques I",
+        "year": 1,
+        "type": "optativa"
+      },
+      "excelName": "e nes nformat ques ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "2ed6362c-6c8b-481a-81f5-1c092f16c1a3",
+        "code": "GDF051",
+        "name": "Eines Informàtiques II",
+        "year": 1,
+        "type": "optativa"
+      },
+      "excelName": "e nes nformat ques  ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "7721bc41-f98d-46b0-832b-7b83593508d7",
+        "code": "EMPRESA_I_",
+        "name": "Empresa i Economia,",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "econom a empresa d sseny",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "6bcab1db-cb2f-4e10-9c80-f101a3dd5b30",
+        "code": "ESTÈTICA",
+        "name": "Estètica",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "estèt ca teor a de les arts",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "e2066463-6006-490b-bed8-eadeb27e3fc9",
+        "code": "BA108",
+        "name": "Estètica",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "estèt ca teor a de les arts",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "288d911b-0641-4063-a4f6-75251bd9b52d",
+        "code": "GDF022",
+        "name": "Expressió Gràfica I",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "express ó gràf ca  ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "900373a1-88b1-44bb-9d25-69afe6e2a082",
+        "code": "GDF032",
+        "name": "Expressió Gràfica II",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "express ó gràf ca ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "1d62a557-54be-483d-afe7-3834a5d8ab4f",
+        "code": "GBA1_5736",
+        "name": "Federica Matelli P0.6",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "feder ca matell 1000 p06",
+      "similarity": 79,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "ae841d31-00da-44c6-9017-59e9acd12b3b",
+        "code": "GBA4_0374",
+        "name": "Federica Matelli10:00 P0.6",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "feder ca matell p06",
+      "similarity": 79,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "32bb6821-495c-4641-8848-0305c44cbd2b",
+        "code": "GDB001",
+        "name": "Fonaments del Disseny I",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "fonaments del d sseny  ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "51b28c0a-4242-4da8-bebb-f9c2d1b234d0",
+        "code": "GDB011",
+        "name": "Fonaments del Disseny II",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "fonaments del d sseny ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "b9d64e0e-cff5-498a-b5ed-4fbbc5df78b3",
+        "code": "GDVI44",
+        "name": "Gestió",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "xd llenguatgestècn ques tecnolog es",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "efe12b90-51a4-4ea3-9c0a-6173ccd2f3fa",
+        "code": "GM1B",
+        "name": "Gm1b",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "gm1",
+      "similarity": 75,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "92506275-c656-4740-b992-800d807bf6fa",
+        "code": "GDVM33",
+        "name": "Història de la Moda I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "h stòr a de la moda  ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "abbdde7c-e723-4a02-bd89-b0b9a607d4a2",
+        "code": "GDVM83",
+        "name": "Història de la Moda II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "h stòr a de la moda ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "465361e3-d17c-4679-b898-381dfa5de8be",
+        "code": "GDB032",
+        "name": "Història del Disseny",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "h stòr a del d sseny d’ nter ors ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "66e6c72e-e5ee-43ef-9f07-471e03f0b576",
+        "code": "HISTÒRIA_D",
+        "name": "Història del Disseny",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "h stòr a del d sseny d’ nter ors ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "0c1254b5-0382-4511-9780-752e945d4145",
+        "code": "HISTÒRIAD",
+        "name": "Història del Disseny",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "h stòr a del d sseny d’ nter ors ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "cd78c7c6-c14c-4a52-a4be-e3f2482d1baf",
+        "code": "GDVI33",
+        "name": "Història del Disseny d'Interiors I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "h stòr a del d sseny d’ nter ors ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "1d5d50d1-01c7-423a-8db6-477ef7da152e",
+        "code": "GDVI83",
+        "name": "Història del Disseny d'Interiors II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "h stòr a del d sseny d’ nter ors ",
+      "similarity": 94,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "267d33e7-d81d-49aa-ab89-f4af4ff76363",
+        "code": "GDF061",
+        "name": "Iconografia i Comunicació",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "comun cac ó",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "edcfd9f0-7fb4-45cb-b2a8-06d295ecb6d1",
+        "code": "GDVM73",
+        "name": "Imatge i Comunicació",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "comun cac ó",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "50c2c41e-fd70-4909-9d93-43a6344ac84b",
+        "code": "INFOGRÀFIQ",
+        "name": "Infogràfiques II Tècniques",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "tècn ques nfogràf ques ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "8be06f3a-f3db-4a2c-be15-ef7f1f3c0d8e",
+        "code": "GDP012",
+        "name": "Iniciació als Projectes de Disseny I",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": " n c ac ó als projectes de d sseny  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "09707df7-9eb1-474b-8040-6bee3d0e8240",
+        "code": "GDP022",
+        "name": "Iniciació als Projectes de Disseny II",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": " n c ac ó als projectes de d sseny ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "7dc69e4b-3f3d-4648-9303-e556a34ed82e",
+        "code": "GDVG34",
+        "name": "Introducció al Disseny Web",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "d sseny ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "46a70e9e-5948-4833-a3d4-ca6b0376a908",
+        "code": "BA110",
+        "name": "Laboratori de Processos i Projectes I",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "laborator de processos projectes  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "c26f54b1-d25d-4ac1-8bc3-20edaed432e2",
+        "code": "LABORATORI",
+        "name": "Laboratori de Processos i Projectes I",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "laborator de processos projectes  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "d462d73e-a89d-4d94-b5f6-564d9eb6a857",
+        "code": "BA203",
+        "name": "Laboratori de Processos i Projectes II",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "laborator de processos projectes ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "b4bd786a-4d9d-4aa6-854e-48f503612d44",
+        "code": "BA207",
+        "name": "Laboratori de Processos i Projectes III",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "laborator de processos projectes  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "4510c275-5800-4071-86e7-d02fc8951d47",
+        "code": "BA302",
+        "name": "Laboratori de Processos i Projectes IV",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "laborator de processos projectes ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "9cd2f73f-8ef5-4cbe-8648-040285117766",
+        "code": "BA303",
+        "name": "Laboratori de Processos i Projectes V",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "laborator de processos projectes ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "a4c079a9-ad32-46ca-833c-bedee9ee6f10",
+        "code": "BA402",
+        "name": "Laboratori de Processos i Projectes VI",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "laborator de processos projectes  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "496d0baa-3a6a-48a7-bb8f-747ca861c6d2",
+        "code": "LLENGUATGE",
+        "name": "Llenguatges Audiovisuals I",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "llenguatges aud ov suals  ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "c43631ff-2b98-4444-b5bb-f8c8d79c08f8",
+        "code": "GDB002",
+        "name": "Llenguatges Audiovisuals I",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "llenguatges aud ov suals  ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "25585b59-bda7-4a21-962e-c3e1bfe807e2",
+        "code": "GDB042",
+        "name": "Llenguatges Audiovisuals II",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "llenguatges aud ov suals ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "bb267d4d-dfcd-407d-94f7-2d0fdb915bc2",
+        "code": "GBA4_3813",
+        "name": "Lúa Coderch Anna Moreno Michael Lawton G1.2",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "lúa coderch g02",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "55e9e7e3-4f49-436a-87f4-f2c569c34cb9",
+        "code": "GBA1_9330",
+        "name": "Lúa Coderch G0.2",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "lúa corderch g22",
+      "similarity": 88,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "277761bf-83a8-435e-9ef6-7152ae7c3c5e",
+        "code": "GBA4_3051",
+        "name": "Lúa Corderch G2.2",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "lúa coderch g02",
+      "similarity": 88,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "67308950-846a-4fd8-9538-5603f3c55c40",
+        "code": "GD405",
+        "name": "Metodologies del Disseny",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "d sseny ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "511834fa-ccd2-48d8-ab24-54116d427c46",
+        "code": "PENSAMENT",
+        "name": "Pensament Contemporani i Pràctiques Artístiques",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "pensament contemporan  pràct ques crít ques",
+      "similarity": 93,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "8e2bd325-fdc8-46b8-bdf5-5491ad51ebb8",
+        "code": "BA204",
+        "name": "Pensament Contemporani i Pràctiques Crítiques",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "pensament modern pràct ques artíst ques",
+      "similarity": 74,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "d28addba-bb31-4ca8-996a-4a4c13ce65be",
+        "code": "BA105",
+        "name": "Pensament Modern i Pràctiques Artístiques",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "pensament contemporan  pràct ques crít ques",
+      "similarity": 74,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "bfdff4cc-37cf-4638-860e-b00a091ff1a5",
+        "code": "GBA3_1631",
+        "name": "Pràctiques  Crítiques en les Arts i les Humanitats",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "pràct ques crít ques en les arts les c ènc es soc als",
+      "similarity": 75,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "cf2f301f-3dc7-4c28-8eed-19e7a6cb851f",
+        "code": "BA301",
+        "name": "Pràctiques Artístiques i Recerca",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "pensament modern pràct ques artíst ques",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "f2ab7fdf-d891-4298-ab37-ee950ea411d7",
+        "code": "GBA3_0270",
+        "name": "Pràctiques Crítiques  en les Arts i les Ciències Socials",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "pràct ques crít ques en les arts les c ènc es les tecnolog es",
+      "similarity": 82,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "8f78a14c-1578-4b76-9787-7018254d0991",
+        "code": "GBA3_4282",
+        "name": "Pràctiques Crítiques  en les Arts, les Ciències i les Tecnologies",
+        "year": 3,
+        "type": "optativa"
+      },
+      "excelName": "pràct ques crít ques en les arts les c ènc es soc als",
+      "similarity": 82,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "4328043e-ce24-4689-b9a8-c721444c28e0",
+        "code": "PROGRAMACI",
+        "name": "Programació per a Dissenyadors",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "d sseny ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "a99d1391-25ac-459a-86d2-dcc4dbfc62cc",
+        "code": "GDVG44",
+        "name": "Programació per Dissenyadors",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "programac ó per a d ssenyadors",
+      "similarity": 93,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "a68ac642-26a7-4e94-be17-c9859ceb1683",
+        "code": "PROJECTES_",
+        "name": "Projectes de Disseny",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny gràf c ",
+      "similarity": 71,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "1ba98137-4869-4466-a1da-9f94c2139faa",
+        "code": "GDVA33",
+        "name": "Projectes de Disseny Audiovisual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny aud ov sual  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "0e20ad43-da69-47ae-b2b4-badd58dcf268",
+        "code": "GDVA83",
+        "name": "Projectes de Disseny Audiovisual II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny aud ov sual ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "54df595e-8dc6-4784-aed7-9bc18cbe1a52",
+        "code": "GDVA24",
+        "name": "Projectes de Disseny Audiovisual III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny aud ov sual  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "8c56cb0b-e0f8-4c9f-8174-e026460d7669",
+        "code": "GDVI03",
+        "name": "Projectes de Disseny d'Interiors I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny d’ nter ors ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "62a07eff-a5aa-4128-90d5-08aeafe73bd0",
+        "code": "GDVI53",
+        "name": "Projectes de Disseny d'Interiors II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny d’ nter ors ",
+      "similarity": 94,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "041ac032-48ce-4d75-815e-573e5f148d8b",
+        "code": "GDVI04",
+        "name": "Projectes de Disseny d'Interiors III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny d’ nter ors ",
+      "similarity": 91,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "fe61c0b7-2ae6-4e6d-8806-d905b2b53ef8",
+        "code": "GDVM03",
+        "name": "Projectes de Disseny de Moda I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny de moda  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "8b3181d5-a555-48b8-b95d-5da744e698b1",
+        "code": "GDVM53",
+        "name": "Projectes de Disseny de Moda II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny de moda ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "75fc7dbb-6716-466f-8861-31ab33395a70",
+        "code": "GDVM04",
+        "name": "Projectes de Disseny de Moda III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny de moda  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "033536a7-869d-47f3-8c19-c05a3f0fc13e",
+        "code": "PROJECTES",
+        "name": "Projectes de Disseny Gràfic I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny gràf c  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "fbd60160-1de4-4d26-b1f3-6f7cfc8f5cd5",
+        "code": "GDVG03",
+        "name": "Projectes de Disseny Gràfic I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny gràf c  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "89a2b7a5-6f43-4a1b-a5f1-a49524e76893",
+        "code": "GD301",
+        "name": "Projectes de Disseny Gràfic i Comunicació Visual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": " n c ac ó als projectes de d sseny ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "b11c4ba8-26c6-424b-8c26-7b4e3e90d18e",
+        "code": "GD302",
+        "name": "Projectes de Disseny Gràfic i Comunicació Visual II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": " n c ac ó als projectes de d sseny ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "b39a9851-7f08-4a97-b51d-4f407c05a69d",
+        "code": "GD401",
+        "name": "Projectes de Disseny Gràfic i Comunicació Visual III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": " n c ac ó als projectes de d sseny ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "760136bc-475d-4087-a846-8819195aa7c8",
+        "code": "GD402",
+        "name": "Projectes de Disseny Gràfic i Comunicació Visual IV",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": " n c ac ó als projectes de d sseny ",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "14267ff4-8573-439c-9080-a4f58706a9fc",
+        "code": "GDVG53",
+        "name": "Projectes de Disseny Gràfic II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny gràf c ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "96594d88-5741-4738-97b9-6726b02f526a",
+        "code": "GDVG04",
+        "name": "Projectes de Disseny Gràfic III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "projectes de d sseny gràf c  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "7cadf7c0-b4ec-4b98-8f82-c02036a5f4bd",
+        "code": "TALLER",
+        "name": "Taller",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de d bu x artíst c",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "07e2fa70-84d3-4c09-bc4b-1544b20e2583",
+        "code": "GDVA43",
+        "name": "Taller d'Audiovisual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller d’aud ov sual ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "7650c5aa-cce7-4d82-b716-cd33a7e20141",
+        "code": "TALLERD'A",
+        "name": "Taller d'Audiovisual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller d’aud ov sual ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "812130fc-4071-45f8-a9fd-5d923718b7f1",
+        "code": "TALLER_D’A",
+        "name": "Taller d’Audiovisual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller d’aud ov sual  ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "6708363a-b058-4e9b-914e-698013b4d3d3",
+        "code": "GDVA93",
+        "name": "Taller d'Audiovisual II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller d’aud ov sual  ",
+      "similarity": 95,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "33f7c0b5-6cfb-452d-9c0d-f9c419308963",
+        "code": "GDVA34",
+        "name": "Taller d'Audiovisual III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "taller d’aud ov sual   ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "10dc0c33-199b-4268-91ab-ff13dda74aa2",
+        "code": "GDVI13",
+        "name": "Taller d'Espai I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller d’espa  ",
+      "similarity": 93,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "2d82d035-2c31-4f8a-9024-be3809d6b2a8",
+        "code": "TALLERD'E",
+        "name": "Taller d'Espai I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller d’espa  ",
+      "similarity": 93,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "841eafb7-0eb4-43db-901b-ac78f25bc1f2",
+        "code": "GDVI63",
+        "name": "Taller d'Espai II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller d’espa  ",
+      "similarity": 87,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "ce7bc8db-3d7c-40a4-bb01-dd448ba2c38c",
+        "code": "GDVI14",
+        "name": "Taller d'Espai III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "taller d’espa  ",
+      "similarity": 81,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "e940e016-a093-4c91-afef-fdb7c8bef890",
+        "code": "TALLER_D’E",
+        "name": "Taller d’Expressió",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "taller d’express ó comun cac ó",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "6d69606d-7ea9-4654-8994-a92b37e58e42",
+        "code": "GDF021",
+        "name": "Taller d'Expressió i Comunicació",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "taller d’express ó comun cac ó",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "299f9887-7adf-4a23-8af3-51047c82cfb8",
+        "code": "GDF041",
+        "name": "Taller de Color",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "df318905-f14e-4b64-9059-c68b87658038",
+        "code": "TALLER_DE_",
+        "name": "Taller de Color Montse",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de color",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "fea1551d-3a22-4c11-9293-a3b003cacc4a",
+        "code": "GDF012",
+        "name": "Taller de Creativitat",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "de979b70-df99-412e-b485-3a6963d7cc23",
+        "code": "GDF001",
+        "name": "Taller de Dibuix Artístic",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "a29dfac7-65fa-4333-9dde-77e58879d7e2",
+        "code": "BA104",
+        "name": "Taller de Dibuix I",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de moda   ",
+      "similarity": 71,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "1d30a6ef-361f-4d30-a50a-9102ec132ef1",
+        "code": "BA106",
+        "name": "Taller de Dibuix II",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de d bu x ",
+      "similarity": 94,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "7abea42c-d662-4d52-90c0-98178ac27e2d",
+        "code": "TALLERDE",
+        "name": "Taller de Gràfic i Comunicació Visual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de gràf c comun cac ó v sual  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "8faf0c10-f28d-4e8c-91bb-785bfda9be12",
+        "code": "GDVG13",
+        "name": "Taller de Gràfic i Comunicació Visual I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de gràf c comun cac ó v sual  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "a1005a0c-c317-4058-a6d5-7353fc6f7fed",
+        "code": "GDVG63",
+        "name": "Taller de Gràfic i Comunicació Visual II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de gràf c comun cac ó v sual ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "3d5a0ba3-6973-4d9b-9a85-01ac70574484",
+        "code": "GDVG14",
+        "name": "Taller de Gràfic i Comunicació Visual III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de gràf c comun cac ó v sual  ",
+      "similarity": 97,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "a1b15c60-b975-4a5d-9a6f-092e1861a774",
+        "code": "GDVM13",
+        "name": "Taller de Moda I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de moda   ",
+      "similarity": 88,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "650bd564-6496-4a4b-8932-cac36e6ea805",
+        "code": "GDVM63",
+        "name": "Taller de Moda II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de moda   ",
+      "similarity": 94,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "d5165128-1a61-489c-96a0-53c7af7a80f9",
+        "code": "GDVM14",
+        "name": "Taller de Moda III",
+        "year": 4,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de d bu x ",
+      "similarity": 71,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "bc43e32a-998c-4d3b-b758-dd358580df5b",
+        "code": "TALLER_TRI",
+        "name": "Taller Tridimensional",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "ff094ec1-c254-4c64-bb90-b5c4a6057e9c",
+        "code": "GDF002",
+        "name": "Taller Tridimensional i d'Investigació Artística",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "taller de d bu x artíst c",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "52eed065-d3aa-47ef-b4f6-e14ca4aa07fc",
+        "code": "TÈCNIQUES",
+        "name": "Tècniques Infogràfiques I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es nstal.lades",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "18194012-080b-4c2b-a117-744e703fa560",
+        "code": "GDVI23",
+        "name": "Tècniques Infogràfiques I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es nstal.lades",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "33c1fe59-7436-4e94-b588-b2b869fe4cdf",
+        "code": "GDVI73",
+        "name": "Tècniques Infogràfiques II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "tècn ques nfogràf ques ",
+      "similarity": 96,
+      "matchType": "high"
+    },
+    {
+      "dbSubject": {
+        "id": "760bd302-edda-4397-ab37-d755ee8ccc6e",
+        "code": "GDVG23",
+        "name": "Tipografia I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "t pograf a en mov ment",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "2dbf748c-a6c3-4d3b-885d-070003989a4b",
+        "code": "TIPOGRAFIA",
+        "name": "Tipografia I",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "t pograf a en mov ment",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "4f6d8605-c411-4191-b3aa-6658b6e6850b",
+        "code": "GDVG73",
+        "name": "Tipografia II",
+        "year": 3,
+        "type": "obligatoria"
+      },
+      "excelName": "t pograf a en mov ment",
+      "similarity": 70,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "8f82ed9a-4f34-4228-8049-15b6e73f1aa3",
+        "code": "VISUALISAT",
+        "name": "Visualisation and Documentation",
+        "year": 1,
+        "type": "obligatoria"
+      },
+      "excelName": "v sual sat on and documentat on workshop",
+      "similarity": 78,
+      "matchType": "medium"
+    },
+    {
+      "dbSubject": {
+        "id": "173e9fb7-3ebc-45e2-826b-ea5ec7a23fa6",
+        "code": "BA208",
+        "name": "XD. Llenguatges, Tècniques i Tecnologies",
+        "year": 2,
+        "type": "obligatoria"
+      },
+      "excelName": "4d llenguatges tècn ques tecnolog es",
+      "similarity": 97,
+      "matchType": "high"
+    }
+  ]
+}

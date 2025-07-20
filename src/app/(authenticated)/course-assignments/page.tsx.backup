@@ -1,0 +1,860 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { Input } from '@/components/ui/input'
+import { createClient } from '@/lib/supabase/client'
+import { loadCSVAssignments, type CSVAssignment } from '@/lib/load-csv-assignments'
+import { 
+  Plus,
+  Search,
+  Users,
+  BookOpen,
+  GraduationCap,
+  Edit,
+  Trash2,
+  Calendar,
+  Clock,
+  ChevronDown
+} from 'lucide-react'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { Label } from "@/components/ui/label"
+import { Checkbox } from "@/components/ui/checkbox"
+
+interface CourseOffering {
+  id: number
+  academic_year: string
+  subject_id: string
+  subject?: {
+    code: string
+    name: string
+    credits: number
+  }
+  semester: string
+  total_ects: number
+  active: boolean
+}
+
+interface TeachingAssignment {
+  id: number
+  course_offering_id: number
+  teacher_id: number
+  teacher?: {
+    teacher_id: string
+    first_name: string
+    last_name: string
+  }
+  student_group_id: number | null
+  student_group?: {
+    code: string
+    name: string
+  } | null
+  ects_assigned: number
+  is_coordinator: boolean
+}
+
+interface Teacher {
+  id: number
+  teacher_id: string
+  first_name: string
+  last_name: string
+}
+
+interface StudentGroup {
+  id: number
+  code: string
+  name: string
+  year: number
+  shift: string
+}
+
+interface Subject {
+  id: string
+  code: string
+  name: string
+  credits: number
+  year: number
+}
+
+export default function CourseAssignmentsPage() {
+  const [courseOfferings, setCourseOfferings] = useState<CourseOffering[]>([])
+  const [teachingAssignments, setTeachingAssignments] = useState<TeachingAssignment[]>([])
+  const [teachers, setTeachers] = useState<Teacher[]>([])
+  const [studentGroups, setStudentGroups] = useState<StudentGroup[]>([])
+  const [subjects, setSubjects] = useState<Subject[]>([])
+  const [loading, setLoading] = useState(true)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [expandedOffering, setExpandedOffering] = useState<number | null>(null)
+  
+  // Form state
+  const [selectedSubject, setSelectedSubject] = useState('')
+  const [selectedTeacher, setSelectedTeacher] = useState('')
+  const [selectedGroup, setSelectedGroup] = useState('')
+  const [ectsAmount, setEctsAmount] = useState('')
+  const [isCoordinator, setIsCoordinator] = useState(false)
+  
+  // Get assignments for a specific offering
+  const getAssignmentsForOffering = (offeringId: number) => {
+    return teachingAssignments.filter(a => a.course_offering_id === offeringId)
+  }
+
+  // Get filtered groups based on selected subject
+  const getFilteredGroups = () => {
+    if (!selectedSubject) {
+      console.log('No subject selected')
+      return []
+    }
+    
+    const subject = subjects.find(s => s.id === selectedSubject)
+    console.log('Selected subject:', subject)
+    console.log('All groups:', studentGroups)
+    
+    if (!subject) {
+      console.log('Subject not found for id:', selectedSubject)
+      return []
+    }
+    
+    // Filter groups by the subject's year
+    const filtered = studentGroups
+      .filter(group => {
+        console.log(`Comparing group year ${group.year} with subject year ${subject.year}`)
+        return group.year === subject.year
+      })
+      .sort((a, b) => {
+        // Sort by shift (morning first) then by code
+        if (a.shift !== b.shift) {
+          return a.shift === 'Matí' ? -1 : 1
+        }
+        return a.code.localeCompare(b.code)
+      })
+    
+    console.log('Filtered groups:', filtered)
+    return filtered
+  }
+  
+  const supabase = createClient()
+
+  useEffect(() => {
+    loadData()
+  }, [])
+
+  const handleDeleteAssignment = async (assignmentId: number) => {
+    if (!confirm('Estàs segur que vols eliminar aquesta assignació?')) return
+    
+    // For now, just remove from state
+    setTeachingAssignments(prev => prev.filter(a => a.id !== assignmentId))
+  }
+
+  const handleCreateAssignment = async () => {
+    if (!selectedSubject || !selectedTeacher || !ectsAmount) {
+      alert('Si us plau, omple tots els camps obligatoris')
+      return
+    }
+
+    // Create new assignment in state
+    const subject = subjects.find(s => s.id === selectedSubject)
+    const teacher = teachers.find(t => t.id === selectedTeacher)
+    const group = studentGroups.find(g => g.id === selectedGroup)
+    
+    if (!subject || !teacher) return
+
+    const offeringId = subjects.indexOf(subject) + 1
+    const newAssignment = {
+      id: teachingAssignments.length + 1,
+      course_offering_id: offeringId,
+      teacher_id: teacher.id,
+      teacher: {
+        teacher_id: teacher.teacher_id,
+        first_name: teacher.first_name,
+        last_name: teacher.last_name
+      },
+      student_group_id: group?.id || null,
+      student_group: group || null,
+      ects_assigned: parseFloat(ectsAmount),
+      is_coordinator: isCoordinator
+    }
+
+    setTeachingAssignments(prev => [...prev, newAssignment])
+    setIsDialogOpen(false)
+    
+    // Reset form
+    setSelectedSubject('')
+    setSelectedTeacher('')
+    setSelectedGroup('')
+    setEctsAmount('')
+    setIsCoordinator(false)
+  }
+
+  const loadData = async () => {
+    try {
+      setLoading(true)
+      
+      // First, check if tables exist and load base data
+      const [teachersRes, groupsRes, subjectsRes] = await Promise.all([
+        supabase
+          .from('teachers')
+          .select('*')
+          .order('last_name'),
+        
+        supabase
+          .from('student_groups')
+          .select('*')
+          .order('year')
+          .order('code'),
+        
+        supabase
+          .from('subjects')
+          .select(`
+            *,
+            itinerari:"ID Itinerari"
+          `)
+          .order('code')
+      ])
+
+      if (teachersRes.error) {
+        console.error('Error loading teachers:', teachersRes.error)
+        setTeachers([])
+      } else {
+        console.log('Teachers loaded:', teachersRes.data?.length || 0)
+        // Map teachers to the expected format
+        const teachers = teachersRes.data?.map(t => ({
+          id: t.id,
+          teacher_id: t.code,
+          first_name: t.first_name,
+          last_name: t.last_name,
+          email: t.email,
+          department: t.department
+        })) || []
+        setTeachers(teachers)
+      }
+
+      if (groupsRes.error) {
+        console.error('Error loading groups:', groupsRes.error)
+        setStudentGroups([])
+      } else {
+        console.log('Groups loaded:', groupsRes.data?.length || 0)
+        setStudentGroups(groupsRes.data || [])
+      }
+
+      if (subjectsRes.error) {
+        console.error('Error loading subjects:', subjectsRes.error)
+        setSubjects([])
+      } else {
+        console.log('Subjects loaded:', subjectsRes.data?.length || 0)
+        console.log('Sample subject:', subjectsRes.data?.[0])
+        setSubjects(subjectsRes.data || [])
+      }
+
+      // Load course offerings from subjects data
+      let offerings = []
+      if (subjectsRes.data && subjectsRes.data.length > 0) {
+        offerings = subjectsRes.data.map((subject, index) => ({
+          id: index + 1,
+          academic_year: '2024-2025',
+          subject_id: subject.id,
+          subject: {
+            code: subject.code,
+            name: subject.name,
+            credits: subject.credits || 6
+          },
+          semester: subject.semester || '1',
+          total_ects: subject.credits || 6,
+          active: true
+        }))
+        setCourseOfferings(offerings)
+      } else {
+        setCourseOfferings([])
+      }
+
+      // Load real assignments from CSV
+      const csvAssignments = await loadCSVAssignments()
+      console.log(`Loaded ${csvAssignments.length} assignments from CSV`)
+      console.log('CSV Sample:', csvAssignments.slice(0, 2))
+      
+      // Match CSV assignments with database entities
+      const realAssignments = []
+      const assignmentsByOffering = new Map()
+      
+      // Create maps for quick lookup - using the loaded data, not state
+      const subjectMap = new Map((subjectsRes.data || []).map(s => [s.code, s]))
+      const teacherMap = new Map()
+      
+      // Create teacher map with both full code and numeric ID
+      for (const teacher of (teachersRes.data || [])) {
+        teacherMap.set(teacher.code, teacher)
+        // Also map by numeric part of the code (e.g., "634" from "PROF634")
+        const numericId = teacher.code.replace(/[^\d]/g, '')
+        if (numericId) {
+          teacherMap.set(numericId, teacher)
+        }
+      }
+      
+      const groupNameMap = new Map((groupsRes.data || []).map(g => [g.name, g]))
+      
+      console.log('Subject codes available:', Array.from(subjectMap.keys()).slice(0, 5))
+      console.log('Teacher codes available:', Array.from(teacherMap.keys()).slice(0, 10))
+      
+      for (const csvAssignment of csvAssignments) {
+        const subject = subjectMap.get(csvAssignment.subject_code)
+        const teacher = teacherMap.get(csvAssignment.teacher_id)
+        const group = groupNameMap.get(csvAssignment.group_name)
+        
+        // Debug logging
+        if (!teacher && csvAssignment.teacher_id) {
+          console.log(`Teacher not found for ID: ${csvAssignment.teacher_id}`)
+        }
+        
+        if (subject && teacher) {
+          const offeringId = (subjectsRes.data || []).indexOf(subject) + 1
+          
+          const assignment = {
+            id: csvAssignment.id,
+            course_offering_id: offeringId,
+            teacher_id: teacher.id,
+            teacher: {
+              teacher_id: teacher.teacher_id,
+              first_name: teacher.first_name,
+              last_name: teacher.last_name
+            },
+            student_group_id: group?.id || null,
+            student_group: group || null,
+            ects_assigned: csvAssignment.ects_assigned,
+            is_coordinator: false,
+            subject_code: csvAssignment.subject_code,
+            subject_name: csvAssignment.subject_name,
+            group_code: csvAssignment.group_code
+          }
+          
+          realAssignments.push(assignment)
+          
+          // Track assignments by offering
+          if (!assignmentsByOffering.has(offeringId)) {
+            assignmentsByOffering.set(offeringId, [])
+          }
+          assignmentsByOffering.get(offeringId).push(assignment)
+        }
+      }
+      
+      console.log(`Matched ${realAssignments.length} assignments with database entities`)
+      console.log('Sample assignments:', realAssignments.slice(0, 5))
+      console.log('Course offerings:', courseOfferings.slice(0, 5))
+      setTeachingAssignments(realAssignments)
+
+    } catch (error) {
+      console.error('Error loading data:', error)
+      // Set empty arrays as fallback
+      setTeachers([])
+      setStudentGroups([])
+      setSubjects([])
+      setCourseOfferings([])
+      setTeachingAssignments([])
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleCreateAssignment = async () => {
+    try {
+      // For now, just show the selected values
+      const subject = subjects.find(s => s.id === selectedSubject)
+      const teacher = teachers.find(t => t.id === parseInt(selectedTeacher))
+      const group = selectedGroup && selectedGroup !== 'all' 
+        ? studentGroups.find(g => g.id === parseInt(selectedGroup))
+        : null
+      
+      console.log('Creating assignment:', {
+        subject: subject?.name,
+        teacher: teacher ? `${teacher.first_name} ${teacher.last_name}` : 'Unknown',
+        group: group?.name || 'Tots els grups',
+        ects: ectsAmount,
+        isCoordinator
+      })
+      
+      alert(`Assignació creada:\n
+Assignatura: ${subject?.name}
+Professor: ${teacher?.first_name} ${teacher?.last_name}
+Grup: ${group?.name || 'Tots els grups'}
+ECTS: ${ectsAmount}
+Coordinador: ${isCoordinator ? 'Sí' : 'No'}`)
+      
+      // Reset form
+      setSelectedSubject('')
+      setSelectedTeacher('')
+      setSelectedGroup('')
+      setEctsAmount('')
+      setIsCoordinator(false)
+      setIsDialogOpen(false)
+    } catch (error) {
+      console.error('Error creating assignment:', error)
+      alert('Error al crear l\'assignació')
+    }
+  }
+
+  const handleDeleteAssignment = async (id: number) => {
+    if (!confirm('Segur que vols eliminar aquesta assignació?')) return
+
+    try {
+      const { error } = await supabase
+        .from('teaching_assignments')
+        .delete()
+        .eq('id', id)
+
+      if (error) throw error
+      await loadData()
+    } catch (error) {
+      console.error('Error deleting assignment:', error)
+    }
+  }
+
+  const getAssignmentsForOffering = (offeringId: number) => {
+    return teachingAssignments.filter(ta => ta.course_offering_id === offeringId)
+  }
+
+  const filteredOfferings = courseOfferings.filter(offering => {
+    if (!searchTerm) return true
+    const search = searchTerm.toLowerCase()
+    return (offering.subject?.name || '').toLowerCase().includes(search) ||
+           (offering.subject?.code || '').toLowerCase().includes(search)
+  })
+
+  const totalAssignments = teachingAssignments.length
+  const uniqueTeachers = new Set(teachingAssignments.map(ta => ta.teacher_id)).size
+  const totalECTS = teachingAssignments.reduce((sum, ta) => sum + ta.ects_assigned, 0)
+
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Assignacions de Docència</h1>
+          <p className="text-muted-foreground mt-2">
+            Gestiona l'assignació de professors a assignatures i grups
+          </p>
+        </div>
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogTrigger asChild>
+            <Button>
+              <Plus className="h-4 w-4 mr-2" />
+              Nova Assignació
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[525px]">
+            <DialogHeader>
+              <DialogTitle>Nova Assignació de Docència</DialogTitle>
+              <DialogDescription>
+                Assigna un professor a una assignatura amb un grup específic
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid gap-2">
+                <Label htmlFor="subject">Assignatura</Label>
+                <Select 
+                  value={selectedSubject} 
+                  onValueChange={(value) => {
+                    setSelectedSubject(value)
+                    setSelectedGroup('') // Reset group when subject changes
+                  }}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecciona una assignatura" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {subjects.map(subject => (
+                      <SelectItem key={subject.id} value={subject.id}>
+                        {subject.code} - {subject.name} ({subject.year}r curs)
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div className="grid gap-2">
+                <Label htmlFor="teacher">Professor</Label>
+                <Select value={selectedTeacher} onValueChange={setSelectedTeacher}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecciona un professor" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {teachers.map(teacher => (
+                      <SelectItem key={teacher.id} value={teacher.id.toString()}>
+                        {teacher.first_name} {teacher.last_name} ({teacher.teacher_id})
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div className="grid gap-2">
+                <Label htmlFor="group">Grup (opcional)</Label>
+                <Select 
+                  value={selectedGroup} 
+                  onValueChange={setSelectedGroup}
+                  disabled={!selectedSubject}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder={selectedSubject ? "Tots els grups" : "Selecciona primer una assignatura"} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Tots els grups</SelectItem>
+                    {getFilteredGroups().map(group => (
+                      <SelectItem key={group.id} value={group.id.toString()}>
+                        {group.name} - {group.shift}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div className="grid gap-2">
+                <Label htmlFor="ects">ECTS assignats</Label>
+                <Input
+                  id="ects"
+                  type="number"
+                  step="0.5"
+                  value={ectsAmount}
+                  onChange={(e) => setEctsAmount(e.target.value)}
+                  placeholder="6.0"
+                />
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="coordinator"
+                  checked={isCoordinator}
+                  onChange={(e) => setIsCoordinator(e.target.checked)}
+                  className="rounded border-gray-300"
+                />
+                <Label htmlFor="coordinator" className="font-normal">
+                  Coordinador de l'assignatura
+                </Label>
+              </div>
+            </div>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
+                Cancel·lar
+              </Button>
+              <Button onClick={handleCreateAssignment}>
+                Crear Assignació
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </div>
+
+      {/* Stats */}
+      <div className="grid gap-4 md:grid-cols-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Total Assignacions
+            </CardTitle>
+            <BookOpen className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{totalAssignments}</div>
+            <p className="text-xs text-muted-foreground">
+              Assignacions actives
+            </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Professors Assignats
+            </CardTitle>
+            <GraduationCap className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{uniqueTeachers}</div>
+            <p className="text-xs text-muted-foreground">
+              Professors amb docència
+            </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Total ECTS
+            </CardTitle>
+            <Clock className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{totalECTS.toFixed(1)}</div>
+            <p className="text-xs text-muted-foreground">
+              ECTS assignats
+            </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Assignatures
+            </CardTitle>
+            <Calendar className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{courseOfferings.length}</div>
+            <p className="text-xs text-muted-foreground">
+              Amb professors assignats
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Search and list */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Assignacions per Assignatura</CardTitle>
+          <CardDescription>
+            Visualitza i gestiona les assignacions de professors per cada assignatura
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                placeholder="Cercar per nom o codi d'assignatura..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+          </div>
+
+          {loading ? (
+            <div className="flex items-center justify-center h-64">
+              <div className="animate-pulse space-y-4">
+                <div className="h-4 bg-muted rounded w-48"></div>
+                <div className="h-32 bg-muted rounded w-96"></div>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {filteredOfferings.map((offering) => {
+                const assignments = getAssignmentsForOffering(offering.id)
+                const totalAssignedECTS = assignments.reduce((sum, a) => sum + a.ects_assigned, 0)
+                const isExpanded = expandedOffering === offering.id
+                
+                return (
+                  <div key={offering.id} className="border rounded-lg">
+                    <button
+                      onClick={() => setExpandedOffering(isExpanded ? null : offering.id)}
+                      className="w-full p-4 flex items-center justify-between hover:bg-muted/50 transition-colors"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="text-left">
+                          <div className="font-medium">
+                            {offering.subject?.code || 'N/A'} - {offering.subject?.name || 'Sense nom'}
+                          </div>
+                          <div className="text-sm text-muted-foreground">
+                            {offering.subject?.credits || 0} ECTS · {assignments.length} professors assignats
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Badge variant={totalAssignedECTS === offering.total_ects ? "default" : "secondary"}>
+                          {totalAssignedECTS} / {offering.total_ects} ECTS
+                        </Badge>
+                        <ChevronDown className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                      </div>
+                    </button>
+                    
+                    {isExpanded && (
+                      <div className="border-t p-4">
+                        {assignments.length === 0 ? (
+                          <p className="text-sm text-muted-foreground text-center py-4">
+                            No hi ha professors assignats a aquesta assignatura
+                          </p>
+                        ) : (
+                          <Table>
+                            <TableHeader>
+                              <TableRow>
+                                <TableHead>Professor</TableHead>
+                                <TableHead>Grup</TableHead>
+                                <TableHead>ECTS</TableHead>
+                                <TableHead>Rol</TableHead>
+                                <TableHead className="text-right">Accions</TableHead>
+                              </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                              {assignments.map((assignment) => (
+                                <TableRow key={assignment.id}>
+                                  <TableCell>
+                                    <div>
+                                      <div className="font-medium">
+                                        {assignment.teacher?.first_name || ''} {assignment.teacher?.last_name || 'Professor desconegut'}
+                                      </div>
+                                      <div className="text-sm text-muted-foreground">
+                                        {assignment.teacher?.teacher_id || 'N/A'}
+                                      </div>
+                                    </div>
+                                  </TableCell>
+                                  <TableCell>
+                                    {assignment.student_group ? (
+                                      <Badge variant="outline">
+                                        {assignment.student_group.name || 'Grup'}
+                                      </Badge>
+                                    ) : (
+                                      <span className="text-muted-foreground">Tots els grups</span>
+                                    )}
+                                  </TableCell>
+                                  <TableCell>{assignment.ects_assigned}</TableCell>
+                                  <TableCell>
+                                    {assignment.is_coordinator && (
+                                      <Badge variant="default">Coordinador</Badge>
+                                    )}
+                                  </TableCell>
+                                  <TableCell className="text-right">
+                                    <Button
+                                      variant="ghost"
+                                      size="icon"
+                                      onClick={() => handleDeleteAssignment(assignment.id)}
+                                    >
+                                      <Trash2 className="h-4 w-4" />
+                                    </Button>
+                                  </TableCell>
+                                </TableRow>
+                              ))}
+                            </TableBody>
+                          </Table>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Create Assignment Dialog */}
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Nova Assignació</DialogTitle>
+            <DialogDescription>
+              Assigna un professor a una assignatura i grup
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="subject" className="text-right">
+                Assignatura
+              </Label>
+              <Select value={selectedSubject} onValueChange={setSelectedSubject}>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Selecciona una assignatura" />
+                </SelectTrigger>
+                <SelectContent>
+                  {subjects.map((subject) => (
+                    <SelectItem key={subject.id} value={subject.id}>
+                      {subject.code} - {subject.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="teacher" className="text-right">
+                Professor
+              </Label>
+              <Select value={selectedTeacher} onValueChange={setSelectedTeacher}>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Selecciona un professor" />
+                </SelectTrigger>
+                <SelectContent>
+                  {teachers.map((teacher) => (
+                    <SelectItem key={teacher.id} value={teacher.id}>
+                      {teacher.first_name} {teacher.last_name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="group" className="text-right">
+                Grup
+              </Label>
+              <Select value={selectedGroup} onValueChange={setSelectedGroup}>
+                <SelectTrigger className="col-span-3">
+                  <SelectValue placeholder="Selecciona un grup (opcional)" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="">Tots els grups</SelectItem>
+                  {getFilteredGroups().map((group) => (
+                    <SelectItem key={group.id} value={group.id}>
+                      {group.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="ects" className="text-right">
+                ECTS
+              </Label>
+              <Input
+                id="ects"
+                type="number"
+                step="0.5"
+                value={ectsAmount}
+                onChange={(e) => setEctsAmount(e.target.value)}
+                className="col-span-3"
+                placeholder="6"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="coordinator" className="text-right">
+                Coordinador
+              </Label>
+              <div className="col-span-3">
+                <Checkbox
+                  id="coordinator"
+                  checked={isCoordinator}
+                  onCheckedChange={(checked) => setIsCoordinator(checked as boolean)}
+                />
+              </div>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
+              Cancel·lar
+            </Button>
+            <Button onClick={handleCreateAssignment}>
+              Crear Assignació
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
+  )
+}

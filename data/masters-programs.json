@@ -1,0 +1,138 @@
+[
+  {
+    "code": "MASMUDR",
+    "name": "Master universitari en Design Research",
+    "coordinator_name": "Lluís Nacenta",
+    "coordinator_email": "lluis.nacenta@bau.cat",
+    "duration_months": 12,
+    "credits": 60
+  },
+  {
+    "code": "MASMDD",
+    "name": "Màster en Disseny d'Interiors",
+    "coordinator_name": "Alba Méndez",
+    "coordinator_email": "alba.mendez@bau.cat",
+    "duration_months": 12,
+    "credits": 60
+  },
+  {
+    "code": "MASMDED",
+    "name": "Màster en Digital Experience Design",
+    "coordinator_name": "César Úbeda",
+    "coordinator_email": "cesar.ubeda@bau.cat",
+    "duration_months": 12,
+    "credits": 60
+  },
+  {
+    "code": "MASMDTM",
+    "name": "Màster en Disseny i Tecnologia en Moda",
+    "coordinator_name": "Núria Costa",
+    "coordinator_email": "nuria.costa@bau.cat",
+    "duration_months": 12,
+    "credits": 60
+  },
+  {
+    "code": "MASMCCCD",
+    "name": "Màster en Comunicació i Creació de Continguts Digitals",
+    "coordinator_name": "Jordi Álvarez",
+    "coordinator_email": "jordi.alvarez@bau.cat",
+    "duration_months": 12,
+    "credits": 60
+  },
+  {
+    "code": "MASMSD",
+    "name": "Màster en Service Design",
+    "coordinator_name": "Sandra Bosch",
+    "coordinator_email": "sandra.bosch@bau.cat",
+    "duration_months": 12,
+    "credits": 60
+  },
+  {
+    "code": "MASMASM",
+    "name": "Màster en Animació Stop Motion",
+    "coordinator_name": "Frank María",
+    "coordinator_email": "frank.maria@bau.cat",
+    "duration_months": 12,
+    "credits": 60
+  },
+  {
+    "code": "MASMDCG",
+    "name": "Màster en Disseny de Comunicacíó Gràfica",
+    "coordinator_name": "Jordi Álvarez",
+    "coordinator_email": "jordi.alvarez@bau.cat",
+    "duration_months": 12,
+    "credits": 60
+  },
+  {
+    "code": "MASMDDEDA",
+    "name": "Màster en Disseny d'Espais Escènics i Direcció Artística",
+    "coordinator_name": "Miren Oller",
+    "coordinator_email": "miren.oller@bau.cat",
+    "duration_months": 12,
+    "credits": 60
+  },
+  {
+    "code": "MASMDG",
+    "name": "Màster en Disseny Gràfic",
+    "coordinator_name": "Andrés Salvarezza",
+    "coordinator_email": "andres.salvarezza@bau.cat",
+    "duration_months": 12,
+    "credits": 60
+  },
+  {
+    "code": "MASMIAEI",
+    "name": "Master en Innovació Audiovisual i Entorns interactius",
+    "coordinator_name": "Mònica Ríkic",
+    "coordinator_email": "monica.rikic@bau.cat",
+    "duration_months": 12,
+    "credits": 60
+  },
+  {
+    "code": "MASMMGD",
+    "name": "Master en Motion Graphics Design",
+    "coordinator_name": "Magí del Campo",
+    "coordinator_email": "magi.delcampo@bau.cat",
+    "duration_months": 12,
+    "credits": 60
+  },
+  {
+    "code": "MASPIDNM",
+    "name": "Postgrau en il·lustració Digital i Nous Mitjans",
+    "coordinator_name": "Sito Mújica",
+    "coordinator_email": "sito.mujica@bau.cat",
+    "duration_months": 6,
+    "credits": 30
+  },
+  {
+    "code": "MASPI",
+    "name": "Postgrau en Il·lustració",
+    "coordinator_name": "Sito Mújica",
+    "coordinator_email": "sito.mujica@bau.cat",
+    "duration_months": 6,
+    "credits": 30
+  },
+  {
+    "code": "MASPM",
+    "name": "Postgrau en Motion 3D",
+    "coordinator_name": "Magí del Campo",
+    "coordinator_email": "magi.delcampo@bau.cat",
+    "duration_months": 6,
+    "credits": 30
+  },
+  {
+    "code": "MASPBD",
+    "name": "Postgrau en Brand Design",
+    "coordinator_name": "Enric Batlle",
+    "coordinator_email": "enric.batlle@bau.cat",
+    "duration_months": 6,
+    "credits": 30
+  },
+  {
+    "code": "MASPMIC",
+    "name": "Postgrau en Managment en Indústries Creatives",
+    "coordinator_name": "Guillem Díaz",
+    "coordinator_email": "guillem.diaz@uvic.cat",
+    "duration_months": 6,
+    "credits": 30
+  }
+]

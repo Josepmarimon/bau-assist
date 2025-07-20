@@ -1,0 +1,973 @@
+[dotenv@17.1.0] injecting env (4) from .env (tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild)
+🎓 IMPORTACIÓ COMPLETA DE TOTS ELS HORARIS
+==========================================
+
+🎨 Creant grups de Belles Arts...
+⚠️  Error creant grups de Belles Arts: Error: Command failed: ts-node scripts/create-fine-arts-groups.ts
+/bin/sh: ts-node: command not found
+
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at ChildProcess.exithandler (node:child_process:415:12)
+    at ChildProcess.emit (node:events:507:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:457:11)
+    at Socket.emit (node:events:507:28)
+    at Pipe.<anonymous> (node:net:346:12) {
+  code: 127,
+  killed: false,
+  signal: null,
+  cmd: 'ts-node scripts/create-fine-arts-groups.ts',
+  stdout: '',
+  stderr: '/bin/sh: ts-node: command not found\n'
+}
+📊 Total d'horaris a importar: 105
+Començant importació...
+
+
+📚 Expressió Gràfica I - 2n Matí M3
+   📅 Dia 1, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(0c00e4e8-f9b6-45ae-8869-eca2d176a144, 1, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Iniciació als Projectes de Disseny I - 2n Matí M3
+   📅 Dia 2, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(0c00e4e8-f9b6-45ae-8869-eca2d176a144, 2, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Llenguatges Audiovisuals I - 2n Matí M3
+   📅 Dia 3, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(0c00e4e8-f9b6-45ae-8869-eca2d176a144, 3, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Taller Tridimensional i d'Investigació Artística - 2n Matí M3
+   📅 Dia 4, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(0c00e4e8-f9b6-45ae-8869-eca2d176a144, 4, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Economia, Empresa i Disseny - 2n Matí M3
+   📅 Dia 5, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(0c00e4e8-f9b6-45ae-8869-eca2d176a144, 5, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Expressió Gràfica II - 2n Matí M3
+   📅 Dia 1, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(0c00e4e8-f9b6-45ae-8869-eca2d176a144, 1, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Iniciació als Projectes de Disseny II - 2n Matí M3
+   📅 Dia 2, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(0c00e4e8-f9b6-45ae-8869-eca2d176a144, 2, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Llenguatges Audiovisuals II - 2n Matí M3
+   📅 Dia 3, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(0c00e4e8-f9b6-45ae-8869-eca2d176a144, 3, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Taller de Creativitat - 2n Matí M3
+   📅 Dia 4, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(0c00e4e8-f9b6-45ae-8869-eca2d176a144, 4, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Història del Disseny - 2n Matí M3
+   📅 Dia 5, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(0c00e4e8-f9b6-45ae-8869-eca2d176a144, 5, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Expressió Gràfica I - 2n Matí M4
+   📅 Dia 1, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(eaf0c112-738d-4c5e-8fc8-7c2319320017, 1, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Iniciació als Projectes de Disseny I - 2n Matí M4
+   📅 Dia 2, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(eaf0c112-738d-4c5e-8fc8-7c2319320017, 2, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Llenguatges Audiovisuals I - 2n Matí M4
+   📅 Dia 3, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(eaf0c112-738d-4c5e-8fc8-7c2319320017, 3, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Taller Tridimensional i d'Investigació Artística - 2n Matí M4
+   📅 Dia 4, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(eaf0c112-738d-4c5e-8fc8-7c2319320017, 4, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Economia, Empresa i Disseny - 2n Matí M4
+   📅 Dia 5, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(eaf0c112-738d-4c5e-8fc8-7c2319320017, 5, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Expressió Gràfica II - 2n Matí M4
+   📅 Dia 1, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(eaf0c112-738d-4c5e-8fc8-7c2319320017, 1, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Iniciació als Projectes de Disseny II - 2n Matí M4
+   📅 Dia 2, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(eaf0c112-738d-4c5e-8fc8-7c2319320017, 2, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Llenguatges Audiovisuals II - 2n Matí M4
+   📅 Dia 3, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(eaf0c112-738d-4c5e-8fc8-7c2319320017, 3, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Taller de Creativitat - 2n Matí M4
+   📅 Dia 4, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(eaf0c112-738d-4c5e-8fc8-7c2319320017, 4, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Història del Disseny - 2n Matí M4
+   📅 Dia 5, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(eaf0c112-738d-4c5e-8fc8-7c2319320017, 5, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Expressió Gràfica I - 2n Matí M5
+   📅 Dia 1, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(d5412083-5bc9-43dc-85ea-0d87ad312878, 1, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Iniciació als Projectes de Disseny I - 2n Matí M5
+   📅 Dia 2, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(d5412083-5bc9-43dc-85ea-0d87ad312878, 2, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Economia, Empresa i Disseny - 2n Matí M5
+   📅 Dia 3, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(d5412083-5bc9-43dc-85ea-0d87ad312878, 3, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Llenguatges Audiovisuals I - 2n Matí M5
+   📅 Dia 4, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(d5412083-5bc9-43dc-85ea-0d87ad312878, 4, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Taller Tridimensional i d'Investigació Artística - 2n Matí M5
+   📅 Dia 5, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(d5412083-5bc9-43dc-85ea-0d87ad312878, 5, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Expressió Gràfica II - 2n Matí M5
+   📅 Dia 1, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(d5412083-5bc9-43dc-85ea-0d87ad312878, 1, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Iniciació als Projectes de Disseny II - 2n Matí M5
+   📅 Dia 2, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(d5412083-5bc9-43dc-85ea-0d87ad312878, 2, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Història del Disseny - 2n Matí M5
+   📅 Dia 3, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(d5412083-5bc9-43dc-85ea-0d87ad312878, 3, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Llenguatges Audiovisuals II - 2n Matí M5
+   📅 Dia 4, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(d5412083-5bc9-43dc-85ea-0d87ad312878, 4, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Taller de Creativitat - 2n Matí M5
+   📅 Dia 5, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(d5412083-5bc9-43dc-85ea-0d87ad312878, 5, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Taller Tridimensional i d'Investigació Artística - 2n Tarda T1
+   📅 Dia 1, 15:00-17:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(71646b9f-91c7-4105-8470-2c1658ea89df, 1, 15:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Llenguatges Audiovisuals I - 2n Tarda T1
+   📅 Dia 2, 15:00-17:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(71646b9f-91c7-4105-8470-2c1658ea89df, 2, 15:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Expressió Gràfica I - 2n Tarda T1
+   📅 Dia 3, 15:00-17:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(71646b9f-91c7-4105-8470-2c1658ea89df, 3, 15:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Iniciació als Projectes de Disseny I - 2n Tarda T1
+   📅 Dia 4, 15:00-17:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(71646b9f-91c7-4105-8470-2c1658ea89df, 4, 15:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Economia, Empresa i Disseny - 2n Tarda T1
+   📅 Dia 5, 15:00-17:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(71646b9f-91c7-4105-8470-2c1658ea89df, 5, 15:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Taller de Creativitat - 2n Tarda T1
+   📅 Dia 1, 15:00-17:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(71646b9f-91c7-4105-8470-2c1658ea89df, 1, 15:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Història del Disseny - 2n Tarda T1
+   📅 Dia 2, 15:00-17:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(71646b9f-91c7-4105-8470-2c1658ea89df, 2, 15:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Expressió Gràfica II - 2n Tarda T1
+   📅 Dia 3, 15:00-17:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(71646b9f-91c7-4105-8470-2c1658ea89df, 3, 15:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Iniciació als Projectes de Disseny II - 2n Tarda T1
+   📅 Dia 4, 15:00-17:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(71646b9f-91c7-4105-8470-2c1658ea89df, 4, 15:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Llenguatges Audiovisuals II - 2n Tarda T1
+   📅 Dia 5, 15:00-17:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(71646b9f-91c7-4105-8470-2c1658ea89df, 5, 15:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Taller Tridimensional i d'Investigació Artística - 2n Tarda T2
+   📅 Dia 1, 15:00-17:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(a8f8e6aa-3488-4dc4-be40-4f73d70cc5e8, 1, 15:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Història del Disseny - 2n Tarda T2
+   📅 Dia 2, 15:00-17:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(a8f8e6aa-3488-4dc4-be40-4f73d70cc5e8, 2, 15:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Expressió Gràfica I - 2n Tarda T2
+   📅 Dia 3, 15:00-17:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(a8f8e6aa-3488-4dc4-be40-4f73d70cc5e8, 3, 15:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Iniciació als Projectes de Disseny I - 2n Tarda T2
+   📅 Dia 4, 15:00-17:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(a8f8e6aa-3488-4dc4-be40-4f73d70cc5e8, 4, 15:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Llenguatges Audiovisuals I - 2n Tarda T2
+   📅 Dia 5, 15:00-17:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(a8f8e6aa-3488-4dc4-be40-4f73d70cc5e8, 5, 15:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Taller de Creativitat - 2n Tarda T2
+   📅 Dia 1, 15:00-17:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(a8f8e6aa-3488-4dc4-be40-4f73d70cc5e8, 1, 15:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Llenguatges Audiovisuals II - 2n Tarda T2
+   📅 Dia 2, 15:00-17:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(a8f8e6aa-3488-4dc4-be40-4f73d70cc5e8, 2, 15:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Expressió Gràfica II - 2n Tarda T2
+   📅 Dia 3, 15:00-17:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(a8f8e6aa-3488-4dc4-be40-4f73d70cc5e8, 3, 15:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Iniciació als Projectes de Disseny II - 2n Tarda T2
+   📅 Dia 4, 15:00-17:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(a8f8e6aa-3488-4dc4-be40-4f73d70cc5e8, 4, 15:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Economia, Empresa i Disseny - 2n Tarda T2
+   📅 Dia 5, 15:00-17:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(a8f8e6aa-3488-4dc4-be40-4f73d70cc5e8, 5, 15:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Projectes de Disseny Gràfic i Comunicació Visual I - 3r Matí Gm1
+   📅 Dia 1, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 1, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Projectes de Disseny Gràfic i Comunicació Visual I - 3r Matí Gm1
+   📅 Dia 2, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 2, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Projectes de Disseny Gràfic i Comunicació Visual I - 3r Matí Gm1
+   📅 Dia 3, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 3, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Ecoedició - 3r Matí Gm1
+   📅 Dia 4, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 4, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Editorial - 3r Matí Gm1
+   📅 Dia 4, 11:30-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 4, 11:30:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Optativitat - 3r Matí Gm1
+   📅 Dia 5, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 5, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Optativitat - 3r Matí Gm1
+   📅 Dia 5, 11:30-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 5, 11:30:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Projectes de Disseny Gràfic i Comunicació Visual II - 3r Matí Gm1
+   📅 Dia 1, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 1, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Projectes de Disseny Gràfic i Comunicació Visual II - 3r Matí Gm1
+   📅 Dia 2, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 2, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Projectes de Disseny Gràfic i Comunicació Visual II - 3r Matí Gm1
+   📅 Dia 3, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 3, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Experimental Type - 3r Matí Gm1
+   📅 Dia 4, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 4, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Direcció d'Art - 3r Matí Gm1
+   📅 Dia 4, 11:30-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 4, 11:30:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Optativitat - 3r Matí Gm1
+   📅 Dia 5, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 5, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Optativitat - 3r Matí Gm1
+   📅 Dia 5, 11:30-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(85df7a1e-cb54-464b-b6d6-1e7582d30da1, 5, 11:30:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Projectes de Disseny Gràfic i Comunicació Visual III - 4t Matí Gm1
+   📅 Dia 1, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(e0729bf9-a5c2-4245-96c4-7a987e2d8e7c, 1, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Projectes de Disseny Gràfic i Comunicació Visual III - 4t Matí Gm1
+   📅 Dia 2, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(e0729bf9-a5c2-4245-96c4-7a987e2d8e7c, 2, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Projectes de Disseny Gràfic i Comunicació Visual III - 4t Matí Gm1
+   📅 Dia 3, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(e0729bf9-a5c2-4245-96c4-7a987e2d8e7c, 3, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Packaging - 4t Matí Gm1
+   📅 Dia 4, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(e0729bf9-a5c2-4245-96c4-7a987e2d8e7c, 4, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Disseny d'Identitat Visual - 4t Matí Gm1
+   📅 Dia 4, 11:30-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(e0729bf9-a5c2-4245-96c4-7a987e2d8e7c, 4, 11:30:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Optativitat - 4t Matí Gm1
+   📅 Dia 5, 09:00-11:00, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(e0729bf9-a5c2-4245-96c4-7a987e2d8e7c, 5, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Optativitat - 4t Matí Gm1
+   📅 Dia 5, 11:30-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(e0729bf9-a5c2-4245-96c4-7a987e2d8e7c, 5, 11:30:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Projectes de Disseny Gràfic i Comunicació Visual IV - 4t Matí Gm1
+   📅 Dia 1, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(e0729bf9-a5c2-4245-96c4-7a987e2d8e7c, 1, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Projectes de Disseny Gràfic i Comunicació Visual IV - 4t Matí Gm1
+   📅 Dia 2, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(e0729bf9-a5c2-4245-96c4-7a987e2d8e7c, 2, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Treball Final de Grau - 4t Matí Gm1
+   📅 Dia 3, 09:00-13:30, Semestre 2
+❌ Assignatura no trobada: Treball Final de Grau
+
+📚 Metodologies del Disseny - 4t Matí Gm1
+   📅 Dia 4, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(e0729bf9-a5c2-4245-96c4-7a987e2d8e7c, 4, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Optativitat - 4t Matí Gm1
+   📅 Dia 5, 09:00-11:00, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(e0729bf9-a5c2-4245-96c4-7a987e2d8e7c, 5, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Optativitat - 4t Matí Gm1
+   📅 Dia 5, 11:30-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(e0729bf9-a5c2-4245-96c4-7a987e2d8e7c, 5, 11:30:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 2D. Llenguatges, Tècniques i Tecnologies - 1r BA Matí M1
+   📅 Dia 1, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(c126a08a-cd66-4688-99a4-921c72f7b2b7, 1, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Visualisation and Documentation Workshop - 1r BA Matí M1
+   📅 Dia 2, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(c126a08a-cd66-4688-99a4-921c72f7b2b7, 2, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 4D. Llenguatges, Tècniques i Tecnologies - 1r BA Matí M1
+   📅 Dia 3, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(c126a08a-cd66-4688-99a4-921c72f7b2b7, 3, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Taller de Dibuix I - 1r BA Matí M1
+   📅 Dia 4, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(c126a08a-cd66-4688-99a4-921c72f7b2b7, 4, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Pensament Modern i Pràctiques Artístiques - 1r BA Matí M1
+   📅 Dia 5, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(c126a08a-cd66-4688-99a4-921c72f7b2b7, 5, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Taller de Dibuix II - 1r BA Matí M1
+   📅 Dia 1, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(c126a08a-cd66-4688-99a4-921c72f7b2b7, 1, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 3D. Llenguatges, Tècniques i Tecnologies - 1r BA Matí M1
+   📅 Dia 2, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(c126a08a-cd66-4688-99a4-921c72f7b2b7, 2, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Estètica - 1r BA Matí M1
+   📅 Dia 3, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(c126a08a-cd66-4688-99a4-921c72f7b2b7, 3, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Art, Institució i Mercat - 1r BA Matí M1
+   📅 Dia 4, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(c126a08a-cd66-4688-99a4-921c72f7b2b7, 4, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Laboratori de Processos i Projectes I - 1r BA Matí M1
+   📅 Dia 5, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(c126a08a-cd66-4688-99a4-921c72f7b2b7, 5, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 4D. Llenguatges, Tècniques i Tecnologies Instal·lades - 2n BA Matí M1
+   📅 Dia 1, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(675a3936-c831-451e-9d43-580ce7eafe6d, 1, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 2D. Llenguatges, Tècniques i Tecnologies Instal·lades - 2n BA Matí M1
+   📅 Dia 2, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(675a3936-c831-451e-9d43-580ce7eafe6d, 2, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Laboratori de Processos i Projectes II - 2n BA Matí M1
+   📅 Dia 3, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(675a3936-c831-451e-9d43-580ce7eafe6d, 3, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Pensament Contemporani i Pràctiques Crítiques - 2n BA Matí M1
+   📅 Dia 4, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(675a3936-c831-451e-9d43-580ce7eafe6d, 4, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Writing and Communication Workshop - 2n BA Matí M1
+   📅 Dia 5, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(675a3936-c831-451e-9d43-580ce7eafe6d, 5, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Antropologia - 2n BA Matí M1
+   📅 Dia 1, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(675a3936-c831-451e-9d43-580ce7eafe6d, 1, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Laboratori de Processos i Projectes III - 2n BA Matí M1
+   📅 Dia 2, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(675a3936-c831-451e-9d43-580ce7eafe6d, 2, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 XD. Llenguatges, Tècniques i Tecnologies - 2n BA Matí M1
+   📅 Dia 3, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(675a3936-c831-451e-9d43-580ce7eafe6d, 3, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Art, Activisme, Mediació i Pedagogia - 2n BA Matí M1
+   📅 Dia 4, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(675a3936-c831-451e-9d43-580ce7eafe6d, 4, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 3D. Llenguatges, Tècniques i Tecnologies Instal·lades - 2n BA Matí M1
+   📅 Dia 5, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(675a3936-c831-451e-9d43-580ce7eafe6d, 5, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Pràctiques Artístiques i Recerca - 3r BA Matí M1
+   📅 Dia 4, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(6e9d4ba2-69fb-43c2-a70c-2fc8ab3eaec8, 4, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Laboratori de Processos i Projectes IV - 3r BA Matí M1
+   📅 Dia 5, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(6e9d4ba2-69fb-43c2-a70c-2fc8ab3eaec8, 5, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Laboratori de Processos i Projectes V - 3r BA Matí M1
+   📅 Dia 3, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(6e9d4ba2-69fb-43c2-a70c-2fc8ab3eaec8, 3, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Art Practices in Context Seminar I - 3r BA Matí M1
+   📅 Dia 5, 09:00-13:30, Semestre 2
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(6e9d4ba2-69fb-43c2-a70c-2fc8ab3eaec8, 5, 09:00:00, 2, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Art Practices in Context Seminar II - 4t BA Matí M1
+   📅 Dia 1, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(6282a9a0-a797-45f9-9cb7-bd2145849949, 1, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Laboratori de Processos i Projectes VI - 4t BA Matí M1
+   📅 Dia 4, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(6282a9a0-a797-45f9-9cb7-bd2145849949, 4, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Metodologies Transdisciplinàries i Experimentals - 4t BA Matí M1
+   📅 Dia 5, 09:00-13:30, Semestre 1
+❌ Error creant slot: {
+  code: '23505',
+  details: 'Key (student_group_id, day_of_week, start_time, semester, academic_year)=(6282a9a0-a797-45f9-9cb7-bd2145849949, 5, 09:00:00, 1, 2025-26) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "no_time_overlap"'
+}
+
+📚 Treball Final de Grau - 4t BA Matí M1
+   📅 Dia 3, 09:00-13:30, Semestre 2
+❌ Assignatura no trobada: Treball Final de Grau
+
+📊 Resum: 0 èxits, 105 errors
+
+==========================================
+✅ IMPORTACIÓ COMPLETADA
+📊 Resum final: 0 èxits, 105 errors
+
+📈 Estadístiques per curs:
+   - Disseny 2n: 50 slots
+   - Disseny 3r: 14 slots
+   - Disseny 4t: 13 slots
+   - Belles Arts: 28 slots

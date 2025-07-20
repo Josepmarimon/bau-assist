@@ -1,0 +1,73 @@
+{
+  "version": "3.0",
+  "description": "Plantilla per assignar horaris i aules a grups d'assignatures",
+  "instructions": {
+    "important": "Aquest sistema es basa en GRUPS D'ASSIGNATURES, no en grups d'estudiants",
+    "subject_group_id": "ID únic del grup d'assignatura (teoria, pràctica, etc.)",
+    "teacher_ids": "Array d'IDs dels professors assignats",
+    "classroom_ids": "Array d'IDs de les aules assignades",
+    "time_slot_id": "ID de la franja horària (dia + hora)",
+    "hours_per_week": "Hores setmanals d'aquest grup",
+    "color": "Color per visualització (hex)",
+    "notes": "Notes opcionals"
+  },
+  "assignments": [
+    {
+      "subject_group_id": "{{ID del grup de teoria de Fonaments del Disseny}}",
+      "semester_id": "{{ID del semestre}}",
+      "teacher_ids": ["{{ID professor 1}}"],
+      "classroom_ids": ["{{ID aula P.05}}"],
+      "time_slot_id": "{{ID franja Dilluns 9:00-11:00}}",
+      "hours_per_week": 2,
+      "color": "#3B82F6",
+      "notes": "Classe magistral"
+    },
+    {
+      "subject_group_id": "{{ID del grup de pràctica de Fonaments del Disseny}}",
+      "semester_id": "{{ID del semestre}}",
+      "teacher_ids": ["{{ID professor 1}}", "{{ID professor 2}}"],
+      "classroom_ids": ["{{ID aula G1.1}}", "{{ID aula G1.2}}"],
+      "time_slot_id": "{{ID franja Dimecres 15:00-18:00}}",
+      "hours_per_week": 3,
+      "color": "#10B981",
+      "notes": "Pràctica dividida en dues aules"
+    }
+  ],
+  "example_real": {
+    "description": "Exemple amb IDs reals (substitueix amb els teus)",
+    "assignments": [
+      {
+        "subject_group_id": "550e8400-e29b-41d4-a716-446655440001",
+        "semester_id": "550e8400-e29b-41d4-a716-446655440002",
+        "teacher_ids": ["550e8400-e29b-41d4-a716-446655440003"],
+        "classroom_ids": ["550e8400-e29b-41d4-a716-446655440004"],
+        "time_slot_id": "550e8400-e29b-41d4-a716-446655440005",
+        "hours_per_week": 4,
+        "color": "#8B5CF6",
+        "notes": "Laboratori de disseny digital"
+      }
+    ]
+  },
+  "group_types_info": {
+    "note": "Els tipus de grup s'infereixen del group_code:",
+    "patterns": {
+      "_TEORIA o -T o acaba en T": "Teoria",
+      "_PRACTICA o -P o conté M": "Pràctica",
+      "_LAB o LAB": "Laboratori",
+      "_SEM o SEM": "Seminari"
+    }
+  },
+  "workflow": {
+    "step_1": "Executa: npm run export-subject-groups",
+    "step_2": "Identifica els grups d'assignatures que vols assignar",
+    "step_3": "Troba els IDs de professors, aules i franges horàries",
+    "step_4": "Crea les assignacions seguint aquesta plantilla",
+    "step_5": "Executa: npm run import-subject-groups-schedule"
+  },
+  "validation_rules": {
+    "no_conflicts": "Una aula no pot tenir dues assignacions simultànies",
+    "teacher_availability": "Un professor no pot estar en dos llocs alhora",
+    "capacity_check": "La capacitat de l'aula >= max_students del grup",
+    "time_slot_match": "El time_slot_id ha d'existir a la BD"
+  }
+}

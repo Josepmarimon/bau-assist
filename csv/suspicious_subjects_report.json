@@ -1,0 +1,41 @@
+{
+  "generated_at": "2025-07-14T16:26:39.670Z",
+  "total_suspicious": 3,
+  "by_confidence": {
+    "high": 2,
+    "medium": 1,
+    "low": 0
+  },
+  "subjects": [
+    {
+      "id": "7721bc41-f98d-46b0-832b-7b83593508d7",
+      "code": "EMPRESA_I_",
+      "name": "Empresa i Economia,",
+      "year": 2,
+      "type": "obligatoria",
+      "reason": "Ends with punctuation (likely truncated)",
+      "hasAssignments": false,
+      "confidence": "high"
+    },
+    {
+      "id": "efe12b90-51a4-4ea3-9c0a-6173ccd2f3fa",
+      "code": "GM1B",
+      "name": "Gm1b",
+      "year": 3,
+      "type": "obligatoria",
+      "reason": "Group code pattern (Gm1, Gm2, etc.)",
+      "hasAssignments": false,
+      "confidence": "high"
+    },
+    {
+      "id": "ad63095b-bae6-40de-b2af-234c24bcc917",
+      "code": "GBA1_8168",
+      "name": "Mariona Moncunill P0.2/0.4",
+      "year": 1,
+      "type": "obligatoria",
+      "reason": "Contains forward slash (possible file path or date)",
+      "hasAssignments": false,
+      "confidence": "medium"
+    }
+  ]
+}

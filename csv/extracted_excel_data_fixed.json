@@ -1,0 +1,2249 @@
+{
+  "extraction_date": "2025-07-14T12:42:05.402069",
+  "total_files_processed": 9,
+  "summary": {
+    "total_entries": 138,
+    "grado_GDIS": 135,
+    "curso_1r": 48,
+    "curso_2n": 23,
+    "itinerari_Gràfic": 18,
+    "itinerari_Audiovisual": 12,
+    "curso_3r": 38,
+    "itinerari_Web": 13,
+    "itinerari_Moda": 10,
+    "itinerari_Interiors": 3,
+    "curso_4t": 29,
+    "itinerari_Tipografia": 2,
+    "grado_GBA": 3
+  },
+  "data": [
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Fonaments del Disseny I",
+      "grupo": "M1",
+      "aulas": [
+        "P1.5"
+      ],
+      "profesor": "Laura Ginés",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller de Dibuix Artístic",
+      "grupo": "M1",
+      "aulas": [
+        "L0.1"
+      ],
+      "profesor": "Montse Casacuberta",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller d’Expressió i Comunicació",
+      "grupo": "M1",
+      "aulas": [
+        "G1.1"
+      ],
+      "profesor": "Marta Camps",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iconografia i Comunicació",
+      "grupo": "M1",
+      "aulas": [
+        "P0.12"
+      ],
+      "profesor": "Jorge Luis Marzo",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iconografia i Comunicació",
+      "grupo": "M1",
+      "aulas": [
+        "P0.12"
+      ],
+      "profesor": "Jorge Luis Marzo",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller d’Expressió i Comunicació",
+      "grupo": "M1",
+      "aulas": [
+        "G1.1"
+      ],
+      "profesor": "Marta Camps",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Fonaments del Disseny II",
+      "grupo": "M1",
+      "aulas": [
+        "P1.5"
+      ],
+      "profesor": "Laura Ginés",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller de Color",
+      "grupo": "M1",
+      "aulas": [
+        "L0.1"
+      ],
+      "profesor": "Montse Casacuberta",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Antropologia Sociocultural",
+      "grupo": "M1",
+      "aulas": [
+        "P1.16"
+      ],
+      "profesor": "Marina Riera",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Estètica i Teoria de les Arts",
+      "grupo": "M1",
+      "aulas": [
+        "P1.16"
+      ],
+      "profesor": "Alejandra López Gabrielidis",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Eines Informatiques II",
+      "grupo": "M1",
+      "aulas": [
+        "P1.2",
+        "P1.3",
+        "P1.12",
+        "P1.8",
+        "G2.1",
+        "Platós",
+        "Sala Carolines"
+      ],
+      "profesor": "Glòria Deumal Ricard Marimon Daniel Tahmaz",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Fonaments del Disseny I",
+      "grupo": "M1",
+      "aulas": [
+        "P0.8"
+      ],
+      "profesor": "Marina Gil",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller de Dibuix Artístic",
+      "grupo": "M1",
+      "aulas": [
+        "L0.1"
+      ],
+      "profesor": "Laura Gual",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iconografia i Comunicació",
+      "grupo": "M1",
+      "aulas": [
+        "P0.12"
+      ],
+      "profesor": "Jorge Luis Marzo",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller d’Expressió i Comunicació",
+      "grupo": "M1",
+      "aulas": [
+        "G1.1"
+      ],
+      "profesor": "Marta Camps",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller d’Expressió i Comunicació",
+      "grupo": "M1",
+      "aulas": [
+        "G1.1"
+      ],
+      "profesor": "Marta Camps",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iconografia i Comunicació",
+      "grupo": "M1",
+      "aulas": [
+        "P0.12"
+      ],
+      "profesor": "Jorge Luis Marzo",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Fonaments del Disseny II",
+      "grupo": "M1",
+      "aulas": [
+        "P0.8"
+      ],
+      "profesor": "Marina Gil",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller de Color",
+      "grupo": "M1",
+      "aulas": [
+        "L0.1"
+      ],
+      "profesor": "Laura Gual",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Estètica i Teoria de les Arts",
+      "grupo": "M1",
+      "aulas": [
+        "P1.9"
+      ],
+      "profesor": "Arnau Horta",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Antropologia Sociocultural",
+      "grupo": "M1",
+      "aulas": [
+        "P0.8"
+      ],
+      "profesor": "Marina Riera",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Eines Informatiques II",
+      "grupo": "M1",
+      "aulas": [
+        "P1.2",
+        "P1.3",
+        "P1.12",
+        "P1.8",
+        "G2.1",
+        "Platós",
+        "Sala Carolines"
+      ],
+      "profesor": "Glòria Deumal Ricard Marimon Daniel Tahmaz",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller de Dibuix Artístic",
+      "grupo": "M1",
+      "aulas": [
+        "L0.1"
+      ],
+      "profesor": "Montse Casacuberta",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Fonaments del Disseny I",
+      "grupo": "M1",
+      "aulas": [
+        "P0.2/0.4"
+      ],
+      "profesor": "Nico Juárez .4",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Antropologia Sociocultural",
+      "grupo": "M1",
+      "aulas": [
+        "P1.16"
+      ],
+      "profesor": "Marina Riera",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Estètica i Teoria de les Arts",
+      "grupo": "M1",
+      "aulas": [
+        "P1.16"
+      ],
+      "profesor": "Alejandra López Gabrielidis",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Eines Informatiques I",
+      "grupo": "M1",
+      "aulas": [
+        "P1.2",
+        "P1.3",
+        "P1.8",
+        "P1.12",
+        "G2.1",
+        "Platós",
+        "Sala Carolines"
+      ],
+      "profesor": "Glòria Deumal Elisenda Fontarnau Pau Pericas",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller de Dibuix Artístic",
+      "grupo": "M1",
+      "aulas": [
+        "L0.1"
+      ],
+      "profesor": "Anna Clemente",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Estètica i Teoria de les Arts",
+      "grupo": "M1",
+      "aulas": [
+        "P1.9"
+      ],
+      "profesor": "Arnau Horta",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Fonaments del Disseny I",
+      "grupo": "M1",
+      "aulas": [
+        "P1.7"
+      ],
+      "profesor": "Josep M. Marimon",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Antropologia Sociocultural",
+      "grupo": "M1",
+      "aulas": [
+        "P1.9"
+      ],
+      "profesor": "Marina Riera",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Eines Informatiques II",
+      "grupo": "M1",
+      "aulas": [
+        "P1.2",
+        "P1.3",
+        "P1.8",
+        "P1.12",
+        "G2.1",
+        "Platós",
+        "Sala Carolines"
+      ],
+      "profesor": "Glòria Deumal Ricard Marimon Daniel Tahmaz",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller d’Expressió i Comunicació",
+      "grupo": "M1",
+      "aulas": [
+        "G1.1"
+      ],
+      "profesor": "Crisal Rodriguez",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iconografia i Comunicació",
+      "grupo": "M1",
+      "aulas": [
+        "P1.16"
+      ],
+      "profesor": "Jorge Luis Marzo",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Fonaments del Disseny I",
+      "grupo": "M1",
+      "aulas": [
+        "P1.5"
+      ],
+      "profesor": "Pierino dal Pozzo",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller de Dibuix Artístic",
+      "grupo": "M1",
+      "aulas": [
+        "L0.2"
+      ],
+      "profesor": "Laura Gual",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iconografia i Comunicació",
+      "grupo": "M1",
+      "aulas": [
+        "P1.16"
+      ],
+      "profesor": "Jorge Luis Marzo",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller d’Expressió i Comunicació",
+      "grupo": "M1",
+      "aulas": [
+        "G1.1"
+      ],
+      "profesor": "Crisal Rodriguez",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Estètica i Teoria de les Arts",
+      "grupo": "M1",
+      "aulas": [
+        "P1.16"
+      ],
+      "profesor": "Arnau Horta",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Antropologia Sociocultural",
+      "grupo": "M1",
+      "aulas": [
+        "P1.16"
+      ],
+      "profesor": "Marina Riera",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Fonaments del Disseny II",
+      "grupo": "M1",
+      "aulas": [
+        "P1.5"
+      ],
+      "profesor": "Pierino dal Pozzo",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller de Color",
+      "grupo": "M1",
+      "aulas": [
+        "L0.1"
+      ],
+      "profesor": "Laura Gual",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Eines Informatiques I",
+      "grupo": "M1",
+      "aulas": [
+        "P1.2",
+        "P1.3",
+        "P1.12",
+        "P1.8",
+        "G2.1",
+        "Platós",
+        "Sala Carolines"
+      ],
+      "profesor": "Anna Ferré Elisenda Fontarnau Pau Pericas",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Estètica i Teoria de les Arts",
+      "grupo": "M1",
+      "aulas": [
+        "P1.16"
+      ],
+      "profesor": "Alejandra López Gabrielidis",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Antropologia Sociocultural",
+      "grupo": "M1",
+      "aulas": [
+        "P1.16"
+      ],
+      "profesor": "Marina Riera",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Fonaments del Disseny I",
+      "grupo": "M1",
+      "aulas": [
+        "L0.1"
+      ],
+      "profesor": "Nico Juárez",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller de Dibuix Artístic",
+      "grupo": "M1",
+      "aulas": [
+        "L0.1"
+      ],
+      "profesor": "Anna Clemente",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "1r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Eines Informatiques II",
+      "grupo": "M1",
+      "aulas": [
+        "P1.2",
+        "P1.3",
+        "G2.1",
+        "Platós",
+        "Sala Carolines"
+      ],
+      "profesor": "Glòria Deumal Ricard Marimon Daniel Tahmaz",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_1r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iniciació als Projectes de Disseny I",
+      "grupo": "M1",
+      "aulas": [],
+      "profesor": "Tutories",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Audiovisual",
+      "asignatura": "Llenguatges Audiovisuals I",
+      "grupo": "M1",
+      "aulas": [
+        "L1.2"
+      ],
+      "profesor": "Nico Juárez",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Economia, Empresa i Disseny",
+      "grupo": "M1",
+      "aulas": [
+        "P1.7"
+      ],
+      "profesor": "Mariona Moncunill",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iniciació als Projectes de Disseny I",
+      "grupo": "M1",
+      "aulas": [],
+      "profesor": "Tutories",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iniciació als Projectes de Disseny I",
+      "grupo": "M1",
+      "aulas": [],
+      "profesor": "Tutories",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller de Creativitat",
+      "grupo": "M1",
+      "aulas": [
+        "G1.3"
+      ],
+      "profesor": "Camila Maggi",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Història del Disseny",
+      "grupo": "M1",
+      "aulas": [
+        "P0.6"
+      ],
+      "profesor": "Mª Isabel del Río",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Audiovisual",
+      "asignatura": "Llenguatges Audiovisuals II",
+      "grupo": "M1",
+      "aulas": [
+        "P1.5"
+      ],
+      "profesor": "Laura Subirats",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Expressió Gràfica I",
+      "grupo": "M1",
+      "aulas": [],
+      "profesor": "Tutories",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iniciació als Projectes de Disseny I",
+      "grupo": "M1",
+      "aulas": [],
+      "profesor": "Tutories",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Gm1",
+      "grupo": "M1",
+      "aulas": [],
+      "profesor": "1r SEMESTRE",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Iniciació als Projectes de Disseny I",
+      "grupo": "M1",
+      "aulas": [
+        "P0.12"
+      ],
+      "profesor": "Mariona Garcia",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Expressió Gràfica I",
+      "grupo": "M1",
+      "aulas": [
+        "P0.5/0.7"
+      ],
+      "profesor": "David Martin .7",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Expressió Gràfica II",
+      "grupo": "M1",
+      "aulas": [
+        "P0.5/0.7"
+      ],
+      "profesor": "David Martin .7",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iniciació als Projectes de Disseny II",
+      "grupo": "M1",
+      "aulas": [
+        "P0.12"
+      ],
+      "profesor": "Mireia Carbonell",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Expressió Gràfica I",
+      "grupo": "M1",
+      "aulas": [
+        "P1.2"
+      ],
+      "profesor": "Guillem Castellví Jose Ramon Madrid",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iniciació als Projectes de Disseny I",
+      "grupo": "M1",
+      "aulas": [
+        "Sala Carolines"
+      ],
+      "profesor": "Laura Ginés",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Expressió Gràfica I",
+      "grupo": "M1",
+      "aulas": [],
+      "profesor": "Marta Morralla Pt.2 portàtils",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iniciació als Projectes de Disseny I",
+      "grupo": "M1",
+      "aulas": [
+        "P2.1"
+      ],
+      "profesor": "Elisa Amann",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Expressió Gràfica I",
+      "grupo": "M1",
+      "aulas": [
+        "G0.1"
+      ],
+      "profesor": "Laura Solsona",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iniciació als Projectes de Disseny I",
+      "grupo": "M1",
+      "aulas": [
+        "G0.4"
+      ],
+      "profesor": "Lluís Alexandre Casanovas",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Expressió Gràfica II",
+      "grupo": "M1",
+      "aulas": [
+        "G0.1"
+      ],
+      "profesor": "Laura Solsona",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "2n",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Iniciació als Projectes de Disseny II",
+      "grupo": "M1",
+      "aulas": [
+        "G0.4"
+      ],
+      "profesor": "Lluís Alexandre Casanovas",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_2n_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Taller de Gràfic i Comunicació Visual I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.7"
+      ],
+      "profesor": "Gm1a David Torrents",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Cultura de la Imatge I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.10"
+      ],
+      "profesor": "Mª Àngels Fortea",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Projectes de Disseny Gràfic I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.10"
+      ],
+      "profesor": "Pau de Riba",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Taller de Gràfic i Comunicació Visual II",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.7"
+      ],
+      "profesor": "Arnau Pi Adrià Molins",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Cultura de la Imatge II",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.10"
+      ],
+      "profesor": "Mª Àngels Fortea",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Projectes de Disseny Gràfic II",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.5/0.7"
+      ],
+      "profesor": "Nadia Speranza .7",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Audiovisual",
+      "asignatura": "Taller d’Audiovisual I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.12"
+      ],
+      "profesor": "Luis Colaço Jose Ramon Madrid",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Audiovisual",
+      "asignatura": "Projectes de Disseny Audiovisual I",
+      "grupo": "Unknown",
+      "aulas": [
+        "L1.2"
+      ],
+      "profesor": "Josep M. Marimon",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Web",
+      "asignatura": "Animació Digital I",
+      "grupo": "Unknown",
+      "aulas": [
+        "L1.4"
+      ],
+      "profesor": "Frank Maria Lt1.3 Lt1.4",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Web",
+      "asignatura": "Creació i Autoria Digital I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.8"
+      ],
+      "profesor": "Roger Vicente",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Audiovisual",
+      "asignatura": "Cultura Audiovisual I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.12"
+      ],
+      "profesor": "Ricardo Íscar",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Audiovisual",
+      "asignatura": "Taller d’Audiovisual II",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.2"
+      ],
+      "profesor": "Núria Font Jose Ramon Madrid L12 (a partir 28/04)",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Audiovisual",
+      "asignatura": "Projectes de Disseny Audiovisual II",
+      "grupo": "Unknown",
+      "aulas": [
+        "L1.2"
+      ],
+      "profesor": "Guillem Castellví",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Web",
+      "asignatura": "Creació i Autoria Digital II",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.12"
+      ],
+      "profesor": "Àlex Valverde Jorge Caballero Mª José Díaz",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Audiovisual",
+      "asignatura": "Cultura Audiovisual II",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.9"
+      ],
+      "profesor": "Núria Nia",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Web",
+      "asignatura": "Animació Digital II",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.4"
+      ],
+      "profesor": "Albert Gavaldà",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Moda",
+      "asignatura": "Projectes de Disseny de Moda I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P2.2"
+      ],
+      "profesor": "Joan Martorello",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Moda",
+      "asignatura": "Història de la Moda I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.6"
+      ],
+      "profesor": "Sílvia Rosés",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Anàlisi i Teoria dels Teixits",
+      "grupo": "Unknown",
+      "aulas": [
+        "L0.4"
+      ],
+      "profesor": "Claudio Marzà Portàtils (octubre)",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Moda",
+      "asignatura": "Projectes de Disseny de Moda II",
+      "grupo": "Unknown",
+      "aulas": [
+        "P2.2"
+      ],
+      "profesor": "Elisa Amann",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Moda",
+      "asignatura": "Història de la Moda II",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.6"
+      ],
+      "profesor": "Sílvia Rosés",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Imatge i Comunicació",
+      "grupo": "Unknown",
+      "aulas": [
+        "P2.1"
+      ],
+      "profesor": "Núria Gómez Gabriel",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Moda",
+      "asignatura": "Projectes de Disseny de Moda I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P2.2"
+      ],
+      "profesor": "Joan Martorello",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Moda",
+      "asignatura": "Història de la Moda I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P2.2"
+      ],
+      "profesor": "Sílvia Rosés",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Anàlisi i Teoria dels Teixits",
+      "grupo": "Unknown",
+      "aulas": [
+        "L0.4",
+        "P1.3"
+      ],
+      "profesor": "Claudio Marzà (octubre)",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Moda",
+      "asignatura": "Projectes de Disseny de Moda II",
+      "grupo": "Unknown",
+      "aulas": [
+        "P2.2"
+      ],
+      "profesor": "Elisa Amann",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Moda",
+      "asignatura": "Història de la Moda II",
+      "grupo": "Unknown",
+      "aulas": [
+        "P2.2"
+      ],
+      "profesor": "Sílvia Rosés",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Imatge i Comunicació",
+      "grupo": "Unknown",
+      "aulas": [
+        "P2.1"
+      ],
+      "profesor": "Núria Gómez Gabriel",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Interiors",
+      "asignatura": "Projectes de Disseny d’Interiors I",
+      "grupo": "Unknown",
+      "aulas": [
+        "G1.3"
+      ],
+      "profesor": "Clàudia Raurell",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Tècniques Infogràfiques I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.12"
+      ],
+      "profesor": "Ricard Marimon",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Interiors",
+      "asignatura": "Història del Disseny d’Interiors I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.6"
+      ],
+      "profesor": "Nataly dal Pozzo",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Construcció i Instal·lacions I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P2.1"
+      ],
+      "profesor": "David Ortega",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": "Interiors",
+      "asignatura": "Tècniques Infogràfiques I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.12"
+      ],
+      "profesor": "Ricard Marimon",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller d’Espai I",
+      "grupo": "Unknown",
+      "aulas": [
+        "G0.4"
+      ],
+      "profesor": "Camila Maggi",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Construcció i Instal·lacions I",
+      "grupo": "Unknown",
+      "aulas": [
+        "P2.1"
+      ],
+      "profesor": "David Ortega",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_3r_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Web",
+      "asignatura": "Introducció al Disseny Web",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.4"
+      ],
+      "profesor": "Jordi Galobart",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Disseny i Publicitat",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.8"
+      ],
+      "profesor": "Gabriel Ventura",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Taller de Gràfic i Comunicació Visual III",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.5/0.7"
+      ],
+      "profesor": "David Ortiz .7",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Projectes de Disseny Gràfic III",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.2/0.4"
+      ],
+      "profesor": "Roc Albalat .4",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Programació per a Dissenyadors",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.4"
+      ],
+      "profesor": "Lucía Segurajáuregui",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Programació per a Dissenyadors",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.6"
+      ],
+      "profesor": "Anna Carreras",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Projectes de Disseny Gràfic III",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.7"
+      ],
+      "profesor": "Roc Albalat",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Disseny i Publicitat",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.8"
+      ],
+      "profesor": "Gabriel Ventura",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Gràfic",
+      "asignatura": "Taller de Gràfic i Comunicació Visual III",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.5/0.7"
+      ],
+      "profesor": "David Ortiz .7",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Web",
+      "asignatura": "Introducció al Disseny Web",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.6"
+      ],
+      "profesor": "Jordi Galobart",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Audiovisual",
+      "asignatura": "Taller d’Audiovisual III",
+      "grupo": "Unknown",
+      "aulas": [
+        "L1.2"
+      ],
+      "profesor": null,
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Tipografia",
+      "asignatura": "Tipografia en Moviment",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.2"
+      ],
+      "profesor": "Raül Maldonado",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Web",
+      "asignatura": "Animació Digital III",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.12"
+      ],
+      "profesor": "Xavier Maixenchs",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Web",
+      "asignatura": "Creació i Autoria Digital III",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.12"
+      ],
+      "profesor": "Citlali Hernández",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Audiovisual",
+      "asignatura": "Projectes de Disseny Audiovisual III",
+      "grupo": "Unknown",
+      "aulas": [
+        "L1.2"
+      ],
+      "profesor": "Núria Nia",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Web",
+      "asignatura": "Creació i Autoria Digital IV",
+      "grupo": "Unknown",
+      "aulas": [
+        "Sala Carolines"
+      ],
+      "profesor": "Mónica Rikic Luis Colaço",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "TFG",
+      "itinerari": "Web",
+      "asignatura": "Treball Final de Grau",
+      "grupo": "Unknown",
+      "aulas": [
+        "Sala Carolines"
+      ],
+      "profesor": "Laura Ginés Núria Nia Taller Interactiu",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Audiovisual",
+      "asignatura": "Taller d’Audiovisual III",
+      "grupo": "Unknown",
+      "aulas": [
+        "Sala Carolines"
+      ],
+      "profesor": null,
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Tipografia",
+      "asignatura": "Tipografia en Moviment",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.8"
+      ],
+      "profesor": "Raül Maldonado",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Web",
+      "asignatura": "Animació Digital III",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.12"
+      ],
+      "profesor": "Xavier Maixenchs",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Audiovisual",
+      "asignatura": "Projectes de Disseny Audiovisual III",
+      "grupo": "Unknown",
+      "aulas": [
+        "Sala Carolines"
+      ],
+      "profesor": "Núria Nia",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Web",
+      "asignatura": "Creació i Autoria Digital III",
+      "grupo": "Unknown",
+      "aulas": [
+        "P1.12"
+      ],
+      "profesor": "Citlali Hernández",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Web",
+      "asignatura": "Creació i Autoria Digital IV",
+      "grupo": "Unknown",
+      "aulas": [],
+      "profesor": "Mónica Rikic Luis Colaço",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "TFG",
+      "itinerari": null,
+      "asignatura": "Treball Final de Grau",
+      "grupo": "Unknown",
+      "aulas": [
+        "Sala Carolines"
+      ],
+      "profesor": "Laura Ginés Núria Nia",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Moda",
+      "asignatura": "Projectes de Disseny de Moda III",
+      "grupo": "Unknown",
+      "aulas": [
+        "P2.1"
+      ],
+      "profesor": "Ingrid Pou",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": "Moda",
+      "asignatura": "Taller de Moda III",
+      "grupo": "Unknown",
+      "aulas": [
+        "P2.2"
+      ],
+      "profesor": "Joan Ros",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Manipulació i Estampació de Teixits",
+      "grupo": "Unknown",
+      "aulas": [
+        "G0.2"
+      ],
+      "profesor": "Núria Costa",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Construcció i Instal·lacions IV",
+      "grupo": "Unknown",
+      "aulas": [
+        "G0.1"
+      ],
+      "profesor": "Kike Macías",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Disseny",
+      "grado_code": "GDIS",
+      "curso": "4t",
+      "semestre": 2,
+      "tipo": "TFG",
+      "itinerari": null,
+      "asignatura": "Treball Final de Grau",
+      "grupo": "Unknown",
+      "aulas": [],
+      "profesor": "Pierino dal Pozzo",
+      "es_placeholder": false,
+      "archivo": "HorarisGDIS_4t_2526.xlsx"
+    },
+    {
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "d’Artista",
+      "grupo": "Unknown",
+      "aulas": [
+        "P0.10"
+      ],
+      "profesor": "Alba Font Villar",
+      "es_placeholder": false,
+      "archivo": "Horaris_GBA_3r_4t_Optativitat_2526.xlsx"
+    },
+    {
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Taller de",
+      "grupo": "Unknown",
+      "aulas": [],
+      "profesor": "Pedagogies",
+      "es_placeholder": false,
+      "archivo": "Horaris_GBA_3r_4t_Optativitat_2526.xlsx"
+    },
+    {
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": 1,
+      "tipo": "Obligatoria",
+      "itinerari": null,
+      "asignatura": "Experimentals",
+      "grupo": "Unknown",
+      "aulas": [],
+      "profesor": "Juan David Galindo",
+      "es_placeholder": false,
+      "archivo": "Horaris_GBA_3r_4t_Optativitat_2526.xlsx"
+    }
+  ],
+  "fixed": true,
+  "fix_summary": {
+    "original_entries": 169,
+    "removed_entries": 31,
+    "fixed_entries": 15,
+    "final_entries": 138
+  }
+}

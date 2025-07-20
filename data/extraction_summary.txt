@@ -1,0 +1,18 @@
+BAU Schedule Extraction Summary
+Academic Year: 2025-2026
+Extraction Date: 2025-07-11
+Total Groups: 86
+
+Groups by degree and course:
+  Grau en Belles Arts - 1r curs: 2 groups
+  Grau en Belles Arts - 3r curs: 3 groups
+  Grau en Belles Arts - 4r curs: 3 groups
+  Grau en Disseny - 1r curs: 14 groups
+  Grau en Disseny - 2r curs: 30 groups
+  Grau en Disseny - 3r curs: 16 groups
+  Grau en Disseny - 3r curs (Gràfic): 2 groups
+  Grau en Disseny - 4r curs: 16 groups
+
+Total Classes: 336
+Classes with classroom: 285 (84.8%)
+Classes without classroom: 51 (15.2%)

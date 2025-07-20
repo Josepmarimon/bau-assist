@@ -1,0 +1,25 @@
+BAU Schedule Extraction Summary (V3)
+Academic Year: 2025-2026
+Extraction Date: 2025-07-11 18:01:11
+Total Groups: 23
+
+Groups by degree and course:
+  Grau en Belles Arts - 1 curs: 1 groups
+  Grau en Belles Arts - 3 curs: 1 groups
+  Grau en Belles Arts - 4 curs: 1 groups
+  Grau en Disseny - 1 curs: 7 groups
+  Grau en Disseny - 2 curs: 7 groups
+  Grau en Disseny - 3 curs: 1 groups
+  Grau en Disseny - 3 curs (Gràfic): 3 groups
+  Grau en Disseny - 4 curs: 1 groups
+  Grau en Disseny - 4 curs (Gràfic): 1 groups
+
+Total Classes: 235
+Classes with classroom: 182 (77.4%)
+Classes without classroom: 53 (22.6%)
+
+Subjects without classrooms:
+  - Disseny
+  - Expressió Gràfica
+  - Optativitat
+  - Taller de Color Montse

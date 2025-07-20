@@ -1,0 +1,2201 @@
+{
+  "export_date": "2025-07-18T09:22:06.155Z",
+  "description": "IDs únics de totes les entitats per importació d'horaris",
+  "student_groups": {},
+  "subjects": {
+    "d8c68bf1-18d9-4e0a-b243-abb4def9b03e": {
+      "code": "GBB001",
+      "name": "2D, Llenguatges, Tècniques i Tecnologies",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "2e23bde7-d6cf-4e94-9236-6ad43ba9ad7a": {
+      "code": "GBB021",
+      "name": "3D, Llenguatges, Tècniques i Tecnologies",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "15ff88eb-67b3-40e2-87b7-128e5dca76ed": {
+      "code": "GBB011",
+      "name": "4D, Llenguatges, Tècniques i Tecnologies",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "72c4e437-41a2-42f6-8ee1-7c1269573475": {
+      "code": "GDF031",
+      "name": "Antropologia Sociocultural",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "0d0ff898-13a7-4f38-87ce-973561107d86": {
+      "code": "GBF051",
+      "name": "Art, Institució i Mercat",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "fe082465-06a8-4ee2-b726-f318cc053436": {
+      "code": "GDF011",
+      "name": "Eines Informàtiques I",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "0867ac2f-12f9-472c-bb4d-8fce1c313cc3": {
+      "code": "GDF051",
+      "name": "Eines Informàtiques II",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "6a983e72-01c1-45fd-8741-4853ce9d9446": {
+      "code": "GBF031",
+      "name": "Estètica",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "9995dd5b-8f75-4495-b42f-22a308f296b8": {
+      "code": "GDF071",
+      "name": "Estètica i Teoria de les Arts",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "9878a74c-abb6-49bd-bbe2-1bc733ca4710": {
+      "code": "GDB001",
+      "name": "Fonaments del Disseny I",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "9acd432b-aacf-4014-b8b2-58b6ecffc367": {
+      "code": "GDB011",
+      "name": "Fonaments del Disseny II",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "4a4e4fca-a449-424f-af2f-80e866adf66a": {
+      "code": "GDF061",
+      "name": "Iconografia i Comunicació",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "ae8c8d77-dc81-43d4-8453-ce10249cb901": {
+      "code": "GBB031",
+      "name": "Laboratori de Processos i Projectes I",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "7fef0c8a-1fa7-4b94-83d9-2e4be6fb5164": {
+      "code": "GBF001",
+      "name": "Pensament Modern i Pràctiques Artístiques",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c": {
+      "code": "GDF021",
+      "name": "Taller d'Expressió i Comunicació",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "edb4de1b-10a1-4b43-948c-1170f35c2956": {
+      "code": "GDF041",
+      "name": "Taller de Color",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "22837e2d-4931-41a1-bd7a-2e56c79b2b74": {
+      "code": "GDF001",
+      "name": "Taller de Dibuix Artístic",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "1e37d409-8198-4f8c-a594-365160c1fefc": {
+      "code": "GBF011",
+      "name": "Taller de Dibuix I",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "751a35ea-5d28-49d2-b5df-52bbb051b10d": {
+      "code": "GBF041",
+      "name": "Taller de Dibuix II",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "549afc16-4571-4adb-ae18-5247272e2b29": {
+      "code": "GBF021",
+      "name": "Visualisation and Documentation Workshop",
+      "year": 1,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "9653cf53-34af-401e-a0f6-016e6942db4f": {
+      "code": "GBB002",
+      "name": "2D, Llenguatges, Tècniques i Tecnologies Instal·lades",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "90aeeefa-6941-49f6-ad2a-8d976cf2dc81": {
+      "code": "GBB032",
+      "name": "3D, Llenguatges, Tècniques i Tecnologies Instal·lades",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "e3528f67-80d9-4463-a865-421bc0256d3e": {
+      "code": "GBB012",
+      "name": "4D, Llenguatges, Tècniques i Tecnologies Instal·lades",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "34c13eb2-6660-4536-9f40-19964859b161": {
+      "code": "GBF022",
+      "name": "Antropologia",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "08e469dc-da66-4894-b6c4-a40d8671d3da": {
+      "code": "GBF032",
+      "name": "Art, Activisme, Mediació i Pedagogia",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "1cf9443a-fe39-4931-9015-0a20fb189021": {
+      "code": "GDB052",
+      "name": "Economia, Empresa i Disseny",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "7f5af720-7cdb-474f-be09-4fe2e281cc29": {
+      "code": "GDB012",
+      "name": "Expressió Gràfica I",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "aba834c1-7ae1-4a43-9e35-8f5308e185de": {
+      "code": "GDB062",
+      "name": "Expressió Gràfica II",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "1130f830-c2b2-4e33-8755-8e0bfbcd36d6": {
+      "code": "GDB032",
+      "name": "Història del Disseny",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "ec426c8e-ec55-4a09-b520-4dc2c906de39": {
+      "code": "GDB022",
+      "name": "Iniciació als Projectes de Disseny I",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "5c2e973d-d068-4c28-9289-9c221f1cad57": {
+      "code": "GDB072",
+      "name": "Iniciació als Projectes de Disseny II",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "25e5e367-ccb8-4cf4-ae15-e142bca0fdc0": {
+      "code": "GBB022",
+      "name": "Laboratori de Processos i Projectes II",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "826b9c1d-588d-44dc-af81-5fd839e671e9": {
+      "code": "GBB052",
+      "name": "Laboratori de Processos i Projectes III",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "fc2f1536-88af-40a6-82c7-f498aa8ca963": {
+      "code": "GDB002",
+      "name": "Llenguatges Audiovisuals I",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "3ba133c2-ea8b-445d-8366-103e07f9125f": {
+      "code": "GDB042",
+      "name": "Llenguatges Audiovisuals II",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "58a27113-7759-4a62-bfd1-e60476408e0e": {
+      "code": "GBF002",
+      "name": "Pensament Contemporani i Pràctiques Artístiques",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "007cb498-3a57-4c46-8809-d1c0e4f8f99b": {
+      "code": "GDF012",
+      "name": "Taller de Creativitat",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "9599b289-060f-46bd-bdc5-592f03706327": {
+      "code": "GDF002",
+      "name": "Taller Tridimensional i d'Investigació Artística",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "a1eabaed-f078-48fc-a58b-941e93aae441": {
+      "code": "GBF012",
+      "name": "Writing and Communication Workshop",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "35905332-3ce9-48f5-9ef4-f92fe71870ad": {
+      "code": "GBB042",
+      "name": "XD, Llenguatges, Tècniques i Tecnologies",
+      "year": 2,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "f243e1eb-fb15-48be-97a1-59c9e53f7a93": {
+      "code": "GDVM23",
+      "name": "Anàlisi i Teoria dels Teixits",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "69ef14e6-a966-43cb-b9c4-77ac97e7678f": {
+      "code": "GDVA03",
+      "name": "Animació Digital I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "3467706b-22f0-401e-bc6b-2d3fa83a096a": {
+      "code": "GDVA53",
+      "name": "Animació Digital II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "e1fc7c1f-5496-4dec-baef-6eecc3aa93c5": {
+      "code": "GBB023",
+      "name": "Art Practices in Context Seminar I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "68ba6060-00ed-4b04-88f5-f9d35287726c": {
+      "code": "GDVI43",
+      "name": "Construcció i Instal·lacions I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "9c84be3f-7d33-40b2-bfc2-52b96667d615": {
+      "code": "GDVI93",
+      "name": "Construcció i Instal·lacions II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "76611a63-92b6-4d7d-89be-3fa28ffe5413": {
+      "code": "GDVA13",
+      "name": "Creació i Autoria Digital I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "f1b4dafb-dc6e-422b-a80e-815238b768b2": {
+      "code": "GDVA63",
+      "name": "Creació i Autoria Digital II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "ec8a45bf-67f1-4a34-9d8f-a81fcf131aa7": {
+      "code": "GDVA23",
+      "name": "Cultura Audiovisual I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "080de9c1-66b6-4b25-ae4f-c5a8a5b1384a": {
+      "code": "GDVA73",
+      "name": "Cultura Audiovisual II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "48c90d4b-8a06-4695-9d2b-089d50905a39": {
+      "code": "GDVG33",
+      "name": "Cultura de la Imatge I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "ab491a4e-6a51-4b64-a37c-1997b5d8ac5e": {
+      "code": "GDVG83",
+      "name": "Cultura de la Imatge II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "c9137190-8c01-4123-b0ef-f8f5cc8e97b0": {
+      "code": "GBV04P",
+      "name": "Debats Contemporanis en les Arts i les Ciències Socials",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "d9bad1ee-a349-4261-a07a-323760a15e61": {
+      "code": "GBV03P",
+      "name": "Debats Contemporanis en les Arts i les Humanitats",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "01171c24-a766-4fa0-bddc-773332780503": {
+      "code": "GBV05P",
+      "name": "Debats Contemporanis en les Arts, les Ciències i les Tecnologies",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "51d31696-d4c6-467b-aa41-b8d09b82e71b": {
+      "code": "GDVM33",
+      "name": "Història de la Moda I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "3677187d-c01f-4adf-8d07-af1f38e5c543": {
+      "code": "GDVM83",
+      "name": "Història de la Moda II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "cf026efd-f638-4eee-b72f-95a10d65f4bf": {
+      "code": "GDVI33",
+      "name": "Història del Disseny d'Interiors I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "8ecb0371-409e-450d-89cf-a0d8a13fcfa1": {
+      "code": "GDVI83",
+      "name": "Història del Disseny d'Interiors II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "b16dd49b-3033-4973-bb8a-72bddf79f53b": {
+      "code": "GDVM73",
+      "name": "Imatge i Comunicació",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "98d5c516-c675-4b5f-886d-3a89d13d472f": {
+      "code": "GDVG43",
+      "name": "Infografia I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "8110fdb3-3361-4b07-b745-7396836d5ffc": {
+      "code": "GDVG93",
+      "name": "Infografia II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "a4043476-a6d5-4bff-92e5-44a0166c441c": {
+      "code": "GBB013",
+      "name": "Laboratori de Processos i Projectes IV",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "eb768767-79b3-48d8-8bb2-a9d643853d31": {
+      "code": "GBB033",
+      "name": "Laboratori de Processos i Projectes V",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "500c2d8a-16ac-4fac-96fd-118c8321e595": {
+      "code": "GDVM43",
+      "name": "Patronatge I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "ae6bad79-2d7e-4390-a868-bdd43330c466": {
+      "code": "GDVM93",
+      "name": "Patronatge II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "4f7177b8-3b82-48c7-82a8-05ca3b9ed504": {
+      "code": "GBB003",
+      "name": "Pràctiques Artístiques i Investigació",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "6140f9fa-0a09-4bff-a47e-5c784159421d": {
+      "code": "GBV01P",
+      "name": "Pràctiques Crítiques en les Arts i les Ciències Socials",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "24383b4a-f7d0-4381-bd78-f2a032cdb817": {
+      "code": "GBV00P",
+      "name": "Pràctiques Crítiques en les Arts i les Humanitats",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "a7db7248-6e75-4ac0-8ca2-7fda49c8d319": {
+      "code": "GBV02P",
+      "name": "Pràctiques Crítiques en les Arts, les Ciències i les Tecnologies",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "1ca4bdea-83c0-4b43-b649-2e6cc7cfa9cb": {
+      "code": "GDVA33",
+      "name": "Projectes de Disseny Audiovisual I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "c1e9cbd0-d818-4677-a65c-672a9e73d62c": {
+      "code": "GDVA83",
+      "name": "Projectes de Disseny Audiovisual II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "18cf3a62-18c4-4e62-ac3c-0597583e57a8": {
+      "code": "GDVI03",
+      "name": "Projectes de Disseny d'Interiors I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "dc577a0d-f2fc-4590-adff-81148ba37d66": {
+      "code": "GDVI53",
+      "name": "Projectes de Disseny d'Interiors II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "4fed4a77-5755-4d95-954b-a6c0318953fb": {
+      "code": "GDVM03",
+      "name": "Projectes de Disseny de Moda I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "d4aebd5f-7540-4519-b8c4-a88e54443bb3": {
+      "code": "GDVM53",
+      "name": "Projectes de Disseny de Moda II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "98acd819-f8ee-436e-88e2-e9b53efeeebd": {
+      "code": "GDVG03",
+      "name": "Projectes de Disseny Gràfic I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "736ed253-3eb0-47ae-98e4-d1f35bad5568": {
+      "code": "GDVG53",
+      "name": "Projectes de Disseny Gràfic II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "720416b7-9737-468c-84ca-6e94ff48b2c8": {
+      "code": "GBV08L",
+      "name": "Taller d'Animació i Stop Motion",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "c53850b7-7b40-4dfc-a330-b743156f34fd": {
+      "code": "GDVA43",
+      "name": "Taller d'Audiovisual I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "9a3f4d04-6035-473a-a9e1-5346a5d02c49": {
+      "code": "GDVA93",
+      "name": "Taller d'Audiovisual II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "48dee729-d7b9-440e-8826-931a2b58fed0": {
+      "code": "GBV13L",
+      "name": "Taller d'Edicions d'Artista",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "55f7f3c1-f00d-4ddd-8425-e6aaf80e3097": {
+      "code": "GDVI13",
+      "name": "Taller d'Espai I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "8fdfc829-6209-48c5-95c2-55ac42b591af": {
+      "code": "GDVI63",
+      "name": "Taller d'Espai II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "5f48ee79-4f45-4e00-95a1-e727ef909af0": {
+      "code": "GBV11L",
+      "name": "Taller d'Interacció",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "791dfeb5-1048-4ed2-9252-d74dae1f6b93": {
+      "code": "GBV00L",
+      "name": "Taller de Dibuix Experimental",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "fd7acaad-d979-46fa-803b-3681a91bb6a2": {
+      "code": "GBV05L",
+      "name": "Taller de Fabricació Digital",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "080c1c5d-76b0-4023-b53e-65c38bc5588f": {
+      "code": "GDVG13",
+      "name": "Taller de Gràfic i Comunicació Visual I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "f65fab84-9ba5-409f-b87e-6206c9110111": {
+      "code": "GDVG63",
+      "name": "Taller de Gràfic i Comunicació Visual II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "cebfff3d-c6c3-4091-88b2-ebb62c2b8872": {
+      "code": "GBV14L",
+      "name": "Taller de Materials Tous i Estampació",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "c2cf9ddc-5b51-4f7f-90a8-0e145d801337": {
+      "code": "GDVM13",
+      "name": "Taller de Moda I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "e1cda44d-59ad-4a19-b8d7-197f1cb9ffa0": {
+      "code": "GDVM63",
+      "name": "Taller de Moda II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "bb1e7a9b-5618-40b8-961d-d59a57447c91": {
+      "code": "GBV01L",
+      "name": "Taller de Pedagogies Experimentals",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "f63fb0ac-675a-4509-bb3a-4d94c357b9b9": {
+      "code": "GBV06L",
+      "name": "Taller de Performance i Acció",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "21f15019-752b-4e1a-9ff7-b22740fca5fc": {
+      "code": "GBV04L",
+      "name": "Taller de Procediments Escultòrics",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "05955095-46eb-41f2-a9fe-abfb2ca70f74": {
+      "code": "GBV02L",
+      "name": "Taller de Procediments Pictòrics",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "92c21bbd-8c69-4762-81f0-ced4f62cc71c": {
+      "code": "GBV03L",
+      "name": "Taller de Procediments Pictòrics Experimentals",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "42763976-b26b-43de-93fc-6f062bd59e16": {
+      "code": "GBV09L",
+      "name": "Taller de Videoart",
+      "year": 3,
+      "type": "optativa",
+      "credits": 6
+    },
+    "bd9e3fb6-ac89-4243-818d-a797962a362c": {
+      "code": "GDVI23",
+      "name": "Tècniques Infogràfiques I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "bd236aa4-6169-44cb-9693-5741a90a4519": {
+      "code": "GDVI73",
+      "name": "Tècniques Infogràfiques II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "fc73078f-5a05-4af8-bd55-1011522bc689": {
+      "code": "GDVG23",
+      "name": "Tipografia I",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "896ad885-128c-4a0e-8877-0929b17fe2de": {
+      "code": "GDVG73",
+      "name": "Tipografia II",
+      "year": 3,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "1037eeee-ea76-49e2-bc44-6036115d3024": {
+      "code": "GDVA04",
+      "name": "Animació Digital III",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "2fda29a1-aa92-433a-ae9c-091255724a78": {
+      "code": "GBB004",
+      "name": "Art Practices in Context Seminar II ",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "a22a6125-9fae-4161-9b95-cd6d48f82fb7": {
+      "code": "GDVI24",
+      "name": "Construcció i Instal·lacions III",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "b407d3a2-36e7-435c-ae4d-fdacb7af4831": {
+      "code": "GDVI54",
+      "name": "Construcció i Instal·lacions IV",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "e61b871d-643e-4ed7-8504-d58b65cee54f": {
+      "code": "GDVA14",
+      "name": "Creació i Autoria Digital III",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "f57ad65a-300a-446a-816d-68d9238ecc92": {
+      "code": "GDVA54",
+      "name": "Creació i Autoria Digital IV",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "91d41814-b76e-4561-805a-1714b31c334a": {
+      "code": "GDVG24",
+      "name": "Disseny i Comunicació",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "2ee2991d-4d5c-4444-b379-c5863579aea1": {
+      "code": "GDVG54",
+      "name": "Disseny i Publicitat",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "08ce4cb1-e391-48d4-bb4f-daf24abe78b2": {
+      "code": "GDVI44",
+      "name": "Gestió",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "4a742a94-1fa9-4690-a4b0-819f643db331": {
+      "code": "GDVG34",
+      "name": "Introducció al Disseny Web",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "0b12fa6e-3fe3-42e0-994b-b2da40498c75": {
+      "code": "GBB024",
+      "name": "Laboratori de Processos i Projectes VI",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "c0a0e182-f932-4b44-aeb1-828588429b99": {
+      "code": "GDVM34",
+      "name": "Manipulació i Estampació de Teixits",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "7675c2d7-9a09-47c3-b2f9-8da06d074da4": {
+      "code": "GDVM44",
+      "name": "Màrqueting i Moda",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "eaf7f938-aebd-4497-a7ae-182d8eed0866": {
+      "code": "GBB014",
+      "name": "Metodologies Transdisciplinàries i Experimentals",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "a3f55d0f-e7c6-4817-a40c-9d9fbc74ea9b": {
+      "code": "GDVM24",
+      "name": "Patronatge III",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "e262ab66-22e4-41aa-9766-a139748f8400": {
+      "code": "GDVM54",
+      "name": "Patronatge IV",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "86822f5c-1803-4c59-b813-803ac70e5d16": {
+      "code": "GDVI34",
+      "name": "Producte",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "c0d6f77f-d958-4289-b4fc-64445b20fbcb": {
+      "code": "GDVG44",
+      "name": "Programació per Dissenyadors",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "9602cc82-2d04-4c05-8f0c-d86a1fa87b06": {
+      "code": "GDVA24",
+      "name": "Projectes de Disseny Audiovisual III",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "40f33eb3-918d-42be-ba2b-b4d7f3570bf0": {
+      "code": "GDVI04",
+      "name": "Projectes de Disseny d'Interiors III",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "90b35d90-a37d-4de2-87fa-bb09fd478620": {
+      "code": "GDVM04",
+      "name": "Projectes de Disseny de Moda III",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "b6728bbe-a9a8-4365-a16d-3d1623987a03": {
+      "code": "GDVG04",
+      "name": "Projectes de Disseny Gràfic III",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "3aa172ad-6b0f-4d0f-9b8f-0d12c268f60d": {
+      "code": "GDVA34",
+      "name": "Taller d'Audiovisual III",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "6ec16e87-4a76-4b3b-b074-794fccefa38b": {
+      "code": "GDVI14",
+      "name": "Taller d'Espai III",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "c7b0a60d-2188-44d1-b9b4-94210ef47411": {
+      "code": "GDVG14",
+      "name": "Taller de Gràfic i Comunicació Visual III",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "890152a4-8786-463a-a476-64b7fca527ed": {
+      "code": "GDVM14",
+      "name": "Taller de Moda III",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "c95ade1e-2ea3-4242-b7f4-4c9f2b044269": {
+      "code": "GDVA44",
+      "name": "Tipografia en Moviment",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 6
+    },
+    "be3496cf-1b09-4aef-9346-deb4a0371cf6": {
+      "code": "GBT004",
+      "name": "Treball de Fi de Grau",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 12
+    },
+    "9d1955c0-581c-40de-af7c-91e7d712d51c": {
+      "code": "GDT074",
+      "name": "Treball Final de Grau",
+      "year": 4,
+      "type": "obligatoria",
+      "credits": 12
+    }
+  },
+  "teachers": {
+    "381aac41-0623-4b16-92ff-2bb6de6777cc": {
+      "code": "547",
+      "full_name": "Roc Albalat Gimeno",
+      "email": "professormycyzn@bau.edu",
+      "department": null
+    },
+    "03cf6263-b255-46c0-b5d5-96b4334c251e": {
+      "code": "473",
+      "full_name": "Jordi Álvarez Gómez",
+      "email": "professormjkvlg@bau.edu",
+      "department": null
+    },
+    "b19a9673-602b-4b66-bc06-7e7e28946a5e": {
+      "code": "533",
+      "full_name": "Serafín Álvarez Prieto",
+      "email": "professorhd1og@bau.edu",
+      "department": null
+    },
+    "587f8ab4-52ae-4041-b9b3-07f9ccd4ff89": {
+      "code": "757",
+      "full_name": "Sergi Alvarez Riosalido",
+      "email": "professorcboycd@bau.edu",
+      "department": null
+    },
+    "3a468c83-2bf4-4978-b152-234e15812e0c": {
+      "code": "700",
+      "full_name": "Tiago Alves Da Costa",
+      "email": "professorvbuqhw@bau.edu",
+      "department": null
+    },
+    "7e7454fb-c025-468e-87cd-4d65f247d4aa": {
+      "code": "239",
+      "full_name": "Elisa Amann Quincoces",
+      "email": "professorzvaiko@bau.edu",
+      "department": null
+    },
+    "6ae77969-cbf8-4c1c-984c-e85d8de34e5b": {
+      "code": "552",
+      "full_name": "Pau Artigas Vidal",
+      "email": "professori6bdkn@bau.edu",
+      "department": null
+    },
+    "66e8b336-121a-4430-8704-e4d5a5055624": {
+      "code": "687",
+      "full_name": "Santiago Benítez Cortés",
+      "email": "professorbj7n99@bau.edu",
+      "department": null
+    },
+    "79816752-7e1a-4378-8b3d-bf37cb29570e": {
+      "code": "760",
+      "full_name": "Amanda Bernal Pérez",
+      "email": "professorqc347n@bau.edu",
+      "department": null
+    },
+    "9f09b1ae-2905-4919-be9c-5351d654a7a4": {
+      "code": "648",
+      "full_name": "Luz Maria Broto Lema",
+      "email": "professorkkag19@bau.edu",
+      "department": null
+    },
+    "438f4202-7026-4d02-aaec-b395017d4fd9": {
+      "code": "607",
+      "full_name": "Paula Bruna Pérez",
+      "email": "professorx47dh@bau.edu",
+      "department": null
+    },
+    "83788902-060f-4652-a4cb-9ae334a6efd8": {
+      "code": "595",
+      "full_name": "Jorge Eliecer Caballero Ramos",
+      "email": "professorjie05c@bau.edu",
+      "department": null
+    },
+    "a8f4f7d3-d99a-4ce2-9670-b11916d5306b": {
+      "code": "207",
+      "full_name": "Marta Camps Banqué",
+      "email": "professorxz3dqr@bau.edu",
+      "department": null
+    },
+    "b1423e3a-a7e2-4c8e-98cd-0500a9f8727c": {
+      "code": "599",
+      "full_name": "Ludovica Carbotta",
+      "email": "professorz4n7a4@bau.edu",
+      "department": null
+    },
+    "52b5c490-cedd-492a-8d12-85f5606a5fd9": {
+      "code": "453",
+      "full_name": "Anna Carreras Sales",
+      "email": "professormdl1a@bau.edu",
+      "department": null
+    },
+    "5858e0a4-eee9-4e4e-b45e-d017806a2e7f": {
+      "code": "22",
+      "full_name": "Montse Casacuberta Suñer",
+      "email": "professorgyi9ti@bau.edu",
+      "department": null
+    },
+    "671301be-05b0-444f-a3c9-0d23207ffc01": {
+      "code": "642",
+      "full_name": "Lluis Alexandre Casanovas Blanco",
+      "email": "professorijdv0n@bau.edu",
+      "department": null
+    },
+    "d540229d-bdc4-423d-a6ce-898d48dd3528": {
+      "code": "680",
+      "full_name": "Guillem Castellví Montagut",
+      "email": "professorqhf3nk@bau.edu",
+      "department": null
+    },
+    "969b972d-7bec-4e91-9279-1776a8c4c898": {
+      "code": "510",
+      "full_name": "Ana Clemente Granados",
+      "email": "professorm8zijp@bau.edu",
+      "department": null
+    },
+    "ec63308b-2f31-46d8-aa62-6f41576ce2f9": {
+      "code": "611",
+      "full_name": "Luis Miguel Colaço Rocha da Silva",
+      "email": "professor8ukhkd@bau.edu",
+      "department": null
+    },
+    "99fcb263-cefc-43d5-9ad3-69d9ad3d76df": {
+      "code": "706",
+      "full_name": "Elisabet Coll-Vinent Ollé",
+      "email": "professordhqio7@bau.edu",
+      "department": null
+    },
+    "2755dbd2-3888-4ca3-a5f2-c592b61da982": {
+      "code": "557",
+      "full_name": "Núria Costa Ginjaume",
+      "email": "professorjt9o2@bau.edu",
+      "department": null
+    },
+    "f50df2f8-465c-4d5f-a51b-b48854c9949e": {
+      "code": "248",
+      "full_name": "Pierino Dal Pozzo",
+      "email": "professorvutg5i@bau.edu",
+      "department": null
+    },
+    "b7c3d839-464f-4ff4-854c-7176766dec91": {
+      "code": "430",
+      "full_name": "Nataly Dal Pozzo Montrucchio",
+      "email": "professorq2d41u@bau.edu",
+      "department": null
+    },
+    "07492415-a58b-4f46-a5b5-d4509770a666": {
+      "code": "318",
+      "full_name": "Pau de Riba Cusó",
+      "email": "professor8q87r8@bau.edu",
+      "department": null
+    },
+    "f2d34e92-6903-4655-8e45-d61b47577fa8": {
+      "code": "649",
+      "full_name": "Maria Isabel del Río Sánchez",
+      "email": "professorwzcs6@bau.edu",
+      "department": null
+    },
+    "41076af1-1de3-48ad-9864-241dbedc527e": {
+      "code": "667",
+      "full_name": "Julieta Dentone",
+      "email": "professoruol687f@bau.edu",
+      "department": null
+    },
+    "3b121cbb-3e10-4133-a2fd-9095c5d955a4": {
+      "code": "376",
+      "full_name": "Glòria Deumal López",
+      "email": "professorj80h7@bau.edu",
+      "department": null
+    },
+    "45ba4c04-fee7-452d-8528-02af4cde81fb": {
+      "code": "758",
+      "full_name": "María José Díaz Merino",
+      "email": "professormlp2cr@bau.edu",
+      "department": null
+    },
+    "37a8de13-0075-4f51-be99-ed17caa1cd14": {
+      "code": "528",
+      "full_name": "Francisco Antonio Díaz Montero",
+      "email": "professor4ikff@bau.edu",
+      "department": null
+    },
+    "3194ed88-1be4-4ab1-8f0e-f43726cc2992": {
+      "code": "548",
+      "full_name": "Mireia Feliu Fabra",
+      "email": "professorud638c@bau.edu",
+      "department": null
+    },
+    "5e99dcaa-5c63-4181-9cbd-a2773a6c1de8": {
+      "code": "659",
+      "full_name": "Eduard Fernandez Garcia",
+      "email": "professor9kgx2@bau.edu",
+      "department": null
+    },
+    "b8d2505d-1526-4b0e-9cd8-19198218e0a0": {
+      "code": "605",
+      "full_name": "Blanca-Pía Fernández Valverde",
+      "email": "professorlasc0t@bau.edu",
+      "department": null
+    },
+    "a41182ad-e48d-43bc-bfb0-88a1baefbd9b": {
+      "code": "669",
+      "full_name": "Anna Ferré Boltà",
+      "email": "professork8n31c@bau.edu",
+      "department": null
+    },
+    "63a8c47f-8d2d-40b7-b215-a8cb6d3290cb": {
+      "code": "638",
+      "full_name": "Jaume Ferrete Vázquez",
+      "email": "professor800zz2j@bau.edu",
+      "department": null
+    },
+    "e31ea772-e4df-4a7c-9cb0-b95c44287712": {
+      "code": "663",
+      "full_name": "Lara Fluxà Garcias",
+      "email": "professor0kfp25@bau.edu",
+      "department": null
+    },
+    "de129935-646a-4072-a643-8362cdbed360": {
+      "code": "675",
+      "full_name": "Núria Font Torralba",
+      "email": "professor223m1@bau.edu",
+      "department": null
+    },
+    "e6bdf41a-535e-47e4-9392-8311bb6e1346": {
+      "code": "699",
+      "full_name": "Alba Font Villar",
+      "email": "professorudrzc@bau.edu",
+      "department": null
+    },
+    "a1ffb42f-d0d0-4e0b-9099-1a8c311fab52": {
+      "code": "529",
+      "full_name": "Elisenda Fontarnau Català",
+      "email": "professorrkd89g@bau.edu",
+      "department": null
+    },
+    "1d0f6c86-f691-4726-a84b-e714d8c63cf1": {
+      "code": "308",
+      "full_name": "Mª Àngels Fortea Castillo",
+      "email": "professor1egge5rc@bau.edu",
+      "department": null
+    },
+    "cbb44502-3602-4e4b-8b22-d77f8caff06f": {
+      "code": "499",
+      "full_name": "Mariel Fuentes Orellana",
+      "email": "professor1mxoh@bau.edu",
+      "department": null
+    },
+    "1081d4d5-8171-4cba-ba71-8acb4882f67d": {
+      "code": "705",
+      "full_name": "Juan David Galindo Guarín",
+      "email": "professorfuwlfr@bau.edu",
+      "department": null
+    },
+    "2ff81654-0e7e-401c-a406-79fb61c40552": {
+      "code": "585",
+      "full_name": "Jordi Galobart Salvat",
+      "email": "professorkacwcq@bau.edu",
+      "department": null
+    },
+    "3ca78896-d1e5-436f-8eac-b451ac41e354": {
+      "code": "695",
+      "full_name": "Nuria Garcia Campos",
+      "email": "professorcv7kzu@bau.edu",
+      "department": null
+    },
+    "1c1c51bc-ea9d-4fdc-b1cb-d831f799e8cf": {
+      "code": "702",
+      "full_name": "Maria Garcia Ruiz",
+      "email": "professorjmu4oq@bau.edu",
+      "department": null
+    },
+    "5b6322fc-7e12-4d37-9c76-0d213ad79611": {
+      "code": "377",
+      "full_name": "Mariona Garcia Solé",
+      "email": "professor5xtna5@bau.edu",
+      "department": null
+    },
+    "80420c09-73d4-48dd-a71e-305a3f980e91": {
+      "code": "754",
+      "full_name": "Albert Gavaldà Martínez",
+      "email": "professorwqg10b@bau.edu",
+      "department": null
+    },
+    "90510950-823a-4ffa-b731-9d0c8a3b0669": {
+      "code": "380",
+      "full_name": "Rebecca Gil Bell",
+      "email": "professorue0r7@bau.edu",
+      "department": null
+    },
+    "7869b605-de3c-43de-9da2-e615ff91031b": {
+      "code": "476",
+      "full_name": "Marina Gil Salazar",
+      "email": "professora70pi@bau.edu",
+      "department": null
+    },
+    "bc1064f4-d702-4e10-baa6-8c9c60ff24b3": {
+      "code": "656",
+      "full_name": "Regina Gimenez Froiz",
+      "email": "professorf3gzkh@bau.edu",
+      "department": null
+    },
+    "1ba36cde-1e13-4cfa-ba55-be91a5f83614": {
+      "code": "634",
+      "full_name": "Laura Ginés Bataller",
+      "email": "professor6h7fzd@bau.edu",
+      "department": null
+    },
+    "34524b04-08f0-414b-bb3d-4fcf49126a42": {
+      "code": "639",
+      "full_name": "Nuria Gómez Gabriel",
+      "email": "professorlbqkkg@bau.edu",
+      "department": null
+    },
+    "ad503884-745f-4ee0-b44e-a309fef1c576": {
+      "code": "693",
+      "full_name": "Blanca Gracia Gallego",
+      "email": "professoryvg5v4@bau.edu",
+      "department": null
+    },
+    "fc3309f4-45d9-407f-84c9-67d5d9813179": {
+      "code": "145",
+      "full_name": "Laura Gual Torrebadell",
+      "email": "professornhfphn@bau.edu",
+      "department": null
+    },
+    "76c30af9-43be-4229-9057-14dfa6edec6c": {
+      "code": "598",
+      "full_name": "Ariadna Guiteras García",
+      "email": "professorffz2mq@bau.edu",
+      "department": null
+    },
+    "ee088a0d-d311-4aed-9971-ddeae0ab4c67": {
+      "code": "569",
+      "full_name": "Citlali Hernández Sánchez",
+      "email": "professorr70rs@bau.edu",
+      "department": null
+    },
+    "0bc5a3dd-2ed5-4629-872c-0edf26aae7a0": {
+      "code": "696",
+      "full_name": "Arnau Horta Sellarés",
+      "email": "professorsaskjc@bau.edu",
+      "department": null
+    },
+    "51a036df-6fb5-4569-a021-05b5d3640003": {
+      "code": "629",
+      "full_name": "Núria Inés Hernández",
+      "email": "professoriolacg@bau.edu",
+      "department": null
+    },
+    "70e2722e-1bba-4044-8def-c3c5b8491308": {
+      "code": "435",
+      "full_name": "Ricardo Iscar Álvarez",
+      "email": "professorb5v61f@bau.edu",
+      "department": null
+    },
+    "11ca615f-8429-48ed-a058-41e7b74faa8e": {
+      "code": "303",
+      "full_name": "Nico Juárez Latimer-Knowles",
+      "email": "professorrt7da@bau.edu",
+      "department": null
+    },
+    "e1892a4f-5b09-4cdc-8521-fe111523f3c6": {
+      "code": "653",
+      "full_name": "Michael James Lawton",
+      "email": "professorabr2op@bau.edu",
+      "department": null
+    },
+    "fa0f7f0c-53e0-49d7-9548-4c166b068b0a": {
+      "code": "694",
+      "full_name": "Anna Irina Limia Russell",
+      "email": "professor293xac@bau.edu",
+      "department": null
+    },
+    "f2c323a2-614b-4574-ac48-1e4c58f4efbf": {
+      "code": "698",
+      "full_name": "Pedro Llobera Vives",
+      "email": "professoro2ha9f@bau.edu",
+      "department": null
+    },
+    "a4a16847-ce5b-4d9e-b4d2-8eccde589f76": {
+      "code": "604",
+      "full_name": "María Alejandra López",
+      "email": "professor484ymq@bau.edu",
+      "department": null
+    },
+    "7f1b186d-dab1-40c2-87dd-0d155dfb2433": {
+      "code": "560",
+      "full_name": "Enrique Macías Camuñas",
+      "email": "professor5shpnc@bau.edu",
+      "department": null
+    },
+    "5732a28f-eac0-4109-a638-e1ce0732ebfa": {
+      "code": "689",
+      "full_name": "Jose Ramon Madrid Alonso",
+      "email": "professorr88uto@bau.edu",
+      "department": null
+    },
+    "b110ce73-8448-4a09-a60f-b876c5e5c3ae": {
+      "code": "526",
+      "full_name": "Camila René Maggi",
+      "email": "professor9s87cw@bau.edu",
+      "department": null
+    },
+    "8cf6a825-dcd2-43a8-b78b-25f8b41d9e0b": {
+      "code": "579",
+      "full_name": "Xavier Maixenchs Bobé",
+      "email": "professorgsqf8@bau.edu",
+      "department": null
+    },
+    "02770300-e536-4f51-b6ed-2129eed85db0": {
+      "code": "531",
+      "full_name": "Raúl Maldonado Periago",
+      "email": "professor9nob59@bau.edu",
+      "department": null
+    },
+    "dd69c50b-6f7f-4494-a309-d45398d4c298": {
+      "code": "692",
+      "full_name": "Rafael Marcos Mota",
+      "email": "professorh9q9fr@bau.edu",
+      "department": null
+    },
+    "8bddd5d6-4397-4913-ba97-f4d7dd078dc0": {
+      "code": "382",
+      "full_name": "Francisco Javier Maria Marco",
+      "email": "professordlbud4@bau.edu",
+      "department": null
+    },
+    "2bcb2f1f-d2c2-456f-8aa3-19c3d41b275f": {
+      "code": "429",
+      "full_name": "Josep Mª Marimon Soler",
+      "email": "professorayrpdn@bau.edu",
+      "department": null
+    },
+    "7105ae11-0a94-415d-a602-86302a980674": {
+      "code": "464",
+      "full_name": "Ricard Marimon Soler",
+      "email": "professornxl4i@bau.edu",
+      "department": null
+    },
+    "5e77b405-0bce-41c9-a43b-bf6147fcf54b": {
+      "code": "400",
+      "full_name": "David Martin López",
+      "email": "professor16wczi@bau.edu",
+      "department": null
+    },
+    "6ad4e2fa-ff56-4a3b-86a9-a443fbe0c72f": {
+      "code": "651",
+      "full_name": "Mario Martínez Santamaría",
+      "email": "professorxv1ham@bau.edu",
+      "department": null
+    },
+    "7d0e953e-711b-4139-bfeb-8e48f2bfa952": {
+      "code": "583",
+      "full_name": "Joan Manuel Martorello",
+      "email": "professorrsvb37@bau.edu",
+      "department": null
+    },
+    "6ed01fb6-c6f1-4712-8909-8921af24b285": {
+      "code": "438",
+      "full_name": "Claudio Marzà Compte",
+      "email": "professor7bdcqp@bau.edu",
+      "department": null
+    },
+    "ec55079b-f50f-44e0-8664-f809348be46a": {
+      "code": "404",
+      "full_name": "Jorge Luís Marzo Pérez",
+      "email": "professorl9tlxe@bau.edu",
+      "department": null
+    },
+    "385d5f46-de7d-4e59-8a13-e6a9427c3570": {
+      "code": "601",
+      "full_name": "Federica Matelli",
+      "email": "professorypsey@bau.edu",
+      "department": null
+    },
+    "37e0149a-9d13-4bbb-a7b1-fdcbd80815a3": {
+      "code": "707",
+      "full_name": "Miguel Angel Maure Blesa",
+      "email": "professorkim3q6@bau.edu",
+      "department": null
+    },
+    "6b599032-76a5-4023-adba-54cced6cc61d": {
+      "code": "409",
+      "full_name": "Mònica Mestanza Garcia",
+      "email": "professor2kg50q@bau.edu",
+      "department": null
+    },
+    "be750c6e-b654-4e00-a35e-2b03fa107629": {
+      "code": "703",
+      "full_name": "Jonathan Millán Solsona",
+      "email": "professorhezg1u@bau.edu",
+      "department": null
+    },
+    "4ccaac88-a506-40d8-abc4-761dd3d5fe47": {
+      "code": "575",
+      "full_name": "Adrià Molins Aparicio",
+      "email": "professorubi32tj@bau.edu",
+      "department": null
+    },
+    "b9322130-19ce-462c-820d-2b93a4f67c13": {
+      "code": "515",
+      "full_name": "Mariona Moncunill Piñas",
+      "email": "professors4gwrb@bau.edu",
+      "department": null
+    },
+    "ce99b3d7-e57b-43b7-8add-8caf1174d3dd": {
+      "code": "603",
+      "full_name": "Anna Moreno Castells",
+      "email": "professorz3exq@bau.edu",
+      "department": null
+    },
+    "dc6173cc-4e39-4209-bc4a-64997ef49940": {
+      "code": "486",
+      "full_name": "Jesus Morentin Farré",
+      "email": "professorvk83xt@bau.edu",
+      "department": null
+    },
+    "644d4623-2210-4b09-96f6-2ad7a161dc3a": {
+      "code": "458",
+      "full_name": "Marta Morralla Prats",
+      "email": "professoriyequ9@bau.edu",
+      "department": null
+    },
+    "bf1f1e87-d580-452d-b616-92da1854d343": {
+      "code": "516",
+      "full_name": "María Fernanda Moscoso Rosero",
+      "email": "professorkdd8ol@bau.edu",
+      "department": null
+    },
+    "324b7aa0-fc91-404c-b39a-b5cb4325663f": {
+      "code": "597",
+      "full_name": "Rasmus Greiber Nilausen",
+      "email": "professord1x72t@bau.edu",
+      "department": null
+    },
+    "0e0d8479-19ab-43b2-99a0-aafeb16804e8": {
+      "code": "568",
+      "full_name": "Cristina Noguer Guardiola",
+      "email": "professorpwyvz7@bau.edu",
+      "department": null
+    },
+    "62ae4429-f9c8-466f-a83c-b353deb4c4ca": {
+      "code": "608",
+      "full_name": "David Ortega Gómez",
+      "email": "professor9q07or@bau.edu",
+      "department": null
+    },
+    "6b96a5f0-6537-4fc6-bda8-a3ce8ee72dba": {
+      "code": "641",
+      "full_name": "Agustín Ortiz Herrera",
+      "email": "professor6w9hwl@bau.edu",
+      "department": null
+    },
+    "616cbe31-61a7-46f2-9ffd-f56f8e814e42": {
+      "code": "556",
+      "full_name": "David Ortiz Juan",
+      "email": "professorhxih4d@bau.edu",
+      "department": null
+    },
+    "c2accfcb-44f5-4f5e-b02a-f3462e41fcac": {
+      "code": "655",
+      "full_name": "Joaquim-Davis Packard Blasco",
+      "email": "professorxyc5jd@bau.edu",
+      "department": null
+    },
+    "6125449d-100d-4bfd-ae90-5f824db7b09d": {
+      "code": "572",
+      "full_name": "Josep Pagá Lleixà",
+      "email": "professorh2zpof@bau.edu",
+      "department": null
+    },
+    "718517ce-4adb-4ca0-84c7-c762705c685c": {
+      "code": "657",
+      "full_name": "Ruben Pater",
+      "email": "professor6bl4yn@bau.edu",
+      "department": null
+    },
+    "1171a4b6-4e80-4733-8109-91b89de6a708": {
+      "code": "482",
+      "full_name": "Mireia Pérez Carbonell",
+      "email": "professorxn068b@bau.edu",
+      "department": null
+    },
+    "2e7ba273-c5c4-4770-93e6-e4b8cba19628": {
+      "code": "756",
+      "full_name": "Elida Pérez Lucena",
+      "email": "professorqi0sba@bau.edu",
+      "department": null
+    },
+    "3c0a992f-eec8-4294-9125-67cf92f643a3": {
+      "code": "504",
+      "full_name": "Pau Pericas Bosch",
+      "email": "professorauumml@bau.edu",
+      "department": null
+    },
+    "4c60019e-a26c-40ae-b74f-4f8ee9a7007b": {
+      "code": "487",
+      "full_name": "Arnau Pi Bonany",
+      "email": "professor9im7oi@bau.edu",
+      "department": null
+    },
+    "673e09e8-eb8e-4ce7-b4b9-2992c008a6fa": {
+      "code": "652",
+      "full_name": "Mercedes Pimiento Moral",
+      "email": "professorxtx22@bau.edu",
+      "department": null
+    },
+    "5332e8b3-73a5-4d42-8b3a-bac4a81555fd": {
+      "code": "628",
+      "full_name": "Daniel Pitarch Fernandez",
+      "email": "professorp0rxte@bau.edu",
+      "department": null
+    },
+    "24166b1f-6a22-422f-912c-d82fcc657db2": {
+      "code": "759",
+      "full_name": "Carmen Platero Vázquez",
+      "email": "professort5qk9@bau.edu",
+      "department": null
+    },
+    "5b8a1fd9-ef93-4e89-bc40-0446197888b7": {
+      "code": "660",
+      "full_name": "Ingrid Pou Iborra",
+      "email": "professor53zhst@bau.edu",
+      "department": null
+    },
+    "0345f810-44b5-41b4-ac13-b18f9be653b6": {
+      "code": "678",
+      "full_name": "Albert Puig Rubio",
+      "email": "professorll19bd@bau.edu",
+      "department": null
+    },
+    "165bb4f8-ec17-42f6-8e27-a453f3e4b4a2": {
+      "code": "354",
+      "full_name": "Isabel Quiles Pérez",
+      "email": "professoreccuqe@bau.edu",
+      "department": null
+    },
+    "ae02f1b7-845b-4a4e-9ec2-2ef41b2a0bb9": {
+      "code": "679",
+      "full_name": "Clàudia Raurell Carulla",
+      "email": "professoru8a06@bau.edu",
+      "department": null
+    },
+    "ae609c9d-82e7-4f6e-8823-eca2efe12646": {
+      "code": "594",
+      "full_name": "Mariona Ribas Van Steen",
+      "email": "professorxcq6ye@bau.edu",
+      "department": null
+    },
+    "94f977cc-2ccb-477c-a9ef-57c0aefcbfd8": {
+      "code": "650",
+      "full_name": "Marina Riera Retamero",
+      "email": "professoro3z0af@bau.edu",
+      "department": null
+    },
+    "f3843be0-7ddf-4794-9ee5-bd8b88515c89": {
+      "code": "564",
+      "full_name": "Mónica Rikic Fusté",
+      "email": "professor42t1qc@bau.edu",
+      "department": null
+    },
+    "25462e99-754d-4af9-ad34-818191bd63a8": {
+      "code": "701",
+      "full_name": "Aina Roca Mora",
+      "email": "professory3fgc@bau.edu",
+      "department": null
+    },
+    "1390a432-fa53-4328-b707-2742ad707e5e": {
+      "code": "545",
+      "full_name": "Cristina Rodríguez Sandoval",
+      "email": "professor0xu67g@bau.edu",
+      "department": null
+    },
+    "6170795c-d2e3-483a-a68e-1240c9ab9aab": {
+      "code": "578",
+      "full_name": "Joan Ros Garrofé",
+      "email": "professorw4iqh@bau.edu",
+      "department": null
+    },
+    "59840e9b-adf8-43ac-abf0-ff3f3af227e0": {
+      "code": "411",
+      "full_name": "Sílvia Rosés Castellsaguer",
+      "email": "professorpokh0l@bau.edu",
+      "department": null
+    },
+    "9651a5e8-c3c0-4efc-857e-3f7df0f6e2c4": {
+      "code": "647",
+      "full_name": "Eulàlia Rovira Solanas",
+      "email": "professor7n7h4@bau.edu",
+      "department": null
+    },
+    "13e79226-a8ed-489b-a6b6-cdc47d5f06cf": {
+      "code": "424",
+      "full_name": "Jaron Rowan Madirolas",
+      "email": "professor7jnbfr@bau.edu",
+      "department": null
+    },
+    "5d1b3d2e-8760-443e-8f9e-aa243912e855": {
+      "code": "406",
+      "full_name": "Lúa Ruiz-Giménez Coderch",
+      "email": "professoruohe2b@bau.edu",
+      "department": null
+    },
+    "a8e110b4-6ac1-407e-9fa0-260dbe897fd6": {
+      "code": "609",
+      "full_name": "Lucía Segurajáuregui Sánchez",
+      "email": "professorpyylhu@bau.edu",
+      "department": null
+    },
+    "9d1e4731-866b-4659-b5bd-d8a8b44fa1fe": {
+      "code": "685",
+      "full_name": "Laura-Maria Solsona Ramo",
+      "email": "professora8venf@bau.edu",
+      "department": null
+    },
+    "27047010-8cb2-4247-928d-b941fef99f88": {
+      "code": "567",
+      "full_name": "Nadia Desire Speranza",
+      "email": "professorcy3ucn@bau.edu",
+      "department": null
+    },
+    "06962419-6aab-4ac7-8017-fc112a514c96": {
+      "code": "539",
+      "full_name": "Diego Suárez Bárcena",
+      "email": "professorv4orkn@bau.edu",
+      "department": null
+    },
+    "e9014ac6-aae2-4b37-97df-aca2be044701": {
+      "code": "704",
+      "full_name": "Laura Subirats Gonzalez",
+      "email": "professor37iql@bau.edu",
+      "department": null
+    },
+    "972453e0-a331-4609-8508-f87a5679d2c5": {
+      "code": "626",
+      "full_name": "Daniel Tahmaz Pujol",
+      "email": "professorihywy9@bau.edu",
+      "department": null
+    },
+    "6e5fbd68-5814-4681-ba0f-f1ee33c6f117": {
+      "code": "412",
+      "full_name": "David Torrents Jané",
+      "email": "professor2hrubl@bau.edu",
+      "department": null
+    },
+    "4c02b2c4-e0f0-439e-805d-30103e22e38f": {
+      "code": "673",
+      "full_name": "Alex Valverde Valencia",
+      "email": "professor8x4b4u@bau.edu",
+      "department": null
+    },
+    "fee41626-f8fd-4d6c-a509-9ea7e777f632": {
+      "code": "755",
+      "full_name": "Marta Velasco Velasco",
+      "email": "professorm6boz4@bau.edu",
+      "department": null
+    },
+    "a23328d4-2fe2-49f8-80b8-51881c01dd73": {
+      "code": "554",
+      "full_name": "Gabriel Ventura Cuenca",
+      "email": "professorpo38qn@bau.edu",
+      "department": null
+    },
+    "cc57215c-6ce4-41d8-bb93-8c633b7044d0": {
+      "code": "490",
+      "full_name": "Roger Vicente Salazar",
+      "email": "professor07f3du@bau.edu",
+      "department": null
+    },
+    "56121714-e638-4108-ad97-caca0f9e2141": {
+      "code": "654",
+      "full_name": "Jose Vidal González",
+      "email": "professor4pd16q@bau.edu",
+      "department": null
+    },
+    "77788fbc-b7b7-4584-82e4-42c1fa046b5e": {
+      "code": "602",
+      "full_name": "Oriol Vila-Puig Morera",
+      "email": "professorl8vfzs@bau.edu",
+      "department": null
+    },
+    "feea35b1-00ac-447c-a120-48a51a9b9c64": {
+      "code": "661",
+      "full_name": "Irene Visa Carreras",
+      "email": "professorfke4xd@bau.edu",
+      "department": null
+    },
+    "830f83a7-9828-428b-b6c2-84a0aed44b5d": {
+      "code": "697",
+      "full_name": "Silvia Cristina Zayas Serra",
+      "email": "professor9gbzlb@bau.edu",
+      "department": null
+    }
+  },
+  "classrooms": {
+    "a34bb5d7-95e4-40b2-9d34-d6274ff2e695": {
+      "code": "G.0.1",
+      "name": "G.0.1",
+      "building": "Edifici Granada",
+      "capacity": 30,
+      "type": "Seminari"
+    },
+    "2ae31e7b-6938-435a-b687-f7247af11d24": {
+      "code": "G.0.2",
+      "name": "G.0.2",
+      "building": "Edifici Granada",
+      "capacity": 30,
+      "type": "Seminari"
+    },
+    "84dc51c1-7efc-458f-8ca6-d4a85af6e375": {
+      "code": "G.0.3",
+      "name": "G.0.3 - Taller d'Escultura, ceràmica, metall",
+      "building": "Edifici Granada",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "933e07f2-dee6-41e2-be07-3c0c08457af5": {
+      "code": "G.0.4",
+      "name": "G.0.4",
+      "building": "Edifici Granada",
+      "capacity": 30,
+      "type": "Seminari"
+    },
+    "eaf2a22c-8474-4dd5-a5af-4362ffc292d1": {
+      "code": "G.0.5",
+      "name": "G.0.5 Taller Maker",
+      "building": "Edifici Granada",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "8175ba22-1cca-4bfd-b952-bb62ca0c6764": {
+      "code": "G.1.1",
+      "name": "G.1.1",
+      "building": "Edifici Granada",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "c4fe854b-7b35-4876-b7e9-c3a66425d952": {
+      "code": "G.1.2",
+      "name": "G.1.2",
+      "building": "Edifici Granada",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "df9e27b7-9d23-47ac-83d2-aa3fb7d0dbbb": {
+      "code": "G.1.3",
+      "name": "G.1.3",
+      "building": "Edifici Granada",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "91ef8e69-a811-4a74-8f04-18f1815832aa": {
+      "code": "G.2.1",
+      "name": "G.2.1",
+      "building": "Edifici Granada",
+      "capacity": 30,
+      "type": "Seminari"
+    },
+    "91b4b440-5d6b-4725-91f0-2d199446a530": {
+      "code": "G.E.1",
+      "name": "G.E.1",
+      "building": "Edifici Granada",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "f66c8026-9aa0-4b08-a96d-5e951a990800": {
+      "code": "G.E.2",
+      "name": "G.E.2",
+      "building": "Edifici Granada",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "054fe406-7ae1-4958-8178-0fe5ed892420": {
+      "code": "G.E.3",
+      "name": "G.E.3",
+      "building": "Edifici Granada",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "659cc90c-2794-48a1-bdeb-be2d966225b7": {
+      "code": "CABINA_D'AUDIO",
+      "name": "Cabina d'Audio",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "919c10d8-f605-4122-a16b-bb2956a4822c": {
+      "code": "L.0.1",
+      "name": "L.0.1",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "debc03c3-3533-48f9-82c8-c61342a44ae9": {
+      "code": "L.0.2",
+      "name": "L.0.2",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "719a1171-cd98-43d9-90b9-55f99efa042a": {
+      "code": "L.0.3_PLATÓ",
+      "name": "L.0.3 - Plató",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "b9b24e16-7585-4ed0-bd8b-25c3c9dc747e": {
+      "code": "L.0.4",
+      "name": "L.0.4",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "0cb5b2ca-5070-47d5-a248-394d69966cb8": {
+      "code": "L.1.1",
+      "name": "L.1.1",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "9b0a5102-f67a-4158-9b30-129e111547b3": {
+      "code": "L.1.2",
+      "name": "L.1.2",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Projectes"
+    },
+    "4833f339-9a8b-41dc-bcd7-300aa648f38d": {
+      "code": "L.1.3",
+      "name": "L.1.3",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Projectes"
+    },
+    "2b561d3d-72dc-4cbb-bf5d-0b20db8f7983": {
+      "code": "L.1.4",
+      "name": "L.1.4",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Seminari"
+    },
+    "e91fc500-d82e-4497-be79-291ff6bcd2ac": {
+      "code": "PLATÓS",
+      "name": "Platós",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "e83035fa-2538-4030-a42e-1db2d1412dbb": {
+      "code": "SALA_CAROLINES",
+      "name": "Sala Carolines",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "8ddbf39c-d853-48f2-9e30-c86a41029b9f": {
+      "code": "T.2_AUDIOVISUAL_LAB",
+      "name": "T.2 - Audiovisual Lab",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "6f4ece7b-c0b6-421d-9e50-beb09b97416d": {
+      "code": "T.3_STOPMOTION",
+      "name": "T.3 - StopMotion",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "0e510155-c687-4e60-bcec-73caf2dd138a": {
+      "code": "T.4",
+      "name": "T.4 - StopMotion",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "ba456500-d7c5-4f00-a013-869f5dacabd2": {
+      "code": "TALLER_DE_SERIGRAFIA",
+      "name": "Taller de Serigrafia",
+      "building": "Edifici Llacuna",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "8946c947-2e0b-4f44-977d-f57bc9ccbc0f": {
+      "code": "P.0.10",
+      "name": "P.0.10",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "6d383f4e-1df9-4714-b3ae-318379b57b64": {
+      "code": "P.0.12",
+      "name": "P.0.12",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "f1a091db-6a9f-4934-8c2b-c5383c05823f": {
+      "code": "P.0.14",
+      "name": "P.0.14",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "bd697d80-23c6-4726-ad5f-4183a864833d": {
+      "code": "P.0.2",
+      "name": "P.0.2",
+      "building": "Edifici Pujades",
+      "capacity": 40,
+      "type": "Seminari"
+    },
+    "69ba21be-ecd4-4369-ba19-5ece28aca0a1": {
+      "code": "P.0.2/0.4",
+      "name": "P.0.2/0.4",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Projectes"
+    },
+    "d1e53dd2-d355-4858-a6c4-c54c11213750": {
+      "code": "P.0.5",
+      "name": "P.0.5",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Seminari"
+    },
+    "63345da0-46a9-4c2d-b76d-6b4123f9152e": {
+      "code": "P.0.5/0.7",
+      "name": "P.0.5/0.7",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Projectes"
+    },
+    "bd735a92-871f-49c5-8297-98f0eb9c4728": {
+      "code": "P.0.6",
+      "name": "P.0.6",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "05c8f498-8387-449d-ba6c-4c2ac8bd3fdc": {
+      "code": "P.0.7",
+      "name": "P.0.7",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Seminari"
+    },
+    "3ae18699-b757-49aa-81d0-75ea32e7b029": {
+      "code": "P.0.8",
+      "name": "P.0.8",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "c823cbe3-6341-4142-9058-9533979acfc9": {
+      "code": "P.0.9",
+      "name": "P.0.9",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "079c737e-1b4f-4500-b3ef-2917cb212665": {
+      "code": "P.1.10",
+      "name": "P.1.10",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "1e21a20c-da37-4da0-a886-a6a748761e4d": {
+      "code": "P.1.12",
+      "name": "P.1.12",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Informàtica"
+    },
+    "1c3f695d-283e-4efd-9c5f-617d982bf002": {
+      "code": "P.1.16",
+      "name": "P.1.16",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Seminari"
+    },
+    "4038ca07-fdc8-438f-bdca-e6d7724ce39d": {
+      "code": "P.1.2",
+      "name": "P.1.2",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Informàtica"
+    },
+    "d9a2e430-0aaa-4c0f-87a0-690af76ec31c": {
+      "code": "P.1.3",
+      "name": "P.1.3",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Informàtica"
+    },
+    "d3c120ec-f8b8-4b62-a2c6-b5b0cc161887": {
+      "code": "P.1.4",
+      "name": "P.1.4",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Informàtica"
+    },
+    "dccec914-2ca0-433a-b64d-2b4355791dc4": {
+      "code": "P.1.5",
+      "name": "P.1.5",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Projectes"
+    },
+    "e081bdec-f981-4268-9859-d55958eca4f8": {
+      "code": "P.1.6",
+      "name": "P.1.6",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Informàtica"
+    },
+    "4357f2b2-abda-46c4-a195-b35aab1e3a4a": {
+      "code": "P.1.7",
+      "name": "P.1.7",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Projectes"
+    },
+    "d961b975-fd84-49b7-b633-c2735771d505": {
+      "code": "P.1.8",
+      "name": "P.1.8",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Informàtica"
+    },
+    "fffe3f04-1284-49a4-9376-728b2a07bec8": {
+      "code": "P.1.9",
+      "name": "P.1.9",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Seminari"
+    },
+    "fd056fe9-672e-4a4f-af2e-b8e27773eeba": {
+      "code": "P.2.1",
+      "name": "P.2.1",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "4de80fce-69da-4599-a7e3-552f237e2842": {
+      "code": "P.2.2",
+      "name": "P.2.2",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "d3d1e8c8-f2c9-4504-b5ec-d2080a0f5f00": {
+      "code": "P.2.3",
+      "name": "P.2.3",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "5f11f6cd-56a8-47e8-80d5-eb0b7203492a": {
+      "code": "P.2.4",
+      "name": "P.2.4",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "a5225aa7-987c-4113-9232-9338c48e9c30": {
+      "code": "P.t.2",
+      "name": "P.t.2",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "150721ce-ba2d-4a24-863e-a34d0b5c9d5d": {
+      "code": "PORTATILS_(1)",
+      "name": "Portatils (1)",
+      "building": "Edifici Pujades",
+      "capacity": 25,
+      "type": "Informàtica"
+    },
+    "24dd7d5c-4eaa-492e-88b2-2a3753d69f9a": {
+      "code": "PORTATILS_(2)",
+      "name": "Portatils (2)",
+      "building": "Edifici Pujades",
+      "capacity": 25,
+      "type": "Informàtica"
+    },
+    "3fc4178a-f74e-4951-972f-df366eca37f7": {
+      "code": "SALA_BADAJOZ",
+      "name": "Sala Badajoz",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Polivalent"
+    },
+    "d0165b61-ee62-424e-a6c6-05b923c23e98": {
+      "code": "T.2",
+      "name": "T.2",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "16995d13-d0a0-47cd-a66c-35dc6f1c3469": {
+      "code": "T.3_MODA",
+      "name": "T.3 - Taller de moda",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "c3addfed-97c2-4ae6-a4e7-211990123a17": {
+      "code": "T.4_TALLER_DE_MODA",
+      "name": "T.4 - Taller de moda",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "f5cc2f65-e8a3-4bf0-8915-055220f7e429": {
+      "code": "T.5_TRICOTOSES",
+      "name": "T.5 - Tricotoses",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "bc27dc59-ea12-4faf-83be-ee0dc29773f9": {
+      "code": "TALLER_PROD_GRÀF",
+      "name": "Taller de Producció Gràfica",
+      "building": "Edifici Pujades",
+      "capacity": 30,
+      "type": "Taller"
+    },
+    "82630e78-d12c-46c0-b191-40d4c9596e2d": {
+      "code": "G.2.2",
+      "name": "G.2.2",
+      "building": null,
+      "capacity": 30,
+      "type": "Taller"
+    }
+  },
+  "semesters": {
+    "3dbb586b-7ae8-4a82-9013-24220dedf632": {
+      "name": "Segon Semestre 2025-2026",
+      "number": 2,
+      "academic_year_id": "2b210161-5447-4494-8003-f09a0b553a3f",
+      "start_date": "2026-02-01",
+      "end_date": "2026-06-30"
+    },
+    "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b": {
+      "name": "Primer Semestre 2025-2026",
+      "number": 1,
+      "academic_year_id": "2b210161-5447-4494-8003-f09a0b553a3f",
+      "start_date": "2025-09-15",
+      "end_date": "2026-01-31"
+    },
+    "826f73c1-2406-4eab-b642-99707b008670": {
+      "name": "Segon Semestre 2024-2025",
+      "number": 2,
+      "academic_year_id": "35203e71-8282-41c6-adb2-0a4eeff433c3",
+      "start_date": "2025-02-01",
+      "end_date": "2025-07-31"
+    },
+    "97043626-9013-4803-8c68-216efcbb158c": {
+      "name": "Primer Semestre 2024-2025",
+      "number": 1,
+      "academic_year_id": "35203e71-8282-41c6-adb2-0a4eeff433c3",
+      "start_date": "2024-09-01",
+      "end_date": "2025-01-31"
+    }
+  },
+  "academic_years": {
+    "2b210161-5447-4494-8003-f09a0b553a3f": {
+      "name": "2025-2026",
+      "is_current": true
+    },
+    "35203e71-8282-41c6-adb2-0a4eeff433c3": {
+      "name": "2024-2025",
+      "is_current": true
+    }
+  }
+}

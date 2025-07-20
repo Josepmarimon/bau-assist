@@ -1,0 +1,2015 @@
+[dotenv@17.1.0] injecting env (4) from .env (tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild)
+=== STARTING GROUPS IMPORT FROM EXCEL ===
+
+Reading Excel file...
+Found 424 rows in Excel
+
+Processing data...
+Found 344 unique subject-group combinations
+
+Fetching subjects from database...
+Fetching teachers from database...
+Fetching semesters...
+Found 2 semesters for 2025-2026
+
+Starting import process...
+
+Created course offering for GDB001
+Error processing GDB001_GR1-M1: {
+  code: '23514',
+  details: 'Failing row contains (b52340a0-0e6b-40fa-af6a-199d8c26133c, 9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M1, 30, 2025-07-17 21:47:32.192985+00, 2025-07-17 21:47:32.192985+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB001_GR1-M2: {
+  code: '23514',
+  details: 'Failing row contains (91bea807-8e29-4760-a925-42c45ccbebc3, 9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M2, 30, 2025-07-17 21:47:32.522292+00, 2025-07-17 21:47:32.522292+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB001_GR1-M3: {
+  code: '23514',
+  details: 'Failing row contains (66620cff-8d07-4490-87e9-ccbe29b6b972, 9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M3, 30, 2025-07-17 21:47:32.821168+00, 2025-07-17 21:47:32.821168+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB001_GR1-M4: {
+  code: '23514',
+  details: 'Failing row contains (9d0f1239-b7b1-4fa7-8db2-a0df18f8f38c, 9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M4, 30, 2025-07-17 21:47:33.131643+00, 2025-07-17 21:47:33.131643+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB001_GR1-M5: {
+  code: '23514',
+  details: 'Failing row contains (3f944477-7d57-4d79-9c70-23bc1fb53f41, 9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M5, 30, 2025-07-17 21:47:33.435472+00, 2025-07-17 21:47:33.435472+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB001_GR1-T1: {
+  code: '23514',
+  details: 'Failing row contains (55c726ac-d408-407c-a461-962b8bba2ad0, 9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T1, 30, 2025-07-17 21:47:33.750682+00, 2025-07-17 21:47:33.750682+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB001_GR1-T2: {
+  code: '23514',
+  details: 'Failing row contains (1d68f560-04f8-464c-a691-5b497372730b, 9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T2, 30, 2025-07-17 21:47:34.034785+00, 2025-07-17 21:47:34.034785+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDB011
+Error processing GDB011_GR1-M1: {
+  code: '23514',
+  details: 'Failing row contains (7b418a89-0b4f-46e8-b01b-21e8ce820bba, 9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M1, 30, 2025-07-17 21:47:34.446609+00, 2025-07-17 21:47:34.446609+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB011_GR1-M2: {
+  code: '23514',
+  details: 'Failing row contains (52e4575e-e17d-4336-9673-bfb5d3469b33, 9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M2, 30, 2025-07-17 21:47:34.775948+00, 2025-07-17 21:47:34.775948+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB011_GR1-M3: {
+  code: '23514',
+  details: 'Failing row contains (f2262943-c0dd-4871-b6d7-7aeefaa62030, 9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M3, 30, 2025-07-17 21:47:35.063051+00, 2025-07-17 21:47:35.063051+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB011_GR1-M4: {
+  code: '23514',
+  details: 'Failing row contains (6c1deb19-bb3d-431b-9d94-e43f73194eb0, 9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M4, 30, 2025-07-17 21:47:35.36436+00, 2025-07-17 21:47:35.36436+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB011_GR1-M5: {
+  code: '23514',
+  details: 'Failing row contains (0984c6c1-6f5f-4ebe-b417-0b7f41df3495, 9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M5, 30, 2025-07-17 21:47:35.659169+00, 2025-07-17 21:47:35.659169+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB011_GR1-T1: {
+  code: '23514',
+  details: 'Failing row contains (835c59a9-6880-402b-93b9-505fe6ba737e, 9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T1, 30, 2025-07-17 21:47:35.955908+00, 2025-07-17 21:47:35.955908+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB011_GR1-T2: {
+  code: '23514',
+  details: 'Failing row contains (ac029c9f-d843-4172-8205-aa3499918e03, 9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T2, 30, 2025-07-17 21:47:36.247707+00, 2025-07-17 21:47:36.247707+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDF001
+Error processing GDF001_GR1-M1: {
+  code: '23514',
+  details: 'Failing row contains (389561ff-94e3-4125-8503-3e0767e8a0fe, 22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M1, 30, 2025-07-17 21:47:36.7258+00, 2025-07-17 21:47:36.7258+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF001_GR1-M2: {
+  code: '23514',
+  details: 'Failing row contains (dbc59fa5-ac2f-4950-b573-fcf3bbca94aa, 22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M2, 30, 2025-07-17 21:47:37.055381+00, 2025-07-17 21:47:37.055381+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF001_GR1-M3: {
+  code: '23514',
+  details: 'Failing row contains (feaa7839-da96-4f0f-aa20-7023de0c9322, 22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M3, 30, 2025-07-17 21:47:37.345652+00, 2025-07-17 21:47:37.345652+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF001_GR1-M4: {
+  code: '23514',
+  details: 'Failing row contains (44c97bd5-0c74-496b-b260-c7a95e39bd49, 22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M4, 30, 2025-07-17 21:47:37.621579+00, 2025-07-17 21:47:37.621579+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF001_GR1-M5: {
+  code: '23514',
+  details: 'Failing row contains (c6885808-4899-444d-99bd-3ef405b5e8fa, 22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M5, 30, 2025-07-17 21:47:38.00852+00, 2025-07-17 21:47:38.00852+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF001_GR1-T1: {
+  code: '23514',
+  details: 'Failing row contains (3c1b7a2a-dd7b-4874-8e9c-c81ec5f2b437, 22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T1, 30, 2025-07-17 21:47:38.369362+00, 2025-07-17 21:47:38.369362+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF001_GR1-T2: {
+  code: '23514',
+  details: 'Failing row contains (9089a3e1-fcc1-410d-83d1-e5a161ca2001, 22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T2, 30, 2025-07-17 21:47:38.698724+00, 2025-07-17 21:47:38.698724+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDF011
+Error processing GDF011_GR1-M1: {
+  code: '23514',
+  details: 'Failing row contains (232715a7-56e9-4c65-981c-8d99046089b3, fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M1, 30, 2025-07-17 21:47:39.297511+00, 2025-07-17 21:47:39.297511+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF011_GR1-M2: {
+  code: '23514',
+  details: 'Failing row contains (12601cbd-632c-4f45-8b5d-be0ef0545d73, fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M2, 30, 2025-07-17 21:47:39.634469+00, 2025-07-17 21:47:39.634469+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF011_GR1-M3: {
+  code: '23514',
+  details: 'Failing row contains (0868c21c-511b-4677-aa17-4048d3ec427d, fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M3, 30, 2025-07-17 21:47:39.935689+00, 2025-07-17 21:47:39.935689+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF011_GR1-M4: {
+  code: '23514',
+  details: 'Failing row contains (29f1cef4-b516-47ac-b845-fd10fa6a9b1f, fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M4, 30, 2025-07-17 21:47:40.435091+00, 2025-07-17 21:47:40.435091+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF011_GR1-M5: {
+  code: '23514',
+  details: 'Failing row contains (b52380b6-4d12-4121-917b-14e232369f7f, fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M5, 30, 2025-07-17 21:47:40.855506+00, 2025-07-17 21:47:40.855506+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF011_GR1-T1: {
+  code: '23514',
+  details: 'Failing row contains (f7a5bcf5-6bd9-48d7-b673-e93a5fea4abf, fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T1, 30, 2025-07-17 21:47:41.291663+00, 2025-07-17 21:47:41.291663+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF011_GR1-T2: {
+  code: '23514',
+  details: 'Failing row contains (0a34b600-bbbb-4186-8564-83e5f155a7e7, fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T2, 30, 2025-07-17 21:47:41.637347+00, 2025-07-17 21:47:41.637347+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDF021
+Error processing GDF021_GR1-M1: {
+  code: '23514',
+  details: 'Failing row contains (48be4719-65fa-42a3-9342-935acc02e501, c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M1, 30, 2025-07-17 21:47:42.132217+00, 2025-07-17 21:47:42.132217+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF021_GR1-M2: {
+  code: '23514',
+  details: 'Failing row contains (22329592-b36e-4cea-ab03-557632374c86, c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M2, 30, 2025-07-17 21:47:42.496456+00, 2025-07-17 21:47:42.496456+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF021_GR1-M3: {
+  code: '23514',
+  details: 'Failing row contains (675676ee-dff5-4553-880d-1cec0ade6b87, c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M3, 30, 2025-07-17 21:47:42.861021+00, 2025-07-17 21:47:42.861021+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF021_GR1-M4: {
+  code: '23514',
+  details: 'Failing row contains (1b58ea01-12c3-404a-9696-b403c3501775, c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M4, 30, 2025-07-17 21:47:43.421643+00, 2025-07-17 21:47:43.421643+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF021_GR1-M5: {
+  code: '23514',
+  details: 'Failing row contains (4523f6b3-b5ef-4b4d-a525-87cff6176020, c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M5, 30, 2025-07-17 21:47:43.721256+00, 2025-07-17 21:47:43.721256+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF021_GR1-T1: {
+  code: '23514',
+  details: 'Failing row contains (cfa8b3fa-51cd-42c9-a27b-033858839812, c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T1, 30, 2025-07-17 21:47:44.08629+00, 2025-07-17 21:47:44.08629+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF021_GR1-T2: {
+  code: '23514',
+  details: 'Failing row contains (bca0b03f-7d5b-4ed2-9d69-9433fb0cbd8b, c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T2, 30, 2025-07-17 21:47:44.430165+00, 2025-07-17 21:47:44.430165+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDF031
+Error processing GDF031_GR1-M1: {
+  code: '23514',
+  details: 'Failing row contains (d0236449-ddd7-4b72-a568-2eb8ed624556, 72c4e437-41a2-42f6-8ee1-7c1269573475, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M1, 30, 2025-07-17 21:47:44.863342+00, 2025-07-17 21:47:44.863342+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF031_GR1-M2: {
+  code: '23514',
+  details: 'Failing row contains (9de19e9e-e5a6-4b0e-b0df-898811c3b5d2, 72c4e437-41a2-42f6-8ee1-7c1269573475, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M2, 30, 2025-07-17 21:47:45.171333+00, 2025-07-17 21:47:45.171333+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF031_GR1-M3: {
+  code: '23514',
+  details: 'Failing row contains (bb49dfa9-9839-4308-b9c3-6371b026a1dd, 72c4e437-41a2-42f6-8ee1-7c1269573475, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M3, 30, 2025-07-17 21:47:45.490559+00, 2025-07-17 21:47:45.490559+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF031_GR1-M4: {
+  code: '23514',
+  details: 'Failing row contains (8b4558ac-4f37-4bbf-90c6-129b9ca8f77d, 72c4e437-41a2-42f6-8ee1-7c1269573475, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M4, 30, 2025-07-17 21:47:45.798502+00, 2025-07-17 21:47:45.798502+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF031_GR1-M5: {
+  code: '23514',
+  details: 'Failing row contains (52f71e79-5d2c-4bf4-ad34-2fba369030ff, 72c4e437-41a2-42f6-8ee1-7c1269573475, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M5, 30, 2025-07-17 21:47:46.068265+00, 2025-07-17 21:47:46.068265+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF031_GR1-T1: {
+  code: '23514',
+  details: 'Failing row contains (97efdfd2-1712-487f-bcd2-2833043afdd8, 72c4e437-41a2-42f6-8ee1-7c1269573475, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T1, 30, 2025-07-17 21:47:46.413449+00, 2025-07-17 21:47:46.413449+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF031_GR1-T2: {
+  code: '23514',
+  details: 'Failing row contains (668b1fd4-1c4d-4f49-902c-8c07c7ef0eba, 72c4e437-41a2-42f6-8ee1-7c1269573475, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T2, 30, 2025-07-17 21:47:46.729821+00, 2025-07-17 21:47:46.729821+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDF041
+Error processing GDF041_GR1-M1: {
+  code: '23514',
+  details: 'Failing row contains (8b89fd0d-ed1a-4c2d-9e5a-e14a1fa32b31, edb4de1b-10a1-4b43-948c-1170f35c2956, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M1, 30, 2025-07-17 21:47:47.107146+00, 2025-07-17 21:47:47.107146+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF041_GR1-M2: {
+  code: '23514',
+  details: 'Failing row contains (bb3f3661-1d7a-461e-a40b-7c28c5b746eb, edb4de1b-10a1-4b43-948c-1170f35c2956, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M2, 30, 2025-07-17 21:47:47.421559+00, 2025-07-17 21:47:47.421559+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF041_GR1-M3: {
+  code: '23514',
+  details: 'Failing row contains (9b98e303-2c83-4ef9-8474-378ceb14ea1b, edb4de1b-10a1-4b43-948c-1170f35c2956, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M3, 30, 2025-07-17 21:47:47.746089+00, 2025-07-17 21:47:47.746089+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF041_GR1-M4: {
+  code: '23514',
+  details: 'Failing row contains (6b018dd0-5659-47bf-a6ae-500ad1ac032e, edb4de1b-10a1-4b43-948c-1170f35c2956, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M4, 30, 2025-07-17 21:47:48.047635+00, 2025-07-17 21:47:48.047635+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF041_GR1-M5: {
+  code: '23514',
+  details: 'Failing row contains (4c6ed3d1-fdb3-460d-82cd-718b5cb926b4, edb4de1b-10a1-4b43-948c-1170f35c2956, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M5, 30, 2025-07-17 21:47:48.408713+00, 2025-07-17 21:47:48.408713+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF041_GR1-T1: {
+  code: '23514',
+  details: 'Failing row contains (4506504c-9665-418e-92bb-ab77c236c5a7, edb4de1b-10a1-4b43-948c-1170f35c2956, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T1, 30, 2025-07-17 21:47:48.840206+00, 2025-07-17 21:47:48.840206+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF041_GR1-T2: {
+  code: '23514',
+  details: 'Failing row contains (0f65dd39-d995-42ab-ae12-a0012913f76d, edb4de1b-10a1-4b43-948c-1170f35c2956, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T2, 30, 2025-07-17 21:47:49.230788+00, 2025-07-17 21:47:49.230788+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDF051
+Error processing GDF051_GR1-M1: {
+  code: '23514',
+  details: 'Failing row contains (8e0f104a-121c-4b24-8b31-61b939809e07, 0867ac2f-12f9-472c-bb4d-8fce1c313cc3, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M1, 30, 2025-07-17 21:47:49.73381+00, 2025-07-17 21:47:49.73381+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF051_GR1-M2: {
+  code: '23514',
+  details: 'Failing row contains (df181fc5-40c5-44ff-a893-2344f2a207b4, 0867ac2f-12f9-472c-bb4d-8fce1c313cc3, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M2, 30, 2025-07-17 21:47:50.129029+00, 2025-07-17 21:47:50.129029+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF051_GR1-M3: {
+  code: '23514',
+  details: 'Failing row contains (42acdaa6-d57c-4d6b-9076-9baae61bb069, 0867ac2f-12f9-472c-bb4d-8fce1c313cc3, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M3, 30, 2025-07-17 21:47:50.495425+00, 2025-07-17 21:47:50.495425+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF051_GR1-M4: {
+  code: '23514',
+  details: 'Failing row contains (4ab59f0c-c4ab-418d-9545-5a183b44653c, 0867ac2f-12f9-472c-bb4d-8fce1c313cc3, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M4, 30, 2025-07-17 21:47:50.804239+00, 2025-07-17 21:47:50.804239+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF051_GR1-M5: {
+  code: '23514',
+  details: 'Failing row contains (b093deed-bb71-43f5-b32e-8398abd29551, 0867ac2f-12f9-472c-bb4d-8fce1c313cc3, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M5, 30, 2025-07-17 21:47:51.104549+00, 2025-07-17 21:47:51.104549+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF051_GR1-T1: {
+  code: '23514',
+  details: 'Failing row contains (7f4af381-532f-4672-af75-c95ac3f0583e, 0867ac2f-12f9-472c-bb4d-8fce1c313cc3, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T1, 30, 2025-07-17 21:47:51.462261+00, 2025-07-17 21:47:51.462261+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF051_GR1-T2: {
+  code: '23514',
+  details: 'Failing row contains (b791af96-f3cb-44b8-aebd-560f9dafaa09, 0867ac2f-12f9-472c-bb4d-8fce1c313cc3, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T2, 30, 2025-07-17 21:47:51.822185+00, 2025-07-17 21:47:51.822185+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDF061
+Error processing GDF061_GR1-M1: {
+  code: '23514',
+  details: 'Failing row contains (3b0a595d-fd58-4fa5-95a9-3d4565005b8d, 4a4e4fca-a449-424f-af2f-80e866adf66a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M1, 30, 2025-07-17 21:47:52.277384+00, 2025-07-17 21:47:52.277384+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF061_GR1-M2: {
+  code: '23514',
+  details: 'Failing row contains (f1c8e9e6-f530-45a3-ac0a-fb5c757dd882, 4a4e4fca-a449-424f-af2f-80e866adf66a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M2, 30, 2025-07-17 21:47:52.595868+00, 2025-07-17 21:47:52.595868+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF061_GR1-M3: {
+  code: '23514',
+  details: 'Failing row contains (26417aec-1d03-4d1e-9966-f0e044d5fbff, 4a4e4fca-a449-424f-af2f-80e866adf66a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M3, 30, 2025-07-17 21:47:52.895791+00, 2025-07-17 21:47:52.895791+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF061_GR1-M4: {
+  code: '23514',
+  details: 'Failing row contains (ea04ce6c-4caa-48c0-84d6-6404ebb7e368, 4a4e4fca-a449-424f-af2f-80e866adf66a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M4, 30, 2025-07-17 21:47:53.2218+00, 2025-07-17 21:47:53.2218+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF061_GR1-M5: {
+  code: '23514',
+  details: 'Failing row contains (30623b8a-5e39-49d1-81ff-ba9019fc346c, 4a4e4fca-a449-424f-af2f-80e866adf66a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M5, 30, 2025-07-17 21:47:53.526401+00, 2025-07-17 21:47:53.526401+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF061_GR1-T1: {
+  code: '23514',
+  details: 'Failing row contains (0413651a-a971-4058-9285-f0dc77a157b8, 4a4e4fca-a449-424f-af2f-80e866adf66a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T1, 30, 2025-07-17 21:47:53.8285+00, 2025-07-17 21:47:53.8285+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF061_GR1-T2: {
+  code: '23514',
+  details: 'Failing row contains (2d27cf7b-dbf7-4ce9-9b95-a35f38c14c4c, 4a4e4fca-a449-424f-af2f-80e866adf66a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T2, 30, 2025-07-17 21:47:54.140782+00, 2025-07-17 21:47:54.140782+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDF071
+Error processing GDF071_GR1-M1: {
+  code: '23514',
+  details: 'Failing row contains (644666eb-429b-441e-b593-eb8f8b6d59d0, 9995dd5b-8f75-4495-b42f-22a308f296b8, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M1, 30, 2025-07-17 21:47:54.57264+00, 2025-07-17 21:47:54.57264+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF071_GR1-M2: {
+  code: '23514',
+  details: 'Failing row contains (120130f0-5ffd-441d-8ac4-a985ee34ecb4, 9995dd5b-8f75-4495-b42f-22a308f296b8, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M2, 30, 2025-07-17 21:47:54.868581+00, 2025-07-17 21:47:54.868581+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF071_GR1-M3: {
+  code: '23514',
+  details: 'Failing row contains (5fb46d86-7c8e-4af4-a2cf-6c163db57c02, 9995dd5b-8f75-4495-b42f-22a308f296b8, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M3, 30, 2025-07-17 21:47:55.165866+00, 2025-07-17 21:47:55.165866+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF071_GR1-M4: {
+  code: '23514',
+  details: 'Failing row contains (da9d06dc-de73-4366-aa20-f1497daba2d6, 9995dd5b-8f75-4495-b42f-22a308f296b8, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M4, 30, 2025-07-17 21:47:55.459966+00, 2025-07-17 21:47:55.459966+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF071_GR1-M5: {
+  code: '23514',
+  details: 'Failing row contains (4a8dc0fc-3216-419a-b113-437b2d7a079b, 9995dd5b-8f75-4495-b42f-22a308f296b8, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR1-M5, 30, 2025-07-17 21:47:55.736939+00, 2025-07-17 21:47:55.736939+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF071_GR1-T1: {
+  code: '23514',
+  details: 'Failing row contains (e5223b1e-0956-4d85-9d1b-12d59b8ea18a, 9995dd5b-8f75-4495-b42f-22a308f296b8, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T1, 30, 2025-07-17 21:47:56.053475+00, 2025-07-17 21:47:56.053475+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF071_GR1-T2: {
+  code: '23514',
+  details: 'Failing row contains (0a364df0-14da-497b-b907-88f96d708dc5, 9995dd5b-8f75-4495-b42f-22a308f296b8, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR1-T2, 30, 2025-07-17 21:47:56.34026+00, 2025-07-17 21:47:56.34026+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDB002
+Error processing GDB002_GR2-M1: {
+  code: '23514',
+  details: 'Failing row contains (be2ece70-4875-4f27-b4f2-09b22bb3b68d, fc2f1536-88af-40a6-82c7-f498aa8ca963, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M1, 30, 2025-07-17 21:47:56.747187+00, 2025-07-17 21:47:56.747187+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB002_GR2-M2: {
+  code: '23514',
+  details: 'Failing row contains (b0be2a49-425a-46a8-a23f-72bfc52e6ca3, fc2f1536-88af-40a6-82c7-f498aa8ca963, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M2, 30, 2025-07-17 21:47:57.101989+00, 2025-07-17 21:47:57.101989+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB002_GR2-M3: {
+  code: '23514',
+  details: 'Failing row contains (3c0e2c97-5df4-43e5-bef6-e07bc0e43a2f, fc2f1536-88af-40a6-82c7-f498aa8ca963, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M3, 30, 2025-07-17 21:47:57.405771+00, 2025-07-17 21:47:57.405771+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB002_GR2-M4: {
+  code: '23514',
+  details: 'Failing row contains (909aa8ee-3be9-49b9-b4cf-8e5ab3e06d62, fc2f1536-88af-40a6-82c7-f498aa8ca963, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M4, 30, 2025-07-17 21:47:57.704946+00, 2025-07-17 21:47:57.704946+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB002_GR2-M5: {
+  code: '23514',
+  details: 'Failing row contains (afa26bd0-c828-4885-b894-c05005b493ce, fc2f1536-88af-40a6-82c7-f498aa8ca963, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M5, 30, 2025-07-17 21:47:58.024228+00, 2025-07-17 21:47:58.024228+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB002_GR2-T1: {
+  code: '23514',
+  details: 'Failing row contains (8bae6434-6480-40c0-abc1-f90e3f915cd9, fc2f1536-88af-40a6-82c7-f498aa8ca963, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR2-T1, 30, 2025-07-17 21:47:58.326692+00, 2025-07-17 21:47:58.326692+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB002_GR2-T2: {
+  code: '23514',
+  details: 'Failing row contains (fd47a56b-4592-4406-a7e8-4161ada170a0, fc2f1536-88af-40a6-82c7-f498aa8ca963, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR2-T2, 30, 2025-07-17 21:47:58.659979+00, 2025-07-17 21:47:58.659979+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDB012
+Error processing GDB012_GR2-Am: {
+  code: '23514',
+  details: 'Failing row contains (44c5a1d8-7f30-4138-a1dc-9d9cf7a7e5a4, 7f5af720-7cdb-474f-be09-4fe2e281cc29, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Am, 30, 2025-07-17 21:47:59.175376+00, 2025-07-17 21:47:59.175376+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB012_GR2-At: {
+  code: '23514',
+  details: 'Failing row contains (a7a513ed-e6cd-455e-bfe8-1a83c2b35cd2, 7f5af720-7cdb-474f-be09-4fe2e281cc29, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-At, 30, 2025-07-17 21:47:59.617545+00, 2025-07-17 21:47:59.617545+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB012_GR2-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (bc633663-2a98-4f37-b98c-33d3f3c7b4eb, 7f5af720-7cdb-474f-be09-4fe2e281cc29, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Gm1, 30, 2025-07-17 21:47:59.982114+00, 2025-07-17 21:47:59.982114+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB012_GR2-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (837cdb57-f5a4-4a63-8c2f-30c27d380ec9, 7f5af720-7cdb-474f-be09-4fe2e281cc29, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Gm2, 30, 2025-07-17 21:48:00.447893+00, 2025-07-17 21:48:00.447893+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB012_GR2-Gt: {
+  code: '23514',
+  details: 'Failing row contains (24514be8-be42-4947-a0a2-bab00859acbb, 7f5af720-7cdb-474f-be09-4fe2e281cc29, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Gt, 30, 2025-07-17 21:48:00.736683+00, 2025-07-17 21:48:00.736683+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB012_GR2-Im: {
+  code: '23514',
+  details: 'Failing row contains (75dbb8b6-d0a0-4033-9e59-bc994dfbc834, 7f5af720-7cdb-474f-be09-4fe2e281cc29, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Im, 30, 2025-07-17 21:48:01.076701+00, 2025-07-17 21:48:01.076701+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB012_GR2-It: {
+  code: '23514',
+  details: 'Failing row contains (2345e8c4-6bcc-4bcc-a28b-b0a6a3dcdc01, 7f5af720-7cdb-474f-be09-4fe2e281cc29, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-It, 30, 2025-07-17 21:48:01.391091+00, 2025-07-17 21:48:01.391091+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB012_GR2-Mm: {
+  code: '23514',
+  details: 'Failing row contains (2a67f332-e397-471e-8dc2-091318fc648c, 7f5af720-7cdb-474f-be09-4fe2e281cc29, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-Mm, 30, 2025-07-17 21:48:01.694346+00, 2025-07-17 21:48:01.694346+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB012_GR2-Mt: {
+  code: '23514',
+  details: 'Failing row contains (2c29575a-87a1-41d4-a46b-bf70fe4abc6a, 7f5af720-7cdb-474f-be09-4fe2e281cc29, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-Mt, 30, 2025-07-17 21:48:01.998603+00, 2025-07-17 21:48:01.998603+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDB022
+Error processing GDB022_GR2-Am: {
+  code: '23514',
+  details: 'Failing row contains (88dbc1ef-8378-40ef-9e20-de2bae82ed62, ec426c8e-ec55-4a09-b520-4dc2c906de39, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Am, 30, 2025-07-17 21:48:02.463709+00, 2025-07-17 21:48:02.463709+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB022_GR2-At: {
+  code: '23514',
+  details: 'Failing row contains (f98937b2-c1da-4c3b-baa2-35d840ee6c50, ec426c8e-ec55-4a09-b520-4dc2c906de39, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-At, 30, 2025-07-17 21:48:02.734821+00, 2025-07-17 21:48:02.734821+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB022_GR2-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (2d47fb8e-cfc7-494a-9f91-5c9395beb75b, ec426c8e-ec55-4a09-b520-4dc2c906de39, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Gm1, 30, 2025-07-17 21:48:03.044363+00, 2025-07-17 21:48:03.044363+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB022_GR2-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (db6a211a-c3b9-433f-9882-bce5231e3da2, ec426c8e-ec55-4a09-b520-4dc2c906de39, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Gm2, 30, 2025-07-17 21:48:03.394559+00, 2025-07-17 21:48:03.394559+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB022_GR2-Gt: {
+  code: '23514',
+  details: 'Failing row contains (5952c77f-8538-47d6-a220-85a11b6d90bd, ec426c8e-ec55-4a09-b520-4dc2c906de39, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Gt, 30, 2025-07-17 21:48:03.797569+00, 2025-07-17 21:48:03.797569+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB022_GR2-Im: {
+  code: '23514',
+  details: 'Failing row contains (94572c7a-56ec-46fa-b6ba-aee617a7f903, ec426c8e-ec55-4a09-b520-4dc2c906de39, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Im, 30, 2025-07-17 21:48:04.148269+00, 2025-07-17 21:48:04.148269+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB022_GR2-It: {
+  code: '23514',
+  details: 'Failing row contains (41c938ff-c163-4f47-b3b5-24eae83bf03d, ec426c8e-ec55-4a09-b520-4dc2c906de39, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-It, 30, 2025-07-17 21:48:04.517625+00, 2025-07-17 21:48:04.517625+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB022_GR2-Mm: {
+  code: '23514',
+  details: 'Failing row contains (7e0ca694-9085-4b44-a4de-79d46e1acd41, ec426c8e-ec55-4a09-b520-4dc2c906de39, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-Mm, 30, 2025-07-17 21:48:04.870765+00, 2025-07-17 21:48:04.870765+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB022_GR2-Mt: {
+  code: '23514',
+  details: 'Failing row contains (a5ddb99c-737c-4c17-92fa-1dfe5d448c13, ec426c8e-ec55-4a09-b520-4dc2c906de39, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-Mt, 30, 2025-07-17 21:48:05.172445+00, 2025-07-17 21:48:05.172445+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDB032
+Error processing GDB032_GR2-M1: {
+  code: '23514',
+  details: 'Failing row contains (5df2bdbc-47f0-4cfd-8fc3-4cc14592ea30, 1130f830-c2b2-4e33-8755-8e0bfbcd36d6, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M1, 30, 2025-07-17 21:48:05.689947+00, 2025-07-17 21:48:05.689947+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB032_GR2-M2: {
+  code: '23514',
+  details: 'Failing row contains (f5fbecb4-2e1d-431c-9ee1-3f1b9a2237b5, 1130f830-c2b2-4e33-8755-8e0bfbcd36d6, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M2, 30, 2025-07-17 21:48:06.087568+00, 2025-07-17 21:48:06.087568+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB032_GR2-M3: {
+  code: '23514',
+  details: 'Failing row contains (907a9e65-e05a-4bcd-8e8d-2b01e7d4f444, 1130f830-c2b2-4e33-8755-8e0bfbcd36d6, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M3, 30, 2025-07-17 21:48:06.428259+00, 2025-07-17 21:48:06.428259+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB032_GR2-M4: {
+  code: '23514',
+  details: 'Failing row contains (1c16c66f-2ec3-47dc-806e-6ff3ba70a80a, 1130f830-c2b2-4e33-8755-8e0bfbcd36d6, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M4, 30, 2025-07-17 21:48:06.896047+00, 2025-07-17 21:48:06.896047+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB032_GR2-M5: {
+  code: '23514',
+  details: 'Failing row contains (1b5a8f36-6362-4c61-8706-504190b1c9d4, 1130f830-c2b2-4e33-8755-8e0bfbcd36d6, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M5, 30, 2025-07-17 21:48:07.261305+00, 2025-07-17 21:48:07.261305+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB032_GR2-T1: {
+  code: '23514',
+  details: 'Failing row contains (a94c229e-57a6-4c85-a597-ac946195c51d, 1130f830-c2b2-4e33-8755-8e0bfbcd36d6, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR2-T1, 30, 2025-07-17 21:48:07.590198+00, 2025-07-17 21:48:07.590198+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB032_GR2-T2: {
+  code: '23514',
+  details: 'Failing row contains (0e49946b-c215-425e-a1e9-6538c4ec0bd2, 1130f830-c2b2-4e33-8755-8e0bfbcd36d6, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR2-T2, 30, 2025-07-17 21:48:07.997418+00, 2025-07-17 21:48:07.997418+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDB042
+Error processing GDB042_GR2-M1: {
+  code: '23514',
+  details: 'Failing row contains (2d23639d-0a49-40f1-8a13-1504e55124ff, 3ba133c2-ea8b-445d-8366-103e07f9125f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M1, 30, 2025-07-17 21:48:08.445878+00, 2025-07-17 21:48:08.445878+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB042_GR2-M2: {
+  code: '23514',
+  details: 'Failing row contains (67a1cbda-ad75-4a7d-a9bf-0ac136a06213, 3ba133c2-ea8b-445d-8366-103e07f9125f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M2, 30, 2025-07-17 21:48:08.786801+00, 2025-07-17 21:48:08.786801+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB042_GR2-M3: {
+  code: '23514',
+  details: 'Failing row contains (b7d0e86d-6414-4632-9ad8-fed6f477213a, 3ba133c2-ea8b-445d-8366-103e07f9125f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M3, 30, 2025-07-17 21:48:09.096252+00, 2025-07-17 21:48:09.096252+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB042_GR2-M4: {
+  code: '23514',
+  details: 'Failing row contains (7350ed85-f589-4b0e-ae56-c3fdbf890b5d, 3ba133c2-ea8b-445d-8366-103e07f9125f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M4, 30, 2025-07-17 21:48:09.492574+00, 2025-07-17 21:48:09.492574+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB042_GR2-M5: {
+  code: '23514',
+  details: 'Failing row contains (644a2007-3429-4173-8829-7f888c9773a9, 3ba133c2-ea8b-445d-8366-103e07f9125f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M5, 30, 2025-07-17 21:48:09.825987+00, 2025-07-17 21:48:09.825987+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB042_GR2-T1: {
+  code: '23514',
+  details: 'Failing row contains (8f3d5c9a-c4fb-40f6-97e8-5ba011a06012, 3ba133c2-ea8b-445d-8366-103e07f9125f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR2-T1, 30, 2025-07-17 21:48:10.122785+00, 2025-07-17 21:48:10.122785+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB042_GR2-T2: {
+  code: '23514',
+  details: 'Failing row contains (f5d17658-b912-4365-b16c-e2094f6ea321, 3ba133c2-ea8b-445d-8366-103e07f9125f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR2-T2, 30, 2025-07-17 21:48:10.417244+00, 2025-07-17 21:48:10.417244+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDB052
+Error processing GDB052_GR2-M1: {
+  code: '23514',
+  details: 'Failing row contains (ffe18a53-d6cc-459e-b04e-b7ac6d01e6cf, 1cf9443a-fe39-4931-9015-0a20fb189021, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M1, 30, 2025-07-17 21:48:10.813413+00, 2025-07-17 21:48:10.813413+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB052_GR2-M2: {
+  code: '23514',
+  details: 'Failing row contains (3619af6f-a09b-47e6-8bdd-da68b0c67b0f, 1cf9443a-fe39-4931-9015-0a20fb189021, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M2, 30, 2025-07-17 21:48:11.112298+00, 2025-07-17 21:48:11.112298+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB052_GR2-M3: {
+  code: '23514',
+  details: 'Failing row contains (05956660-3cf4-4ac4-80e2-b4796764465d, 1cf9443a-fe39-4931-9015-0a20fb189021, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M3, 30, 2025-07-17 21:48:11.410077+00, 2025-07-17 21:48:11.410077+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB052_GR2-M4: {
+  code: '23514',
+  details: 'Failing row contains (32a844fa-5251-43f8-9fa7-437ed357985f, 1cf9443a-fe39-4931-9015-0a20fb189021, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M4, 30, 2025-07-17 21:48:11.705871+00, 2025-07-17 21:48:11.705871+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB052_GR2-M5: {
+  code: '23514',
+  details: 'Failing row contains (0232f2a8-2429-4642-9c53-3f2e55b226cd, 1cf9443a-fe39-4931-9015-0a20fb189021, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M5, 30, 2025-07-17 21:48:11.986536+00, 2025-07-17 21:48:11.986536+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB052_GR2-T1: {
+  code: '23514',
+  details: 'Failing row contains (71c5af5b-1ac2-490a-a7d5-db6a8b249433, 1cf9443a-fe39-4931-9015-0a20fb189021, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR2-T1, 30, 2025-07-17 21:48:12.289061+00, 2025-07-17 21:48:12.289061+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB052_GR2-T2: {
+  code: '23514',
+  details: 'Failing row contains (edc9825f-9cb1-44f8-a676-74cd434aace3, 1cf9443a-fe39-4931-9015-0a20fb189021, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR2-T2, 30, 2025-07-17 21:48:12.574654+00, 2025-07-17 21:48:12.574654+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDB062
+Error processing GDB062_GR2-Am: {
+  code: '23514',
+  details: 'Failing row contains (14fb6c31-7e1a-49b9-b967-e2df4f1b6c0e, aba834c1-7ae1-4a43-9e35-8f5308e185de, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Am, 30, 2025-07-17 21:48:13.015192+00, 2025-07-17 21:48:13.015192+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB062_GR2-At: {
+  code: '23514',
+  details: 'Failing row contains (02920229-4c33-4e14-b76d-a89b033882b8, aba834c1-7ae1-4a43-9e35-8f5308e185de, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-At, 30, 2025-07-17 21:48:13.340057+00, 2025-07-17 21:48:13.340057+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB062_GR2-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (3fc228dd-6b14-4dd3-b1cb-b1b48c0ed803, aba834c1-7ae1-4a43-9e35-8f5308e185de, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Gm1, 30, 2025-07-17 21:48:13.660497+00, 2025-07-17 21:48:13.660497+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB062_GR2-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (b69be866-4fb9-433d-aaed-8398d0debcab, aba834c1-7ae1-4a43-9e35-8f5308e185de, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Gm2, 30, 2025-07-17 21:48:14.144744+00, 2025-07-17 21:48:14.144744+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB062_GR2-Gt: {
+  code: '23514',
+  details: 'Failing row contains (efb779de-cfbd-4b4d-a155-64654d8975b0, aba834c1-7ae1-4a43-9e35-8f5308e185de, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Gt, 30, 2025-07-17 21:48:14.536258+00, 2025-07-17 21:48:14.536258+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB062_GR2-Im: {
+  code: '23514',
+  details: 'Failing row contains (95cf7473-1da1-47c2-9d75-43cf112724ef, aba834c1-7ae1-4a43-9e35-8f5308e185de, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Im, 30, 2025-07-17 21:48:14.89996+00, 2025-07-17 21:48:14.89996+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB062_GR2-It: {
+  code: '23514',
+  details: 'Failing row contains (25175d4e-3466-4ec0-abd3-6c768d8df069, aba834c1-7ae1-4a43-9e35-8f5308e185de, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-It, 30, 2025-07-17 21:48:15.238839+00, 2025-07-17 21:48:15.238839+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB062_GR2-Mm: {
+  code: '23514',
+  details: 'Failing row contains (26c0984f-280c-4052-bce9-46bad2e2de84, aba834c1-7ae1-4a43-9e35-8f5308e185de, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-Mm, 30, 2025-07-17 21:48:15.649206+00, 2025-07-17 21:48:15.649206+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB062_GR2-Mt: {
+  code: '23514',
+  details: 'Failing row contains (6676d372-ef5f-4e81-9eed-113d8ce1b584, aba834c1-7ae1-4a43-9e35-8f5308e185de, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-Mt, 30, 2025-07-17 21:48:16.066297+00, 2025-07-17 21:48:16.066297+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDB072
+Error processing GDB072_GR2-Am: {
+  code: '23514',
+  details: 'Failing row contains (bb3e6251-31d4-4e56-ae10-895aecb9c31c, 5c2e973d-d068-4c28-9289-9c221f1cad57, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Am, 30, 2025-07-17 21:48:16.696231+00, 2025-07-17 21:48:16.696231+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB072_GR2-At: {
+  code: '23514',
+  details: 'Failing row contains (b2dba238-6e51-4f75-b6d2-7ec92ce7399f, 5c2e973d-d068-4c28-9289-9c221f1cad57, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-At, 30, 2025-07-17 21:48:17.037778+00, 2025-07-17 21:48:17.037778+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB072_GR2-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (18e9de93-9c86-4106-9ccd-f8e4ae8aad71, 5c2e973d-d068-4c28-9289-9c221f1cad57, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Gm1, 30, 2025-07-17 21:48:17.346126+00, 2025-07-17 21:48:17.346126+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB072_GR2-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (0382d4dc-8b18-4c1b-aeec-b53ae9dfb1d1, 5c2e973d-d068-4c28-9289-9c221f1cad57, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Gm2, 30, 2025-07-17 21:48:17.65748+00, 2025-07-17 21:48:17.65748+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB072_GR2-Gt: {
+  code: '23514',
+  details: 'Failing row contains (a1c6e565-326c-400f-b6fc-1b10f455c1bc, 5c2e973d-d068-4c28-9289-9c221f1cad57, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Gt, 30, 2025-07-17 21:48:17.975392+00, 2025-07-17 21:48:17.975392+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB072_GR2-Im: {
+  code: '23514',
+  details: 'Failing row contains (8bd49108-5a30-40ed-b03e-b9862f3b1c1c, 5c2e973d-d068-4c28-9289-9c221f1cad57, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-Im, 30, 2025-07-17 21:48:18.33629+00, 2025-07-17 21:48:18.33629+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB072_GR2-It: {
+  code: '23514',
+  details: 'Failing row contains (00237bb3-86e0-429e-bb38-8b4fbca5921d, 5c2e973d-d068-4c28-9289-9c221f1cad57, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR2-It, 30, 2025-07-17 21:48:18.709767+00, 2025-07-17 21:48:18.709767+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB072_GR2-Mm: {
+  code: '23514',
+  details: 'Failing row contains (b01c2d16-b5f5-4591-905a-e79470d31008, 5c2e973d-d068-4c28-9289-9c221f1cad57, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-Mm, 30, 2025-07-17 21:48:19.068387+00, 2025-07-17 21:48:19.068387+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDB072_GR2-Mt: {
+  code: '23514',
+  details: 'Failing row contains (c0ef155a-697c-4fc6-980b-0025df65f1f7, 5c2e973d-d068-4c28-9289-9c221f1cad57, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-Mt, 30, 2025-07-17 21:48:19.414988+00, 2025-07-17 21:48:19.414988+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDF002
+Error processing GDF002_GR2-M1: {
+  code: '23514',
+  details: 'Failing row contains (ace7b223-0322-4c4d-bd07-7c12cd5deb1f, 9599b289-060f-46bd-bdc5-592f03706327, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M1, 30, 2025-07-17 21:48:19.876464+00, 2025-07-17 21:48:19.876464+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF002_GR2-M2: {
+  code: '23514',
+  details: 'Failing row contains (2f800302-356a-4613-b053-46af4036b6ae, 9599b289-060f-46bd-bdc5-592f03706327, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M2, 30, 2025-07-17 21:48:20.2677+00, 2025-07-17 21:48:20.2677+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF002_GR2-M3: {
+  code: '23514',
+  details: 'Failing row contains (35520e01-d57c-48ff-999c-e0e4cae8466b, 9599b289-060f-46bd-bdc5-592f03706327, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M3, 30, 2025-07-17 21:48:20.628544+00, 2025-07-17 21:48:20.628544+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF002_GR2-M4: {
+  code: '23514',
+  details: 'Failing row contains (26915f66-e66b-46e6-8c98-f5c1d3beb94c, 9599b289-060f-46bd-bdc5-592f03706327, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M4, 30, 2025-07-17 21:48:20.952198+00, 2025-07-17 21:48:20.952198+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF002_GR2-M5: {
+  code: '23514',
+  details: 'Failing row contains (d6f61aa6-292b-42ed-ae47-a311bfb771cb, 9599b289-060f-46bd-bdc5-592f03706327, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M5, 30, 2025-07-17 21:48:21.259319+00, 2025-07-17 21:48:21.259319+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF002_GR2-T1: {
+  code: '23514',
+  details: 'Failing row contains (e65ec1b8-a3d2-4a67-bbcf-bcec780a4907, 9599b289-060f-46bd-bdc5-592f03706327, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR2-T1, 30, 2025-07-17 21:48:21.653301+00, 2025-07-17 21:48:21.653301+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF002_GR2-T2: {
+  code: '23514',
+  details: 'Failing row contains (b388d4e5-9ef5-4629-830c-9e4f167c3404, 9599b289-060f-46bd-bdc5-592f03706327, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR2-T2, 30, 2025-07-17 21:48:22.039935+00, 2025-07-17 21:48:22.039935+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDF012
+Error processing GDF012_GR2-M1: {
+  code: '23514',
+  details: 'Failing row contains (c7e94fa3-8e2a-4ff5-b527-01cd0f8a87f5, 007cb498-3a57-4c46-8809-d1c0e4f8f99b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M1, 30, 2025-07-17 21:48:22.469385+00, 2025-07-17 21:48:22.469385+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF012_GR2-M2: {
+  code: '23514',
+  details: 'Failing row contains (5bf6d0e1-a0bc-4c57-931a-8ac51726c949, 007cb498-3a57-4c46-8809-d1c0e4f8f99b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M2, 30, 2025-07-17 21:48:22.877557+00, 2025-07-17 21:48:22.877557+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF012_GR2-M3: {
+  code: '23514',
+  details: 'Failing row contains (348a6136-e1a8-4dbd-8204-92a9a4f6c1e4, 007cb498-3a57-4c46-8809-d1c0e4f8f99b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M3, 30, 2025-07-17 21:48:23.173861+00, 2025-07-17 21:48:23.173861+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF012_GR2-M4: {
+  code: '23514',
+  details: 'Failing row contains (9fa2e162-43e3-4b70-9675-d86f4fdd8c15, 007cb498-3a57-4c46-8809-d1c0e4f8f99b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M4, 30, 2025-07-17 21:48:23.471242+00, 2025-07-17 21:48:23.471242+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF012_GR2-M5: {
+  code: '23514',
+  details: 'Failing row contains (d45ce686-8392-490e-9c7f-771cfe05fa4b, 007cb498-3a57-4c46-8809-d1c0e4f8f99b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR2-M5, 30, 2025-07-17 21:48:23.780871+00, 2025-07-17 21:48:23.780871+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF012_GR2-T1: {
+  code: '23514',
+  details: 'Failing row contains (46d6dbb1-54f2-42e0-964e-da29f3fd29bd, 007cb498-3a57-4c46-8809-d1c0e4f8f99b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR2-T1, 30, 2025-07-17 21:48:24.080169+00, 2025-07-17 21:48:24.080169+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDF012_GR2-T2: {
+  code: '23514',
+  details: 'Failing row contains (bb3cf7c2-2054-4851-bff8-15ef89d20df1, 007cb498-3a57-4c46-8809-d1c0e4f8f99b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GR2-T2, 30, 2025-07-17 21:48:24.392909+00, 2025-07-17 21:48:24.392909+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA03
+Error processing GDVA03_GR3-Am: {
+  code: '23514',
+  details: 'Failing row contains (3bbfccc4-8a13-4b72-bd4f-650d52881ad7, 69ef14e6-a966-43cb-b9c4-77ac97e7678f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Am, 30, 2025-07-17 21:48:24.821204+00, 2025-07-17 21:48:24.821204+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVA03_GR3-At: {
+  code: '23514',
+  details: 'Failing row contains (ef4d8863-2aef-4378-b567-9c68348aa5dc, 69ef14e6-a966-43cb-b9c4-77ac97e7678f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-At, 30, 2025-07-17 21:48:25.121532+00, 2025-07-17 21:48:25.121532+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA13
+Error processing GDVA13_GR3-Am: {
+  code: '23514',
+  details: 'Failing row contains (b06180aa-67fa-4e66-9225-02ebe342971e, 76611a63-92b6-4d7d-89be-3fa28ffe5413, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Am, 30, 2025-07-17 21:48:25.611522+00, 2025-07-17 21:48:25.611522+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVA13_GR3-At: {
+  code: '23514',
+  details: 'Failing row contains (08e9c032-82e9-4841-9ffd-8c8a7a376cbe, 76611a63-92b6-4d7d-89be-3fa28ffe5413, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-At, 30, 2025-07-17 21:48:25.946651+00, 2025-07-17 21:48:25.946651+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA23
+Error processing GDVA23_GR3-Am: {
+  code: '23514',
+  details: 'Failing row contains (a262b9f3-4b8f-4102-b52e-a1fe54e94c12, ec8a45bf-67f1-4a34-9d8f-a81fcf131aa7, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Am, 30, 2025-07-17 21:48:26.380052+00, 2025-07-17 21:48:26.380052+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVA23_GR3-At: {
+  code: '23514',
+  details: 'Failing row contains (97ec9dcc-40a9-416a-b438-5cb1a35005f4, ec8a45bf-67f1-4a34-9d8f-a81fcf131aa7, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-At, 30, 2025-07-17 21:48:26.676189+00, 2025-07-17 21:48:26.676189+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA33
+Error processing GDVA33_GR3-Am: {
+  code: '23514',
+  details: 'Failing row contains (3a0df87c-9da1-4d4f-91b1-54d9f0063ca4, 1ca4bdea-83c0-4b43-b649-2e6cc7cfa9cb, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Am, 30, 2025-07-17 21:48:27.069547+00, 2025-07-17 21:48:27.069547+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVA33_GR3-At: {
+  code: '23514',
+  details: 'Failing row contains (4198b56f-bf2f-473a-acd0-1d66d67f353d, 1ca4bdea-83c0-4b43-b649-2e6cc7cfa9cb, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-At, 30, 2025-07-17 21:48:27.365453+00, 2025-07-17 21:48:27.365453+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA43
+Error processing GDVA43_GR3-Am: {
+  code: '23514',
+  details: 'Failing row contains (d2548f84-f84a-4efc-828f-eb530ddd21e1, c53850b7-7b40-4dfc-a330-b743156f34fd, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Am, 30, 2025-07-17 21:48:27.765256+00, 2025-07-17 21:48:27.765256+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVA43_GR3-At: {
+  code: '23514',
+  details: 'Failing row contains (150d72d2-bc5f-4b2a-ae53-55ea24ae197f, c53850b7-7b40-4dfc-a330-b743156f34fd, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-At, 30, 2025-07-17 21:48:28.073965+00, 2025-07-17 21:48:28.073965+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA53
+Error processing GDVA53_GR3-Am: {
+  code: '23514',
+  details: 'Failing row contains (02431eff-de44-4da6-97a5-e49856ef0add, 3467706b-22f0-401e-bc6b-2d3fa83a096a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Am, 30, 2025-07-17 21:48:28.473768+00, 2025-07-17 21:48:28.473768+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVA53_GR3-At: {
+  code: '23514',
+  details: 'Failing row contains (eb8d008f-0937-4b65-8355-5511f47537ad, 3467706b-22f0-401e-bc6b-2d3fa83a096a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-At, 30, 2025-07-17 21:48:28.793569+00, 2025-07-17 21:48:28.793569+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA63
+Error processing GDVA63_GR3-Am: {
+  code: '23514',
+  details: 'Failing row contains (9327fab4-d65d-46c3-b900-5ddaeec306dd, f1b4dafb-dc6e-422b-a80e-815238b768b2, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Am, 30, 2025-07-17 21:48:29.215949+00, 2025-07-17 21:48:29.215949+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVA63_GR3-At: {
+  code: '23514',
+  details: 'Failing row contains (331c947b-f3c1-4917-9494-96f0a077f9dd, f1b4dafb-dc6e-422b-a80e-815238b768b2, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-At, 30, 2025-07-17 21:48:29.514086+00, 2025-07-17 21:48:29.514086+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA73
+Error processing GDVA73_GR3-Am: {
+  code: '23514',
+  details: 'Failing row contains (7a41b26a-f104-4142-8079-3a9be0b383c0, 080de9c1-66b6-4b25-ae4f-c5a8a5b1384a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Am, 30, 2025-07-17 21:48:29.920161+00, 2025-07-17 21:48:29.920161+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVA73_GR3-At: {
+  code: '23514',
+  details: 'Failing row contains (cce54acd-ea2e-43f9-a3ce-15e918f89a5f, 080de9c1-66b6-4b25-ae4f-c5a8a5b1384a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-At, 30, 2025-07-17 21:48:30.244321+00, 2025-07-17 21:48:30.244321+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA83
+Error processing GDVA83_GR3-Am: {
+  code: '23514',
+  details: 'Failing row contains (c1452e7a-e869-41a1-9434-d3c2711763db, c1e9cbd0-d818-4677-a65c-672a9e73d62c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Am, 30, 2025-07-17 21:48:30.682234+00, 2025-07-17 21:48:30.682234+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVA83_GR3-At: {
+  code: '23514',
+  details: 'Failing row contains (c32868cf-e8c8-4610-92c1-f6ed8f5a20a2, c1e9cbd0-d818-4677-a65c-672a9e73d62c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-At, 30, 2025-07-17 21:48:31.024446+00, 2025-07-17 21:48:31.024446+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA93
+Error processing GDVA93_GR3-Am: {
+  code: '23514',
+  details: 'Failing row contains (0b3e512e-cfc8-43b1-8c15-85d12416751a, 9a3f4d04-6035-473a-a9e1-5346a5d02c49, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Am, 30, 2025-07-17 21:48:31.495378+00, 2025-07-17 21:48:31.495378+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVA93_GR3-At: {
+  code: '23514',
+  details: 'Failing row contains (4a3d0c95-49e3-4327-97db-c9d6886486e4, 9a3f4d04-6035-473a-a9e1-5346a5d02c49, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-At, 30, 2025-07-17 21:48:31.804003+00, 2025-07-17 21:48:31.804003+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG03
+Error processing GDVG03_GR3-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (540fc9a0-e278-47ba-9642-395744cbd279, 98acd819-f8ee-436e-88e2-e9b53efeeebd, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm1, 30, 2025-07-17 21:48:32.212623+00, 2025-07-17 21:48:32.212623+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG03_GR3-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (022e0c6c-0a74-473a-8101-f56e993e9d0f, 98acd819-f8ee-436e-88e2-e9b53efeeebd, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm2, 30, 2025-07-17 21:48:32.545132+00, 2025-07-17 21:48:32.545132+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG03_GR3-Gt: {
+  code: '23514',
+  details: 'Failing row contains (2f43a6f6-9690-4538-9802-8d3b655068cd, 98acd819-f8ee-436e-88e2-e9b53efeeebd, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gt, 30, 2025-07-17 21:48:32.857371+00, 2025-07-17 21:48:32.857371+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG13
+Error processing GDVG13_GR3-Gm1a: {
+  code: '23514',
+  details: 'Failing row contains (83a313e2-bdc9-4c69-8e24-a8e602c21456, 080c1c5d-76b0-4023-b53e-65c38bc5588f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm1a, 30, 2025-07-17 21:48:33.286363+00, 2025-07-17 21:48:33.286363+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG13_GR3-Gm1b: {
+  code: '23514',
+  details: 'Failing row contains (c40f6b19-12f5-49e3-bc96-998a89a21b83, 080c1c5d-76b0-4023-b53e-65c38bc5588f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm1b, 30, 2025-07-17 21:48:33.605274+00, 2025-07-17 21:48:33.605274+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG13_GR3-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (1c0283dd-00cb-43ac-8a2b-724e367bdd3d, 080c1c5d-76b0-4023-b53e-65c38bc5588f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm2, 30, 2025-07-17 21:48:33.934612+00, 2025-07-17 21:48:33.934612+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG13_GR3-Gt: {
+  code: '23514',
+  details: 'Failing row contains (f6ff5c03-d185-4270-bda9-aa5122be1741, 080c1c5d-76b0-4023-b53e-65c38bc5588f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gt, 30, 2025-07-17 21:48:34.244372+00, 2025-07-17 21:48:34.244372+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG23
+Error processing GDVG23_GR3-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (9cacefef-413b-4972-8b33-3abf7f0068bb, fc73078f-5a05-4af8-bd55-1011522bc689, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm1, 30, 2025-07-17 21:48:34.648108+00, 2025-07-17 21:48:34.648108+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG23_GR3-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (d56e7537-8c32-4d28-9e71-4aebce4ec817, fc73078f-5a05-4af8-bd55-1011522bc689, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm2, 30, 2025-07-17 21:48:34.94557+00, 2025-07-17 21:48:34.94557+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG23_GR3-Gt: {
+  code: '23514',
+  details: 'Failing row contains (25b0541c-4b2c-4f50-8064-c825be37f645, fc73078f-5a05-4af8-bd55-1011522bc689, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gt, 30, 2025-07-17 21:48:35.240619+00, 2025-07-17 21:48:35.240619+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG33
+Error processing GDVG33_GR3-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (40a1d762-40ca-4799-9a9f-f86c1b2e9e21, 48c90d4b-8a06-4695-9d2b-089d50905a39, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm1, 30, 2025-07-17 21:48:35.644645+00, 2025-07-17 21:48:35.644645+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG33_GR3-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (156fa41b-0777-492a-8c69-41fa9cc871d0, 48c90d4b-8a06-4695-9d2b-089d50905a39, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm2, 30, 2025-07-17 21:48:35.942106+00, 2025-07-17 21:48:35.942106+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG33_GR3-Gt: {
+  code: '23514',
+  details: 'Failing row contains (a5141528-4599-4a34-beed-b02b8c1f6280, 48c90d4b-8a06-4695-9d2b-089d50905a39, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gt, 30, 2025-07-17 21:48:36.22004+00, 2025-07-17 21:48:36.22004+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG43
+Error processing GDVG43_GR3-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (9aefaf80-1bed-4a0a-918d-df6c7b557df5, 98d5c516-c675-4b5f-886d-3a89d13d472f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm1, 30, 2025-07-17 21:48:36.641115+00, 2025-07-17 21:48:36.641115+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG43_GR3-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (4d065f96-e075-4af9-9cd4-c167008a9732, 98d5c516-c675-4b5f-886d-3a89d13d472f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm2, 30, 2025-07-17 21:48:36.941508+00, 2025-07-17 21:48:36.941508+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG43_GR3-Gt: {
+  code: '23514',
+  details: 'Failing row contains (123b13ed-3c17-4045-93a3-96c7b2f8ab37, 98d5c516-c675-4b5f-886d-3a89d13d472f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gt, 30, 2025-07-17 21:48:37.245787+00, 2025-07-17 21:48:37.245787+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG53
+Error processing GDVG53_GR3-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (f0e37da6-0cb5-4169-8bd0-68e18fa93e30, 736ed253-3eb0-47ae-98e4-d1f35bad5568, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm1, 30, 2025-07-17 21:48:37.717196+00, 2025-07-17 21:48:37.717196+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG53_GR3-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (40a4e747-6e6b-49a4-9180-476c51dae34e, 736ed253-3eb0-47ae-98e4-d1f35bad5568, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm2, 30, 2025-07-17 21:48:38.042267+00, 2025-07-17 21:48:38.042267+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG53_GR3-Gt: {
+  code: '23514',
+  details: 'Failing row contains (f5f2c544-bf21-48bc-858f-cb7f971d6dad, 736ed253-3eb0-47ae-98e4-d1f35bad5568, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gt, 30, 2025-07-17 21:48:38.347747+00, 2025-07-17 21:48:38.347747+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG63
+Error processing GDVG63_GR3-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (1ffe4ddf-ae7f-496b-aa95-35b701552175, f65fab84-9ba5-409f-b87e-6206c9110111, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm1, 30, 2025-07-17 21:48:38.863642+00, 2025-07-17 21:48:38.863642+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG63_GR3-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (9a7fbf54-971a-448a-b522-fa37307abc26, f65fab84-9ba5-409f-b87e-6206c9110111, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm2, 30, 2025-07-17 21:48:39.236928+00, 2025-07-17 21:48:39.236928+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG63_GR3-Gt: {
+  code: '23514',
+  details: 'Failing row contains (738bbb43-2e54-453c-9a5b-a7ceaacce753, f65fab84-9ba5-409f-b87e-6206c9110111, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gt, 30, 2025-07-17 21:48:39.609323+00, 2025-07-17 21:48:39.609323+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG73
+Error processing GDVG73_GR3-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (6dfeb1f7-7666-4f27-86a3-ebdb4f3b2962, 896ad885-128c-4a0e-8877-0929b17fe2de, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm1, 30, 2025-07-17 21:48:40.149228+00, 2025-07-17 21:48:40.149228+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG73_GR3-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (4bbfbde5-2b9f-457d-9d62-32ac4f99fce2, 896ad885-128c-4a0e-8877-0929b17fe2de, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm2, 30, 2025-07-17 21:48:40.533621+00, 2025-07-17 21:48:40.533621+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG73_GR3-Gt: {
+  code: '23514',
+  details: 'Failing row contains (876ec5ea-d4fb-4027-9ebd-816f8b98b125, 896ad885-128c-4a0e-8877-0929b17fe2de, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gt, 30, 2025-07-17 21:48:40.919373+00, 2025-07-17 21:48:40.919373+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG83
+Error processing GDVG83_GR3-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (57e1421e-be2a-4254-ad9b-a5592d8547fc, ab491a4e-6a51-4b64-a37c-1997b5d8ac5e, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm1, 30, 2025-07-17 21:48:41.32891+00, 2025-07-17 21:48:41.32891+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG83_GR3-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (45979ede-ff8b-4080-984f-88748a9bcb65, ab491a4e-6a51-4b64-a37c-1997b5d8ac5e, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm2, 30, 2025-07-17 21:48:41.71249+00, 2025-07-17 21:48:41.71249+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG83_GR3-Gt: {
+  code: '23514',
+  details: 'Failing row contains (10fcd74a-4052-4fb2-bbb9-b9a0b035b417, ab491a4e-6a51-4b64-a37c-1997b5d8ac5e, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gt, 30, 2025-07-17 21:48:42.044591+00, 2025-07-17 21:48:42.044591+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG93
+Error processing GDVG93_GR3-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (ea632edf-e84d-4a2d-9d40-d1bf8dcbfcaf, 8110fdb3-3361-4b07-b745-7396836d5ffc, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm1, 30, 2025-07-17 21:48:42.50776+00, 2025-07-17 21:48:42.50776+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG93_GR3-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (5bd56dd9-04be-4d57-b773-29dfe10f9272, 8110fdb3-3361-4b07-b745-7396836d5ffc, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gm2, 30, 2025-07-17 21:48:42.906933+00, 2025-07-17 21:48:42.906933+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG93_GR3-Gt: {
+  code: '23514',
+  details: 'Failing row contains (e90eb486-15c8-4c8f-bd78-ce1cf5deba38, 8110fdb3-3361-4b07-b745-7396836d5ffc, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Gt, 30, 2025-07-17 21:48:43.275417+00, 2025-07-17 21:48:43.275417+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI03
+Error processing GDVI03_GR3-Im: {
+  code: '23514',
+  details: 'Failing row contains (77440676-39bf-4699-bacf-15669fd8fe06, 18cf3a62-18c4-4e62-ac3c-0597583e57a8, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Im, 30, 2025-07-17 21:48:43.806379+00, 2025-07-17 21:48:43.806379+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVI03_GR3-It: {
+  code: '23514',
+  details: 'Failing row contains (6554f963-1ea1-4b66-b4df-c70a6ae35756, 18cf3a62-18c4-4e62-ac3c-0597583e57a8, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-It, 30, 2025-07-17 21:48:44.128407+00, 2025-07-17 21:48:44.128407+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI13
+Error processing GDVI13_GR3-Im: {
+  code: '23514',
+  details: 'Failing row contains (cb5f8917-4185-480a-81ee-5033e07e38c1, 55f7f3c1-f00d-4ddd-8425-e6aaf80e3097, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Im, 30, 2025-07-17 21:48:44.546606+00, 2025-07-17 21:48:44.546606+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVI13_GR3-It: {
+  code: '23514',
+  details: 'Failing row contains (7797db61-fa07-4399-b8cb-e36448100b9d, 55f7f3c1-f00d-4ddd-8425-e6aaf80e3097, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-It, 30, 2025-07-17 21:48:44.854479+00, 2025-07-17 21:48:44.854479+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI23
+Error processing GDVI23_GR3-Im: {
+  code: '23514',
+  details: 'Failing row contains (d78e1340-4e4c-40b2-ae7e-9af4eda6696a, bd9e3fb6-ac89-4243-818d-a797962a362c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Im, 30, 2025-07-17 21:48:45.300864+00, 2025-07-17 21:48:45.300864+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVI23_GR3-It: {
+  code: '23514',
+  details: 'Failing row contains (cd82325d-eb42-4f47-8617-fb71bef94996, bd9e3fb6-ac89-4243-818d-a797962a362c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-It, 30, 2025-07-17 21:48:45.741091+00, 2025-07-17 21:48:45.741091+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI33
+Error processing GDVI33_GR3-Im: {
+  code: '23514',
+  details: 'Failing row contains (99c0016d-28ad-4339-8f71-61e105a92a84, cf026efd-f638-4eee-b72f-95a10d65f4bf, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Im, 30, 2025-07-17 21:48:46.226734+00, 2025-07-17 21:48:46.226734+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVI33_GR3-It: {
+  code: '23514',
+  details: 'Failing row contains (00c83232-dbe6-4c11-8c3f-545cdd1f56e2, cf026efd-f638-4eee-b72f-95a10d65f4bf, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-It, 30, 2025-07-17 21:48:46.62282+00, 2025-07-17 21:48:46.62282+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI43
+Error processing GDVI43_GR3-Im: {
+  code: '23514',
+  details: 'Failing row contains (d5912a59-f09d-4f0c-a686-b04d6a3cd4ce, 68ba6060-00ed-4b04-88f5-f9d35287726c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Im, 30, 2025-07-17 21:48:47.100115+00, 2025-07-17 21:48:47.100115+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVI43_GR3-It: {
+  code: '23514',
+  details: 'Failing row contains (47aec09e-5978-4020-a534-3bbb7e4effe9, 68ba6060-00ed-4b04-88f5-f9d35287726c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-It, 30, 2025-07-17 21:48:47.513023+00, 2025-07-17 21:48:47.513023+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI53
+Error processing GDVI53_GR3-Im: {
+  code: '23514',
+  details: 'Failing row contains (abb6f29d-85a7-440c-bc47-94a9a78db57a, dc577a0d-f2fc-4590-adff-81148ba37d66, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Im, 30, 2025-07-17 21:48:47.919941+00, 2025-07-17 21:48:47.919941+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVI53_GR3-It: {
+  code: '23514',
+  details: 'Failing row contains (e95f09c2-04fd-447c-aa67-f1558487ecb5, dc577a0d-f2fc-4590-adff-81148ba37d66, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-It, 30, 2025-07-17 21:48:48.218995+00, 2025-07-17 21:48:48.218995+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI63
+Error processing GDVI63_GR3-Im: {
+  code: '23514',
+  details: 'Failing row contains (77255a9b-265b-4a89-b846-036a2c299b74, 8fdfc829-6209-48c5-95c2-55ac42b591af, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Im, 30, 2025-07-17 21:48:48.697073+00, 2025-07-17 21:48:48.697073+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVI63_GR3-It: {
+  code: '23514',
+  details: 'Failing row contains (79eb2766-e50e-40ec-beb2-9b09da3ba7c0, 8fdfc829-6209-48c5-95c2-55ac42b591af, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-It, 30, 2025-07-17 21:48:49.013176+00, 2025-07-17 21:48:49.013176+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI73
+Error processing GDVI73_GR3-Im: {
+  code: '23514',
+  details: 'Failing row contains (569f1d79-1d00-4bc7-9d58-ffcc1f42ce4d, bd236aa4-6169-44cb-9693-5741a90a4519, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Im, 30, 2025-07-17 21:48:49.399407+00, 2025-07-17 21:48:49.399407+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVI73_GR3-It: {
+  code: '23514',
+  details: 'Failing row contains (7db05109-ea25-496d-b63e-caef72c8b1c7, bd236aa4-6169-44cb-9693-5741a90a4519, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-It, 30, 2025-07-17 21:48:49.719457+00, 2025-07-17 21:48:49.719457+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI83
+Error processing GDVI83_GR3-Im: {
+  code: '23514',
+  details: 'Failing row contains (9a7cbdba-a953-4e52-b528-bb42b9d9c214, 8ecb0371-409e-450d-89cf-a0d8a13fcfa1, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Im, 30, 2025-07-17 21:48:50.155203+00, 2025-07-17 21:48:50.155203+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVI83_GR3-It: {
+  code: '23514',
+  details: 'Failing row contains (f9af083b-e86e-4ee9-a7d8-0ead6ec6dfe4, 8ecb0371-409e-450d-89cf-a0d8a13fcfa1, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-It, 30, 2025-07-17 21:48:50.528718+00, 2025-07-17 21:48:50.528718+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI93
+Error processing GDVI93_GR3-Im: {
+  code: '23514',
+  details: 'Failing row contains (383fff27-ad7a-4e1f-8791-366149fbd54e, 9c84be3f-7d33-40b2-bfc2-52b96667d615, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-Im, 30, 2025-07-17 21:48:51.003497+00, 2025-07-17 21:48:51.003497+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVI93_GR3-It: {
+  code: '23514',
+  details: 'Failing row contains (8e9de20c-5ce0-446d-99a9-0609e5a14839, 9c84be3f-7d33-40b2-bfc2-52b96667d615, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR3-It, 30, 2025-07-17 21:48:51.349406+00, 2025-07-17 21:48:51.349406+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM03
+Error processing GDVM03_GR3-Mm: {
+  code: '23514',
+  details: 'Failing row contains (c7dd932f-e0d2-444b-87a8-ad1542e3707b, 4fed4a77-5755-4d95-954b-a6c0318953fb, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mm, 30, 2025-07-17 21:48:51.82641+00, 2025-07-17 21:48:51.82641+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM03_GR3-Mt: {
+  code: '23514',
+  details: 'Failing row contains (484ececf-ecca-46a6-b832-d745ed31955a, 4fed4a77-5755-4d95-954b-a6c0318953fb, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mt, 30, 2025-07-17 21:48:52.250563+00, 2025-07-17 21:48:52.250563+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM13
+Error processing GDVM13_GR3-Mm: {
+  code: '23514',
+  details: 'Failing row contains (83227220-05e9-4e84-aa5a-233b7e9f72d4, c2cf9ddc-5b51-4f7f-90a8-0e145d801337, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mm, 30, 2025-07-17 21:48:52.778336+00, 2025-07-17 21:48:52.778336+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM13_GR3-Mt: {
+  code: '23514',
+  details: 'Failing row contains (66141d88-1767-4a21-908f-34125baf6601, c2cf9ddc-5b51-4f7f-90a8-0e145d801337, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mt, 30, 2025-07-17 21:48:53.181305+00, 2025-07-17 21:48:53.181305+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM23
+Error processing GDVM23_GR3-Mm: {
+  code: '23514',
+  details: 'Failing row contains (c8dc5961-fbe1-4a65-8f54-8b89dfac994f, f243e1eb-fb15-48be-97a1-59c9e53f7a93, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mm, 30, 2025-07-17 21:48:53.71319+00, 2025-07-17 21:48:53.71319+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM23_GR3-Mt: {
+  code: '23514',
+  details: 'Failing row contains (6c26ae5e-e132-46a8-811b-6ff949dd4175, f243e1eb-fb15-48be-97a1-59c9e53f7a93, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mt, 30, 2025-07-17 21:48:54.069124+00, 2025-07-17 21:48:54.069124+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM33
+Error processing GDVM33_GR3-Mm: {
+  code: '23514',
+  details: 'Failing row contains (6fe07672-8552-4474-b85c-2ae7c899b515, 51d31696-d4c6-467b-aa41-b8d09b82e71b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mm, 30, 2025-07-17 21:48:54.518385+00, 2025-07-17 21:48:54.518385+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM33_GR3-Mt: {
+  code: '23514',
+  details: 'Failing row contains (12cf257d-7937-468a-9365-8edf1cd63e7c, 51d31696-d4c6-467b-aa41-b8d09b82e71b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mt, 30, 2025-07-17 21:48:54.900421+00, 2025-07-17 21:48:54.900421+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM43
+Error processing GDVM43_GR3-Mm: {
+  code: '23514',
+  details: 'Failing row contains (5b77ea5c-343b-4f68-ad32-041dbdc0fa2a, 500c2d8a-16ac-4fac-96fd-118c8321e595, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mm, 30, 2025-07-17 21:48:55.386073+00, 2025-07-17 21:48:55.386073+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM43_GR3-Mt: {
+  code: '23514',
+  details: 'Failing row contains (96baccdd-bd4f-40f9-b245-48f935c7c3a6, 500c2d8a-16ac-4fac-96fd-118c8321e595, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mt, 30, 2025-07-17 21:48:55.773906+00, 2025-07-17 21:48:55.773906+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM53
+Error processing GDVM53_GR3-Mm: {
+  code: '23514',
+  details: 'Failing row contains (40b5a7ba-e9a7-4da8-86ff-7cf8fa2aa768, d4aebd5f-7540-4519-b8c4-a88e54443bb3, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mm, 30, 2025-07-17 21:48:56.2538+00, 2025-07-17 21:48:56.2538+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM53_GR3-Mt: {
+  code: '23514',
+  details: 'Failing row contains (d4b0c81f-8347-4266-9482-8789eb72cf46, d4aebd5f-7540-4519-b8c4-a88e54443bb3, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mt, 30, 2025-07-17 21:48:56.566529+00, 2025-07-17 21:48:56.566529+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM63
+Error processing GDVM63_GR3-Mm: {
+  code: '23514',
+  details: 'Failing row contains (aa928107-77d5-4092-b1e5-2f87ef0a0f2d, e1cda44d-59ad-4a19-b8d7-197f1cb9ffa0, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mm, 30, 2025-07-17 21:48:57.173046+00, 2025-07-17 21:48:57.173046+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM63_GR3-Mt: {
+  code: '23514',
+  details: 'Failing row contains (cd8d0aa5-413a-4d91-baa8-835abc006360, e1cda44d-59ad-4a19-b8d7-197f1cb9ffa0, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mt, 30, 2025-07-17 21:48:57.594344+00, 2025-07-17 21:48:57.594344+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM73
+Error processing GDVM73_GR3-Mm: {
+  code: '23514',
+  details: 'Failing row contains (afc53ce3-9114-4c2e-b3c6-6d56ee8395b5, b16dd49b-3033-4973-bb8a-72bddf79f53b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mm, 30, 2025-07-17 21:48:58.127851+00, 2025-07-17 21:48:58.127851+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM73_GR3-Mt: {
+  code: '23514',
+  details: 'Failing row contains (4d690ea6-5b0a-4925-84b8-279503e4d0ee, b16dd49b-3033-4973-bb8a-72bddf79f53b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mt, 30, 2025-07-17 21:48:58.563407+00, 2025-07-17 21:48:58.563407+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM83
+Error processing GDVM83_GR3-Mm: {
+  code: '23514',
+  details: 'Failing row contains (ceae1799-cce9-4104-9efc-b77166d6fb58, 3677187d-c01f-4adf-8d07-af1f38e5c543, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mm, 30, 2025-07-17 21:48:59.265348+00, 2025-07-17 21:48:59.265348+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM83_GR3-Mt: {
+  code: '23514',
+  details: 'Failing row contains (42b6de9c-1264-42c9-87ff-9f9e17658dd6, 3677187d-c01f-4adf-8d07-af1f38e5c543, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mt, 30, 2025-07-17 21:48:59.739724+00, 2025-07-17 21:48:59.739724+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM93
+Error processing GDVM93_GR3-Mm: {
+  code: '23514',
+  details: 'Failing row contains (39075a7b-1914-4c2d-b0cd-9950a28ceaf7, ae6bad79-2d7e-4390-a868-bdd43330c466, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mm, 30, 2025-07-17 21:49:00.156946+00, 2025-07-17 21:49:00.156946+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM93_GR3-Mt: {
+  code: '23514',
+  details: 'Failing row contains (1c75e810-e7f7-42fd-bdbf-d99485a42e9a, ae6bad79-2d7e-4390-a868-bdd43330c466, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR3-Mt, 30, 2025-07-17 21:49:00.507418+00, 2025-07-17 21:49:00.507418+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA04
+Error processing GDVA04_GR4-Am: {
+  code: '23514',
+  details: 'Failing row contains (419d34a1-39f4-440c-b878-2f5a1a8e9671, 1037eeee-ea76-49e2-bc44-6036115d3024, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Am, 30, 2025-07-17 21:49:00.960549+00, 2025-07-17 21:49:00.960549+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA14
+Error processing GDVA14_GR4-Am: {
+  code: '23514',
+  details: 'Failing row contains (29b9660b-3699-4869-a7eb-4a6567e8f9f0, e61b871d-643e-4ed7-8504-d58b65cee54f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Am, 30, 2025-07-17 21:49:01.407184+00, 2025-07-17 21:49:01.407184+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA24
+Error processing GDVA24_GR4-Am: {
+  code: '23514',
+  details: 'Failing row contains (1a81d864-2a92-4363-834b-6f330d794e90, 9602cc82-2d04-4c05-8f0c-d86a1fa87b06, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Am, 30, 2025-07-17 21:49:01.886898+00, 2025-07-17 21:49:01.886898+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA34
+Error processing GDVA34_GR4-Am: {
+  code: '23514',
+  details: 'Failing row contains (51a19927-b473-4f70-89ec-aac0c0ef3d09, 3aa172ad-6b0f-4d0f-9b8f-0d12c268f60d, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Am, 30, 2025-07-17 21:49:02.354309+00, 2025-07-17 21:49:02.354309+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA44
+Error processing GDVA44_GR4-Am: {
+  code: '23514',
+  details: 'Failing row contains (df328ba4-24bb-423e-9059-c1da3bfda269, c95ade1e-2ea3-4242-b7f4-4c9f2b044269, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Am, 30, 2025-07-17 21:49:02.846379+00, 2025-07-17 21:49:02.846379+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVA44_GR4-At: {
+  code: '23514',
+  details: 'Failing row contains (1cbf749a-7bcc-4b58-912b-d85e368c4bc9, c95ade1e-2ea3-4242-b7f4-4c9f2b044269, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-At, 30, 2025-07-17 21:49:03.221237+00, 2025-07-17 21:49:03.221237+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVA54
+Error processing GDVA54_GR4-Am: {
+  code: '23514',
+  details: 'Failing row contains (6703a537-4d2d-49e3-ae71-79b0d689f24e, f57ad65a-300a-446a-816d-68d9238ecc92, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Am, 30, 2025-07-17 21:49:03.739497+00, 2025-07-17 21:49:03.739497+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG04
+Error processing GDVG04_GR4-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (d16c9813-1da3-4a3a-868b-136e7838fca5, b6728bbe-a9a8-4365-a16d-3d1623987a03, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm1, 30, 2025-07-17 21:49:04.17355+00, 2025-07-17 21:49:04.17355+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG04_GR4-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (91974997-5047-4559-bcc5-721879a7c859, b6728bbe-a9a8-4365-a16d-3d1623987a03, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm2, 30, 2025-07-17 21:49:04.536406+00, 2025-07-17 21:49:04.536406+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG04_GR4-Gt: {
+  code: '23514',
+  details: 'Failing row contains (bde7e6c1-ecb6-4b50-a138-1f58d60b401f, b6728bbe-a9a8-4365-a16d-3d1623987a03, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gt, 30, 2025-07-17 21:49:04.882908+00, 2025-07-17 21:49:04.882908+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG14
+Error processing GDVG14_GR4-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (e23fb0c8-a1fe-406d-9efa-341a5caafa3e, c7b0a60d-2188-44d1-b9b4-94210ef47411, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm1, 30, 2025-07-17 21:49:05.319237+00, 2025-07-17 21:49:05.319237+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG14_GR4-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (7d28674b-1671-4b26-ad0c-ef74b5ef461c, c7b0a60d-2188-44d1-b9b4-94210ef47411, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm2, 30, 2025-07-17 21:49:05.715423+00, 2025-07-17 21:49:05.715423+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG14_GR4-Gt: {
+  code: '23514',
+  details: 'Failing row contains (113ffba6-0c31-4bd0-b889-ded4f3f3d0c4, c7b0a60d-2188-44d1-b9b4-94210ef47411, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gt, 30, 2025-07-17 21:49:06.050995+00, 2025-07-17 21:49:06.050995+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG24
+Error processing GDVG24_GR4-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (b337897a-aa96-450e-be3f-23426394766d, 91d41814-b76e-4561-805a-1714b31c334a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm1, 30, 2025-07-17 21:49:06.487749+00, 2025-07-17 21:49:06.487749+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG24_GR4-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (95d9ae57-c2da-4051-b34d-4af51961fd98, 91d41814-b76e-4561-805a-1714b31c334a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm2, 30, 2025-07-17 21:49:06.794519+00, 2025-07-17 21:49:06.794519+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG24_GR4-Gt: {
+  code: '23514',
+  details: 'Failing row contains (883bce40-c823-45d8-8ebf-5d5a4914065d, 91d41814-b76e-4561-805a-1714b31c334a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gt, 30, 2025-07-17 21:49:07.087444+00, 2025-07-17 21:49:07.087444+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG34
+Error processing GDVG34_GR4-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (847e52fe-95a1-4290-9573-73f22ae3b2ee, 4a742a94-1fa9-4690-a4b0-819f643db331, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm1, 30, 2025-07-17 21:49:07.521549+00, 2025-07-17 21:49:07.521549+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG34_GR4-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (8dee3fe4-ce37-4dee-944d-69c719909ca6, 4a742a94-1fa9-4690-a4b0-819f643db331, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm2, 30, 2025-07-17 21:49:07.833483+00, 2025-07-17 21:49:07.833483+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG34_GR4-Gt: {
+  code: '23514',
+  details: 'Failing row contains (960af8e5-e774-427e-9186-ca483fc37314, 4a742a94-1fa9-4690-a4b0-819f643db331, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gt, 30, 2025-07-17 21:49:08.139421+00, 2025-07-17 21:49:08.139421+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG44
+Error processing GDVG44_GR4-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (6d9fd6b9-10cf-4215-b58c-63575b531f04, c0d6f77f-d958-4289-b4fc-64445b20fbcb, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm1, 30, 2025-07-17 21:49:08.546195+00, 2025-07-17 21:49:08.546195+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG44_GR4-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (7c0251ee-af2f-4bd4-9f78-599b067d5545, c0d6f77f-d958-4289-b4fc-64445b20fbcb, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm2, 30, 2025-07-17 21:49:08.837199+00, 2025-07-17 21:49:08.837199+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG44_GR4-Gt: {
+  code: '23514',
+  details: 'Failing row contains (5e279473-5a49-4ba0-b2b3-1f216c113505, c0d6f77f-d958-4289-b4fc-64445b20fbcb, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gt, 30, 2025-07-17 21:49:09.163188+00, 2025-07-17 21:49:09.163188+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVG54
+Error processing GDVG54_GR4-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (104969c1-8907-48f6-844a-13eff18bbde6, 2ee2991d-4d5c-4444-b379-c5863579aea1, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm1, 30, 2025-07-17 21:49:09.645245+00, 2025-07-17 21:49:09.645245+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG54_GR4-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (8c07779c-4217-45bc-bfc3-65853dbbf51c, 2ee2991d-4d5c-4444-b379-c5863579aea1, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm2, 30, 2025-07-17 21:49:10.017893+00, 2025-07-17 21:49:10.017893+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVG54_GR4-Gt: {
+  code: '23514',
+  details: 'Failing row contains (59c10ee0-0ad7-4cd4-bf91-1c2197d049b0, 2ee2991d-4d5c-4444-b379-c5863579aea1, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gt, 30, 2025-07-17 21:49:10.34046+00, 2025-07-17 21:49:10.34046+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI04
+Error processing GDVI04_GR4-Im: {
+  code: '23514',
+  details: 'Failing row contains (9d41162c-0614-4d98-806f-d84b29cd405f, 40f33eb3-918d-42be-ba2b-b4d7f3570bf0, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Im, 30, 2025-07-17 21:49:10.788818+00, 2025-07-17 21:49:10.788818+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI14
+Error processing GDVI14_GR4-Im: {
+  code: '23514',
+  details: 'Failing row contains (a2d66b27-c26e-4d10-be08-53f35050c450, 6ec16e87-4a76-4b3b-b074-794fccefa38b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Im, 30, 2025-07-17 21:49:11.219129+00, 2025-07-17 21:49:11.219129+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI24
+Error processing GDVI24_GR4-Im: {
+  code: '23514',
+  details: 'Failing row contains (4a1d7550-1106-4b60-8aea-3bfc12d65fd7, a22a6125-9fae-4161-9b95-cd6d48f82fb7, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Im, 30, 2025-07-17 21:49:11.643443+00, 2025-07-17 21:49:11.643443+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI34
+Error processing GDVI34_GR4-Im: {
+  code: '23514',
+  details: 'Failing row contains (967705ea-e52a-4135-9f38-84191722816e, 86822f5c-1803-4c59-b813-803ac70e5d16, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Im, 30, 2025-07-17 21:49:12.0937+00, 2025-07-17 21:49:12.0937+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI44
+Error processing GDVI44_GR4-Im: {
+  code: '23514',
+  details: 'Failing row contains (2370c83b-aed7-4ab0-a803-292b9fcb01d1, 08ce4cb1-e391-48d4-bb4f-daf24abe78b2, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Im, 30, 2025-07-17 21:49:12.577797+00, 2025-07-17 21:49:12.577797+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVI54
+Error processing GDVI54_GR4-Im: {
+  code: '23514',
+  details: 'Failing row contains (439929ab-444b-4078-987a-afb1c60938d6, b407d3a2-36e7-435c-ae4d-fdacb7af4831, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Im, 30, 2025-07-17 21:49:13.041439+00, 2025-07-17 21:49:13.041439+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM04
+Error processing GDVM04_GR4-Mm: {
+  code: '23514',
+  details: 'Failing row contains (dfa2d82d-82b6-44a2-adac-364da135f2e7, 90b35d90-a37d-4de2-87fa-bb09fd478620, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mm, 30, 2025-07-17 21:49:13.576372+00, 2025-07-17 21:49:13.576372+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM04_GR4-Mt: {
+  code: '23514',
+  details: 'Failing row contains (5a9c4d7e-ddbe-4714-b00e-709840447301, 90b35d90-a37d-4de2-87fa-bb09fd478620, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mt, 30, 2025-07-17 21:49:13.937144+00, 2025-07-17 21:49:13.937144+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM14
+Error processing GDVM14_GR4-Mm: {
+  code: '23514',
+  details: 'Failing row contains (f04cc0b0-625b-4010-8a26-5008fd8be467, 890152a4-8786-463a-a476-64b7fca527ed, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mm, 30, 2025-07-17 21:49:14.501093+00, 2025-07-17 21:49:14.501093+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM14_GR4-Mt: {
+  code: '23514',
+  details: 'Failing row contains (3d2d7cce-e8d8-484f-ba1e-43e22ce2dc4b, 890152a4-8786-463a-a476-64b7fca527ed, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mt, 30, 2025-07-17 21:49:14.77749+00, 2025-07-17 21:49:14.77749+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM24
+Error processing GDVM24_GR4-Mm: {
+  code: '23514',
+  details: 'Failing row contains (19c2ad6b-e718-4b41-85bd-9f176d376347, a3f55d0f-e7c6-4817-a40c-9d9fbc74ea9b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mm, 30, 2025-07-17 21:49:15.144473+00, 2025-07-17 21:49:15.144473+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM24_GR4-Mt: {
+  code: '23514',
+  details: 'Failing row contains (344eb81f-25bd-4578-a751-cbc3a1490d65, a3f55d0f-e7c6-4817-a40c-9d9fbc74ea9b, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mt, 30, 2025-07-17 21:49:15.602704+00, 2025-07-17 21:49:15.602704+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM34
+Error processing GDVM34_GR4-Mm: {
+  code: '23514',
+  details: 'Failing row contains (fdf8309a-913a-400d-802a-75ac9ba38799, c0a0e182-f932-4b44-aeb1-828588429b99, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mm, 30, 2025-07-17 21:49:16.027387+00, 2025-07-17 21:49:16.027387+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM34_GR4-Mt: {
+  code: '23514',
+  details: 'Failing row contains (d8822961-7085-4394-bfd0-842003e2aa73, c0a0e182-f932-4b44-aeb1-828588429b99, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mt, 30, 2025-07-17 21:49:16.345902+00, 2025-07-17 21:49:16.345902+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM44
+Error processing GDVM44_GR4-Mm: {
+  code: '23514',
+  details: 'Failing row contains (5d92dfe6-29ef-41a8-ab22-f9a31815b4e5, 7675c2d7-9a09-47c3-b2f9-8da06d074da4, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mm, 30, 2025-07-17 21:49:16.731084+00, 2025-07-17 21:49:16.731084+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM44_GR4-Mt: {
+  code: '23514',
+  details: 'Failing row contains (23c83601-baab-4e70-976d-f9296f44495a, 7675c2d7-9a09-47c3-b2f9-8da06d074da4, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mt, 30, 2025-07-17 21:49:17.041659+00, 2025-07-17 21:49:17.041659+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDVM54
+Error processing GDVM54_GR4-Mm: {
+  code: '23514',
+  details: 'Failing row contains (a9db4301-57a8-4c94-9a48-d6bc16230594, e262ab66-22e4-41aa-9766-a139748f8400, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mm, 30, 2025-07-17 21:49:17.500474+00, 2025-07-17 21:49:17.500474+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDVM54_GR4-Mt: {
+  code: '23514',
+  details: 'Failing row contains (9cb80369-b259-455b-85df-0146d75cd288, e262ab66-22e4-41aa-9766-a139748f8400, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mt, 30, 2025-07-17 21:49:17.800569+00, 2025-07-17 21:49:17.800569+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GDT074
+Error processing GDT074_GR4-Am: {
+  code: '23514',
+  details: 'Failing row contains (5500eaa7-af09-4da0-9685-f3ba7d29e016, 9d1955c0-581c-40de-af7c-91e7d712d51c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Am, 30, 2025-07-17 21:49:18.276907+00, 2025-07-17 21:49:18.276907+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDT074_GR4-At: {
+  code: '23514',
+  details: 'Failing row contains (4b62d8d4-8966-4267-b44d-c2c5ba786fce, 9d1955c0-581c-40de-af7c-91e7d712d51c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-At, 30, 2025-07-17 21:49:18.614987+00, 2025-07-17 21:49:18.614987+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDT074_GR4-Gm1: {
+  code: '23514',
+  details: 'Failing row contains (cfbeddc0-7004-419c-9f59-da047ad85745, 9d1955c0-581c-40de-af7c-91e7d712d51c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm1, 30, 2025-07-17 21:49:18.908108+00, 2025-07-17 21:49:18.908108+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDT074_GR4-Gm2: {
+  code: '23514',
+  details: 'Failing row contains (f07dba8a-7aa8-4a0f-b3e9-08c6c4d98ede, 9d1955c0-581c-40de-af7c-91e7d712d51c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gm2, 30, 2025-07-17 21:49:19.222997+00, 2025-07-17 21:49:19.222997+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDT074_GR4-Gt: {
+  code: '23514',
+  details: 'Failing row contains (c1b9cc0e-0520-40d6-add3-7936b3652070, 9d1955c0-581c-40de-af7c-91e7d712d51c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Gt, 30, 2025-07-17 21:49:19.56316+00, 2025-07-17 21:49:19.56316+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDT074_GR4-Im: {
+  code: '23514',
+  details: 'Failing row contains (3049ae3f-6011-4b5c-83c4-cf2c90cc1019, 9d1955c0-581c-40de-af7c-91e7d712d51c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-Im, 30, 2025-07-17 21:49:19.958493+00, 2025-07-17 21:49:19.958493+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDT074_GR4-It: {
+  code: '23514',
+  details: 'Failing row contains (a591b37b-8c8d-4652-bba9-531250537df1, 9d1955c0-581c-40de-af7c-91e7d712d51c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, theory, GR4-It, 30, 2025-07-17 21:49:20.310411+00, 2025-07-17 21:49:20.310411+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDT074_GR4-Mm: {
+  code: '23514',
+  details: 'Failing row contains (3fefce7d-9d6f-430b-9f35-89ee7aa79038, 9d1955c0-581c-40de-af7c-91e7d712d51c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mm, 30, 2025-07-17 21:49:20.632384+00, 2025-07-17 21:49:20.632384+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GDT074_GR4-Mt: {
+  code: '23514',
+  details: 'Failing row contains (a0010759-fb1f-4c8f-8373-f8cda41a483c, 9d1955c0-581c-40de-af7c-91e7d712d51c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GR4-Mt, 30, 2025-07-17 21:49:20.999723+00, 2025-07-17 21:49:20.999723+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBB001
+Error processing GBB001_GB1-M1: {
+  code: '23514',
+  details: 'Failing row contains (a3c9166d-5db6-4f78-b4e8-c27a871c5e5f, d8c68bf1-18d9-4e0a-b243-abb4def9b03e, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB1-M1, 30, 2025-07-17 21:49:21.583124+00, 2025-07-17 21:49:21.583124+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBB011
+Error processing GBB011_GB1-M1: {
+  code: '23514',
+  details: 'Failing row contains (8ce7cbd9-82be-456f-92c2-5cc007177ffc, 15ff88eb-67b3-40e2-87b7-128e5dca76ed, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB1-M1, 30, 2025-07-17 21:49:21.963237+00, 2025-07-17 21:49:21.963237+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBB021
+Error processing GBB021_GB1-M1: {
+  code: '23514',
+  details: 'Failing row contains (4ac329e9-8df2-4adb-81fa-5b6854a188b8, 2e23bde7-d6cf-4e94-9236-6ad43ba9ad7a, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB1-M1, 30, 2025-07-17 21:49:22.468847+00, 2025-07-17 21:49:22.468847+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBB031
+Error processing GBB031_GB1-M1: {
+  code: '23514',
+  details: 'Failing row contains (9f4c2cf4-b4b8-402b-8265-286d1c4a2555, ae8c8d77-dc81-43d4-8453-ce10249cb901, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB1-M1, 30, 2025-07-17 21:49:23.020001+00, 2025-07-17 21:49:23.020001+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBF001
+Error processing GBF001_GB1-M1: {
+  code: '23514',
+  details: 'Failing row contains (5e061e48-ff59-49f3-812c-4fc2d68137be, 7fef0c8a-1fa7-4b94-83d9-2e4be6fb5164, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB1-M1, 30, 2025-07-17 21:49:23.424879+00, 2025-07-17 21:49:23.424879+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBF011
+Error processing GBF011_GB1-M1: {
+  code: '23514',
+  details: 'Failing row contains (16e59bcb-129b-4eb4-8324-a8e5bbacfb02, 1e37d409-8198-4f8c-a594-365160c1fefc, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB1-M1, 30, 2025-07-17 21:49:23.818556+00, 2025-07-17 21:49:23.818556+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBF021
+Error processing GBF021_GB1-M1: {
+  code: '23514',
+  details: 'Failing row contains (b13f9e0c-1fdb-4701-b12e-b46d921d40da, 549afc16-4571-4adb-ae18-5247272e2b29, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB1-M1, 30, 2025-07-17 21:49:24.19247+00, 2025-07-17 21:49:24.19247+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBF031
+Error processing GBF031_GB1-M1: {
+  code: '23514',
+  details: 'Failing row contains (0e7d6a19-b94f-4a9b-b14d-632dc9ca3cec, 6a983e72-01c1-45fd-8741-4853ce9d9446, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB1-M1, 30, 2025-07-17 21:49:24.593279+00, 2025-07-17 21:49:24.593279+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBF041
+Error processing GBF041_GB1-M1: {
+  code: '23514',
+  details: 'Failing row contains (b949c4af-6e80-4af4-aff9-7e35c1352551, 751a35ea-5d28-49d2-b5df-52bbb051b10d, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB1-M1, 30, 2025-07-17 21:49:25.022169+00, 2025-07-17 21:49:25.022169+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBF051
+Error processing GBF051_GB1-M1: {
+  code: '23514',
+  details: 'Failing row contains (aebabfe7-5a28-412c-9d98-1a7a4fd8933a, 0d0ff898-13a7-4f38-87ce-973561107d86, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB1-M1, 30, 2025-07-17 21:49:25.507563+00, 2025-07-17 21:49:25.507563+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBB002
+Error processing GBB002_GB2-M1: {
+  code: '23514',
+  details: 'Failing row contains (ad6f4a91-d940-4c2b-8dd1-d2448ecbc23a, 9653cf53-34af-401e-a0f6-016e6942db4f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB2-M1, 30, 2025-07-17 21:49:25.898462+00, 2025-07-17 21:49:25.898462+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GBB002_GB2-T1: {
+  code: '23514',
+  details: 'Failing row contains (df425e4c-db29-4f96-865c-a1ff6fc7fb22, 9653cf53-34af-401e-a0f6-016e6942db4f, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GB2-T1, 30, 2025-07-17 21:49:26.189402+00, 2025-07-17 21:49:26.189402+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBB012
+Error processing GBB012_GB2-M1: {
+  code: '23514',
+  details: 'Failing row contains (87f97fc7-12e5-40f9-98cc-551f69c44b69, e3528f67-80d9-4463-a865-421bc0256d3e, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB2-M1, 30, 2025-07-17 21:49:26.632455+00, 2025-07-17 21:49:26.632455+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GBB012_GB2-T1: {
+  code: '23514',
+  details: 'Failing row contains (fe911889-10b1-4d19-b09a-c8ee18e09afa, e3528f67-80d9-4463-a865-421bc0256d3e, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GB2-T1, 30, 2025-07-17 21:49:26.979212+00, 2025-07-17 21:49:26.979212+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBB022
+Error processing GBB022_GB2-T1: {
+  code: '23514',
+  details: 'Failing row contains (18842b8e-ec3f-414a-839e-3d28ecaa76c9, 25e5e367-ccb8-4cf4-ae15-e142bca0fdc0, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GB2-T1, 30, 2025-07-17 21:49:27.333229+00, 2025-07-17 21:49:27.333229+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GBB022_GB2-M1: {
+  code: '23514',
+  details: 'Failing row contains (befcb093-04f8-4da5-b895-e953761f3d1a, 25e5e367-ccb8-4cf4-ae15-e142bca0fdc0, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB2-M1, 30, 2025-07-17 21:49:27.603453+00, 2025-07-17 21:49:27.603453+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBB032
+Error processing GBB032_GB2-M1: {
+  code: '23514',
+  details: 'Failing row contains (cd891386-046f-4c5b-a0e7-7f89147faf60, 90aeeefa-6941-49f6-ad2a-8d976cf2dc81, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB2-M1, 30, 2025-07-17 21:49:27.953819+00, 2025-07-17 21:49:27.953819+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GBB032_GB2-T1: {
+  code: '23514',
+  details: 'Failing row contains (56bf8d75-5796-48c0-8882-6a51988fb329, 90aeeefa-6941-49f6-ad2a-8d976cf2dc81, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GB2-T1, 30, 2025-07-17 21:49:28.214033+00, 2025-07-17 21:49:28.214033+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBB042
+Error processing GBB042_GB2-M1: {
+  code: '23514',
+  details: 'Failing row contains (8b6f6d26-7ba6-4f40-9370-40576ad5aa83, 35905332-3ce9-48f5-9ef4-f92fe71870ad, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB2-M1, 30, 2025-07-17 21:49:28.564282+00, 2025-07-17 21:49:28.564282+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GBB042_GB2-T1: {
+  code: '23514',
+  details: 'Failing row contains (4338222d-3606-4f86-b5c2-09b4c8db9b1b, 35905332-3ce9-48f5-9ef4-f92fe71870ad, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GB2-T1, 30, 2025-07-17 21:49:28.813422+00, 2025-07-17 21:49:28.813422+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBB052
+Error processing GBB052_GB2-T1: {
+  code: '23514',
+  details: 'Failing row contains (ea9971bd-0e6d-4425-90f7-d1e664e891cc, 826b9c1d-588d-44dc-af81-5fd839e671e9, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GB2-T1, 30, 2025-07-17 21:49:29.134747+00, 2025-07-17 21:49:29.134747+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GBB052_GB2-M1: {
+  code: '23514',
+  details: 'Failing row contains (0fe7b4c3-4079-4230-99f6-3ca228c404c8, 826b9c1d-588d-44dc-af81-5fd839e671e9, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB2-M1, 30, 2025-07-17 21:49:29.40808+00, 2025-07-17 21:49:29.40808+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBF002
+Error processing GBF002_GB2-T1: {
+  code: '23514',
+  details: 'Failing row contains (e2c03fd6-935e-4acc-a4ca-86cb838a407b, 58a27113-7759-4a62-bfd1-e60476408e0e, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, afternoon, GB2-T1, 30, 2025-07-17 21:49:29.773403+00, 2025-07-17 21:49:29.773403+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Error processing GBF002_GB2-M1: {
+  code: '23514',
+  details: 'Failing row contains (31546d6d-4f3b-4821-ba6c-0c1677925fc3, 58a27113-7759-4a62-bfd1-e60476408e0e, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB2-M1, 30, 2025-07-17 21:49:30.028204+00, 2025-07-17 21:49:30.028204+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}
+Created course offering for GBF012
+Error processing GBF012_GB2-M1: {
+  code: '23514',
+  details: 'Failing row contains (e6d04463-73c3-4979-9726-f4b70c08d47a, a1eabaed-f078-48fc-a58b-941e93aae441, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, morning, GB2-M1, 30, 2025-07-17 21:49:30.39567+00, 2025-07-17 21:49:30.39567+00).',
+  hint: null,
+  message: 'new row for relation "subject_groups" violates check constraint "subject_groups_group_type_check"'
+}

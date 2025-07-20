@@ -1,0 +1,105 @@
+-- First, clear all existing itinerari values to start fresh
+UPDATE subjects SET itinerari = NULL;
+
+-- Now set the correct itineraris based on the real tracks used at BAU
+
+-- Disseny Gràfic (Graphic Design)
+UPDATE subjects 
+SET itinerari = 'Disseny Gràfic'
+WHERE (
+  code LIKE 'GR%' OR
+  LOWER(name) LIKE '%gràfic%' OR
+  LOWER(name) LIKE '%grafic%' OR
+  LOWER(name) LIKE '%tipograf%' OR
+  LOWER(name) LIKE '%editorial%' OR
+  LOWER(name) LIKE '%branding%' OR
+  LOWER(name) LIKE '%identitat%' OR
+  LOWER(name) LIKE '%cartell%' OR
+  LOWER(name) LIKE '%packaging%' OR
+  LOWER(name) LIKE '%disseny visual%'
+) AND year IN (3, 4);
+
+-- Audiovisual
+UPDATE subjects 
+SET itinerari = 'Audiovisual'
+WHERE (
+  code LIKE 'AV%' OR
+  LOWER(name) LIKE '%audiovisual%' OR
+  LOWER(name) LIKE '%video%' OR
+  LOWER(name) LIKE '%vídeo%' OR
+  LOWER(name) LIKE '%cinema%' OR
+  LOWER(name) LIKE '%film%' OR
+  LOWER(name) LIKE '%muntatge%' OR
+  LOWER(name) LIKE '%edició%' OR
+  LOWER(name) LIKE '%realitzaci%' OR
+  LOWER(name) LIKE '%documental%' OR
+  LOWER(name) LIKE '%guió%'
+) AND year IN (3, 4);
+
+-- Moda (Fashion)
+UPDATE subjects 
+SET itinerari = 'Moda'
+WHERE (
+  code LIKE 'MO%' OR
+  LOWER(name) LIKE '%moda%' OR
+  LOWER(name) LIKE '%fashion%' OR
+  LOWER(name) LIKE '%tèxtil%' OR
+  LOWER(name) LIKE '%textil%' OR
+  LOWER(name) LIKE '%patronatge%' OR
+  LOWER(name) LIKE '%confecció%' OR
+  LOWER(name) LIKE '%vestit%' OR
+  LOWER(name) LIKE '%costura%'
+) AND year IN (3, 4);
+
+-- Interiors
+UPDATE subjects 
+SET itinerari = 'Interiors'
+WHERE (
+  code LIKE 'IN%' OR
+  LOWER(name) LIKE '%interior%' OR
+  LOWER(name) LIKE '%espai%' OR
+  LOWER(name) LIKE '%retail%' OR
+  LOWER(name) LIKE '%efímer%' OR
+  LOWER(name) LIKE '%mobiliari%' OR
+  LOWER(name) LIKE '%il·luminació%' OR
+  LOWER(name) LIKE '%escenograf%'
+) AND year IN (3, 4);
+
+-- Producte (Product Design)
+UPDATE subjects 
+SET itinerari = 'Producte'
+WHERE (
+  code LIKE 'PR%' OR
+  LOWER(name) LIKE '%producte%' OR
+  LOWER(name) LIKE '%product%' OR
+  LOWER(name) LIKE '%industrial%' OR
+  LOWER(name) LIKE '%objecte%' OR
+  LOWER(name) LIKE '%ergonomia%' OR
+  LOWER(name) LIKE '%prototip%'
+) AND year IN (3, 4);
+
+-- Some 2nd year subjects might also have itineraris if they are specialized
+-- This is less common but can happen
+UPDATE subjects 
+SET itinerari = 'Disseny Gràfic'
+WHERE code LIKE 'GR%' AND year = 2;
+
+UPDATE subjects 
+SET itinerari = 'Audiovisual'
+WHERE code LIKE 'AV%' AND year = 2;
+
+UPDATE subjects 
+SET itinerari = 'Moda'
+WHERE code LIKE 'MO%' AND year = 2;
+
+UPDATE subjects 
+SET itinerari = 'Interiors'
+WHERE code LIKE 'IN%' AND year = 2;
+
+UPDATE subjects 
+SET itinerari = 'Producte'
+WHERE code LIKE 'PR%' AND year = 2;
+
+-- Note: Videojocs and Animació are NOT real itineraris at BAU
+-- They were incorrectly included in the previous migration
+-- Common subjects for 1st and 2nd year remain NULL

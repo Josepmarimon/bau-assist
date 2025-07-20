@@ -1,0 +1,1065 @@
+[dotenv@17.1.0] injecting env (4) from .env (tip: 🔐 encrypt with dotenvx: https://dotenvx.com)
+=== STARTING GROUPS IMPORT FROM EXCEL ===
+
+Reading Excel file...
+Found 424 rows in Excel
+
+Processing data...
+Found 344 unique subject-group combinations
+
+Fetching subjects from database...
+Fetching teachers from database...
+Fetching semesters...
+Found 2 semesters for 2025-2026
+
+Starting import process...
+
+Error processing GDB001_GR1-M1: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M1) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDB001_GR1-M2: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M2) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDB001_GR1-M3: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M3) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDB001_GR1-M4: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M4) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDB001_GR1-M5: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M5) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDB001_GR1-T1: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-T1) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDB001_GR1-T2: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9878a74c-abb6-49bd-bbe2-1bc733ca4710, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-T2) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDB011_GR1-M1: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M1) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDB011_GR1-M2: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M2) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDB011_GR1-M3: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M3) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDB011_GR1-M4: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M4) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDB011_GR1-M5: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M5) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDB011_GR1-T1: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-T1) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDB011_GR1-T2: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(9acd432b-aacf-4014-b8b2-58b6ecffc367, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-T2) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF001_GR1-M1: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M1) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF001_GR1-M2: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M2) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF001_GR1-M3: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M3) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF001_GR1-M4: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M4) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF001_GR1-M5: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M5) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF001_GR1-T1: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-T1) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF001_GR1-T2: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(22837e2d-4931-41a1-bd7a-2e56c79b2b74, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-T2) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF011_GR1-M1: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M1) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF011_GR1-M2: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M2) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF011_GR1-M3: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M3) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF011_GR1-M4: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M4) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF011_GR1-M5: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M5) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF011_GR1-T1: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-T1) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF011_GR1-T2: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(fe082465-06a8-4ee2-b726-f318cc053436, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-T2) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF021_GR1-M1: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M1) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF021_GR1-M2: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M2) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF021_GR1-M3: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M3) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF021_GR1-M4: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M4) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF021_GR1-M5: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-M5) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Error processing GDF021_GR1-T1: {
+  code: '23505',
+  details: 'Key (subject_id, semester_id, group_code)=(c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c, eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b, GR1-T1) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "subject_groups_subject_id_semester_id_group_code_key"'
+}
+Created group GR1-T2 for GDF021
+  Assigned teacher 545 to group
+Created course offering for GDF031
+Created group GR1-M1 for GDF031
+  Assigned teacher 650 to group
+  Assigned teacher 760 to group
+Created group GR1-M2 for GDF031
+  Assigned teacher 650 to group
+  Assigned teacher 759 to group
+Created group GR1-M3 for GDF031
+  Assigned teacher 650 to group
+Created group GR1-M4 for GDF031
+  Assigned teacher 650 to group
+Created group GR1-M5 for GDF031
+  Assigned teacher 650 to group
+  Assigned teacher 759 to group
+Created group GR1-T1 for GDF031
+  Assigned teacher 516 to group
+Created group GR1-T2 for GDF031
+  Assigned teacher 650 to group
+Created course offering for GDF041
+Created group GR1-M1 for GDF041
+  Assigned teacher 22 to group
+Created group GR1-M2 for GDF041
+  Assigned teacher 145 to group
+Created group GR1-M3 for GDF041
+  Assigned teacher 22 to group
+Created group GR1-M4 for GDF041
+  Assigned teacher 510 to group
+Created group GR1-M5 for GDF041
+  Assigned teacher 145 to group
+Created group GR1-T1 for GDF041
+  Assigned teacher 22 to group
+Created group GR1-T2 for GDF041
+  Assigned teacher 510 to group
+Created course offering for GDF051
+Created group GR1-M1 for GDF051
+  Assigned teacher 376 to group
+  Assigned teacher 464 to group
+  Assigned teacher 626 to group
+Created group GR1-M2 for GDF051
+  Assigned teacher 376 to group
+  Assigned teacher 464 to group
+  Assigned teacher 626 to group
+Created group GR1-M3 for GDF051
+  Assigned teacher 376 to group
+  Assigned teacher 464 to group
+  Assigned teacher 626 to group
+Created group GR1-M4 for GDF051
+  Assigned teacher 376 to group
+  Assigned teacher 464 to group
+  Assigned teacher 626 to group
+Created group GR1-M5 for GDF051
+  Assigned teacher 376 to group
+  Assigned teacher 464 to group
+  Assigned teacher 626 to group
+Created group GR1-T1 for GDF051
+  Assigned teacher 376 to group
+  Assigned teacher 464 to group
+  Assigned teacher 626 to group
+Created group GR1-T2 for GDF051
+  Assigned teacher 376 to group
+  Assigned teacher 464 to group
+  Assigned teacher 626 to group
+Created course offering for GDF061
+Created group GR1-M1 for GDF061
+  Assigned teacher 404 to group
+Created group GR1-M2 for GDF061
+  Assigned teacher 404 to group
+Created group GR1-M3 for GDF061
+  Assigned teacher 404 to group
+Created group GR1-M4 for GDF061
+  Assigned teacher 404 to group
+Created group GR1-M5 for GDF061
+  Assigned teacher 404 to group
+Created group GR1-T1 for GDF061
+  Assigned teacher 547 to group
+Created group GR1-T2 for GDF061
+  Assigned teacher 404 to group
+Created course offering for GDF071
+Created group GR1-M1 for GDF071
+  Assigned teacher 604 to group
+Created group GR1-M2 for GDF071
+  Assigned teacher 696 to group
+Created group GR1-M3 for GDF071
+  Assigned teacher 604 to group
+Created group GR1-M4 for GDF071
+  Assigned teacher 696 to group
+Created group GR1-M5 for GDF071
+  Assigned teacher 696 to group
+Created group GR1-T1 for GDF071
+  Assigned teacher 696 to group
+Created group GR1-T2 for GDF071
+  Assigned teacher 604 to group
+Created course offering for GDB002
+Created group GR2-M1 for GDB002
+  Assigned teacher 303 to group
+Created group GR2-M2 for GDB002
+  Assigned teacher 380 to group
+Created group GR2-M3 for GDB002
+  Assigned teacher 303 to group
+Created group GR2-M4 for GDB002
+  Assigned teacher 661 to group
+Created group GR2-M5 for GDB002
+  Assigned teacher 701 to group
+Created group GR2-T1 for GDB002
+  Assigned teacher 661 to group
+Created group GR2-T2 for GDB002
+  Assigned teacher 661 to group
+Created course offering for GDB012
+Created group GR2-Am for GDB012
+  Assigned teacher 680 to group
+  Assigned teacher 689 to group
+Created group GR2-At for GDB012
+  Assigned teacher 680 to group
+  Assigned teacher 689 to group
+Created group GR2-Gm1 for GDB012
+  Assigned teacher 400 to group
+Created group GR2-Gm2 for GDB012
+  Assigned teacher 400 to group
+Created group GR2-Gt for GDB012
+  Assigned teacher 400 to group
+Created group GR2-Im for GDB012
+  Assigned teacher 685 to group
+Created group GR2-It for GDB012
+  Assigned teacher 659 to group
+Created group GR2-Mm for GDB012
+  Assigned teacher 458 to group
+Created group GR2-Mt for GDB012
+  Assigned teacher 458 to group
+Created course offering for GDB022
+Created group GR2-Am for GDB022
+  Assigned teacher 634 to group
+Created group GR2-At for GDB022
+  Assigned teacher 634 to group
+Created group GR2-Gm1 for GDB022
+  Assigned teacher 377 to group
+Created group GR2-Gm2 for GDB022
+  Assigned teacher 377 to group
+Created group GR2-Gt for GDB022
+  Assigned teacher 482 to group
+Created group GR2-Im for GDB022
+  Assigned teacher 642 to group
+Created group GR2-It for GDB022
+  Assigned teacher 528 to group
+Created group GR2-Mm for GDB022
+  Assigned teacher 239 to group
+Created group GR2-Mt for GDB022
+  Assigned teacher 239 to group
+Created course offering for GDB032
+Created group GR2-M1 for GDB032
+  Assigned teacher 649 to group
+Created group GR2-M2 for GDB032
+  Assigned teacher 430 to group
+Created group GR2-M3 for GDB032
+  Assigned teacher 411 to group
+Created group GR2-M4 for GDB032
+  Assigned teacher 430 to group
+Created group GR2-M5 for GDB032
+  Assigned teacher 430 to group
+Created group GR2-T1 for GDB032
+  Assigned teacher 649 to group
+Created group GR2-T2 for GDB032
+  Assigned teacher 649 to group
+Created course offering for GDB042
+Created group GR2-M1 for GDB042
+  Assigned teacher 704 to group
+Created group GR2-M2 for GDB042
+  Assigned teacher 704 to group
+Created group GR2-M3 for GDB042
+  Assigned teacher 533 to group
+Created group GR2-M4 for GDB042
+  Assigned teacher 533 to group
+  Assigned teacher 704 to group
+Created group GR2-M5 for GDB042
+  Assigned teacher 628 to group
+Created group GR2-T1 for GDB042
+  Assigned teacher 704 to group
+Created group GR2-T2 for GDB042
+  Assigned teacher 533 to group
+Created course offering for GDB052
+Created group GR2-M1 for GDB052
+  Assigned teacher 605 to group
+Created group GR2-M2 for GDB052
+  Assigned teacher 687 to group
+Created group GR2-M3 for GDB052
+  Assigned teacher 515 to group
+Created group GR2-M4 for GDB052
+  Assigned teacher 605 to group
+Created group GR2-M5 for GDB052
+  Assigned teacher 605 to group
+Created group GR2-T1 for GDB052
+  Assigned teacher 605 to group
+Created group GR2-T2 for GDB052
+  Assigned teacher 605 to group
+Created course offering for GDB062
+Created group GR2-Am for GDB062
+  Assigned teacher 539 to group
+Created group GR2-At for GDB062
+  Assigned teacher 539 to group
+Created group GR2-Gm1 for GDB062
+  Assigned teacher 400 to group
+Created group GR2-Gm2 for GDB062
+  Assigned teacher 400 to group
+Created group GR2-Gt for GDB062
+  Assigned teacher 400 to group
+Created group GR2-Im for GDB062
+  Assigned teacher 685 to group
+Created group GR2-It for GDB062
+  Assigned teacher 659 to group
+Created group GR2-Mm for GDB062
+  Assigned teacher 458 to group
+Created group GR2-Mt for GDB062
+  Assigned teacher 458 to group
+Created course offering for GDB072
+Created group GR2-Am for GDB072
+  Assigned teacher 382 to group
+Created group GR2-At for GDB072
+  Assigned teacher 382 to group
+Created group GR2-Gm1 for GDB072
+  Assigned teacher 377 to group
+Created group GR2-Gm2 for GDB072
+  Assigned teacher 377 to group
+Created group GR2-Gt for GDB072
+  Assigned teacher 482 to group
+Created group GR2-Im for GDB072
+  Assigned teacher 642 to group
+Created group GR2-It for GDB072
+  Assigned teacher 528 to group
+Created group GR2-Mm for GDB072
+  Assigned teacher 660 to group
+Created group GR2-Mt for GDB072
+  Assigned teacher 660 to group
+Created course offering for GDF002
+Created group GR2-M1 for GDF002
+  Assigned teacher 652 to group
+Created group GR2-M2 for GDF002
+  Assigned teacher 638 to group
+Created group GR2-M3 for GDF002
+  Assigned teacher 652 to group
+Created group GR2-M4 for GDF002
+  Assigned teacher 651 to group
+Created group GR2-M5 for GDF002
+  Assigned teacher 652 to group
+Created group GR2-T1 for GDF002
+  Assigned teacher 651 to group
+Created group GR2-T2 for GDF002
+  Assigned teacher 638 to group
+Created course offering for GDF012
+Created group GR2-M1 for GDF012
+  Assigned teacher 603 to group
+Created group GR2-M2 for GDF012
+  Assigned teacher 755 to group
+Created group GR2-M3 for GDF012
+  Assigned teacher 526 to group
+Created group GR2-M4 for GDF012
+  Assigned teacher 603 to group
+Created group GR2-M5 for GDF012
+  Assigned teacher 704 to group
+Created group GR2-T1 for GDF012
+  Assigned teacher 526 to group
+Created group GR2-T2 for GDF012
+  Assigned teacher 755 to group
+Created course offering for GDVA03
+Created group GR3-Am for GDVA03
+  Assigned teacher 382 to group
+Created group GR3-At for GDVA03
+  Assigned teacher 382 to group
+Created course offering for GDVA13
+Created group GR3-Am for GDVA13
+  Assigned teacher 490 to group
+Created group GR3-At for GDVA13
+  Assigned teacher 490 to group
+Created course offering for GDVA23
+Created group GR3-Am for GDVA23
+  Assigned teacher 435 to group
+Created group GR3-At for GDVA23
+  Assigned teacher 435 to group
+Created course offering for GDVA33
+Created group GR3-Am for GDVA33
+  Assigned teacher 429 to group
+Created group GR3-At for GDVA33
+  Assigned teacher 429 to group
+Created course offering for GDVA43
+Created group GR3-Am for GDVA43
+  Assigned teacher 611 to group
+  Assigned teacher 689 to group
+Created group GR3-At for GDVA43
+  Assigned teacher 611 to group
+  Assigned teacher 689 to group
+Created course offering for GDVA53
+Created group GR3-Am for GDVA53
+  Assigned teacher 754 to group
+Created group GR3-At for GDVA53
+  Assigned teacher 754 to group
+Created course offering for GDVA63
+Created group GR3-Am for GDVA63
+  Assigned teacher 595 to group
+  Assigned teacher 673 to group
+  Assigned teacher 758 to group
+Created group GR3-At for GDVA63
+  Assigned teacher 595 to group
+  Assigned teacher 673 to group
+  Assigned teacher 758 to group
+Created course offering for GDVA73
+Created group GR3-Am for GDVA73
+  Assigned teacher 695 to group
+Created group GR3-At for GDVA73
+  Assigned teacher 695 to group
+Created course offering for GDVA83
+Created group GR3-Am for GDVA83
+  Assigned teacher 680 to group
+Created group GR3-At for GDVA83
+  Assigned teacher 680 to group
+Created course offering for GDVA93
+Created group GR3-Am for GDVA93
+  Assigned teacher 675 to group
+  Assigned teacher 689 to group
+Created group GR3-At for GDVA93
+  Assigned teacher 675 to group
+  Assigned teacher 689 to group
+Created course offering for GDVG03
+Created group GR3-Gm1 for GDVG03
+  Assigned teacher 318 to group
+Created group GR3-Gm2 for GDVG03
+  Assigned teacher 318 to group
+Created group GR3-Gt for GDVG03
+  Assigned teacher 318 to group
+Created course offering for GDVG13
+Created group GR3-Gm1a for GDVG13
+  Assigned teacher 412 to group
+Created group GR3-Gm1b for GDVG13
+  Assigned teacher 699 to group
+Created group GR3-Gm2 for GDVG13
+  Assigned teacher 412 to group
+Created group GR3-Gt for GDVG13
+  Assigned teacher 412 to group
+Created course offering for GDVG23
+Created group GR3-Gm1 for GDVG23
+  Assigned teacher 486 to group
+Created group GR3-Gm2 for GDVG23
+  Assigned teacher 486 to group
+Created group GR3-Gt for GDVG23
+  Assigned teacher 486 to group
+Created course offering for GDVG33
+Created group GR3-Gm1 for GDVG33
+  Assigned teacher 308 to group
+Created group GR3-Gm2 for GDVG33
+  Assigned teacher 308 to group
+Created group GR3-Gt for GDVG33
+  Assigned teacher 430 to group
+Created course offering for GDVG43
+Created group GR3-Gm1 for GDVG43
+  Assigned teacher 354 to group
+Created group GR3-Gm2 for GDVG43
+  Assigned teacher 354 to group
+Created group GR3-Gt for GDVG43
+  Assigned teacher 354 to group
+Created course offering for GDVG53
+Created group GR3-Gm1 for GDVG53
+  Assigned teacher 567 to group
+Created group GR3-Gm2 for GDVG53
+  Assigned teacher 567 to group
+Created group GR3-Gt for GDVG53
+  Assigned teacher 567 to group
+  Assigned teacher 657 to group
+Created course offering for GDVG63
+Created group GR3-Gm1 for GDVG63
+  Assigned teacher 487 to group
+  Assigned teacher 575 to group
+Created group GR3-Gm2 for GDVG63
+  Assigned teacher 487 to group
+  Assigned teacher 575 to group
+Created group GR3-Gt for GDVG63
+  Assigned teacher 487 to group
+  Assigned teacher 575 to group
+Created course offering for GDVG73
+Created group GR3-Gm1 for GDVG73
+  Assigned teacher 486 to group
+Created group GR3-Gm2 for GDVG73
+  Assigned teacher 486 to group
+Created group GR3-Gt for GDVG73
+  Assigned teacher 486 to group
+Created course offering for GDVG83
+Created group GR3-Gm1 for GDVG83
+  Assigned teacher 308 to group
+Created group GR3-Gm2 for GDVG83
+  Assigned teacher 308 to group
+Created group GR3-Gt for GDVG83
+  Assigned teacher 430 to group
+Created course offering for GDVG93
+Created group GR3-Gm1 for GDVG93
+  Assigned teacher 354 to group
+Created group GR3-Gm2 for GDVG93
+  Assigned teacher 354 to group
+Created group GR3-Gt for GDVG93
+  Assigned teacher 354 to group
+Created course offering for GDVI03
+Created group GR3-Im for GDVI03
+  Assigned teacher 679 to group
+Created group GR3-It for GDVI03
+  WARNING: No teachers assigned to this group
+Created course offering for GDVI13
+Created group GR3-Im for GDVI13
+  Assigned teacher 526 to group
+Created group GR3-It for GDVI13
+  WARNING: No teachers assigned to this group
+Created course offering for GDVI23
+Created group GR3-Im for GDVI23
+  Assigned teacher 464 to group
+Created group GR3-It for GDVI23
+  WARNING: No teachers assigned to this group
+Created course offering for GDVI33
+Created group GR3-Im for GDVI33
+  Assigned teacher 430 to group
+Created group GR3-It for GDVI33
+  WARNING: No teachers assigned to this group
+Created course offering for GDVI43
+Created group GR3-Im for GDVI43
+  Assigned teacher 608 to group
+Created group GR3-It for GDVI43
+  WARNING: No teachers assigned to this group
+Created course offering for GDVI53
+Created group GR3-Im for GDVI53
+  Assigned teacher 707 to group
+Created group GR3-It for GDVI53
+  WARNING: No teachers assigned to this group
+Created course offering for GDVI63
+Created group GR3-Im for GDVI63
+  Assigned teacher 568 to group
+Created group GR3-It for GDVI63
+  WARNING: No teachers assigned to this group
+Created course offering for GDVI73
+Created group GR3-Im for GDVI73
+  Assigned teacher 464 to group
+Created group GR3-It for GDVI73
+  WARNING: No teachers assigned to this group
+Created course offering for GDVI83
+Created group GR3-Im for GDVI83
+  Assigned teacher 702 to group
+Created group GR3-It for GDVI83
+  WARNING: No teachers assigned to this group
+Created course offering for GDVI93
+Created group GR3-Im for GDVI93
+  Assigned teacher 499 to group
+Created group GR3-It for GDVI93
+  WARNING: No teachers assigned to this group
+Created course offering for GDVM03
+Created group GR3-Mm for GDVM03
+  Assigned teacher 583 to group
+Created group GR3-Mt for GDVM03
+  Assigned teacher 583 to group
+Created course offering for GDVM13
+Created group GR3-Mm for GDVM13
+  Assigned teacher 557 to group
+Created group GR3-Mt for GDVM13
+  Assigned teacher 438 to group
+Created course offering for GDVM23
+Created group GR3-Mm for GDVM23
+  Assigned teacher 438 to group
+Created group GR3-Mt for GDVM23
+  Assigned teacher 438 to group
+Created course offering for GDVM33
+Created group GR3-Mm for GDVM33
+  Assigned teacher 411 to group
+Created group GR3-Mt for GDVM33
+  Assigned teacher 411 to group
+Created course offering for GDVM43
+Created group GR3-Mm for GDVM43
+  Assigned teacher 572 to group
+Created group GR3-Mt for GDVM43
+  Assigned teacher 572 to group
+Created course offering for GDVM53
+Created group GR3-Mm for GDVM53
+  Assigned teacher 239 to group
+Created group GR3-Mt for GDVM53
+  Assigned teacher 239 to group
+Created course offering for GDVM63
+Created group GR3-Mm for GDVM63
+  Assigned teacher 557 to group
+Created group GR3-Mt for GDVM63
+  Assigned teacher 438 to group
+Created course offering for GDVM73
+Created group GR3-Mm for GDVM73
+  Assigned teacher 639 to group
+Created group GR3-Mt for GDVM73
+  Assigned teacher 639 to group
+Created course offering for GDVM83
+Created group GR3-Mm for GDVM83
+  Assigned teacher 411 to group
+Created group GR3-Mt for GDVM83
+  Assigned teacher 411 to group
+Created course offering for GDVM93
+Created group GR3-Mm for GDVM93
+  Assigned teacher 572 to group
+Created group GR3-Mt for GDVM93
+  Assigned teacher 572 to group
+Created course offering for GDVA04
+Created group GR4-Am for GDVA04
+  Assigned teacher 579 to group
+Created course offering for GDVA14
+Created group GR4-Am for GDVA14
+  Assigned teacher 569 to group
+Created course offering for GDVA24
+Created group GR4-Am for GDVA24
+  Assigned teacher 695 to group
+Created course offering for GDVA34
+Created group GR4-Am for GDVA34
+  Assigned teacher 548 to group
+Created course offering for GDVA44
+Created group GR4-Am for GDVA44
+  Assigned teacher 531 to group
+Created group GR4-At for GDVA44
+  Assigned teacher 531 to group
+Created course offering for GDVA54
+Created group GR4-Am for GDVA54
+  Assigned teacher 564 to group
+  Assigned teacher 611 to group
+Created course offering for GDVG04
+Created group GR4-Gm1 for GDVG04
+  Assigned teacher 547 to group
+Created group GR4-Gm2 for GDVG04
+  Assigned teacher 547 to group
+Created group GR4-Gt for GDVG04
+  Assigned teacher 657 to group
+Created course offering for GDVG14
+Created group GR4-Gm1 for GDVG14
+  Assigned teacher 556 to group
+Created group GR4-Gm2 for GDVG14
+  Assigned teacher 556 to group
+Created group GR4-Gt for GDVG14
+  Assigned teacher 556 to group
+Created course offering for GDVG24
+Created group GR4-Gm1 for GDVG24
+  Assigned teacher 482 to group
+Created group GR4-Gm2 for GDVG24
+  Assigned teacher 482 to group
+Created group GR4-Gt for GDVG24
+  Assigned teacher 594 to group
+Created course offering for GDVG34
+Created group GR4-Gm1 for GDVG34
+  Assigned teacher 585 to group
+Created group GR4-Gm2 for GDVG34
+  Assigned teacher 585 to group
+Created group GR4-Gt for GDVG34
+  Assigned teacher 585 to group
+Created course offering for GDVG44
+Created group GR4-Gm1 for GDVG44
+  Assigned teacher 609 to group
+Created group GR4-Gm2 for GDVG44
+  Assigned teacher 453 to group
+Created group GR4-Gt for GDVG44
+  Assigned teacher 609 to group
+Created course offering for GDVG54
+Created group GR4-Gm1 for GDVG54
+  Assigned teacher 554 to group
+Created group GR4-Gm2 for GDVG54
+  Assigned teacher 554 to group
+Created group GR4-Gt for GDVG54
+  Assigned teacher 700 to group
+Created course offering for GDVI04
+Created group GR4-Im for GDVI04
+  Assigned teacher 701 to group
+Created course offering for GDVI14
+Created group GR4-Im for GDVI14
+  Assigned teacher 659 to group
+Created course offering for GDVI24
+Created group GR4-Im for GDVI24
+  Assigned teacher 608 to group
+Created course offering for GDVI34
+Created group GR4-Im for GDVI34
+  Assigned teacher 707 to group
+Created course offering for GDVI44
+Created group GR4-Im for GDVI44
+  Assigned teacher 560 to group
+Created course offering for GDVI54
+Created group GR4-Im for GDVI54
+  Assigned teacher 560 to group
+Created course offering for GDVM04
+Created group GR4-Mm for GDVM04
+  Assigned teacher 660 to group
+Created group GR4-Mt for GDVM04
+  Assigned teacher 660 to group
+Created course offering for GDVM14
+Created group GR4-Mm for GDVM14
+  Assigned teacher 578 to group
+Created group GR4-Mt for GDVM14
+  Assigned teacher 578 to group
+Created course offering for GDVM24
+Created group GR4-Mm for GDVM24
+  Assigned teacher 572 to group
+Created group GR4-Mt for GDVM24
+  Assigned teacher 572 to group
+Created course offering for GDVM34
+Created group GR4-Mm for GDVM34
+  Assigned teacher 557 to group
+Created group GR4-Mt for GDVM34
+  Assigned teacher 557 to group
+Created course offering for GDVM44
+Created group GR4-Mm for GDVM44
+  Assigned teacher 473 to group
+Created group GR4-Mt for GDVM44
+  Assigned teacher 706 to group
+Created course offering for GDVM54
+Created group GR4-Mm for GDVM54
+  Assigned teacher 572 to group
+Created group GR4-Mt for GDVM54
+  Assigned teacher 458 to group
+Created course offering for GDT074
+Created group GR4-Am for GDT074
+  Assigned teacher 634 to group
+  Assigned teacher 695 to group
+Created group GR4-At for GDT074
+  Assigned teacher 678 to group
+Created group GR4-Gm1 for GDT074
+  Assigned teacher 412 to group
+  Assigned teacher 556 to group
+  Assigned teacher 657 to group
+Created group GR4-Gm2 for GDT074
+  Assigned teacher 412 to group
+  Assigned teacher 476 to group
+  Assigned teacher 547 to group
+Created group GR4-Gt for GDT074
+  Assigned teacher 409 to group
+  Assigned teacher 556 to group
+Created group GR4-Im for GDT074
+  Assigned teacher 248 to group
+  Assigned teacher 659 to group
+Created group GR4-It for GDT074
+  Assigned teacher 526 to group
+Created group GR4-Mm for GDT074
+  Assigned teacher 438 to group
+  Assigned teacher 557 to group
+  Assigned teacher 578 to group
+Created group GR4-Mt for GDT074
+  Assigned teacher 578 to group
+  Assigned teacher 583 to group
+Created course offering for GBB001
+Created group GB1-M1 for GBB001
+  Assigned teacher 597 to group
+  Assigned teacher 380 to group
+Created course offering for GBB011
+Created group GB1-M1 for GBB011
+  Assigned teacher 533 to group
+  Assigned teacher 598 to group
+Created course offering for GBB021
+Created group GB1-M1 for GBB021
+  Assigned teacher 599 to group
+  Assigned teacher 667 to group
+Created course offering for GBB031
+Created group GB1-M1 for GBB031
+  Assigned teacher 406 to group
+Created course offering for GBF001
+Created group GB1-M1 for GBF001
+  Assigned teacher 601 to group
+Created course offering for GBF011
+Created group GB1-M1 for GBF011
+  Assigned teacher 602 to group
+Created course offering for GBF021
+Created group GB1-M1 for GBF021
+  Assigned teacher 556 to group
+  Assigned teacher 661 to group
+Created course offering for GBF031
+Created group GB1-M1 for GBF031
+  Assigned teacher 604 to group
+Created course offering for GBF041
+Created group GB1-M1 for GBF041
+  Assigned teacher 629 to group
+  Assigned teacher 703 to group
+Created course offering for GBF051
+Created group GB1-M1 for GBF051
+  Assigned teacher 515 to group
+Created course offering for GBB002
+Created group GB2-M1 for GBB002
+  Assigned teacher 510 to group
+  Assigned teacher 656 to group
+Created group GB2-T1 for GBB002
+  Assigned teacher 510 to group
+  Assigned teacher 656 to group
+Created course offering for GBB012
+Created group GB2-M1 for GBB012
+  Assigned teacher 638 to group
+  Assigned teacher 641 to group
+Created group GB2-T1 for GBB012
+  Assigned teacher 638 to group
+  Assigned teacher 641 to group
+Created course offering for GBB022
+Created group GB2-T1 for GBB022
+  Assigned teacher 654 to group
+Created group GB2-M1 for GBB022
+  Assigned teacher 406 to group
+Created course offering for GBB032
+Created group GB2-M1 for GBB032
+  Assigned teacher 663 to group
+  Assigned teacher 652 to group
+Created group GB2-T1 for GBB032
+  Assigned teacher 652 to group
+  Assigned teacher 663 to group
+Created course offering for GBB042
+Created group GB2-M1 for GBB042
+  Assigned teacher 607 to group
+  Assigned teacher 628 to group
+Created group GB2-T1 for GBB042
+  Assigned teacher 607 to group
+  Assigned teacher 628 to group
+Created course offering for GBB052
+Created group GB2-T1 for GBB052
+  Assigned teacher 648 to group
+Created group GB2-M1 for GBB052
+  Assigned teacher 648 to group
+Created course offering for GBF002
+Created group GB2-T1 for GBF002
+  Assigned teacher 639 to group
+Created group GB2-M1 for GBF002
+  Assigned teacher 639 to group
+Created course offering for GBF012
+Created group GB2-M1 for GBF012
+  Assigned teacher 647 to group
+  Assigned teacher 653 to group
+Created group GB2-T1 for GBF012
+  Assigned teacher 647 to group
+  Assigned teacher 653 to group
+Created course offering for GBF022
+Created group GB2-T1 for GBF022
+  Assigned teacher 516 to group
+Created group GB2-M1 for GBF022
+  Assigned teacher 516 to group
+Created course offering for GBF032
+Created group GB2-T1 for GBF032
+  Assigned teacher 655 to group
+Created group GB2-M1 for GBF032
+  Assigned teacher 655 to group
+Created course offering for GBB003
+Created group GB3-M1 for GBB003
+  Assigned teacher 424 to group
+  Assigned teacher 697 to group
+Created group GB3-T1 for GBB003
+  WARNING: No teachers assigned to this group
+Created course offering for GBB013
+Created group GB3-M1 for GBB013
+  Assigned teacher 694 to group
+Created group GB3-T1 for GBB013
+  WARNING: No teachers assigned to this group
+Created course offering for GBB023
+Created group GB3-M1 for GBB023
+  Assigned teacher 610 to group
+  Assigned teacher 603 to group
+Created group GB3-T1 for GBB023
+  WARNING: No teachers assigned to this group
+Created course offering for GBB033
+Created group GB3-M1 for GBB033
+  Assigned teacher 757 to group
+Created group GB3-T1 for GBB033
+  WARNING: No teachers assigned to this group
+Created course offering for GBB004
+Created group GB4-M1 for GBB004
+  WARNING: No teachers assigned to this group
+Created course offering for GBB024
+Created group GB4-M1 for GBB024
+  WARNING: No teachers assigned to this group
+Created course offering for GBB014
+Created group GB4-M1 for GBB014
+  WARNING: No teachers assigned to this group
+Created course offering for GBT004
+Created group GB4-M1 for GBT004
+  WARNING: No teachers assigned to this group
+Created course offering for GBV00L
+Created group GB3-GB4-M1 for GBV00L
+  Assigned teacher 693 to group
+  Assigned teacher 703 to group
+Created course offering for GBV00P
+Created group GB3-GB4-M1 for GBV00P
+  Assigned teacher 692 to group
+Created course offering for GBV01L
+Created group GB3-GB4-M1 for GBV01L
+  Assigned teacher 705 to group
+Created course offering for GBV02L
+Created group GB3-GB4-M1 for GBV02L
+  Assigned teacher 698 to group
+Created course offering for GBV02P
+Created group GB3-GB4-M1 for GBV02P
+  Assigned teacher 628 to group
+  Assigned teacher 552 to group
+Created course offering for GBV03P
+Created group GB3-GB4-M1 for GBV03P
+  Assigned teacher 639 to group
+Created course offering for GBV04L
+Created group GB3-GB4-M1 for GBV04L
+  Assigned teacher 663 to group
+Created course offering for GBV06L
+Created group GB3-GB4-M1 for GBV06L
+  Assigned teacher 638 to group
+Created course offering for GBV09L
+Created group GB3-GB4-T1 for GBV09L
+  Assigned teacher 680 to group
+  Assigned teacher 689 to group
+Created course offering for GBV11L
+Created group GB3-GB4-M1 for GBV11L
+  Assigned teacher 564 to group
+  Assigned teacher 611 to group
+Created course offering for GBV13L
+Created group GB3-GB4-M1 for GBV13L
+  Assigned teacher 699 to group
+
+=== IMPORT SUMMARY ===
+Mode: LIVE
+Total groups processed: 344
+Successfully imported: 310
+Errors: 34
+
+Errors encountered:
+  - GDB001_GR1-M1: [object Object]
+  - GDB001_GR1-M2: [object Object]
+  - GDB001_GR1-M3: [object Object]
+  - GDB001_GR1-M4: [object Object]
+  - GDB001_GR1-M5: [object Object]
+  - GDB001_GR1-T1: [object Object]
+  - GDB001_GR1-T2: [object Object]
+  - GDB011_GR1-M1: [object Object]
+  - GDB011_GR1-M2: [object Object]
+  - GDB011_GR1-M3: [object Object]
+  - GDB011_GR1-M4: [object Object]
+  - GDB011_GR1-M5: [object Object]
+  - GDB011_GR1-T1: [object Object]
+  - GDB011_GR1-T2: [object Object]
+  - GDF001_GR1-M1: [object Object]
+  - GDF001_GR1-M2: [object Object]
+  - GDF001_GR1-M3: [object Object]
+  - GDF001_GR1-M4: [object Object]
+  - GDF001_GR1-M5: [object Object]
+  - GDF001_GR1-T1: [object Object]
+  - GDF001_GR1-T2: [object Object]
+  - GDF011_GR1-M1: [object Object]
+  - GDF011_GR1-M2: [object Object]
+  - GDF011_GR1-M3: [object Object]
+  - GDF011_GR1-M4: [object Object]
+  - GDF011_GR1-M5: [object Object]
+  - GDF011_GR1-T1: [object Object]
+  - GDF011_GR1-T2: [object Object]
+  - GDF021_GR1-M1: [object Object]
+  - GDF021_GR1-M2: [object Object]
+  - GDF021_GR1-M3: [object Object]
+  - GDF021_GR1-M4: [object Object]
+  - GDF021_GR1-M5: [object Object]
+  - GDF021_GR1-T1: [object Object]

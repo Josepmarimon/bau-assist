@@ -1,0 +1,3052 @@
+[
+  {
+    "id": "2b90a844-1e06-42cc-8d7b-81bcf74b8b2d",
+    "subject_id": "32bb6821-495c-4641-8848-0305c44cbd2b",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:12:58.404487+00:00",
+    "updated_at": "2025-07-10T16:12:58.404487+00:00"
+  },
+  {
+    "id": "ce6acb75-00d5-4460-a657-750227706b07",
+    "subject_id": "de979b70-df99-412e-b485-3a6963d7cc23",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:12:58.614915+00:00",
+    "updated_at": "2025-07-10T16:12:58.614915+00:00"
+  },
+  {
+    "id": "ce38f454-32f1-4a92-a727-a3fb063d53e6",
+    "subject_id": "6d69606d-7ea9-4654-8994-a92b37e58e42",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:12:58.835012+00:00",
+    "updated_at": "2025-07-10T16:12:58.835012+00:00"
+  },
+  {
+    "id": "f83adb83-6161-4046-ab71-a1618642b50e",
+    "subject_id": "267d33e7-d81d-49aa-ab89-f4af4ff76363",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:12:59.069215+00:00",
+    "updated_at": "2025-07-10T16:12:59.069215+00:00"
+  },
+  {
+    "id": "bb6b7b57-fb50-40f3-85f4-66cc4c71cc62",
+    "subject_id": "00dc4867-679c-443a-ab89-fcfc3868f813",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:12:59.274637+00:00",
+    "updated_at": "2025-07-10T16:12:59.274637+00:00"
+  },
+  {
+    "id": "f5cca0c0-9e95-4eaa-8f3f-8dec1d37250f",
+    "subject_id": "51b28c0a-4242-4da8-bebb-f9c2d1b234d0",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:12:59.500394+00:00",
+    "updated_at": "2025-07-10T16:12:59.500394+00:00"
+  },
+  {
+    "id": "b1d5d739-28eb-4372-9ba3-6f6570392713",
+    "subject_id": "299f9887-7adf-4a23-8af3-51047c82cfb8",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:12:59.709746+00:00",
+    "updated_at": "2025-07-10T16:12:59.709746+00:00"
+  },
+  {
+    "id": "d5c90b18-ffd2-416d-bd9f-e620ad340773",
+    "subject_id": "82c563f0-8fb7-4e12-8b30-29ac5a89dd48",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:12:59.896086+00:00",
+    "updated_at": "2025-07-10T16:12:59.896086+00:00"
+  },
+  {
+    "id": "a894cc53-d58d-490d-858f-d58ce6517de5",
+    "subject_id": "bf4a7ec9-56ec-4a85-8459-c930cefd7a68",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:00.084859+00:00",
+    "updated_at": "2025-07-10T16:13:00.084859+00:00"
+  },
+  {
+    "id": "ef456553-e7cc-4b7d-a115-c996700b32b9",
+    "subject_id": "2ed6362c-6c8b-481a-81f5-1c092f16c1a3",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:00.272033+00:00",
+    "updated_at": "2025-07-10T16:13:00.272033+00:00"
+  },
+  {
+    "id": "51c9a3b2-d8f2-4133-8b1f-c5b9527d8c08",
+    "subject_id": "32bb6821-495c-4641-8848-0305c44cbd2b",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:00.472373+00:00",
+    "updated_at": "2025-07-10T16:13:00.472373+00:00"
+  },
+  {
+    "id": "c97b1077-6935-44d9-85a3-0ba4a6a5c8c8",
+    "subject_id": "de979b70-df99-412e-b485-3a6963d7cc23",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:00.674015+00:00",
+    "updated_at": "2025-07-10T16:13:00.674015+00:00"
+  },
+  {
+    "id": "4682a090-b7fb-4208-8f93-e683bb44b573",
+    "subject_id": "267d33e7-d81d-49aa-ab89-f4af4ff76363",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:00.857256+00:00",
+    "updated_at": "2025-07-10T16:13:00.857256+00:00"
+  },
+  {
+    "id": "56d90fe0-4173-4f96-a44c-4e08fbf5da9f",
+    "subject_id": "6d69606d-7ea9-4654-8994-a92b37e58e42",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:01.079569+00:00",
+    "updated_at": "2025-07-10T16:13:01.079569+00:00"
+  },
+  {
+    "id": "9a05957a-f5aa-40b1-84f0-403713e77216",
+    "subject_id": "00dc4867-679c-443a-ab89-fcfc3868f813",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:01.522411+00:00",
+    "updated_at": "2025-07-10T16:13:01.522411+00:00"
+  },
+  {
+    "id": "0767a14e-9765-4aa3-9a77-854aab88c8ee",
+    "subject_id": "51b28c0a-4242-4da8-bebb-f9c2d1b234d0",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:01.772057+00:00",
+    "updated_at": "2025-07-10T16:13:01.772057+00:00"
+  },
+  {
+    "id": "4f743ef1-17b8-4f27-9576-3b6e8e7b8248",
+    "subject_id": "299f9887-7adf-4a23-8af3-51047c82cfb8",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:01.966732+00:00",
+    "updated_at": "2025-07-10T16:13:01.966732+00:00"
+  },
+  {
+    "id": "ff518672-4448-4d0c-be63-5bf821a30180",
+    "subject_id": "bf4a7ec9-56ec-4a85-8459-c930cefd7a68",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:02.254476+00:00",
+    "updated_at": "2025-07-10T16:13:02.254476+00:00"
+  },
+  {
+    "id": "fd3ef0fd-4c66-4f86-a0e5-78c112e06723",
+    "subject_id": "82c563f0-8fb7-4e12-8b30-29ac5a89dd48",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:02.507503+00:00",
+    "updated_at": "2025-07-10T16:13:02.507503+00:00"
+  },
+  {
+    "id": "dd6fc082-52b5-456f-9c0e-69beef1229fe",
+    "subject_id": "2ed6362c-6c8b-481a-81f5-1c092f16c1a3",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:02.702804+00:00",
+    "updated_at": "2025-07-10T16:13:02.702804+00:00"
+  },
+  {
+    "id": "feb1be47-3e51-4bfb-8f00-85a7893ba91a",
+    "subject_id": "de979b70-df99-412e-b485-3a6963d7cc23",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:02.891722+00:00",
+    "updated_at": "2025-07-10T16:13:02.891722+00:00"
+  },
+  {
+    "id": "a3375b15-a6eb-465a-8fb8-5795a053fe2c",
+    "subject_id": "32bb6821-495c-4641-8848-0305c44cbd2b",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:03.123721+00:00",
+    "updated_at": "2025-07-10T16:13:03.123721+00:00"
+  },
+  {
+    "id": "da15b553-8fd7-45d9-bb17-52680a560587",
+    "subject_id": "82c563f0-8fb7-4e12-8b30-29ac5a89dd48",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:03.317786+00:00",
+    "updated_at": "2025-07-10T16:13:03.317786+00:00"
+  },
+  {
+    "id": "92901f2a-fcf7-4f88-83c8-1bebcd4a4fd2",
+    "subject_id": "bf4a7ec9-56ec-4a85-8459-c930cefd7a68",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:03.772186+00:00",
+    "updated_at": "2025-07-10T16:13:03.772186+00:00"
+  },
+  {
+    "id": "e9d88edc-381f-46d9-b010-2727bdc36b6e",
+    "subject_id": "00dc4867-679c-443a-ab89-fcfc3868f813",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:03.982569+00:00",
+    "updated_at": "2025-07-10T16:13:03.982569+00:00"
+  },
+  {
+    "id": "a4401eba-e108-4b48-b77a-fca0cf38a607",
+    "subject_id": "299f9887-7adf-4a23-8af3-51047c82cfb8",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:04.219512+00:00",
+    "updated_at": "2025-07-10T16:13:04.219512+00:00"
+  },
+  {
+    "id": "8d9501d5-0332-43d7-9df3-aca50bb66aa8",
+    "subject_id": "51b28c0a-4242-4da8-bebb-f9c2d1b234d0",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:04.414419+00:00",
+    "updated_at": "2025-07-10T16:13:04.414419+00:00"
+  },
+  {
+    "id": "d1b0d327-a3ea-4ec7-ac4e-453e8f5bf3b0",
+    "subject_id": "6d69606d-7ea9-4654-8994-a92b37e58e42",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:04.623034+00:00",
+    "updated_at": "2025-07-10T16:13:04.623034+00:00"
+  },
+  {
+    "id": "ccdcd532-41b2-4f1a-a628-6c7cf3ba27d1",
+    "subject_id": "267d33e7-d81d-49aa-ab89-f4af4ff76363",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:04.810501+00:00",
+    "updated_at": "2025-07-10T16:13:04.810501+00:00"
+  },
+  {
+    "id": "2f4fc739-11aa-4ddb-9eec-eaa642e4273e",
+    "subject_id": "2ed6362c-6c8b-481a-81f5-1c092f16c1a3",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:05.014881+00:00",
+    "updated_at": "2025-07-10T16:13:05.014881+00:00"
+  },
+  {
+    "id": "961039d0-7caa-4d84-88c8-80581fa299e7",
+    "subject_id": "de979b70-df99-412e-b485-3a6963d7cc23",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:05.215954+00:00",
+    "updated_at": "2025-07-10T16:13:05.215954+00:00"
+  },
+  {
+    "id": "174f58d8-7879-4ffc-86b3-4bdc2f64fd16",
+    "subject_id": "bf4a7ec9-56ec-4a85-8459-c930cefd7a68",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:05.411339+00:00",
+    "updated_at": "2025-07-10T16:13:05.411339+00:00"
+  },
+  {
+    "id": "0a99998a-7220-4449-ba72-786e0d7c29a8",
+    "subject_id": "32bb6821-495c-4641-8848-0305c44cbd2b",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:05.613026+00:00",
+    "updated_at": "2025-07-10T16:13:05.613026+00:00"
+  },
+  {
+    "id": "10953244-b7cc-40c0-8e67-9b1668477ec9",
+    "subject_id": "82c563f0-8fb7-4e12-8b30-29ac5a89dd48",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:05.831816+00:00",
+    "updated_at": "2025-07-10T16:13:05.831816+00:00"
+  },
+  {
+    "id": "4acd1202-00d9-4ff6-ba66-dc6734aa3a5e",
+    "subject_id": "2ed6362c-6c8b-481a-81f5-1c092f16c1a3",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:06.055104+00:00",
+    "updated_at": "2025-07-10T16:13:06.055104+00:00"
+  },
+  {
+    "id": "2b3f5083-f179-4298-b3ea-48e41b0f0b30",
+    "subject_id": "299f9887-7adf-4a23-8af3-51047c82cfb8",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:06.26286+00:00",
+    "updated_at": "2025-07-10T16:13:06.26286+00:00"
+  },
+  {
+    "id": "ac58b91c-48a3-4d34-b8bd-c04cc147b054",
+    "subject_id": "51b28c0a-4242-4da8-bebb-f9c2d1b234d0",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:06.467006+00:00",
+    "updated_at": "2025-07-10T16:13:06.467006+00:00"
+  },
+  {
+    "id": "de546244-77e8-4a07-b9bc-c9f045f9cd8e",
+    "subject_id": "267d33e7-d81d-49aa-ab89-f4af4ff76363",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:06.682136+00:00",
+    "updated_at": "2025-07-10T16:13:06.682136+00:00"
+  },
+  {
+    "id": "a42e7fe9-2763-4188-a6dd-28e18656dce0",
+    "subject_id": "6d69606d-7ea9-4654-8994-a92b37e58e42",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:06.921129+00:00",
+    "updated_at": "2025-07-10T16:13:06.921129+00:00"
+  },
+  {
+    "id": "af85b20f-f889-4f8b-b1b9-d7d66943a7bb",
+    "subject_id": "00dc4867-679c-443a-ab89-fcfc3868f813",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:07.118686+00:00",
+    "updated_at": "2025-07-10T16:13:07.118686+00:00"
+  },
+  {
+    "id": "05c5674b-8df6-4349-8149-88f847227cc9",
+    "subject_id": "6d69606d-7ea9-4654-8994-a92b37e58e42",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:07.34114+00:00",
+    "updated_at": "2025-07-10T16:13:07.34114+00:00"
+  },
+  {
+    "id": "171324ee-0441-44ad-9d09-bd886c8ec6cb",
+    "subject_id": "267d33e7-d81d-49aa-ab89-f4af4ff76363",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:07.538154+00:00",
+    "updated_at": "2025-07-10T16:13:07.538154+00:00"
+  },
+  {
+    "id": "13efe9fd-a332-4c59-82bb-d4b258c657a4",
+    "subject_id": "32bb6821-495c-4641-8848-0305c44cbd2b",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:07.751373+00:00",
+    "updated_at": "2025-07-10T16:13:07.751373+00:00"
+  },
+  {
+    "id": "bda3119c-3fe0-47ec-b9d7-b7e19310729d",
+    "subject_id": "de979b70-df99-412e-b485-3a6963d7cc23",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:08.195387+00:00",
+    "updated_at": "2025-07-10T16:13:08.195387+00:00"
+  },
+  {
+    "id": "f4872510-5357-409b-9d08-66f4279f865d",
+    "subject_id": "2ed6362c-6c8b-481a-81f5-1c092f16c1a3",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:08.456975+00:00",
+    "updated_at": "2025-07-10T16:13:08.456975+00:00"
+  },
+  {
+    "id": "ec6afbfc-6e6a-4095-b6a1-9a901d69ade9",
+    "subject_id": "bf4a7ec9-56ec-4a85-8459-c930cefd7a68",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:08.693087+00:00",
+    "updated_at": "2025-07-10T16:13:08.693087+00:00"
+  },
+  {
+    "id": "50d4c36d-4c94-47e4-8ee0-acc32eb57e83",
+    "subject_id": "82c563f0-8fb7-4e12-8b30-29ac5a89dd48",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:08.905585+00:00",
+    "updated_at": "2025-07-10T16:13:08.905585+00:00"
+  },
+  {
+    "id": "f3235985-87aa-45d7-b380-b442fda1fd59",
+    "subject_id": "51b28c0a-4242-4da8-bebb-f9c2d1b234d0",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:09.118319+00:00",
+    "updated_at": "2025-07-10T16:13:09.118319+00:00"
+  },
+  {
+    "id": "46210521-dcfd-4aa5-91bf-12115a067c24",
+    "subject_id": "299f9887-7adf-4a23-8af3-51047c82cfb8",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:09.327291+00:00",
+    "updated_at": "2025-07-10T16:13:09.327291+00:00"
+  },
+  {
+    "id": "f3c3541e-1985-4a10-b2d1-610c33d4a95b",
+    "subject_id": "00dc4867-679c-443a-ab89-fcfc3868f813",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:09.549224+00:00",
+    "updated_at": "2025-07-10T16:13:09.549224+00:00"
+  },
+  {
+    "id": "6eac1026-407d-4e70-a63c-524e83efb300",
+    "subject_id": "267d33e7-d81d-49aa-ab89-f4af4ff76363",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:09.758224+00:00",
+    "updated_at": "2025-07-10T16:13:09.758224+00:00"
+  },
+  {
+    "id": "19fc09d2-99e9-48c4-a5fb-caa428fe1691",
+    "subject_id": "6d69606d-7ea9-4654-8994-a92b37e58e42",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:09.979084+00:00",
+    "updated_at": "2025-07-10T16:13:09.979084+00:00"
+  },
+  {
+    "id": "8e233013-013c-433b-9065-8d1d4863f7ff",
+    "subject_id": "32bb6821-495c-4641-8848-0305c44cbd2b",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:10.191915+00:00",
+    "updated_at": "2025-07-10T16:13:10.191915+00:00"
+  },
+  {
+    "id": "fc8a821f-a774-43fb-96f2-99caeed75ddd",
+    "subject_id": "de979b70-df99-412e-b485-3a6963d7cc23",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:10.412287+00:00",
+    "updated_at": "2025-07-10T16:13:10.412287+00:00"
+  },
+  {
+    "id": "e4aadaa8-728a-4d99-8efd-440ddd8c5fa2",
+    "subject_id": "00dc4867-679c-443a-ab89-fcfc3868f813",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:10.659317+00:00",
+    "updated_at": "2025-07-10T16:13:10.659317+00:00"
+  },
+  {
+    "id": "b28c562d-65c3-46a5-b238-a9232cd2a52d",
+    "subject_id": "82c563f0-8fb7-4e12-8b30-29ac5a89dd48",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:10.877201+00:00",
+    "updated_at": "2025-07-10T16:13:10.877201+00:00"
+  },
+  {
+    "id": "f87f07e9-512f-4ec4-90ee-126bb37b064c",
+    "subject_id": "bf4a7ec9-56ec-4a85-8459-c930cefd7a68",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:11.104921+00:00",
+    "updated_at": "2025-07-10T16:13:11.104921+00:00"
+  },
+  {
+    "id": "fcfcb73c-2612-456f-8cd2-118eebc8bf18",
+    "subject_id": "51b28c0a-4242-4da8-bebb-f9c2d1b234d0",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:11.29615+00:00",
+    "updated_at": "2025-07-10T16:13:11.29615+00:00"
+  },
+  {
+    "id": "d8bd1aeb-1de4-493d-ab96-588315dc5d7d",
+    "subject_id": "299f9887-7adf-4a23-8af3-51047c82cfb8",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:11.566211+00:00",
+    "updated_at": "2025-07-10T16:13:11.566211+00:00"
+  },
+  {
+    "id": "6cf0ac37-d41c-40d6-8e48-b806794cd216",
+    "subject_id": "2ed6362c-6c8b-481a-81f5-1c092f16c1a3",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:11.792219+00:00",
+    "updated_at": "2025-07-10T16:13:11.792219+00:00"
+  },
+  {
+    "id": "a0486fa9-15c2-45e7-b4ee-24124996b995",
+    "subject_id": "bf4a7ec9-56ec-4a85-8459-c930cefd7a68",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:12.031411+00:00",
+    "updated_at": "2025-07-10T16:13:12.031411+00:00"
+  },
+  {
+    "id": "0547c2f1-e487-42f5-9175-de0b3a2e378e",
+    "subject_id": "82c563f0-8fb7-4e12-8b30-29ac5a89dd48",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:12.226343+00:00",
+    "updated_at": "2025-07-10T16:13:12.226343+00:00"
+  },
+  {
+    "id": "45c769e7-84ce-4e55-a950-e1d4fb947e4f",
+    "subject_id": "32bb6821-495c-4641-8848-0305c44cbd2b",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:12.403406+00:00",
+    "updated_at": "2025-07-10T16:13:12.403406+00:00"
+  },
+  {
+    "id": "05ac1aee-69f9-4d58-aaa3-4cd0ce991e6a",
+    "subject_id": "de979b70-df99-412e-b485-3a6963d7cc23",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:12.596235+00:00",
+    "updated_at": "2025-07-10T16:13:12.596235+00:00"
+  },
+  {
+    "id": "0f5dacb3-f28f-4bc0-a8e3-b3c6c9e020b2",
+    "subject_id": "2ed6362c-6c8b-481a-81f5-1c092f16c1a3",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:12.785292+00:00",
+    "updated_at": "2025-07-10T16:13:12.785292+00:00"
+  },
+  {
+    "id": "c9c90a4d-26bc-4e64-ad39-51fe7c20284c",
+    "subject_id": "267d33e7-d81d-49aa-ab89-f4af4ff76363",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:12.974104+00:00",
+    "updated_at": "2025-07-10T16:13:12.974104+00:00"
+  },
+  {
+    "id": "74b7b436-0005-4bd6-9f11-eeed36fa5f04",
+    "subject_id": "6d69606d-7ea9-4654-8994-a92b37e58e42",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:13.192993+00:00",
+    "updated_at": "2025-07-10T16:13:13.192993+00:00"
+  },
+  {
+    "id": "d45f4103-935f-4e2d-9576-dad3a4ceaef0",
+    "subject_id": "51b28c0a-4242-4da8-bebb-f9c2d1b234d0",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:13.695206+00:00",
+    "updated_at": "2025-07-10T16:13:13.695206+00:00"
+  },
+  {
+    "id": "f29c3746-b5b7-4090-81f0-3197caa750b8",
+    "subject_id": "299f9887-7adf-4a23-8af3-51047c82cfb8",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:13.912272+00:00",
+    "updated_at": "2025-07-10T16:13:13.912272+00:00"
+  },
+  {
+    "id": "8f5e93b1-63c2-45b0-b4f3-a7b1c35aa17e",
+    "subject_id": "00dc4867-679c-443a-ab89-fcfc3868f813",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:14.111174+00:00",
+    "updated_at": "2025-07-10T16:13:14.111174+00:00"
+  },
+  {
+    "id": "56ae8934-3a05-42e0-907e-93b862fa6695",
+    "subject_id": "ff094ec1-c254-4c64-bb90-b5c4a6057e9c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:14.732971+00:00",
+    "updated_at": "2025-07-10T16:13:14.732971+00:00"
+  },
+  {
+    "id": "8c0c501c-26ee-455d-ba06-38759acf09a4",
+    "subject_id": "c43631ff-2b98-4444-b5bb-f8c8d79c08f8",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:14.955442+00:00",
+    "updated_at": "2025-07-10T16:13:14.955442+00:00"
+  },
+  {
+    "id": "796dc43e-e0c4-42e8-9433-0736e1f58e00",
+    "subject_id": "465361e3-d17c-4679-b898-381dfa5de8be",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:15.162408+00:00",
+    "updated_at": "2025-07-10T16:13:15.162408+00:00"
+  },
+  {
+    "id": "4a1fe89b-fe4d-4c80-9757-7bc323d69697",
+    "subject_id": "fea1551d-3a22-4c11-9293-a3b003cacc4a",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:15.890985+00:00",
+    "updated_at": "2025-07-10T16:13:15.890985+00:00"
+  },
+  {
+    "id": "f474b25d-6d47-4aff-b622-4d991c31e017",
+    "subject_id": "25585b59-bda7-4a21-962e-c3e1bfe807e2",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:16.12887+00:00",
+    "updated_at": "2025-07-10T16:13:16.12887+00:00"
+  },
+  {
+    "id": "26a1664b-c0d9-482d-acc7-d5bb6da71732",
+    "subject_id": "a34a5025-9f79-459b-9c41-0acd473ea494",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:16.434862+00:00",
+    "updated_at": "2025-07-10T16:13:16.434862+00:00"
+  },
+  {
+    "id": "e7aca278-294e-4f33-80b7-bb1089654da5",
+    "subject_id": "465361e3-d17c-4679-b898-381dfa5de8be",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:16.657777+00:00",
+    "updated_at": "2025-07-10T16:13:16.657777+00:00"
+  },
+  {
+    "id": "de0ad9dd-cd8d-42c1-8bd3-cb748b4f8326",
+    "subject_id": "ff094ec1-c254-4c64-bb90-b5c4a6057e9c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:17.334159+00:00",
+    "updated_at": "2025-07-10T16:13:17.334159+00:00"
+  },
+  {
+    "id": "d829a757-855c-4967-a2d2-d7246d32f439",
+    "subject_id": "c43631ff-2b98-4444-b5bb-f8c8d79c08f8",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:18.181062+00:00",
+    "updated_at": "2025-07-10T16:13:18.181062+00:00"
+  },
+  {
+    "id": "65e56d81-da92-4d92-8e08-4b7fe2e8469c",
+    "subject_id": "a34a5025-9f79-459b-9c41-0acd473ea494",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:18.44721+00:00",
+    "updated_at": "2025-07-10T16:13:18.44721+00:00"
+  },
+  {
+    "id": "ce21359d-5010-4c30-9251-6def71c9decf",
+    "subject_id": "fea1551d-3a22-4c11-9293-a3b003cacc4a",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:19.300705+00:00",
+    "updated_at": "2025-07-10T16:13:19.300705+00:00"
+  },
+  {
+    "id": "2d771704-99d7-4586-b811-c3a87e55cb88",
+    "subject_id": "25585b59-bda7-4a21-962e-c3e1bfe807e2",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:19.562514+00:00",
+    "updated_at": "2025-07-10T16:13:19.562514+00:00"
+  },
+  {
+    "id": "a885a372-edc7-47ea-b60b-cfc05e021a2d",
+    "subject_id": "c43631ff-2b98-4444-b5bb-f8c8d79c08f8",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:20.189292+00:00",
+    "updated_at": "2025-07-10T16:13:20.189292+00:00"
+  },
+  {
+    "id": "ca292bd2-8be2-4f97-ae7b-8cd84d997a67",
+    "subject_id": "ff094ec1-c254-4c64-bb90-b5c4a6057e9c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:20.385029+00:00",
+    "updated_at": "2025-07-10T16:13:20.385029+00:00"
+  },
+  {
+    "id": "554525f0-b30e-4216-824a-7cabdf9b7bc2",
+    "subject_id": "a34a5025-9f79-459b-9c41-0acd473ea494",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:20.589432+00:00",
+    "updated_at": "2025-07-10T16:13:20.589432+00:00"
+  },
+  {
+    "id": "bcc0deb3-2f2c-446a-a1c8-0e9c87f6a295",
+    "subject_id": "25585b59-bda7-4a21-962e-c3e1bfe807e2",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:21.216964+00:00",
+    "updated_at": "2025-07-10T16:13:21.216964+00:00"
+  },
+  {
+    "id": "1acdde3e-bde5-4fae-b8e0-d8bf8e6d1fff",
+    "subject_id": "fea1551d-3a22-4c11-9293-a3b003cacc4a",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:21.409494+00:00",
+    "updated_at": "2025-07-10T16:13:21.409494+00:00"
+  },
+  {
+    "id": "f7862c4b-7bfb-4e0e-89de-4c75547a002a",
+    "subject_id": "465361e3-d17c-4679-b898-381dfa5de8be",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M3",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:21.652039+00:00",
+    "updated_at": "2025-07-10T16:13:21.652039+00:00"
+  },
+  {
+    "id": "efe0ae14-55f3-4fa3-951a-84ac4c4b4f2b",
+    "subject_id": "c43631ff-2b98-4444-b5bb-f8c8d79c08f8",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:22.273275+00:00",
+    "updated_at": "2025-07-10T16:13:22.273275+00:00"
+  },
+  {
+    "id": "c181f51b-81a9-4633-81b7-2d048f49a40a",
+    "subject_id": "ff094ec1-c254-4c64-bb90-b5c4a6057e9c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:22.50655+00:00",
+    "updated_at": "2025-07-10T16:13:22.50655+00:00"
+  },
+  {
+    "id": "435b5078-85bd-46c5-81f8-92763739e684",
+    "subject_id": "a34a5025-9f79-459b-9c41-0acd473ea494",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:22.726559+00:00",
+    "updated_at": "2025-07-10T16:13:22.726559+00:00"
+  },
+  {
+    "id": "cc35d177-406a-4e41-a4f5-d804443e0898",
+    "subject_id": "25585b59-bda7-4a21-962e-c3e1bfe807e2",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:23.353831+00:00",
+    "updated_at": "2025-07-10T16:13:23.353831+00:00"
+  },
+  {
+    "id": "c7b83480-e486-427d-adef-fc3c4b91cea4",
+    "subject_id": "fea1551d-3a22-4c11-9293-a3b003cacc4a",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:23.563775+00:00",
+    "updated_at": "2025-07-10T16:13:23.563775+00:00"
+  },
+  {
+    "id": "bb9357b5-cb0c-4881-8faf-c7f75921c021",
+    "subject_id": "465361e3-d17c-4679-b898-381dfa5de8be",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M4",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:23.765864+00:00",
+    "updated_at": "2025-07-10T16:13:23.765864+00:00"
+  },
+  {
+    "id": "f2a4192a-0018-452d-ac68-5ff076220f1f",
+    "subject_id": "a34a5025-9f79-459b-9c41-0acd473ea494",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:24.344156+00:00",
+    "updated_at": "2025-07-10T16:13:24.344156+00:00"
+  },
+  {
+    "id": "3aabce47-2092-4990-b36c-31bd639b3690",
+    "subject_id": "c43631ff-2b98-4444-b5bb-f8c8d79c08f8",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:24.616516+00:00",
+    "updated_at": "2025-07-10T16:13:24.616516+00:00"
+  },
+  {
+    "id": "e880084e-48f2-4a88-8ac4-2bbc8d22d3ca",
+    "subject_id": "ff094ec1-c254-4c64-bb90-b5c4a6057e9c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:24.938075+00:00",
+    "updated_at": "2025-07-10T16:13:24.938075+00:00"
+  },
+  {
+    "id": "9765c893-9d38-4fcb-bc49-0b93b64e06c8",
+    "subject_id": "465361e3-d17c-4679-b898-381dfa5de8be",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:25.580029+00:00",
+    "updated_at": "2025-07-10T16:13:25.580029+00:00"
+  },
+  {
+    "id": "1fc7dbbc-92b1-4463-9535-ada3c70b6f09",
+    "subject_id": "25585b59-bda7-4a21-962e-c3e1bfe807e2",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:25.795659+00:00",
+    "updated_at": "2025-07-10T16:13:25.795659+00:00"
+  },
+  {
+    "id": "2d515864-54b1-4b10-a82c-6a0111d7b0ab",
+    "subject_id": "fea1551d-3a22-4c11-9293-a3b003cacc4a",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí M5",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:26.011967+00:00",
+    "updated_at": "2025-07-10T16:13:26.011967+00:00"
+  },
+  {
+    "id": "cab152fc-b79f-4a03-85d6-4e55d102c64e",
+    "subject_id": "ff094ec1-c254-4c64-bb90-b5c4a6057e9c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:26.229683+00:00",
+    "updated_at": "2025-07-10T16:13:26.229683+00:00"
+  },
+  {
+    "id": "a473ee84-f1f7-4522-ba47-09d07ba032c3",
+    "subject_id": "c43631ff-2b98-4444-b5bb-f8c8d79c08f8",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:26.482671+00:00",
+    "updated_at": "2025-07-10T16:13:26.482671+00:00"
+  },
+  {
+    "id": "968a04da-24bd-44e2-a097-0ee0d051084e",
+    "subject_id": "a34a5025-9f79-459b-9c41-0acd473ea494",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:27.167259+00:00",
+    "updated_at": "2025-07-10T16:13:27.167259+00:00"
+  },
+  {
+    "id": "e87cdf63-70b2-44a8-9ff3-072905f511a7",
+    "subject_id": "fea1551d-3a22-4c11-9293-a3b003cacc4a",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:27.359374+00:00",
+    "updated_at": "2025-07-10T16:13:27.359374+00:00"
+  },
+  {
+    "id": "77c8323e-fa54-4c70-bc70-c24aa292b99b",
+    "subject_id": "465361e3-d17c-4679-b898-381dfa5de8be",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:27.568038+00:00",
+    "updated_at": "2025-07-10T16:13:27.568038+00:00"
+  },
+  {
+    "id": "5731f1f2-5451-4321-9a86-6c948b6d2472",
+    "subject_id": "25585b59-bda7-4a21-962e-c3e1bfe807e2",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Tarda T1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:28.178573+00:00",
+    "updated_at": "2025-07-10T16:13:28.178573+00:00"
+  },
+  {
+    "id": "d451e5fa-7cfa-485c-9f7b-0878fd41f0d6",
+    "subject_id": "ff094ec1-c254-4c64-bb90-b5c4a6057e9c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:28.389535+00:00",
+    "updated_at": "2025-07-10T16:13:28.389535+00:00"
+  },
+  {
+    "id": "bf61c93d-0374-4365-896c-efa0490633e0",
+    "subject_id": "465361e3-d17c-4679-b898-381dfa5de8be",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:28.573468+00:00",
+    "updated_at": "2025-07-10T16:13:28.573468+00:00"
+  },
+  {
+    "id": "93106589-1dab-464f-8cb0-42fda4ee192b",
+    "subject_id": "c43631ff-2b98-4444-b5bb-f8c8d79c08f8",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:29.229519+00:00",
+    "updated_at": "2025-07-10T16:13:29.229519+00:00"
+  },
+  {
+    "id": "2a1ea7c7-590d-4385-8e60-b43ace50d2f2",
+    "subject_id": "fea1551d-3a22-4c11-9293-a3b003cacc4a",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:29.503483+00:00",
+    "updated_at": "2025-07-10T16:13:29.503483+00:00"
+  },
+  {
+    "id": "20214adc-0e76-427f-bff0-569aaaa073dc",
+    "subject_id": "25585b59-bda7-4a21-962e-c3e1bfe807e2",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:29.732127+00:00",
+    "updated_at": "2025-07-10T16:13:29.732127+00:00"
+  },
+  {
+    "id": "cbe44536-dfe4-41c0-9407-320b8aa8f598",
+    "subject_id": "a34a5025-9f79-459b-9c41-0acd473ea494",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Tarda T2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:30.411741+00:00",
+    "updated_at": "2025-07-10T16:13:30.411741+00:00"
+  },
+  {
+    "id": "a6760e08-16d0-421a-b5fb-7c280bfa8c20",
+    "subject_id": "115e15fb-2c85-43ae-ac8a-79f69dd4f436",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "4t BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:30.638002+00:00",
+    "updated_at": "2025-07-10T16:13:30.638002+00:00"
+  },
+  {
+    "id": "8648ad9d-fe94-4079-8757-a14516c06445",
+    "subject_id": "75fc7dbb-6716-466f-8861-31ab33395a70",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda Mt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:31.474993+00:00",
+    "updated_at": "2025-07-10T16:13:31.474993+00:00"
+  },
+  {
+    "id": "4715dc51-a60c-46e8-8e0f-fbf525d3d1c8",
+    "subject_id": "5432c3c3-235e-4f85-a00b-1ceca646ed1e",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "4t Tarda Mt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:31.693832+00:00",
+    "updated_at": "2025-07-10T16:13:31.693832+00:00"
+  },
+  {
+    "id": "59ea0305-f989-4608-9962-17b40f3e57bd",
+    "subject_id": "6b6f335d-2fdc-48de-bff4-1156bf4c3ad8",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí (1 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:32.631004+00:00",
+    "updated_at": "2025-07-10T16:13:32.631004+00:00"
+  },
+  {
+    "id": "f1da8b8c-9e2e-47ae-a2fe-13f372d408a8",
+    "subject_id": "52f73d36-5a94-4845-a812-e8c01e7ba6ae",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:33.516683+00:00",
+    "updated_at": "2025-07-10T16:13:33.516683+00:00"
+  },
+  {
+    "id": "3d9841c7-0c15-4b3e-bc4e-df910ba82170",
+    "subject_id": "4328043e-ce24-4689-b9a8-c721444c28e0",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:33.936107+00:00",
+    "updated_at": "2025-07-10T16:13:33.936107+00:00"
+  },
+  {
+    "id": "9f647226-69e3-4362-a663-681f90cb8d35",
+    "subject_id": "3d5a0ba3-6973-4d9b-9a85-01ac70574484",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:34.155957+00:00",
+    "updated_at": "2025-07-10T16:13:34.155957+00:00"
+  },
+  {
+    "id": "248e8d5d-d1d1-4c16-8c33-f5e453fcb0d5",
+    "subject_id": "ceaf6483-d60f-43b1-9226-9aa7ead5e339",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:34.402138+00:00",
+    "updated_at": "2025-07-10T16:13:34.402138+00:00"
+  },
+  {
+    "id": "ee138e54-ea1d-4c80-93f4-f14b596739a2",
+    "subject_id": "33f7c0b5-6cfb-452d-9c0d-f9c419308963",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda At",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:36.07043+00:00",
+    "updated_at": "2025-07-10T16:13:36.07043+00:00"
+  },
+  {
+    "id": "b19fb4ff-3813-466c-a8f9-77ed9b016b5e",
+    "subject_id": "d5165128-1a61-489c-96a0-53c7af7a80f9",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda Mt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:36.710266+00:00",
+    "updated_at": "2025-07-10T16:13:36.710266+00:00"
+  },
+  {
+    "id": "7fb82b7d-29a4-4dbc-bb37-9100bacd7143",
+    "subject_id": "b6f1804b-6434-4638-979b-7e7a0c86030c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:37.36169+00:00",
+    "updated_at": "2025-07-10T16:13:37.36169+00:00"
+  },
+  {
+    "id": "ccf38122-150e-4688-b730-10baf6771a6d",
+    "subject_id": "045d91c0-1df9-4df4-bbe8-e380251d2b55",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:37.573187+00:00",
+    "updated_at": "2025-07-10T16:13:37.573187+00:00"
+  },
+  {
+    "id": "02fce1f0-48c1-4205-8ac9-94ee10d8641c",
+    "subject_id": "38abd16c-728a-4330-9f8d-cfa454d7ffc6",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:38.08326+00:00",
+    "updated_at": "2025-07-10T16:13:38.08326+00:00"
+  },
+  {
+    "id": "7dbdbbbb-5209-4ad8-ba29-34bf35411767",
+    "subject_id": "95fca7c8-e633-4c59-b733-01c8d224bf6a",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:39.749309+00:00",
+    "updated_at": "2025-07-10T16:13:39.749309+00:00"
+  },
+  {
+    "id": "1764531d-c98d-48aa-81b7-daada3c29837",
+    "subject_id": "f0d338dc-d643-483a-9ebf-692fe5ad2d80",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:39.942021+00:00",
+    "updated_at": "2025-07-10T16:13:39.942021+00:00"
+  },
+  {
+    "id": "3391d16a-5695-41e1-a70f-48a773c3fa8e",
+    "subject_id": "423a971a-b59c-4a26-ac8f-abc7b10ed67f",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:40.13912+00:00",
+    "updated_at": "2025-07-10T16:13:40.13912+00:00"
+  },
+  {
+    "id": "af012b5f-bac7-4513-a722-52e71d3e6bd2",
+    "subject_id": "a29dfac7-65fa-4333-9dde-77e58879d7e2",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:40.341792+00:00",
+    "updated_at": "2025-07-10T16:13:40.341792+00:00"
+  },
+  {
+    "id": "f5717302-7c1f-43e7-8c70-488be9db9af9",
+    "subject_id": "d28addba-bb31-4ca8-996a-4a4c13ce65be",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:40.604111+00:00",
+    "updated_at": "2025-07-10T16:13:40.604111+00:00"
+  },
+  {
+    "id": "f05b5a0a-4466-46d1-a226-bfc57244acad",
+    "subject_id": "1d30a6ef-361f-4d30-a50a-9102ec132ef1",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:40.848593+00:00",
+    "updated_at": "2025-07-10T16:13:40.848593+00:00"
+  },
+  {
+    "id": "e47ac524-6eff-4ae3-a47c-35982e367bfa",
+    "subject_id": "fbe9eb18-fae6-4186-8053-0ab378e50c1c",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:41.062367+00:00",
+    "updated_at": "2025-07-10T16:13:41.062367+00:00"
+  },
+  {
+    "id": "7ed4f47c-8d66-4e72-892a-7eaefc2fc0f7",
+    "subject_id": "e2066463-6006-490b-bed8-eadeb27e3fc9",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:41.284261+00:00",
+    "updated_at": "2025-07-10T16:13:41.284261+00:00"
+  },
+  {
+    "id": "26e9a50f-71da-4c20-b0b9-6495ab34f046",
+    "subject_id": "6b6f335d-2fdc-48de-bff4-1156bf4c3ad8",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:41.561772+00:00",
+    "updated_at": "2025-07-10T16:13:41.561772+00:00"
+  },
+  {
+    "id": "067ce560-6206-42cb-86ed-157a5c540949",
+    "subject_id": "46a70e9e-5948-4833-a3d4-ca6b0376a908",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:41.783708+00:00",
+    "updated_at": "2025-07-10T16:13:41.783708+00:00"
+  },
+  {
+    "id": "e26adbcf-1d84-4892-95c8-45bf584669de",
+    "subject_id": "7a443518-fcbf-4658-925a-8db7de75b900",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:42.008829+00:00",
+    "updated_at": "2025-07-10T16:13:42.008829+00:00"
+  },
+  {
+    "id": "147a41c1-7105-4922-be1e-cf72485eaf21",
+    "subject_id": "3cb300de-9644-47c2-84ee-d82ee924a20e",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:42.230853+00:00",
+    "updated_at": "2025-07-10T16:13:42.230853+00:00"
+  },
+  {
+    "id": "08d78d1f-6959-4d70-ba03-433aa635b274",
+    "subject_id": "d462d73e-a89d-4d94-b5f6-564d9eb6a857",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:42.423962+00:00",
+    "updated_at": "2025-07-10T16:13:42.423962+00:00"
+  },
+  {
+    "id": "e6b319c9-d470-4884-9be2-d8819a50dfaa",
+    "subject_id": "8e2bd325-fdc8-46b8-bdf5-5491ad51ebb8",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:43.323162+00:00",
+    "updated_at": "2025-07-10T16:13:43.323162+00:00"
+  },
+  {
+    "id": "adc8a343-545a-4f99-b11f-eb136db69fa8",
+    "subject_id": "a8be8869-1a37-4063-8ee9-aad60170681c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:43.54635+00:00",
+    "updated_at": "2025-07-10T16:13:43.54635+00:00"
+  },
+  {
+    "id": "e6a6a9c8-5c79-4fc0-986d-847485345713",
+    "subject_id": "6d269d66-d65d-474a-a858-7094b3aacb16",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:43.785003+00:00",
+    "updated_at": "2025-07-10T16:13:43.785003+00:00"
+  },
+  {
+    "id": "5dbed576-f6c2-41ab-b938-640b0e910e78",
+    "subject_id": "b4bd786a-4d9d-4aa6-854e-48f503612d44",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:44.034629+00:00",
+    "updated_at": "2025-07-10T16:13:44.034629+00:00"
+  },
+  {
+    "id": "7c00c31b-1950-4e7a-ba99-96f3a0540823",
+    "subject_id": "173e9fb7-3ebc-45e2-826b-ea5ec7a23fa6",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:44.223578+00:00",
+    "updated_at": "2025-07-10T16:13:44.223578+00:00"
+  },
+  {
+    "id": "fb155144-ec2d-4377-8a6e-b696701f823c",
+    "subject_id": "49cf0eca-5831-4a65-848c-103b8f4e0e5d",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:44.457886+00:00",
+    "updated_at": "2025-07-10T16:13:44.457886+00:00"
+  },
+  {
+    "id": "413b4cb8-5524-4030-9689-ecd9cadba0db",
+    "subject_id": "7b21b2bf-9775-475c-91ed-0fb479b91c6e",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:44.697853+00:00",
+    "updated_at": "2025-07-10T16:13:44.697853+00:00"
+  },
+  {
+    "id": "c093587b-e812-4a97-a01b-cf6f688deb3f",
+    "subject_id": "cf2f301f-3dc7-4c28-8eed-19e7a6cb851f",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:44.904759+00:00",
+    "updated_at": "2025-07-10T16:13:44.904759+00:00"
+  },
+  {
+    "id": "7a12e3e0-d2fe-444c-8691-e8376b94362f",
+    "subject_id": "4510c275-5800-4071-86e7-d02fc8951d47",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:45.098655+00:00",
+    "updated_at": "2025-07-10T16:13:45.098655+00:00"
+  },
+  {
+    "id": "1be435d9-f305-4d69-b16d-28182ff6e989",
+    "subject_id": "9cd2f73f-8ef5-4cbe-8648-040285117766",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:45.296955+00:00",
+    "updated_at": "2025-07-10T16:13:45.296955+00:00"
+  },
+  {
+    "id": "561e154a-990d-4139-8c99-9d1c34c33a6c",
+    "subject_id": "941d85ef-9d4a-4bd6-b243-58873170005a",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:45.476643+00:00",
+    "updated_at": "2025-07-10T16:13:45.476643+00:00"
+  },
+  {
+    "id": "f001178e-a8e5-494d-b7dc-37bd5f663345",
+    "subject_id": "5dde63ae-7b45-4724-82ab-0faa87287613",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:45.653921+00:00",
+    "updated_at": "2025-07-10T16:13:45.653921+00:00"
+  },
+  {
+    "id": "b12de1bf-a4e6-4785-8993-234b57de6a9f",
+    "subject_id": "a4c079a9-ad32-46ca-833c-bedee9ee6f10",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:45.854996+00:00",
+    "updated_at": "2025-07-10T16:13:45.854996+00:00"
+  },
+  {
+    "id": "8eba2260-120b-4984-be76-fb44b4900a37",
+    "subject_id": "0a6f3c59-9d76-4047-a496-17a40541cbd4",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t BA Matí M1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:46.27812+00:00",
+    "updated_at": "2025-07-10T16:13:46.27812+00:00"
+  },
+  {
+    "id": "2c0de94b-8e5c-4613-9097-4aa7aa7fe7dc",
+    "subject_id": "616101eb-0feb-45db-af48-a81d016206b6",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Tarda At",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:46.468724+00:00",
+    "updated_at": "2025-07-10T16:13:46.468724+00:00"
+  },
+  {
+    "id": "a93258b9-2db1-4ee4-90c9-d67a1be324c6",
+    "subject_id": "abbdde7c-e723-4a02-bd89-b0b9a607d4a2",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí Mm",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:46.915685+00:00",
+    "updated_at": "2025-07-10T16:13:46.915685+00:00"
+  },
+  {
+    "id": "cf6044fc-0e7c-48ca-9a29-2c596e92cd7c",
+    "subject_id": "8113a657-1a2f-4e3b-8e8b-8648296776f8",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda At",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:48.32194+00:00",
+    "updated_at": "2025-07-10T16:13:48.32194+00:00"
+  },
+  {
+    "id": "930eb10c-aea8-4041-a9fd-5ad0137042d7",
+    "subject_id": "6e0d6f07-45f2-4a80-93ca-36f7465795bb",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Mm",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:48.57566+00:00",
+    "updated_at": "2025-07-10T16:13:48.57566+00:00"
+  },
+  {
+    "id": "5b5b7e4d-65eb-44b7-bdc6-a95ef295471a",
+    "subject_id": "b9d64e0e-cff5-498a-b5ed-4fbbc5df78b3",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Im",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:49.052626+00:00",
+    "updated_at": "2025-07-10T16:13:49.052626+00:00"
+  },
+  {
+    "id": "a36bf967-dc01-4342-b5b0-328b6b397873",
+    "subject_id": "7abea42c-d662-4d52-90c0-98178ac27e2d",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:49.670852+00:00",
+    "updated_at": "2025-07-10T16:13:49.670852+00:00"
+  },
+  {
+    "id": "49972e95-a284-427f-8b7a-e84a3b9d6174",
+    "subject_id": "4f6d8605-c411-4191-b3aa-6658b6e6850b",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Tarda Gt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:50.965495+00:00",
+    "updated_at": "2025-07-10T16:13:50.965495+00:00"
+  },
+  {
+    "id": "a1dc83f4-5b62-42cb-a460-acb749f4fa55",
+    "subject_id": "f1a75b3f-561c-40d3-95e7-1dd253c3fa21",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Tarda Gt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:51.159742+00:00",
+    "updated_at": "2025-07-10T16:13:51.159742+00:00"
+  },
+  {
+    "id": "17459108-bc72-4e4d-82fc-429f6dc2b3dd",
+    "subject_id": "9ca88e73-3e28-461c-b00d-f704d289bb53",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:51.570157+00:00",
+    "updated_at": "2025-07-10T16:13:51.570157+00:00"
+  },
+  {
+    "id": "fb94518d-9146-4f54-aa32-f7b6f2039a79",
+    "subject_id": "89a2b7a5-6f43-4a1b-a5f1-a49524e76893",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:52.015402+00:00",
+    "updated_at": "2025-07-10T16:13:52.015402+00:00"
+  },
+  {
+    "id": "f143f55e-1cc9-4f32-8ccc-71dc95a2ff09",
+    "subject_id": "cfa913a4-4294-498e-85ae-7b1d244ddfdb",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:52.21458+00:00",
+    "updated_at": "2025-07-10T16:13:52.21458+00:00"
+  },
+  {
+    "id": "5396e9f1-00f1-46fe-9e0e-1ad1451f49b3",
+    "subject_id": "0d17e649-63ad-4434-b069-8ee7b584021a",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:52.429251+00:00",
+    "updated_at": "2025-07-10T16:13:52.429251+00:00"
+  },
+  {
+    "id": "198f7ed2-f7ce-4140-825e-b1b2f2de8c7c",
+    "subject_id": "2a1582a0-8847-4ed5-a958-a67c3b4c2415",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:52.68825+00:00",
+    "updated_at": "2025-07-10T16:13:52.68825+00:00"
+  },
+  {
+    "id": "c36ec4b3-b6fc-4ce9-9de0-12a077113c9b",
+    "subject_id": "b11c4ba8-26c6-424b-8c26-7b4e3e90d18e",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:52.88867+00:00",
+    "updated_at": "2025-07-10T16:13:52.88867+00:00"
+  },
+  {
+    "id": "bf89451d-8792-46c3-a8b3-44fc89c91dbc",
+    "subject_id": "ba332dd7-17de-443b-bccd-7a9bed637b01",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:53.113441+00:00",
+    "updated_at": "2025-07-10T16:13:53.113441+00:00"
+  },
+  {
+    "id": "890d2b0a-efd7-476c-af34-abb02048c73f",
+    "subject_id": "63c7b9ec-cf20-4f9d-a66e-c69e033d71fd",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:53.323628+00:00",
+    "updated_at": "2025-07-10T16:13:53.323628+00:00"
+  },
+  {
+    "id": "203d8250-9e31-41c9-98fd-964f57281e6e",
+    "subject_id": "2a1582a0-8847-4ed5-a958-a67c3b4c2415",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:53.576111+00:00",
+    "updated_at": "2025-07-10T16:13:53.576111+00:00"
+  },
+  {
+    "id": "2e7149fc-a919-48ba-97fa-37172065c569",
+    "subject_id": "b39a9851-7f08-4a97-b51d-4f407c05a69d",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:53.768536+00:00",
+    "updated_at": "2025-07-10T16:13:53.768536+00:00"
+  },
+  {
+    "id": "b1a01300-b0cb-423f-b934-8b63bee39061",
+    "subject_id": "2ec71803-eeb8-4771-9b21-c1ba4d280762",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:53.98289+00:00",
+    "updated_at": "2025-07-10T16:13:53.98289+00:00"
+  },
+  {
+    "id": "4da5b59d-2338-4bad-bda3-26365a355cb8",
+    "subject_id": "b62126bf-6e99-432b-945b-249a7aa28bad",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:54.177394+00:00",
+    "updated_at": "2025-07-10T16:13:54.177394+00:00"
+  },
+  {
+    "id": "7dfdd1e7-32d5-4934-af31-514f9e8ae173",
+    "subject_id": "2a1582a0-8847-4ed5-a958-a67c3b4c2415",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:54.383527+00:00",
+    "updated_at": "2025-07-10T16:13:54.383527+00:00"
+  },
+  {
+    "id": "e232c6af-b83d-46a5-ac6f-609ca923b171",
+    "subject_id": "760136bc-475d-4087-a846-8819195aa7c8",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:54.626031+00:00",
+    "updated_at": "2025-07-10T16:13:54.626031+00:00"
+  },
+  {
+    "id": "4900455d-ca00-4650-ab9f-887040ef89e7",
+    "subject_id": "67308950-846a-4fd8-9538-5603f3c55c40",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:54.854864+00:00",
+    "updated_at": "2025-07-10T16:13:54.854864+00:00"
+  },
+  {
+    "id": "97fddef9-37c9-4723-9442-5f13665729bf",
+    "subject_id": "2a1582a0-8847-4ed5-a958-a67c3b4c2415",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm1",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:55.057389+00:00",
+    "updated_at": "2025-07-10T16:13:55.057389+00:00"
+  },
+  {
+    "id": "972cf738-649c-42a4-ad9d-7906fc571a29",
+    "subject_id": "33003480-646b-4f2c-9582-e75fbc6d8032",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda At",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:55.286678+00:00",
+    "updated_at": "2025-07-10T16:13:55.286678+00:00"
+  },
+  {
+    "id": "2e4fe6d8-0e4e-436e-b5a1-40780d02c34f",
+    "subject_id": "5795405c-1e71-4d17-942c-c9021b37e16c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda At",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:55.4823+00:00",
+    "updated_at": "2025-07-10T16:13:55.4823+00:00"
+  },
+  {
+    "id": "0428b222-36c1-4b03-b5a6-b4250fcb945c",
+    "subject_id": "54df595e-8dc6-4784-aed7-9bc18cbe1a52",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda At",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:55.714506+00:00",
+    "updated_at": "2025-07-10T16:13:55.714506+00:00"
+  },
+  {
+    "id": "931e4059-9bc4-4a93-8311-d9b4d57c0c8e",
+    "subject_id": "e97a86fd-2f0f-4962-8f77-590a1cde6ccd",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda Mt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:55.9231+00:00",
+    "updated_at": "2025-07-10T16:13:55.9231+00:00"
+  },
+  {
+    "id": "3e2793e6-7796-4fe0-bd5d-55e48bef5ce6",
+    "subject_id": "ce7bc8db-3d7c-40a4-bb01-dd448ba2c38c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Im",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:56.135459+00:00",
+    "updated_at": "2025-07-10T16:13:56.135459+00:00"
+  },
+  {
+    "id": "99331d68-3980-45eb-bfae-02ee40dcb059",
+    "subject_id": "033536a7-869d-47f3-8c19-c05a3f0fc13e",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:57.107431+00:00",
+    "updated_at": "2025-07-10T16:13:57.107431+00:00"
+  },
+  {
+    "id": "7985f5f1-b7f7-4607-9d39-66a68842f53f",
+    "subject_id": "f1a75b3f-561c-40d3-95e7-1dd253c3fa21",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:57.345623+00:00",
+    "updated_at": "2025-07-10T16:13:57.345623+00:00"
+  },
+  {
+    "id": "77e9bdb3-df35-480b-9cb5-8089d18212d2",
+    "subject_id": "c68536b4-f632-438c-88eb-cf4d5d65d004",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:57.559126+00:00",
+    "updated_at": "2025-07-10T16:13:57.559126+00:00"
+  },
+  {
+    "id": "a6b71f45-d13d-4c1b-8977-9fb499f4fe19",
+    "subject_id": "045d91c0-1df9-4df4-bbe8-e380251d2b55",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Tarda Gt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:59.447419+00:00",
+    "updated_at": "2025-07-10T16:13:59.447419+00:00"
+  },
+  {
+    "id": "4c9796b3-265a-4bfb-b2a0-73d3dea8840c",
+    "subject_id": "7650c5aa-cce7-4d82-b716-cd33a7e20141",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:13:59.697502+00:00",
+    "updated_at": "2025-07-10T16:13:59.697502+00:00"
+  },
+  {
+    "id": "27fcbe8c-57ee-445c-88fa-b2adfbcf7558",
+    "subject_id": "b494e0d3-4f5c-4149-87c6-5df6729b6417",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:00.14213+00:00",
+    "updated_at": "2025-07-10T16:14:00.14213+00:00"
+  },
+  {
+    "id": "21e07a91-8291-49a3-82e9-3be656a2756d",
+    "subject_id": "616101eb-0feb-45db-af48-a81d016206b6",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:00.383858+00:00",
+    "updated_at": "2025-07-10T16:14:00.383858+00:00"
+  },
+  {
+    "id": "903a1a79-dd9e-4df7-b81d-b05e1729564f",
+    "subject_id": "2c07b56a-1d1b-4c8c-9077-940d85d584c6",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Mm",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:00.651237+00:00",
+    "updated_at": "2025-07-10T16:14:00.651237+00:00"
+  },
+  {
+    "id": "1985b538-9458-463f-bde5-db7ae855e779",
+    "subject_id": "8dc0e030-fe98-41d1-a269-6b4f60040142",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Tarda Mt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:00.900535+00:00",
+    "updated_at": "2025-07-10T16:14:00.900535+00:00"
+  },
+  {
+    "id": "66958a46-2425-461c-babb-3d56a9676028",
+    "subject_id": "abbdde7c-e723-4a02-bd89-b0b9a607d4a2",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Tarda Mt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:01.373056+00:00",
+    "updated_at": "2025-07-10T16:14:01.373056+00:00"
+  },
+  {
+    "id": "88341b0b-a509-4389-92bc-a7aeecd47b0f",
+    "subject_id": "edcfd9f0-7fb4-45cb-b2a8-06d295ecb6d1",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Tarda Mt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:01.591747+00:00",
+    "updated_at": "2025-07-10T16:14:01.591747+00:00"
+  },
+  {
+    "id": "8ffc09bf-30a8-4a62-843a-f9bff478f0b4",
+    "subject_id": "52eed065-d3aa-47ef-b4f6-e14ca4aa07fc",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Im",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:01.848625+00:00",
+    "updated_at": "2025-07-10T16:14:01.848625+00:00"
+  },
+  {
+    "id": "4bf2cc12-1da5-4dd6-bf77-9b33ff9085dd",
+    "subject_id": "b06e0f51-10a2-401d-ab0a-a878866fdb6e",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí (1 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:02.361731+00:00",
+    "updated_at": "2025-07-10T16:14:02.361731+00:00"
+  },
+  {
+    "id": "4c2e4bf8-0563-4576-9fb7-1c6a8bec57e5",
+    "subject_id": "2dbf748c-a6c3-4d3b-885d-070003989a4b",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:02.885793+00:00",
+    "updated_at": "2025-07-10T16:14:02.885793+00:00"
+  },
+  {
+    "id": "585d061b-c91b-4921-b288-104461b7f504",
+    "subject_id": "4f6d8605-c411-4191-b3aa-6658b6e6850b",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:03.078545+00:00",
+    "updated_at": "2025-07-10T16:14:03.078545+00:00"
+  },
+  {
+    "id": "44abef4a-a049-4810-8cfa-b3f90625aae3",
+    "subject_id": "96594d88-5741-4738-97b9-6726b02f526a",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:03.316304+00:00",
+    "updated_at": "2025-07-10T16:14:03.316304+00:00"
+  },
+  {
+    "id": "5c3d8cb0-78dd-4ae3-aa63-a9c51f2319b0",
+    "subject_id": "7dc69e4b-3f3d-4648-9303-e556a34ed82e",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Gm2",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:03.552987+00:00",
+    "updated_at": "2025-07-10T16:14:03.552987+00:00"
+  },
+  {
+    "id": "c5fc106f-3088-49d8-90e2-05114078cedf",
+    "subject_id": "7cec98ec-95be-4620-af61-78ab55528c5c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:04.513189+00:00",
+    "updated_at": "2025-07-10T16:14:04.513189+00:00"
+  },
+  {
+    "id": "46bbdc1d-0abc-44ac-b021-0379bd10d0c9",
+    "subject_id": "8dc0e030-fe98-41d1-a269-6b4f60040142",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Mm",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:04.95878+00:00",
+    "updated_at": "2025-07-10T16:14:04.95878+00:00"
+  },
+  {
+    "id": "fabc1a87-c034-406e-845c-7b5275107a94",
+    "subject_id": "edcfd9f0-7fb4-45cb-b2a8-06d295ecb6d1",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí Mm",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:05.173598+00:00",
+    "updated_at": "2025-07-10T16:14:05.173598+00:00"
+  },
+  {
+    "id": "8137f517-8e7a-4609-969d-62eb3ebfe3f4",
+    "subject_id": "2d82d035-2c31-4f8a-9024-be3809d6b2a8",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Im",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:05.447056+00:00",
+    "updated_at": "2025-07-10T16:14:05.447056+00:00"
+  },
+  {
+    "id": "dbad3b8b-2cb2-4404-97fd-046c6d64f7f8",
+    "subject_id": "878cb3eb-af8c-487b-b79a-279dab4e51c6",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Im",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:05.733427+00:00",
+    "updated_at": "2025-07-10T16:14:05.733427+00:00"
+  },
+  {
+    "id": "478e0ebe-d72f-482e-8d40-898e53191471",
+    "subject_id": "33c1fe59-7436-4e94-b588-b2b869fe4cdf",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí Im",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:06.174141+00:00",
+    "updated_at": "2025-07-10T16:14:06.174141+00:00"
+  },
+  {
+    "id": "8a01941e-3418-4937-a71e-b9a77e0db952",
+    "subject_id": "1d5d50d1-01c7-423a-8db6-477ef7da152e",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí Im",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:06.442383+00:00",
+    "updated_at": "2025-07-10T16:14:06.442383+00:00"
+  },
+  {
+    "id": "9f8ceeba-15f1-4932-a476-b1c786aaa2e0",
+    "subject_id": "e97a86fd-2f0f-4962-8f77-590a1cde6ccd",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Mm",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:06.862946+00:00",
+    "updated_at": "2025-07-10T16:14:06.862946+00:00"
+  },
+  {
+    "id": "8646bb70-1e7c-4f77-a7df-9eb3af452fff",
+    "subject_id": "5dde63ae-7b45-4724-82ab-0faa87287613",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí (4 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:08.315837+00:00",
+    "updated_at": "2025-07-10T16:14:08.315837+00:00"
+  },
+  {
+    "id": "3137c6ac-0781-4d1a-85fa-425f0be4f527",
+    "subject_id": "2a1582a0-8847-4ed5-a958-a67c3b4c2415",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "4t Matí (4 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:08.798118+00:00",
+    "updated_at": "2025-07-10T16:14:08.798118+00:00"
+  },
+  {
+    "id": "aef89256-a460-40e1-a5d7-05db81eec5f6",
+    "subject_id": "2a1582a0-8847-4ed5-a958-a67c3b4c2415",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda (4 T1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:09.036769+00:00",
+    "updated_at": "2025-07-10T16:14:09.036769+00:00"
+  },
+  {
+    "id": "81faaf8c-4a95-40d0-a09a-a04f97f39df5",
+    "subject_id": "96594d88-5741-4738-97b9-6726b02f526a",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda Gt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:09.243255+00:00",
+    "updated_at": "2025-07-10T16:14:09.243255+00:00"
+  },
+  {
+    "id": "98093d5e-aaef-4850-a6dd-62f79d4ace36",
+    "subject_id": "3d5a0ba3-6973-4d9b-9a85-01ac70574484",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda Gt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:09.51027+00:00",
+    "updated_at": "2025-07-10T16:14:09.51027+00:00"
+  },
+  {
+    "id": "12f75b8a-59fb-418c-a108-634a42a9d028",
+    "subject_id": "33003480-646b-4f2c-9582-e75fbc6d8032",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:09.93648+00:00",
+    "updated_at": "2025-07-10T16:14:09.93648+00:00"
+  },
+  {
+    "id": "c81e36f7-2182-488c-b751-83af6408d2f8",
+    "subject_id": "5795405c-1e71-4d17-942c-c9021b37e16c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:10.200676+00:00",
+    "updated_at": "2025-07-10T16:14:10.200676+00:00"
+  },
+  {
+    "id": "edff818b-6ba0-4075-8219-2dde4f7e3857",
+    "subject_id": "8113a657-1a2f-4e3b-8e8b-8648296776f8",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:10.468092+00:00",
+    "updated_at": "2025-07-10T16:14:10.468092+00:00"
+  },
+  {
+    "id": "15d634cc-ab36-4eae-96e1-bf674996951d",
+    "subject_id": "54df595e-8dc6-4784-aed7-9bc18cbe1a52",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:10.680294+00:00",
+    "updated_at": "2025-07-10T16:14:10.680294+00:00"
+  },
+  {
+    "id": "ab1c9989-d6de-4dd9-8a27-7d5387e7a415",
+    "subject_id": "ecf104ab-ef8e-4741-b7c1-234785e1c26d",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Mm",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:10.892983+00:00",
+    "updated_at": "2025-07-10T16:14:10.892983+00:00"
+  },
+  {
+    "id": "f818647b-b963-42f6-b6ef-9126b261cde4",
+    "subject_id": "5432c3c3-235e-4f85-a00b-1ceca646ed1e",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "4t Matí Mm",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:11.132946+00:00",
+    "updated_at": "2025-07-10T16:14:11.132946+00:00"
+  },
+  {
+    "id": "82928b17-7313-4615-888b-9b4d78a9c780",
+    "subject_id": "6bcab1db-cb2f-4e10-9c80-f101a3dd5b30",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí (1 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:11.329817+00:00",
+    "updated_at": "2025-07-10T16:14:11.329817+00:00"
+  },
+  {
+    "id": "7c25d1db-94c8-4ae9-8240-c3d4a7c37aec",
+    "subject_id": "4b8ed99d-3bf7-4c9f-90ea-38df5c274b7b",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí (3 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:11.54303+00:00",
+    "updated_at": "2025-07-10T16:14:11.54303+00:00"
+  },
+  {
+    "id": "cf6bc929-ff36-4edd-a793-5bb713ac12ad",
+    "subject_id": "b9d90ceb-81e6-47db-b4b8-c0cd46253d88",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "4t Tarda At",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:12.25857+00:00",
+    "updated_at": "2025-07-10T16:14:12.25857+00:00"
+  },
+  {
+    "id": "39be7733-6814-424d-8cca-e62d911e55c5",
+    "subject_id": "31b030a4-916b-4be6-8d0a-6c50081a47f9",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí (1 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:12.474732+00:00",
+    "updated_at": "2025-07-10T16:14:12.474732+00:00"
+  },
+  {
+    "id": "97d93b23-a527-4b9a-ba9d-92a2ede795da",
+    "subject_id": "1d30a6ef-361f-4d30-a50a-9102ec132ef1",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí (1 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:12.707716+00:00",
+    "updated_at": "2025-07-10T16:14:12.707716+00:00"
+  },
+  {
+    "id": "ccc7cba6-3efe-4056-9aee-467d0c94bb17",
+    "subject_id": "7a443518-fcbf-4658-925a-8db7de75b900",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí (2 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:12.95952+00:00",
+    "updated_at": "2025-07-10T16:14:12.95952+00:00"
+  },
+  {
+    "id": "763e9f73-a1b2-427b-8421-1e5fb45aa775",
+    "subject_id": "33c1fe59-7436-4e94-b588-b2b869fe4cdf",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Tarda It",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:13.189193+00:00",
+    "updated_at": "2025-07-10T16:14:13.189193+00:00"
+  },
+  {
+    "id": "fd821ad1-121e-4bdd-8d31-f0d9110e0018",
+    "subject_id": "ceaf6483-d60f-43b1-9226-9aa7ead5e339",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "4t Tarda Gt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:13.407283+00:00",
+    "updated_at": "2025-07-10T16:14:13.407283+00:00"
+  },
+  {
+    "id": "a609a302-4caa-4084-82b9-31448b999629",
+    "subject_id": "ecf104ab-ef8e-4741-b7c1-234785e1c26d",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda Mt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:13.817543+00:00",
+    "updated_at": "2025-07-10T16:14:13.817543+00:00"
+  },
+  {
+    "id": "c4328e0d-58f0-497d-a7a9-6680577aad55",
+    "subject_id": "3cb300de-9644-47c2-84ee-d82ee924a20e",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí (2 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:14.054024+00:00",
+    "updated_at": "2025-07-10T16:14:14.054024+00:00"
+  },
+  {
+    "id": "fad798aa-3460-4f4e-9c68-251b9a4d13b3",
+    "subject_id": "7b21b2bf-9775-475c-91ed-0fb479b91c6e",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí (2 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:14.26204+00:00",
+    "updated_at": "2025-07-10T16:14:14.26204+00:00"
+  },
+  {
+    "id": "c9862d9f-5eb0-4c1d-bea3-c3fbe0561a9f",
+    "subject_id": "4510c275-5800-4071-86e7-d02fc8951d47",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí (3 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:14.529918+00:00",
+    "updated_at": "2025-07-10T16:14:14.529918+00:00"
+  },
+  {
+    "id": "5a940ac0-1218-407d-ae11-08cefd840764",
+    "subject_id": "2a1582a0-8847-4ed5-a958-a67c3b4c2415",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí (4 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:14.734887+00:00",
+    "updated_at": "2025-07-10T16:14:14.734887+00:00"
+  },
+  {
+    "id": "1edbdfc9-9f66-49f1-aebd-1742d261d4d9",
+    "subject_id": "c68536b4-f632-438c-88eb-cf4d5d65d004",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda Gt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:15.145466+00:00",
+    "updated_at": "2025-07-10T16:14:15.145466+00:00"
+  },
+  {
+    "id": "a06e5df7-d463-4155-9df3-422ae57190a9",
+    "subject_id": "75fc7dbb-6716-466f-8861-31ab33395a70",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Mm",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:15.365634+00:00",
+    "updated_at": "2025-07-10T16:14:15.365634+00:00"
+  },
+  {
+    "id": "1f607714-59a0-44b5-857f-6c959b15fa81",
+    "subject_id": "d5165128-1a61-489c-96a0-53c7af7a80f9",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Mm",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:15.588646+00:00",
+    "updated_at": "2025-07-10T16:14:15.588646+00:00"
+  },
+  {
+    "id": "2b4a5732-118f-4313-b9bf-0b705f981e5c",
+    "subject_id": "6e0d6f07-45f2-4a80-93ca-36f7465795bb",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda Mt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:15.791063+00:00",
+    "updated_at": "2025-07-10T16:14:15.791063+00:00"
+  },
+  {
+    "id": "e38057a5-92a8-478e-bf8e-5aa3d2dfe434",
+    "subject_id": "d28addba-bb31-4ca8-996a-4a4c13ce65be",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí (1 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:16.061242+00:00",
+    "updated_at": "2025-07-10T16:14:16.061242+00:00"
+  },
+  {
+    "id": "68e5132c-1925-461c-b11b-ebd85aead327",
+    "subject_id": "2a1582a0-8847-4ed5-a958-a67c3b4c2415",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí (3 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:16.462038+00:00",
+    "updated_at": "2025-07-10T16:14:16.462038+00:00"
+  },
+  {
+    "id": "74323ec3-25a2-43d4-b77a-66b3dc2b3eda",
+    "subject_id": "0e504e55-014a-47f9-afc4-68803c1e92b1",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Im",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:16.892236+00:00",
+    "updated_at": "2025-07-10T16:14:16.892236+00:00"
+  },
+  {
+    "id": "c39caedd-e8fe-4f18-bd31-14d007d1a685",
+    "subject_id": "f0d338dc-d643-483a-9ebf-692fe5ad2d80",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "1r Matí (1 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:17.136792+00:00",
+    "updated_at": "2025-07-10T16:14:17.136792+00:00"
+  },
+  {
+    "id": "1d8aca20-9f46-4d8d-8b29-115b79099916",
+    "subject_id": "168eef4c-b260-4c98-835a-701f96bb5755",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí (1 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:17.370717+00:00",
+    "updated_at": "2025-07-10T16:14:17.370717+00:00"
+  },
+  {
+    "id": "fe168856-4c85-45f6-931d-559ae7a02cef",
+    "subject_id": "49cf0eca-5831-4a65-848c-103b8f4e0e5d",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí (2 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:17.60607+00:00",
+    "updated_at": "2025-07-10T16:14:17.60607+00:00"
+  },
+  {
+    "id": "7001cf6e-e3d7-4dc6-85b8-953354912cf9",
+    "subject_id": "2a1582a0-8847-4ed5-a958-a67c3b4c2415",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Matí (3 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:17.843051+00:00",
+    "updated_at": "2025-07-10T16:14:17.843051+00:00"
+  },
+  {
+    "id": "32df489a-5d92-42e2-8241-ff659c117ec7",
+    "subject_id": "2a1582a0-8847-4ed5-a958-a67c3b4c2415",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Tarda (3 T1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:18.033847+00:00",
+    "updated_at": "2025-07-10T16:14:18.033847+00:00"
+  },
+  {
+    "id": "ca6aa1d6-d1ac-4493-84d8-2b587fdfede9",
+    "subject_id": "041ac032-48ce-4d75-815e-573e5f148d8b",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Im",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:18.727617+00:00",
+    "updated_at": "2025-07-10T16:14:18.727617+00:00"
+  },
+  {
+    "id": "80c24bcf-951f-427e-b8c4-2fb3367d4734",
+    "subject_id": "4776595d-ffbc-4eca-8f29-7cc36104f548",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Im",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:18.916417+00:00",
+    "updated_at": "2025-07-10T16:14:18.916417+00:00"
+  },
+  {
+    "id": "6e15f45d-5852-4fee-81bf-4fb14fa5e462",
+    "subject_id": "c26f54b1-d25d-4ac1-8bc3-20edaed432e2",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "1r Matí (1 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:19.142236+00:00",
+    "updated_at": "2025-07-10T16:14:19.142236+00:00"
+  },
+  {
+    "id": "4625a8c6-53a0-4f41-aecf-df51e7a9da04",
+    "subject_id": "511834fa-ccd2-48d8-ab24-54116d427c46",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí (2 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:19.37492+00:00",
+    "updated_at": "2025-07-10T16:14:19.37492+00:00"
+  },
+  {
+    "id": "34147988-97cc-44b5-ad88-da08a70dd8a4",
+    "subject_id": "a8be8869-1a37-4063-8ee9-aad60170681c",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "2n Matí (2 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:19.603245+00:00",
+    "updated_at": "2025-07-10T16:14:19.603245+00:00"
+  },
+  {
+    "id": "7ef26fba-2cd3-41ac-a404-11eacc5dcbf1",
+    "subject_id": "8884723e-8328-4a6b-84de-2784403e95ec",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí (2 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:19.826659+00:00",
+    "updated_at": "2025-07-10T16:14:19.826659+00:00"
+  },
+  {
+    "id": "987c0e13-57bc-46c5-8872-78716d78670e",
+    "subject_id": "0a6f3c59-9d76-4047-a496-17a40541cbd4",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí (4 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:20.029473+00:00",
+    "updated_at": "2025-07-10T16:14:20.029473+00:00"
+  },
+  {
+    "id": "b22b3c12-5191-46d6-a46d-a999d9ae00a1",
+    "subject_id": "71837a44-2124-4015-9c74-6873d8f32737",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "4t Matí Im",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:20.264277+00:00",
+    "updated_at": "2025-07-10T16:14:20.264277+00:00"
+  },
+  {
+    "id": "d7707806-2449-4010-93b3-2b56318f318a",
+    "subject_id": "4328043e-ce24-4689-b9a8-c721444c28e0",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda Gt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:20.501561+00:00",
+    "updated_at": "2025-07-10T16:14:20.501561+00:00"
+  },
+  {
+    "id": "671812a7-38cc-4ece-afbb-7577040f3f45",
+    "subject_id": "7dc69e4b-3f3d-4648-9303-e556a34ed82e",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Tarda Gt",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:20.769288+00:00",
+    "updated_at": "2025-07-10T16:14:20.769288+00:00"
+  },
+  {
+    "id": "fcdce082-9360-4b1c-8078-71059559a00b",
+    "subject_id": "33f7c0b5-6cfb-452d-9c0d-f9c419308963",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:21.022477+00:00",
+    "updated_at": "2025-07-10T16:14:21.022477+00:00"
+  },
+  {
+    "id": "7ea0eb6b-eab3-45bb-8d64-b404abdc17a1",
+    "subject_id": "a4c079a9-ad32-46ca-833c-bedee9ee6f10",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "4t Matí (4 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:21.252631+00:00",
+    "updated_at": "2025-07-10T16:14:21.252631+00:00"
+  },
+  {
+    "id": "2228b784-2e0d-4bed-aa0b-3c2f911a30cf",
+    "subject_id": "1d5d50d1-01c7-423a-8db6-477ef7da152e",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "3r Tarda It",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:21.487754+00:00",
+    "updated_at": "2025-07-10T16:14:21.487754+00:00"
+  },
+  {
+    "id": "e7303e74-ba3d-4f03-a0a3-9a5bbd96eb2a",
+    "subject_id": "b9d90ceb-81e6-47db-b4b8-c0cd46253d88",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "4t Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:21.729362+00:00",
+    "updated_at": "2025-07-10T16:14:21.729362+00:00"
+  },
+  {
+    "id": "28957461-9aee-4dc2-9638-ef5f2bd2bf56",
+    "subject_id": "b4bd786a-4d9d-4aa6-854e-48f503612d44",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí (2 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:22.190881+00:00",
+    "updated_at": "2025-07-10T16:14:22.190881+00:00"
+  },
+  {
+    "id": "9eaae939-0144-4daa-8e73-960a07767a60",
+    "subject_id": "173e9fb7-3ebc-45e2-826b-ea5ec7a23fa6",
+    "semester_id": "826f73c1-2406-4eab-b642-99707b008670",
+    "group_type": "teoria",
+    "group_code": "2n Matí (2 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:22.443163+00:00",
+    "updated_at": "2025-07-10T16:14:22.443163+00:00"
+  },
+  {
+    "id": "aa0c1714-e578-4ee7-8010-98737d524cd6",
+    "subject_id": "cf2f301f-3dc7-4c28-8eed-19e7a6cb851f",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí (3 M1)",
+    "max_students": 30,
+    "created_at": "2025-07-10T16:14:22.637404+00:00",
+    "updated_at": "2025-07-10T16:14:22.637404+00:00"
+  },
+  {
+    "id": "77bf7ea7-d1fa-4697-81e1-48cf6648939c",
+    "subject_id": "1ba98137-4869-4466-a1da-9f94c2139faa",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-11T06:10:11.358825+00:00",
+    "updated_at": "2025-07-11T06:10:11.358825+00:00"
+  },
+  {
+    "id": "10d458dd-22d4-4caa-bf82-aa941ab51901",
+    "subject_id": "1ba98137-4869-4466-a1da-9f94c2139faa",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Tarda At",
+    "max_students": 30,
+    "created_at": "2025-07-11T06:10:11.567127+00:00",
+    "updated_at": "2025-07-11T06:10:11.567127+00:00"
+  },
+  {
+    "id": "d3bba15d-2c5f-4ccc-94b2-5f1a08ad2a8d",
+    "subject_id": "0e20ad43-da69-47ae-b2b4-badd58dcf268",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-11T06:10:12.012831+00:00",
+    "updated_at": "2025-07-11T06:10:12.012831+00:00"
+  },
+  {
+    "id": "7163a720-8151-49ea-be93-a8773363aa57",
+    "subject_id": "0e20ad43-da69-47ae-b2b4-badd58dcf268",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "teoria",
+    "group_code": "3r Tarda At",
+    "max_students": 30,
+    "created_at": "2025-07-11T06:10:12.174754+00:00",
+    "updated_at": "2025-07-11T06:10:12.174754+00:00"
+  },
+  {
+    "id": "4830c0a8-176f-4420-8fc2-18af64fe9ccb",
+    "subject_id": "07e2fa70-84d3-4c09-bc4b-1544b20e2583",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "practica",
+    "group_code": "3r Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-11T06:10:12.63599+00:00",
+    "updated_at": "2025-07-11T06:10:12.63599+00:00"
+  },
+  {
+    "id": "b15ff408-f72d-4400-97f2-c70f7de7c564",
+    "subject_id": "07e2fa70-84d3-4c09-bc4b-1544b20e2583",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "practica",
+    "group_code": "3r Tarda At",
+    "max_students": 30,
+    "created_at": "2025-07-11T06:10:12.720677+00:00",
+    "updated_at": "2025-07-11T06:10:12.720677+00:00"
+  },
+  {
+    "id": "3e2828a0-03ff-4952-9138-65eb17f34f3d",
+    "subject_id": "6708363a-b058-4e9b-914e-698013b4d3d3",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "practica",
+    "group_code": "3r Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-11T06:10:12.962039+00:00",
+    "updated_at": "2025-07-11T06:10:12.962039+00:00"
+  },
+  {
+    "id": "519ae216-9d92-4856-a1a6-6c4fb7e9bb16",
+    "subject_id": "6708363a-b058-4e9b-914e-698013b4d3d3",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "practica",
+    "group_code": "3r Tarda At",
+    "max_students": 30,
+    "created_at": "2025-07-11T06:10:13.059481+00:00",
+    "updated_at": "2025-07-11T06:10:13.059481+00:00"
+  },
+  {
+    "id": "bbfefb8a-fe28-4fb2-b903-30cd415b620e",
+    "subject_id": "d150db97-8ba7-489a-9da9-c2de7dbdbd8e",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "practica",
+    "group_code": "3r Matí Am",
+    "max_students": 30,
+    "created_at": "2025-07-11T06:10:13.305963+00:00",
+    "updated_at": "2025-07-11T06:10:13.305963+00:00"
+  },
+  {
+    "id": "bcc2e61c-84e5-4a40-a893-5948fbe6c0d3",
+    "subject_id": "d150db97-8ba7-489a-9da9-c2de7dbdbd8e",
+    "semester_id": "97043626-9013-4803-8c68-216efcbb158c",
+    "group_type": "practica",
+    "group_code": "3r Tarda At",
+    "max_students": 30,
+    "created_at": "2025-07-11T06:10:13.386834+00:00",
+    "updated_at": "2025-07-11T06:10:13.386834+00:00"
+  },
+  {
+    "id": "594c6cb3-9e11-4488-bb81-94fe7cc5881c",
+    "subject_id": "09707df7-9eb1-474b-8040-6bee3d0e8240",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Am",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "466d9650-3825-4270-a869-f5308d7e056c",
+    "subject_id": "09707df7-9eb1-474b-8040-6bee3d0e8240",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "At",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "410e027a-eebd-4c7b-b959-fb5d8a6c7bd6",
+    "subject_id": "8be06f3a-f3db-4a2c-be15-ef7f1f3c0d8e",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "It",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "0ff7aa4e-736f-4d11-808a-0d2019097937",
+    "subject_id": "8be06f3a-f3db-4a2c-be15-ef7f1f3c0d8e",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Im",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "2c9bd575-c0f8-4bb5-a62e-f41f9c3d8c21",
+    "subject_id": "8be06f3a-f3db-4a2c-be15-ef7f1f3c0d8e",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Mt",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "d3a3235b-29d9-463b-9037-311cb33b18cb",
+    "subject_id": "8be06f3a-f3db-4a2c-be15-ef7f1f3c0d8e",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Mm",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "262426ab-df7b-4a31-a6c2-9c2dfb2299b7",
+    "subject_id": "8be06f3a-f3db-4a2c-be15-ef7f1f3c0d8e",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Gt",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "c2935466-fe88-4652-96fa-0260685be0ff",
+    "subject_id": "8be06f3a-f3db-4a2c-be15-ef7f1f3c0d8e",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Gm2",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "32035fb9-591f-4539-9123-062c336f4cec",
+    "subject_id": "8be06f3a-f3db-4a2c-be15-ef7f1f3c0d8e",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Gm1",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "e828e765-38b2-4680-ad4d-fec84deab454",
+    "subject_id": "8be06f3a-f3db-4a2c-be15-ef7f1f3c0d8e",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "At",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "7cfae833-14f1-4943-a06f-ba6405bf4688",
+    "subject_id": "8be06f3a-f3db-4a2c-be15-ef7f1f3c0d8e",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Am",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "e0d67738-9825-401e-9ba8-ebb17dd0555e",
+    "subject_id": "09707df7-9eb1-474b-8040-6bee3d0e8240",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Gm1",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "84faadd1-beae-4502-af22-b5d1f1899f67",
+    "subject_id": "09707df7-9eb1-474b-8040-6bee3d0e8240",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Gm2",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "4766f6b5-7719-40a8-aa9d-6ae355a57e6e",
+    "subject_id": "09707df7-9eb1-474b-8040-6bee3d0e8240",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Gt",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "40de0161-82b2-48c1-86d6-19c6e5eb9664",
+    "subject_id": "09707df7-9eb1-474b-8040-6bee3d0e8240",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Mm",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "744ae684-b544-41b9-8ab0-551982242afe",
+    "subject_id": "09707df7-9eb1-474b-8040-6bee3d0e8240",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Mt",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "1f8ec047-b415-4cab-8327-c1b48a8c425c",
+    "subject_id": "09707df7-9eb1-474b-8040-6bee3d0e8240",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Im",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "a54eae4c-c87e-4507-94d6-a27f5fa706af",
+    "subject_id": "09707df7-9eb1-474b-8040-6bee3d0e8240",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "It",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "1f90f22d-43fd-4649-8e14-7a32fd1e3800",
+    "subject_id": "900373a1-88b1-44bb-9d25-69afe6e2a082",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "It",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "eb005509-8b74-45ec-8dc5-c672934f4bff",
+    "subject_id": "900373a1-88b1-44bb-9d25-69afe6e2a082",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Im",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "bf3f3dac-73cb-4aa7-9724-23601d74c4eb",
+    "subject_id": "900373a1-88b1-44bb-9d25-69afe6e2a082",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Mt",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "e9c198f6-a13a-44e1-8a50-36bbcfb65725",
+    "subject_id": "900373a1-88b1-44bb-9d25-69afe6e2a082",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Mm",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "7155afbb-9f78-400f-8d9a-b2006d1c9884",
+    "subject_id": "900373a1-88b1-44bb-9d25-69afe6e2a082",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Gt",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "670c110e-1837-4140-bd84-f2a23daa88c4",
+    "subject_id": "900373a1-88b1-44bb-9d25-69afe6e2a082",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Gm2",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "907f1e5b-cc26-42be-aae0-f14dcfbb4163",
+    "subject_id": "900373a1-88b1-44bb-9d25-69afe6e2a082",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Gm1",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "44a2f52f-e672-4106-bd52-41327b387f81",
+    "subject_id": "900373a1-88b1-44bb-9d25-69afe6e2a082",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "At",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "65a90f78-3edd-428a-85b4-fe24350930fa",
+    "subject_id": "900373a1-88b1-44bb-9d25-69afe6e2a082",
+    "semester_id": "3dbb586b-7ae8-4a82-9013-24220dedf632",
+    "group_type": "practica",
+    "group_code": "Am",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "ff0e4386-d447-4288-b862-8540cfffd67c",
+    "subject_id": "288d911b-0641-4063-a4f6-75251bd9b52d",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "It",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "19bf6f87-1e8c-4698-acfa-ab4fe3391bef",
+    "subject_id": "288d911b-0641-4063-a4f6-75251bd9b52d",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Im",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "a0634cc8-0ce3-42a8-8489-cbc8ce05596a",
+    "subject_id": "288d911b-0641-4063-a4f6-75251bd9b52d",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Mt",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "e489c43a-681e-411f-9080-f5b6ebbd0ff6",
+    "subject_id": "288d911b-0641-4063-a4f6-75251bd9b52d",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Mm",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "a4637070-b849-4cd7-b248-83faad975593",
+    "subject_id": "288d911b-0641-4063-a4f6-75251bd9b52d",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Gt",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "37058697-c693-4f36-9fb1-f5257dbfb065",
+    "subject_id": "288d911b-0641-4063-a4f6-75251bd9b52d",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Gm2",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "fd4682aa-bfa9-4d93-8892-524893186228",
+    "subject_id": "288d911b-0641-4063-a4f6-75251bd9b52d",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Gm1",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "ffd6ca79-3edd-4d96-98a8-38ff20308079",
+    "subject_id": "288d911b-0641-4063-a4f6-75251bd9b52d",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "At",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  },
+  {
+    "id": "53be68a8-5b34-4127-a21b-e5df9e294294",
+    "subject_id": "288d911b-0641-4063-a4f6-75251bd9b52d",
+    "semester_id": "eb8bab5c-ead3-42e4-b0c8-0e3e313c9d3b",
+    "group_type": "practica",
+    "group_code": "Am",
+    "max_students": 25,
+    "created_at": "2025-07-11T16:08:14.359497+00:00",
+    "updated_at": "2025-07-11T16:08:14.359497+00:00"
+  }
+]

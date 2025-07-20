@@ -1,0 +1,37 @@
+{
+  "executed_at": "2025-07-14T11:38:17.248Z",
+  "results": {
+    "classrooms": {
+      "type": "Classrooms",
+      "success": 2,
+      "failed": 3,
+      "errors": [
+        "Statement 3: new row for relation \"classrooms\" violates check constraint \"classrooms_type_check\"",
+        "Statement 4: new row for relation \"classrooms\" violates check constraint \"classrooms_type_check\"",
+        "Statement 5: new row for relation \"classrooms\" violates check constraint \"classrooms_type_check\""
+      ]
+    },
+    "teachers": {
+      "type": "Teachers",
+      "success": 55,
+      "failed": 1,
+      "errors": [
+        "Statement 60: duplicate key value violates unique constraint \"teachers_code_key\""
+      ]
+    },
+    "subjects": {
+      "type": "Subjects",
+      "success": 35,
+      "failed": 0,
+      "errors": []
+    },
+    "updates": {
+      "type": "Itinerari Updates",
+      "success": 13,
+      "failed": 0,
+      "errors": []
+    }
+  },
+  "total_success": 105,
+  "total_failed": 4
+}

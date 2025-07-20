@@ -1,0 +1,740 @@
+{
+  "generated_at": "2025-07-14T11:29:28.327Z",
+  "total_excel_teachers": 107,
+  "total_db_teachers": 106,
+  "stats": {
+    "exact": 2,
+    "fuzzy_high": 0,
+    "fuzzy_medium": 16,
+    "fuzzy_low": 10,
+    "no_match": 79
+  },
+  "mappings": [
+    {
+      "excel_name": "Núria Gómez Gabriel",
+      "db_id": "df0980fa-5873-4eeb-90a5-fa42754b9c86",
+      "db_full_name": "Nuria Gómez Gabriel",
+      "db_email": "prof639@bau.edu",
+      "confidence": 100,
+      "match_type": "exact",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Alba Font Villar",
+      "db_id": "38eb235d-b7be-4853-bd89-c3158665dd66",
+      "db_full_name": "Alba Font Villar",
+      "db_email": "prof699@bau.edu",
+      "confidence": 100,
+      "match_type": "exact",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Núria Gómez GabrielPO.a",
+      "db_id": "df0980fa-5873-4eeb-90a5-fa42754b9c86",
+      "db_full_name": "Nuria Gómez Gabriel",
+      "db_email": "prof639@bau.edu",
+      "confidence": 83,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Mariona Moncunill /0.4",
+      "db_id": "4076665b-378b-45ca-ad96-db647676f694",
+      "db_full_name": "Mariona Moncunill Piñas",
+      "db_email": "prof515@bau.edu",
+      "confidence": 78,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Gm1b Alba Font Villar",
+      "db_id": "38eb235d-b7be-4853-bd89-c3158665dd66",
+      "db_full_name": "Alba Font Villar",
+      "db_email": "prof699@bau.edu",
+      "confidence": 76,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Xavier Maixenchs",
+      "db_id": "93b72cac-6e06-4c8c-900a-19e739bfd53a",
+      "db_full_name": "Xavier Maixenchs Bobé",
+      "db_email": "prof579@bau.edu",
+      "confidence": 76,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Montse Casacuberta",
+      "db_id": "95aed3ca-5ab2-4fa2-8ff5-a8f226011ee1",
+      "db_full_name": "Montse Casacuberta Suñer",
+      "db_email": "prof22@bau.edu",
+      "confidence": 75,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "David Ortiz .7",
+      "db_id": "d4ca7899-208e-4763-b5e7-973820f51d77",
+      "db_full_name": "David Ortiz Juan",
+      "db_email": "prof556@bau.edu",
+      "confidence": 75,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Mariona Moncunill",
+      "db_id": "4076665b-378b-45ca-ad96-db647676f694",
+      "db_full_name": "Mariona Moncunill Piñas",
+      "db_email": "prof515@bau.edu",
+      "confidence": 74,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Jorge Luis Marzo",
+      "db_id": "b9ab9d54-b36f-4d64-adf9-bdd77135255f",
+      "db_full_name": "Jorge Luís Marzo Pérez",
+      "db_email": "prof404@bau.edu",
+      "confidence": 73,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Mireia Carbonell",
+      "db_id": "ae207c0e-4e38-43ce-aa6d-d17fe5fb903f",
+      "db_full_name": "Mireia Pérez Carbonell",
+      "db_email": "prof482@bau.edu",
+      "confidence": 73,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "David Martin .7",
+      "db_id": "b9a5d5bd-e8ed-4c4b-98eb-d9d836bc61ec",
+      "db_full_name": "David Martin López",
+      "db_email": "prof400@bau.edu",
+      "confidence": 72,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Ingrid Pou",
+      "db_id": "c5260fa8-74ec-4c75-9a3a-affdf60ba77e",
+      "db_full_name": "Ingrid Pou Iborra",
+      "db_email": "prof660@bau.edu",
+      "confidence": 72,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Camila Maggi",
+      "db_id": "5b329662-a4e9-423e-a735-b3d9e7e982ef",
+      "db_full_name": "Camila René Maggi",
+      "db_email": "prof526@bau.edu",
+      "confidence": 71,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Josep M. Marimon",
+      "db_id": "72994d6d-7399-41cf-b031-b4ae4024b2a0",
+      "db_full_name": "Josep Mª Marimon Soler",
+      "db_email": "prof429@bau.edu",
+      "confidence": 71,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Lucía Segurajáuregui",
+      "db_id": "b8b549e1-1ac9-4c26-bf7d-ebd8b69cf86f",
+      "db_full_name": "Lucía Segurajáuregui Sánchez",
+      "db_email": "prof609@bau.edu",
+      "confidence": 71,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Ricard Marimon",
+      "db_id": "4e9e786e-9522-434f-b96c-92b70c905cb4",
+      "db_full_name": "Ricard Marimon Soler",
+      "db_email": "prof464@bau.edu",
+      "confidence": 70,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Eduard Fernàndez",
+      "db_id": "1561125d-37a4-4eff-95ae-033810ead3c7",
+      "db_full_name": "Eduard Fernandez Garcia",
+      "db_email": "prof659@bau.edu",
+      "confidence": 70,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Pau de Riba",
+      "db_id": "c405979a-8908-420b-9ce2-bd8f06053f22",
+      "db_full_name": "Pau de Riba Cusó",
+      "db_email": "prof318@bau.edu",
+      "confidence": 69,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Joan Martorello",
+      "db_id": "d32ab276-d143-4a28-9b75-87116c31db2e",
+      "db_full_name": "Joan Manuel Martorello",
+      "db_email": "prof583@bau.edu",
+      "confidence": 68,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Gabriel Ventura",
+      "db_id": "a8b9013e-2697-4a5b-8ddc-db234c319a10",
+      "db_full_name": "Gabriel Ventura Cuenca",
+      "db_email": "prof554@bau.edu",
+      "confidence": 68,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Citlali Hernández",
+      "db_id": "9f72ae6f-5c37-4488-85c4-ea9f3d16b53b",
+      "db_full_name": "Citlali Hernández Sánchez",
+      "db_email": "prof569@bau.edu",
+      "confidence": 68,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Joan Ros",
+      "db_id": "95213077-6f77-4085-b304-4dc67e93a732",
+      "db_full_name": "Joan Ros Garrofé",
+      "db_email": "prof578@bau.edu",
+      "confidence": 67.5,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "David Ortega",
+      "db_id": "6945088e-6ca1-4bf0-892c-ca46e73d6c0c",
+      "db_full_name": "David Ortega Gómez",
+      "db_email": "prof608@bau.edu",
+      "confidence": 67,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Jordi Galobart",
+      "db_id": "1adc64e2-2bd3-4b5c-8d10-5da43b54d4e2",
+      "db_full_name": "Jordi Galobart Salvat",
+      "db_email": "prof585@bau.edu",
+      "confidence": 67,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Roc Albalat .4",
+      "db_id": "67a64adc-c685-46da-85c4-bcd87341543e",
+      "db_full_name": "Roc Albalat Gimeno",
+      "db_email": "prof547@bau.edu",
+      "confidence": 67,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Guillem Castellví",
+      "db_id": "a3c8a6f6-61bc-4bbc-961f-557e0ee24361",
+      "db_full_name": "Guillem Castellví Montagut",
+      "db_email": "prof680@bau.edu",
+      "confidence": 65,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Clàudia Raurell",
+      "db_id": "9925a3a8-fb53-44b1-ad58-a1fa1bdd6523",
+      "db_full_name": "Clàudia Raurell Carulla",
+      "db_email": "prof679@bau.edu",
+      "confidence": 65,
+      "match_type": "fuzzy",
+      "needs_creation": false
+    },
+    {
+      "excel_name": "Laura Ginés",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Marta Camps",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Marina Riera",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Alejandra López Gabrielidis",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Glòria Deumal Ricard Marimon Daniel Tahmaz",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Glòria Deumal Elisenda Fontarnau Pau Pericas",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Tutories",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Gràfica II",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Projectes de",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Disseny II",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Nico Juárez",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Mª Isabel del Río",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Laura Subirats",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "1r SEMESTRE",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Gm1a David Torrents",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Mª Àngels Fortea",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Arnau Pi Adrià Molins",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Nadia Speranza .7",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Luis Colaço Jose Ramon Madrid",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Frank Maria Lt1.3   Lt1.4",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Roger Vicente",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Ricardo Íscar",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Núria Font Jose Ramon Madrid L12 (a partir 28/04)",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Àlex Valverde Jorge Caballero Mª José Díaz",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Núria Nia",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Albert Gavaldà",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Sílvia Rosés",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Claudio Marzà Portàtils (octubre)",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Elisa Amann",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Nataly dal Pozzo",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Comunicació",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Raül Maldonado",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Mónica Rikic Luis Colaço",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Laura Ginés Núria Nia Taller Interactiu",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Núria Costa",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Patronatge IV Marta Morralla Pt.2",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Kike Macías",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "d’Artista",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Lara Fluxà",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Blanca Gracia Jonathan Millán",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Pedagogies",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Pere Llobera",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Mònica Rikic Luis Colaço Sala Carolines",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Rafa Marcos Mota",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Daniel Pitarch Pau Artigas",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Taller de Dibuix I",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Pensament Modern i Pràctiques Artístiques",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Oriol Vilapuig",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "David Ortiz Irene Visa",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Serafín Álvarez Ariadna Guiteras Sala Carolines",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Federica Matelli",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "tutoriesSala Carolines",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "tutories",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Taller de Dibuix IINúria Inés",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Estètica",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Art, Institució i Mercat",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Jonathan Millán",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Ludovica Carbotta Julieta Dentone",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Lúa Coderch",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "tutories /0.4",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Regina Gimenez Anna Clemente  (5 sessions) Gl.2",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Pep Vidal",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Eulalia Rovira Michael Lawton Gl.3",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "tutories G2.l",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "tutoriesPO.a",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "tutories Gl.3",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Antropologia",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "XD, Llenguatges,Tecniquesi Tecnologies",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Art, Activisme, Mediació i Peda­ gogia",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Daniel Pitarch Paula Bruna",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Quim Packard Pl.5",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Lara Fluxa Mercedes Pimiento",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Laboratori de Processosi Projectes IV",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Jaron Rowan Silvia Zayas",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Optativitat",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Art Practices in Context Seminar I",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Sergi Alvarez",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Metodologies Transdisciplinàries i Experimentals",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    },
+    {
+      "excel_name": "Lúa Corderch",
+      "confidence": 0,
+      "match_type": "none",
+      "needs_creation": true
+    }
+  ]
+}

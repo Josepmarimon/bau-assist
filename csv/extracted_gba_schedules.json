@@ -1,0 +1,1216 @@
+{
+  "extraction_date": "2025-07-14T13:20:47.971328",
+  "extraction_method": "drawing_objects",
+  "total_entries": 102,
+  "data": [
+    {
+      "asignatura": "2D, Llenguatges,Tècniquesi Tecnologies",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "4D, Llenguatges,Tècniquesi Tecnologies",
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Visualisation and Documentation Workshop",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Taller de Dibuix I",
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "4D, Llenguatges,Tècniquesi Tecnologies",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Pensament Modern i Pràctiques Artístiques",
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Taller de Dibuix I",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Pensament Modern i Pràctiques Artístiques",
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Pensament Modern i Pràctiques Artístiques",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Oriol Vilapuig",
+      "aulas": [
+        "L0.1"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Oriol Vilapuig L0.1",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "David Ortiz Irene Visa",
+      "aulas": [
+        "G1.2",
+        "L0.2"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Rebecca Gil Rasmus Nilausen G1.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Serafín Álvarez Ariadna Guiteras Sala Carolines",
+      "aulas": [
+        "L0.2"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "David Ortiz Irene Visa L0.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Federica Matelli",
+      "aulas": [
+        "P0.6"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Serafín Álvarez Ariadna Guiteras Sala Carolines",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:00       11:30",
+      "aulas": [
+        "P0.6"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Federica Matelli P0.6",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:00       11:30",
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "11:00 11:30",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": null,
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories G1.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutoriesSala Carolines",
+      "aulas": [
+        "L0.2"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories L0.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories",
+      "aulas": [
+        "L0.1"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutoriesSala Carolines",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories",
+      "aulas": [
+        "L0.1",
+        "P0.6"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories L0.1",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories",
+      "aulas": [
+        "P0.6"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories P0.6",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Taller de Dibuix IINúria Inés",
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Taller de Dibuix IINúria Inés",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Estètica",
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "3D, Llenguatges,Tècniquesi Tecnologies",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Art, Institució i Mercat",
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Art, Institució i Mercat",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "10:00       Hernández",
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Laboratori de Processosi Projectes I",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Jonathan Millán",
+      "aulas": [
+        "G1.2"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "10:00 Hernández",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Ludovica Carbotta Julieta Dentone",
+      "aulas": [
+        "G1.2",
+        "G0.3"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Jonathan Millán G1.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Alejandra López Gabrielidis",
+      "aulas": [
+        "G0.3",
+        "P0.6"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Ludovica Carbotta Julieta Dentone G0.3",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Mariona Moncunill /0.4",
+      "aulas": [
+        "P0.6",
+        "P0.2"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Alejandra López GabrielidisP0.6",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Lúa Coderch",
+      "aulas": [
+        "P0.2",
+        "G0.2"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Mariona Moncunill P0.2/0.4",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:00       11:30",
+      "aulas": [
+        "G0.2"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "Lúa Coderch G0.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:00       11:30",
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "11:00 11:30",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": null,
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories G1.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutoriesSala Carolines",
+      "aulas": [
+        "L0.2"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories G0.3",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories /0.4",
+      "aulas": [
+        "P0.6",
+        "P0.2"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories P0.6",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Taller de Dibuix IINúria Inés",
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories P0.2/0.4",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories",
+      "aulas": [
+        "G0.2"
+      ],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories G0.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "1r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": null,
+      "aulas": [],
+      "archivo": "Horaris_GBA_1r_2526.xlsx"
+    },
+    {
+      "asignatura": "4D, Llenguatges,Tecniquesi Tecnologies lnstal•lades",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Laboratori de Processosi Projectes 11",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "2D, Llenguatges,Tecniquesi Tecnologies lnstal•lades",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Laboratori de Processosi Projectes 11",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Laboratori de Processosi Projectes 11",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Pensament Contemporani i Practiques Artístiques",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Pensament Contemporani i Practiques Artístiques",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Jaume Ferrete Vázquez Agustín Ortiz HerreraSala Carolines",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Writing and Communication Workshop",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Regina Gimenez Anna Clemente  (5 sessions) Gl.2",
+      "aulas": [
+        "L0.4"
+      ],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Jaume Ferrete Vázquez Agustín Ortiz HerreraSala Carolines",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Pep Vidal",
+      "aulas": [
+        "L0.4",
+        "G2.1"
+      ],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Regina Gimenez Anna Clemente L0.4 (5 sessions) Gl.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Núria Gómez GabrielPO.a",
+      "aulas": [
+        "G2.1"
+      ],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Pep Vidal G2.1",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Eulalia Rovira Michael Lawton Gl.3",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Núria Gómez GabrielPO.a",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:0011:30",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Eulalia Rovira Michael Lawton Gl.3",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:0011:30",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "11:0011:30",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": null,
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "tutoriesSala Carolines",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories G2.l",
+      "aulas": [
+        "L0.4"
+      ],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories L0.4 Gl.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutoriesPO.a",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories G2.l",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories Gl.3",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "tutoriesPO.a",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories Gl.3",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories Gl.3",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Antropologia",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Antropologia",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "XD, Llenguatges,Tecniquesi Tecnologies",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Laboratori de Processosi Projectes 111",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Art, Activisme, Mediació i Peda­ gogia",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "XD, Llenguatges,Tecniquesi Tecnologies",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "3D, Llenguatges,Tecniquesi Tecnologies lnstal•lades",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Art, Activisme, Mediació i Peda­ gogia",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "3D, Llenguatges,Tecniquesi Tecnologies lnstal•lades",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "3D, Llenguatges,Tecniquesi Tecnologies lnstal•lades",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Mafe Moscoso",
+      "aulas": [
+        "P0.10"
+      ],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Mafe Moscoso P0.10",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Daniel Pitarch Paula Bruna",
+      "aulas": [
+        "G2.1"
+      ],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Luz Broto Gl.3",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Quim Packard Pl.5",
+      "aulas": [
+        "G2.1"
+      ],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Daniel Pitarch Paula Bruna G2.1",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Lara Fluxa Mercedes Pimiento",
+      "aulas": [
+        "G0.3"
+      ],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Quim Packard Pl.5",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:00       11:30",
+      "aulas": [
+        "G0.3"
+      ],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Lara Fluxa Mercedes Pimiento G0.3",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:00       11:30",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "11:00 11:30",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": null,
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories P0.10",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories",
+      "aulas": [
+        "G2.1"
+      ],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories Gl.3",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Antropologia",
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories G2.1",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories",
+      "aulas": [
+        "G0.3"
+      ],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories Pl.5",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories",
+      "aulas": [
+        "G0.3"
+      ],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories G0.3",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "2n",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": null,
+      "aulas": [],
+      "archivo": "Horaris_GBA_2n_2526.xlsx"
+    },
+    {
+      "asignatura": "Optativitat",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Optativitat",
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Optativitat",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Optativitat",
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Optativitat",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Optativitat",
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Pràctiques Artístiques i Recerca",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Laboratori de Processosi Projectes IV",
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Laboratori de Processosi Projectes IV",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Jaron Rowan Silvia Zayas",
+      "aulas": [
+        "G2.1"
+      ],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Jaron Rowan Silvia Zayas G2.1",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:00       11:30",
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Irena Visa G.2.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:00       11:30",
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "11:00 11:30",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": null,
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories G2.1",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories",
+      "aulas": [
+        "G2.2"
+      ],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories G2.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Optativitat",
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Optativitat",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Optativitat",
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Optativitat",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Optativitat",
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Laboratori de Processosi Projectes V",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Art Practices in Context Seminar I",
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Optativitat",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Optativitat",
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Art Practices in Context Seminar I",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Sergi Alvarez",
+      "aulas": [
+        "L0.1"
+      ],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Sergi Alvarez L0.1",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:00       11:30",
+      "aulas": [
+        "G0.1"
+      ],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Anna Moreno G0.1",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:00       11:30",
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "11:00 11:30",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": null,
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories G2.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Optativitat",
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories G0.1",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "3r",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": null,
+      "aulas": [],
+      "archivo": "Horaris_GBA_3r_2526.xlsx"
+    },
+    {
+      "asignatura": "Art Practices in Context Seminar II",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Optativitat",
+      "aulas": [],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "Optativitat",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Laboratori de Processosi Projectes VI",
+      "aulas": [],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "Optativitat",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Laboratori de Processosi Projectes VI",
+      "aulas": [],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "Laboratori de Processosi Projectes VI",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Metodologies Transdisciplinàries i Experimentals",
+      "aulas": [
+        "P0.6"
+      ],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "Federica Matelli10:00 P0.6",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Lúa Corderch",
+      "aulas": [
+        "G2.2"
+      ],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "Metodologies Transdisciplinàries i Experimentals",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Lúa Corderch",
+      "aulas": [
+        "G2.2",
+        "P0.1"
+      ],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "Lúa Corderch G2.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:00      11:30",
+      "aulas": [
+        "P0.1"
+      ],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "11:00 11:30",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": null,
+      "aulas": [],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories P0.6",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories",
+      "aulas": [],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories G2.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories",
+      "aulas": [
+        "P0.1"
+      ],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories P0.1",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Optativitat",
+      "aulas": [],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "Optativitat",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Laboratori de Processosi Projectes VI",
+      "aulas": [],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "Optativitat",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Laboratori de Processosi Projectes VI",
+      "aulas": [],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "Treball Final de Grau",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Optativitat",
+      "aulas": [],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "Optativitat",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "Laboratori de Processosi Projectes VI",
+      "aulas": [],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "Lúa Coderch Anna Moreno Michael Lawton G1.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "11:00       11:30",
+      "aulas": [],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "11:00 11:30",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": null,
+      "aulas": [],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    },
+    {
+      "asignatura": "tutories G1.2",
+      "grado": "Belles Arts",
+      "grado_code": "GBA",
+      "curso": "4t",
+      "semestre": null,
+      "tipo": "Obligatoria",
+      "profesor": "tutories",
+      "aulas": [],
+      "archivo": "Horaris_GBA_4t_2526.xlsx"
+    }
+  ]
+}

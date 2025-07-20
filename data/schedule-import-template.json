@@ -1,0 +1,115 @@
+{
+  "academic_year": "2025-2026",
+  "description": "Plantilla per importar horaris amb assignació d'aules",
+  "instructions": {
+    "group": "Nom del grup d'estudiants (ex: '1r Matí M1', '2n Tarda Gràfic T1')",
+    "semester": "1 o 2",
+    "subject": "Nom exacte de l'assignatura tal com està a la BD",
+    "subject_code": "Codi de l'assignatura (opcional, millora el matching)",
+    "group_type": "teoria, practica, laboratori o seminari",
+    "teachers": "Array de noms de professors (poden ser múltiples per co-docència)",
+    "classrooms": "Array de codis d'aules (poden ser múltiples si la classe es divideix)",
+    "day": "1=Dilluns, 2=Dimarts, 3=Dimecres, 4=Dijous, 5=Divendres",
+    "start_time": "Format HH:MM (24h)",
+    "end_time": "Format HH:MM (24h)",
+    "notes": "Notes opcionals sobre l'assignació"
+  },
+  "schedules": [
+    {
+      "group": "1r Matí M1",
+      "semester": 1,
+      "classes": [
+        {
+          "subject": "Fonaments del Disseny",
+          "subject_code": "GDIS101",
+          "group_type": "teoria",
+          "teachers": ["Joan Pérez"],
+          "classrooms": ["P.05"],
+          "day": 1,
+          "start_time": "09:00",
+          "end_time": "11:00",
+          "notes": "Classe magistral"
+        },
+        {
+          "subject": "Fonaments del Disseny",
+          "subject_code": "GDIS101",
+          "group_type": "practica",
+          "teachers": ["Joan Pérez", "Maria Garcia"],
+          "classrooms": ["G1.1", "G1.2"],
+          "day": 3,
+          "start_time": "15:00",
+          "end_time": "18:00",
+          "notes": "Grup dividit en 2 aules"
+        },
+        {
+          "subject": "Taller de Dibuix Artístic",
+          "group_type": "laboratori",
+          "teachers": ["Laura Gual"],
+          "classrooms": ["L.0.1"],
+          "day": 2,
+          "start_time": "09:00",
+          "end_time": "13:30"
+        }
+      ]
+    },
+    {
+      "group": "2n Matí Gràfic GM1",
+      "semester": 1,
+      "classes": [
+        {
+          "subject": "Tipografia I",
+          "group_type": "teoria",
+          "teachers": ["Andreu Balius"],
+          "classrooms": ["P.0.12"],
+          "day": 4,
+          "start_time": "09:00",
+          "end_time": "11:00"
+        },
+        {
+          "subject": "Tipografia I",
+          "group_type": "practica",
+          "teachers": ["Andreu Balius"],
+          "classrooms": ["Aula Informàtica 1"],
+          "day": 4,
+          "start_time": "11:30",
+          "end_time": "13:30"
+        }
+      ]
+    },
+    {
+      "group": "3r Tarda Audiovisual AT1",
+      "semester": 2,
+      "classes": [
+        {
+          "subject": "Muntatge Audiovisual",
+          "group_type": "laboratori",
+          "teachers": ["Carles Porta"],
+          "classrooms": ["Plató", "Sala Edició"],
+          "day": 5,
+          "start_time": "15:00",
+          "end_time": "19:00",
+          "notes": "Sessió pràctica amb equipament audiovisual"
+        }
+      ]
+    }
+  ],
+  "validation_rules": {
+    "no_teacher_overlap": "Un professor no pot estar en dos llocs alhora",
+    "no_classroom_overlap": "Una aula no pot tenir dues classes simultànies",
+    "no_group_overlap": "Un grup d'estudiants no pot tenir dues classes simultànies",
+    "capacity_check": "La capacitat de l'aula ha de ser >= estudiants del grup",
+    "classroom_type_match": "El tipus d'aula ha de ser compatible amb el tipus de classe",
+    "time_constraints": "Les classes han d'estar entre 08:00 i 21:00"
+  },
+  "examples": {
+    "morning_shift_codes": ["M1", "M2", "GM1", "AM1", "MM1", "IM1"],
+    "afternoon_shift_codes": ["T1", "T2", "GT1", "AT1", "MT1", "IT1"],
+    "classroom_codes": ["P.05", "P.0.12", "G1.1", "L.0.1", "Aula Informàtica 1", "Plató"],
+    "group_types": {
+      "teoria": "Classes magistrals, típicament grups grans",
+      "practica": "Classes pràctiques, grups mitjans",
+      "laboratori": "Tallers i laboratoris, grups petits",
+      "seminari": "Seminaris i tutories, grups molt petits"
+    }
+  }
+}
