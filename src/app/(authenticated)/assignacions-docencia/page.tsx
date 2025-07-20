@@ -721,7 +721,7 @@ export default function CourseAssignmentsPage() {
 
       {/* Stats */}
       <div className="grid gap-4 md:grid-cols-4">
-        <Card>
+        <Card className="bg-sky-50 border-sky-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Total Assignacions
@@ -735,7 +735,7 @@ export default function CourseAssignmentsPage() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-sky-50 border-sky-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Professors Assignats
@@ -749,7 +749,7 @@ export default function CourseAssignmentsPage() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-sky-50 border-sky-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Total ECTS
@@ -763,7 +763,7 @@ export default function CourseAssignmentsPage() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-sky-50 border-sky-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Assignatures
@@ -780,7 +780,7 @@ export default function CourseAssignmentsPage() {
       </div>
 
       {/* Search and list */}
-      <Card>
+      <Card className="bg-sky-50 border-sky-200">
         <CardHeader>
           <CardTitle>Assignacions per Assignatura</CardTitle>
           <CardDescription>

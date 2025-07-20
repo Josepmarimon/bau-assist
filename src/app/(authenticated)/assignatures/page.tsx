@@ -214,7 +214,7 @@ export default function SubjectsPage() {
 
       {/* Stats */}
       <div className="grid gap-2 grid-cols-2 md:grid-cols-4">
-        <Card className="p-3">
+        <Card className="p-3 bg-sky-50 border-sky-200">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-muted-foreground">Total</p>
@@ -223,7 +223,7 @@ export default function SubjectsPage() {
             <BookOpen className="h-4 w-4 text-muted-foreground" />
           </div>
         </Card>
-        <Card className="p-3">
+        <Card className="p-3 bg-sky-50 border-sky-200">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-muted-foreground">ECTS</p>
@@ -232,7 +232,7 @@ export default function SubjectsPage() {
             <Clock className="h-4 w-4 text-muted-foreground" />
           </div>
         </Card>
-        <Card className="p-3">
+        <Card className="p-3 bg-sky-50 border-sky-200">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-muted-foreground">Disseny</p>
@@ -241,7 +241,7 @@ export default function SubjectsPage() {
             <GraduationCap className="h-4 w-4 text-muted-foreground" />
           </div>
         </Card>
-        <Card className="p-3">
+        <Card className="p-3 bg-sky-50 border-sky-200">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-muted-foreground">BBAA</p>
@@ -253,7 +253,7 @@ export default function SubjectsPage() {
       </div>
 
       {/* Search and list */}
-      <Card>
+      <Card className="bg-sky-50 border-sky-200">
         <CardHeader>
           <CardTitle>Llistat d'Assignatures</CardTitle>
           <CardDescription>

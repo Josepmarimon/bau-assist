@@ -295,7 +295,7 @@ export function SubjectDetailDialog({ subject, open, onOpenChange }: SubjectDeta
 
         <div className="mt-6 space-y-6">
           {/* Subject Info */}
-          <Card>
+          <Card className="bg-sky-50 border-sky-200">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <BookOpen className="h-5 w-5" />
@@ -333,7 +333,7 @@ export function SubjectDetailDialog({ subject, open, onOpenChange }: SubjectDeta
           </Card>
 
           {/* Software Requirements */}
-          <Card>
+          <Card className="bg-sky-50 border-sky-200">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <Monitor className="h-5 w-5" />
@@ -393,7 +393,7 @@ export function SubjectDetailDialog({ subject, open, onOpenChange }: SubjectDeta
                                   {requiredSoftware.map(req => (
                                     <div
                                       key={req.id}
-                                      className="flex items-center justify-between p-3 rounded-lg border bg-card"
+                                      className="flex items-center justify-between p-3 rounded-lg border bg-sky-50 border-sky-200"
                                     >
                                       <div className="flex items-center gap-3">
                                         <Package className="h-4 w-4 text-muted-foreground" />
@@ -432,7 +432,7 @@ export function SubjectDetailDialog({ subject, open, onOpenChange }: SubjectDeta
                                   {optionalSoftware.map(req => (
                                     <div
                                       key={req.id}
-                                      className="flex items-center justify-between p-3 rounded-lg border bg-muted/50"
+                                      className="flex items-center justify-between p-3 rounded-lg border bg-sky-50/70 border-sky-200"
                                     >
                                       <div className="flex items-center gap-3">
                                         <Package className="h-4 w-4 text-muted-foreground" />
@@ -472,7 +472,7 @@ export function SubjectDetailDialog({ subject, open, onOpenChange }: SubjectDeta
           </Card>
 
           {/* Subject Groups */}
-          <Card>
+          <Card className="bg-sky-50 border-sky-200">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2">
                 <School className="h-5 w-5" />

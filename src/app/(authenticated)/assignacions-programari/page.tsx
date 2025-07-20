@@ -352,7 +352,7 @@ export default function SoftwareAssignmentsPage() {
       </div>
 
       {/* Controls */}
-      <Card>
+      <Card className="bg-sky-50 border-sky-200">
         <CardHeader>
           <CardTitle>Opcions</CardTitle>
           <CardDescription>
@@ -393,7 +393,7 @@ export default function SoftwareAssignmentsPage() {
       {/* Main Grid */}
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Subjects */}
-        <Card className="h-[800px] flex flex-col">
+        <Card className="h-[800px] flex flex-col bg-sky-50 border-sky-200">
           <CardHeader>
             <CardTitle>Assignatures</CardTitle>
             <CardDescription>
@@ -539,7 +539,7 @@ export default function SoftwareAssignmentsPage() {
         </Card>
 
         {/* Software */}
-        <Card className="h-[800px] flex flex-col">
+        <Card className="h-[800px] flex flex-col bg-sky-50 border-sky-200">
           <CardHeader>
             <CardTitle>Software Disponible</CardTitle>
             <CardDescription>

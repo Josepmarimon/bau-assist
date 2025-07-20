@@ -288,7 +288,7 @@ export default function TeachersPage() {
 
       {/* Stats */}
       <div className="grid gap-4 md:grid-cols-3">
-        <Card>
+        <Card className="bg-orange-50 border-orange-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Total Professors
@@ -302,7 +302,7 @@ export default function TeachersPage() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-orange-50 border-orange-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               ECTS Totals Assignats
@@ -318,7 +318,7 @@ export default function TeachersPage() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-orange-50 border-orange-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Mitjana de Crèdits ECTS
@@ -340,7 +340,7 @@ export default function TeachersPage() {
       </div>
 
       {/* Search and filters */}
-      <Card>
+      <Card className="bg-orange-50 border-orange-200">
         <CardHeader>
           <CardTitle>Llistat de Professors</CardTitle>
           <CardDescription>

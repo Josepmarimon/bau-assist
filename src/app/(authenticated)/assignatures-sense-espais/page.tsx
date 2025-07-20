@@ -360,7 +360,7 @@ export default function SubjectsWithoutSpacesPage() {
 
       {/* Stats */}
       <div className="grid gap-4 md:grid-cols-4">
-        <Card>
+        <Card className="bg-sky-50 border-sky-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Total Assignatures
@@ -374,7 +374,7 @@ export default function SubjectsWithoutSpacesPage() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-sky-50 border-sky-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Crèdits ECTS
@@ -388,7 +388,7 @@ export default function SubjectsWithoutSpacesPage() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-sky-50 border-sky-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Obligatòries
@@ -402,7 +402,7 @@ export default function SubjectsWithoutSpacesPage() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-sky-50 border-sky-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Optatives
@@ -419,7 +419,7 @@ export default function SubjectsWithoutSpacesPage() {
       </div>
 
       {/* Summary by Itinerari */}
-      <Card>
+      <Card className="bg-sky-50 border-sky-200">
         <CardHeader>
           <CardTitle>Resum per Itinerari</CardTitle>
           <CardDescription>
@@ -439,7 +439,7 @@ export default function SubjectsWithoutSpacesPage() {
       </Card>
 
       {/* Subjects List */}
-      <Card>
+      <Card className="bg-sky-50 border-sky-200">
         <CardHeader>
           <CardTitle>Assignatures per Curs, Itinerari i Semestre</CardTitle>
           <CardDescription>
@@ -505,7 +505,7 @@ export default function SubjectsWithoutSpacesPage() {
                                           return (
                                             <div 
                                               key={subject.id} 
-                                              className="p-3 rounded border bg-muted/20"
+                                              className="p-3 rounded border bg-sky-50 border-sky-200"
                                             >
                                               <div className="flex items-center justify-between mb-2">
                                                 <div className="flex items-center gap-3">

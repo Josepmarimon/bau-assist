@@ -49,8 +49,7 @@ const navigation: NavItem[] = [
     name: 'Acadèmic', 
     icon: BookOpen,
     subItems: [
-      { name: 'Assignatures', href: '/assignatures', icon: BookOpen },
-      { name: 'Grups', href: '/grups-estudiants', icon: Users },
+      { name: 'Assignatures i Grups', href: '/assignatures-grups', icon: BookOpen },
       { name: 'Professors', href: '/professors', icon: GraduationCap },
       { name: 'Docència', href: '/assignacions-docencia', icon: CalendarCheck },
       { name: 'Assignatures Sense Espais', href: '/assignatures-sense-espais', icon: AlertCircle }
@@ -70,7 +69,6 @@ const navigation: NavItem[] = [
     icon: Cpu,
     subItems: [
       { name: 'Software', href: '/programari', icon: Cpu },
-      { name: 'Assignar Software', href: '/assignacions-programari', icon: Package },
       { name: 'Equipament', href: '/equipament', icon: Package }
     ]
   }

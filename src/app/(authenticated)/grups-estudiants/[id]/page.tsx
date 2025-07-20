@@ -254,7 +254,7 @@ export default function ViewGroupPage() {
       </Card>
 
       {/* Teachers */}
-      <Card>
+      <Card className="bg-orange-50 border-orange-200">
         <CardHeader>
           <CardTitle>Professors Assignats</CardTitle>
           <CardDescription>

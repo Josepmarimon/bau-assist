@@ -988,7 +988,7 @@ export default function AssignacionsAulesPage() {
               </div>
             )}
             {activeId && dragType === 'classroom' && (
-              <div className="bg-white border rounded-lg shadow-lg p-3 cursor-grabbing pointer-events-none">
+              <div className="bg-amber-50 border-amber-200 border rounded-lg shadow-lg p-3 cursor-grabbing pointer-events-none">
                 <div className="text-sm font-medium">Arrossegant aula...</div>
               </div>
             )}
@@ -1032,7 +1032,7 @@ function DraggableClassroom({ classroom }: { classroom: Classroom }) {
       {...attributes}
       {...listeners}
       className={cn(
-        "bg-white p-2 rounded-lg border text-xs cursor-grab hover:shadow-sm transition-all",
+        "bg-amber-50 border-amber-200 p-2 rounded-lg border text-xs cursor-grab hover:shadow-sm transition-all",
         isDragging && "cursor-grabbing"
       )}
     >

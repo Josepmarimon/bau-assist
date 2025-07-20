@@ -53,7 +53,7 @@ export function ClassroomGrid({ classrooms }: ClassroomGridProps) {
   return (
     <div className="space-y-6">
       {/* Filters */}
-      <div className="bg-card rounded-lg shadow-sm p-6">
+      <div className="bg-white border-gray-200 border rounded-lg shadow-sm p-6">
         <div className="grid gap-4 md:grid-cols-3">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -108,7 +108,7 @@ export function ClassroomGrid({ classrooms }: ClassroomGridProps) {
               href={`/directori-aules/${classroom.code}`}
               className="group"
             >
-              <Card className="h-full transition-all hover:shadow-lg hover:-translate-y-1 overflow-hidden">
+              <Card className="h-full transition-all hover:shadow-lg hover:-translate-y-1 overflow-hidden bg-white border-gray-200">
                 {/* Image or placeholder */}
                 <div className="aspect-video relative bg-secondary/10">
                   {firstPhoto ? (

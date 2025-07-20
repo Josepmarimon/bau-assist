@@ -286,7 +286,7 @@ export default function ClassroomsPage() {
       </div>
 
       {/* Compact Summary */}
-      <Card>
+      <Card className="bg-white border-gray-200">
         <CardHeader className="pb-3">
           <CardTitle className="text-lg">Resum d'Aules</CardTitle>
         </CardHeader>
@@ -346,7 +346,7 @@ export default function ClassroomsPage() {
       </Card>
 
       {/* Search and list */}
-      <Card>
+      <Card className="bg-white border-gray-200">
         <CardHeader>
           <div className="space-y-4">
             <div>
