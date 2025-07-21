@@ -26,6 +26,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { validateClassroomAssignment } from '@/lib/validation/classroom-assignment'
 
 interface SubjectWithoutSpace {
   id: string
@@ -228,6 +229,38 @@ export default function SubjectsWithoutSpacesPage() {
     setAssigningGroups(prev => new Set(prev).add(groupKey))
 
     try {
+      // Validate classroom assignment
+      const validation = await validateClassroomAssignment(
+        subject.id,
+        group.student_group_id,
+        classroomId
+      )
+
+      if (!validation.isValid) {
+        validation.errors.forEach(error => {
+          toast({
+            title: "Error d'assignació",
+            description: error,
+            variant: "destructive"
+          })
+        })
+        setAssigningGroups(prev => {
+          const newSet = new Set(prev)
+          newSet.delete(groupKey)
+          return newSet
+        })
+        return
+      }
+
+      // Show warnings if any
+      if (validation.warnings.length > 0) {
+        validation.warnings.forEach(warning => {
+          toast({
+            title: "Avís",
+            description: warning,
+          })
+        })
+      }
       // Create a schedule slot for this subject-group-classroom assignment
       console.log('Inserting schedule slot with:', {
         subject_id: subject.id,

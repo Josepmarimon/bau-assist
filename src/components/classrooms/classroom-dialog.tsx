@@ -27,6 +27,7 @@ import { createClient } from '@/lib/supabase/client'
 import { toast } from 'sonner'
 import { Plus, X } from 'lucide-react'
 import { EquipmentSelector } from '@/components/equipment/equipment-selector'
+import { SoftwareSelector } from '@/components/software/software-selector'
 import { Switch } from '@/components/ui/switch'
 
 interface Photo {
@@ -163,9 +164,10 @@ export function ClassroomDialog({
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <Tabs defaultValue="info" className="w-full">
-            <TabsList className="grid w-full grid-cols-3">
+            <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger value="info">Informació</TabsTrigger>
               <TabsTrigger value="equipment">Equipament</TabsTrigger>
+              <TabsTrigger value="software">Software 🔧</TabsTrigger>
               <TabsTrigger value="photos">Fotos</TabsTrigger>
             </TabsList>
             
@@ -281,6 +283,13 @@ export function ClassroomDialog({
               <EquipmentSelector 
                 classroomId={classroom?.id || ''} 
                 onEquipmentChange={handleRefresh}
+              />
+            </TabsContent>
+            
+            <TabsContent value="software" className="mt-3 h-[450px] overflow-y-auto">
+              <SoftwareSelector 
+                classroomId={classroom?.id || ''} 
+                onSoftwareChange={handleRefresh}
               />
             </TabsContent>
             

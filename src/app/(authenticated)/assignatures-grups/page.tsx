@@ -53,6 +53,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
+import { SubjectGroupProfilesList } from '@/components/subject-group-profiles/subject-group-profiles-list'
 
 interface Subject {
   id: string
@@ -935,8 +936,9 @@ export default function AssignaturesGrupsPage() {
                 {isExpanded && (
                   <CardContent>
                     <Tabs defaultValue="groups" className="w-full">
-                      <TabsList className="grid w-full grid-cols-3">
+                      <TabsList className="grid w-full grid-cols-4">
                         <TabsTrigger value="groups">Grups</TabsTrigger>
+                        <TabsTrigger value="profiles">Perfils</TabsTrigger>
                         <TabsTrigger value="details">Detalls</TabsTrigger>
                         <TabsTrigger value="software">Software</TabsTrigger>
                       </TabsList>
@@ -1159,6 +1161,11 @@ export default function AssignaturesGrupsPage() {
                             </div>
                           )}
                         </div>
+                      </TabsContent>
+
+                      {/* Group Profiles Tab */}
+                      <TabsContent value="profiles" className="mt-4">
+                        <SubjectGroupProfilesList subjectId={subject.id} />
                       </TabsContent>
                     </Tabs>
                   </CardContent>

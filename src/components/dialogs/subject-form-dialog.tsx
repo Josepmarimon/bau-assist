@@ -31,6 +31,13 @@ interface Software {
   license_type: string
 }
 
+interface EquipmentType {
+  id: string
+  name: string
+  category: string
+  description?: string
+}
+
 interface SubjectFormDialogProps {
   open: boolean
   onOpenChange: (open: boolean) => void
@@ -67,6 +74,12 @@ export function SubjectFormDialog({ open, onOpenChange, onSuccess, subject, grau
   const [selectedSoftware, setSelectedSoftware] = useState<string[]>([])
   const [softwareSearchOpen, setSoftwareSearchOpen] = useState(false)
   const [softwareSearchValue, setSoftwareSearchValue] = useState("")
+  
+  // Equipment state
+  const [availableEquipment, setAvailableEquipment] = useState<EquipmentType[]>([])
+  const [selectedEquipment, setSelectedEquipment] = useState<{ equipment_type_id: string; quantity_required: number }[]>([])
+  const [equipmentSearchOpen, setEquipmentSearchOpen] = useState(false)
+  const [equipmentSearchValue, setEquipmentSearchValue] = useState("")
 
   useEffect(() => {
     if (subject) {
@@ -81,6 +94,7 @@ export function SubjectFormDialog({ open, onOpenChange, onSuccess, subject, grau
         degree: subject.degree || ""
       })
       loadSubjectSoftware(subject.id)
+      loadSubjectEquipment(subject.id)
     } else {
       setFormData({
         code: "",
@@ -93,12 +107,14 @@ export function SubjectFormDialog({ open, onOpenChange, onSuccess, subject, grau
         degree: ""
       })
       setSelectedSoftware([])
+      setSelectedEquipment([])
     }
   }, [subject])
 
   useEffect(() => {
     if (open) {
       loadAvailableSoftware()
+      loadAvailableEquipment()
     }
   }, [open])
 
@@ -130,6 +146,39 @@ export function SubjectFormDialog({ open, onOpenChange, onSuccess, subject, grau
       setSelectedSoftware(data?.map(item => item.software_id) || [])
     } catch (error) {
       console.error('Error loading subject software:', error)
+    }
+  }
+
+  const loadAvailableEquipment = async () => {
+    const supabase = createClient()
+    try {
+      const { data, error } = await supabase
+        .from('equipment_types')
+        .select('id, name, category, description')
+        .eq('is_active', true)
+        .order('category')
+        .order('name')
+
+      if (error) throw error
+      setAvailableEquipment(data || [])
+    } catch (error) {
+      console.error('Error loading equipment:', error)
+      toast.error('Error al carregar l\'equipament disponible')
+    }
+  }
+
+  const loadSubjectEquipment = async (subjectId: string) => {
+    const supabase = createClient()
+    try {
+      const { data, error } = await supabase
+        .from('subject_equipment')
+        .select('equipment_type_id, quantity_required')
+        .eq('subject_id', subjectId)
+
+      if (error) throw error
+      setSelectedEquipment(data || [])
+    } catch (error) {
+      console.error('Error loading subject equipment:', error)
     }
   }
 
@@ -196,6 +245,28 @@ export function SubjectFormDialog({ open, onOpenChange, onSuccess, subject, grau
 
           if (softwareError) throw softwareError
         }
+
+        // First, delete existing equipment requirements
+        await supabase
+          .from('subject_equipment')
+          .delete()
+          .eq('subject_id', subjectId)
+
+        // Then, insert new equipment requirements
+        if (selectedEquipment.length > 0) {
+          const equipmentRequirements = selectedEquipment.map(eq => ({
+            subject_id: subjectId,
+            equipment_type_id: eq.equipment_type_id,
+            quantity_required: eq.quantity_required,
+            is_required: true
+          }))
+
+          const { error: equipmentError } = await supabase
+            .from('subject_equipment')
+            .insert(equipmentRequirements)
+
+          if (equipmentError) throw equipmentError
+        }
       }
 
       toast.success(subject ? "Assignatura actualitzada correctament" : "Assignatura creada correctament")
@@ -210,7 +281,7 @@ export function SubjectFormDialog({ open, onOpenChange, onSuccess, subject, grau
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[600px] max-h-[80vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>{subject ? "Editar Assignatura" : "Nova Assignatura"}</DialogTitle>
@@ -381,6 +452,89 @@ export function SubjectFormDialog({ open, onOpenChange, onSuccess, subject, grau
                                 <span>{software.name}</span>
                                 <span className="text-xs text-muted-foreground">
                                   {software.category} • {software.license_type}
+                                </span>
+                              </div>
+                            </CommandItem>
+                          ))}
+                      </CommandGroup>
+                    </Command>
+                  </PopoverContent>
+                </Popover>
+              </div>
+            </div>
+            
+            {/* Equipment Requirements Section */}
+            <div className="grid grid-cols-4 items-start gap-4">
+              <Label className="text-right mt-2">
+                Equipament necessari
+              </Label>
+              <div className="col-span-3 space-y-2">
+                {/* Selected Equipment */}
+                <div className="flex flex-wrap gap-2">
+                  {selectedEquipment.map((equipment) => {
+                    const equipmentType = availableEquipment.find(e => e.id === equipment.equipment_type_id)
+                    if (!equipmentType) return null
+                    return (
+                      <Badge key={equipment.equipment_type_id} variant="secondary" className="flex items-center gap-1">
+                        <span>{equipmentType.name}</span>
+                        {equipment.quantity_required > 1 && (
+                          <span className="text-xs opacity-70 ml-1">x{equipment.quantity_required}</span>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => setSelectedEquipment(prev => prev.filter(e => e.equipment_type_id !== equipment.equipment_type_id))}
+                          className="ml-1 hover:text-destructive"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </Badge>
+                    )
+                  })}
+                </div>
+                
+                {/* Equipment Search */}
+                <Popover open={equipmentSearchOpen} onOpenChange={setEquipmentSearchOpen}>
+                  <PopoverTrigger asChild>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      role="combobox"
+                      aria-expanded={equipmentSearchOpen}
+                      className="w-full justify-start"
+                    >
+                      <Plus className="mr-2 h-4 w-4" />
+                      Afegir equipament
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-[400px] p-0">
+                    <Command>
+                      <CommandInput 
+                        placeholder="Buscar equipament..." 
+                        value={equipmentSearchValue}
+                        onValueChange={setEquipmentSearchValue}
+                      />
+                      <CommandEmpty>No s'ha trobat cap equipament.</CommandEmpty>
+                      <CommandGroup className="max-h-[300px] overflow-y-auto">
+                        {availableEquipment
+                          .filter(equipment => !selectedEquipment.some(e => e.equipment_type_id === equipment.id))
+                          .map((equipment) => (
+                            <CommandItem
+                              key={equipment.id}
+                              value={equipment.name}
+                              onSelect={() => {
+                                setSelectedEquipment(prev => [...prev, { 
+                                  equipment_type_id: equipment.id, 
+                                  quantity_required: 1 
+                                }])
+                                setEquipmentSearchOpen(false)
+                                setEquipmentSearchValue("")
+                              }}
+                            >
+                              <div className="flex flex-col">
+                                <span>{equipment.name}</span>
+                                <span className="text-xs text-muted-foreground">
+                                  {equipment.category}
+                                  {equipment.description && ` • ${equipment.description}`}
                                 </span>
                               </div>
                             </CommandItem>

@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input'
 import { createClient } from '@/lib/supabase/client'
 import { SoftwareDialog } from '@/components/software/software-dialog'
 import { LicenseAlerts } from '@/components/software/license-alerts'
+import { ClassroomAssignmentDialog } from '@/components/software/classroom-assignment-dialog'
 import {
   Tooltip,
   TooltipContent,
@@ -30,7 +31,8 @@ import {
   CheckCircle,
   Edit,
   Trash2,
-  HardDrive
+  HardDrive,
+  Monitor
 } from 'lucide-react'
 import {
   Table,
@@ -78,6 +80,7 @@ interface Software {
   classrooms?: Classroom[]
   classroom_count?: number
   subjects?: Subject[]
+  total_licenses_assigned?: number
 }
 
 const getCategoryName = (category: string): string => {
@@ -115,6 +118,8 @@ export default function SoftwarePage() {
   const [selectedLicenseType, setSelectedLicenseType] = useState<string>('all')
   const [dialogOpen, setDialogOpen] = useState(false)
   const [selectedSoftware, setSelectedSoftware] = useState<Software | undefined>(undefined)
+  const [classroomDialogOpen, setClassroomDialogOpen] = useState(false)
+  const [selectedSoftwareForClassroom, setSelectedSoftwareForClassroom] = useState<Software | undefined>(undefined)
   const supabase = createClient()
 
   useEffect(() => {
@@ -144,7 +149,7 @@ export default function SoftwarePage() {
         .from('subject_software')
         .select(`
           software_id,
-          subjects:subject_id (
+          subject:subjects!subject_id (
             id,
             code,
             name,
@@ -159,8 +164,8 @@ export default function SoftwarePage() {
           if (!acc[item.software_id]) {
             acc[item.software_id] = []
           }
-          if (item.subjects) {
-            acc[item.software_id].push(item.subjects)
+          if (item.subject) {
+            acc[item.software_id].push(item.subject)
           }
           return acc
         }, {} as Record<string, Subject[]>)
@@ -171,31 +176,45 @@ export default function SoftwarePage() {
         })
       }
       
-      // Try to load classrooms data if view exists
-      try {
-        const { data: viewData, error: viewError } = await supabase
-          .from('software_with_classrooms')
-          .select('*')
-          .order('name', { ascending: true })
-        
-        if (!viewError && viewData) {
-          // Merge classroom data with existing data
-          const mergedData = data?.map(sw => {
-            const viewItem = viewData.find(v => v.id === sw.id)
-            return {
-              ...sw,
-              classrooms: viewItem?.classrooms || [],
-              classroom_count: viewItem?.classroom_count || 0
+      // Load classroom assignments and calculate total licenses
+      const { data: classroomSoftwareData, error: classroomError } = await supabase
+        .from('classroom_software')
+        .select(`
+          software_id,
+          licenses,
+          classrooms:classroom_id (
+            id,
+            name,
+            code
+          )
+        `)
+      
+      if (!classroomError && classroomSoftwareData) {
+        // Group by software_id and calculate total licenses
+        const classroomsBySoftware = classroomSoftwareData.reduce((acc, item) => {
+          if (!acc[item.software_id]) {
+            acc[item.software_id] = {
+              classrooms: [],
+              totalLicenses: 0
             }
-          }) || []
-          setSoftware(mergedData)
-        } else {
-          setSoftware(data || [])
-        }
-      } catch {
-        // View doesn't exist, use basic data
-        setSoftware(data || [])
+          }
+          if (item.classrooms) {
+            acc[item.software_id].classrooms.push(item.classrooms)
+            acc[item.software_id].totalLicenses += item.licenses || 1
+          }
+          return acc
+        }, {} as Record<string, { classrooms: Classroom[], totalLicenses: number }>)
+        
+        // Add classroom data and total licenses to software
+        data?.forEach(sw => {
+          const classroomData = classroomsBySoftware[sw.id] || { classrooms: [], totalLicenses: 0 }
+          sw.classrooms = classroomData.classrooms
+          sw.classroom_count = classroomData.classrooms.length
+          sw.total_licenses_assigned = classroomData.totalLicenses
+        })
       }
+      
+      setSoftware(data || [])
     } finally {
       setLoading(false)
     }
@@ -434,12 +453,19 @@ export default function SoftwarePage() {
                         </TableCell>
                         <TableCell>
                           {sw.license_quantity ? (
-                            <div className="flex items-center gap-1">
-                              <span className="font-medium">{sw.license_quantity}</span>
-                              {sw.license_type !== 'free' && (
-                                <span className="text-sm text-muted-foreground">
-                                  {sw.license_quantity === 1 ? 'llicència' : 'llicències'}
-                                </span>
+                            <div className="flex flex-col gap-1">
+                              <div className="flex items-center gap-1">
+                                <span className="font-medium">{sw.license_quantity}</span>
+                                {sw.license_type !== 'free' && (
+                                  <span className="text-sm text-muted-foreground">
+                                    {sw.license_quantity === 1 ? 'llicència' : 'llicències'}
+                                  </span>
+                                )}
+                              </div>
+                              {sw.total_licenses_assigned !== undefined && sw.total_licenses_assigned > 0 && (
+                                <div className="text-xs text-muted-foreground">
+                                  ({sw.total_licenses_assigned} assignades)
+                                </div>
                               )}
                             </div>
                           ) : (
@@ -509,6 +535,25 @@ export default function SoftwarePage() {
                       </TableCell>
                       <TableCell className="text-right">
                         <div className="flex items-center justify-end gap-2">
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Button 
+                                  variant="ghost" 
+                                  size="icon"
+                                  onClick={() => {
+                                    setSelectedSoftwareForClassroom(sw)
+                                    setClassroomDialogOpen(true)
+                                  }}
+                                >
+                                  <Monitor className="h-4 w-4" />
+                                </Button>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>Assignar a aules</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
                           <Button 
                             variant="ghost" 
                             size="icon"
@@ -541,6 +586,15 @@ export default function SoftwarePage() {
         onOpenChange={setDialogOpen}
         onSuccess={loadSoftware}
       />
+
+      {selectedSoftwareForClassroom && (
+        <ClassroomAssignmentDialog
+          open={classroomDialogOpen}
+          onOpenChange={setClassroomDialogOpen}
+          onSuccess={loadSoftware}
+          software={selectedSoftwareForClassroom}
+        />
+      )}
     </div>
   )
 }

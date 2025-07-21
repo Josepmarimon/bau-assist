@@ -244,6 +244,7 @@ export type Database = {
           type: 'OBLIGATORIA' | 'OPTATIVA' | 'TFG'
           department: string | null
           description: string | null
+          itinerari: string | null
           created_at: string
           updated_at: string
         }
@@ -256,6 +257,7 @@ export type Database = {
           type: 'OBLIGATORIA' | 'OPTATIVA' | 'TFG'
           department?: string | null
           description?: string | null
+          itinerari?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -268,6 +270,7 @@ export type Database = {
           type?: 'OBLIGATORIA' | 'OPTATIVA' | 'TFG'
           department?: string | null
           description?: string | null
+          itinerari?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -493,6 +496,75 @@ export type Database = {
         Update: {
           schedule_slot_id?: string
           classroom_id?: string
+        }
+      }
+      subject_group_profiles: {
+        Row: {
+          id: string
+          subject_id: string
+          name: string
+          description: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          subject_id: string
+          name: string
+          description?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          subject_id?: string
+          name?: string
+          description?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      subject_group_profile_members: {
+        Row: {
+          id: string
+          profile_id: string
+          student_group_id: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          profile_id: string
+          student_group_id: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          profile_id?: string
+          student_group_id?: string
+          created_at?: string
+        }
+      }
+      subject_group_profile_software: {
+        Row: {
+          id: string
+          profile_id: string
+          software_id: string
+          is_required: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          profile_id: string
+          software_id: string
+          is_required?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          profile_id?: string
+          software_id?: string
+          is_required?: boolean
+          created_at?: string
         }
       }
     }

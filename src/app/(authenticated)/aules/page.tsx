@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -23,7 +24,8 @@ import {
   Eye,
   Wrench,
   Lightbulb,
-  BookOpen
+  BookOpen,
+  Printer
 } from 'lucide-react'
 import { getAllClassroomsOccupancyData } from './actions'
 import {
@@ -279,10 +281,18 @@ export default function ClassroomsPage() {
             Gestiona les aules i espais del centre
           </p>
         </div>
-        <Button onClick={handleCreate}>
-          <Plus className="h-4 w-4 mr-2" />
-          Nova Aula
-        </Button>
+        <div className="flex gap-2">
+          <Link href="/aules/software-print">
+            <Button variant="outline">
+              <Printer className="h-4 w-4 mr-2" />
+              Imprimir Software
+            </Button>
+          </Link>
+          <Button onClick={handleCreate}>
+            <Plus className="h-4 w-4 mr-2" />
+            Nova Aula
+          </Button>
+        </div>
       </div>
 
       {/* Compact Summary */}
