@@ -9,6 +9,7 @@ import { createClient } from '@/lib/supabase/client'
 import { SoftwareDialog } from '@/components/software/software-dialog'
 import { LicenseAlerts } from '@/components/software/license-alerts'
 import { ClassroomAssignmentDialog } from '@/components/software/classroom-assignment-dialog'
+import Link from 'next/link'
 import {
   Tooltip,
   TooltipContent,
@@ -32,7 +33,8 @@ import {
   Edit,
   Trash2,
   HardDrive,
-  Monitor
+  Monitor,
+  Printer
 } from 'lucide-react'
 import {
   Table,
@@ -249,13 +251,21 @@ export default function SoftwarePage() {
             Gestiona les llicències de programari del centre
           </p>
         </div>
-        <Button onClick={() => {
-          setSelectedSoftware(undefined)
-          setDialogOpen(true)
-        }}>
-          <Plus className="h-4 w-4 mr-2" />
-          Afegir Programari
-        </Button>
+        <div className="flex gap-2">
+          <Link href="/programari/software-print">
+            <Button variant="outline">
+              <Printer className="h-4 w-4 mr-2" />
+              Imprimir Software
+            </Button>
+          </Link>
+          <Button onClick={() => {
+            setSelectedSoftware(undefined)
+            setDialogOpen(true)
+          }}>
+            <Plus className="h-4 w-4 mr-2" />
+            Afegir Programari
+          </Button>
+        </div>
       </div>
 
       {/* Stats */}

@@ -91,7 +91,8 @@ interface Assignment {
   id: string
   subject: Subject
   student_group: StudentGroup
-  classroom: Classroom | null
+  classroom: Classroom | null  // Deprecated, kept for compatibility
+  classrooms?: Classroom[]      // New: array of classrooms
   time_slot: TimeSlot
   teacher: Teacher | null
   day_of_week: number
@@ -226,20 +227,23 @@ export default function AssignacionsAulesPage() {
         const degreeMap = new Map<string, string>()
         
         groupsData.forEach(group => {
-          const match = group.name.match(/^(G[A-Z]+)/)
+          // Match both uppercase patterns (GR, GB) and mixed case patterns (Gr)
+          const match = group.name.match(/^(G[A-Z]+|Gr)/i)
           if (match) {
             const prefix = match[1]
-            if (!degreeMap.has(prefix)) {
+            // Normalize to uppercase for consistency
+            const normalizedPrefix = prefix.toUpperCase()
+            if (!degreeMap.has(normalizedPrefix)) {
               // Map prefixes to full names
-              switch(prefix) {
+              switch(normalizedPrefix) {
                 case 'GR':
-                  degreeMap.set(prefix, 'Grau en Disseny')
+                  degreeMap.set(normalizedPrefix, 'Grau en Disseny')
                   break
                 case 'GB':
-                  degreeMap.set(prefix, 'Grau en Belles Arts')
+                  degreeMap.set(normalizedPrefix, 'Grau en Belles Arts')
                   break
                 default:
-                  degreeMap.set(prefix, prefix)
+                  degreeMap.set(normalizedPrefix, normalizedPrefix)
               }
             }
           }
@@ -255,12 +259,25 @@ export default function AssignacionsAulesPage() {
 
   const loadGroups = async () => {
     try {
-      const { data: groupsData, error } = await supabase
+      console.log('Loading groups for degree:', selectedDegree, 'year:', selectedYear)
+      
+      // Build the query based on the selected year
+      let query = supabase
         .from('student_groups')
         .select('*')
         .eq('year', parseInt(selectedYear))
-        .ilike('name', `${selectedDegree}%`)
         .order('name')
+
+      // For year 2, we need to handle both regular groups (GR2_M, etc.) and itinerary groups (Gr2-Im, Gr2-Gm)
+      if (selectedYear === '2' && selectedDegree === 'GR') {
+        // For Design degree year 2, include both GR2 groups and Gr2- itinerary groups
+        query = query.or(`name.ilike.GR2%,name.ilike.Gr2-%`)
+      } else {
+        // For other years or degrees, just use the standard pattern
+        query = query.ilike('name', `${selectedDegree}%`)
+      }
+
+      const { data: groupsData, error } = await query
 
       if (error) {
         console.error('Error loading groups:', error)
@@ -268,6 +285,7 @@ export default function AssignacionsAulesPage() {
       }
 
       if (groupsData) {
+        console.log('Groups loaded:', groupsData.map(g => g.name))
         setStudentGroups(groupsData)
       }
     } catch (error) {
@@ -306,13 +324,14 @@ export default function AssignacionsAulesPage() {
 
       console.log('Loading subjects for group:', selectedGroupData.name)
       
-      // Load subjects that have subject_groups matching this student group's code
+      // Load subjects that have subject_groups matching this student group's name
+      // Both regular groups (GR2-M1) and itinerary groups (GR2-Im) use the full name as group_code
       const { data: subjectGroupsData, error } = await supabase
         .from('subject_groups')
         .select(`
           subject:subjects(*)
         `)
-        .eq('group_code', selectedGroupData.name)  // Use name since student_groups doesn't have code field yet
+        .eq('group_code', selectedGroupData.name)
 
       console.log('Subject groups data:', subjectGroupsData, 'Error:', error)
 
@@ -351,8 +370,6 @@ export default function AssignacionsAulesPage() {
     try {
       
       // Load existing assignments for this group
-      // IMPORTANT: Use assignments table directly, NOT assignments_with_teachers view
-      // The view causes RLS recursion errors
       const { data: assignmentsData, error } = await supabase
         .from('assignments')
         .select(`
@@ -374,32 +391,53 @@ export default function AssignacionsAulesPage() {
 
       if (error) {
         console.error('Error loading assignments:', error)
-        console.error('Error details:', JSON.stringify(error, null, 2))
         return
       }
 
       if (assignmentsData) {
-        console.log('Raw assignments data:', assignmentsData)
-        console.log('Number of assignments loaded:', assignmentsData.length)
-        // Log a sample assignment to see its structure
-        if (assignmentsData.length > 0) {
-          console.log('Sample assignment structure:', assignmentsData[0])
+        // Load classrooms for each assignment from the new junction table
+        const assignmentIds = assignmentsData.map(a => a.id)
+        
+        const { data: assignmentClassrooms, error: classroomsError } = await supabase
+          .from('assignment_classrooms')
+          .select(`
+            assignment_id,
+            classrooms (*)
+          `)
+          .in('assignment_id', assignmentIds)
+        
+        if (classroomsError) {
+          console.error('Error loading assignment classrooms:', classroomsError)
         }
         
-        // Transform data - the query returns related objects directly
+        // Group classrooms by assignment_id
+        const classroomsByAssignment: Record<string, Classroom[]> = {}
+        if (assignmentClassrooms) {
+          assignmentClassrooms.forEach(ac => {
+            if (!classroomsByAssignment[ac.assignment_id]) {
+              classroomsByAssignment[ac.assignment_id] = []
+            }
+            if (ac.classrooms) {
+              classroomsByAssignment[ac.assignment_id].push(ac.classrooms as Classroom)
+            }
+          })
+        }
+        
+        // Transform data
         const transformedAssignments = assignmentsData.map(a => {
           return {
             id: a.id,
             subject: a.subjects,
             student_group: a.student_groups,
-            classroom: a.classrooms,
+            classroom: a.classrooms, // Keep for backwards compatibility
+            classrooms: classroomsByAssignment[a.id] || [], // New: array of classrooms
             time_slot: a.time_slots,
             teacher: a.teachers,
             day_of_week: a.time_slots?.day_of_week
           }
         })
         
-        console.log('Transformed assignments:', transformedAssignments)
+        console.log('Assignments with multiple classrooms:', transformedAssignments)
         setAssignments(transformedAssignments as Assignment[])
       }
     } catch (error) {
@@ -632,17 +670,36 @@ export default function AssignacionsAulesPage() {
   }
 
   const updateAssignmentClassroom = async (assignmentId: string, classroomId: string) => {
-    const { data, error } = await supabase
-      .from('assignments')
-      .update({ classroom_id: classroomId })
-      .eq('id', assignmentId)
-      .select()
-    
-    if (error) {
-      console.error('Error updating classroom:', error)
-    } else {
-      console.log('Classroom updated successfully:', data)
-      await loadAssignments()
+    try {
+      // Check if this classroom is already assigned
+      const { data: existing, error: checkError } = await supabase
+        .from('assignment_classrooms')
+        .select('id')
+        .eq('assignment_id', assignmentId)
+        .eq('classroom_id', classroomId)
+        .single()
+      
+      if (existing) {
+        console.log('Classroom already assigned to this assignment')
+        return
+      }
+      
+      // Add the new classroom to the assignment
+      const { error } = await supabase
+        .from('assignment_classrooms')
+        .insert({
+          assignment_id: assignmentId,
+          classroom_id: classroomId
+        })
+      
+      if (error) {
+        console.error('Error adding classroom:', error)
+      } else {
+        console.log('Classroom added successfully')
+        await loadAssignments()
+      }
+    } catch (error) {
+      console.error('Error in updateAssignmentClassroom:', error)
     }
   }
 
@@ -836,10 +893,23 @@ export default function AssignacionsAulesPage() {
             <Card>
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
-                    Horari Setmanal
-                  </CardTitle>
+                  <div>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      Horari Setmanal
+                    </CardTitle>
+                    {(() => {
+                      const assignmentsWithoutClassroom = assignments.filter(a => 
+                        !a.classroom && (!a.classrooms || a.classrooms.length === 0)
+                      ).length
+                      return assignmentsWithoutClassroom > 0 ? (
+                        <div className="flex items-center gap-1 mt-1 text-xs text-red-600">
+                          <Building2 className="h-3 w-3" />
+                          <span className="font-medium">{assignmentsWithoutClassroom} assignacions sense aula</span>
+                        </div>
+                      ) : null
+                    })()}
+                  </div>
                   {selectedGroup && (
                     <div className="text-sm font-medium flex items-center gap-2 text-muted-foreground">
                       <Clock className="h-3 w-3" />
@@ -1311,13 +1381,14 @@ function DroppableAssignment({
     }
   }
 
-  const handleRemoveClassroom = async (e: React.MouseEvent) => {
+  const handleRemoveClassroom = async (e: React.MouseEvent, classroomId: string) => {
     e.stopPropagation()
     
     const { error } = await supabase
-      .from('assignments')
-      .update({ classroom_id: null })
-      .eq('id', assignment.id)
+      .from('assignment_classrooms')
+      .delete()
+      .eq('assignment_id', assignment.id)
+      .eq('classroom_id', classroomId)
     
     if (error) {
       console.error('Error removing classroom:', error)
@@ -1333,7 +1404,8 @@ function DroppableAssignment({
       className={cn(
         "rounded-md p-2 text-white flex flex-col gap-1 transition-all shadow-sm relative group overflow-hidden",
         getSubjectColor(assignment.subject.type),
-        isOver && "ring-2 ring-offset-2 ring-gray-900"
+        isOver && "ring-2 ring-offset-2 ring-gray-900",
+        (!assignment.classroom && (!assignment.classrooms || assignment.classrooms.length === 0)) && "ring-2 ring-red-500 ring-offset-1"
       )}
     >
       <button
@@ -1358,16 +1430,38 @@ function DroppableAssignment({
           </span>
         </div>
         
-        {assignment.classroom && (
+        {/* Show multiple classrooms or warning if none */}
+        {assignment.classrooms && assignment.classrooms.length > 0 ? (
+          <div className="space-y-1">
+            {assignment.classrooms.map((classroom) => (
+              <div key={classroom.id} className="flex items-center gap-1 text-[10px] bg-white/20 rounded px-1 py-0.5 relative group/classroom">
+                <Building2 className="h-3 w-3 flex-shrink-0" />
+                <span>{classroom.code}</span>
+                <button
+                  onClick={(e) => handleRemoveClassroom(e, classroom.id)}
+                  className="ml-auto opacity-0 group-hover/classroom:opacity-100 transition-opacity hover:bg-white/20 rounded p-0.5"
+                >
+                  <X className="h-2.5 w-2.5" />
+                </button>
+              </div>
+            ))}
+          </div>
+        ) : assignment.classroom ? (
+          // Fallback for old single classroom (backwards compatibility)
           <div className="flex items-center gap-1 text-[10px] bg-white/20 rounded px-1 py-0.5 relative group/classroom">
             <Building2 className="h-3 w-3 flex-shrink-0" />
             <span>{assignment.classroom.code}</span>
             <button
-              onClick={handleRemoveClassroom}
+              onClick={(e) => handleRemoveClassroom(e, assignment.classroom!.id)}
               className="ml-auto opacity-0 group-hover/classroom:opacity-100 transition-opacity hover:bg-white/20 rounded p-0.5"
             >
               <X className="h-2.5 w-2.5" />
             </button>
+          </div>
+        ) : (
+          <div className="flex items-center gap-1 text-[10px] bg-red-900/40 rounded px-1 py-0.5 animate-pulse">
+            <Building2 className="h-3 w-3 flex-shrink-0" />
+            <span className="font-semibold">Sense aula!</span>
           </div>
         )}
       </div>

@@ -281,18 +281,10 @@ export default function ClassroomsPage() {
             Gestiona les aules i espais del centre
           </p>
         </div>
-        <div className="flex gap-2">
-          <Link href="/aules/software-print">
-            <Button variant="outline">
-              <Printer className="h-4 w-4 mr-2" />
-              Imprimir Software
-            </Button>
-          </Link>
-          <Button onClick={handleCreate}>
-            <Plus className="h-4 w-4 mr-2" />
-            Nova Aula
-          </Button>
-        </div>
+        <Button onClick={handleCreate}>
+          <Plus className="h-4 w-4 mr-2" />
+          Nova Aula
+        </Button>
       </div>
 
       {/* Compact Summary */}

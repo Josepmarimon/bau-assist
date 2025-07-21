@@ -50,9 +50,7 @@ const navigation: NavItem[] = [
     icon: BookOpen,
     subItems: [
       { name: 'Assignatures i Grups', href: '/assignatures-grups', icon: BookOpen },
-      { name: 'Professors', href: '/professors', icon: GraduationCap },
-      { name: 'Docència', href: '/assignacions-docencia', icon: CalendarCheck },
-      { name: 'Assignatures Sense Espais', href: '/assignatures-sense-espais', icon: AlertCircle }
+      { name: 'Professors', href: '/professors', icon: GraduationCap }
     ]
   },
   { 
@@ -60,8 +58,7 @@ const navigation: NavItem[] = [
     icon: Building2,
     subItems: [
       { name: 'Aules', href: '/aules', icon: Building2 },
-      { name: 'Assignar Aules', href: '/assignacions-aules', icon: Building2 },
-      { name: 'Directori Públic', href: '/directori-aules', icon: ExternalLink, isExternal: true }
+      { name: 'Assignar Aules', href: '/assignacions-aules', icon: Building2 }
     ]
   },
   { 
@@ -71,7 +68,8 @@ const navigation: NavItem[] = [
       { name: 'Software', href: '/programari', icon: Cpu },
       { name: 'Equipament', href: '/equipament', icon: Package }
     ]
-  }
+  },
+  { name: 'Directori Públic', href: '/directori-aules', icon: ExternalLink, isExternal: true }
 ]
 
 interface ModernSidebarProps {
