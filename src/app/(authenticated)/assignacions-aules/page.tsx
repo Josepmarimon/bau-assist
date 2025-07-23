@@ -417,7 +417,7 @@ export default function AssignacionsAulesPage() {
             if (!classroomsByAssignment[ac.assignment_id]) {
               classroomsByAssignment[ac.assignment_id] = []
             }
-            if (ac.classrooms) {
+            if (ac.classrooms && !Array.isArray(ac.classrooms)) {
               classroomsByAssignment[ac.assignment_id].push(ac.classrooms as Classroom)
             }
           })
@@ -427,13 +427,13 @@ export default function AssignacionsAulesPage() {
         const transformedAssignments = assignmentsData.map(a => {
           return {
             id: a.id,
-            subject: a.subjects,
-            student_group: a.student_groups,
-            classroom: a.classrooms, // Keep for backwards compatibility
+            subject: !Array.isArray(a.subjects) ? a.subjects : a.subjects[0],
+            student_group: !Array.isArray(a.student_groups) ? a.student_groups : a.student_groups[0],
+            classroom: !Array.isArray(a.classrooms) ? a.classrooms : a.classrooms[0], // Keep for backwards compatibility
             classrooms: classroomsByAssignment[a.id] || [], // New: array of classrooms
-            time_slot: a.time_slots,
-            teacher: a.teachers,
-            day_of_week: a.time_slots?.day_of_week
+            time_slot: !Array.isArray(a.time_slots) ? a.time_slots : a.time_slots[0],
+            teacher: !Array.isArray(a.teachers) ? a.teachers : a.teachers[0],
+            day_of_week: a.time_slots && typeof a.time_slots === 'object' && !Array.isArray(a.time_slots) && 'day_of_week' in a.time_slots ? (a.time_slots as any).day_of_week : undefined
           }
         })
         

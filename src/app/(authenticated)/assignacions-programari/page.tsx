@@ -84,7 +84,7 @@ export default function SoftwareAssignmentsPage() {
       // Load subjects
       const { data: subjectsData, error: subjectsError } = await supabase
         .from('subjects')
-        .select('id, code, name, year, type, "ID Itinerari" as itinerari')
+        .select('id, code, name, year, type, credits, semester, ID_Itinerari')
         .order('year')
         .order('code')
 

@@ -106,12 +106,14 @@ async function fixComplexClassroomAssignments() {
       subjects(name),
       student_groups(name)
     `)
-    .is('id', 'not.in', `(select schedule_slot_id from schedule_slot_classrooms)`)
+    .not('id', 'in', '(select schedule_slot_id from schedule_slot_classrooms)')
     .limit(10)
 
   console.log(`\nFound ${unassignedSlots?.length || 0} unassigned slots:`)
-  unassignedSlots?.forEach(slot => {
-    console.log(`  - ${slot.subjects?.name} (${slot.student_groups?.name}) - Day ${slot.day_of_week}, ${slot.start_time}`)
+  unassignedSlots?.forEach((slot: any) => {
+    const subjectName = slot.subjects && 'name' in slot.subjects ? slot.subjects.name : 'Unknown'
+    const groupName = slot.student_groups && 'name' in slot.student_groups ? slot.student_groups.name : 'Unknown'
+    console.log(`  - ${subjectName} (${groupName}) - Day ${slot.day_of_week}, ${slot.start_time}`)
   })
 
   console.log('\n📊 SUMMARY')

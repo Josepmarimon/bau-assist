@@ -12,9 +12,31 @@ export type SubjectGroupProfileSoftware = Database['public']['Tables']['subject_
 export type SubjectGroupProfileSoftwareInsert = Database['public']['Tables']['subject_group_profile_software']['Insert']
 export type SubjectGroupProfileSoftwareUpdate = Database['public']['Tables']['subject_group_profile_software']['Update']
 
-export type SubjectGroupProfileEquipment = Database['public']['Tables']['subject_group_profile_equipment']['Row']
-export type SubjectGroupProfileEquipmentInsert = Database['public']['Tables']['subject_group_profile_equipment']['Insert']
-export type SubjectGroupProfileEquipmentUpdate = Database['public']['Tables']['subject_group_profile_equipment']['Update']
+// TODO: Add these types when subject_group_profile_equipment table is added to database
+export type SubjectGroupProfileEquipment = {
+  id: string
+  profile_id: string
+  equipment_type_id: string
+  quantity_required: number
+  is_required: boolean
+  created_at: string
+}
+export type SubjectGroupProfileEquipmentInsert = {
+  id?: string
+  profile_id: string
+  equipment_type_id: string
+  quantity_required: number
+  is_required: boolean
+  created_at?: string
+}
+export type SubjectGroupProfileEquipmentUpdate = {
+  id?: string
+  profile_id?: string
+  equipment_type_id?: string
+  quantity_required?: number
+  is_required?: boolean
+  created_at?: string
+}
 
 // Extended types with relations
 export type SubjectGroupProfileWithRelations = SubjectGroupProfile & {
@@ -23,10 +45,21 @@ export type SubjectGroupProfileWithRelations = SubjectGroupProfile & {
     subject_group?: Database['public']['Tables']['subject_groups']['Row']
   })[]
   software?: (SubjectGroupProfileSoftware & {
-    software?: Database['public']['Tables']['software']['Row']
+    software?: {
+      id: string
+      name: string
+      version?: string | null
+      category?: string | null
+      license_type?: string | null
+    }
   })[]
   equipment?: (SubjectGroupProfileEquipment & {
-    equipment_type?: Database['public']['Tables']['equipment_types']['Row']
+    equipment_type?: {
+      id: string
+      name: string
+      description?: string | null
+      category?: string | null
+    }
   })[]
 }
 

@@ -81,7 +81,8 @@ async function checkForConflicts(
     .lte('start_time', endTime)
   
   if (existingSlots && existingSlots.length > 0) {
-    conflicts.push(`Grup d'estudiants ja té classe: ${existingSlots[0].subject?.name} (${existingSlots[0].start_time}-${existingSlots[0].end_time})`)
+    const subjectName = existingSlots[0].subject && 'name' in existingSlots[0].subject ? existingSlots[0].subject.name : 'Unknown'
+    conflicts.push(`Grup d'estudiants ja té classe: ${subjectName} (${existingSlots[0].start_time}-${existingSlots[0].end_time})`)
   }
   
   // Comprovar conflictes de professors
@@ -112,7 +113,8 @@ async function checkForConflicts(
         .single()
       
       const s = conflictingSlot.schedule_slot as any
-      conflicts.push(`Professor ${teacher?.first_name} ${teacher?.last_name} ja té classe: ${s.subject?.name}`)
+      const subjectName = s.subject && 'name' in s.subject ? s.subject.name : 'Unknown'
+      conflicts.push(`Professor ${teacher?.first_name} ${teacher?.last_name} ja té classe: ${subjectName}`)
     }
   }
   

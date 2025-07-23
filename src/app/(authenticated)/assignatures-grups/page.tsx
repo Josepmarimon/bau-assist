@@ -382,7 +382,7 @@ export default function AssignaturesGrupsPage() {
 
       if (error) throw error
       
-      const assignments = (data || []).map(item => ({
+      const assignments = (data || []).map((item: any) => ({
         teacher_id: item.teacher_id,
         teacher: {
           id: item.teacher_id,
@@ -1302,7 +1302,11 @@ export default function AssignaturesGrupsPage() {
             setShowSubjectForm(false)
             setEditingSubject(null)
           }}
-          subject={editingSubject}
+          subject={editingSubject ? {
+            ...editingSubject,
+            department: editingSubject.department || undefined,
+            degree: editingSubject.degree || undefined
+          } : undefined}
           graus={graus}
         />
       )}
@@ -1315,8 +1319,8 @@ export default function AssignaturesGrupsPage() {
           subjectGroup={{
             id: selectedGroupForClassroom.id,
             subject_id: selectedGroupForClassroom.subject_id,
-            student_group_id: selectedGroupForClassroom.student_group_id || '',
-            subject: selectedGroupForClassroom.subject
+            subject: (selectedGroupForClassroom as any).subject,
+            group_code: selectedGroupForClassroom.group_code
           }}
           semesterId={selectedSemesterId}
           onSuccess={() => {

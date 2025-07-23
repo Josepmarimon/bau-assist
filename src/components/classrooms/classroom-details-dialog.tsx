@@ -69,8 +69,8 @@ export function ClassroomDetailsDialog({
 
   const getIconComponent = (iconName?: string) => {
     if (!iconName) return null
-    const Icon = Icons[iconName as keyof typeof Icons]
-    return Icon ? <Icon className="h-4 w-4" /> : <Wifi className="h-4 w-4" />
+    const Icon = Icons[iconName as keyof typeof Icons] as any
+    return Icon && typeof Icon === 'function' ? <Icon className="h-4 w-4" /> : <Wifi className="h-4 w-4" />
   }
 
   const groupedEquipment = equipment.reduce((acc, item) => {

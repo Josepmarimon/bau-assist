@@ -45,12 +45,12 @@ async function checkClassroomP05() {
 
     console.log(`\nFound ${assignments?.length || 0} assignments:`)
     
-    assignments?.forEach(a => {
+    assignments?.forEach((a: any) => {
       const slot = a.schedule_slots
-      console.log(`\n  📅 ${getDayName(slot.day_of_week)} ${slot.start_time} - ${slot.end_time}`)
-      console.log(`     Subject: ${slot.subjects?.name}`)
-      console.log(`     Group: ${slot.student_groups?.name}`)
-      console.log(`     Semester: ${slot.semester}`)
+      console.log(`\n  📅 ${getDayName(slot?.day_of_week)} ${slot?.start_time} - ${slot?.end_time}`)
+      console.log(`     Subject: ${slot?.subjects?.name}`)
+      console.log(`     Group: ${slot?.student_groups?.name}`)
+      console.log(`     Semester: ${slot?.semester}`)
     })
   }
 
@@ -73,11 +73,11 @@ async function checkClassroomP05() {
     .eq('subjects.name', 'Tipografia II')
 
   console.log(`\nFound ${tipografiaSlots?.length || 0} Tipografia II slots:`)
-  tipografiaSlots?.forEach(slot => {
+  tipografiaSlots?.forEach((slot: any) => {
     console.log(`\n  📅 ${getDayName(slot.day_of_week)} ${slot.start_time} - ${slot.end_time}`)
     console.log(`     Group: ${slot.student_groups?.name}`)
     console.log(`     Semester: ${slot.semester}`)
-    const classrooms = slot.schedule_slot_classrooms?.map(sc => sc.classrooms?.code).join(', ')
+    const classrooms = slot.schedule_slot_classrooms?.map((sc: any) => sc.classrooms?.code).join(', ')
     console.log(`     Classrooms: ${classrooms || 'No classroom assigned'}`)
   })
 
@@ -87,18 +87,35 @@ async function checkClassroomP05() {
   
   if (p05) {
     try {
-      const occupancy = await getClassroomOccupancy(p05.id)
+      const occupancyData = await getClassroomOccupancy(p05.id)
       console.log('\nOccupancy data:')
-      console.log(`  Morning: ${occupancy.morningPercentage}%`)
-      console.log(`  Afternoon: ${occupancy.afternoonPercentage}%`)
-      console.log(`  Total: ${occupancy.totalPercentage}%`)
       
-      // Show occupied slots
-      const occupiedSlots = occupancy.slots.filter(s => s.isOccupied)
-      console.log(`\n  Occupied slots: ${occupiedSlots.length}`)
-      occupiedSlots.slice(0, 5).forEach(slot => {
-        console.log(`    - ${getDayName(slot.dayOfWeek)} ${slot.startTime}: ${slot.subject} (${slot.group})`)
-      })
+      if (Array.isArray(occupancyData)) {
+        // Handle semester array format
+        occupancyData.forEach((semesterData: any) => {
+          console.log(`\n  Semester ${semesterData.semester}:`)
+          console.log(`    Morning: ${semesterData.morningPercentage}%`)
+          console.log(`    Afternoon: ${semesterData.afternoonPercentage}%`)
+          console.log(`    Total: ${semesterData.totalPercentage}%`)
+          
+          const occupiedSlots = semesterData.slots.filter((s: any) => s.isOccupied)
+          console.log(`    Occupied slots: ${occupiedSlots.length}`)
+          occupiedSlots.slice(0, 3).forEach((slot: any) => {
+            console.log(`      - ${getDayName(slot.dayOfWeek)} ${slot.startTime}: ${slot.subject} (${slot.group})`)
+          })
+        })
+      } else {
+        // Handle single object format
+        console.log(`  Morning: ${(occupancyData as any).morningPercentage}%`)
+        console.log(`  Afternoon: ${(occupancyData as any).afternoonPercentage}%`)
+        console.log(`  Total: ${(occupancyData as any).totalPercentage}%`)
+        
+        const occupiedSlots = (occupancyData as any).slots.filter((s: any) => s.isOccupied)
+        console.log(`\n  Occupied slots: ${occupiedSlots.length}`)
+        occupiedSlots.slice(0, 5).forEach((slot: any) => {
+          console.log(`    - ${getDayName(slot.dayOfWeek)} ${slot.startTime}: ${slot.subject} (${slot.group})`)
+        })
+      }
     } catch (error) {
       console.log('Error getting occupancy:', error)
     }

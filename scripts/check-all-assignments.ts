@@ -89,13 +89,15 @@ async function checkAllAssignments() {
       start_time,
       semester
     `)
-    .is('id', 'not.in', `(select schedule_slot_id from schedule_slot_classrooms)`)
+    .not('id', 'in', '(select schedule_slot_id from schedule_slot_classrooms)')
     .limit(10)
 
   console.log(`Found ${unassignedSlots?.length || 0} unassigned slots (showing first 10):`)
   
   unassignedSlots?.forEach(slot => {
-    console.log(`  - ${slot.subjects?.name} (${slot.student_groups?.name}) - Day ${slot.day_of_week}, Sem ${slot.semester}`)
+    const subjectName = slot.subjects && 'name' in slot.subjects ? slot.subjects.name : 'Unknown'
+    const groupName = slot.student_groups && 'name' in slot.student_groups ? slot.student_groups.name : 'Unknown'
+    console.log(`  - ${subjectName} (${groupName}) - Day ${slot.day_of_week}, Sem ${slot.semester}`)
   })
 
   // Check specific classrooms
@@ -123,8 +125,10 @@ async function checkAllAssignments() {
     if (classroom) {
       const assignments = classroom.schedule_slot_classrooms || []
       console.log(`\n${code}: ${assignments.length} assignments`)
-      assignments.slice(0, 3).forEach(a => {
-        console.log(`  - ${a.schedule_slots.subjects.name} (${a.schedule_slots.student_groups.name})`)
+      assignments.slice(0, 3).forEach((a: any) => {
+        const subjectName = a.schedule_slots?.subjects?.name || 'Unknown'
+        const groupName = a.schedule_slots?.student_groups?.name || 'Unknown'
+        console.log(`  - ${subjectName} (${groupName})`)
       })
     }
   }

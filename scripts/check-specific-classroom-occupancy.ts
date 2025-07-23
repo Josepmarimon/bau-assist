@@ -65,12 +65,14 @@ async function checkSpecificClassroomOccupancy() {
     // Group by semester
     const bySemester: Record<number, any[]> = {}
     
-    assignments?.forEach(a => {
+    assignments?.forEach((a: any) => {
       const slot = a.schedule_slots
-      if (!bySemester[slot.semester]) {
-        bySemester[slot.semester] = []
+      if (slot && slot.semester) {
+        if (!bySemester[slot.semester]) {
+          bySemester[slot.semester] = []
+        }
+        bySemester[slot.semester].push(slot)
       }
-      bySemester[slot.semester].push(slot)
     })
 
     for (const sem of [1, 2]) {

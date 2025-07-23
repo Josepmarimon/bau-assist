@@ -153,11 +153,13 @@ export function SoftwareSelector({ classroomId, onSoftwareChange }: SoftwareSele
                   if (!softwareMap.has(req.software_id)) {
                     softwareMap.set(req.software_id, {
                       software_id: req.software_id,
-                      software_name: req.software.name,
+                      software_name: req.software && typeof req.software === 'object' && 'name' in req.software ? (req.software as any).name : 'Unknown',
                       subjects: []
                     })
                   }
-                  softwareMap.get(req.software_id)!.subjects.push(subject)
+                  if (subject && !Array.isArray(subject)) {
+                    softwareMap.get(req.software_id)!.subjects.push(subject)
+                  }
                 }
               }
             })

@@ -51,13 +51,28 @@ import type { Database } from '@/types/database.types'
 
 type StudentGroup = Database['public']['Tables']['student_groups']['Row'] & {
   is_subject_group?: boolean
+  code?: string
 }
-type Software = Database['public']['Tables']['software']['Row']
-type EquipmentType = Database['public']['Tables']['equipment_types']['Row']
+// Define types directly since they might not exist in Database types
+type Software = {
+  id: string
+  name: string
+  version?: string
+  category: string | null
+  license_type: string | null
+}
+type EquipmentType = {
+  id: string
+  name: string
+  description: string | null
+  category: string | null
+  icon_name: string | null
+}
 
 const formSchema = z.object({
   name: z.string().min(1, 'El nom és obligatori'),
   description: z.string().optional(),
+  subject_id: z.string(),
   member_group_ids: z.array(z.string()).min(1, 'Has de seleccionar almenys un grup'),
   software_requirements: z.array(z.object({
     software_id: z.string(),
@@ -97,6 +112,7 @@ export function SubjectGroupProfileDialog({
     defaultValues: {
       name: '',
       description: '',
+      subject_id: subjectId,
       member_group_ids: [],
       software_requirements: [],
       equipment_requirements: []
@@ -114,7 +130,7 @@ export function SubjectGroupProfileDialog({
       form.reset({
         name: profile.name,
         description: profile.description || '',
-        member_group_ids: profile.members?.map(m => m.subject_group_id) || [],
+        member_group_ids: profile.members?.map(m => m.student_group_id) || [],
         software_requirements: profile.software?.map(s => ({
           software_id: s.software_id,
           is_required: s.is_required
@@ -145,8 +161,10 @@ export function SubjectGroupProfileDialog({
           name: sg.group_code,
           code: sg.group_code,
           year: parseInt(sg.group_code.match(/\d+/)?.[0] || '0'),
-          shift: sg.group_code.includes('m') || sg.group_code.includes('M') ? 'MORNING' : 'AFTERNOON',
+          shift: (sg.group_code.includes('m') || sg.group_code.includes('M') ? 'MORNING' : 'AFTERNOON') as 'MORNING' | 'AFTERNOON',
           max_students: 30, // Valor per defecte
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
           // Afegir un flag per indicar que és un grup virtual
           is_subject_group: true
         }))
@@ -441,7 +459,7 @@ export function SubjectGroupProfileDialog({
                                       const group = studentGroups.find(g => g.id === id)
                                       return group ? (
                                         <Badge key={id} variant="secondary" className="mr-1">
-                                          {group.code}
+                                          {group.code || group.name}
                                           <button
                                             className="ml-1 ring-offset-background rounded-full outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
                                             onKeyDown={(e) => {
@@ -493,7 +511,7 @@ export function SubjectGroupProfileDialog({
                                         field.value.includes(group.id) ? "opacity-100" : "opacity-0"
                                       }`}
                                     />
-                                    {group.code} - {group.name}
+                                    {group.code || group.name} - {group.name}
                                   </CommandItem>
                                 ))}
                               </CommandGroup>

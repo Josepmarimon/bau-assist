@@ -212,7 +212,8 @@ async function validateNoConflicts(
     .or(`start_time.lte.${startTime},end_time.gte.${endTime}`)
   
   if (groupConflicts && groupConflicts.length > 0) {
-    conflicts.push(`Grup ja té classe: ${groupConflicts[0].subject?.name}`)
+    const subjectName = groupConflicts[0].subject && 'name' in groupConflicts[0].subject ? groupConflicts[0].subject.name : 'Unknown'
+    conflicts.push(`Grup ja té classe: ${subjectName}`)
   }
   
   // Comprovar conflictes de professors

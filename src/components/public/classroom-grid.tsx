@@ -125,7 +125,7 @@ export function ClassroomGrid({ classrooms }: ClassroomGridProps) {
                   )}
                   <div className="absolute top-2 right-2">
                     <Badge className={getTypeColor(classroom.type)}>
-                      {CLASSROOM_TYPE_LABELS[classroom.type] || classroom.type}
+                      {CLASSROOM_TYPE_LABELS[classroom.type as keyof typeof CLASSROOM_TYPE_LABELS] || classroom.type}
                     </Badge>
                   </div>
                 </div>

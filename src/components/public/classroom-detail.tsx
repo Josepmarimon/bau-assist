@@ -94,7 +94,7 @@ export function ClassroomDetail({ classroom, equipment }: ClassroomDetailProps) 
                   {classroom.code}
                 </Badge>
                 <Badge className={`${getTypeColor(classroom.type)} text-sm py-1 px-3`}>
-                  {CLASSROOM_TYPE_LABELS[classroom.type] || classroom.type}
+                  {CLASSROOM_TYPE_LABELS[classroom.type as keyof typeof CLASSROOM_TYPE_LABELS] || classroom.type}
                 </Badge>
               </div>
             </div>
@@ -207,7 +207,7 @@ export function ClassroomDetail({ classroom, equipment }: ClassroomDetailProps) 
 
                   {photos.length > 1 && (
                     <div className="flex justify-center gap-1.5">
-                      {photos.map((_, index) => (
+                      {photos.map((_: any, index: number) => (
                         <button
                           key={index}
                           className={`h-2 w-2 rounded-full transition-all ${
@@ -226,7 +226,7 @@ export function ClassroomDetail({ classroom, equipment }: ClassroomDetailProps) 
               {/* Photo thumbnails */}
               {photos.length > 1 && (
                 <div className="grid grid-cols-4 gap-2 mt-4">
-                  {photos.map((photo, index) => (
+                  {photos.map((photo: any, index: number) => (
                     <button
                       key={index}
                       className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${

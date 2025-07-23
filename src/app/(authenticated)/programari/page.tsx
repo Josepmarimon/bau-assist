@@ -166,7 +166,7 @@ export default function SoftwarePage() {
           if (!acc[item.software_id]) {
             acc[item.software_id] = []
           }
-          if (item.subject) {
+          if (item.subject && !Array.isArray(item.subject)) {
             acc[item.software_id].push(item.subject)
           }
           return acc
@@ -200,7 +200,7 @@ export default function SoftwarePage() {
               totalLicenses: 0
             }
           }
-          if (item.classrooms) {
+          if (item.classrooms && !Array.isArray(item.classrooms)) {
             acc[item.software_id].classrooms.push(item.classrooms)
             acc[item.software_id].totalLicenses += item.licenses || 1
           }

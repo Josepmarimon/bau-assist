@@ -56,9 +56,9 @@ async function checkOccupancyP05() {
     2: [] as any[]
   }
 
-  assignments?.forEach(a => {
+  assignments?.forEach((a: any) => {
     const slot = a.schedule_slots
-    if (slot) {
+    if (slot && slot.semester) {
       bySemester[slot.semester as 1 | 2].push(slot)
     }
   })

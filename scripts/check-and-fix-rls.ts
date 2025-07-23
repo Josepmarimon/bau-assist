@@ -45,7 +45,7 @@ async function checkAndFixRLS() {
       .rpc('get_table_info', { table_name: 'classrooms' })
       .single()
     
-    console.log(`\n3. RLS enabled on classrooms table: ${tableInfo?.rowsecurity || 'Unknown'}`)
+    console.log(`\n3. RLS enabled on classrooms table: ${(tableInfo as any)?.rowsecurity || 'Unknown'}`)
 
     // Try to disable RLS temporarily for testing
     console.log('\n4. Attempting to fix RLS policies...')

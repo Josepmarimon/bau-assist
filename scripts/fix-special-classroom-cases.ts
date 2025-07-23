@@ -42,7 +42,7 @@ async function fixSpecialClassroomCases() {
       subjects(name),
       student_groups(name)
     `)
-    .is('id', 'not.in', `(select schedule_slot_id from schedule_slot_classrooms)`)
+    .not('id', 'in', '(select schedule_slot_id from schedule_slot_classrooms)')
 
   console.log(`Found ${unassignedSlots?.length || 0} slots without classrooms\n`)
 
@@ -76,10 +76,11 @@ async function fixSpecialClassroomCases() {
 
       if (needsFix) {
         // Find matching unassigned slot
-        const slot = unassignedSlots?.find(s => 
-          s.subjects?.name === classData.subject &&
-          s.student_groups?.name === schedule.group
-        )
+        const slot = unassignedSlots?.find(s => {
+          const subjectName = s.subjects && 'name' in s.subjects ? s.subjects.name : ''
+          const groupName = s.student_groups && 'name' in s.student_groups ? s.student_groups.name : ''
+          return subjectName === classData.subject && groupName === schedule.group
+        })
 
         if (slot) {
           // Find the right classroom code

@@ -137,7 +137,7 @@ async function checkConflicts(
       const teacher = cache.teachers.get(teacherId)
       const existing = existingAssignments[0]
       conflicts.push(
-        `Professor ${teacher?.first_name} ${teacher?.last_name} ja assignat a ${existing.subject_group?.subject?.name} (${existing.subject_group?.group_code})`
+        `Professor ${teacher?.first_name} ${teacher?.last_name} ja assignat a ${existing.subject_group && typeof existing.subject_group === 'object' && 'subject' in existing.subject_group && existing.subject_group.subject && typeof existing.subject_group.subject === 'object' && 'name' in existing.subject_group.subject ? existing.subject_group.subject.name : 'Unknown'} (${existing.subject_group && typeof existing.subject_group === 'object' && 'group_code' in existing.subject_group ? existing.subject_group.group_code : 'Unknown'})`
       )
     }
   }
@@ -163,7 +163,7 @@ async function checkConflicts(
       const classroom = cache.classrooms.get(classroomId)
       const existing = existingAssignments[0]
       conflicts.push(
-        `Aula ${classroom?.code} ja ocupada per ${existing.subject_group?.subject?.name} (${existing.subject_group?.group_code})`
+        `Aula ${classroom?.code} ja ocupada per ${existing.subject_group && typeof existing.subject_group === 'object' && 'subject' in existing.subject_group && existing.subject_group.subject && typeof existing.subject_group.subject === 'object' && 'name' in existing.subject_group.subject ? existing.subject_group.subject.name : 'Unknown'} (${existing.subject_group && typeof existing.subject_group === 'object' && 'group_code' in existing.subject_group ? existing.subject_group.group_code : 'Unknown'})`
       )
     }
   }

@@ -370,7 +370,7 @@ export default function TeachersPage() {
                 <SelectContent>
                   <SelectItem value="all">Totes les titulacions</SelectItem>
                   {uniqueTitulacions.map(titulacio => (
-                    <SelectItem key={titulacio} value={titulacio}>
+                    <SelectItem key={titulacio} value={titulacio || 'unknown'}>
                       {titulacio}
                     </SelectItem>
                   ))}
@@ -384,7 +384,7 @@ export default function TeachersPage() {
                 <SelectContent>
                   <SelectItem value="all">Tots els estats</SelectItem>
                   {uniqueDoctorats.map(doctorat => (
-                    <SelectItem key={doctorat} value={doctorat}>
+                    <SelectItem key={doctorat} value={doctorat || 'unknown'}>
                       {doctorat}
                     </SelectItem>
                   ))}

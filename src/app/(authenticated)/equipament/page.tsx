@@ -113,8 +113,8 @@ export default function EquipmentPage() {
 
   const getIconComponent = (iconName?: string) => {
     if (!iconName) return <Package className="h-4 w-4" />
-    const Icon = Icons[iconName as keyof typeof Icons]
-    return Icon ? <Icon className="h-4 w-4" /> : <Package className="h-4 w-4" />
+    const Icon = Icons[iconName as keyof typeof Icons] as any
+    return Icon && typeof Icon === 'function' && Icon.prototype ? <Icon className="h-4 w-4" /> : <Package className="h-4 w-4" />
   }
 
   if (loading) {

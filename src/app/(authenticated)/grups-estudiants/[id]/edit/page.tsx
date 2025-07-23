@@ -163,7 +163,7 @@ export default function EditGroupPage() {
       
       console.log('Loaded teacher assignments from RPC:', data)
       
-      const assignments = (data || []).map(item => ({
+      const assignments = (data || []).map((item: any) => ({
         teacher_id: item.teacher_id,
         teacher: {
           id: item.teacher_id,

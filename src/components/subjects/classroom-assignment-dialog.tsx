@@ -40,6 +40,7 @@ interface ClassroomAssignmentDialogProps {
       code: string
     }
     group_code?: string
+    student_group_id?: string | null
   }
   semesterId: string
   onSuccess?: () => void
@@ -279,11 +280,12 @@ export function ClassroomAssignmentDialog({
       }
       
       // Process assignments to include weeks array
-      const processedAssignments = (data || []).map(assignment => ({
+      const processedAssignments = (data || []).map((assignment: any) => ({
         ...assignment,
-        assignment_classrooms: assignment.assignment_classrooms?.map(ac => ({
+        assignment_classrooms: assignment.assignment_classrooms?.map((ac: any) => ({
           ...ac,
-          weeks: ac.assignment_classroom_weeks?.map(w => w.week_number) || []
+          classroom: Array.isArray(ac.classroom) ? ac.classroom[0] : ac.classroom,
+          weeks: ac.assignment_classroom_weeks?.map((w: any) => w.week_number) || []
         }))
       }))
       setAssignments(processedAssignments)
@@ -344,7 +346,7 @@ export function ClassroomAssignmentDialog({
         const { data: conflicts } = await supabase
           .rpc('check_classroom_week_conflicts', {
             p_classroom_id: classroom.id,
-            p_time_slot_id: timeSlot.id,
+            p_time_slot_id: timeSlot!.id,
             p_week_numbers: weekNumbersToCheck.length > 0 ? weekNumbersToCheck : [1], // Default to week 1 if no weeks selected
             p_exclude_assignment_id: editingAssignmentId,
             p_semester_id: selectedSemesterId
@@ -457,7 +459,7 @@ export function ClassroomAssignmentDialog({
         const { data: conflicts, error: conflictError } = await supabase
           .from("assignments")
           .select("id")
-          .eq("time_slot_id", timeSlot.id)
+          .eq("time_slot_id", timeSlot!.id)
           .eq("student_group_id", studentGroup.id)
           .neq("subject_group_id", subjectGroup.id)
           
@@ -483,7 +485,7 @@ export function ClassroomAssignmentDialog({
       const { data: conflicts, error: conflictError } = await supabase
         .rpc('check_classroom_week_conflicts', {
           p_classroom_id: selectedClassroom,
-          p_time_slot_id: timeSlot.id,
+          p_time_slot_id: timeSlot!.id,
           p_week_numbers: weekNumbersToCheck,
           p_exclude_assignment_id: editingAssignmentId,
           p_semester_id: selectedSemesterId
@@ -515,7 +517,7 @@ export function ClassroomAssignmentDialog({
           .update({
             semester_id: selectedSemesterId,
             student_group_id: studentGroup?.id || null,
-            time_slot_id: timeSlot.id,
+            time_slot_id: timeSlot!.id,
             hours_per_week: timePeriod === "mati" ? 6 : 5,
           })
           .eq("id", editingAssignmentId)
@@ -541,7 +543,7 @@ export function ClassroomAssignmentDialog({
             subject_id: subjectGroup.subject_id,
             subject_group_id: subjectGroup.id,
             student_group_id: studentGroup?.id || null,
-            time_slot_id: timeSlot.id,
+            time_slot_id: timeSlot!.id,
             hours_per_week: timePeriod === "mati" ? 6 : 5,
           })
           .select()
@@ -614,11 +616,12 @@ export function ClassroomAssignmentDialog({
         .eq("semester_id", selectedSemesterId)
         
       // Process updated assignments to include weeks array
-      const processedUpdatedAssignments = (updatedAssignments || []).map(assignment => ({
+      const processedUpdatedAssignments = (updatedAssignments || []).map((assignment: any) => ({
         ...assignment,
-        assignment_classrooms: assignment.assignment_classrooms?.map(ac => ({
+        assignment_classrooms: assignment.assignment_classrooms?.map((ac: any) => ({
           ...ac,
-          weeks: ac.assignment_classroom_weeks?.map(w => w.week_number) || []
+          classroom: Array.isArray(ac.classroom) ? ac.classroom[0] : ac.classroom,
+          weeks: ac.assignment_classroom_weeks?.map((w: any) => w.week_number) || []
         }))
       }))
       setAssignments(processedUpdatedAssignments)

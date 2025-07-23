@@ -84,15 +84,15 @@ async function exportSubjectGroupsData() {
         max_students: group.max_students,
         semester_id: group.semester_id,
         subject: {
-          id: group.subject?.id,
-          code: group.subject?.code,
-          name: group.subject?.name,
-          year: group.subject?.year
+          id: group.subject && 'id' in group.subject ? group.subject.id : null,
+          code: group.subject && 'code' in group.subject ? group.subject.code : null,
+          name: group.subject && 'name' in group.subject ? group.subject.name : null,
+          year: group.subject && 'year' in group.subject ? group.subject.year : null
         },
         semester_info: {
-          name: group.semester?.name,
-          number: group.semester?.number,
-          academic_year: group.semester?.academic_year?.name
+          name: group.semester && typeof group.semester === 'object' && 'name' in group.semester ? group.semester.name : null,
+          number: group.semester && typeof group.semester === 'object' && 'number' in group.semester ? group.semester.number : null,
+          academic_year: group.semester && typeof group.semester === 'object' && 'academic_year' in group.semester && group.semester.academic_year && typeof group.semester.academic_year === 'object' && 'name' in group.semester.academic_year ? group.semester.academic_year.name : null
         }
       }
     })
@@ -192,7 +192,7 @@ async function exportSubjectGroupsData() {
       output.semesters[semester.id] = {
         name: semester.name,
         number: semester.number,
-        academic_year: semester.academic_year?.name
+        academic_year: semester.academic_year && typeof semester.academic_year === 'object' && 'name' in semester.academic_year ? semester.academic_year.name : null
       }
     })
     console.log(`   ✅ ${semesters?.length || 0} semestres`)

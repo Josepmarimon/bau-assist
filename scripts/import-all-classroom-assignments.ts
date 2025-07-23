@@ -115,14 +115,14 @@ async function importAllClassroomAssignments() {
           totalErrors++
           continue
         }
-        subject = { data: subjectAlt }
+        subject = { data: subjectAlt, error: null, count: 1, status: 200, statusText: 'OK' } as any
       }
 
       // Find the schedule slot
       const { data: scheduleSlot } = await supabase
         .from('schedule_slots')
         .select('id')
-        .eq('subject_id', subject.data.id)
+        .eq('subject_id', subject.data!.id)
         .eq('student_group_id', studentGroup.id)
         .eq('day_of_week', scheduleClass.day)
         .eq('start_time', scheduleClass.start_time + ':00')

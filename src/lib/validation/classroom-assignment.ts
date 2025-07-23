@@ -69,7 +69,7 @@ export async function validateClassroomAssignment(
           .select(`
             software_id,
             is_required,
-            software:software(name)
+            software!inner(name)
           `)
           .eq('profile_id', groupProfile.id)
 
@@ -86,7 +86,7 @@ export async function validateClassroomAssignment(
 
           if (missingSoftware.length > 0) {
             const softwareNames = missingSoftware
-              .map(ms => ms.software?.name || 'Software desconegut')
+              .map(ms => (ms.software && typeof ms.software === 'object' && 'name' in ms.software ? ms.software.name : null) || 'Software desconegut')
               .join(', ')
             errors.push(
               `L'aula no té el software obligatori per al perfil "${groupProfile.name}": ${softwareNames}`
@@ -99,7 +99,7 @@ export async function validateClassroomAssignment(
 
           if (missingOptional.length > 0) {
             const softwareNames = missingOptional
-              .map(ms => ms.software?.name || 'Software desconegut')
+              .map(ms => (ms.software && typeof ms.software === 'object' && 'name' in ms.software ? ms.software.name : null) || 'Software desconegut')
               .join(', ')
             warnings.push(
               `L'aula no té el software recomanat per al perfil "${groupProfile.name}": ${softwareNames}`

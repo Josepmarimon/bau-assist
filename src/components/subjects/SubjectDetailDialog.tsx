@@ -506,7 +506,7 @@ export function SubjectDetailDialog({ subject, open, onOpenChange }: SubjectDeta
                       <p className="text-sm text-muted-foreground">Capacitat total</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-2xl font-bold">{Object.keys(groupStats.byType).length}</p>
+                      <p className="text-2xl font-bold">{groupStats.total}</p>
                       <p className="text-sm text-muted-foreground">Tipus de grups</p>
                     </div>
                   </div>

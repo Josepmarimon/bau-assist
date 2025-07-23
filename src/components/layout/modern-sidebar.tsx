@@ -286,7 +286,7 @@ export function ModernSidebar({ onCollapsedChange }: ModernSidebarProps = {}) {
                             transition={{ duration: 0.2 }}
                             className="overflow-hidden"
                           >
-                            {item.subItems.map((subItem) => {
+                            {item.subItems?.map((subItem) => {
                               const linkContent = (
                                 <>
                                   <subItem.icon className={cn(

@@ -113,7 +113,7 @@ async function importSchedules() {
       }
 
       // Find the subject
-      const { data: subject } = await supabase
+      let { data: subject } = await supabase
         .from('subjects')
         .select('id')
         .eq('name', scheduleClass.subject)
@@ -132,7 +132,7 @@ async function importSchedules() {
           totalErrors++
           continue
         }
-        subject.id = subjectAlt.id
+        subject = subjectAlt
       }
 
       // Create the schedule slot

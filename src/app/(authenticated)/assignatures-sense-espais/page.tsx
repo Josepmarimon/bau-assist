@@ -91,10 +91,10 @@ export default function SubjectsWithoutSpacesPage() {
       // First get all active subjects
       const { data: allSubjects, error: subjectsError } = await supabase
         .from('subjects')
-        .select('id, code, name, year, semester, "ID Itinerari" as itinerari, type, credits')
+        .select('id, code, name, year, semester, ID_Itinerari, type, credits')
         .eq('active', true)
         .order('year')
-        .order('"ID Itinerari"')
+        .order('ID_Itinerari')
         .order('semester')
         .order('name')
 
@@ -114,7 +114,10 @@ export default function SubjectsWithoutSpacesPage() {
       // Filter out subjects that have schedule slots
       const subjectsWithoutSpaces = allSubjects?.filter(
         subject => !scheduledSubjectIds.includes(subject.id)
-      ) || []
+      ).map(subject => ({
+        ...subject,
+        itinerari: subject.ID_Itinerari
+      })) || []
 
       setSubjects(subjectsWithoutSpaces)
     } catch (error) {

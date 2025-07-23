@@ -48,8 +48,14 @@ async function checkAssignments() {
   }
 
   // Group unassigned by subject type
-  const tutoriesCount = unassignedSlots.filter(s => s.subjects?.name?.toLowerCase().includes('tutori')).length
-  const optativesCount = unassignedSlots.filter(s => s.subjects?.name?.toLowerCase().includes('optativ')).length
+  const tutoriesCount = unassignedSlots.filter(s => {
+    const subjectName = s.subjects && typeof s.subjects === 'object' && 'name' in s.subjects ? String(s.subjects.name) : ''
+    return subjectName.toLowerCase().includes('tutori')
+  }).length
+  const optativesCount = unassignedSlots.filter(s => {
+    const subjectName = s.subjects && typeof s.subjects === 'object' && 'name' in s.subjects ? String(s.subjects.name) : ''
+    return subjectName.toLowerCase().includes('optativ')
+  }).length
   const othersCount = unassignedSlots.length - tutoriesCount - optativesCount
 
   console.log('\n🔍 UNASSIGNED SLOTS BREAKDOWN:')
@@ -60,11 +66,16 @@ async function checkAssignments() {
   // Show some examples of unassigned slots
   console.log('\n📋 EXAMPLES OF UNASSIGNED SLOTS:')
   const examples = unassignedSlots
-    .filter(s => !s.subjects?.name?.toLowerCase().includes('tutori'))
+    .filter(s => {
+      const subjectName = s.subjects && typeof s.subjects === 'object' && 'name' in s.subjects ? String(s.subjects.name) : ''
+      return !subjectName.toLowerCase().includes('tutori')
+    })
     .slice(0, 10)
   
   examples.forEach(slot => {
-    console.log(`- ${slot.subjects?.name} (${slot.student_groups?.name}) - Semester ${slot.semester}`)
+    const subjectName = slot.subjects && typeof slot.subjects === 'object' && 'name' in slot.subjects ? String(slot.subjects.name) : 'Unknown'
+    const groupName = slot.student_groups && typeof slot.student_groups === 'object' && 'name' in slot.student_groups ? String(slot.student_groups.name) : 'Unknown'
+    console.log(`- ${subjectName} (${groupName}) - Semester ${slot.semester}`)
   })
 }
 

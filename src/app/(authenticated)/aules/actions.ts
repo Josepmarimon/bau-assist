@@ -89,13 +89,13 @@ export async function getClassroomOccupancyData(classroomId: string) {
   for (const semester of semesters || []) {
     // Filter OLD SYSTEM slots by semester
     const semesterSlots = scheduleSlots?.filter(slot => 
-      slot.schedule_slots.semester === semester.number
+      slot.schedule_slots && 'semester' in slot.schedule_slots && slot.schedule_slots.semester === semester.number
     ) || []
     
     // Filter NEW SYSTEM assignments by semester
     const semesterAssignments = assignmentData?.filter(assignment => {
       // assignments is a single object, not an array
-      return assignment.assignments && assignment.assignments.semester_id === semester.id
+      return assignment.assignments && 'semester_id' in assignment.assignments && assignment.assignments.semester_id === semester.id
     }) || []
 
     // Generate all hourly time slots
@@ -108,7 +108,7 @@ export async function getClassroomOccupancyData(classroomId: string) {
     semesterSlots.forEach(slot => {
       const scheduleSlot = slot.schedule_slots
       
-      const teachers = scheduleSlot.schedule_slot_teachers || []
+      const teachers: any[] = scheduleSlot && 'schedule_slot_teachers' in scheduleSlot ? (scheduleSlot.schedule_slot_teachers as any[]) : []
       let teacherName = 'No assignat'
       if (teachers.length > 0 && teachers[0].teachers) {
         const teacher = teachers[0].teachers
@@ -116,13 +116,13 @@ export async function getClassroomOccupancyData(classroomId: string) {
       }
       
       scheduleAssignments.push({
-        day_of_week: scheduleSlot.day_of_week,
-        start_time: scheduleSlot.start_time,
-        end_time: scheduleSlot.end_time,
+        day_of_week: scheduleSlot && 'day_of_week' in scheduleSlot ? scheduleSlot.day_of_week : 0,
+        start_time: scheduleSlot && 'start_time' in scheduleSlot ? scheduleSlot.start_time : '',
+        end_time: scheduleSlot && 'end_time' in scheduleSlot ? scheduleSlot.end_time : '',
         assignment: {
-          subjectName: scheduleSlot.subjects?.name || 'Unknown',
+          subjectName: scheduleSlot && typeof scheduleSlot === 'object' && 'subjects' in scheduleSlot && scheduleSlot.subjects && typeof scheduleSlot.subjects === 'object' && 'name' in scheduleSlot.subjects ? scheduleSlot.subjects.name : 'Unknown',
           teacherName: teacherName,
-          groupCode: scheduleSlot.student_groups?.name || ''
+          groupCode: scheduleSlot && typeof scheduleSlot === 'object' && 'student_groups' in scheduleSlot && scheduleSlot.student_groups && typeof scheduleSlot.student_groups === 'object' && 'name' in scheduleSlot.student_groups ? scheduleSlot.student_groups.name : ''
         },
         weeks: Array.from({length: 15}, (_, i) => i + 1) // Old system: always all weeks
       })
@@ -132,12 +132,12 @@ export async function getClassroomOccupancyData(classroomId: string) {
     semesterAssignments.forEach(assignmentClassroom => {
       const assignment = assignmentClassroom.assignments
       
-      if (!assignment?.time_slots) {
+      if (!assignment || !('time_slots' in assignment) || !assignment.time_slots) {
         return
       }
       
       let teacherName = 'No assignat'
-      if (assignment.teachers) {
+      if (assignment && 'teachers' in assignment && assignment.teachers && typeof assignment.teachers === 'object' && 'first_name' in assignment.teachers && 'last_name' in assignment.teachers) {
         teacherName = `${assignment.teachers.first_name} ${assignment.teachers.last_name}`
       }
       
@@ -150,13 +150,14 @@ export async function getClassroomOccupancyData(classroomId: string) {
       }
       
       scheduleAssignments.push({
-        day_of_week: assignment.time_slots.day_of_week,
-        start_time: assignment.time_slots.start_time,
-        end_time: assignment.time_slots.end_time,
+        day_of_week: assignment.time_slots && typeof assignment.time_slots === 'object' && 'day_of_week' in assignment.time_slots ? assignment.time_slots.day_of_week : 0,
+        start_time: assignment.time_slots && typeof assignment.time_slots === 'object' && 'start_time' in assignment.time_slots ? assignment.time_slots.start_time : '',
+        end_time: assignment.time_slots && typeof assignment.time_slots === 'object' && 'end_time' in assignment.time_slots ? assignment.time_slots.end_time : '',
         assignment: {
-          subjectName: assignment.subject_groups?.subjects?.name || 'Unknown',
+          subjectName: assignment && 'subject_groups' in assignment && assignment.subject_groups && typeof assignment.subject_groups === 'object' && 'subjects' in assignment.subject_groups && assignment.subject_groups.subjects && typeof assignment.subject_groups.subjects === 'object' && 'name' in assignment.subject_groups.subjects ? assignment.subject_groups.subjects.name : 'Unknown',
           teacherName: teacherName,
-          groupCode: assignment.subject_groups?.group_code || assignment.student_groups?.name || ''
+          groupCode: (assignment && 'subject_groups' in assignment && assignment.subject_groups && typeof assignment.subject_groups === 'object' && 'group_code' in assignment.subject_groups ? assignment.subject_groups.group_code : '') || 
+                     (assignment && 'student_groups' in assignment && assignment.student_groups && typeof assignment.student_groups === 'object' && 'name' in assignment.student_groups ? assignment.student_groups.name : '') || ''
         },
         weeks: weeks
       })

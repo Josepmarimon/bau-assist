@@ -99,7 +99,7 @@ export default function ViewGroupPage() {
         console.error('Error loading teachers:', teacherError)
       }
       
-      setTeachers(teacherData?.map(t => ({
+      setTeachers(teacherData?.map((t: any) => ({
         id: t.teacher_id,
         name: `${t.first_name} ${t.last_name}`,
         email: t.email,

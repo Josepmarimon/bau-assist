@@ -121,8 +121,8 @@ export function EquipmentTypeDialog({
   }
 
   const getIconComponent = (iconName: string) => {
-    const Icon = Icons[iconName as keyof typeof Icons]
-    return Icon ? <Icon className="h-4 w-4" /> : null
+    const Icon = Icons[iconName as keyof typeof Icons] as any
+    return Icon && typeof Icon === 'function' ? <Icon className="h-4 w-4" /> : null
   }
 
   return (

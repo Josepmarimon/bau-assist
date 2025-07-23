@@ -143,8 +143,8 @@ export function EquipmentSelector({ classroomId, onEquipmentChange }: EquipmentS
 
   const getIconComponent = (iconName?: string) => {
     if (!iconName) return null
-    const Icon = Icons[iconName as keyof typeof Icons]
-    return Icon ? <Icon className="h-4 w-4" /> : null
+    const Icon = Icons[iconName as keyof typeof Icons] as any
+    return Icon && typeof Icon === 'function' ? <Icon className="h-4 w-4" /> : null
   }
 
   const groupedEquipment = equipmentTypes.reduce((acc, type) => {

@@ -71,15 +71,15 @@ export function LicenseAlerts() {
 
       // Filter out dismissed licenses for this session
       const activeLicenses = (data || []).filter(
-        license => !dismissed.has(license.id)
+        (license: any) => !dismissed.has(license.id)
       )
       
       setExpiringLicenses(activeLicenses)
       
       // Show toast notification if there are new expiring licenses
       if (activeLicenses.length > 0) {
-        const expiredCount = activeLicenses.filter(l => l.status === 'expired').length
-        const expiringCount = activeLicenses.filter(l => l.status === 'expiring_soon').length
+        const expiredCount = activeLicenses.filter((l: any) => l.status === 'expired').length
+        const expiringCount = activeLicenses.filter((l: any) => l.status === 'expiring_soon').length
         
         if (expiredCount > 0) {
           toast.error(`${expiredCount} llicències han expirat!`)
