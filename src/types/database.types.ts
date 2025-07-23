@@ -204,6 +204,7 @@ export type Database = {
           type: 'aula' | 'laboratori' | 'taller' | 'seminari' | 'informatica' | 'projectes' | 'teorica' | 'polivalent'
           equipment: any[]
           is_available: boolean
+          operating_system: string | null
           created_at: string
           updated_at: string
         }
@@ -217,6 +218,7 @@ export type Database = {
           type: 'aula' | 'laboratori' | 'taller' | 'seminari' | 'informatica' | 'projectes' | 'teorica' | 'polivalent'
           equipment?: any[]
           is_available?: boolean
+          operating_system?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -230,6 +232,7 @@ export type Database = {
           type?: 'aula' | 'laboratori' | 'taller' | 'seminari' | 'informatica' | 'projectes' | 'teorica' | 'polivalent'
           equipment?: any[]
           is_available?: boolean
+          operating_system?: string | null
           created_at?: string
           updated_at?: string
         }

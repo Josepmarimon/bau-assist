@@ -59,7 +59,8 @@ export function ClassroomDialog({
     type: CLASSROOM_TYPES.POLIVALENT as string,
     photos: [] as Photo[],
     is_public: false,
-    description: ''
+    description: '',
+    operating_system: ''
   })
   
   const supabase = createClient()
@@ -75,7 +76,8 @@ export function ClassroomDialog({
         type: classroom.type || CLASSROOM_TYPES.POLIVALENT,
         photos: classroom.photos || [],
         is_public: classroom.is_public || false,
-        description: classroom.description || ''
+        description: classroom.description || '',
+        operating_system: classroom.operating_system || ''
       })
     } else {
       setFormData({
@@ -87,7 +89,8 @@ export function ClassroomDialog({
         type: CLASSROOM_TYPES.POLIVALENT,
         photos: [],
         is_public: false,
-        description: ''
+        description: '',
+        operating_system: ''
       })
     }
   }, [classroom])
@@ -117,6 +120,7 @@ export function ClassroomDialog({
             photos: formData.photos,
             is_public: formData.is_public,
             description: formData.description,
+            operating_system: formData.operating_system || null,
             updated_at: new Date().toISOString()
           })
           .eq('id', classroom.id)
@@ -137,7 +141,8 @@ export function ClassroomDialog({
             photos: formData.photos,
             is_available: true,
             is_public: formData.is_public,
-            description: formData.description
+            description: formData.description,
+            operating_system: formData.operating_system || null
           })
 
         if (error) throw error
@@ -251,6 +256,27 @@ export function ClassroomDialog({
                     </div>
                   </div>
                 </div>
+                
+                {/* Operating System field - only for computer classrooms */}
+                {(formData.type === 'informatica' || formData.type === 'Informàtica') && (
+                  <div className="space-y-1">
+                    <Label htmlFor="operating_system">Sistema Operatiu</Label>
+                    <Select
+                      value={formData.operating_system}
+                      onValueChange={(value) => setFormData({ ...formData, operating_system: value })}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Selecciona el sistema operatiu" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Windows">Windows</SelectItem>
+                        <SelectItem value="macOS">macOS</SelectItem>
+                        <SelectItem value="Linux">Linux</SelectItem>
+                        <SelectItem value="Windows/Linux">Windows/Linux (dual boot)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
                 
                 {/* Full width fields */}
                 <div className="space-y-3">

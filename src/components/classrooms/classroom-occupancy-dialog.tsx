@@ -34,19 +34,24 @@ export function ClassroomOccupancyDialog({
   onOpenChange,
   data
 }: ClassroomOccupancyDialogProps) {
-  const [selectedSemester, setSelectedSemester] = useState('1')
-
   if (!data || !data.occupancy) return null
 
   const semesters = data.occupancy.semesters || []
   const classroom = data.classroom
+  
+  // Use the first available semester as default
+  const [selectedSemester, setSelectedSemester] = useState(
+    semesters.length > 0 ? semesters[0].semesterId : ''
+  )
 
   const renderTimeGrid = (semesterData: any) => {
+    console.log('Rendering semester data:', semesterData)
     if (!semesterData || !semesterData.classroomOccupancy) {
       return <div>No hi ha dades d'ocupació</div>
     }
 
     const timeSlots = semesterData.classroomOccupancy.timeSlots || []
+    console.log('Time slots for semester:', timeSlots.length)
     
     // Group consecutive slots with same assignment
     const groupedSlots: { [key: number]: any[] } = {}
@@ -210,34 +215,19 @@ export function ClassroomOccupancyDialog({
         </DialogHeader>
 
         <Tabs value={selectedSemester} onValueChange={setSelectedSemester}>
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="1">Semestre 1</TabsTrigger>
-            <TabsTrigger value="2">Semestre 2</TabsTrigger>
+          <TabsList className={`grid w-full grid-cols-${Math.min(semesters.length, 4)}`}>
+            {semesters.map((semester: any) => (
+              <TabsTrigger key={semester.semesterId} value={semester.semesterId}>
+                {semester.semesterName}
+              </TabsTrigger>
+            ))}
           </TabsList>
 
-          {['1', '2'].map(semesterNum => {
-            const semesterData = semesters.find(
-              (s: any) => s.semesterName === `Semestre ${semesterNum}`
-            )
-            
-            if (!semesterData) {
-              return (
-                <TabsContent key={semesterNum} value={semesterNum}>
-                  <Card>
-                    <CardContent className="pt-6">
-                      <p className="text-center text-muted-foreground">
-                        No hi ha dades per aquest semestre
-                      </p>
-                    </CardContent>
-                  </Card>
-                </TabsContent>
-              )
-            }
-
+          {semesters.map((semesterData: any) => {
             const occupancy = semesterData.classroomOccupancy
 
             return (
-              <TabsContent key={semesterNum} value={semesterNum} className="space-y-4">
+              <TabsContent key={semesterData.semesterId} value={semesterData.semesterId} className="space-y-4">
                 {/* Occupancy Stats */}
                 <div className="grid grid-cols-3 gap-4">
                   <Card>

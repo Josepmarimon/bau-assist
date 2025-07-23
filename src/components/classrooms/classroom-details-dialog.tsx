@@ -152,13 +152,13 @@ export function ClassroomDetailsDialog({
                     </Badge>
                   </div>
                   
-                  {classroom.has_computers && (
+                  {(classroom.type === 'informatica' || classroom.type === 'Informàtica') && classroom.operating_system && (
                     <div className="flex items-start gap-3">
                       <Monitor className="h-5 w-5 text-muted-foreground mt-0.5" />
                       <div>
-                        <p className="text-sm font-medium">Ordinadors</p>
+                        <p className="text-sm font-medium">Sistema Operatiu</p>
                         <p className="text-sm text-muted-foreground">
-                          {classroom.computer_count} {classroom.computer_type}
+                          {classroom.operating_system}
                         </p>
                       </div>
                     </div>

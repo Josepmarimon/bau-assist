@@ -59,6 +59,7 @@ interface Classroom {
   type: string
   equipment: any[]
   is_available: boolean
+  operating_system?: string | null
   created_at: string
   updated_at: string
   photos?: any[]
@@ -164,6 +165,7 @@ export default function ClassroomsPage() {
   const loadOccupancyData = async () => {
     try {
       const occupancy = await getAllClassroomsOccupancyData()
+      console.log('Loaded occupancy data:', occupancy)
       setOccupancyData(occupancy)
     } catch (error) {
       console.error('Error loading occupancy data:', error)
@@ -193,6 +195,8 @@ export default function ClassroomsPage() {
 
   const handleViewOccupancy = (classroom: Classroom) => {
     const occupancy = occupancyData.find(item => item.classroomId === classroom.id)
+    console.log('Viewing occupancy for classroom:', classroom.code)
+    console.log('Found occupancy data:', occupancy)
     setSelectedClassroomOccupancy({
       classroom,
       occupancy
@@ -518,9 +522,17 @@ export default function ClassroomsPage() {
                         </div>
                       </TableCell>
                       <TableCell>
-                        <Badge variant={classroom.type === CLASSROOM_TYPES.INFORMATICA ? 'default' : 'secondary'}>
-                          {classroom.type}
-                        </Badge>
+                        <div className="space-y-1">
+                          <Badge variant={classroom.type === CLASSROOM_TYPES.INFORMATICA ? 'default' : 'secondary'}>
+                            {classroom.type}
+                          </Badge>
+                          {(classroom.type === CLASSROOM_TYPES.INFORMATICA || classroom.type === 'Informàtica') && classroom.operating_system && (
+                            <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                              <Monitor className="h-3 w-3" />
+                              <span>{classroom.operating_system}</span>
+                            </div>
+                          )}
+                        </div>
                       </TableCell>
                       <TableCell>
                         <div>

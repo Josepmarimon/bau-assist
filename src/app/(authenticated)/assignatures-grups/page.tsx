@@ -54,6 +54,7 @@ import {
 } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
 import { SubjectGroupProfilesList } from '@/components/subject-group-profiles/subject-group-profiles-list'
+import { ClassroomAssignmentDialog } from '@/components/subjects/classroom-assignment-dialog'
 
 interface Subject {
   id: string
@@ -77,6 +78,7 @@ interface SubjectGroup {
   max_students: number
   created_at: string
   updated_at: string
+  student_group_id?: string | null
   semester?: {
     name: string
     academic_year?: {
@@ -146,11 +148,18 @@ export default function AssignaturesGrupsPage() {
   const [editingGroup, setEditingGroup] = useState<string | null>(null)
   const [editFormData, setEditFormData] = useState<any>({})
   const [teacherAssignments, setTeacherAssignments] = useState<Record<string, TeacherAssignment[]>>({})
+  const [groupAssignments, setGroupAssignments] = useState<Record<string, number>>({})
+  const [groupAssignmentDetails, setGroupAssignmentDetails] = useState<Record<string, any[]>>({})
   
   // Subject edit states
   const [editingSubject, setEditingSubject] = useState<Subject | null>(null)
   const [showSubjectForm, setShowSubjectForm] = useState(false)
   const [graus, setGraus] = useState<any[]>([])
+  
+  // Classroom assignment states
+  const [showClassroomDialog, setShowClassroomDialog] = useState(false)
+  const [selectedGroupForClassroom, setSelectedGroupForClassroom] = useState<SubjectGroup | null>(null)
+  const [selectedSemesterId, setSelectedSemesterId] = useState<string>('')
   
   const supabase = createClient()
 
@@ -267,6 +276,60 @@ export default function AssignaturesGrupsPage() {
           teacherNames[item.subject_group_id] = item.teacher_names
         })
       }
+      
+      // Get assignments with classroom and time slot info for groups
+      const groupIds = (data || []).map(g => g.id)
+      const { data: assignmentData } = await supabase
+        .from('assignments')
+        .select(`
+          subject_group_id,
+          time_slots (
+            day_of_week,
+            start_time,
+            end_time
+          ),
+          assignment_classrooms (
+            classrooms (
+              name,
+              building
+            ),
+            is_full_semester,
+            week_range_type,
+            assignment_classroom_weeks (
+              week_number
+            )
+          )
+        `)
+        .in('subject_group_id', groupIds)
+      
+      const assignmentCounts: Record<string, number> = {}
+      const groupAssignmentDetails: Record<string, any[]> = {}
+      
+      if (assignmentData) {
+        assignmentData.forEach((assignment: any) => {
+          assignmentCounts[assignment.subject_group_id] = 
+            (assignmentCounts[assignment.subject_group_id] || 0) + 1
+          
+          if (!groupAssignmentDetails[assignment.subject_group_id]) {
+            groupAssignmentDetails[assignment.subject_group_id] = []
+          }
+          
+          groupAssignmentDetails[assignment.subject_group_id].push({
+            day: assignment.time_slots?.day_of_week,
+            startTime: assignment.time_slots?.start_time,
+            endTime: assignment.time_slots?.end_time,
+            classrooms: assignment.assignment_classrooms?.map((ac: any) => ({
+              name: ac.classrooms?.name,
+              building: ac.classrooms?.building,
+              is_full_semester: ac.is_full_semester,
+              weeks: ac.assignment_classroom_weeks?.map((w: any) => w.week_number) || []
+            })) || []
+          })
+        })
+      }
+      
+      setGroupAssignments(prev => ({ ...prev, ...assignmentCounts }))
+      setGroupAssignmentDetails(prev => ({ ...prev, ...groupAssignmentDetails }))
       
       const groupsWithTeachers = (data || []).map((group) => ({
         ...group,
@@ -730,6 +793,20 @@ export default function AssignaturesGrupsPage() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {/* Name search - moved to first position */}
+            <div className="relative col-span-2">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                placeholder="Cercar per nom o codi..."
+                value={filters.nom || searchTerm}
+                onChange={(e) => {
+                  setFilters(prev => ({ ...prev, nom: e.target.value }))
+                  setSearchTerm(e.target.value)
+                }}
+                className="pl-10"
+              />
+            </div>
+
             {/* Grau filter */}
             <Select value={filters.grau} onValueChange={(value) => setFilters(prev => ({ ...prev, grau: value }))}>
               <SelectTrigger>
@@ -789,20 +866,6 @@ export default function AssignaturesGrupsPage() {
                 ))}
               </SelectContent>
             </Select>
-
-            {/* Name search */}
-            <div className="relative col-span-2">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                placeholder="Cercar per nom o codi..."
-                value={filters.nom || searchTerm}
-                onChange={(e) => {
-                  setFilters(prev => ({ ...prev, nom: e.target.value }))
-                  setSearchTerm(e.target.value)
-                }}
-                className="pl-10"
-              />
-            </div>
           </div>
 
           {/* Active filters */}
@@ -1047,8 +1110,61 @@ export default function AssignaturesGrupsPage() {
                                               Professors: {group.teacher_names}
                                             </p>
                                           )}
+                                          {groupAssignmentDetails[group.id] && groupAssignmentDetails[group.id].length > 0 && (
+                                            <div className="text-sm text-muted-foreground mt-1">
+                                              {groupAssignmentDetails[group.id].map((assignment, idx) => (
+                                                <div key={idx} className="flex items-center gap-2">
+                                                  <span className="font-medium">
+                                                    {assignment.day === 1 && 'Dilluns'}
+                                                    {assignment.day === 2 && 'Dimarts'}
+                                                    {assignment.day === 3 && 'Dimecres'}
+                                                    {assignment.day === 4 && 'Dijous'}
+                                                    {assignment.day === 5 && 'Divendres'}
+                                                  </span>
+                                                  <span>
+                                                    {assignment.startTime?.substring(0, 5)} - {assignment.endTime?.substring(0, 5)}
+                                                  </span>
+                                                  {assignment.classrooms.map((classroom: any, cIdx: number) => (
+                                                    <div key={cIdx} className="flex items-center gap-1">
+                                                      <Badge variant="outline" className="text-xs">
+                                                        {classroom.name} ({classroom.building})
+                                                      </Badge>
+                                                      {!classroom.is_full_semester && classroom.weeks.length > 0 && (
+                                                        <span className="text-xs text-muted-foreground flex items-center gap-1">
+                                                          <Calendar className="h-3 w-3" />
+                                                          Setm. {classroom.weeks.join(', ')}
+                                                        </span>
+                                                      )}
+                                                    </div>
+                                                  ))}
+                                                </div>
+                                              ))}
+                                            </div>
+                                          )}
                                         </div>
                                         <div className="flex items-center gap-1">
+                                          <Button 
+                                            variant="ghost" 
+                                            size="icon"
+                                            onClick={() => {
+                                              setSelectedGroupForClassroom({
+                                                ...group,
+                                                subject: subject
+                                              } as any)
+                                              setSelectedSemesterId(group.semester_id)
+                                              setShowClassroomDialog(true)
+                                            }}
+                                            title="Assignar aules"
+                                            className="relative"
+                                          >
+                                            <MapPin className="h-4 w-4" />
+                                            {!groupAssignments[group.id] && (
+                                              <span className="absolute -top-1 -right-1 flex h-3 w-3">
+                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                                              </span>
+                                            )}
+                                          </Button>
                                           <Button 
                                             variant="ghost" 
                                             size="icon"
@@ -1188,6 +1304,27 @@ export default function AssignaturesGrupsPage() {
           }}
           subject={editingSubject}
           graus={graus}
+        />
+      )}
+      
+      {/* Classroom Assignment Dialog */}
+      {selectedGroupForClassroom && (
+        <ClassroomAssignmentDialog
+          open={showClassroomDialog}
+          onOpenChange={setShowClassroomDialog}
+          subjectGroup={{
+            id: selectedGroupForClassroom.id,
+            subject_id: selectedGroupForClassroom.subject_id,
+            student_group_id: selectedGroupForClassroom.student_group_id || '',
+            subject: selectedGroupForClassroom.subject
+          }}
+          semesterId={selectedSemesterId}
+          onSuccess={() => {
+            // Reload the subject groups to update the assignments
+            if (selectedGroupForClassroom.subject_id) {
+              loadSubjectGroups(selectedGroupForClassroom.subject_id)
+            }
+          }}
         />
       )}
     </div>

@@ -9,7 +9,10 @@ interface ValidationResult {
 export async function validateClassroomAssignment(
   subjectId: string,
   studentGroupId: string,
-  classroomId: string
+  classroomId: string,
+  timeSlotId?: string,
+  weekNumbers?: number[],
+  semesterId?: string
 ): Promise<ValidationResult> {
   const supabase = createClient()
   const errors: string[] = []
@@ -123,6 +126,25 @@ export async function validateClassroomAssignment(
       if (classroom.capacity < studentGroup.max_students) {
         warnings.push(
           `La capacitat de l'aula (${classroom.capacity}) és inferior al màxim d'estudiants del grup (${studentGroup.max_students})`
+        )
+      }
+    }
+
+    // 3. Check for time slot conflicts if provided
+    if (timeSlotId && weekNumbers && weekNumbers.length > 0) {
+      const { data: conflicts } = await supabase
+        .rpc('check_classroom_week_conflicts', {
+          p_classroom_id: classroomId,
+          p_time_slot_id: timeSlotId,
+          p_week_numbers: weekNumbers,
+          p_exclude_assignment_id: null,
+          p_semester_id: semesterId || null
+        })
+      
+      if (conflicts && conflicts.length > 0) {
+        const conflict = conflicts[0]
+        errors.push(
+          `L'aula ja està assignada a ${conflict.subject_name} (${conflict.group_code}) les setmanes: ${conflict.conflicting_weeks.join(', ')}`
         )
       }
     }

@@ -5,8 +5,8 @@ import { createClient } from '@/lib/supabase/server'
 export async function getClassroomOccupancyData(classroomId: string) {
   const supabase = await createClient()
 
-  // Get schedule slots for this classroom with all related data
-  const { data: scheduleSlots, error } = await supabase
+  // Get schedule slots for this classroom with all related data (OLD SYSTEM)
+  const { data: scheduleSlots, error: scheduleSlotsError } = await supabase
     .from('schedule_slot_classrooms')
     .select(`
       schedule_slot_id,
@@ -25,23 +25,78 @@ export async function getClassroomOccupancyData(classroomId: string) {
     `)
     .eq('classroom_id', classroomId)
 
-  if (error) {
-    console.error('Error fetching schedule slots:', error)
-    return null
+  if (scheduleSlotsError) {
+    console.error('Error fetching schedule slots:', scheduleSlotsError)
   }
+  
+  // Get assignments for this classroom (NEW SYSTEM)
+  const { data: assignmentData, error: assignmentsError } = await supabase
+    .from('assignment_classrooms')
+    .select(`
+      id,
+      is_full_semester,
+      week_range_type,
+      assignment_classroom_weeks (
+        week_number
+      ),
+      assignments (
+        id,
+        semester_id,
+        time_slot_id,
+        time_slots (
+          day_of_week,
+          start_time,
+          end_time
+        ),
+        subject_groups (
+          group_code,
+          subjects (
+            name
+          )
+        ),
+        student_groups (
+          name
+        ),
+        teachers (
+          first_name,
+          last_name
+        )
+      )
+    `)
+    .eq('classroom_id', classroomId)
+    
+  if (assignmentsError) {
+    console.error('Error fetching assignments:', assignmentsError)
+  }
+  
 
-  // Transform data into occupancy format
-  const semesters = [
-    { id: '1', name: 'Semestre 1', number: 1 },
-    { id: '2', name: 'Semestre 2', number: 2 }
-  ]
-
+  // Get current academic year
+  const { data: currentAcademicYear } = await supabase
+    .from('academic_years')
+    .select('id, name')
+    .eq('is_current', true)
+    .single()
+  
+  // Get semesters for current academic year only
+  const { data: semesters } = await supabase
+    .from('semesters')
+    .select('id, name, number')
+    .eq('academic_year_id', currentAcademicYear?.id)
+    .order('number')
+  
   const occupancyData = []
 
-  for (const semester of semesters) {
+  for (const semester of semesters || []) {
+    // Filter OLD SYSTEM slots by semester
     const semesterSlots = scheduleSlots?.filter(slot => 
       slot.schedule_slots.semester === semester.number
     ) || []
+    
+    // Filter NEW SYSTEM assignments by semester
+    const semesterAssignments = assignmentData?.filter(assignment => {
+      // assignments is a single object, not an array
+      return assignment.assignments && assignment.assignments.semester_id === semester.id
+    }) || []
 
     // Generate all hourly time slots
     const timeSlots = generateHourlyTimeSlots()
@@ -49,6 +104,7 @@ export async function getClassroomOccupancyData(classroomId: string) {
     // Process schedule slots to find assignments
     const scheduleAssignments: any[] = []
     
+    // Process OLD SYSTEM slots
     semesterSlots.forEach(slot => {
       const scheduleSlot = slot.schedule_slots
       
@@ -67,7 +123,42 @@ export async function getClassroomOccupancyData(classroomId: string) {
           subjectName: scheduleSlot.subjects?.name || 'Unknown',
           teacherName: teacherName,
           groupCode: scheduleSlot.student_groups?.name || ''
-        }
+        },
+        weeks: Array.from({length: 15}, (_, i) => i + 1) // Old system: always all weeks
+      })
+    })
+    
+    // Process NEW SYSTEM assignments
+    semesterAssignments.forEach(assignmentClassroom => {
+      const assignment = assignmentClassroom.assignments
+      
+      if (!assignment?.time_slots) {
+        return
+      }
+      
+      let teacherName = 'No assignat'
+      if (assignment.teachers) {
+        teacherName = `${assignment.teachers.first_name} ${assignment.teachers.last_name}`
+      }
+      
+      // Determine which weeks this assignment is active
+      let weeks: number[] = []
+      if (assignmentClassroom.is_full_semester) {
+        weeks = Array.from({length: 15}, (_, i) => i + 1)
+      } else {
+        weeks = assignmentClassroom.assignment_classroom_weeks?.map(w => w.week_number) || []
+      }
+      
+      scheduleAssignments.push({
+        day_of_week: assignment.time_slots.day_of_week,
+        start_time: assignment.time_slots.start_time,
+        end_time: assignment.time_slots.end_time,
+        assignment: {
+          subjectName: assignment.subject_groups?.subjects?.name || 'Unknown',
+          teacherName: teacherName,
+          groupCode: assignment.subject_groups?.group_code || assignment.student_groups?.name || ''
+        },
+        weeks: weeks
       })
     })
 
@@ -110,7 +201,7 @@ export async function getClassroomOccupancyData(classroomId: string) {
 
     occupancyData.push({
       semesterId: semester.id,
-      semesterName: `Semestre ${semester.number}`,
+      semesterName: semester.name,
       classroomOccupancy: {
         classroomId,
         morningOccupancy,
