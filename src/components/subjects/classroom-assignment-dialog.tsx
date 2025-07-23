@@ -506,6 +506,27 @@ export function ClassroomAssignmentDialog({
         return
       }
       
+      // Check for teacher conflicts
+      const { data: teacherConflicts, error: teacherConflictError } = await supabase
+        .rpc('check_subject_group_teacher_conflicts', {
+          p_subject_group_id: subjectGroup.id,
+          p_time_slot_id: timeSlot!.id,
+          p_semester_id: selectedSemesterId,
+          p_exclude_assignment_id: editingAssignmentId
+        })
+        
+      if (teacherConflictError) {
+        console.error("Error checking teacher conflicts:", teacherConflictError)
+        // Continue anyway, as teacher conflict checking is not critical
+      }
+      
+      if (teacherConflicts && teacherConflicts.length > 0) {
+        const conflict = teacherConflicts[0]
+        setError(`Solapament de professor: ${conflict.teacher_name} ja té classe de ${conflict.conflicting_subject} (${conflict.conflicting_group}) en aquest horari`)
+        setSaving(false)
+        return
+      }
+      
       // Create or update assignment
       let assignment
       let assignmentError

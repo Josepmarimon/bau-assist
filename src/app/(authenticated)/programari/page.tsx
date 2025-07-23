@@ -23,6 +23,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 import { 
   Package,
   Search,
@@ -122,11 +132,33 @@ export default function SoftwarePage() {
   const [selectedSoftware, setSelectedSoftware] = useState<Software | undefined>(undefined)
   const [classroomDialogOpen, setClassroomDialogOpen] = useState(false)
   const [selectedSoftwareForClassroom, setSelectedSoftwareForClassroom] = useState<Software | undefined>(undefined)
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
+  const [softwareToDelete, setSoftwareToDelete] = useState<Software | null>(null)
   const supabase = createClient()
 
   useEffect(() => {
     loadSoftware()
   }, [])
+
+  const handleDeleteSoftware = async () => {
+    if (!softwareToDelete) return
+    
+    try {
+      const { error } = await supabase
+        .from('software')
+        .delete()
+        .eq('id', softwareToDelete.id)
+      
+      if (error) throw error
+      
+      // Reload software list
+      await loadSoftware()
+      setDeleteDialogOpen(false)
+      setSoftwareToDelete(null)
+    } catch (error) {
+      console.error('Error deleting software:', error)
+    }
+  }
 
   const loadSoftware = async () => {
     try {
@@ -574,7 +606,14 @@ export default function SoftwarePage() {
                           >
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon">
+                          <Button 
+                            variant="ghost" 
+                            size="icon"
+                            onClick={() => {
+                              setSoftwareToDelete(sw)
+                              setDeleteDialogOpen(true)
+                            }}
+                          >
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
@@ -605,6 +644,28 @@ export default function SoftwarePage() {
           software={selectedSoftwareForClassroom}
         />
       )}
+
+      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Estàs segur?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Aquesta acció no es pot desfer. S'eliminarà permanentment el programari
+              {softwareToDelete && (
+                <span className="font-semibold"> "{softwareToDelete.name}"</span>
+              )} i totes les seves assignacions a aules.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setSoftwareToDelete(null)}>
+              Cancel·lar
+            </AlertDialogCancel>
+            <AlertDialogAction onClick={handleDeleteSoftware}>
+              Eliminar
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   )
 }
