@@ -531,19 +531,19 @@ export type Database = {
         Row: {
           id: string
           profile_id: string
-          student_group_id: string
+          subject_group_id: string
           created_at: string
         }
         Insert: {
           id?: string
           profile_id: string
-          student_group_id: string
+          subject_group_id: string
           created_at?: string
         }
         Update: {
           id?: string
           profile_id?: string
-          student_group_id?: string
+          subject_group_id?: string
           created_at?: string
         }
       }

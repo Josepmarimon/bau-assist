@@ -1,0 +1,67 @@
+[
+  {
+    "code": "GDB011",
+    "name": "Fonaments del Disseny II",
+    "year": 1,
+    "backupSemester": "1r",
+    "currentSemester": "2n",
+    "degree": "Disseny"
+  },
+  {
+    "code": "GDB042",
+    "name": "Llenguatges Audiovisuals II",
+    "year": 2,
+    "backupSemester": "1r",
+    "currentSemester": "2n",
+    "degree": "Disseny"
+  },
+  {
+    "code": "GDF011",
+    "name": "Eines Informàtiques I",
+    "year": 1,
+    "backupSemester": "1r",
+    "currentSemester": "1r i 2n",
+    "degree": "Disseny"
+  },
+  {
+    "code": "GDF012",
+    "name": "Taller de Creativitat",
+    "year": 2,
+    "backupSemester": "1r",
+    "currentSemester": "2n",
+    "degree": "Disseny"
+  },
+  {
+    "code": "GDF021",
+    "name": "Taller d'Expressió i Comunicació",
+    "year": 1,
+    "backupSemester": "1r",
+    "currentSemester": "1r i 2n",
+    "degree": "Disseny"
+  },
+  {
+    "code": "GDF041",
+    "name": "Taller de Color",
+    "year": 1,
+    "backupSemester": "1r",
+    "currentSemester": "2n",
+    "degree": "Disseny"
+  },
+  {
+    "code": "GDF051",
+    "name": "Eines Informàtiques II",
+    "year": 1,
+    "backupSemester": "2n",
+    "currentSemester": "1r i 2n",
+    "degree": "Disseny"
+  },
+  {
+    "code": "GDVG54",
+    "name": "Disseny i Publicitat",
+    "year": 4,
+    "backupSemester": "2n",
+    "currentSemester": "1r",
+    "itinerari": "G",
+    "degree": "Disseny"
+  }
+]

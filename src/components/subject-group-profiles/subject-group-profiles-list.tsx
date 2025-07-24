@@ -19,10 +19,12 @@ import {
   Users, 
   Package,
   AlertCircle,
-  Wrench 
+  Wrench,
+  MapPin
 } from 'lucide-react'
 import type { SubjectGroupProfileWithRelations } from '@/types/subject-group-profiles.types'
 import { SubjectGroupProfileDialog } from './subject-group-profile-dialog'
+import { ProfileClassroomAssignmentDialog } from '@/components/subjects/profile-classroom-assignment-dialog'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -44,6 +46,7 @@ export function SubjectGroupProfilesList({ subjectId }: SubjectGroupProfilesList
   const [selectedProfile, setSelectedProfile] = useState<SubjectGroupProfileWithRelations | undefined>()
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [profileToDelete, setProfileToDelete] = useState<SubjectGroupProfileWithRelations | null>(null)
+  const [assignmentProfile, setAssignmentProfile] = useState<SubjectGroupProfileWithRelations | null>(null)
   const { toast } = useToast()
   const supabase = createClient()
 
@@ -96,6 +99,10 @@ export function SubjectGroupProfilesList({ subjectId }: SubjectGroupProfilesList
   const handleEditProfile = (profile: SubjectGroupProfileWithRelations) => {
     setSelectedProfile(profile)
     setIsDialogOpen(true)
+  }
+
+  const handleAssignClassroom = (profile: SubjectGroupProfileWithRelations) => {
+    setAssignmentProfile(profile)
   }
 
   const handleDeleteProfile = async () => {
@@ -193,6 +200,14 @@ export function SubjectGroupProfilesList({ subjectId }: SubjectGroupProfilesList
                     <Button
                       variant="ghost"
                       size="icon"
+                      onClick={() => handleAssignClassroom(profile)}
+                      title="Assignar aules"
+                    >
+                      <MapPin className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
                       onClick={() => handleEditProfile(profile)}
                     >
                       <Edit2 className="h-4 w-4" />
@@ -264,6 +279,16 @@ export function SubjectGroupProfilesList({ subjectId }: SubjectGroupProfilesList
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      {assignmentProfile && (
+        <ProfileClassroomAssignmentDialog
+          open={!!assignmentProfile}
+          onOpenChange={(open) => !open && setAssignmentProfile(null)}
+          profile={assignmentProfile}
+          subjectId={subjectId}
+          onSuccess={loadProfiles}
+        />
+      )}
     </>
   )
 }

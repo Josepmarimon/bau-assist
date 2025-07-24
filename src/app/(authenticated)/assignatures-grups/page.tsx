@@ -68,6 +68,7 @@ interface Subject {
   active: boolean
   itinerari?: string | null
   degree?: string | null
+  groupCount?: number
 }
 
 interface SubjectGroup {
@@ -183,7 +184,8 @@ export default function AssignaturesGrupsPage() {
         .from('subjects')
         .select(`
           *,
-          itinerari:"ID Itinerari"
+          itinerari:"ID Itinerari",
+          subject_groups(count)
         `)
         .order('code', { ascending: true })
 
@@ -195,7 +197,17 @@ export default function AssignaturesGrupsPage() {
       const { data, error } = await query
 
       if (error) throw error
-      setSubjects(data || [])
+      
+      // Process the data to include group counts
+      const processedData = (data || []).map(subject => {
+        const groupCount = subject.subject_groups?.[0]?.count || 0
+        return {
+          ...subject,
+          groupCount
+        }
+      })
+      
+      setSubjects(processedData)
     } catch (error) {
       console.error('Error loading subjects:', error)
     } finally {
@@ -546,7 +558,7 @@ export default function AssignaturesGrupsPage() {
 
   const totalECTS = filteredSubjects.reduce((sum, subject) => sum + subject.credits, 0)
   const totalGroups = filteredSubjects.reduce((sum, subject) => 
-    sum + (subjectGroups[subject.id]?.length || 0), 0
+    sum + (subject.groupCount || 0), 0
   )
 
   // Get unique values for filters
@@ -973,7 +985,7 @@ export default function AssignaturesGrupsPage() {
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge variant="secondary">
-                          {groups.length} grups
+                          {subject.groupCount || 0} grups
                         </Badge>
                         <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
                           <Button 

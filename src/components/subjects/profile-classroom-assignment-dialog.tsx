@@ -22,27 +22,18 @@ import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { createClient } from "@/lib/supabase/client"
-import { Loader2, Trash2, Calendar, Edit } from "lucide-react"
+import { Loader2, Trash2, Calendar, Edit, Users } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Checkbox } from "@/components/ui/checkbox"
 import { cn } from "@/lib/utils"
 import { Switch } from "@/components/ui/switch"
+import { SubjectGroupProfile } from "@/types/subject-group-profiles.types"
 
-interface ClassroomAssignmentDialogProps {
+interface ProfileClassroomAssignmentDialogProps {
   open: boolean
   onOpenChange: (open: boolean) => void
-  subjectGroup: {
-    id: string
-    subject_id: string
-    subject?: {
-      id: string
-      name: string
-      code: string
-    }
-    group_code?: string
-    student_group_id?: string | null
-  }
-  semesterId: string
+  profile: SubjectGroupProfile
+  subjectId: string
   onSuccess?: () => void
 }
 
@@ -56,11 +47,17 @@ interface Classroom {
   type: string
 }
 
-interface Assignment {
+interface ProfileAssignment {
   id: string
+  profile_id: string
+  classroom_id: string
+  semester_id: string
   time_slot_id: string
-  semester_id?: string
-  semesters?: {
+  is_full_semester: boolean
+  week_range_type?: string
+  classroom?: Classroom
+  semester?: {
+    id: string
     name: string
     academic_years?: {
       name: string
@@ -72,12 +69,7 @@ interface Assignment {
     end_time: string
     slot_type: string
   }
-  assignment_classrooms?: {
-    classroom: Classroom
-    is_full_semester?: boolean
-    week_range_type?: string
-    weeks?: number[]
-  }[]
+  weeks?: number[]
 }
 
 const DAYS = [
@@ -93,13 +85,13 @@ const TIME_PERIODS = [
   { value: "tarda", label: "Tarda (15:00-19:30)" },
 ]
 
-export function ClassroomAssignmentDialog({
+export function ProfileClassroomAssignmentDialog({
   open,
   onOpenChange,
-  subjectGroup,
-  semesterId,
+  profile,
+  subjectId,
   onSuccess,
-}: ClassroomAssignmentDialogProps) {
+}: ProfileClassroomAssignmentDialogProps) {
   const [loading, setLoading] = useState(false)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -115,14 +107,12 @@ export function ClassroomAssignmentDialog({
   
   // Data
   const [classrooms, setClassrooms] = useState<Classroom[]>([])
-  const [assignments, setAssignments] = useState<Assignment[]>([])
+  const [assignments, setAssignments] = useState<ProfileAssignment[]>([])
   const [filteredClassrooms, setFilteredClassrooms] = useState<Classroom[]>([])
-  const [studentGroup, setStudentGroup] = useState<any>(null)
-  const [allStudentGroups, setAllStudentGroups] = useState<any[]>([])
-  const [manualGroupSelection, setManualGroupSelection] = useState(false)
   const [classroomConflicts, setClassroomConflicts] = useState<Record<string, any>>({})
   const [semesters, setSemesters] = useState<any[]>([])
-  const [selectedSemesterId, setSelectedSemesterId] = useState<string>(semesterId)
+  const [selectedSemesterId, setSelectedSemesterId] = useState<string>("")
+  const [memberGroups, setMemberGroups] = useState<any[]>([])
   
   // Filters
   const [buildingFilter, setBuildingFilter] = useState<string>("all")
@@ -130,6 +120,41 @@ export function ClassroomAssignmentDialog({
   const [floorFilter, setFloorFilter] = useState<string>("all")
   
   const supabase = createClient()
+
+  // Load profile member groups
+  useEffect(() => {
+    if (!open || !profile.id) return
+    
+    const loadMemberGroups = async () => {
+      const { data, error } = await supabase
+        .from("subject_group_profile_members")
+        .select(`
+          subject_group_id,
+          subject_groups (
+            id,
+            group_code,
+            max_students
+          )
+        `)
+        .eq("profile_id", profile.id)
+        
+      if (error) {
+        console.error("Error loading member groups:", error.message || error)
+      } else {
+        // Extract subject groups and use max_students as capacity
+        const subjectGroups = data?.map(m => m.subject_groups).filter(Boolean) || []
+        
+        const enrichedGroups = subjectGroups.map((sg: any) => ({
+          ...sg,
+          capacity: sg.max_students
+        }))
+        
+        setMemberGroups(enrichedGroups)
+      }
+    }
+    
+    loadMemberGroups()
+  }, [open, profile.id])
 
   // Load semesters on component mount
   useEffect(() => {
@@ -151,163 +176,77 @@ export function ClassroomAssignmentDialog({
         
       if (!error && data) {
         setSemesters(data)
+        if (data.length > 0 && !selectedSemesterId) {
+          setSelectedSemesterId(data[0].id)
+        }
       }
     }
     
     loadSemesters()
   }, [open])
 
-  // Load student group and existing assignments
+  // Load existing profile assignments
   useEffect(() => {
-    if (!open || !subjectGroup.id) return
+    if (!open || !profile.id || !selectedSemesterId) return
     
-    const loadData = async () => {
-      console.log("Loading data for subject group:", subjectGroup)
-      console.log("Initial semesterId prop:", semesterId)
-      console.log("Selected semester ID:", selectedSemesterId)
-      
-      // First, load all student groups
-      const { data: allGroups, error: groupsError } = await supabase
-        .from("student_groups")
-        .select("*")
-        .order("name")
-        
-      if (groupsError) {
-        console.error("Error loading student groups:", groupsError)
-      } else {
-        console.log("All student groups:", allGroups)
-        setAllStudentGroups(allGroups || [])
-      }
-      
-      // First check if we already have a student_group_id
-      if (subjectGroup.student_group_id && allGroups) {
-        const existingGroup = allGroups.find(g => g.id === subjectGroup.student_group_id)
-        if (existingGroup) {
-          console.log("Found existing student group by ID:", existingGroup)
-          setStudentGroup(existingGroup)
-          setManualGroupSelection(false)
-        }
-      } else {
-        // Try to find the student group from the group code
-        const groupCode = subjectGroup.group_code
-        if (groupCode && allGroups) {
-          console.log("Subject group code:", groupCode)
-          
-          // Try exact match first
-          let matchedGroup = allGroups.find(g => g.name === groupCode)
-          
-          if (matchedGroup) {
-            console.log("Found exact match:", matchedGroup)
-            setStudentGroup(matchedGroup)
-          } else {
-          // Try to extract pattern from the code
-          // Subject group codes might be like "T-GR4-Gm1", "P1-GR2-Im", etc.
-          // Student group names are like "GR4-Gm1", "GR2-Im", etc.
-          console.log("Trying to extract student group from code:", groupCode)
-          
-          // Try different approaches
-          let foundGroup = null
-          
-          // Approach 1: Look for exact GR pattern
-          const grPattern = /GR\d+-[A-Za-z]+\d*/
-          const grMatch = groupCode.match(grPattern)
-          if (grMatch) {
-            console.log("Found GR pattern:", grMatch[0])
-            foundGroup = allGroups.find(g => g.name === grMatch[0])
-          }
-          
-          // Approach 2: Extract GR and group parts separately
-          if (!foundGroup) {
-            const grNumberMatch = groupCode.match(/GR(\d+)/)
-            const groupSuffixMatch = groupCode.match(/([A-Za-z]+\d*)$/)
-            
-            if (grNumberMatch && groupSuffixMatch) {
-              const attemptedName = `GR${grNumberMatch[1]}-${groupSuffixMatch[1]}`
-              console.log("Trying concatenated name:", attemptedName)
-              foundGroup = allGroups.find(g => g.name === attemptedName)
-            }
-          }
-          
-          // Approach 3: Partial match
-          if (!foundGroup) {
-            foundGroup = allGroups.find(g => {
-              // Check if the group code contains the student group name
-              return groupCode.includes(g.name)
-            })
-          }
-          
-          if (foundGroup) {
-            console.log("Found matching group:", foundGroup)
-            setStudentGroup(foundGroup)
-          } else {
-            console.log("No matching group found, enabling manual selection")
-            setManualGroupSelection(true)
-          }
-        }
-        } else if (!groupCode) {
-          console.log("No group code provided, enabling manual selection")
-          setManualGroupSelection(true)
-        }
-      }
-      
-      // Load existing assignments - show ALL assignments regardless of semester
+    const loadAssignments = async () => {
       const { data, error } = await supabase
-        .from("assignments")
+        .from("profile_classroom_assignments")
         .select(`
           id,
-          time_slot_id,
-          student_group_id,
+          profile_id,
+          classroom_id,
           semester_id,
-          semesters!semester_id (
+          time_slot_id,
+          is_full_semester,
+          week_range_type,
+          classrooms (
+            id,
+            code,
+            name,
+            building,
+            floor,
+            capacity,
+            type
+          ),
+          semesters (
+            id,
             name,
             academic_years (
               name
             )
           ),
-          time_slot:time_slots!time_slot_id (
+          time_slots (
             day_of_week,
             start_time,
             end_time,
             slot_type
           ),
-          assignment_classrooms (
-            classroom:classrooms!classroom_id (
-              id,
-              code,
-              name,
-              building,
-              floor,
-              capacity,
-              type
-            ),
-            is_full_semester,
-            week_range_type,
-            assignment_classroom_weeks (
-              week_number
-            )
+          profile_assignment_weeks (
+            week_number
           )
         `)
-        .eq("subject_group_id", subjectGroup.id)
+        .eq("profile_id", profile.id)
         
       if (error) {
-        console.error("Error loading assignments:", error)
+        console.error("Error loading profile assignments:", error)
         return
       }
       
       // Process assignments to include weeks array
       const processedAssignments = (data || []).map((assignment: any) => ({
         ...assignment,
-        assignment_classrooms: assignment.assignment_classrooms?.map((ac: any) => ({
-          ...ac,
-          classroom: Array.isArray(ac.classroom) ? ac.classroom[0] : ac.classroom,
-          weeks: ac.assignment_classroom_weeks?.map((w: any) => w.week_number) || []
-        }))
+        classroom: assignment.classrooms,
+        semester: assignment.semesters,
+        time_slot: assignment.time_slots,
+        weeks: assignment.profile_assignment_weeks?.map((w: any) => w.week_number) || []
       }))
+      
       setAssignments(processedAssignments)
     }
     
-    loadData()
-  }, [open, subjectGroup.id, subjectGroup.subject_id, selectedSemesterId])
+    loadAssignments()
+  }, [open, profile.id, selectedSemesterId])
 
   // Load classrooms
   useEffect(() => {
@@ -334,7 +273,7 @@ export function ClassroomAssignmentDialog({
 
   // Check for classroom conflicts when day, time period, or weeks change
   useEffect(() => {
-    if (!dayOfWeek || !timePeriod || classrooms.length === 0) return
+    if (!dayOfWeek || !timePeriod || classrooms.length === 0 || !selectedSemesterId) return
     
     const checkConflicts = async () => {
       // Find or create time slot
@@ -352,26 +291,49 @@ export function ClassroomAssignmentDialog({
       if (!timeSlot) return
       
       // Determine which weeks to check
-      const weekNumbersToCheck = isFullSemester ? Array.from({length: 15}, (_, i) => i + 1) : selectedWeeks
+      const weekNumbersToCheck = isFullSemester ? Array.from({length: 15}, (_, i) => i + 1) : (selectedWeeks.length > 0 ? selectedWeeks : [1])
       
-      // Check conflicts for all classrooms using the RPC function
+      // Check conflicts for all classrooms at once
       const conflictMap: Record<string, any> = {}
       
-      for (const classroom of classrooms) {
-        const { data: conflicts } = await supabase
-          .rpc('check_classroom_week_conflicts', {
-            p_classroom_id: classroom.id,
-            p_time_slot_id: timeSlot!.id,
-            p_week_numbers: weekNumbersToCheck.length > 0 ? weekNumbersToCheck : [1], // Default to week 1 if no weeks selected
-            p_exclude_assignment_id: editingAssignmentId,
-            p_semester_id: selectedSemesterId
-          })
-        
-        if (conflicts && conflicts.length > 0) {
-          conflictMap[classroom.id] = {
-            subjects: { name: conflicts[0].subject_name },
-            group_code: conflicts[0].group_code,
-            conflicting_weeks: conflicts[0].conflicting_weeks
+      // Get all regular assignment conflicts
+      const { data: regularConflicts } = await supabase
+        .rpc('check_all_classroom_conflicts', {
+          p_time_slot_id: timeSlot!.id,
+          p_week_numbers: weekNumbersToCheck,
+          p_exclude_assignment_id: null,
+          p_semester_id: selectedSemesterId
+        })
+      
+      // Get all profile assignment conflicts
+      const { data: profileConflicts } = await supabase
+        .rpc('check_all_profile_classroom_conflicts', {
+          p_time_slot_id: timeSlot!.id,
+          p_week_numbers: weekNumbersToCheck,
+          p_exclude_profile_assignment_id: editingAssignmentId,
+          p_semester_id: selectedSemesterId
+        })
+      
+      // Process regular conflicts
+      if (regularConflicts) {
+        for (const conflict of regularConflicts) {
+          conflictMap[conflict.classroom_id] = {
+            name: conflict.subject_name,
+            group_code: conflict.group_code,
+            conflicting_weeks: conflict.conflicting_weeks,
+            isProfile: false
+          }
+        }
+      }
+      
+      // Process profile conflicts (may override regular conflicts)
+      if (profileConflicts) {
+        for (const conflict of profileConflicts) {
+          conflictMap[conflict.classroom_id] = {
+            name: conflict.profile_name,
+            group_code: null,
+            conflicting_weeks: conflict.conflicting_weeks,
+            isProfile: true
           }
         }
       }
@@ -380,7 +342,7 @@ export function ClassroomAssignmentDialog({
     }
     
     checkConflicts()
-  }, [dayOfWeek, timePeriod, classrooms, subjectGroup.id, isFullSemester, selectedWeeks, selectedSemesterId, editingAssignmentId])
+  }, [dayOfWeek, timePeriod, classrooms, isFullSemester, selectedWeeks, selectedSemesterId, editingAssignmentId])
 
   // Filter classrooms
   useEffect(() => {
@@ -410,30 +372,24 @@ export function ClassroomAssignmentDialog({
       filtered = filtered.filter((c) => c.floor === parseInt(floorFilter))
     }
     
-    // Sort by capacity match (prefer classrooms with similar capacity)
-    const groupCapacity = studentGroup?.capacity || 0
-    if (groupCapacity > 0) {
+    // Sort by capacity match (prefer classrooms with similar capacity to largest group)
+    const maxGroupCapacity = Math.max(...memberGroups.map(g => g.capacity || g.max_students || 0), 0)
+    if (maxGroupCapacity > 0) {
       filtered.sort((a, b) => {
-        const diffA = Math.abs(a.capacity - groupCapacity)
-        const diffB = Math.abs(b.capacity - groupCapacity)
+        const diffA = Math.abs(a.capacity - maxGroupCapacity)
+        const diffB = Math.abs(b.capacity - maxGroupCapacity)
         return diffA - diffB
       })
     }
     
     setFilteredClassrooms(filtered)
-  }, [classrooms, searchTerm, buildingFilter, typeFilter, floorFilter, studentGroup])
+  }, [classrooms, searchTerm, buildingFilter, typeFilter, floorFilter, memberGroups])
 
   const handleSave = async () => {
-    if (!dayOfWeek || !timePeriod) {
-      setError("Si us plau, selecciona el dia i la franja horària")
+    if (!dayOfWeek || !timePeriod || !selectedClassroom) {
+      setError("Si us plau, selecciona el dia, la franja horària i l'aula")
       return
     }
-    
-    // Student group is now optional
-    // if (!studentGroup) {
-    //   setError("No s'ha pogut determinar el grup d'estudiants")
-    //   return
-    // }
     
     setSaving(true)
     setError(null)
@@ -469,108 +425,47 @@ export function ClassroomAssignmentDialog({
         timeSlot = newTimeSlot
       }
       
-      // Check for conflicts only if we have a student group
-      if (studentGroup) {
-        const { data: conflicts, error: conflictError } = await supabase
-          .from("assignments")
-          .select("id")
-          .eq("time_slot_id", timeSlot!.id)
-          .eq("student_group_id", studentGroup.id)
-          .eq("semester_id", selectedSemesterId)  // Add semester filter
-          .neq("subject_group_id", subjectGroup.id)
-          
-        if (conflictError) throw conflictError
-        
-        if (conflicts && conflicts.length > 0) {
-          setError("Aquest grup ja té una assignació en aquest horari")
-          setSaving(false)
-          return
-        }
-      }
+      // Check for conflicts
+      const weekNumbersToCheck = isFullSemester ? Array.from({length: 15}, (_, i) => i + 1) : (selectedWeeks.length > 0 ? selectedWeeks : [1])
       
-      // Only check for classroom conflicts if a classroom is selected
-      if (selectedClassroom) {
-        // Check for classroom conflicts considering weeks
-        if (!isFullSemester && selectedWeeks.length === 0) {
-          setError("Si us plau, selecciona almenys una setmana")
-          setSaving(false)
-          return
-        }
-        
-        // Use the function to check conflicts
-        const weekNumbersToCheck = isFullSemester ? Array.from({length: 15}, (_, i) => i + 1) : selectedWeeks
-        
-        // Debug logging
-        console.log('Checking classroom conflicts with:', {
-          classroom: selectedClassroom,
-          timeSlot: timeSlot!.id,
-          weeks: weekNumbersToCheck,
-          semesterId: selectedSemesterId,
-          excludeAssignment: editingAssignmentId
-        })
-        
-        const { data: conflicts, error: conflictError } = await supabase
-          .rpc('check_classroom_week_conflicts', {
-            p_classroom_id: selectedClassroom,
-            p_time_slot_id: timeSlot!.id,
-            p_week_numbers: weekNumbersToCheck,
-            p_exclude_assignment_id: editingAssignmentId,
-            p_semester_id: selectedSemesterId
-          })
-          
-        if (conflictError) throw conflictError
-        
-        if (conflicts && conflicts.length > 0) {
-          const conflict = conflicts[0]
-          const conflictingWeeks = conflict.conflicting_weeks
-          
-          console.log('Conflict found:', conflict)
-          
-          if (isFullSemester) {
-            setError(`Solapament d'aula: L'aula ja està assignada en aquest horari a ${conflict.subject_name} (${conflict.group_code})`)
-          } else {
-            setError(`Solapament d'aula: L'aula ja està assignada a ${conflict.subject_name} (${conflict.group_code}) les setmanes: ${conflictingWeeks.join(', ')}`)
-          }
-          setSaving(false)
-          return
-        }
-      }
-      
-      // Check for teacher conflicts
-      const { data: teacherConflicts, error: teacherConflictError } = await supabase
-        .rpc('check_subject_group_teacher_conflicts', {
-          p_subject_group_id: subjectGroup.id,
+      const { data: conflicts, error: conflictError } = await supabase
+        .rpc('check_profile_classroom_conflicts', {
+          p_classroom_id: selectedClassroom,
           p_time_slot_id: timeSlot!.id,
+          p_week_numbers: weekNumbersToCheck,
           p_semester_id: selectedSemesterId,
-          p_exclude_assignment_id: editingAssignmentId
+          p_exclude_profile_assignment_id: editingAssignmentId
         })
         
-      if (teacherConflictError) {
-        console.error("Error checking teacher conflicts:", teacherConflictError)
-        // TEMP: Skip teacher conflict checking due to RLS recursion issue
-        // Continue anyway, as teacher conflict checking is not critical
-      }
+      if (conflictError) throw conflictError
       
-      if (teacherConflicts && teacherConflicts.length > 0) {
-        const conflict = teacherConflicts[0]
-        setError(`Solapament de professor: ${conflict.teacher_name} ja té classe de ${conflict.conflicting_subject} (${conflict.conflicting_group}) en aquest horari`)
+      if (conflicts && conflicts.length > 0) {
+        const conflict = conflicts[0]
+        const conflictingWeeks = conflict.conflicting_weeks
+        
+        if (isFullSemester) {
+          setError(`Solapament d'aula: L'aula ja està assignada en aquest horari al perfil ${conflict.profile_name}`)
+        } else {
+          setError(`Solapament d'aula: L'aula ja està assignada al perfil ${conflict.profile_name} les setmanes: ${conflictingWeeks.join(', ')}`)
+        }
         setSaving(false)
         return
       }
       
-      // Create or update assignment
+      // Create or update profile assignment
       let assignment
       let assignmentError
       
       if (editingAssignmentId) {
         // Update existing assignment
         const { data, error } = await supabase
-          .from("assignments")
+          .from("profile_classroom_assignments")
           .update({
+            classroom_id: selectedClassroom,
             semester_id: selectedSemesterId,
-            student_group_id: studentGroup?.id || null,
             time_slot_id: timeSlot!.id,
-            hours_per_week: timePeriod === "mati" ? 6 : 5,
+            is_full_semester: isFullSemester,
+            week_range_type: isFullSemester ? 'full' : 'specific_weeks',
           })
           .eq("id", editingAssignmentId)
           .select()
@@ -579,24 +474,24 @@ export function ClassroomAssignmentDialog({
         assignment = data
         assignmentError = error
         
-        // Delete existing classroom assignments to recreate them
+        // Delete existing week assignments to recreate them
         if (!error) {
           await supabase
-            .from("assignment_classrooms")
+            .from("profile_assignment_weeks")
             .delete()
-            .eq("assignment_id", editingAssignmentId)
+            .eq("profile_assignment_id", editingAssignmentId)
         }
       } else {
         // Create new assignment
         const { data, error } = await supabase
-          .from("assignments")
+          .from("profile_classroom_assignments")
           .insert({
+            profile_id: profile.id,
+            classroom_id: selectedClassroom,
             semester_id: selectedSemesterId,
-            subject_id: subjectGroup.subject_id,
-            subject_group_id: subjectGroup.id,
-            student_group_id: studentGroup?.id || null,
             time_slot_id: timeSlot!.id,
-            hours_per_week: timePeriod === "mati" ? 6 : 5,
+            is_full_semester: isFullSemester,
+            week_range_type: isFullSemester ? 'full' : 'specific_weeks',
           })
           .select()
           .single()
@@ -607,12 +502,75 @@ export function ClassroomAssignmentDialog({
         
       if (assignmentError) throw assignmentError
       
-      // Only create classroom assignment if a classroom is selected
-      if (selectedClassroom) {
+      // If specific weeks, insert week records
+      if (!isFullSemester && selectedWeeks.length > 0) {
+        const weekRecords = selectedWeeks.map(weekNumber => ({
+          profile_assignment_id: assignment.id,
+          week_number: weekNumber
+        }))
+        
+        const { error: weeksError } = await supabase
+          .from("profile_assignment_weeks")
+          .insert(weekRecords)
+          
+        if (weeksError) throw weeksError
+      }
+      
+      // Now create/update assignments for all member groups
+      for (const memberGroup of memberGroups) {
+        // Check if this group already has an assignment for this time slot
+        const { data: existingAssignment } = await supabase
+          .from("assignments")
+          .select("id")
+          .eq("subject_group_id", memberGroup.id)
+          .eq("time_slot_id", timeSlot!.id)
+          .eq("semester_id", selectedSemesterId)
+          .single()
+        
+        let groupAssignment
+        
+        if (existingAssignment) {
+          // Update existing assignment
+          const { data, error } = await supabase
+            .from("assignments")
+            .update({
+              hours_per_week: timePeriod === "mati" ? 6 : 5,
+            })
+            .eq("id", existingAssignment.id)
+            .select()
+            .single()
+          
+          if (error) throw error
+          groupAssignment = data
+          
+          // Delete existing classroom assignments
+          await supabase
+            .from("assignment_classrooms")
+            .delete()
+            .eq("assignment_id", existingAssignment.id)
+        } else {
+          // Create new assignment
+          const { data, error } = await supabase
+            .from("assignments")
+            .insert({
+              semester_id: selectedSemesterId,
+              subject_id: subjectId,
+              subject_group_id: memberGroup.id,
+              time_slot_id: timeSlot!.id,
+              hours_per_week: timePeriod === "mati" ? 6 : 5,
+            })
+            .select()
+            .single()
+            
+          if (error) throw error
+          groupAssignment = data
+        }
+        
+        // Create classroom assignment
         const { data: classroomAssignment, error: classroomAssignmentError } = await supabase
           .from("assignment_classrooms")
           .insert({
-            assignment_id: assignment.id,
+            assignment_id: groupAssignment.id,
             classroom_id: selectedClassroom,
             is_full_semester: isFullSemester,
             week_range_type: isFullSemester ? 'full' : 'specific_weeks'
@@ -637,53 +595,54 @@ export function ClassroomAssignmentDialog({
         }
       }
       
-      // Reload assignments - show ALL assignments regardless of semester
+      // Reload assignments
       const { data: updatedAssignments } = await supabase
-        .from("assignments")
+        .from("profile_classroom_assignments")
         .select(`
           id,
-          time_slot_id,
+          profile_id,
+          classroom_id,
           semester_id,
-          semesters!semester_id (
+          time_slot_id,
+          is_full_semester,
+          week_range_type,
+          classrooms (
+            id,
+            code,
+            name,
+            building,
+            floor,
+            capacity,
+            type
+          ),
+          semesters (
+            id,
             name,
             academic_years (
               name
             )
           ),
-          time_slot:time_slots!time_slot_id (
+          time_slots (
             day_of_week,
             start_time,
             end_time,
             slot_type
           ),
-          assignment_classrooms (
-            classroom:classrooms!classroom_id (
-              id,
-              code,
-              name,
-              building,
-              floor,
-              capacity,
-              type
-            ),
-            is_full_semester,
-            week_range_type,
-            assignment_classroom_weeks (
-              week_number
-            )
+          profile_assignment_weeks (
+            week_number
           )
         `)
-        .eq("subject_group_id", subjectGroup.id)
+        .eq("profile_id", profile.id)
         
-      // Process updated assignments to include weeks array
+      // Process updated assignments
       const processedUpdatedAssignments = (updatedAssignments || []).map((assignment: any) => ({
         ...assignment,
-        assignment_classrooms: assignment.assignment_classrooms?.map((ac: any) => ({
-          ...ac,
-          classroom: Array.isArray(ac.classroom) ? ac.classroom[0] : ac.classroom,
-          weeks: ac.assignment_classroom_weeks?.map((w: any) => w.week_number) || []
-        }))
+        classroom: assignment.classrooms,
+        semester: assignment.semesters,
+        time_slot: assignment.time_slots,
+        weeks: assignment.profile_assignment_weeks?.map((w: any) => w.week_number) || []
       }))
+      
       setAssignments(processedUpdatedAssignments)
       
       // Reset form
@@ -694,77 +653,80 @@ export function ClassroomAssignmentDialog({
       setSelectedWeeks([])
       setEditingAssignmentId(null)
       
-      // Close dialog and call success callback
-      onOpenChange(false)
+      // Call success callback
       if (onSuccess) {
         onSuccess()
       }
       
     } catch (error: any) {
-      console.error("Error saving assignment - Full error:", error)
-      console.error("Error details:", {
-        message: error.message,
-        details: error.details,
-        hint: error.hint,
-        code: error.code
-      })
-      
-      // Check if it's a generic "occupied" error without details
-      if (error.message && (error.message.includes('ocupada') || error.message.includes('occupied'))) {
-        console.warn('Generic occupied error detected - this might be coming from a database constraint or trigger')
-      }
-      
-      setError(error.message || "Error al guardar l'assignació")
+      console.error("Error saving profile assignment:", error.message || error)
+      setError(error.message || "Error al guardar l'assignació del perfil")
     } finally {
       setSaving(false)
     }
   }
   
-  const handleEdit = (assignment: Assignment) => {
-    // Set editing mode
+  const handleEdit = (assignment: ProfileAssignment) => {
     setEditingAssignmentId(assignment.id)
     
-    // Fill form with existing values
     if (assignment.time_slot) {
       setDayOfWeek(assignment.time_slot.day_of_week.toString())
       setTimePeriod(assignment.time_slot.slot_type)
     }
     
-    // Set classroom and weeks if available
-    if (assignment.assignment_classrooms && assignment.assignment_classrooms.length > 0) {
-      const firstClassroom = assignment.assignment_classrooms[0]
-      if (firstClassroom.classroom) {
-        setSelectedClassroom(firstClassroom.classroom.id)
-      }
-      
-      // Set weeks
-      if (!firstClassroom.is_full_semester && firstClassroom.weeks && firstClassroom.weeks.length > 0) {
-        setIsFullSemester(false)
-        setSelectedWeeks(firstClassroom.weeks)
-      } else {
-        setIsFullSemester(true)
-        setSelectedWeeks([])
-      }
+    if (assignment.classroom) {
+      setSelectedClassroom(assignment.classroom.id)
+    }
+    
+    if (!assignment.is_full_semester && assignment.weeks && assignment.weeks.length > 0) {
+      setIsFullSemester(false)
+      setSelectedWeeks(assignment.weeks)
+    } else {
+      setIsFullSemester(true)
+      setSelectedWeeks([])
+    }
+    
+    if (assignment.semester_id) {
+      setSelectedSemesterId(assignment.semester_id)
     }
   }
 
   const handleDelete = async (assignmentId: string) => {
-    if (!confirm("Estàs segur que vols eliminar aquesta assignació?")) return
+    if (!confirm("Estàs segur que vols eliminar aquesta assignació? Això també eliminarà les assignacions de tots els grups del perfil.")) return
     
-    const { error } = await supabase
-      .from("assignments")
-      .delete()
-      .eq("id", assignmentId)
+    try {
+      // Get the assignment details first
+      const assignment = assignments.find(a => a.id === assignmentId)
+      if (!assignment) return
       
-    if (error) {
-      console.error("Error deleting assignment:", error)
-      setError("Error al eliminar l'assignació")
-    } else {
-      setAssignments(assignments.filter(a => a.id !== assignmentId))
-      // Clear editing mode if we're deleting the assignment being edited
-      if (editingAssignmentId === assignmentId) {
-        setEditingAssignmentId(null)
+      // Delete assignments for all member groups
+      for (const memberGroup of memberGroups) {
+        await supabase
+          .from("assignments")
+          .delete()
+          .eq("subject_group_id", memberGroup.id)
+          .eq("time_slot_id", assignment.time_slot_id)
+          .eq("semester_id", assignment.semester_id)
       }
+      
+      // Delete the profile assignment
+      const { error } = await supabase
+        .from("profile_classroom_assignments")
+        .delete()
+        .eq("id", assignmentId)
+        
+      if (error) {
+        console.error("Error deleting profile assignment:", error.message || error)
+        setError("Error al eliminar l'assignació del perfil")
+      } else {
+        setAssignments(assignments.filter(a => a.id !== assignmentId))
+        if (editingAssignmentId === assignmentId) {
+          setEditingAssignmentId(null)
+        }
+      }
+    } catch (error: any) {
+      console.error("Error deleting assignments:", error.message || error)
+      setError("Error al eliminar les assignacions")
     }
   }
 
@@ -776,25 +738,29 @@ export function ClassroomAssignmentDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
         <DialogHeader>
-          <DialogTitle>Assignar Aules - {subjectGroup.subject?.name}</DialogTitle>
+          <DialogTitle>Assignar Aules al Perfil - {profile.name}</DialogTitle>
           <DialogDescription>
-            {subjectGroup.group_code && `Grup: ${subjectGroup.group_code}`}
-            {studentGroup && (
-              <span>
-                {subjectGroup.group_code && ' - '}
-                Grup d'estudiants: {studentGroup.name} ({studentGroup.capacity} estudiants)
-              </span>
-            )}
+            {profile.description || "Assigna aules a tots els grups d'aquest perfil"}
           </DialogDescription>
         </DialogHeader>
+        
+        {/* Group info */}
+        <div className="flex items-center gap-2 text-sm text-muted-foreground px-6 pb-2">
+          <Users className="h-4 w-4" />
+          <span>{memberGroups.length} grups en aquest perfil</span>
+          {memberGroups.length > 0 && (
+            <span>
+              ({memberGroups.map(g => g.group_code).join(", ")})
+            </span>
+          )}
+        </div>
         
         <div className="flex-1 overflow-y-auto space-y-6 py-4">
           {/* Existing assignments */}
           {assignments.length > 0 && (
             <div className="space-y-2">
-              <h3 className="text-sm font-medium">Assignacions actuals</h3>
+              <h3 className="text-sm font-medium">Assignacions actuals del perfil</h3>
               
-              {/* Warning if there are assignments from different semesters */}
               {assignments.some(a => a.semester_id !== selectedSemesterId) && (
                 <Alert className="bg-amber-50 border-amber-200">
                   <AlertDescription className="text-amber-800">
@@ -824,53 +790,25 @@ export function ClassroomAssignmentDialog({
                             <Badge variant={assignment.time_slot?.slot_type === "mati" ? "default" : "secondary"}>
                               {assignment.time_slot?.slot_type === "mati" ? "Matí" : "Tarda"}
                             </Badge>
-                            {assignment.assignment_classrooms?.map((ac) => (
-                              <Badge key={ac.classroom?.id || Math.random()} variant="outline">
-                                {ac.classroom?.code || 'N/A'} - {ac.classroom?.name || 'Sense nom'}
+                            {assignment.classroom && (
+                              <Badge variant="outline">
+                                {assignment.classroom.code} - {assignment.classroom.name}
                               </Badge>
-                            ))}
+                            )}
                           </div>
-                          {isFromDifferentSemester && assignment.semesters && (
+                          {isFromDifferentSemester && assignment.semester && (
                             <div className="flex items-center gap-1 text-xs text-amber-700">
                               <span className="font-medium">
-                                Semestre: {assignment.semesters.academic_years?.name} - {assignment.semesters.name}
+                                Semestre: {assignment.semester.academic_years?.name} - {assignment.semester.name}
                               </span>
                             </div>
                           )}
-                          {assignment.assignment_classrooms?.some(ac => !ac.is_full_semester) && (
+                          {!assignment.is_full_semester && assignment.weeks && assignment.weeks.length > 0 && (
                             <div className="flex items-center gap-1 text-xs text-muted-foreground">
                               <Calendar className="h-3 w-3" />
-                              {assignment.assignment_classrooms?.map((ac) => {
-                                if (!ac.is_full_semester && ac.weeks && ac.weeks.length > 0) {
-                                  const weeks = ac.weeks.sort((a, b) => a - b)
-                                  const weekRanges: string[] = []
-                                  let start = weeks[0]
-                                  let end = weeks[0]
-                                  
-                                  for (let i = 1; i <= weeks.length; i++) {
-                                    if (i === weeks.length || weeks[i] !== end + 1) {
-                                      if (start === end) {
-                                        weekRanges.push(`${start}`)
-                                      } else {
-                                        weekRanges.push(`${start}-${end}`)
-                                      }
-                                      if (i < weeks.length) {
-                                        start = weeks[i]
-                                        end = weeks[i]
-                                      }
-                                    } else {
-                                      end = weeks[i]
-                                    }
-                                  }
-                                  
-                                  return (
-                                    <span key={ac.classroom?.id}>
-                                      Setmanes: {weekRanges.join(', ')}
-                                    </span>
-                                  )
-                                }
-                                return null
-                              })}
+                              <span>
+                                Setmanes: {assignment.weeks.sort((a, b) => a - b).join(', ')}
+                              </span>
                             </div>
                           )}
                         </div>
@@ -922,14 +860,6 @@ export function ClassroomAssignmentDialog({
               )}
             </div>
             
-            {editingAssignmentId && (
-              <Alert>
-                <AlertDescription className="text-sm">
-                  Pots modificar l'horari o eliminar l'aula assignada. Deixa l'aula sense seleccionar per mantenir l'assignació horària sense aula.
-                </AlertDescription>
-              </Alert>
-            )}
-            
             {/* Semester selector */}
             {semesters.length > 0 && (
               <div className="space-y-2">
@@ -948,7 +878,6 @@ export function ClassroomAssignmentDialog({
                 </Select>
               </div>
             )}
-            
             
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -974,19 +903,11 @@ export function ClassroomAssignmentDialog({
                     <SelectValue placeholder="Selecciona una franja" />
                   </SelectTrigger>
                   <SelectContent>
-                    {TIME_PERIODS.map((period) => {
-                      const isDisabled = studentGroup?.shift && studentGroup.shift !== period.value
-                      
-                      return (
-                        <SelectItem
-                          key={period.value}
-                          value={period.value}
-                          disabled={isDisabled}
-                        >
-                          {period.label}
-                        </SelectItem>
-                      )
-                    })}
+                    {TIME_PERIODS.map((period) => (
+                      <SelectItem key={period.value} value={period.value}>
+                        {period.label}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
@@ -1058,7 +979,7 @@ export function ClassroomAssignmentDialog({
             {/* Classroom selection */}
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label>Cerca aula (opcional)</Label>
+                <Label>Cerca aula</Label>
                 <Input
                   placeholder="Cerca per codi o nom..."
                   value={searchTerm}
@@ -1123,31 +1044,10 @@ export function ClassroomAssignmentDialog({
                       No s'han trobat aules
                     </div>
                   ) : (
-                    <>
-                      {/* Option to remove classroom assignment */}
-                      {selectedClassroom && (
-                        <div
-                          className="flex items-center space-x-2 p-2 rounded-md cursor-pointer bg-amber-50 hover:bg-amber-100 mb-2"
-                          onClick={() => setSelectedClassroom("")}
-                        >
-                          <Checkbox
-                            checked={!selectedClassroom}
-                            onCheckedChange={() => setSelectedClassroom("")}
-                          />
-                          <div className="flex-1">
-                            <span className="font-medium text-amber-700">
-                              Sense aula assignada
-                            </span>
-                            <p className="text-xs text-amber-600">
-                              Selecciona aquesta opció per eliminar l'assignació d'aula actual
-                            </p>
-                          </div>
-                        </div>
-                      )}
-                      {/* Classroom list */}
-                      {filteredClassrooms.map((classroom) => {
+                    filteredClassrooms.map((classroom) => {
                       const isSelected = selectedClassroom === classroom.id
-                      const capacityDiff = classroom.capacity - (studentGroup?.capacity || 0)
+                      const maxGroupCapacity = Math.max(...memberGroups.map(g => g.capacity || g.max_students || 0), 0)
+                      const capacityDiff = classroom.capacity - maxGroupCapacity
                       const hasConflict = classroomConflicts[classroom.id]
                       
                       return (
@@ -1191,8 +1091,9 @@ export function ClassroomAssignmentDialog({
                             </div>
                             {hasConflict && (
                               <div className="text-xs text-red-600 mt-1">
-                                Ocupada per: {hasConflict.subjects?.name || 'Assignatura desconeguda'} 
+                                Ocupada per: {hasConflict.name}
                                 {hasConflict.group_code && ` (${hasConflict.group_code})`}
+                                {hasConflict.isProfile && " [Perfil]"}
                                 {hasConflict.conflicting_weeks && !isFullSemester && (
                                   <span> - Setmanes: {hasConflict.conflicting_weeks.join(', ')}</span>
                                 )}
@@ -1201,8 +1102,7 @@ export function ClassroomAssignmentDialog({
                           </div>
                         </div>
                       )
-                    })}
-                    </>
+                    })
                   )}
                 </div>
               </ScrollArea>
@@ -1222,7 +1122,7 @@ export function ClassroomAssignmentDialog({
           </Button>
           <Button 
             onClick={handleSave} 
-            disabled={saving || !dayOfWeek || !timePeriod}
+            disabled={saving || !dayOfWeek || !timePeriod || !selectedClassroom}
           >
             {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             {editingAssignmentId ? "Actualitzar assignació" : "Guardar assignació"}

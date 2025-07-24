@@ -29,7 +29,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Checkbox } from "@/components/ui/checkbox"
 import { createClient } from '@/lib/supabase/client'
 import { useToast } from "@/hooks/use-toast"
-import { Loader2, X, ChevronsUpDown, Check } from 'lucide-react'
+import { Loader2, X, ChevronsUpDown, Check, Calendar, MapPin, Clock } from 'lucide-react'
 import {
   Command,
   CommandEmpty,
@@ -104,6 +104,7 @@ export function SubjectGroupProfileDialog({
   const [studentGroups, setStudentGroups] = useState<StudentGroup[]>([])
   const [availableSoftware, setAvailableSoftware] = useState<Software[]>([])
   const [availableEquipment, setAvailableEquipment] = useState<EquipmentType[]>([])
+  const [profileAssignments, setProfileAssignments] = useState<any[]>([])
   const { toast } = useToast()
   const supabase = createClient()
 
@@ -122,15 +123,18 @@ export function SubjectGroupProfileDialog({
   useEffect(() => {
     if (open) {
       loadData()
+      if (profile?.id) {
+        loadProfileAssignments(profile.id)
+      }
     }
-  }, [open])
+  }, [open, profile?.id])
 
   useEffect(() => {
     if (profile) {
       form.reset({
         name: profile.name,
         description: profile.description || '',
-        member_group_ids: profile.members?.map(m => m.student_group_id) || [],
+        member_group_ids: profile.members?.map(m => m.subject_group_id) || [],
         software_requirements: profile.software?.map(s => ({
           software_id: s.software_id,
           is_required: s.is_required
@@ -141,8 +145,68 @@ export function SubjectGroupProfileDialog({
           is_required: e.is_required
         })) || []
       })
+      // Load assignments when profile changes
+      if (profile.id) {
+        loadProfileAssignments(profile.id)
+      }
+    } else {
+      // Clear assignments when no profile
+      setProfileAssignments([])
     }
   }, [profile, form])
+
+  const loadProfileAssignments = async (profileId: string) => {
+    try {
+      const { data: assignments, error } = await supabase
+        .from('profile_classroom_assignments')
+        .select(`
+          id,
+          classroom_id,
+          semester_id,
+          time_slot_id,
+          is_full_semester,
+          week_range_type,
+          classrooms (
+            id,
+            code,
+            name,
+            building,
+            floor
+          ),
+          semesters (
+            id,
+            name,
+            academic_years (
+              name
+            )
+          ),
+          time_slots (
+            day_of_week,
+            start_time,
+            end_time,
+            slot_type
+          ),
+          profile_assignment_weeks (
+            week_number
+          )
+        `)
+        .eq('profile_id', profileId)
+        .order('time_slots(day_of_week)')
+
+      if (error) {
+        console.error('Error loading profile assignments:', error)
+      } else if (assignments) {
+        // Process assignments to include weeks array
+        const processedAssignments = assignments.map((assignment: any) => ({
+          ...assignment,
+          weeks: assignment.profile_assignment_weeks?.map((w: any) => w.week_number) || []
+        }))
+        setProfileAssignments(processedAssignments)
+      }
+    } catch (error) {
+      console.error('Error loading profile assignments:', error)
+    }
+  }
 
   const loadData = async () => {
     try {
@@ -460,8 +524,8 @@ export function SubjectGroupProfileDialog({
                                       return group ? (
                                         <Badge key={id} variant="secondary" className="mr-1">
                                           {group.code || group.name}
-                                          <button
-                                            className="ml-1 ring-offset-background rounded-full outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                                          <span
+                                            className="ml-1 ring-offset-background rounded-full outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 cursor-pointer inline-flex"
                                             onKeyDown={(e) => {
                                               if (e.key === "Enter") {
                                                 e.stopPropagation()
@@ -479,7 +543,7 @@ export function SubjectGroupProfileDialog({
                                             }}
                                           >
                                             <X className="h-3 w-3" />
-                                          </button>
+                                          </span>
                                         </Badge>
                                       ) : null
                                     })}
@@ -523,6 +587,58 @@ export function SubjectGroupProfileDialog({
                     )
                   }}
                 />
+                  {/* Profile Classroom Assignments */}
+                  {profile && profileAssignments.length > 0 && (
+                    <div className="mt-6">
+                      <h3 className="text-sm font-medium mb-3 flex items-center gap-2">
+                        <Calendar className="h-4 w-4" />
+                        Assignacions d'aula i horari
+                      </h3>
+                      <div className="space-y-2">
+                        {profileAssignments.map((assignment) => {
+                          const DAYS = ["", "Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres"]
+                          const dayName = DAYS[assignment.time_slots?.day_of_week || 0]
+                          
+                          return (
+                            <div
+                              key={assignment.id}
+                              className="flex items-start gap-3 p-3 border rounded-lg bg-muted/30"
+                            >
+                              <div className="flex-1 space-y-1">
+                                <div className="flex items-center gap-2 text-sm font-medium">
+                                  <Clock className="h-3.5 w-3.5" />
+                                  {dayName} {assignment.time_slots?.slot_type === 'mati' ? 'Matí' : 'Tarda'}
+                                  {assignment.time_slots && (
+                                    <span className="text-muted-foreground">
+                                      ({assignment.time_slots.start_time.substring(0, 5)} - {assignment.time_slots.end_time.substring(0, 5)})
+                                    </span>
+                                  )}
+                                </div>
+                                <div className="flex items-center gap-2 text-sm">
+                                  <MapPin className="h-3.5 w-3.5" />
+                                  {assignment.classrooms?.code} - {assignment.classrooms?.name}
+                                  <span className="text-muted-foreground">
+                                    (Edifici {assignment.classrooms?.building}, Planta {assignment.classrooms?.floor})
+                                  </span>
+                                </div>
+                                {!assignment.is_full_semester && assignment.weeks.length > 0 && (
+                                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                    <Calendar className="h-3 w-3" />
+                                    Setmanes: {assignment.weeks.sort((a: number, b: number) => a - b).join(', ')}
+                                  </div>
+                                )}
+                                {assignment.semesters && (
+                                  <div className="text-xs text-muted-foreground">
+                                    {assignment.semesters.academic_years?.name} - {assignment.semesters.name}
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Right Column */}
@@ -558,8 +674,8 @@ export function SubjectGroupProfileDialog({
                                           {software.version && (
                                             <span className="ml-1 text-xs opacity-70">v{software.version}</span>
                                           )}
-                                          <button
-                                            className="ml-1 ring-offset-background rounded-full outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                                          <span
+                                            className="ml-1 ring-offset-background rounded-full outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 cursor-pointer inline-flex"
                                             onKeyDown={(e) => {
                                               if (e.key === "Enter") {
                                                 e.stopPropagation()
@@ -577,7 +693,7 @@ export function SubjectGroupProfileDialog({
                                             }}
                                           >
                                             <X className="h-3 w-3" />
-                                          </button>
+                                          </span>
                                         </Badge>
                                       ) : null
                                     })}
@@ -663,8 +779,8 @@ export function SubjectGroupProfileDialog({
                                           {req.quantity_required > 1 && (
                                             <span className="ml-1 text-xs opacity-70">x{req.quantity_required}</span>
                                           )}
-                                          <button
-                                            className="ml-1 ring-offset-background rounded-full outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                                          <span
+                                            className="ml-1 ring-offset-background rounded-full outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 cursor-pointer inline-flex"
                                             onKeyDown={(e) => {
                                               if (e.key === "Enter") {
                                                 e.stopPropagation()
@@ -682,7 +798,7 @@ export function SubjectGroupProfileDialog({
                                             }}
                                           >
                                             <X className="h-3 w-3" />
-                                          </button>
+                                          </span>
                                         </Badge>
                                       ) : null
                                     })}

@@ -597,6 +597,9 @@ export default function ClassroomsPage() {
         open={occupancyDialogOpen}
         onOpenChange={setOccupancyDialogOpen}
         data={selectedClassroomOccupancy}
+        onRefresh={() => {
+          loadOccupancyData()
+        }}
       />
 
       {/* Details Dialog */}

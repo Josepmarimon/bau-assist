@@ -12,7 +12,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Clock, Calendar, Users } from 'lucide-react'
+import { Clock, Calendar, Users, RefreshCw } from 'lucide-react'
+import { ClassroomAssignmentDialog } from '@/components/subjects/classroom-assignment-dialog'
+import { Button } from '@/components/ui/button'
 
 interface ClassroomOccupancyDialogProps {
   open: boolean
@@ -21,6 +23,7 @@ interface ClassroomOccupancyDialogProps {
     classroom: any
     occupancy: any
   } | null
+  onRefresh?: () => void
 }
 
 const daysOfWeek = ['Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres']
@@ -32,7 +35,8 @@ const timeSlotToHour = (time: string) => {
 export function ClassroomOccupancyDialog({
   open,
   onOpenChange,
-  data
+  data,
+  onRefresh
 }: ClassroomOccupancyDialogProps) {
   if (!data || !data.occupancy) return null
 
@@ -43,6 +47,10 @@ export function ClassroomOccupancyDialog({
   const [selectedSemester, setSelectedSemester] = useState(
     semesters.length > 0 ? semesters[0].semesterId : ''
   )
+  
+  // State for showing assignment dialog
+  const [assignmentDialogOpen, setAssignmentDialogOpen] = useState(false)
+  const [selectedSubjectGroup, setSelectedSubjectGroup] = useState<any>(null)
 
   const renderTimeGrid = (semesterData: any) => {
     console.log('Rendering semester data:', semesterData)
@@ -169,8 +177,20 @@ export function ClassroomOccupancyDialog({
                       return (
                         <td 
                           key={day} 
-                          className="border p-2 bg-blue-50 align-top"
+                          className="border p-2 bg-blue-50 align-top cursor-pointer hover:bg-blue-100 transition-colors"
                           rowSpan={cellInfo.rowspan}
+                          onClick={() => {
+                            // Open assignment dialog with the subject group info
+                            setSelectedSubjectGroup({
+                              id: cellInfo.content.subjectGroupId,
+                              subject_id: cellInfo.content.subjectId,
+                              subject: {
+                                name: cellInfo.content.subjectName
+                              },
+                              group_code: cellInfo.content.groupCode
+                            })
+                            setAssignmentDialogOpen(true)
+                          }}
                         >
                           <div className="space-y-1">
                             <div className="font-medium text-xs">
@@ -204,14 +224,27 @@ export function ClassroomOccupancyDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-6xl max-h-[90vh]">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Calendar className="h-5 w-5" />
-            Ocupació de l'aula {classroom.code} - {classroom.name}
-          </DialogTitle>
-          <DialogDescription>
-            Visualitza l'ocupació de l'aula per semestre, matí i tarda
-          </DialogDescription>
+        <DialogHeader className="flex items-center justify-between">
+          <div>
+            <DialogTitle className="flex items-center gap-2">
+              <Calendar className="h-5 w-5" />
+              Ocupació de l'aula {classroom.code} - {classroom.name}
+            </DialogTitle>
+            <DialogDescription>
+              Visualitza l'ocupació de l'aula per semestre, matí i tarda
+            </DialogDescription>
+          </div>
+          {onRefresh && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onRefresh}
+              className="ml-4"
+            >
+              <RefreshCw className="h-4 w-4 mr-2" />
+              Actualitzar
+            </Button>
+          )}
         </DialogHeader>
 
         <Tabs value={selectedSemester} onValueChange={setSelectedSemester}>
@@ -228,74 +261,9 @@ export function ClassroomOccupancyDialog({
 
             return (
               <TabsContent key={semesterData.semesterId} value={semesterData.semesterId} className="space-y-4">
-                {/* Occupancy Stats */}
-                <div className="grid grid-cols-3 gap-4">
-                  <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                      <CardTitle className="text-sm font-medium">
-                        Ocupació Total
-                      </CardTitle>
-                      <Users className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">{occupancy.totalOccupancy}%</div>
-                      <div className="mt-2 w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div 
-                          className="h-full bg-blue-500"
-                          style={{ width: `${occupancy.totalOccupancy}%` }}
-                        />
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                      <CardTitle className="text-sm font-medium">
-                        Ocupació Matí
-                      </CardTitle>
-                      <Clock className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">{occupancy.morningOccupancy}%</div>
-                      <div className="mt-2 w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div 
-                          className={`h-full ${
-                            occupancy.morningOccupancy > 75 ? 'bg-red-500' :
-                            occupancy.morningOccupancy > 50 ? 'bg-yellow-500' :
-                            'bg-green-500'
-                          }`}
-                          style={{ width: `${occupancy.morningOccupancy}%` }}
-                        />
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                      <CardTitle className="text-sm font-medium">
-                        Ocupació Tarda
-                      </CardTitle>
-                      <Clock className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-2xl font-bold">{occupancy.afternoonOccupancy}%</div>
-                      <div className="mt-2 w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div 
-                          className={`h-full ${
-                            occupancy.afternoonOccupancy > 75 ? 'bg-red-500' :
-                            occupancy.afternoonOccupancy > 50 ? 'bg-yellow-500' :
-                            'bg-green-500'
-                          }`}
-                          style={{ width: `${occupancy.afternoonOccupancy}%` }}
-                        />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-
                 {/* Time Grid */}
                 <Card>
-                  <CardHeader>
+                  <CardHeader className="pb-3">
                     <CardTitle className="text-base">Horari setmanal</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -304,11 +272,90 @@ export function ClassroomOccupancyDialog({
                     </ScrollArea>
                   </CardContent>
                 </Card>
+                
+                {/* Compact Occupancy Stats */}
+                <Card>
+                  <CardContent className="pt-4 pb-3">
+                    <div className="flex items-center justify-around gap-6">
+                      <div className="flex items-center gap-3">
+                        <Users className="h-4 w-4 text-muted-foreground" />
+                        <div className="space-y-1">
+                          <p className="text-xs text-muted-foreground">Total</p>
+                          <div className="flex items-center gap-2">
+                            <div className="w-24 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                              <div 
+                                className="h-full bg-blue-500"
+                                style={{ width: `${occupancy.totalOccupancy}%` }}
+                              />
+                            </div>
+                            <span className="text-sm font-medium">{occupancy.totalOccupancy}%</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center gap-3">
+                        <Clock className="h-4 w-4 text-muted-foreground" />
+                        <div className="space-y-1">
+                          <p className="text-xs text-muted-foreground">Matí</p>
+                          <div className="flex items-center gap-2">
+                            <div className="w-24 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                              <div 
+                                className={`h-full ${
+                                  occupancy.morningOccupancy > 75 ? 'bg-red-500' :
+                                  occupancy.morningOccupancy > 50 ? 'bg-yellow-500' :
+                                  'bg-green-500'
+                                }`}
+                                style={{ width: `${occupancy.morningOccupancy}%` }}
+                              />
+                            </div>
+                            <span className="text-sm font-medium">{occupancy.morningOccupancy}%</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center gap-3">
+                        <Clock className="h-4 w-4 text-muted-foreground" />
+                        <div className="space-y-1">
+                          <p className="text-xs text-muted-foreground">Tarda</p>
+                          <div className="flex items-center gap-2">
+                            <div className="w-24 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                              <div 
+                                className={`h-full ${
+                                  occupancy.afternoonOccupancy > 75 ? 'bg-red-500' :
+                                  occupancy.afternoonOccupancy > 50 ? 'bg-yellow-500' :
+                                  'bg-green-500'
+                                }`}
+                                style={{ width: `${occupancy.afternoonOccupancy}%` }}
+                              />
+                            </div>
+                            <span className="text-sm font-medium">{occupancy.afternoonOccupancy}%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </TabsContent>
             )
           })}
         </Tabs>
       </DialogContent>
+      
+      {/* Assignment Dialog */}
+      {selectedSubjectGroup && (
+        <ClassroomAssignmentDialog
+          open={assignmentDialogOpen}
+          onOpenChange={setAssignmentDialogOpen}
+          subjectGroup={selectedSubjectGroup}
+          semesterId={selectedSemester}
+          onSuccess={() => {
+            // Refresh the occupancy data after successful assignment
+            if (onRefresh) {
+              onRefresh()
+            }
+          }}
+        />
+      )}
     </Dialog>
   )
 }

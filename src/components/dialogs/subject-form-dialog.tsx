@@ -353,9 +353,9 @@ export function SubjectFormDialog({ open, onOpenChange, onSuccess, subject, grau
                   <SelectValue placeholder="Selecciona un semestre" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="1r semestre">1r semestre</SelectItem>
-                  <SelectItem value="2n semestre">2n semestre</SelectItem>
-                  <SelectItem value="Anual">Anual</SelectItem>
+                  <SelectItem value="1r">1r semestre</SelectItem>
+                  <SelectItem value="2n">2n semestre</SelectItem>
+                  <SelectItem value="1r i 2n">Anual</SelectItem>
                 </SelectContent>
               </Select>
             </div>

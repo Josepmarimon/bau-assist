@@ -43,14 +43,18 @@ export async function getClassroomOccupancyData(classroomId: string) {
         id,
         semester_id,
         time_slot_id,
+        subject_id,
+        subject_group_id,
         time_slots (
           day_of_week,
           start_time,
           end_time
         ),
         subject_groups (
+          id,
           group_code,
           subjects (
+            id,
             name
           )
         ),
@@ -122,7 +126,10 @@ export async function getClassroomOccupancyData(classroomId: string) {
         assignment: {
           subjectName: scheduleSlot && typeof scheduleSlot === 'object' && 'subjects' in scheduleSlot && scheduleSlot.subjects && typeof scheduleSlot.subjects === 'object' && 'name' in scheduleSlot.subjects ? scheduleSlot.subjects.name : 'Unknown',
           teacherName: teacherName,
-          groupCode: scheduleSlot && typeof scheduleSlot === 'object' && 'student_groups' in scheduleSlot && scheduleSlot.student_groups && typeof scheduleSlot.student_groups === 'object' && 'name' in scheduleSlot.student_groups ? scheduleSlot.student_groups.name : ''
+          groupCode: scheduleSlot && typeof scheduleSlot === 'object' && 'student_groups' in scheduleSlot && scheduleSlot.student_groups && typeof scheduleSlot.student_groups === 'object' && 'name' in scheduleSlot.student_groups ? scheduleSlot.student_groups.name : '',
+          // Add IDs for old system (not available in this case)
+          subjectGroupId: null,
+          subjectId: null
         },
         weeks: Array.from({length: 15}, (_, i) => i + 1) // Old system: always all weeks
       })
@@ -157,7 +164,10 @@ export async function getClassroomOccupancyData(classroomId: string) {
           subjectName: assignment && 'subject_groups' in assignment && assignment.subject_groups && typeof assignment.subject_groups === 'object' && 'subjects' in assignment.subject_groups && assignment.subject_groups.subjects && typeof assignment.subject_groups.subjects === 'object' && 'name' in assignment.subject_groups.subjects ? assignment.subject_groups.subjects.name : 'Unknown',
           teacherName: teacherName,
           groupCode: (assignment && 'subject_groups' in assignment && assignment.subject_groups && typeof assignment.subject_groups === 'object' && 'group_code' in assignment.subject_groups ? assignment.subject_groups.group_code : '') || 
-                     (assignment && 'student_groups' in assignment && assignment.student_groups && typeof assignment.student_groups === 'object' && 'name' in assignment.student_groups ? assignment.student_groups.name : '') || ''
+                     (assignment && 'student_groups' in assignment && assignment.student_groups && typeof assignment.student_groups === 'object' && 'name' in assignment.student_groups ? assignment.student_groups.name : '') || '',
+          // Add IDs for new system
+          subjectGroupId: assignment && 'subject_group_id' in assignment ? assignment.subject_group_id : null,
+          subjectId: assignment && 'subject_id' in assignment ? assignment.subject_id : null
         },
         weeks: weeks
       })

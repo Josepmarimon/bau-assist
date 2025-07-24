@@ -111,7 +111,7 @@ async function debugInfografiaConflict() {
         console.error('  Error:', error)
       } else if (conflicts && conflicts.length > 0) {
         console.log('  Conflicts found:')
-        conflicts.forEach(c => {
+        conflicts.forEach((c: any) => {
           console.log(`    - ${c.subject_name} (${c.group_code}) - Weeks: ${c.conflicting_weeks.join(', ')}`)
         })
       } else {
@@ -134,7 +134,7 @@ async function debugInfografiaConflict() {
       console.error('  Error:', allError)
     } else if (allConflicts && allConflicts.length > 0) {
       console.log('  Conflicts found:')
-      allConflicts.forEach(c => {
+      allConflicts.forEach((c: any) => {
         console.log(`    - ${c.subject_name} (${c.group_code}) - Weeks: ${c.conflicting_weeks.join(', ')}`)
       })
     } else {
