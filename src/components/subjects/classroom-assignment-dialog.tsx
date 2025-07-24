@@ -156,6 +156,8 @@ export function ClassroomAssignmentDialog({
     
     const loadData = async () => {
       console.log("Loading data for subject group:", subjectGroup)
+      console.log("Initial semesterId prop:", semesterId)
+      console.log("Selected semester ID:", selectedSemesterId)
       
       // First, load all student groups
       const { data: allGroups, error: groupsError } = await supabase
@@ -482,6 +484,15 @@ export function ClassroomAssignmentDialog({
       // Use the function to check conflicts
       const weekNumbersToCheck = isFullSemester ? Array.from({length: 15}, (_, i) => i + 1) : selectedWeeks
       
+      // Debug logging
+      console.log('Checking classroom conflicts with:', {
+        classroom: selectedClassroom,
+        timeSlot: timeSlot!.id,
+        weeks: weekNumbersToCheck,
+        semesterId: selectedSemesterId,
+        excludeAssignment: editingAssignmentId
+      })
+      
       const { data: conflicts, error: conflictError } = await supabase
         .rpc('check_classroom_week_conflicts', {
           p_classroom_id: selectedClassroom,
@@ -496,6 +507,8 @@ export function ClassroomAssignmentDialog({
       if (conflicts && conflicts.length > 0) {
         const conflict = conflicts[0]
         const conflictingWeeks = conflict.conflicting_weeks
+        
+        console.log('Conflict found:', conflict)
         
         if (isFullSemester) {
           setError(`Solapament d'aula: L'aula ja està assignada en aquest horari a ${conflict.subject_name} (${conflict.group_code})`)
@@ -662,7 +675,19 @@ export function ClassroomAssignmentDialog({
       }
       
     } catch (error: any) {
-      console.error("Error saving assignment:", error)
+      console.error("Error saving assignment - Full error:", error)
+      console.error("Error details:", {
+        message: error.message,
+        details: error.details,
+        hint: error.hint,
+        code: error.code
+      })
+      
+      // Check if it's a generic "occupied" error without details
+      if (error.message && (error.message.includes('ocupada') || error.message.includes('occupied'))) {
+        console.warn('Generic occupied error detected - this might be coming from a database constraint or trigger')
+      }
+      
       setError(error.message || "Error al guardar l'assignació")
     } finally {
       setSaving(false)
