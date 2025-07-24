@@ -463,6 +463,7 @@ export function ClassroomAssignmentDialog({
           .select("id")
           .eq("time_slot_id", timeSlot!.id)
           .eq("student_group_id", studentGroup.id)
+          .eq("semester_id", selectedSemesterId)  // Add semester filter
           .neq("subject_group_id", subjectGroup.id)
           
         if (conflictError) throw conflictError
