@@ -893,38 +893,6 @@ export function ClassroomAssignmentDialog({
               </div>
             )}
             
-            {/* Student group selector if not automatically determined */}
-            {(!studentGroup || manualGroupSelection) && allStudentGroups.length > 0 && (
-              <div className="space-y-2">
-                <Label>Grup d'estudiants (opcional)</Label>
-                <Select 
-                  value={studentGroup?.id || ""} 
-                  onValueChange={(value) => {
-                    const selected = allStudentGroups.find(g => g.id === value)
-                    if (selected) {
-                      setStudentGroup(selected)
-                      setManualGroupSelection(false)
-                    }
-                  }}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecciona un grup d'estudiants" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {allStudentGroups.map((group) => (
-                      <SelectItem key={group.id} value={group.id}>
-                        {group.name} - {group.capacity} estudiants ({group.shift === "mati" ? "Matí" : "Tarda"})
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                {!studentGroup && (
-                  <p className="text-sm text-muted-foreground">
-                    No s'ha pogut determinar automàticament el grup. Si us plau, selecciona'l manualment.
-                  </p>
-                )}
-              </div>
-            )}
             
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
