@@ -531,6 +531,7 @@ export function ClassroomAssignmentDialog({
         
       if (teacherConflictError) {
         console.error("Error checking teacher conflicts:", teacherConflictError)
+        // TEMP: Skip teacher conflict checking due to RLS recursion issue
         // Continue anyway, as teacher conflict checking is not critical
       }
       
