@@ -922,7 +922,7 @@ export function ClassroomAssignmentDialog({
                     setEditingAssignmentId(null)
                     setDayOfWeek("")
                     setTimePeriod("")
-                    setSelectedClassroom("")
+                    setSelectedClassrooms([])
                     setIsFullSemester(true)
                     setSelectedWeeks([])
                   }}

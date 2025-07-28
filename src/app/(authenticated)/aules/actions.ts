@@ -215,12 +215,12 @@ export async function getClassroomOccupancyData(classroomId: string) {
     semesterMasterSchedules.forEach(masterSchedule => {
       let teacherName = 'No assignat'
       if (masterSchedule.teachers) {
-        teacherName = `${masterSchedule.teachers.first_name} ${masterSchedule.teachers.last_name}`
+        teacherName = `${(masterSchedule.teachers as any).first_name} ${(masterSchedule.teachers as any).last_name}`
       }
       
       let programInfo = ''
       if (masterSchedule.programs) {
-        programInfo = `[${masterSchedule.programs.code}] `
+        programInfo = `[${(masterSchedule.programs as any).code}] `
       }
       
       scheduleAssignments.push({
@@ -230,8 +230,8 @@ export async function getClassroomOccupancyData(classroomId: string) {
         assignment: {
           subjectName: programInfo + masterSchedule.subject_name,
           teacherName: teacherName,
-          groupCode: masterSchedule.programs?.type === 'master' ? 'Màster' : 'Postgrau',
-          programColor: masterSchedule.programs?.color || null,
+          groupCode: (masterSchedule.programs as any)?.type === 'master' ? 'Màster' : 'Postgrau',
+          programColor: (masterSchedule.programs as any)?.color || null,
           // Add IDs for master system
           subjectGroupId: null,
           subjectId: null

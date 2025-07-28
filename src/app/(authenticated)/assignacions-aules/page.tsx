@@ -697,7 +697,7 @@ export default function AssignacionsAulesPage() {
         .maybeSingle()
 
       if (existingAssignment) {
-        const existingSubjectName = existingAssignment.subjects?.name || 'Assignatura desconeguda'
+        const existingSubjectName = (existingAssignment.subjects as any)?.name || 'Assignatura desconeguda'
         alert(`Ja existeix una assignació en aquest horari per al grup seleccionat:\n\n${existingSubjectName}\n\nSi vols canviar-la, primer elimina l'assignació existent.`)
         console.error('An assignment already exists for this time slot and group')
         console.log('Existing assignment:', existingAssignment)

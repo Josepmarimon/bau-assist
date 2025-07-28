@@ -702,7 +702,7 @@ export function MasterScheduleDialog({
                   <Label htmlFor="teacher_id">Professor (opcional)</Label>
                   <Select
                     value={formData.teacher_id}
-                    onValueChange={(value) => setFormData({ ...formData, teacher_id: value === 'no-teacher' ? null : value })}
+                    onValueChange={(value) => setFormData({ ...formData, teacher_id: value === 'no-teacher' ? '' : value })}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Selecciona un professor" />

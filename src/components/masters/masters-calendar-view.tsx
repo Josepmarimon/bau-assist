@@ -28,7 +28,7 @@ interface MastersCalendarViewProps {
 const DAYS = ['Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres']
 const START_HOUR = 15
 const END_HOUR = 21.5 // 21:30
-const HOURS = [] // Generate hours from 15:00 to 21:30
+const HOURS: number[] = [] // Generate hours from 15:00 to 21:30
 for (let hour = START_HOUR; hour <= END_HOUR; hour += 0.5) {
   HOURS.push(hour)
 }

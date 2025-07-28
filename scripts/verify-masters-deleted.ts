@@ -31,7 +31,7 @@ async function verifyMastersDeleted() {
   } else {
     console.log(`Master schedules for masters/postgraus: ${masterSchedules?.length || 0}`)
     if (masterSchedules && masterSchedules.length > 0) {
-      masterSchedules.forEach(s => console.log(`  - ${s.programs.code}: ${s.subject_name}`))
+      masterSchedules.forEach(s => console.log(`  - ${(s.programs as any).code}: ${s.subject_name}`))
     }
   }
 
@@ -50,7 +50,7 @@ async function verifyMastersDeleted() {
   } else {
     console.log(`\nSubject groups for masters/postgraus: ${subjectGroups?.length || 0}`)
     if (subjectGroups && subjectGroups.length > 0) {
-      subjectGroups.forEach(sg => console.log(`  - ${sg.subjects.code}: ${sg.group_code}`))
+      subjectGroups.forEach(sg => console.log(`  - ${(sg.subjects as any).code}: ${sg.group_code}`))
     }
   }
 

@@ -42,7 +42,7 @@ async function deleteFictitiousMasters() {
     if (existingSchedules && existingSchedules.length > 0) {
       console.log('\nSchedules to be deleted:')
       existingSchedules.forEach(schedule => {
-        console.log(`- ${schedule.programs.code} - ${schedule.subject_name} - ${schedule.classrooms.name}`)
+        console.log(`- ${(schedule.programs as any).code} - ${schedule.subject_name} - ${(schedule.classrooms as any).name}`)
       })
     }
 

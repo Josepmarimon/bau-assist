@@ -134,7 +134,7 @@ export function ClassroomDetailsDialog({
       }
 
       const installedSoftware = (installedData || []).map(item => item.software).filter(Boolean)
-      const installedIds = new Set(installedSoftware.map(s => s.id))
+      const installedIds = new Set(installedSoftware.map((s: any) => s.id))
 
       // 2. Obtenir les assignacions d'aquesta aula
       const { data: acData } = await supabase
@@ -144,7 +144,7 @@ export function ClassroomDetailsDialog({
 
       if (!acData || acData.length === 0) {
         // Si no hi ha assignacions, només mostrem el software instal·lat
-        setSoftwareList(installedSoftware.map(s => ({
+        setSoftwareList(installedSoftware.map((s: any) => ({
           ...s,
           isInstalled: true,
           subjects: []
@@ -178,7 +178,7 @@ export function ClassroomDetailsDialog({
         subjectSoftwareData.forEach(item => {
           if (!item.software) return
           
-          const id = item.software.id
+          const id = (item.software as any).id
           if (!softwareMap.has(id)) {
             softwareMap.set(id, {
               ...item.software,
@@ -188,7 +188,7 @@ export function ClassroomDetailsDialog({
           }
           
           if (item.subject) {
-            softwareMap.get(id).subjects.push({
+            softwareMap.get(id)!.subjects.push({
               ...item.subject,
               is_required: item.is_required
             })
@@ -197,7 +197,7 @@ export function ClassroomDetailsDialog({
       }
 
       // Afegir software instal·lat que no és requerit
-      installedSoftware.forEach(software => {
+      installedSoftware.forEach((software: any) => {
         if (!softwareMap.has(software.id)) {
           softwareMap.set(software.id, {
             ...software,
@@ -396,7 +396,7 @@ export function ClassroomDetailsDialog({
                 result.semester = { 
                   id: data.id, 
                   name: data.name || 'Sense nom',
-                  academic_year: data.academic_years?.name || '2025-2026'
+                  academic_year: (data.academic_years as any)?.name || '2025-2026'
                 }
               } else if (error) {
                 console.error('Error fetching semester:', error)
