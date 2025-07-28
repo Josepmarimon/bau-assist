@@ -9,6 +9,389 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      equipment_types: {
+        Row: {
+          id: string
+          code: string
+          name: string
+          description: string | null
+          category: string | null
+          specifications: Json
+          active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          code: string
+          name: string
+          description?: string | null
+          category?: string | null
+          specifications?: Json
+          active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          code?: string
+          name?: string
+          description?: string | null
+          category?: string | null
+          specifications?: Json
+          active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      programs: {
+        Row: {
+          id: string
+          code: string
+          name: string
+          type: Database["public"]["Enums"]["program_type"]
+          duration_years: number | null
+          credits: number | null
+          coordinator_name: string | null
+          coordinator_email: string | null
+          description: string | null
+          color: string | null
+          active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          code: string
+          name: string
+          type: Database["public"]["Enums"]["program_type"]
+          duration_years?: number | null
+          credits?: number | null
+          coordinator_name?: string | null
+          coordinator_email?: string | null
+          description?: string | null
+          color?: string | null
+          active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          code?: string
+          name?: string
+          type?: Database["public"]["Enums"]["program_type"]
+          duration_years?: number | null
+          credits?: number | null
+          coordinator_name?: string | null
+          coordinator_email?: string | null
+          description?: string | null
+          color?: string | null
+          active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      program_subjects: {
+        Row: {
+          id: string
+          program_id: string
+          subject_id: string
+          year: number | null
+          semester: number | null
+          is_mandatory: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          program_id: string
+          subject_id: string
+          year?: number | null
+          semester?: number | null
+          is_mandatory?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          program_id?: string
+          subject_id?: string
+          year?: number | null
+          semester?: number | null
+          is_mandatory?: boolean
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "program_subjects_program_id_fkey"
+            columns: ["program_id"]
+            isOneToOne: false
+            referencedRelation: "programs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "program_subjects_subject_id_fkey"
+            columns: ["subject_id"]
+            isOneToOne: false
+            referencedRelation: "subjects"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      program_classrooms: {
+        Row: {
+          id: string
+          program_id: string
+          classroom_id: string
+          priority: number
+          notes: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          program_id: string
+          classroom_id: string
+          priority?: number
+          notes?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          program_id?: string
+          classroom_id?: string
+          priority?: number
+          notes?: string | null
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "program_classrooms_program_id_fkey"
+            columns: ["program_id"]
+            isOneToOne: false
+            referencedRelation: "programs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "program_classrooms_classroom_id_fkey"
+            columns: ["classroom_id"]
+            isOneToOne: false
+            referencedRelation: "classrooms"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      program_equipment: {
+        Row: {
+          id: string
+          program_id: string
+          equipment_type_id: string
+          quantity: number
+          is_required: boolean
+          notes: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          program_id: string
+          equipment_type_id: string
+          quantity?: number
+          is_required?: boolean
+          notes?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          program_id?: string
+          equipment_type_id?: string
+          quantity?: number
+          is_required?: boolean
+          notes?: string | null
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "program_equipment_program_id_fkey"
+            columns: ["program_id"]
+            isOneToOne: false
+            referencedRelation: "programs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "program_equipment_equipment_type_id_fkey"
+            columns: ["equipment_type_id"]
+            isOneToOne: false
+            referencedRelation: "equipment_types"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      program_software: {
+        Row: {
+          id: string
+          program_id: string
+          software_id: string
+          is_required: boolean
+          notes: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          program_id: string
+          software_id: string
+          is_required?: boolean
+          notes?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          program_id?: string
+          software_id?: string
+          is_required?: boolean
+          notes?: string | null
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "program_software_program_id_fkey"
+            columns: ["program_id"]
+            isOneToOne: false
+            referencedRelation: "programs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "program_software_software_id_fkey"
+            columns: ["software_id"]
+            isOneToOne: false
+            referencedRelation: "software"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      classroom_equipment: {
+        Row: {
+          id: string
+          classroom_id: string
+          equipment_type_id: string
+          quantity: number
+          condition: string | null
+          notes: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          classroom_id: string
+          equipment_type_id: string
+          quantity?: number
+          condition?: string | null
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          classroom_id?: string
+          equipment_type_id?: string
+          quantity?: number
+          condition?: string | null
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "classroom_equipment_classroom_id_fkey"
+            columns: ["classroom_id"]
+            isOneToOne: false
+            referencedRelation: "classrooms"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "classroom_equipment_equipment_type_id_fkey"
+            columns: ["equipment_type_id"]
+            isOneToOne: false
+            referencedRelation: "equipment_types"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      master_schedules: {
+        Row: {
+          id: string
+          program_id: string
+          classroom_id: string
+          day_of_week: number
+          start_time: string
+          end_time: string
+          semester_id: string | null
+          teacher_id: string | null
+          subject_name: string | null
+          notes: string | null
+          active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          program_id: string
+          classroom_id: string
+          day_of_week: number
+          start_time: string
+          end_time: string
+          semester_id?: string | null
+          teacher_id?: string | null
+          subject_name?: string | null
+          notes?: string | null
+          active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          program_id?: string
+          classroom_id?: string
+          day_of_week?: number
+          start_time?: string
+          end_time?: string
+          semester_id?: string | null
+          teacher_id?: string | null
+          subject_name?: string | null
+          notes?: string | null
+          active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "master_schedules_program_id_fkey"
+            columns: ["program_id"]
+            isOneToOne: false
+            referencedRelation: "programs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "master_schedules_classroom_id_fkey"
+            columns: ["classroom_id"]
+            isOneToOne: false
+            referencedRelation: "classrooms"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "master_schedules_teacher_id_fkey"
+            columns: ["teacher_id"]
+            isOneToOne: false
+            referencedRelation: "teachers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "master_schedules_semester_id_fkey"
+            columns: ["semester_id"]
+            isOneToOne: false
+            referencedRelation: "semesters"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       assignments: {
         Row: {
           id: string
@@ -244,10 +627,13 @@ export type Database = {
           name: string
           credits: number
           year: number
-          type: 'OBLIGATORIA' | 'OPTATIVA' | 'TFG'
+          type: 'OBLIGATORIA' | 'OPTATIVA' | 'TFG' | 'TFM' | 'PRACTIQUES' | 'SEMINARI'
           department: string | null
           description: string | null
           itinerari: string | null
+          program_id: string | null
+          term_type: string | null
+          term_number: number | null
           created_at: string
           updated_at: string
         }
@@ -257,10 +643,13 @@ export type Database = {
           name: string
           credits: number
           year: number
-          type: 'OBLIGATORIA' | 'OPTATIVA' | 'TFG'
+          type: 'OBLIGATORIA' | 'OPTATIVA' | 'TFG' | 'TFM' | 'PRACTIQUES' | 'SEMINARI'
           department?: string | null
           description?: string | null
           itinerari?: string | null
+          program_id?: string | null
+          term_type?: string | null
+          term_number?: number | null
           created_at?: string
           updated_at?: string
         }
@@ -270,10 +659,13 @@ export type Database = {
           name?: string
           credits?: number
           year?: number
-          type?: 'OBLIGATORIA' | 'OPTATIVA' | 'TFG'
+          type?: 'OBLIGATORIA' | 'OPTATIVA' | 'TFG' | 'TFM' | 'PRACTIQUES' | 'SEMINARI'
           department?: string | null
           description?: string | null
           itinerari?: string | null
+          program_id?: string | null
+          term_type?: string | null
+          term_number?: number | null
           created_at?: string
           updated_at?: string
         }
@@ -570,6 +962,232 @@ export type Database = {
           created_at?: string
         }
       }
+      equipment_categories: {
+        Row: {
+          id: string
+          name: string
+          description: string | null
+          icon: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          description?: string | null
+          icon?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          description?: string | null
+          icon?: string | null
+          created_at?: string
+        }
+      }
+      program_scheduling_preferences: {
+        Row: {
+          id: string
+          program_id: string
+          preferred_shift: 'MORNING' | 'AFTERNOON' | 'EVENING' | 'FLEXIBLE' | null
+          min_hours_between_classes: number
+          max_hours_per_day: number
+          preferred_days: any
+          block_scheduling: boolean
+          notes: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          program_id: string
+          preferred_shift?: 'MORNING' | 'AFTERNOON' | 'EVENING' | 'FLEXIBLE' | null
+          min_hours_between_classes?: number
+          max_hours_per_day?: number
+          preferred_days?: any
+          block_scheduling?: boolean
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          program_id?: string
+          preferred_shift?: 'MORNING' | 'AFTERNOON' | 'EVENING' | 'FLEXIBLE' | null
+          min_hours_between_classes?: number
+          max_hours_per_day?: number
+          preferred_days?: any
+          block_scheduling?: boolean
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      graus: {
+        Row: {
+          id: string
+          nom: string
+          codi: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          nom: string
+          codi?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          nom?: string
+          codi?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      masters_programs: {
+        Row: {
+          id: string
+          code: string
+          name: string
+          coordinator_name: string | null
+          coordinator_email: string | null
+          duration_months: number | null
+          credits: number | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          code: string
+          name: string
+          coordinator_name?: string | null
+          coordinator_email?: string | null
+          duration_months?: number | null
+          credits?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          code?: string
+          name?: string
+          coordinator_name?: string | null
+          coordinator_email?: string | null
+          duration_months?: number | null
+          credits?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      software: {
+        Row: {
+          id: string
+          name: string
+          category: string
+          license_type: string
+          operating_systems: any
+          version: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          category: string
+          license_type: string
+          operating_systems?: any
+          version?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          category?: string
+          license_type?: string
+          operating_systems?: any
+          version?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      software_classrooms: {
+        Row: {
+          id: string
+          software_id: string
+          classroom_id: string
+          installed_date: string | null
+          notes: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          software_id: string
+          classroom_id: string
+          installed_date?: string | null
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          software_id?: string
+          classroom_id?: string
+          installed_date?: string | null
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      subject_software: {
+        Row: {
+          id: string
+          subject_id: string
+          software_id: string
+          is_required: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          subject_id: string
+          software_id: string
+          is_required?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          subject_id?: string
+          software_id?: string
+          is_required?: boolean
+          created_at?: string
+        }
+      }
+      masters_software: {
+        Row: {
+          id: string
+          masters_id: string
+          software_id: string
+          is_required: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          masters_id: string
+          software_id: string
+          is_required?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          masters_id?: string
+          software_id?: string
+          is_required?: boolean
+          created_at?: string
+        }
+      }
     }
     Views: {
       teacher_workload: {
@@ -594,12 +1212,101 @@ export type Database = {
           is_compatible: boolean | null
         }
       }
+      subjects_by_program: {
+        Row: {
+          program_id: string | null
+          program_code: string | null
+          program_name: string | null
+          program_type: 'grau' | 'master' | 'postgrau' | null
+          id: string | null
+          code: string | null
+          name: string | null
+          credits: number | null
+          year: number | null
+          type: string | null
+          department: string | null
+          description: string | null
+          itinerari: string | null
+          program_level: string | null
+          term_type: string | null
+          term_number: number | null
+          program_year: number | null
+          program_semester: number | null
+          is_mandatory: boolean | null
+          specialization: string | null
+          created_at: string | null
+          updated_at: string | null
+        }
+      }
+      program_resource_summary: {
+        Row: {
+          program_id: string | null
+          program_code: string | null
+          program_name: string | null
+          program_type: 'grau' | 'master' | 'postgrau' | null
+          preferred_classrooms: number | null
+          required_equipment_types: number | null
+          required_software: number | null
+          preferred_shift: 'MORNING' | 'AFTERNOON' | 'EVENING' | 'FLEXIBLE' | null
+          block_scheduling: boolean | null
+        }
+      }
+      software_with_classrooms: {
+        Row: {
+          id: string | null
+          name: string | null
+          category: string | null
+          license_type: string | null
+          operating_systems: any | null
+          version: string | null
+          created_at: string | null
+          updated_at: string | null
+          classrooms: any | null
+          classroom_count: number | null
+        }
+      }
+      program_overview: {
+        Row: {
+          id: string
+          code: string
+          name: string
+          type: Database["public"]["Enums"]["program_type"]
+          duration_years: number | null
+          credits: number | null
+          coordinator_name: string | null
+          coordinator_email: string | null
+          active: boolean
+          subject_count: number | null
+          software_count: number | null
+          equipment_count: number | null
+          preferred_classroom_count: number | null
+        }
+      }
+      master_schedule_overview: {
+        Row: {
+          id: string
+          day_of_week: number
+          start_time: string
+          end_time: string
+          subject_name: string | null
+          notes: string | null
+          active: boolean
+          program_code: string
+          program_name: string
+          program_type: Database["public"]["Enums"]["program_type"]
+          classroom_name: string
+          building: string | null
+          floor: number | null
+          teacher_name: string | null
+          semester_name: string | null
+        }
+      }
     }
     Functions: {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      program_type: 'grau' | 'master' | 'postgrau'
     }
     CompositeTypes: {
       [_ in never]: never

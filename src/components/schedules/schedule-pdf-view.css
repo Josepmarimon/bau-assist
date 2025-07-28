@@ -1,0 +1,374 @@
+@media print {
+  /* Hide everything except the schedule content */
+  body * {
+    visibility: hidden;
+  }
+  
+  .schedule-pdf-container,
+  .schedule-pdf-container * {
+    visibility: visible;
+  }
+  
+  .schedule-pdf-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .schedule-page {
+    page-break-after: always;
+    page-break-inside: avoid;
+    width: 100%;
+    padding: 15mm 15mm 20mm 15mm;
+    margin: 0;
+    height: 297mm;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .schedule-page:last-child {
+    page-break-after: auto;
+  }
+  
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  
+  /* Ensure no margins or paddings from parent elements */
+  #__next,
+  main,
+  .schedule-pdf-container {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Force equal height for both semester tables */
+  .semester-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .semester-wrapper .schedule-table {
+    flex: 1;
+  }
+}
+
+@media screen {
+  .schedule-pdf-container {
+    background: white;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .schedule-page {
+    margin-bottom: 60px;
+    min-height: 800px;
+  }
+}
+
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+@media print {
+  .schedule-header {
+    margin-bottom: 10px;
+    flex-shrink: 0;
+  }
+}
+
+.schedule-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.schedule-badges {
+  display: flex;
+  gap: 10px;
+}
+
+.schedule-badge {
+  border: 2px solid #1e3a8a;
+  color: #1e3a8a;
+  padding: 8px 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+@media print {
+  .schedule-badge {
+    border-color: #1e3a8a !important;
+    color: #1e3a8a !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.semester-title {
+  background-color: white;
+  color: #1e3a8a;
+  padding: 8px 16px;
+  font-weight: bold;
+  margin-bottom: 0;
+  border: 1px solid #e5e7eb;
+}
+
+@media print {
+  .semester-title {
+    background-color: white !important;
+    color: #1e3a8a !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin-bottom: 0;
+  table-layout: fixed;
+}
+
+@media print {
+  .schedule-table {
+    font-size: 11px;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.schedule-table th,
+.schedule-table td {
+  border: 1px solid #e5e7eb;
+  padding: 6px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.empty-cell {
+  background-color: white;
+}
+
+.schedule-table td:not(:last-child),
+.schedule-table th:not(:last-child) {
+  border-right: 8px solid transparent;
+  background-clip: padding-box;
+}
+
+@media print {
+  .schedule-table td:not(:last-child),
+  .schedule-table th:not(:last-child) {
+    border-right-width: 12px;
+  }
+}
+
+@media print {
+  .schedule-table th,
+  .schedule-table td {
+    padding: 3px 1px;
+  }
+  
+  /* Remove equal height for all rows */
+  .schedule-table tbody tr {
+    vertical-align: middle;
+  }
+  
+  .schedule-table tbody tr td {
+    height: 100%;
+  }
+  
+  /* Add more visual spacing */
+  .day-column {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+.time-column {
+  width: 8%;
+  background-color: #f9fafb;
+  font-weight: normal;
+}
+
+.day-column {
+  width: 17%;
+  background-color: #f9fafb;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.time-cell {
+  background-color: #f9fafb;
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+.subject-cell {
+  background-color: #1e3a8a !important;
+  color: white !important;
+  padding: 8px;
+  position: relative;
+}
+
+@media print {
+  .subject-cell {
+    background-color: #1e3a8a !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.subject-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 100%;
+}
+
+.subject-name {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.teacher-name {
+  font-size: 10px;
+  opacity: 0.9;
+}
+
+.classroom-code {
+  font-size: 10px;
+  opacity: 0.9;
+}
+
+.tutorial-row {
+  /* Height is set by time-slot class */
+}
+
+/* Time-based row heights */
+/* Base unit: 30 minutes = 40px in screen, 30px in print */
+
+/* 2-hour slots (09:00-11:00, 11:30-13:30) */
+.time-slot-2h {
+  height: 160px; /* 4 units */
+}
+
+/* 1-hour slots (13:30-14:30) */
+.time-slot-1h {
+  height: 80px; /* 2 units */
+}
+
+/* 30-minute slots (11:00-11:30 break) */
+.time-slot-30m {
+  height: 40px; /* 1 unit */
+}
+
+@media print {
+  .time-slot-2h {
+    height: 120px; /* 4 units × 30px */
+  }
+  
+  .time-slot-1h {
+    height: 60px; /* 2 units × 30px */
+  }
+  
+  .time-slot-30m {
+    height: 30px; /* 1 unit × 30px */
+  }
+}
+
+/* Break row spacing (4x the column spacing) */
+.break-row {
+  position: relative;
+}
+
+.break-row td {
+  padding-bottom: 32px !important; /* 4x the 8px column spacing */
+}
+
+@media print {
+  .break-row td {
+    padding-bottom: 48px !important; /* 4x the 12px print column spacing */
+  }
+}
+
+/* Space before tutorial row (same as column spacing) */
+.before-tutorial-row td {
+  padding-bottom: 8px !important;
+}
+
+@media print {
+  .before-tutorial-row td {
+    padding-bottom: 12px !important;
+  }
+}
+
+.tutorial-cell {
+  background-color: white !important;
+  color: #1e3a8a !important;
+  font-size: 10px;
+  padding: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+@media print {
+  .tutorial-cell {
+    background-color: white !important;
+    color: #1e3a8a !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.tutorial-content {
+  font-weight: bold;
+}
+
+.semester-separator {
+  height: 30px;
+}
+
+@media print {
+  .semester-separator {
+    height: 40px;
+    flex-shrink: 0;
+    background-color: white;
+  }
+}
+
+.course-subtitle {
+  font-size: 16px;
+  color: #4b5563;
+  margin-top: 4px;
+}
+
+/* Ensure semester wrapper takes equal space */
+.semester-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.semester-wrapper .schedule-table {
+  flex: 1;
+  height: 100%;
+}

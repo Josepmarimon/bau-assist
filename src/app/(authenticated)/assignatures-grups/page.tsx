@@ -55,6 +55,7 @@ import {
 import { cn } from "@/lib/utils"
 import { SubjectGroupProfilesList } from '@/components/subject-group-profiles/subject-group-profiles-list'
 import { ClassroomAssignmentDialog } from '@/components/subjects/classroom-assignment-dialog'
+import { SubjectDetailModal } from '@/components/subjects/subject-detail-modal'
 
 interface Subject {
   id: string
@@ -162,6 +163,10 @@ export default function AssignaturesGrupsPage() {
   const [selectedGroupForClassroom, setSelectedGroupForClassroom] = useState<SubjectGroup | null>(null)
   const [selectedSemesterId, setSelectedSemesterId] = useState<string>('')
   
+  // Subject detail modal states
+  const [showSubjectDetailModal, setShowSubjectDetailModal] = useState(false)
+  const [selectedSubjectForDetail, setSelectedSubjectForDetail] = useState<Subject | null>(null)
+  
   const supabase = createClient()
 
   useEffect(() => {
@@ -170,6 +175,19 @@ export default function AssignaturesGrupsPage() {
     loadSemesters()
     loadGraus()
   }, [])
+
+  useEffect(() => {
+    // Check for subject parameter in URL when subjects are loaded
+    const urlParams = new URLSearchParams(window.location.search)
+    const subjectId = urlParams.get('subject')
+    if (subjectId && subjects.length > 0) {
+      const subject = subjects.find(s => s.id === subjectId)
+      if (subject) {
+        setSelectedSubjectForDetail(subject)
+        setShowSubjectDetailModal(true)
+      }
+    }
+  }, [subjects])
 
   useEffect(() => {
     if (filters.grau) {
@@ -957,7 +975,14 @@ export default function AssignaturesGrupsPage() {
                           <ChevronRight className="h-5 w-5 text-muted-foreground" />
                         )}
                         <div>
-                          <CardTitle className="text-xl">
+                          <CardTitle 
+                            className="text-xl cursor-pointer hover:text-primary hover:underline transition-colors"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              setSelectedSubjectForDetail(subject)
+                              setShowSubjectDetailModal(true)
+                            }}
+                          >
                             {subject.name}
                           </CardTitle>
                           <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
@@ -1340,6 +1365,20 @@ export default function AssignaturesGrupsPage() {
             if (selectedGroupForClassroom.subject_id) {
               loadSubjectGroups(selectedGroupForClassroom.subject_id)
             }
+          }}
+        />
+      )}
+      
+      {/* Subject Detail Modal */}
+      {selectedSubjectForDetail && (
+        <SubjectDetailModal
+          subject={selectedSubjectForDetail}
+          open={showSubjectDetailModal}
+          onOpenChange={setShowSubjectDetailModal}
+          onEdit={() => {
+            setShowSubjectDetailModal(false)
+            setEditingSubject(selectedSubjectForDetail)
+            setShowSubjectForm(true)
           }}
         />
       )}

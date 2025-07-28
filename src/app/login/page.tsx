@@ -31,7 +31,7 @@ export default function LoginPage() {
       setError(error.message)
       setLoading(false)
     } else {
-      router.push('/horari')
+      router.push('/aules')
       router.refresh()
     }
   }

@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { ClassroomGrid } from '@/components/public/classroom-grid'
 import { Building2 } from 'lucide-react'
+import Image from 'next/image'
 
 export const revalidate = 60 // Revalidate every minute
 
@@ -31,17 +32,27 @@ export default async function PublicClassroomsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
-            <Building2 className="h-12 w-12 text-primary" />
-          </div>
-          <h1 className="text-4xl font-bold mb-2">Directori d'Aules</h1>
-          <p className="text-lg text-muted-foreground">
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <div className="relative h-[400px] mb-12">
+        <Image
+          src="/imatges/imatge_bau.jpeg"
+          alt="BAU - Centre Universitari d'Arts i Disseny"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative h-full flex flex-col items-center justify-center text-white">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Espais de BAU</h1>
+          <p className="text-xl">
             Descobreix els nostres espais d'aprenentatge
           </p>
         </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="container mx-auto px-4 pb-12">
 
         {classrooms && classrooms.length > 0 ? (
           <ClassroomGrid classrooms={classrooms} />

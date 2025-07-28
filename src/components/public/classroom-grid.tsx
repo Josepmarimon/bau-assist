@@ -105,7 +105,7 @@ export function ClassroomGrid({ classrooms }: ClassroomGridProps) {
           return (
             <Link 
               key={classroom.id} 
-              href={`/directori-aules/${classroom.code}`}
+              href={`/directori-aules/${encodeURIComponent(classroom.code)}`}
               className="group"
             >
               <Card className="h-full transition-all hover:shadow-lg hover:-translate-y-1 overflow-hidden bg-white border-gray-200">

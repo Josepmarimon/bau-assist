@@ -44,7 +44,8 @@ import {
   Trash2,
   HardDrive,
   Monitor,
-  Printer
+  Printer,
+  ExternalLink
 } from 'lucide-react'
 import {
   Table,
@@ -93,6 +94,7 @@ interface Software {
   classroom_count?: number
   subjects?: Subject[]
   total_licenses_assigned?: number
+  license_url?: string
 }
 
 const getCategoryName = (category: string): string => {
@@ -454,7 +456,6 @@ export default function SoftwarePage() {
                     <TableHead>Llicència</TableHead>
                     <TableHead>Nº Llicències</TableHead>
                     <TableHead>Aules Instal·lades</TableHead>
-                    <TableHead>Assignatures</TableHead>
                     <TableHead className="text-right">Accions</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -536,47 +537,26 @@ export default function SoftwarePage() {
                             </span>
                           )}
                       </TableCell>
-                      <TableCell>
-                        {sw.subjects && sw.subjects.length > 0 ? (
-                          <TooltipProvider>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <div className="flex flex-wrap gap-1 cursor-help">
-                                  {sw.subjects.slice(0, 2).map((subject) => (
-                                    <Badge key={subject.id} variant="outline" className="text-xs">
-                                      {subject.code}
-                                    </Badge>
-                                  ))}
-                                  {sw.subjects.length > 2 && (
-                                    <Badge variant="secondary" className="text-xs">
-                                      +{sw.subjects.length - 2} més
-                                    </Badge>
-                                  )}
-                                </div>
-                              </TooltipTrigger>
-                              <TooltipContent className="max-w-sm">
-                                <div className="space-y-1">
-                                  <p className="font-semibold text-sm mb-2">Assignatures que requereixen aquest software:</p>
-                                  {sw.subjects.map((subject) => (
-                                    <div key={subject.id} className="text-sm">
-                                      <span className="font-medium">{subject.code}</span> - {subject.name}
-                                      <span className="text-muted-foreground ml-1">
-                                        ({subject.year}r curs, {subject.semester})
-                                      </span>
-                                    </div>
-                                  ))}
-                                </div>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        ) : (
-                          <span className="text-muted-foreground text-sm">
-                            Cap assignatura
-                          </span>
-                        )}
-                      </TableCell>
                       <TableCell className="text-right">
                         <div className="flex items-center justify-end gap-2">
+                          {sw.license_url && (
+                            <TooltipProvider>
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <Button 
+                                    variant="ghost" 
+                                    size="icon"
+                                    onClick={() => window.open(sw.license_url, '_blank')}
+                                  >
+                                    <ExternalLink className="h-4 w-4" />
+                                  </Button>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>Descarregar llicències</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          )}
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>

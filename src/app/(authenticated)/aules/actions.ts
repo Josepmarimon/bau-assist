@@ -73,6 +73,39 @@ export async function getClassroomOccupancyData(classroomId: string) {
     console.error('Error fetching assignments:', assignmentsError)
   }
   
+  // Get master schedules for this classroom
+  const { data: masterSchedules, error: masterSchedulesError } = await supabase
+    .from('master_schedules')
+    .select(`
+      id,
+      day_of_week,
+      start_time,
+      end_time,
+      subject_name,
+      semester_id,
+      active,
+      programs (
+        code,
+        name,
+        type,
+        color
+      ),
+      teachers (
+        first_name,
+        last_name
+      ),
+      semesters (
+        id,
+        name,
+        number
+      )
+    `)
+    .eq('classroom_id', classroomId)
+    .eq('active', true)
+
+  if (masterSchedulesError) {
+    console.error('Error fetching master schedules:', masterSchedulesError)
+  }
 
   // Get current academic year
   const { data: currentAcademicYear } = await supabase
@@ -101,6 +134,11 @@ export async function getClassroomOccupancyData(classroomId: string) {
       // assignments is a single object, not an array
       return assignment.assignments && 'semester_id' in assignment.assignments && assignment.assignments.semester_id === semester.id
     }) || []
+    
+    // Filter MASTER SCHEDULES by semester
+    const semesterMasterSchedules = masterSchedules?.filter(schedule => 
+      schedule.semester_id === semester.id
+    ) || []
 
     // Generate all hourly time slots
     const timeSlots = generateHourlyTimeSlots()
@@ -170,6 +208,35 @@ export async function getClassroomOccupancyData(classroomId: string) {
           subjectId: assignment && 'subject_id' in assignment ? assignment.subject_id : null
         },
         weeks: weeks
+      })
+    })
+    
+    // Process MASTER SCHEDULES
+    semesterMasterSchedules.forEach(masterSchedule => {
+      let teacherName = 'No assignat'
+      if (masterSchedule.teachers) {
+        teacherName = `${masterSchedule.teachers.first_name} ${masterSchedule.teachers.last_name}`
+      }
+      
+      let programInfo = ''
+      if (masterSchedule.programs) {
+        programInfo = `[${masterSchedule.programs.code}] `
+      }
+      
+      scheduleAssignments.push({
+        day_of_week: masterSchedule.day_of_week,
+        start_time: masterSchedule.start_time,
+        end_time: masterSchedule.end_time,
+        assignment: {
+          subjectName: programInfo + masterSchedule.subject_name,
+          teacherName: teacherName,
+          groupCode: masterSchedule.programs?.type === 'master' ? 'Màster' : 'Postgrau',
+          programColor: masterSchedule.programs?.color || null,
+          // Add IDs for master system
+          subjectGroupId: null,
+          subjectId: null
+        },
+        weeks: Array.from({length: 15}, (_, i) => i + 1) // Masters typically run all semester
       })
     })
 

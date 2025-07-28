@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Building2, LogIn } from 'lucide-react'
+import { Building2, LogIn, Calendar } from 'lucide-react'
 
 export default function Home() {
   return (
@@ -40,11 +40,18 @@ export default function Home() {
             <CardContent className="space-y-4">
               <Link href="/directori-aules" className="block">
                 <Button className="w-full" variant="default">
+                  <Building2 className="h-4 w-4 mr-2" />
                   Directori d'Aules
                 </Button>
               </Link>
+              <Link href="/horaris" className="block">
+                <Button className="w-full" variant="default">
+                  <Calendar className="h-4 w-4 mr-2" />
+                  Horaris
+                </Button>
+              </Link>
               <p className="text-sm text-muted-foreground text-center">
-                Explora els nostres espais d'aprenentatge
+                Consulta aules i horaris dels cursos
               </p>
             </CardContent>
           </Card>

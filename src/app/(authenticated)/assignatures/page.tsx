@@ -456,33 +456,37 @@ export default function SubjectsPage() {
                           <div className="font-medium truncate">
                             {subject.name}
                           </div>
-                          <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 mt-1">
-                            <button
+                          <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 mt-1">
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-7 w-7"
                               onClick={() => {
                                 setSelectedSubject(subject)
                                 setDetailOpen(true)
                               }}
-                              className="text-xs text-primary hover:underline"
                             >
-                              Veure
-                            </button>
-                            <span className="text-xs text-muted-foreground">|</span>
-                            <button
+                              <Eye className="h-3 w-3" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-7 w-7"
                               onClick={() => {
                                 // TODO: Implement edit functionality
                                 console.log('Edit subject:', subject.id)
                               }}
-                              className="text-xs text-primary hover:underline"
                             >
-                              Editar
-                            </button>
-                            <span className="text-xs text-muted-foreground">|</span>
-                            <button
+                              <Edit className="h-3 w-3" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-7 w-7"
                               onClick={() => handleDelete(subject.id)}
-                              className="text-xs text-destructive hover:underline"
                             >
-                              Esborrar
-                            </button>
+                              <Trash2 className="h-3 w-3" />
+                            </Button>
                           </div>
                         </div>
                       </TableCell>

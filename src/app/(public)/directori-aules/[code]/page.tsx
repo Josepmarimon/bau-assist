@@ -10,12 +10,13 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const { code } = await params
+  const decodedCode = decodeURIComponent(code)
   const supabase = await createClient()
   
   const { data: classroom } = await supabase
     .from('classrooms')
     .select('*')
-    .eq('code', code)
+    .eq('code', decodedCode)
     .eq('is_public', true)
     .single()
 
@@ -33,12 +34,13 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function ClassroomDetailPage({ params }: PageProps) {
   const { code } = await params
+  const decodedCode = decodeURIComponent(code)
   const supabase = await createClient()
   
   const { data: classroom, error } = await supabase
     .from('classrooms')
     .select('*')
-    .eq('code', code)
+    .eq('code', decodedCode)
     .eq('is_public', true)
     .single()
 
@@ -48,23 +50,20 @@ export default async function ClassroomDetailPage({ params }: PageProps) {
 
   // Fetch equipment details if available
   let equipmentDetails = []
-  if (classroom.equipment && classroom.equipment.length > 0) {
-    const { data: equipment } = await supabase
-      .from('equipment_inventory')
-      .select(`
-        *,
-        equipment_types (
-          name,
-          category,
-          description
-        )
-      `)
-      .eq('classroom_id', classroom.id)
-      .eq('status', 'operational')
-    
-    if (equipment) {
-      equipmentDetails = equipment
-    }
+  const { data: equipment } = await supabase
+    .from('classroom_equipment')
+    .select(`
+      *,
+      equipment_types (
+        name,
+        category,
+        description
+      )
+    `)
+    .eq('classroom_id', classroom.id)
+  
+  if (equipment) {
+    equipmentDetails = equipment
   }
 
   return <ClassroomDetail classroom={classroom} equipment={equipmentDetails} />

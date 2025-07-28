@@ -27,7 +27,8 @@ import {
   AlertCircle,
   ExternalLink,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  BarChart3
 } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -44,11 +45,13 @@ interface NavItem {
 }
 
 const navigation: NavItem[] = [
-  { name: 'Horari', href: '/horari', icon: Calendar },
+  { name: 'Resum', href: '/resum', icon: BarChart3 },
   { 
     name: 'Acadèmic', 
     icon: BookOpen,
     subItems: [
+      { name: 'Programes', href: '/programes', icon: GraduationCap },
+      { name: 'Màsters', href: '/masters', icon: Calendar },
       { name: 'Assignatures i Grups', href: '/assignatures-grups', icon: BookOpen },
       { name: 'Professors', href: '/professors', icon: GraduationCap }
     ]
@@ -58,7 +61,8 @@ const navigation: NavItem[] = [
     icon: Building2,
     subItems: [
       { name: 'Aules', href: '/aules', icon: Building2 },
-      { name: 'Assignar Aules', href: '/assignacions-aules', icon: Building2 }
+      { name: 'Assignar Aules', href: '/assignacions-aules', icon: Building2 },
+      { name: 'Horaris Primer Curs', href: '/horaris-primer', icon: Calendar }
     ]
   },
   { 
@@ -81,7 +85,13 @@ export function ModernSidebar({ onCollapsedChange }: ModernSidebarProps = {}) {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set())
+  // Initialize with all menu items that have subitems expanded by default
+  const defaultExpandedItems = new Set(
+    navigation
+      .filter(item => item.subItems && item.subItems.length > 0)
+      .map(item => item.name)
+  )
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(defaultExpandedItems)
   const supabase = createClient()
 
   // Load collapsed state from localStorage on mount
@@ -163,7 +173,7 @@ export function ModernSidebar({ onCollapsedChange }: ModernSidebarProps = {}) {
         <div className="flex h-full flex-col">
           {/* Logo and Collapse Button */}
           <div className="flex h-20 items-center justify-between px-4 border-b">
-            <Link href="/" className={cn("flex items-center", isCollapsed && "justify-center w-full")}>
+            <Link href="/aules" className={cn("flex items-center", isCollapsed && "justify-center w-full")}>
               {isCollapsed ? (
                 <div className="w-8 h-8 flex items-center justify-center">
                   <span className="text-xl font-bold">B</span>

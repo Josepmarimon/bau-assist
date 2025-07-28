@@ -291,77 +291,9 @@ export default function ClassroomsPage() {
         </Button>
       </div>
 
-      {/* Compact Summary */}
-      <Card className="bg-white border-gray-200">
-        <CardHeader className="pb-3">
-          <CardTitle className="text-lg">Resum d'Aules</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <Building2 className="h-3.5 w-3.5 text-muted-foreground" />
-                <p className="text-xs font-medium text-muted-foreground">Total</p>
-              </div>
-              <p className="text-xl font-bold">{classrooms.length}</p>
-            </div>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <Users className="h-3.5 w-3.5 text-muted-foreground" />
-                <p className="text-xs font-medium text-muted-foreground">Capacitat</p>
-              </div>
-              <p className="text-xl font-bold">{totalCapacity}</p>
-            </div>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <Building2 className="h-3.5 w-3.5 text-muted-foreground" />
-                <p className="text-xs font-medium text-muted-foreground">Polivalent</p>
-              </div>
-              <p className="text-xl font-bold">{polivalentCount}</p>
-            </div>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <Wrench className="h-3.5 w-3.5 text-muted-foreground" />
-                <p className="text-xs font-medium text-muted-foreground">Taller</p>
-              </div>
-              <p className="text-xl font-bold">{tallerCount}</p>
-            </div>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <Monitor className="h-3.5 w-3.5 text-muted-foreground" />
-                <p className="text-xs font-medium text-muted-foreground">Informàtica</p>
-              </div>
-              <p className="text-xl font-bold">{informaticaCount}</p>
-            </div>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <Lightbulb className="h-3.5 w-3.5 text-muted-foreground" />
-                <p className="text-xs font-medium text-muted-foreground">Projectes</p>
-              </div>
-              <p className="text-xl font-bold">{projectesCount}</p>
-            </div>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
-                <p className="text-xs font-medium text-muted-foreground">Seminari</p>
-              </div>
-              <p className="text-xl font-bold">{classrooms.filter(c => c.type === CLASSROOM_TYPES.SEMINARI).length}</p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
 
       {/* Search and list */}
-      <Card className="bg-white border-gray-200">
-        <CardHeader>
-          <div className="space-y-4">
-            <div>
-              <CardTitle>Llistat d'Aules</CardTitle>
-              <CardDescription>
-                {filteredClassrooms.length} de {classrooms.length} aules trobades
-              </CardDescription>
-            </div>
-            
+      <div className="space-y-4">
             {/* Search */}
             <div className="flex items-center gap-4">
               <div className="relative flex-1">
@@ -450,11 +382,9 @@ export default function ClassroomsPage() {
                 </Button>
               )}
             </div>
-          </div>
-        </CardHeader>
-        <CardContent>
+      </div>
 
-          {loading ? (
+      {loading ? (
             <div className="flex items-center justify-center h-64">
               <div className="animate-pulse space-y-4">
                 <div className="h-4 bg-muted rounded w-48"></div>
@@ -479,7 +409,10 @@ export default function ClassroomsPage() {
                     <TableRow key={classroom.id} className="group">
                       <TableCell>
                         <div>
-                          <div className="font-medium">
+                          <div 
+                            className="font-medium cursor-pointer hover:text-primary hover:underline transition-colors"
+                            onClick={() => handleViewOccupancy(classroom)}
+                          >
                             {classroom.name}
                           </div>
                           <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 mt-1">
@@ -580,9 +513,7 @@ export default function ClassroomsPage() {
                 </TableBody>
               </Table>
             </div>
-          )}
-        </CardContent>
-      </Card>
+      )}
 
       {/* Edit/Create Dialog */}
       <ClassroomDialog

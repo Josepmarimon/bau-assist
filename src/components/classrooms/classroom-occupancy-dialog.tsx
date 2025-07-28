@@ -115,7 +115,7 @@ export function ClassroomOccupancyDialog({
 
     // Get all unique times for the grid
     const allTimes = new Set<string>()
-    for (let hour = 8; hour <= 20; hour++) {
+    for (let hour = 9; hour <= 20; hour++) {
       allTimes.add(`${hour.toString().padStart(2, '0')}:00:00`)
     }
     const sortedTimes = Array.from(allTimes).sort()
@@ -145,12 +145,12 @@ export function ClassroomOccupancyDialog({
 
     return (
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse">
+        <table className="w-full border-separate" style={{ borderSpacing: '4px 0' }}>
           <thead>
             <tr>
-              <th className="border p-2 bg-muted">Hora</th>
+              <th className="border px-2 py-1 bg-muted text-sm">Hora</th>
               {[1, 2, 3, 4, 5].map(day => (
-                <th key={day} className="border p-2 bg-muted">
+                <th key={day} className="border px-2 py-1 bg-muted text-sm">
                   {daysOfWeek[day - 1]}
                 </th>
               ))}
@@ -160,7 +160,7 @@ export function ClassroomOccupancyDialog({
             {sortedTimes.map(time => {
               return (
                 <tr key={time}>
-                  <td className="border p-2 font-medium text-sm">
+                  <td className="border px-2 py-1 font-medium text-xs">
                     {timeSlotToHour(time)}
                   </td>
                   {[1, 2, 3, 4, 5].map(day => {
@@ -177,7 +177,7 @@ export function ClassroomOccupancyDialog({
                       return (
                         <td 
                           key={day} 
-                          className="border p-2 bg-blue-50 align-top cursor-pointer hover:bg-blue-100 transition-colors"
+                          className="border px-2 py-1 bg-blue-50 align-top cursor-pointer hover:bg-blue-100 transition-colors"
                           rowSpan={cellInfo.rowspan}
                           onClick={() => {
                             // Open assignment dialog with the subject group info
@@ -192,15 +192,15 @@ export function ClassroomOccupancyDialog({
                             setAssignmentDialogOpen(true)
                           }}
                         >
-                          <div className="space-y-1">
-                            <div className="font-medium text-xs">
+                          <div className="space-y-0.5">
+                            <div className="font-medium text-xs leading-tight">
                               {cellInfo.content.subjectName}
                             </div>
-                            <div className="text-xs text-muted-foreground">
+                            <div className="text-xs text-muted-foreground leading-tight">
                               {cellInfo.content.teacherName}
                             </div>
                             {cellInfo.content.groupCode && (
-                              <Badge variant="outline" className="text-xs">
+                              <Badge variant="outline" className="text-xs px-1 py-0 h-4">
                                 {cellInfo.content.groupCode}
                               </Badge>
                             )}
@@ -210,7 +210,7 @@ export function ClassroomOccupancyDialog({
                     }
                     
                     // Empty cell
-                    return <td key={day} className="border p-2"></td>
+                    return <td key={day} className="border px-2 py-1"></td>
                   })}
                 </tr>
               )
@@ -224,27 +224,29 @@ export function ClassroomOccupancyDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-6xl max-h-[90vh]">
-        <DialogHeader className="flex items-center justify-between">
-          <div>
-            <DialogTitle className="flex items-center gap-2">
-              <Calendar className="h-5 w-5" />
-              Ocupació de l'aula {classroom.code} - {classroom.name}
-            </DialogTitle>
-            <DialogDescription>
-              Visualitza l'ocupació de l'aula per semestre, matí i tarda
-            </DialogDescription>
+        <DialogHeader className="pb-2">
+          <div className="flex items-center justify-between">
+            <div className="flex-1">
+              <DialogTitle className="flex items-center gap-2 text-lg">
+                <Calendar className="h-4 w-4" />
+                Ocupació de l'aula {classroom.name}
+              </DialogTitle>
+              <DialogDescription className="text-xs mt-1">
+                Visualitza l'ocupació de l'aula per semestre, matí i tarda
+              </DialogDescription>
+            </div>
+            {onRefresh && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={onRefresh}
+                className="ml-4"
+              >
+                <RefreshCw className="h-4 w-4 mr-2" />
+                Actualitzar
+              </Button>
+            )}
           </div>
-          {onRefresh && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={onRefresh}
-              className="ml-4"
-            >
-              <RefreshCw className="h-4 w-4 mr-2" />
-              Actualitzar
-            </Button>
-          )}
         </DialogHeader>
 
         <Tabs value={selectedSemester} onValueChange={setSelectedSemester}>
@@ -263,10 +265,10 @@ export function ClassroomOccupancyDialog({
               <TabsContent key={semesterData.semesterId} value={semesterData.semesterId} className="space-y-4">
                 {/* Time Grid */}
                 <Card>
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-base">Horari setmanal</CardTitle>
+                  <CardHeader className="py-2">
+                    <CardTitle className="text-sm">Horari setmanal</CardTitle>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="p-2">
                     <ScrollArea className="h-[400px] w-full">
                       {renderTimeGrid(semesterData)}
                     </ScrollArea>
@@ -275,7 +277,7 @@ export function ClassroomOccupancyDialog({
                 
                 {/* Compact Occupancy Stats */}
                 <Card>
-                  <CardContent className="pt-4 pb-3">
+                  <CardContent className="py-2">
                     <div className="flex items-center justify-around gap-6">
                       <div className="flex items-center gap-3">
                         <Users className="h-4 w-4 text-muted-foreground" />

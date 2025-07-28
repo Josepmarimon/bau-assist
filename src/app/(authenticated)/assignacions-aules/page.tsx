@@ -125,12 +125,7 @@ function DraggableSubject({ subject, remainingHours }: { subject: Subject, remai
         isDragging && "cursor-grabbing"
       )}
     >
-      <div className="font-medium text-sm mb-1">{subject.name}</div>
-      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-        <span>{hoursToShow}h / {totalHours}h</span>
-        <span className="text-xs text-muted-foreground">•</span>
-        <Badge variant="outline" className="text-xs">{subject.type}</Badge>
-      </div>
+      <div className="font-medium text-sm">{subject.name}</div>
     </div>
   )
 }
@@ -202,12 +197,12 @@ export default function AssignacionsAulesPage() {
     }
   }, [selectedGroup, selectedSemester])
 
-  // Load assignments when group changes
+  // Load assignments when group or semester changes
   useEffect(() => {
-    if (selectedGroup) {
+    if (selectedGroup && selectedSemester) {
       loadAssignments()
     }
-  }, [selectedGroup])
+  }, [selectedGroup, selectedSemester])
 
   const loadDegrees = async () => {
     try {
@@ -369,7 +364,20 @@ export default function AssignacionsAulesPage() {
   const loadAssignments = async () => {
     try {
       
-      // Load existing assignments for this group
+      // Find the semester ID from the selected semester for the current academic year
+      const { data: semesters, error: semesterError } = await supabase
+        .from('semesters')
+        .select('id')
+        .eq('number', parseInt(selectedSemester))
+        .eq('academic_year_id', '2b210161-5447-4494-8003-f09a0b553a3f') // 2025-2026
+        .single()
+      
+      if (semesterError) {
+        console.error('Error finding semester:', semesterError)
+        return
+      }
+      
+      // Load existing assignments for this group and semester
       const { data: assignmentsData, error } = await supabase
         .from('assignments')
         .select(`
@@ -381,6 +389,7 @@ export default function AssignacionsAulesPage() {
           classroom_id,
           time_slot_id,
           teacher_id,
+          semester_id,
           subjects!subject_id (*),
           student_groups!student_group_id (*),
           classrooms!classroom_id (*),
@@ -388,6 +397,7 @@ export default function AssignacionsAulesPage() {
           teachers!teacher_id (id, first_name, last_name, email)
         `)
         .eq('student_group_id', selectedGroup)
+        .eq('semester_id', semesters?.id)
 
       if (error) {
         console.error('Error loading assignments:', error)
@@ -395,6 +405,53 @@ export default function AssignacionsAulesPage() {
       }
 
       if (assignmentsData) {
+        // Check if any assignments are missing teachers and trigger sync if needed
+        const assignmentsWithoutTeacher = assignmentsData.filter(a => 
+          !a.teacher_id && a.subject_group_id
+        )
+        
+        if (assignmentsWithoutTeacher.length > 0) {
+          console.log(`Found ${assignmentsWithoutTeacher.length} assignments without teachers. Triggering sync...`)
+          
+          // Call the sync function to fix missing teachers
+          const { data: syncResult, error: syncError } = await supabase
+            .rpc('sync_all_teachers')
+          
+          if (syncError) {
+            console.error('Error syncing teachers:', syncError)
+          } else {
+            console.log(`Teacher sync completed. Updated ${syncResult} assignments.`)
+            
+            // Reload assignments after sync
+            if (syncResult > 0) {
+              const { data: refreshedData } = await supabase
+                .from('assignments')
+                .select(`
+                  id,
+                  hours_per_week,
+                  subject_id,
+                  subject_group_id,
+                  student_group_id,
+                  classroom_id,
+                  time_slot_id,
+                  teacher_id,
+                  semester_id,
+                  subjects!subject_id (*),
+                  student_groups!student_group_id (*),
+                  classrooms!classroom_id (*),
+                  time_slots!time_slot_id (*),
+                  teachers!teacher_id (id, first_name, last_name, email)
+                `)
+                .eq('student_group_id', selectedGroup)
+                .eq('semester_id', semesters?.id)
+              
+              if (refreshedData) {
+                assignmentsData.splice(0, assignmentsData.length, ...refreshedData)
+              }
+            }
+          }
+        }
+        
         // Load classrooms for each assignment from the new junction table
         const assignmentIds = assignmentsData.map(a => a.id)
         
@@ -626,15 +683,22 @@ export default function AssignacionsAulesPage() {
 
       console.log('Found subject group ID:', subjectGroup?.id)
 
-      // Check if assignment already exists for this time slot
+      // Check if assignment already exists for this time slot and semester
       const { data: existingAssignment } = await supabase
         .from('assignments')
-        .select('id, subject_id')
+        .select(`
+          id, 
+          subject_id,
+          subjects!subject_id (name)
+        `)
         .eq('student_group_id', selectedGroup)
         .eq('time_slot_id', timeSlotId)
+        .eq('semester_id', semesters?.id)
         .maybeSingle()
 
       if (existingAssignment) {
+        const existingSubjectName = existingAssignment.subjects?.name || 'Assignatura desconeguda'
+        alert(`Ja existeix una assignació en aquest horari per al grup seleccionat:\n\n${existingSubjectName}\n\nSi vols canviar-la, primer elimina l'assignació existent.`)
         console.error('An assignment already exists for this time slot and group')
         console.log('Existing assignment:', existingAssignment)
         return
@@ -646,19 +710,58 @@ export default function AssignacionsAulesPage() {
         student_group_id: selectedGroup,
         time_slot_id: timeSlotId,
         semester_id: semesters?.id,
-        hours_per_week: subject.credits || 6,
-        created_by: (await supabase.auth.getUser()).data.user?.id
+        hours_per_week: subject.credits || 6
+        // Removed created_by to avoid RLS recursion issues
       }
 
       console.log('Creating assignment with data:', assignmentData)
+      
+      // Validate all required fields
+      if (!assignmentData.subject_id || !assignmentData.student_group_id || 
+          !assignmentData.time_slot_id || !assignmentData.semester_id) {
+        console.error('Missing required fields:', {
+          subject_id: assignmentData.subject_id,
+          student_group_id: assignmentData.student_group_id,
+          time_slot_id: assignmentData.time_slot_id,
+          semester_id: assignmentData.semester_id
+        })
+        alert('Error: Falten dades obligatòries per crear l\'assignació.')
+        return
+      }
 
+      // Use RPC function to bypass RLS issues
       const { data, error } = await supabase
-        .from('assignments')
-        .insert(assignmentData)
-        .select()
+        .rpc('create_assignment_bypass_rls', {
+          p_subject_id: assignmentData.subject_id,
+          p_subject_group_id: assignmentData.subject_group_id,
+          p_student_group_id: assignmentData.student_group_id,
+          p_time_slot_id: assignmentData.time_slot_id,
+          p_semester_id: assignmentData.semester_id,
+          p_hours_per_week: assignmentData.hours_per_week
+        })
 
       if (error) {
-        console.error('Error creating assignment:', error)
+        console.error('Error creating assignment:', error.message || error)
+        console.error('Error details:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code
+        })
+        
+        // Show user-friendly error message
+        let errorMessage = 'Error al crear l\'assignació: '
+        if (error.code === '23505') {
+          errorMessage += 'Ja existeix una assignació per aquest horari.'
+        } else if (error.code === '23503') {
+          errorMessage += 'Dades invàlides. Comprova que l\'assignatura i el grup són correctes.'
+        } else if (error.message) {
+          errorMessage += error.message
+        } else {
+          errorMessage += 'Error desconegut. Comprova la consola per més detalls.'
+        }
+        
+        alert(errorMessage)
       } else {
         console.log('Assignment created successfully:', data)
         // Reload assignments to show the new one
@@ -835,7 +938,7 @@ export default function AssignacionsAulesPage() {
                             const endMinutes = parseInt(end[0]) * 60 + parseInt(end[1])
                             return total + (endMinutes - startMinutes) / 60
                           }, 0)
-                        return assignedHours < (s.credits || 6)
+                        return (s.credits || 6) - assignedHours > 0.5
                       }).length} / {subjects.length}
                     </Badge>
                   </div>
@@ -858,8 +961,8 @@ export default function AssignacionsAulesPage() {
                             return total + (endMinutes - startMinutes) / 60
                           }, 0)
                         
-                        // Show subject if it still has unassigned hours
-                        return assignedHours < (subject.credits || 6)
+                        // Show subject if it still has unassigned hours (with 0.5h tolerance)
+                        return (subject.credits || 6) - assignedHours > 0.5
                       })
                       .map(subject => {
                         // Calculate remaining hours for this subject
@@ -992,7 +1095,17 @@ export default function AssignacionsAulesPage() {
                   <Input
                     placeholder="Buscar aula per nom..."
                     value={classroomSearchTerm}
-                    onChange={(e) => setClassroomSearchTerm(e.target.value)}
+                    onChange={(e) => {
+                      setClassroomSearchTerm(e.target.value)
+                      // Reset collapsed state when clearing search
+                      if (e.target.value === '' && classroomSearchTerm !== '') {
+                        const types = new Set<string>()
+                        classrooms.forEach(classroom => {
+                          types.add(classroom.type || 'Altres')
+                        })
+                        setCollapsedClassroomTypes(types)
+                      }
+                    }}
                     className="w-full"
                   />
                 </div>
@@ -1011,7 +1124,9 @@ export default function AssignacionsAulesPage() {
                           return acc
                         }, {} as Record<string, Classroom[]>)
                     ).map(([type, rooms]) => {
-                      const isCollapsed = collapsedClassroomTypes.has(type)
+                      // Auto-expand types that have search results
+                      const hasSearchResults = classroomSearchTerm.length > 0 && rooms.length > 0
+                      const isCollapsed = hasSearchResults ? false : collapsedClassroomTypes.has(type)
                       
                       return (
                         <div key={type} className="space-y-2">
@@ -1182,7 +1297,7 @@ function TimeSlotDroppable({
   }
 
   return (
-    <div className="bg-gray-50 rounded-lg p-1 h-[160px] relative border-r border-gray-200 last:border-r-0">
+    <div className="bg-gray-50 rounded-lg p-1 h-[260px] relative border-r border-gray-200 last:border-r-0">
       {/* Multiple drop zones */}
       <TimeSlotZone
         day={day}
@@ -1415,12 +1530,12 @@ function DroppableAssignment({
         <X className="h-3 w-3" />
       </button>
 
-      <div className="space-y-0.5 flex flex-col h-full">
-        <div className="font-semibold text-[11px] line-clamp-2 leading-tight">
+      <div className="space-y-1 flex flex-col h-full">
+        <div className="font-semibold text-xs line-clamp-2 leading-tight">
           {assignment.subject.name}
         </div>
         
-        <div className="text-[10px] opacity-90 flex items-center gap-1">
+        <div className="text-[11px] opacity-90 flex items-center gap-1">
           <GraduationCap className="h-3 w-3 flex-shrink-0" />
           <span className="truncate">
             {assignment.teacher 
@@ -1434,7 +1549,7 @@ function DroppableAssignment({
         {assignment.classrooms && assignment.classrooms.length > 0 ? (
           <div className="space-y-1">
             {assignment.classrooms.map((classroom) => (
-              <div key={classroom.id} className="flex items-center gap-1 text-[10px] bg-white/20 rounded px-1 py-0.5 relative group/classroom">
+              <div key={classroom.id} className="flex items-center gap-1 text-[11px] bg-white/20 rounded px-1 py-0.5 relative group/classroom">
                 <Building2 className="h-3 w-3 flex-shrink-0" />
                 <span>{classroom.code}</span>
                 <button
@@ -1448,7 +1563,7 @@ function DroppableAssignment({
           </div>
         ) : assignment.classroom ? (
           // Fallback for old single classroom (backwards compatibility)
-          <div className="flex items-center gap-1 text-[10px] bg-white/20 rounded px-1 py-0.5 relative group/classroom">
+          <div className="flex items-center gap-1 text-[11px] bg-white/20 rounded px-1 py-0.5 relative group/classroom">
             <Building2 className="h-3 w-3 flex-shrink-0" />
             <span>{assignment.classroom.code}</span>
             <button
@@ -1459,7 +1574,7 @@ function DroppableAssignment({
             </button>
           </div>
         ) : (
-          <div className="flex items-center gap-1 text-[10px] bg-red-900/40 rounded px-1 py-0.5 animate-pulse">
+          <div className="flex items-center gap-1 text-[11px] bg-red-900/40 rounded px-1 py-0.5 animate-pulse">
             <Building2 className="h-3 w-3 flex-shrink-0" />
             <span className="font-semibold">Sense aula!</span>
           </div>

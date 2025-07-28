@@ -22,7 +22,7 @@ import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { createClient } from "@/lib/supabase/client"
-import { Loader2, Trash2, Calendar, Edit } from "lucide-react"
+import { Loader2, Trash2, Calendar, Edit, X } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Checkbox } from "@/components/ui/checkbox"
 import { cn } from "@/lib/utils"
@@ -107,7 +107,7 @@ export function ClassroomAssignmentDialog({
   // Form state
   const [dayOfWeek, setDayOfWeek] = useState<string>("")
   const [timePeriod, setTimePeriod] = useState<string>("")
-  const [selectedClassroom, setSelectedClassroom] = useState<string>("")
+  const [selectedClassrooms, setSelectedClassrooms] = useState<string[]>([])
   const [searchTerm, setSearchTerm] = useState("")
   const [isFullSemester, setIsFullSemester] = useState(true)
   const [selectedWeeks, setSelectedWeeks] = useState<number[]>([])
@@ -488,8 +488,8 @@ export function ClassroomAssignmentDialog({
         }
       }
       
-      // Only check for classroom conflicts if a classroom is selected
-      if (selectedClassroom) {
+      // Only check for classroom conflicts if classrooms are selected
+      if (selectedClassrooms.length > 0) {
         // Check for classroom conflicts considering weeks
         if (!isFullSemester && selectedWeeks.length === 0) {
           setError("Si us plau, selecciona almenys una setmana")
@@ -497,42 +497,48 @@ export function ClassroomAssignmentDialog({
           return
         }
         
-        // Use the function to check conflicts
+        // Use the function to check conflicts for each classroom
         const weekNumbersToCheck = isFullSemester ? Array.from({length: 15}, (_, i) => i + 1) : selectedWeeks
         
-        // Debug logging
-        console.log('Checking classroom conflicts with:', {
-          classroom: selectedClassroom,
-          timeSlot: timeSlot!.id,
-          weeks: weekNumbersToCheck,
-          semesterId: selectedSemesterId,
-          excludeAssignment: editingAssignmentId
-        })
-        
-        const { data: conflicts, error: conflictError } = await supabase
-          .rpc('check_classroom_week_conflicts', {
-            p_classroom_id: selectedClassroom,
-            p_time_slot_id: timeSlot!.id,
-            p_week_numbers: weekNumbersToCheck,
-            p_exclude_assignment_id: editingAssignmentId,
-            p_semester_id: selectedSemesterId
+        // Check conflicts for each selected classroom
+        for (const classroomId of selectedClassrooms) {
+          // Debug logging
+          console.log('Checking classroom conflicts with:', {
+            classroom: classroomId,
+            timeSlot: timeSlot!.id,
+            weeks: weekNumbersToCheck,
+            semesterId: selectedSemesterId,
+            excludeAssignment: editingAssignmentId
           })
           
-        if (conflictError) throw conflictError
-        
-        if (conflicts && conflicts.length > 0) {
-          const conflict = conflicts[0]
+          const { data: conflicts, error: conflictError } = await supabase
+            .rpc('check_classroom_week_conflicts', {
+              p_classroom_id: classroomId,
+              p_time_slot_id: timeSlot!.id,
+              p_week_numbers: weekNumbersToCheck,
+              p_exclude_assignment_id: editingAssignmentId,
+              p_semester_id: selectedSemesterId
+            })
+            
+          if (conflictError) throw conflictError
+          
+          if (conflicts && conflicts.length > 0) {
+            const conflict = conflicts[0]
           const conflictingWeeks = conflict.conflicting_weeks
           
           console.log('Conflict found:', conflict)
           
-          if (isFullSemester) {
-            setError(`Solapament d'aula: L'aula ja està assignada en aquest horari a ${conflict.subject_name} (${conflict.group_code})`)
-          } else {
-            setError(`Solapament d'aula: L'aula ja està assignada a ${conflict.subject_name} (${conflict.group_code}) les setmanes: ${conflictingWeeks.join(', ')}`)
+            const classroom = classrooms.find(c => c.id === classroomId)
+            const classroomName = classroom ? classroom.name : 'Aula desconeguda'
+            
+            if (isFullSemester) {
+              setError(`Solapament d'aula: ${classroomName} ja està assignada en aquest horari a ${conflict.subject_name} (${conflict.group_code})`)
+            } else {
+              setError(`Solapament d'aula: ${classroomName} ja està assignada a ${conflict.subject_name} (${conflict.group_code}) les setmanes: ${conflictingWeeks.join(', ')}`)
+            }
+            setSaving(false)
+            return
           }
-          setSaving(false)
-          return
         }
       }
       
@@ -607,33 +613,35 @@ export function ClassroomAssignmentDialog({
         
       if (assignmentError) throw assignmentError
       
-      // Only create classroom assignment if a classroom is selected
-      if (selectedClassroom) {
-        const { data: classroomAssignment, error: classroomAssignmentError } = await supabase
-          .from("assignment_classrooms")
-          .insert({
-            assignment_id: assignment.id,
-            classroom_id: selectedClassroom,
-            is_full_semester: isFullSemester,
-            week_range_type: isFullSemester ? 'full' : 'specific_weeks'
-          })
-          .select()
-          .single()
-          
-        if (classroomAssignmentError) throw classroomAssignmentError
-        
-        // If specific weeks, insert week records
-        if (!isFullSemester && selectedWeeks.length > 0) {
-          const weekRecords = selectedWeeks.map(weekNumber => ({
-            assignment_classroom_id: classroomAssignment.id,
-            week_number: weekNumber
-          }))
-          
-          const { error: weeksError } = await supabase
-            .from("assignment_classroom_weeks")
-            .insert(weekRecords)
+      // Create classroom assignments for all selected classrooms
+      if (selectedClassrooms.length > 0) {
+        for (const classroomId of selectedClassrooms) {
+          const { data: classroomAssignment, error: classroomAssignmentError } = await supabase
+            .from("assignment_classrooms")
+            .insert({
+              assignment_id: assignment.id,
+              classroom_id: classroomId,
+              is_full_semester: isFullSemester,
+              week_range_type: isFullSemester ? 'full' : 'specific_weeks'
+            })
+            .select()
+            .single()
             
-          if (weeksError) throw weeksError
+          if (classroomAssignmentError) throw classroomAssignmentError
+          
+          // If specific weeks, insert week records
+          if (!isFullSemester && selectedWeeks.length > 0) {
+            const weekRecords = selectedWeeks.map(weekNumber => ({
+              assignment_classroom_id: classroomAssignment.id,
+              week_number: weekNumber
+            }))
+            
+            const { error: weeksError } = await supabase
+              .from("assignment_classroom_weeks")
+              .insert(weekRecords)
+              
+            if (weeksError) throw weeksError
+          }
         }
       }
       
@@ -689,7 +697,7 @@ export function ClassroomAssignmentDialog({
       // Reset form
       setDayOfWeek("")
       setTimePeriod("")
-      setSelectedClassroom("")
+      setSelectedClassrooms([])
       setIsFullSemester(true)
       setSelectedWeeks([])
       setEditingAssignmentId(null)
@@ -730,14 +738,16 @@ export function ClassroomAssignmentDialog({
       setTimePeriod(assignment.time_slot.slot_type)
     }
     
-    // Set classroom and weeks if available
+    // Set classrooms and weeks if available
     if (assignment.assignment_classrooms && assignment.assignment_classrooms.length > 0) {
-      const firstClassroom = assignment.assignment_classrooms[0]
-      if (firstClassroom.classroom) {
-        setSelectedClassroom(firstClassroom.classroom.id)
-      }
+      // Collect all classroom IDs
+      const classroomIds = assignment.assignment_classrooms
+        .filter(ac => ac.classroom)
+        .map(ac => ac.classroom.id)
+      setSelectedClassrooms(classroomIds)
       
-      // Set weeks
+      // Set weeks from first classroom (assuming all have same weeks)
+      const firstClassroom = assignment.assignment_classrooms[0]
       if (!firstClassroom.is_full_semester && firstClassroom.weeks && firstClassroom.weeks.length > 0) {
         setIsFullSemester(false)
         setSelectedWeeks(firstClassroom.weeks)
@@ -930,72 +940,64 @@ export function ClassroomAssignmentDialog({
               </Alert>
             )}
             
-            {/* Semester selector */}
-            {semesters.length > 0 && (
-              <div className="space-y-2">
-                <Label>Semestre</Label>
+            {/* Main form grid */}
+            <div className="grid grid-cols-3 gap-3">
+              {/* Semester */}
+              {semesters.length > 0 && (
                 <Select value={selectedSemesterId} onValueChange={setSelectedSemesterId}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Selecciona un semestre" />
+                    <SelectValue placeholder="Semestre" />
                   </SelectTrigger>
                   <SelectContent>
                     {semesters.map((semester) => (
                       <SelectItem key={semester.id} value={semester.id}>
-                        {semester.academic_years?.name} - {semester.name}
+                        {semester.name}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
-              </div>
-            )}
-            
-            
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label>Dia de la setmana</Label>
-                <Select value={dayOfWeek} onValueChange={setDayOfWeek}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecciona un dia" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {DAYS.map((day) => (
-                      <SelectItem key={day.value} value={day.value.toString()}>
-                        {day.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+              )}
               
-              <div className="space-y-2">
-                <Label>Franja horària</Label>
-                <Select value={timePeriod} onValueChange={setTimePeriod}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecciona una franja" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {TIME_PERIODS.map((period) => {
-                      const isDisabled = studentGroup?.shift && studentGroup.shift !== period.value
-                      
-                      return (
-                        <SelectItem
-                          key={period.value}
-                          value={period.value}
-                          disabled={isDisabled}
-                        >
-                          {period.label}
-                        </SelectItem>
-                      )
-                    })}
-                  </SelectContent>
-                </Select>
-              </div>
+              {/* Day of week */}
+              <Select value={dayOfWeek} onValueChange={setDayOfWeek}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Dia de la setmana" />
+                </SelectTrigger>
+                <SelectContent>
+                  {DAYS.map((day) => (
+                    <SelectItem key={day.value} value={day.value.toString()}>
+                      {day.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              
+              {/* Time period */}
+              <Select value={timePeriod} onValueChange={setTimePeriod}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Franja horària" />
+                </SelectTrigger>
+                <SelectContent>
+                  {TIME_PERIODS.map((period) => {
+                    const isDisabled = studentGroup?.shift && studentGroup.shift !== period.value
+                    
+                    return (
+                      <SelectItem
+                        key={period.value}
+                        value={period.value}
+                        disabled={isDisabled}
+                      >
+                        {period.label}
+                      </SelectItem>
+                    )
+                  })}
+                </SelectContent>
+              </Select>
             </div>
             
             {/* Week selection */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label>Assignació temporal</Label>
                 <div className="flex items-center space-x-2">
                   <Switch
                     checked={!isFullSemester}
@@ -1014,7 +1016,6 @@ export function ClassroomAssignmentDialog({
               
               {!isFullSemester && (
                 <div className="space-y-2">
-                  <Label>Selecciona les setmanes (1-15)</Label>
                   <div className="grid grid-cols-5 gap-2">
                     {Array.from({ length: 15 }, (_, i) => i + 1).map((week) => (
                       <div
@@ -1057,23 +1058,47 @@ export function ClassroomAssignmentDialog({
             
             {/* Classroom selection */}
             <div className="space-y-4">
-              <div className="space-y-2">
-                <Label>Cerca aula (opcional)</Label>
+              {/* Selected classrooms display */}
+              {selectedClassrooms.length > 0 && (
+                <div className="space-y-2">
+                  <div className="flex flex-wrap gap-2">
+                    {selectedClassrooms.map(classroomId => {
+                      const classroom = classrooms.find(c => c.id === classroomId)
+                      return classroom ? (
+                        <Badge 
+                          key={classroomId} 
+                          variant="secondary"
+                          className="flex items-center gap-1"
+                        >
+                          {classroom.code} - {classroom.name}
+                          <button
+                            type="button"
+                            onClick={() => setSelectedClassrooms(selectedClassrooms.filter(id => id !== classroomId))}
+                            className="ml-1 hover:text-destructive"
+                          >
+                            <X className="h-3 w-3" />
+                          </button>
+                        </Badge>
+                      ) : null
+                    })}
+                  </div>
+                </div>
+              )}
+              
+              {/* Search and filters grid */}
+              <div className="grid grid-cols-4 gap-3">
                 <Input
-                  placeholder="Cerca per codi o nom..."
+                  placeholder="Cerca aula..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
-              </div>
-              
-              {/* Filters */}
-              <div className="flex gap-2">
+                
                 <Select value={buildingFilter} onValueChange={setBuildingFilter}>
-                  <SelectTrigger className="w-32">
-                    <SelectValue placeholder="Edifici" />
+                  <SelectTrigger>
+                    <SelectValue placeholder="Tots els edificis" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">Tots</SelectItem>
+                    <SelectItem value="all">Tots els edificis</SelectItem>
                     {uniqueBuildings.map((building) => (
                       <SelectItem key={building} value={building}>
                         {building}
@@ -1083,11 +1108,11 @@ export function ClassroomAssignmentDialog({
                 </Select>
                 
                 <Select value={floorFilter} onValueChange={setFloorFilter}>
-                  <SelectTrigger className="w-32">
-                    <SelectValue placeholder="Planta" />
+                  <SelectTrigger>
+                    <SelectValue placeholder="Totes les plantes" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">Totes</SelectItem>
+                    <SelectItem value="all">Totes les plantes</SelectItem>
                     {uniqueFloors.map((floor) => (
                       <SelectItem key={floor} value={floor.toString()}>
                         Planta {floor}
@@ -1097,11 +1122,11 @@ export function ClassroomAssignmentDialog({
                 </Select>
                 
                 <Select value={typeFilter} onValueChange={setTypeFilter}>
-                  <SelectTrigger className="w-40">
-                    <SelectValue placeholder="Tipus" />
+                  <SelectTrigger>
+                    <SelectValue placeholder="Tots els tipus" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">Tots</SelectItem>
+                    <SelectItem value="all">Tots els tipus</SelectItem>
                     {uniqueTypes.map((type) => (
                       <SelectItem key={type} value={type}>
                         {type}
@@ -1124,29 +1149,29 @@ export function ClassroomAssignmentDialog({
                     </div>
                   ) : (
                     <>
-                      {/* Option to remove classroom assignment */}
-                      {selectedClassroom && (
+                      {/* Option to remove all classroom assignments */}
+                      {selectedClassrooms.length > 0 && (
                         <div
                           className="flex items-center space-x-2 p-2 rounded-md cursor-pointer bg-amber-50 hover:bg-amber-100 mb-2"
-                          onClick={() => setSelectedClassroom("")}
+                          onClick={() => setSelectedClassrooms([])}
                         >
                           <Checkbox
-                            checked={!selectedClassroom}
-                            onCheckedChange={() => setSelectedClassroom("")}
+                            checked={selectedClassrooms.length === 0}
+                            onCheckedChange={() => setSelectedClassrooms([])}
                           />
                           <div className="flex-1">
                             <span className="font-medium text-amber-700">
                               Sense aula assignada
                             </span>
                             <p className="text-xs text-amber-600">
-                              Selecciona aquesta opció per eliminar l'assignació d'aula actual
+                              Selecciona aquesta opció per eliminar totes les assignacions d'aula
                             </p>
                           </div>
                         </div>
                       )}
                       {/* Classroom list */}
                       {filteredClassrooms.map((classroom) => {
-                      const isSelected = selectedClassroom === classroom.id
+                      const isSelected = selectedClassrooms.includes(classroom.id)
                       const capacityDiff = classroom.capacity - (studentGroup?.capacity || 0)
                       const hasConflict = classroomConflicts[classroom.id]
                       
@@ -1158,11 +1183,24 @@ export function ClassroomAssignmentDialog({
                             isSelected && "bg-accent",
                             hasConflict && "bg-red-50 hover:bg-red-100"
                           )}
-                          onClick={() => setSelectedClassroom(classroom.id)}
+                          onClick={() => {
+                            if (hasConflict) return
+                            if (isSelected) {
+                              setSelectedClassrooms(selectedClassrooms.filter(id => id !== classroom.id))
+                            } else {
+                              setSelectedClassrooms([...selectedClassrooms, classroom.id])
+                            }
+                          }}
                         >
                           <Checkbox
                             checked={isSelected}
-                            onCheckedChange={() => setSelectedClassroom(classroom.id)}
+                            onCheckedChange={(checked) => {
+                              if (checked) {
+                                setSelectedClassrooms([...selectedClassrooms, classroom.id])
+                              } else {
+                                setSelectedClassrooms(selectedClassrooms.filter(id => id !== classroom.id))
+                              }
+                            }}
                             disabled={hasConflict}
                           />
                           <div className="flex-1">
@@ -1225,7 +1263,11 @@ export function ClassroomAssignmentDialog({
             disabled={saving || !dayOfWeek || !timePeriod}
           >
             {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            {editingAssignmentId ? "Actualitzar assignació" : "Guardar assignació"}
+            {editingAssignmentId ? "Actualitzar assignació" : 
+              selectedClassrooms.length > 0 
+                ? `Guardar assignació (${selectedClassrooms.length} ${selectedClassrooms.length === 1 ? 'aula' : 'aules'})`
+                : "Guardar assignació"
+            }
           </Button>
         </DialogFooter>
       </DialogContent>

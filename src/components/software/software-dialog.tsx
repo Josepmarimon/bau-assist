@@ -42,6 +42,7 @@ interface Software {
   provider_email?: string
   provider_phone?: string
   notes?: string
+  license_url?: string
 }
 
 interface SoftwareDialogProps {
@@ -74,7 +75,8 @@ export function SoftwareDialog({
     provider_name: '',
     provider_email: '',
     provider_phone: '',
-    notes: ''
+    notes: '',
+    license_url: ''
   })
 
   // Helper function to format date for input
@@ -102,7 +104,8 @@ export function SoftwareDialog({
         provider_name: software.provider_name || '',
         provider_email: software.provider_email || '',
         provider_phone: software.provider_phone || '',
-        notes: software.notes || ''
+        notes: software.notes || '',
+        license_url: software.license_url || ''
       })
     } else {
       // Reset form when creating new software
@@ -121,7 +124,8 @@ export function SoftwareDialog({
         provider_name: '',
         provider_email: '',
         provider_phone: '',
-        notes: ''
+        notes: '',
+        license_url: ''
       })
     }
   }, [software])
@@ -175,7 +179,8 @@ export function SoftwareDialog({
         provider_name: formData.provider_name || null,
         provider_email: formData.provider_email || null,
         provider_phone: formData.provider_phone || null,
-        notes: formData.notes || null
+        notes: formData.notes || null,
+        license_url: formData.license_url || null
       } : baseData
 
       if (software?.id) {
@@ -407,6 +412,20 @@ export function SoftwareDialog({
                     </SelectContent>
                   </Select>
                 </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="license_url">URL per descarregar llicències</Label>
+                <Input
+                  id="license_url"
+                  type="url"
+                  value={formData.license_url || ''}
+                  onChange={(e) => setFormData({ ...formData, license_url: e.target.value })}
+                  placeholder="https://exemple.com/llicencies"
+                />
+                <p className="text-sm text-muted-foreground">
+                  Enllaç per descarregar o gestionar les llicències
+                </p>
               </div>
 
               {formData.license_type !== 'free' && (
