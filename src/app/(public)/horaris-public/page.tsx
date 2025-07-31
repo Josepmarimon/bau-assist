@@ -33,6 +33,7 @@ interface Assignment {
     start_time: string
     end_time: string
   }
+  color: string
 }
 
 interface StudentGroup {
@@ -155,6 +156,13 @@ export default function HorarisPage() {
   }
 
 
+  const getSubjectColor = (subjectCode: string, year: number): string => {
+    const color = courseColors.find(
+      cc => cc.course_code === subjectCode && cc.year === year
+    )
+    return color?.color || '#94a3b8' // Default gray if no color found
+  }
+
   const loadAllSemesterAssignments = async () => {
     try {
       setLoading(true)
@@ -231,7 +239,8 @@ export default function HorarisPage() {
             subject: a.subjects as any,
             teacher: a.teachers as any,
             classrooms: classroomsByAssignment[a.id] || [],
-            time_slot: a.time_slots as any
+            time_slot: a.time_slots as any,
+            color: getSubjectColor((a.subjects as any)?.code || '', group.year)
           }))
         }
 
@@ -263,7 +272,8 @@ export default function HorarisPage() {
             subject: a.subjects as any,
             teacher: a.teachers as any,
             classrooms: classroomsByAssignment[a.id] || [],
-            time_slot: a.time_slots as any
+            time_slot: a.time_slots as any,
+            color: getSubjectColor((a.subjects as any)?.code || '', group.year)
           }))
         }
       }
