@@ -105,7 +105,11 @@ export default function ResumPage() {
       teacherAssignments?.forEach(assignment => {
         if (assignment.teacher_id && assignment.subjects) {
           const currentHours = teacherWorkloadMap.get(assignment.teacher_id) || 0
-          teacherWorkloadMap.set(assignment.teacher_id, currentHours + (assignment.subjects.credits || 0))
+          // Handle subjects as array (Supabase returns array for joins)
+          const credits = Array.isArray(assignment.subjects) 
+            ? assignment.subjects[0]?.credits || 0
+            : (assignment.subjects as any).credits || 0
+          teacherWorkloadMap.set(assignment.teacher_id, currentHours + credits)
         }
       })
       
