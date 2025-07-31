@@ -233,111 +233,139 @@ export default function SoftwareListPage() {
     // Create workbook
     const wb = XLSX.utils.book_new()
     
-    // Create data for the main sheet (Software by Classroom)
-    const classroomData: any[] = []
+    // Create data structure
+    const excelData: any[] = []
+    
+    // Header row with classroom information
+    const headerRow1: any = { 'Tipus': 'AULA' }
+    const headerRow2: any = { 'Tipus': 'EDIFICI' }
+    const headerRow3: any = { 'Tipus': 'NOM' }
     
     classroomsWithSoftware.forEach(classroom => {
-      const allSoftwareList = [
-        ...classroom.paid,
-        ...classroom.educational,
-        ...classroom.free,
-        ...classroom.open_source
-      ]
-      
-      allSoftwareList.forEach((software, index) => {
-        classroomData.push({
-          'Aula': classroom.code,
-          'Edifici': classroom.building,
-          'Nom Aula': classroom.name,
-          'Software': software.name,
-          'Versió': software.version || '',
-          'Tipus Llicència': getLicenseTypeName(software.license_type),
-          'Categoria': software.category
-        })
+      headerRow1[classroom.code] = classroom.code
+      headerRow2[classroom.code] = classroom.building
+      headerRow3[classroom.code] = classroom.name
+    })
+    
+    excelData.push(headerRow1)
+    excelData.push(headerRow2)
+    excelData.push(headerRow3)
+    
+    // Add separator
+    const separatorRow: any = { 'Tipus': '---' }
+    classroomsWithSoftware.forEach(classroom => {
+      separatorRow[classroom.code] = '---'
+    })
+    excelData.push(separatorRow)
+    
+    // Find max number of software per type across all classrooms
+    const maxCounts = {
+      paid: 0,
+      educational: 0,
+      free: 0,
+      open_source: 0
+    }
+    
+    classroomsWithSoftware.forEach(classroom => {
+      maxCounts.paid = Math.max(maxCounts.paid, classroom.paid.length)
+      maxCounts.educational = Math.max(maxCounts.educational, classroom.educational.length)
+      maxCounts.free = Math.max(maxCounts.free, classroom.free.length)
+      maxCounts.open_source = Math.max(maxCounts.open_source, classroom.open_source.length)
+    })
+    
+    // Add software by type
+    const sections = [
+      { type: 'paid', label: 'PAGAMENT', data: 'paid' as keyof ClassroomWithSoftware },
+      { type: 'educational', label: 'EDUCATIU', data: 'educational' as keyof ClassroomWithSoftware },
+      { type: 'free', label: 'GRATUÏT', data: 'free' as keyof ClassroomWithSoftware },
+      { type: 'open_source', label: 'CODI OBERT', data: 'open_source' as keyof ClassroomWithSoftware }
+    ]
+    
+    sections.forEach(({ type, label, data }) => {
+      // Section header
+      const sectionHeader: any = { 'Tipus': label }
+      classroomsWithSoftware.forEach(classroom => {
+        sectionHeader[classroom.code] = ''
       })
+      excelData.push(sectionHeader)
       
-      // Add empty row between classrooms for readability
-      if (classroom !== classroomsWithSoftware[classroomsWithSoftware.length - 1]) {
-        classroomData.push({})
+      // Add rows for this section
+      const maxRows = maxCounts[type as keyof typeof maxCounts]
+      for (let i = 0; i < maxRows; i++) {
+        const row: any = { 'Tipus': '' }
+        
+        classroomsWithSoftware.forEach(classroom => {
+          const softwareList = classroom[data] as Software[]
+          if (i < softwareList.length) {
+            const software = softwareList[i]
+            row[classroom.code] = software.version 
+              ? `${software.name} (v${software.version})`
+              : software.name
+          } else {
+            row[classroom.code] = ''
+          }
+        })
+        
+        excelData.push(row)
+      }
+      
+      // Add empty row between sections (except after last)
+      if (type !== 'open_source') {
+        const emptyRow: any = { 'Tipus': '' }
+        classroomsWithSoftware.forEach(classroom => {
+          emptyRow[classroom.code] = ''
+        })
+        excelData.push(emptyRow)
       }
     })
     
-    // Create worksheet from data
-    const ws1 = XLSX.utils.json_to_sheet(classroomData)
-    XLSX.utils.book_append_sheet(wb, ws1, 'Software per Aula')
-    
-    // Create summary sheet (Software list with classroom count)
-    const softwareSummary: Record<string, {
-      name: string,
-      version: string,
-      license: string,
-      category: string,
-      classrooms: string[]
-    }> = {}
-    
+    // Add summary row at the end
+    const summaryRow: any = { 'Tipus': 'TOTAL SOFTWARE' }
     classroomsWithSoftware.forEach(classroom => {
-      const allSoftwareList = [
-        ...classroom.paid,
-        ...classroom.educational,
-        ...classroom.free,
-        ...classroom.open_source
-      ]
-      
-      allSoftwareList.forEach(software => {
-        const key = software.id
-        if (!softwareSummary[key]) {
-          softwareSummary[key] = {
-            name: software.name,
-            version: software.version || '',
-            license: getLicenseTypeName(software.license_type),
-            category: software.category,
-            classrooms: []
-          }
-        }
-        softwareSummary[key].classrooms.push(classroom.code)
-      })
+      const total = classroom.paid.length + 
+                   classroom.educational.length + 
+                   classroom.free.length + 
+                   classroom.open_source.length
+      summaryRow[classroom.code] = total.toString()
     })
+    excelData.push({ 'Tipus': '' })
+    excelData.push(summaryRow)
     
-    const summaryData = Object.values(softwareSummary)
-      .map(software => ({
-        'Software': software.name,
-        'Versió': software.version,
-        'Tipus Llicència': software.license,
-        'Categoria': software.category,
-        'Nombre d\'Aules': software.classrooms.length,
-        'Aules': software.classrooms.join(', ')
-      }))
-      .sort((a, b) => a.Software.localeCompare(b.Software))
-    
-    const ws2 = XLSX.utils.json_to_sheet(summaryData)
-    XLSX.utils.book_append_sheet(wb, ws2, 'Resum Software')
+    // Create worksheet
+    const ws = XLSX.utils.json_to_sheet(excelData)
     
     // Set column widths
-    const wscols1 = [
-      { wch: 10 }, // Aula
-      { wch: 15 }, // Edifici
-      { wch: 30 }, // Nom Aula
-      { wch: 40 }, // Software
-      { wch: 15 }, // Versió
-      { wch: 15 }, // Tipus Llicència
-      { wch: 20 }  // Categoria
-    ]
-    ws1['!cols'] = wscols1
+    const colWidths = [{ wch: 15 }] // First column for types
+    classroomsWithSoftware.forEach(() => {
+      colWidths.push({ wch: 40 }) // Wider columns for software lists
+    })
+    ws['!cols'] = colWidths
     
-    const wscols2 = [
-      { wch: 40 }, // Software
-      { wch: 15 }, // Versió
-      { wch: 15 }, // Tipus Llicència
-      { wch: 20 }, // Categoria
-      { wch: 15 }, // Nombre d'Aules
-      { wch: 80 }  // Aules
-    ]
-    ws2['!cols'] = wscols2
+    // Apply text wrapping and vertical alignment
+    const range = XLSX.utils.decode_range(ws['!ref'] || 'A1')
+    for (let R = range.s.r; R <= range.e.r; ++R) {
+      for (let C = range.s.c; C <= range.e.c; ++C) {
+        const address = XLSX.utils.encode_cell({ r: R, c: C })
+        if (!ws[address]) continue
+        
+        if (!ws[address].s) ws[address].s = {}
+        ws[address].s.alignment = { vertical: 'top', wrapText: true }
+        
+        // Bold headers and section titles
+        if (R < 3 || ws[address].v === 'PAGAMENT' || ws[address].v === 'EDUCATIU' || 
+            ws[address].v === 'GRATUÏT' || ws[address].v === 'CODI OBERT' || 
+            ws[address].v === 'TOTAL SOFTWARE') {
+          ws[address].s.font = { bold: true }
+        }
+      }
+    }
+    
+    XLSX.utils.book_append_sheet(wb, ws, 'Software per Aula')
     
     // Generate filename with current date
     const date = new Date()
     const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
-    const filename = `BAU_Software_${dateStr}.xlsx`
+    const filename = `BAU_Software_Llista_${dateStr}.xlsx`
     
     // Write file
     XLSX.writeFile(wb, filename)
