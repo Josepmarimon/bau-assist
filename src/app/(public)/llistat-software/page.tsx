@@ -351,10 +351,17 @@ export default function SoftwareListPage() {
         if (!ws[address].s) ws[address].s = {}
         ws[address].s.alignment = { vertical: 'top', wrapText: true }
         
-        // Bold headers and section titles
-        if (R < 3 || ws[address].v === 'PAGAMENT' || ws[address].v === 'EDUCATIU' || 
+        // Bold for header rows (first 3 rows)
+        if (R < 3) {
+          ws[address].s.font = { bold: true }
+          // Add background color to header rows for better visibility
+          ws[address].s.fill = { fgColor: { rgb: "E0E0E0" } }
+        }
+        
+        // Bold for section titles in first column
+        if (C === 0 && (ws[address].v === 'PAGAMENT' || ws[address].v === 'EDUCATIU' || 
             ws[address].v === 'GRATUÏT' || ws[address].v === 'CODI OBERT' || 
-            ws[address].v === 'TOTAL SOFTWARE') {
+            ws[address].v === 'TOTAL SOFTWARE')) {
           ws[address].s.font = { bold: true }
         }
       }
@@ -417,7 +424,7 @@ export default function SoftwareListPage() {
           </div>
           <div className="flex gap-2">
             <Button 
-              variant="outline" 
+              variant="destructive" 
               onClick={downloadExcel}
               className="gap-2"
               disabled={classroomsWithSoftware.length === 0}
