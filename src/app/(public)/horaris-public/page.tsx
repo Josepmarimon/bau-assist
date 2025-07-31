@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Filter, Loader2 } from 'lucide-react'
+import { Filter, Loader2, GraduationCap, Calendar } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
 
 interface Assignment {
@@ -279,6 +279,20 @@ export default function HorarisPage() {
 
   const uniqueGroups = Array.from(new Set(studentGroups.map(g => g.name)))
 
+  const handleQuickFilter = (type: 'course' | 'degree', value: string) => {
+    if (type === 'course') {
+      setFilterCourse('all')
+      setFilterYear(value)
+      setFilterShift('all')
+      setFilterGroup('all')
+    } else {
+      setFilterCourse(value)
+      setFilterYear('all')
+      setFilterShift('all')
+      setFilterGroup('all')
+    }
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -299,6 +313,82 @@ export default function HorarisPage() {
             <p className="text-muted-foreground">
               Visualització i exportació dels horaris
             </p>
+          </div>
+        </div>
+
+        {/* Quick access buttons */}
+        <div className="print:hidden space-y-4">
+          <div>
+            <h3 className="text-sm font-medium text-muted-foreground mb-2 flex items-center gap-2">
+              <Calendar className="h-4 w-4" />
+              Accés ràpid per curs
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              <Button 
+                variant={filterYear === '1' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => handleQuickFilter('course', '1')}
+              >
+                1r Curs
+              </Button>
+              <Button 
+                variant={filterYear === '2' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => handleQuickFilter('course', '2')}
+              >
+                2n Curs
+              </Button>
+              <Button 
+                variant={filterYear === '3' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => handleQuickFilter('course', '3')}
+              >
+                3r Curs
+              </Button>
+              <Button 
+                variant={filterYear === '4' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => handleQuickFilter('course', '4')}
+              >
+                4t Curs
+              </Button>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-medium text-muted-foreground mb-2 flex items-center gap-2">
+              <GraduationCap className="h-4 w-4" />
+              Accés ràpid per grau
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              <Button 
+                variant={filterCourse === 'disseny' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => handleQuickFilter('degree', 'disseny')}
+              >
+                Grau en Disseny
+              </Button>
+              <Button 
+                variant={filterCourse === 'belles-arts' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => handleQuickFilter('degree', 'belles-arts')}
+              >
+                Grau en Belles Arts
+              </Button>
+              <Button 
+                variant={(filterCourse === 'all' && filterYear === 'all') ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => {
+                  setFilterCourse('all')
+                  setFilterYear('all')
+                  setFilterShift('all')
+                  setFilterGroup('all')
+                }}
+                className="ml-4"
+              >
+                Mostrar tots
+              </Button>
+            </div>
           </div>
         </div>
 

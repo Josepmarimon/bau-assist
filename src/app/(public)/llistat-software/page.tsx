@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { Monitor, Building2, Info, Search, MapPin, X } from 'lucide-react'
+import { Monitor, Building2, Info, Search, MapPin, X, Download } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { WeeklyScheduleMini } from '@/components/classrooms/weekly-schedule-mini'
+import * as XLSX from 'xlsx'
 
 interface Software {
   id: string
@@ -228,6 +229,120 @@ export default function SoftwareListPage() {
     }
   }
 
+  const downloadExcel = () => {
+    // Create workbook
+    const wb = XLSX.utils.book_new()
+    
+    // Create data for the main sheet (Software by Classroom)
+    const classroomData: any[] = []
+    
+    classroomsWithSoftware.forEach(classroom => {
+      const allSoftwareList = [
+        ...classroom.paid,
+        ...classroom.educational,
+        ...classroom.free,
+        ...classroom.open_source
+      ]
+      
+      allSoftwareList.forEach((software, index) => {
+        classroomData.push({
+          'Aula': classroom.code,
+          'Edifici': classroom.building,
+          'Nom Aula': classroom.name,
+          'Software': software.name,
+          'Versió': software.version || '',
+          'Tipus Llicència': getLicenseTypeName(software.license_type),
+          'Categoria': software.category
+        })
+      })
+      
+      // Add empty row between classrooms for readability
+      if (classroom !== classroomsWithSoftware[classroomsWithSoftware.length - 1]) {
+        classroomData.push({})
+      }
+    })
+    
+    // Create worksheet from data
+    const ws1 = XLSX.utils.json_to_sheet(classroomData)
+    XLSX.utils.book_append_sheet(wb, ws1, 'Software per Aula')
+    
+    // Create summary sheet (Software list with classroom count)
+    const softwareSummary: Record<string, {
+      name: string,
+      version: string,
+      license: string,
+      category: string,
+      classrooms: string[]
+    }> = {}
+    
+    classroomsWithSoftware.forEach(classroom => {
+      const allSoftwareList = [
+        ...classroom.paid,
+        ...classroom.educational,
+        ...classroom.free,
+        ...classroom.open_source
+      ]
+      
+      allSoftwareList.forEach(software => {
+        const key = software.id
+        if (!softwareSummary[key]) {
+          softwareSummary[key] = {
+            name: software.name,
+            version: software.version || '',
+            license: getLicenseTypeName(software.license_type),
+            category: software.category,
+            classrooms: []
+          }
+        }
+        softwareSummary[key].classrooms.push(classroom.code)
+      })
+    })
+    
+    const summaryData = Object.values(softwareSummary)
+      .map(software => ({
+        'Software': software.name,
+        'Versió': software.version,
+        'Tipus Llicència': software.license,
+        'Categoria': software.category,
+        'Nombre d\'Aules': software.classrooms.length,
+        'Aules': software.classrooms.join(', ')
+      }))
+      .sort((a, b) => a.Software.localeCompare(b.Software))
+    
+    const ws2 = XLSX.utils.json_to_sheet(summaryData)
+    XLSX.utils.book_append_sheet(wb, ws2, 'Resum Software')
+    
+    // Set column widths
+    const wscols1 = [
+      { wch: 10 }, // Aula
+      { wch: 15 }, // Edifici
+      { wch: 30 }, // Nom Aula
+      { wch: 40 }, // Software
+      { wch: 15 }, // Versió
+      { wch: 15 }, // Tipus Llicència
+      { wch: 20 }  // Categoria
+    ]
+    ws1['!cols'] = wscols1
+    
+    const wscols2 = [
+      { wch: 40 }, // Software
+      { wch: 15 }, // Versió
+      { wch: 15 }, // Tipus Llicència
+      { wch: 20 }, // Categoria
+      { wch: 15 }, // Nombre d'Aules
+      { wch: 80 }  // Aules
+    ]
+    ws2['!cols'] = wscols2
+    
+    // Generate filename with current date
+    const date = new Date()
+    const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+    const filename = `BAU_Software_${dateStr}.xlsx`
+    
+    // Write file
+    XLSX.writeFile(wb, filename)
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -272,14 +387,25 @@ export default function SoftwareListPage() {
               Codi Obert
             </span>
           </div>
-          <Button 
-            variant="outline" 
-            onClick={() => setShowSearch(!showSearch)}
-            className="gap-2"
-          >
-            <Search className="h-4 w-4" />
-            {showSearch ? 'Tancar cerca' : 'Cercar software'}
-          </Button>
+          <div className="flex gap-2">
+            <Button 
+              variant="outline" 
+              onClick={downloadExcel}
+              className="gap-2"
+              disabled={classroomsWithSoftware.length === 0}
+            >
+              <Download className="h-4 w-4" />
+              Descarregar Excel
+            </Button>
+            <Button 
+              variant="outline" 
+              onClick={() => setShowSearch(!showSearch)}
+              className="gap-2"
+            >
+              <Search className="h-4 w-4" />
+              {showSearch ? 'Tancar cerca' : 'Cercar software'}
+            </Button>
+          </div>
         </div>
       </div>
 
