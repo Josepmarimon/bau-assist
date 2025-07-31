@@ -42,6 +42,8 @@ interface CourseColor {
   course_code: string
   year: number
   color: string
+  color_type?: string
+  itinerary_code?: string
 }
 
 interface SchedulePDFViewProps {

@@ -577,7 +577,7 @@ export function ClassroomConflictDialog({
                           </div>
 
                           {/* Equipment/Software badges */}
-                          {(classroom.equipment?.length > 0 || classroom.software?.length > 0) && (
+                          {((classroom.equipment?.length ?? 0) > 0 || (classroom.software?.length ?? 0) > 0) && (
                             <div className="flex flex-wrap gap-1.5 pt-1">
                               {classroom.equipment?.slice(0, 3).map((eq, idx) => (
                                 <Badge key={idx} variant="secondary" className="text-xs">
