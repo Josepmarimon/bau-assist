@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { LogIn, Home, Calendar, Building2, Monitor } from 'lucide-react'
+import { LogIn, Home, Calendar, Building2, Monitor, List } from 'lucide-react'
 
 export function PublicHeader() {
   return (
@@ -25,7 +25,7 @@ export function PublicHeader() {
               Inici
             </Button>
           </Link>
-          <Link href="/horaris">
+          <Link href="/horaris-public">
             <Button variant="ghost" size="sm">
               <Calendar className="h-4 w-4 mr-2" />
               Horaris
@@ -40,7 +40,13 @@ export function PublicHeader() {
           <Link href="/cerca-software">
             <Button variant="ghost" size="sm">
               <Monitor className="h-4 w-4 mr-2" />
-              Software
+              Cerca Software
+            </Button>
+          </Link>
+          <Link href="/llistat-software">
+            <Button variant="ghost" size="sm">
+              <List className="h-4 w-4 mr-2" />
+              Llistat Software
             </Button>
           </Link>
           <Link href="/login">
