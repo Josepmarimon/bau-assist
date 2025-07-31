@@ -213,9 +213,11 @@ export default function MastersPage() {
     
     // Sort schedules within each program by day, then time
     Object.keys(groups).forEach(semester => {
-      Object.keys(groups[semester as keyof typeof groups]).forEach(type => {
-        Object.keys(groups[semester as keyof typeof groups][type as keyof typeof groups[typeof semester]]).forEach(programId => {
-          groups[semester as keyof typeof groups][type as keyof typeof groups[typeof semester]][programId].sort((a, b) => {
+      const semesterData = groups[semester as keyof typeof groups]
+      Object.keys(semesterData).forEach(type => {
+        const typeData = semesterData[type as keyof typeof semesterData]
+        Object.keys(typeData).forEach(programId => {
+          typeData[programId].sort((a, b) => {
             // First by day
             const dayCompare = a.day_of_week - b.day_of_week
             if (dayCompare !== 0) return dayCompare
