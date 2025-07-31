@@ -11,7 +11,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Filter } from 'lucide-react'
+import { Filter, Loader2 } from 'lucide-react'
+import { Skeleton } from '@/components/ui/skeleton'
 
 interface Assignment {
   id: string
@@ -50,6 +51,8 @@ interface CourseColor {
   course_code: string
   year: number
   color: string
+  color_type?: string
+  itinerary_code?: string
 }
 
 export default function HorarisPage() {
@@ -59,77 +62,75 @@ export default function HorarisPage() {
   const [studentGroups, setStudentGroups] = useState<StudentGroup[]>([])
   const [filteredGroups, setFilteredGroups] = useState<StudentGroup[]>([])
   const [loading, setLoading] = useState(true)
+  const [loadingAssignments, setLoadingAssignments] = useState(false)
   const [filterCourse, setFilterCourse] = useState<string>('all')
   const [filterYear, setFilterYear] = useState<string>('all')
   const [filterShift, setFilterShift] = useState<string>('all')
   const [filterGroup, setFilterGroup] = useState<string>('all')
   const [courseColors, setCourseColors] = useState<CourseColor[]>([])
+  const [loadedGroups, setLoadedGroups] = useState<Set<string>>(new Set())
+  const [semester1Id, setSemester1Id] = useState<string>('')
+  const [semester2Id, setSemester2Id] = useState<string>('')
 
   useEffect(() => {
-    loadAllGroups()
-    loadCourseColors()
+    loadInitialData()
   }, [])
 
-  const loadCourseColors = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('course_colors')
-        .select('*')
-      
-      if (error) {
-        console.error('Error loading course colors:', error)
-        return
-      }
-      
-      if (data) {
-        setCourseColors(data)
-      }
-    } catch (error) {
-      console.error('Error:', error)
-    }
-  }
-
   useEffect(() => {
-    applyFilter()
+    const filtered = applyFilters()
+    setFilteredGroups(filtered)
   }, [filterCourse, filterYear, filterShift, filterGroup, studentGroups])
 
   useEffect(() => {
-    if (filteredGroups.length > 0) {
-      // Always load both semesters for PDF view
-      loadAllSemesterAssignments()
+    if (filteredGroups.length > 0 && semester1Id && semester2Id) {
+      loadAssignmentsProgressive()
     }
-  }, [filteredGroups])
+  }, [filteredGroups, semester1Id, semester2Id])
 
-  const loadAllGroups = async () => {
+  const loadInitialData = async () => {
     try {
-      const { data, error } = await supabase
-        .from('student_groups')
-        .select('*')
-        .order('year')
-        .order('name')
+      setLoading(true)
+      
+      // Load all initial data in parallel
+      const [groupsResult, colorsResult, semestersResult] = await Promise.all([
+        supabase.from('student_groups').select('*').order('year').order('name'),
+        supabase.from('course_colors').select('*'),
+        supabase
+          .from('semesters')
+          .select('id, number')
+          .in('number', [1, 2])
+          .eq('academic_year_id', '2b210161-5447-4494-8003-f09a0b553a3f')
+      ])
 
-      if (error) {
-        console.error('Error loading groups:', error)
-        return
+      if (groupsResult.data) {
+        setStudentGroups(groupsResult.data)
+        setFilteredGroups(groupsResult.data)
+      }
+      
+      if (colorsResult.data) {
+        setCourseColors(colorsResult.data)
       }
 
-      if (data) {
-        setStudentGroups(data)
-        setFilteredGroups(data)
+      if (semestersResult.data && semestersResult.data.length === 2) {
+        const sem1 = semestersResult.data.find(s => s.number === 1)
+        const sem2 = semestersResult.data.find(s => s.number === 2)
+        if (sem1) setSemester1Id(sem1.id)
+        if (sem2) setSemester2Id(sem2.id)
       }
     } catch (error) {
-      console.error('Error:', error)
+      console.error('Error loading initial data:', error)
+    } finally {
+      setLoading(false)
     }
   }
 
-  const applyFilter = () => {
+  const applyFilters = () => {
     let filtered = [...studentGroups]
 
-    // Apply course filter
     if (filterCourse !== 'all') {
       filtered = filtered.filter(group => {
         if (filterCourse === 'disseny') {
-          return group.name.startsWith('GR')
+          return group.name.startsWith('GD') || group.name.startsWith('GR')
         } else if (filterCourse === 'belles-arts') {
           return group.name.startsWith('GBA')
         }
@@ -137,58 +138,36 @@ export default function HorarisPage() {
       })
     }
 
-    // Apply year filter
     if (filterYear !== 'all') {
       filtered = filtered.filter(group => group.year === parseInt(filterYear))
     }
 
-    // Apply shift filter
     if (filterShift !== 'all') {
       filtered = filtered.filter(group => group.shift === filterShift)
     }
 
-    // Apply specific group filter
     if (filterGroup !== 'all') {
       filtered = filtered.filter(group => group.name === filterGroup)
     }
 
-    setFilteredGroups(filtered)
+    return filtered
   }
-
 
   const getSubjectColor = (subjectCode: string, year: number): string => {
     const color = courseColors.find(
       cc => cc.course_code === subjectCode && cc.year === year
     )
-    return color?.color || '#94a3b8' // Default gray if no color found
+    return color?.color || '#94a3b8'
   }
 
-  const loadAllSemesterAssignments = async () => {
+  const loadAssignmentsForGroup = async (group: StudentGroup) => {
     try {
-      setLoading(true)
-      
-      // Get both semester IDs
-      const { data: semesters } = await supabase
-        .from('semesters')
-        .select('id, number')
-        .in('number', [1, 2])
-        .eq('academic_year_id', '2b210161-5447-4494-8003-f09a0b553a3f')
+      // Skip if already loaded
+      if (loadedGroups.has(group.id)) return
 
-      if (!semesters || semesters.length !== 2) {
-        console.error('Semesters not found')
-        return
-      }
-
-      const semester1 = semesters.find(s => s.number === 1)
-      const semester2 = semesters.find(s => s.number === 2)
-
-      // Load assignments for both semesters
-      const groupAssignments1: Record<string, Assignment[]> = {}
-      const groupAssignments2: Record<string, Assignment[]> = {}
-
-      for (const group of filteredGroups) {
-        // Load semester 1
-        const { data: assignmentsData1 } = await supabase
+      // Load both semesters in parallel
+      const [assignments1Data, assignments2Data] = await Promise.all([
+        supabase
           .from('assignments')
           .select(`
             id,
@@ -197,10 +176,8 @@ export default function HorarisPage() {
             time_slots!time_slot_id (day_of_week, start_time, end_time)
           `)
           .eq('student_group_id', group.id)
-          .eq('semester_id', semester1?.id)
-
-        // Load semester 2
-        const { data: assignmentsData2 } = await supabase
+          .eq('semester_id', semester1Id),
+        supabase
           .from('assignments')
           .select(`
             id,
@@ -209,84 +186,109 @@ export default function HorarisPage() {
             time_slots!time_slot_id (day_of_week, start_time, end_time)
           `)
           .eq('student_group_id', group.id)
-          .eq('semester_id', semester2?.id)
+          .eq('semester_id', semester2Id)
+      ])
 
-        // Process semester 1 assignments
-        if (assignmentsData1) {
-          const assignmentIds = assignmentsData1.map(a => a.id)
-          const { data: assignmentClassrooms } = await supabase
-            .from('assignment_classrooms')
-            .select(`
-              assignment_id,
-              classrooms (code, name)
-            `)
-            .in('assignment_id', assignmentIds)
-          
-          const classroomsByAssignment: Record<string, any[]> = {}
-          if (assignmentClassrooms) {
-            assignmentClassrooms.forEach(ac => {
-              if (!classroomsByAssignment[ac.assignment_id]) {
-                classroomsByAssignment[ac.assignment_id] = []
-              }
-              if (ac.classrooms) {
-                classroomsByAssignment[ac.assignment_id].push(ac.classrooms)
-              }
-            })
-          }
+      // Get all assignment IDs
+      const allAssignmentIds = [
+        ...(assignments1Data.data?.map(a => a.id) || []),
+        ...(assignments2Data.data?.map(a => a.id) || [])
+      ]
 
-          groupAssignments1[group.name] = assignmentsData1.map(a => ({
-            id: a.id,
-            subject: a.subjects as any,
-            teacher: a.teachers as any,
-            classrooms: classroomsByAssignment[a.id] || [],
-            time_slot: a.time_slots as any,
-            color: getSubjectColor((a.subjects as any)?.code || '', group.year)
-          }))
-        }
-
-        // Process semester 2 assignments
-        if (assignmentsData2) {
-          const assignmentIds = assignmentsData2.map(a => a.id)
-          const { data: assignmentClassrooms } = await supabase
-            .from('assignment_classrooms')
-            .select(`
-              assignment_id,
-              classrooms (code, name)
-            `)
-            .in('assignment_id', assignmentIds)
-          
-          const classroomsByAssignment: Record<string, any[]> = {}
-          if (assignmentClassrooms) {
-            assignmentClassrooms.forEach(ac => {
-              if (!classroomsByAssignment[ac.assignment_id]) {
-                classroomsByAssignment[ac.assignment_id] = []
-              }
-              if (ac.classrooms) {
-                classroomsByAssignment[ac.assignment_id].push(ac.classrooms)
-              }
-            })
-          }
-
-          groupAssignments2[group.name] = assignmentsData2.map(a => ({
-            id: a.id,
-            subject: a.subjects as any,
-            teacher: a.teachers as any,
-            classrooms: classroomsByAssignment[a.id] || [],
-            time_slot: a.time_slots as any,
-            color: getSubjectColor((a.subjects as any)?.code || '', group.year)
-          }))
+      // Load classrooms for all assignments at once
+      let classroomsByAssignment: Record<string, any[]> = {}
+      if (allAssignmentIds.length > 0) {
+        const { data: assignmentClassrooms } = await supabase
+          .from('assignment_classrooms')
+          .select(`
+            assignment_id,
+            classrooms (code, name)
+          `)
+          .in('assignment_id', allAssignmentIds)
+        
+        if (assignmentClassrooms) {
+          assignmentClassrooms.forEach(ac => {
+            if (!classroomsByAssignment[ac.assignment_id]) {
+              classroomsByAssignment[ac.assignment_id] = []
+            }
+            if (ac.classrooms) {
+              classroomsByAssignment[ac.assignment_id].push(ac.classrooms)
+            }
+          })
         }
       }
 
-      setAssignments1(groupAssignments1)
-      setAssignments2(groupAssignments2)
+      // Process assignments for semester 1
+      if (assignments1Data.data) {
+        const processedAssignments1 = assignments1Data.data.map(a => ({
+          id: a.id,
+          subject: a.subjects as any,
+          teacher: a.teachers as any,
+          classrooms: classroomsByAssignment[a.id] || [],
+          time_slot: a.time_slots as any,
+          color: getSubjectColor((a.subjects as any)?.code || '', group.year)
+        }))
+        
+        setAssignments1(prev => ({
+          ...prev,
+          [group.name]: processedAssignments1
+        }))
+      }
+
+      // Process assignments for semester 2
+      if (assignments2Data.data) {
+        const processedAssignments2 = assignments2Data.data.map(a => ({
+          id: a.id,
+          subject: a.subjects as any,
+          teacher: a.teachers as any,
+          classrooms: classroomsByAssignment[a.id] || [],
+          time_slot: a.time_slots as any,
+          color: getSubjectColor((a.subjects as any)?.code || '', group.year)
+        }))
+        
+        setAssignments2(prev => ({
+          ...prev,
+          [group.name]: processedAssignments2
+        }))
+      }
+
+      // Mark group as loaded
+      setLoadedGroups(prev => new Set(prev).add(group.id))
     } catch (error) {
-      console.error('Error loading assignments:', error)
-    } finally {
-      setLoading(false)
+      console.error(`Error loading assignments for group ${group.name}:`, error)
     }
   }
 
+  const loadAssignmentsProgressive = async () => {
+    setLoadingAssignments(true)
+    
+    // Reset loaded groups when filters change
+    setLoadedGroups(new Set())
+    setAssignments1({})
+    setAssignments2({})
+    
+    // Load assignments for each group in parallel batches
+    const batchSize = 3 // Load 3 groups at a time
+    for (let i = 0; i < filteredGroups.length; i += batchSize) {
+      const batch = filteredGroups.slice(i, i + batchSize)
+      await Promise.all(batch.map(group => loadAssignmentsForGroup(group)))
+    }
+    
+    setLoadingAssignments(false)
+  }
+
+  const uniqueGroups = Array.from(new Set(studentGroups.map(g => g.name)))
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center space-y-4">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto" />
+          <p className="text-lg">Carregant dades inicials...</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
@@ -300,124 +302,107 @@ export default function HorarisPage() {
           </div>
         </div>
 
-      {/* Filter section */}
-      <div className="space-y-4 print:hidden bg-gray-50 p-4 rounded-lg">
-        <div className="flex items-center gap-2 mb-2">
-          <Filter className="h-5 w-5 text-muted-foreground" />
-          <span className="font-medium">Filtres</span>
-          {(filterCourse !== 'all' || filterYear !== 'all' || filterShift !== 'all' || filterGroup !== 'all') && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                setFilterCourse('all')
-                setFilterYear('all')
-                setFilterShift('all')
-                setFilterGroup('all')
-              }}
-              className="ml-auto"
-            >
-              Netejar filtres
-            </Button>
-          )}
-        </div>
-        
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {/* Course filter */}
-          <div>
-            <label className="text-sm font-medium mb-1 block">Titulació</label>
-            <Select value={filterCourse} onValueChange={setFilterCourse}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Totes</SelectItem>
-                <SelectItem value="disseny">Grau en Disseny</SelectItem>
-                <SelectItem value="belles-arts">Grau en Belles Arts</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+        {/* Filters */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 print:hidden">
+          <Select value={filterCourse} onValueChange={setFilterCourse}>
+            <SelectTrigger>
+              <Filter className="h-4 w-4 mr-2" />
+              <SelectValue placeholder="Tots els graus" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Tots els graus</SelectItem>
+              <SelectItem value="disseny">Grau en Disseny</SelectItem>
+              <SelectItem value="belles-arts">Grau en Belles Arts</SelectItem>
+            </SelectContent>
+          </Select>
 
-          {/* Year filter */}
-          <div>
-            <label className="text-sm font-medium mb-1 block">Curs</label>
-            <Select value={filterYear} onValueChange={setFilterYear}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Tots</SelectItem>
-                <SelectItem value="1">Primer</SelectItem>
-                <SelectItem value="2">Segon</SelectItem>
-                <SelectItem value="3">Tercer</SelectItem>
-                <SelectItem value="4">Quart</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+          <Select value={filterYear} onValueChange={setFilterYear}>
+            <SelectTrigger>
+              <SelectValue placeholder="Tots els cursos" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Tots els cursos</SelectItem>
+              <SelectItem value="1">1r curs</SelectItem>
+              <SelectItem value="2">2n curs</SelectItem>
+              <SelectItem value="3">3r curs</SelectItem>
+              <SelectItem value="4">4t curs</SelectItem>
+            </SelectContent>
+          </Select>
 
-          {/* Shift filter */}
-          <div>
-            <label className="text-sm font-medium mb-1 block">Torn</label>
-            <Select value={filterShift} onValueChange={setFilterShift}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Tots</SelectItem>
-                <SelectItem value="mati">Matí</SelectItem>
-                <SelectItem value="tarda">Tarda</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+          <Select value={filterShift} onValueChange={setFilterShift}>
+            <SelectTrigger>
+              <SelectValue placeholder="Tots els torns" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Tots els torns</SelectItem>
+              <SelectItem value="mati">Matí</SelectItem>
+              <SelectItem value="tarda">Tarda</SelectItem>
+            </SelectContent>
+          </Select>
 
-          {/* Group filter */}
-          <div>
-            <label className="text-sm font-medium mb-1 block">Grup específic</label>
-            <Select value={filterGroup} onValueChange={setFilterGroup}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Tots</SelectItem>
-                {studentGroups
-                  .filter(group => {
-                    // Apply other filters to group list
-                    let show = true
-                    if (filterCourse !== 'all') {
-                      if (filterCourse === 'disseny' && !group.name.startsWith('GR')) show = false
-                      if (filterCourse === 'belles-arts' && !group.name.startsWith('GBA')) show = false
-                    }
-                    if (filterYear !== 'all' && group.year !== parseInt(filterYear)) show = false
-                    if (filterShift !== 'all' && group.shift !== filterShift) show = false
-                    return show
-                  })
-                  .map(group => (
-                    <SelectItem key={group.id} value={group.name}>
-                      {group.name}
-                    </SelectItem>
-                  ))}
-              </SelectContent>
-            </Select>
-          </div>
+          <Select value={filterGroup} onValueChange={setFilterGroup}>
+            <SelectTrigger>
+              <SelectValue placeholder="Tots els grups" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Tots els grups</SelectItem>
+              {uniqueGroups.map(name => (
+                <SelectItem key={name} value={name}>
+                  {name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
-        <div className="text-sm text-muted-foreground">
-          {filteredGroups.length} {filteredGroups.length === 1 ? 'grup' : 'grups'} seleccionats
-        </div>
-      </div>
+        {/* Loading indicator for assignments */}
+        {loadingAssignments && (
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-center gap-3">
+            <Loader2 className="h-5 w-5 animate-spin text-blue-600" />
+            <p className="text-blue-800">
+              Carregant horaris per {filteredGroups.length} grups...
+            </p>
+          </div>
+        )}
 
-      {loading ? (
-        <div className="flex items-center justify-center h-64">
-          <div className="text-muted-foreground">Carregant horaris...</div>
-        </div>
-      ) : (
-        <SchedulePDFView
-          groups={filteredGroups}
-          assignments1={assignments1}
-          assignments2={assignments2}
-          academicYear="2025-2026"
-          courseColors={courseColors}
-        />
+        {/* Schedule view */}
+        {filteredGroups.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">
+              No s'han trobat grups amb els filtres seleccionats
+            </p>
+          </div>
+        ) : (
+          <div className="space-y-8">
+            {filteredGroups.map((group, index) => {
+              const isLoaded = loadedGroups.has(group.id)
+              const groupAssignments1 = assignments1[group.name] || []
+              const groupAssignments2 = assignments2[group.name] || []
+              
+              return (
+                <div key={group.id} className="bg-white rounded-lg shadow-sm border p-4">
+                  <h2 className="text-xl font-semibold mb-4">
+                    {group.name} - {group.year}r curs ({group.shift === 'mati' ? 'Matí' : 'Tarda'})
+                  </h2>
+                  
+                  {!isLoaded && loadingAssignments ? (
+                    <div className="space-y-4">
+                      <Skeleton className="h-32 w-full" />
+                      <Skeleton className="h-32 w-full" />
+                    </div>
+                  ) : (
+                    <SchedulePDFView
+                      groups={[group]}
+                      assignments1={{ [group.name]: groupAssignments1 }}
+                      assignments2={{ [group.name]: groupAssignments2 }}
+                      academicYear="2025-2026"
+                      courseColors={courseColors}
+                    />
+                  )}
+                </div>
+              )
+            })}
+          </div>
         )}
       </div>
     </div>

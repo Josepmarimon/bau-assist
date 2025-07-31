@@ -34,19 +34,13 @@ export function PublicHeader() {
           <Link href="/directori-aules">
             <Button variant="ghost" size="sm">
               <Building2 className="h-4 w-4 mr-2" />
-              Aules
-            </Button>
-          </Link>
-          <Link href="/cerca-software">
-            <Button variant="ghost" size="sm">
-              <Monitor className="h-4 w-4 mr-2" />
-              Cerca Software
+              Espais de BAU
             </Button>
           </Link>
           <Link href="/llistat-software">
             <Button variant="ghost" size="sm">
-              <List className="h-4 w-4 mr-2" />
-              Llistat Software
+              <Monitor className="h-4 w-4 mr-2" />
+              Software
             </Button>
           </Link>
           <Link href="/login">

@@ -39,8 +39,7 @@ export async function updateSession(request: NextRequest) {
     '/directori-aules',
     '/horaris',
     '/horaris-public',
-    '/llistat-software',
-    '/cerca-software'
+    '/llistat-software'
   ]
 
   const isPublicRoute = publicRoutes.some(route => 
