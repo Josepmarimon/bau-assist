@@ -458,6 +458,42 @@ export function ClassroomDetailsDialog({
     return building
   }
 
+  // Calculate free time slots
+  const calculateFreeSlots = () => {
+    const days = ['Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres']
+    const timeSlots = [
+      { start: '08:00', end: '11:00', label: 'Matí (8-11h)' },
+      { start: '11:00', end: '14:00', label: 'Migdia (11-14h)' },
+      { start: '15:00', end: '18:00', label: 'Tarda (15-18h)' },
+      { start: '18:00', end: '21:00', label: 'Vespre (18-21h)' }
+    ]
+    
+    const freeSlots: { day: string; slots: string[] }[] = []
+    
+    days.forEach((day, dayIndex) => {
+      const daySlots: string[] = []
+      
+      timeSlots.forEach(slot => {
+        const hasAssignment = assignments.some(assignment => {
+          if (!assignment.time_slot) return false
+          return assignment.time_slot.day_of_week === dayIndex + 1 &&
+            assignment.time_slot.start_time >= slot.start &&
+            assignment.time_slot.start_time < slot.end
+        })
+        
+        if (!hasAssignment) {
+          daySlots.push(slot.label)
+        }
+      })
+      
+      if (daySlots.length > 0) {
+        freeSlots.push({ day, slots: daySlots })
+      }
+    })
+    
+    return freeSlots
+  }
+
   const getIconComponent = (iconName?: string) => {
     if (!iconName) return null
     const Icon = Icons[iconName as keyof typeof Icons] as any
@@ -528,6 +564,24 @@ export function ClassroomDetailsDialog({
                       </p>
                     </div>
                   </div>
+                  
+                  {(classroom.width || classroom.depth) && (
+                    <div className="flex items-start gap-3">
+                      <Building2 className="h-5 w-5 text-muted-foreground mt-0.5" />
+                      <div>
+                        <p className="text-sm font-medium">Dimensions</p>
+                        <p className="text-sm text-muted-foreground">
+                          {classroom.width && classroom.depth ? (
+                            `${classroom.width}m × ${classroom.depth}m (${(classroom.width * classroom.depth).toFixed(2)}m²)`
+                          ) : classroom.width ? (
+                            `Amplada: ${classroom.width}m`
+                          ) : (
+                            `Profunditat: ${classroom.depth}m`
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
                 
                 <div className="space-y-4">
@@ -559,6 +613,40 @@ export function ClassroomDetailsDialog({
                 </div>
               </div>
               
+              {/* Free Time Slots */}
+              <div className="border rounded-lg p-4 bg-muted/30">
+                <h3 className="text-sm font-medium mb-3 flex items-center gap-2">
+                  <Clock className="h-4 w-4" />
+                  Franges horàries lliures
+                </h3>
+                <div className="space-y-2">
+                  {calculateFreeSlots().length > 0 ? (
+                    calculateFreeSlots().map(({ day, slots }) => (
+                      <div key={day} className="flex items-start gap-2">
+                        <span className="text-xs font-medium text-muted-foreground min-w-[70px]">
+                          {day}:
+                        </span>
+                        <div className="flex flex-wrap gap-1">
+                          {slots.map((slot) => (
+                            <Badge 
+                              key={`${day}-${slot}`} 
+                              variant="secondary" 
+                              className="text-xs px-2 py-0.5"
+                            >
+                              {slot}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-sm text-muted-foreground italic">
+                      No hi ha franges lliures disponibles
+                    </p>
+                  )}
+                </div>
+              </div>
+
               {/* Timestamps */}
               <div className="border-t pt-4">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">

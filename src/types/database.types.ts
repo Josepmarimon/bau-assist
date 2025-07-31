@@ -588,6 +588,11 @@ export type Database = {
           equipment: any[]
           is_available: boolean
           operating_system: string | null
+          width: number | null
+          depth: number | null
+          photos: any[]
+          is_public: boolean
+          description: string | null
           created_at: string
           updated_at: string
         }
@@ -602,6 +607,11 @@ export type Database = {
           equipment?: any[]
           is_available?: boolean
           operating_system?: string | null
+          width?: number | null
+          depth?: number | null
+          photos?: any[]
+          is_public?: boolean
+          description?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -616,6 +626,11 @@ export type Database = {
           equipment?: any[]
           is_available?: boolean
           operating_system?: string | null
+          width?: number | null
+          depth?: number | null
+          photos?: any[]
+          is_public?: boolean
+          description?: string | null
           created_at?: string
           updated_at?: string
         }

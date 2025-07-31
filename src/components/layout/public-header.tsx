@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { LogIn, Home, Calendar, Building2 } from 'lucide-react'
+import { LogIn, Home, Calendar, Building2, Monitor } from 'lucide-react'
 
 export function PublicHeader() {
   return (
@@ -35,6 +35,12 @@ export function PublicHeader() {
             <Button variant="ghost" size="sm">
               <Building2 className="h-4 w-4 mr-2" />
               Aules
+            </Button>
+          </Link>
+          <Link href="/cerca-software">
+            <Button variant="ghost" size="sm">
+              <Monitor className="h-4 w-4 mr-2" />
+              Software
             </Button>
           </Link>
           <Link href="/login">

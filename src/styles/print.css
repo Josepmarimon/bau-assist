@@ -1,0 +1,294 @@
+/* Print-specific styles for software list */
+@media print {
+  /* Hide screen-only content */
+  .screen-only {
+    display: none !important;
+  }
+  
+  /* Reset everything first */
+  * {
+    margin: 0;
+    padding: 0;
+    position: static !important;
+  }
+  
+  /* Show only print content hierarchy */
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  #__next {
+    display: block !important;
+  }
+  
+  /* Remove layout wrapper styles */
+  .flex.h-screen.bg-background {
+    display: block !important;
+    height: auto !important;
+    background: white !important;
+  }
+  
+  /* Show main content area */
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    width: 100% !important;
+  }
+  
+  /* Ensure print content is visible */
+  .print-page,
+  #print-content,
+  #print-content * {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Reset page and body styles */
+  html {
+    height: auto !important;
+    overflow: visible !important;
+    font-size: 12pt !important;
+  }
+  
+  body {
+    height: auto !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  /* Page setup */
+  @page {
+    size: A4;
+    margin: 15mm 10mm;
+  }
+  
+  /* Ensure all content is visible */
+  * {
+    overflow: visible !important;
+  }
+
+  /* Remove all height restrictions and flex layouts */
+  #__next,
+  #__next > *,
+  #__next > * > *,
+  main,
+  .w-full,
+  #print-content {
+    position: static !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: block !important;
+    width: 100% !important;
+    flex: none !important;
+  }
+  
+  /* Remove flex from layout wrapper EXCEPT for grid children */
+  body .flex:not(.grid > *) {
+    display: block !important;
+  }
+
+  /* Hide non-print elements */
+  .print\:hidden {
+    display: none !important;
+  }
+  
+  /* Hide navigation and menu elements */
+  nav,
+  aside,
+  header,
+  footer:not(.print-footer),
+  [role="navigation"],
+  [role="banner"],
+  .sidebar,
+  .navigation,
+  .menu,
+  .navbar,
+  .nav-menu,
+  #sidebar,
+  #navigation,
+  #menu,
+  [data-sidebar],
+  [class*="sidebar"],
+  [class*="navigation"],
+  [class*="menu-"],
+  [class*="nav-"],
+  /* Specific to our app */
+  .fixed.left-0.top-0.z-40,
+  .bg-card.border-r {
+    display: none !important;
+  }
+  
+  /* Hide the parent flex container's sidebar */
+  .flex.h-screen > :first-child {
+    display: none !important;
+  }
+
+  /* Show print elements */
+  .print\:block {
+    display: block !important;
+  }
+
+  /* Ensure content flows across pages */
+  .space-y-4 > *,
+  .space-y-6 > * {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    transform: none !important;
+  }
+
+  /* Page break controls */
+  .break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .break-after-page {
+    break-after: page;
+    page-break-after: always;
+  }
+
+  /* Ensure borders and colors print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Fix grid layouts for print */
+  .grid {
+    display: grid !important;
+  }
+
+  /* Ensure text is black for better printing */
+  .text-gray-600,
+  .text-gray-700,
+  .text-gray-500,
+  .text-muted-foreground {
+    color: #374151 !important;
+  }
+
+  /* Border adjustments for print */
+  .border {
+    border-color: #9ca3af !important;
+  }
+
+  /* Remove shadows and unnecessary effects */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure print container is visible */
+  .print-container {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  /* Fix container margins */
+  .container {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Ensure each classroom section can break properly */
+  .mb-6 {
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Grid layout for print */
+  .print\:grid-cols-3 {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+  }
+  
+  .print\:gap-3 {
+    gap: 0.75rem !important;
+  }
+  
+  /* Force grid display */
+  .grid {
+    display: grid !important;
+  }
+  
+  /* Prevent page breaks inside classroom cards */
+  .break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  
+  /* Border styles for print */
+  .border {
+    border-width: 1px !important;
+  }
+  
+  .border-gray-400 {
+    border-color: #9ca3af !important;
+  }
+  
+  .border-gray-300 {
+    border-color: #d1d5db !important;
+  }
+  
+  .border-gray-200 {
+    border-color: #e5e7eb !important;
+  }
+  
+  /* Background colors for license types */
+  .bg-red-100 { background-color: #fee2e2 !important; }
+  .bg-blue-100 { background-color: #dbeafe !important; }
+  .bg-green-100 { background-color: #dcfce7 !important; }
+  .bg-purple-100 { background-color: #f3e8ff !important; }
+  
+  /* Text colors */
+  .text-red-700 { color: #b91c1c !important; }
+  .text-blue-700 { color: #1d4ed8 !important; }
+  .text-green-700 { color: #15803d !important; }
+  .text-purple-700 { color: #6b21a8 !important; }
+
+  /* Fix font sizes for print */
+  body {
+    font-size: 10pt !important;
+    line-height: 1.3 !important;
+  }
+
+  h1 { font-size: 16pt !important; }
+  h2 { font-size: 14pt !important; }
+  h3 { font-size: 12pt !important; }
+  h4 { font-size: 10pt !important; }
+  
+  .print\:text-\[11px\] { font-size: 11px !important; }
+  .print\:text-\[10px\] { font-size: 10px !important; }
+  .text-\[10px\] { font-size: 10px !important; }
+  .text-\[9px\] { font-size: 9px !important; }
+  
+  /* Adjust padding and spacing for print */
+  .print\:p-2 { padding: 0.5rem !important; }
+  .print\:p-3 { padding: 0.75rem !important; }
+  .print\:mt-2 { margin-top: 0.5rem !important; }
+  .print\:mt-3 { margin-top: 0.75rem !important; }
+  .print\:pt-1 { padding-top: 0.25rem !important; }
+  .print\:mb-1 { margin-bottom: 0.25rem !important; }
+  .print\:text-sm { font-size: 0.875rem !important; }
+  .print\:text-base { font-size: 1rem !important; }
+  
+  /* Ensure rounded corners print */
+  .rounded-lg {
+    border-radius: 0.5rem !important;
+  }
+  
+  .rounded {
+    border-radius: 0.25rem !important;
+  }
+}

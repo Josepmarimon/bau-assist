@@ -46,6 +46,7 @@ interface NavItem {
 
 const navigation: NavItem[] = [
   { name: 'Resum', href: '/resum', icon: BarChart3 },
+  { name: 'Horaris', href: '/horaris', icon: Calendar },
   { 
     name: 'Acadèmic', 
     icon: BookOpen,
@@ -53,6 +54,7 @@ const navigation: NavItem[] = [
       { name: 'Programes', href: '/programes', icon: GraduationCap },
       { name: 'Màsters', href: '/masters', icon: Calendar },
       { name: 'Assignatures i Grups', href: '/assignatures-grups', icon: BookOpen },
+      { name: 'Grups d\'Estudiants', href: '/grups-estudiants', icon: Users },
       { name: 'Professors', href: '/professors', icon: GraduationCap }
     ]
   },
@@ -61,8 +63,7 @@ const navigation: NavItem[] = [
     icon: Building2,
     subItems: [
       { name: 'Aules', href: '/aules', icon: Building2 },
-      { name: 'Assignar Aules', href: '/assignacions-aules', icon: Building2 },
-      { name: 'Horaris Primer Curs', href: '/horaris-primer', icon: Calendar }
+      { name: 'Assignar Aules', href: '/assignacions-aules', icon: Building2 }
     ]
   },
   { 

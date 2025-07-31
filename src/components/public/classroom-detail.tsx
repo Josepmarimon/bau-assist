@@ -126,6 +126,32 @@ export function ClassroomDetail({ classroom, equipment }: ClassroomDetailProps) 
                 </Card>
               )}
             </div>
+            
+            {/* Dimensions */}
+            {(classroom.width || classroom.depth) && (
+              <Card className="mb-6">
+                <CardContent className="flex items-center gap-3 p-4">
+                  <Building2 className="h-8 w-8 text-primary" />
+                  <div>
+                    <p className="text-sm text-muted-foreground">Dimensions</p>
+                    <p className="text-xl font-semibold">
+                      {classroom.width && classroom.depth ? (
+                        <>
+                          {classroom.width}m × {classroom.depth}m
+                          <span className="text-sm text-muted-foreground ml-2">
+                            ({(classroom.width * classroom.depth).toFixed(2)}m²)
+                          </span>
+                        </>
+                      ) : classroom.width ? (
+                        `Amplada: ${classroom.width}m`
+                      ) : (
+                        `Profunditat: ${classroom.depth}m`
+                      )}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
 
             {/* Computer info for computer labs */}
             {classroom.type === 'Informàtica' && classroom.computer_count && (

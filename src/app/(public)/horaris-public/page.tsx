@@ -43,6 +43,14 @@ interface StudentGroup {
   max_students: number
 }
 
+interface CourseColor {
+  id: string
+  course_name: string
+  course_code: string
+  year: number
+  color: string
+}
+
 export default function HorarisPage() {
   const supabase = createClient()
   const [assignments1, setAssignments1] = useState<Record<string, Assignment[]>>({})
@@ -54,10 +62,31 @@ export default function HorarisPage() {
   const [filterYear, setFilterYear] = useState<string>('all')
   const [filterShift, setFilterShift] = useState<string>('all')
   const [filterGroup, setFilterGroup] = useState<string>('all')
+  const [courseColors, setCourseColors] = useState<CourseColor[]>([])
 
   useEffect(() => {
     loadAllGroups()
+    loadCourseColors()
   }, [])
+
+  const loadCourseColors = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('course_colors')
+        .select('*')
+      
+      if (error) {
+        console.error('Error loading course colors:', error)
+        return
+      }
+      
+      if (data) {
+        setCourseColors(data)
+      }
+    } catch (error) {
+      console.error('Error:', error)
+    }
+  }
 
   useEffect(() => {
     applyFilter()
@@ -377,6 +406,7 @@ export default function HorarisPage() {
           assignments1={assignments1}
           assignments2={assignments2}
           academicYear="2025-2026"
+          courseColors={courseColors}
         />
         )}
       </div>

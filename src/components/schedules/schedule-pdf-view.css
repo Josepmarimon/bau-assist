@@ -94,6 +94,12 @@
   margin: 0;
 }
 
+@media print {
+  .schedule-title {
+    font-size: 17px; /* 24px * 0.7 */
+  }
+}
+
 .schedule-badges {
   display: flex;
   gap: 10px;
@@ -111,6 +117,8 @@
   .schedule-badge {
     border-color: #1e3a8a !important;
     color: #1e3a8a !important;
+    font-size: 17px; /* 24px * 0.7 */
+    padding: 6px 14px; /* També reduïm el padding */
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     color-adjust: exact;
@@ -130,6 +138,8 @@
   .semester-title {
     background-color: white !important;
     color: #1e3a8a !important;
+    font-size: 11px; /* Reduït un 30% */
+    padding: 6px 12px;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     color-adjust: exact;
@@ -146,7 +156,7 @@
 
 @media print {
   .schedule-table {
-    font-size: 11px;
+    font-size: 8px; /* 11px * 0.7 */
     width: 100%;
     height: 100%;
   }
@@ -212,14 +222,25 @@
   font-size: 12px;
 }
 
+@media print {
+  .day-column {
+    font-size: 8px; /* 12px * 0.7 */
+  }
+}
+
 .time-cell {
   background-color: #f9fafb;
   font-size: 10px;
   vertical-align: middle;
 }
 
+@media print {
+  .time-cell {
+    font-size: 7px; /* 10px * 0.7 */
+  }
+}
+
 .subject-cell {
-  background-color: #1e3a8a !important;
   color: white !important;
   padding: 8px;
   position: relative;
@@ -227,8 +248,8 @@
 
 @media print {
   .subject-cell {
-    background-color: #1e3a8a !important;
     color: white !important;
+    padding: 4px; /* Reduïm el padding també */
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     color-adjust: exact;
@@ -240,11 +261,19 @@
   flex-direction: column;
   gap: 4px;
   height: 100%;
+  padding-top: 16px;
+}
+
+@media print {
+  .subject-content {
+    gap: 2px; /* Reduïm l'espai entre elements */
+    padding-top: 8px; /* Reduïm el padding superior */
+  }
 }
 
 .subject-name {
   font-weight: bold;
-  font-size: 12px;
+  font-size: 18px;
   line-height: 1.2;
 }
 
@@ -256,6 +285,21 @@
 .classroom-code {
   font-size: 10px;
   opacity: 0.9;
+}
+
+@media print {
+  .subject-name {
+    font-size: 13px; /* 18px * 0.7 */
+    line-height: 1.1;
+  }
+  
+  .teacher-name {
+    font-size: 7px; /* 10px * 0.7 */
+  }
+  
+  .classroom-code {
+    font-size: 7px; /* 10px * 0.7 */
+  }
 }
 
 .tutorial-row {
@@ -332,6 +376,8 @@
   .tutorial-cell {
     background-color: white !important;
     color: #1e3a8a !important;
+    font-size: 7px; /* 10px * 0.7 */
+    padding: 4px;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     color-adjust: exact;
@@ -358,6 +404,12 @@
   font-size: 16px;
   color: #4b5563;
   margin-top: 4px;
+}
+
+@media print {
+  .course-subtitle {
+    font-size: 11px; /* 16px * 0.7 */
+  }
 }
 
 /* Ensure semester wrapper takes equal space */

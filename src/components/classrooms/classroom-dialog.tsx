@@ -60,7 +60,9 @@ export function ClassroomDialog({
     photos: [] as Photo[],
     is_public: false,
     description: '',
-    operating_system: ''
+    operating_system: '',
+    width: null as number | null,
+    depth: null as number | null
   })
   
   const supabase = createClient()
@@ -77,7 +79,9 @@ export function ClassroomDialog({
         photos: classroom.photos || [],
         is_public: classroom.is_public || false,
         description: classroom.description || '',
-        operating_system: classroom.operating_system || ''
+        operating_system: classroom.operating_system || '',
+        width: classroom.width || null,
+        depth: classroom.depth || null
       })
     } else {
       setFormData({
@@ -90,7 +94,9 @@ export function ClassroomDialog({
         photos: [],
         is_public: false,
         description: '',
-        operating_system: ''
+        operating_system: '',
+        width: null,
+        depth: null
       })
     }
   }, [classroom])
@@ -121,6 +127,8 @@ export function ClassroomDialog({
             is_public: formData.is_public,
             description: formData.description,
             operating_system: formData.operating_system || null,
+            width: formData.width,
+            depth: formData.depth,
             updated_at: new Date().toISOString()
           })
           .eq('id', classroom.id)
@@ -142,7 +150,9 @@ export function ClassroomDialog({
             is_available: true,
             is_public: formData.is_public,
             description: formData.description,
-            operating_system: formData.operating_system || null
+            operating_system: formData.operating_system || null,
+            width: formData.width,
+            depth: formData.depth
           })
 
         if (error) throw error
@@ -212,6 +222,18 @@ export function ClassroomDialog({
                         min="1"
                       />
                     </div>
+                    
+                    <div className="space-y-1">
+                      <Label htmlFor="width">Amplada (m)</Label>
+                      <Input
+                        id="width"
+                        type="number"
+                        step="0.01"
+                        value={formData.width || ''}
+                        onChange={(e) => setFormData({ ...formData, width: e.target.value ? parseFloat(e.target.value) : null })}
+                        placeholder="Ex: 8.50"
+                      />
+                    </div>
                   </div>
                   
                   {/* Column 2 */}
@@ -253,6 +275,18 @@ export function ClassroomDialog({
                           ))}
                         </SelectContent>
                       </Select>
+                    </div>
+                    
+                    <div className="space-y-1">
+                      <Label htmlFor="depth">Profunditat (m)</Label>
+                      <Input
+                        id="depth"
+                        type="number"
+                        step="0.01"
+                        value={formData.depth || ''}
+                        onChange={(e) => setFormData({ ...formData, depth: e.target.value ? parseFloat(e.target.value) : null })}
+                        placeholder="Ex: 6.20"
+                      />
                     </div>
                   </div>
                 </div>

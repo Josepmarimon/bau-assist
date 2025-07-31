@@ -164,9 +164,31 @@ export function MasterScheduleDialog({
   const checkConflicts = async () => {
     try {
       // Get semesters to check based on selection
-      const semestersToCheck = formData.semester_id === 'all-year' 
-        ? semesters.filter(s => s.number === 1 || s.number === 2).map(s => s.id)
-        : [formData.semester_id]
+      let semestersToCheck: string[] = []
+      if (formData.semester_id === 'all-year') {
+        // When 'all-year' is selected, check conflicts for both semesters
+        semestersToCheck = semesters.filter(s => s.number === 1 || s.number === 2).map(s => s.id)
+        
+        // If editing and changing to all-year, exclude current schedule's semester from conflict check
+        if (schedule && schedule.semester_id) {
+          // We'll check conflicts for the new semester being added
+          const currentSemesterNumber = schedule.semesters?.number || 1
+          const otherSemester = semesters.find(s => 
+            s.number !== currentSemesterNumber && (s.number === 1 || s.number === 2)
+          )
+          if (otherSemester) {
+            semestersToCheck = [otherSemester.id]
+          }
+        }
+      } else if (formData.semester_id) {
+        // For specific semester selection
+        semestersToCheck = [formData.semester_id]
+      }
+      
+      // Only check conflicts if we have valid semester IDs
+      if (semestersToCheck.length === 0) {
+        return { hasConflict: false }
+      }
       
       // Check conflicts for each time slot assignment
       for (const assignment of timeSlotAssignments) {
@@ -299,30 +321,96 @@ export function MasterScheduleDialog({
       }
 
       if (schedule) {
-        // For editing, we only update the existing schedule (single assignment)
-        const { error } = await supabase
-          .from('master_schedules')
-          .update({
+        // For editing, we need to handle the semester_id properly
+        if (formData.semester_id === 'all-year') {
+          // When changing to "all-year", we need to:
+          // 1. Keep the existing schedule with its current semester
+          // 2. Create a new schedule for the other semester
+          
+          const currentSemesterNumber = schedule.semesters?.number || 1
+          const otherSemester = semesters.find(s => 
+            s.number !== currentSemesterNumber && (s.number === 1 || s.number === 2)
+          )
+          
+          if (!otherSemester) {
+            toast({
+              title: 'Error',
+              description: 'No s\'ha trobat l\'altre semestre del curs',
+              variant: 'destructive'
+            })
+            setLoading(false)
+            return
+          }
+          
+          // First, update the existing schedule (keeping its semester)
+          const { error: updateError } = await supabase
+            .from('master_schedules')
+            .update({
+              program_id: formData.program_id,
+              classroom_id: timeSlotAssignments[0].classroom_id,
+              day_of_week: timeSlotAssignments[0].day_of_week,
+              start_time: timeSlotAssignments[0].start_time,
+              end_time: timeSlotAssignments[0].end_time,
+              teacher_id: formData.teacher_id || null,
+              subject_name: formData.subject_name || null,
+              notes: formData.notes || null,
+              active: formData.active,
+              updated_at: new Date().toISOString()
+            })
+            .eq('id', schedule.id)
+          
+          if (updateError) throw updateError
+          
+          // Then, create a new schedule for the other semester
+          const newSchedule = {
             program_id: formData.program_id,
             classroom_id: timeSlotAssignments[0].classroom_id,
             day_of_week: timeSlotAssignments[0].day_of_week,
             start_time: timeSlotAssignments[0].start_time,
             end_time: timeSlotAssignments[0].end_time,
-            semester_id: formData.semester_id,
+            semester_id: otherSemester.id,
             teacher_id: formData.teacher_id || null,
             subject_name: formData.subject_name || null,
             notes: formData.notes || null,
-            active: formData.active,
-            updated_at: new Date().toISOString()
+            active: formData.active
+          }
+          
+          const { error: createError } = await supabase
+            .from('master_schedules')
+            .insert([newSchedule])
+          
+          if (createError) throw createError
+          
+          toast({
+            title: 'Horari actualitzat',
+            description: `S'ha convertit l'horari a tot el curs (2 semestres)`
           })
-          .eq('id', schedule.id)
+        } else {
+          // Normal update for single semester
+          const { error } = await supabase
+            .from('master_schedules')
+            .update({
+              program_id: formData.program_id,
+              classroom_id: timeSlotAssignments[0].classroom_id,
+              day_of_week: timeSlotAssignments[0].day_of_week,
+              start_time: timeSlotAssignments[0].start_time,
+              end_time: timeSlotAssignments[0].end_time,
+              semester_id: formData.semester_id,
+              teacher_id: formData.teacher_id || null,
+              subject_name: formData.subject_name || null,
+              notes: formData.notes || null,
+              active: formData.active,
+              updated_at: new Date().toISOString()
+            })
+            .eq('id', schedule.id)
 
-        if (error) throw error
+          if (error) throw error
 
-        toast({
-          title: 'Horari actualitzat',
-          description: 'L\'horari s\'ha actualitzat correctament'
-        })
+          toast({
+            title: 'Horari actualitzat',
+            description: 'L\'horari s\'ha actualitzat correctament'
+          })
+        }
       } else {
         // Handle creation with multiple assignments
         let schedulesToCreate = []

@@ -44,45 +44,31 @@ async function populateStudentGroups() {
     { name: 'GB2-M1', year: 2, shift: 'mati', max_students: 30 },
     { name: 'GB2-T1', year: 2, shift: 'tarda', max_students: 30 },
     
-    // Third year - Design (with specializations)
-    { name: 'GR3-M1', year: 3, shift: 'mati', max_students: 30 },
-    { name: 'GR3-M2', year: 3, shift: 'mati', max_students: 30 },
-    { name: 'GR3-M3', year: 3, shift: 'mati', max_students: 30 },
-    { name: 'GR3-M4', year: 3, shift: 'mati', max_students: 30 },
-    { name: 'GR3-T1', year: 3, shift: 'tarda', max_students: 30 },
-    { name: 'GR3-T2', year: 3, shift: 'tarda', max_students: 30 },
-    { name: 'GR3-Am', year: 3, shift: 'mati', max_students: 20, specialization: 'Audiovisual' },
-    { name: 'GR3-At', year: 3, shift: 'tarda', max_students: 20, specialization: 'Audiovisual' },
-    { name: 'GR3-Gm1', year: 3, shift: 'mati', max_students: 20, specialization: 'Gràfic' },
-    { name: 'GR3-Gm2', year: 3, shift: 'mati', max_students: 20, specialization: 'Gràfic' },
-    { name: 'GR3-Gt1', year: 3, shift: 'tarda', max_students: 20, specialization: 'Gràfic' },
-    { name: 'GR3-Gt2', year: 3, shift: 'tarda', max_students: 20, specialization: 'Gràfic' },
-    { name: 'GR3-Em', year: 3, shift: 'mati', max_students: 20, specialization: 'Espai' },
-    { name: 'GR3-Et', year: 3, shift: 'tarda', max_students: 20, specialization: 'Espai' },
-    { name: 'GR3-Im', year: 3, shift: 'mati', max_students: 20, specialization: 'Interiors' },
-    { name: 'GR3-It', year: 3, shift: 'tarda', max_students: 20, specialization: 'Interiors' },
-    { name: 'GR3-Mm', year: 3, shift: 'mati', max_students: 20, specialization: 'Moda' },
-    { name: 'GR3-Mt', year: 3, shift: 'tarda', max_students: 20, specialization: 'Moda' },
+    // Third year - Design (only itineraris)
+    { name: 'GR3-Am', year: 3, shift: 'mati', max_students: 20, itinerari: 'Audiovisual' },
+    { name: 'GR3-At', year: 3, shift: 'tarda', max_students: 20, itinerari: 'Audiovisual' },
+    { name: 'GR3-Gm1', year: 3, shift: 'mati', max_students: 20, itinerari: 'Gràfic' },
+    { name: 'GR3-Gm2', year: 3, shift: 'mati', max_students: 20, itinerari: 'Gràfic' },
+    { name: 'GR3-Gt', year: 3, shift: 'tarda', max_students: 20, itinerari: 'Gràfic' },
+    { name: 'GR3-Im', year: 3, shift: 'mati', max_students: 20, itinerari: 'Interiors' },
+    { name: 'GR3-It', year: 3, shift: 'tarda', max_students: 20, itinerari: 'Interiors' },
+    { name: 'GR3-Mm', year: 3, shift: 'mati', max_students: 20, itinerari: 'Moda' },
+    { name: 'GR3-Mt', year: 3, shift: 'tarda', max_students: 20, itinerari: 'Moda' },
     
     // Third year - Fine Arts
     { name: 'GB3-M1', year: 3, shift: 'mati', max_students: 30 },
     { name: 'GB3-T1', year: 3, shift: 'tarda', max_students: 30 },
     
-    // Fourth year - Design (with specializations)
-    { name: 'GR4-M1', year: 4, shift: 'mati', max_students: 30 },
-    { name: 'GR4-M2', year: 4, shift: 'mati', max_students: 30 },
-    { name: 'GR4-M3', year: 4, shift: 'mati', max_students: 30 },
-    { name: 'GR4-T1', year: 4, shift: 'tarda', max_students: 30 },
-    { name: 'GR4-Am', year: 4, shift: 'mati', max_students: 20, specialization: 'Audiovisual' },
-    { name: 'GR4-At', year: 4, shift: 'tarda', max_students: 20, specialization: 'Audiovisual' },
-    { name: 'GR4-Gm', year: 4, shift: 'mati', max_students: 20, specialization: 'Gràfic' },
-    { name: 'GR4-Gt', year: 4, shift: 'tarda', max_students: 20, specialization: 'Gràfic' },
-    { name: 'GR4-Em', year: 4, shift: 'mati', max_students: 20, specialization: 'Espai' },
-    { name: 'GR4-Et', year: 4, shift: 'tarda', max_students: 20, specialization: 'Espai' },
-    { name: 'GR4-Im', year: 4, shift: 'mati', max_students: 20, specialization: 'Interiors' },
-    { name: 'GR4-It', year: 4, shift: 'tarda', max_students: 20, specialization: 'Interiors' },
-    { name: 'GR4-Mm', year: 4, shift: 'mati', max_students: 20, specialization: 'Moda' },
-    { name: 'GR4-Mt', year: 4, shift: 'tarda', max_students: 20, specialization: 'Moda' },
+    // Fourth year - Design (only itineraris)
+    { name: 'GR4-Am', year: 4, shift: 'mati', max_students: 20, itinerari: 'Audiovisual' },
+    { name: 'GR4-At', year: 4, shift: 'tarda', max_students: 20, itinerari: 'Audiovisual' },
+    { name: 'GR4-Gm1', year: 4, shift: 'mati', max_students: 20, itinerari: 'Gràfic' },
+    { name: 'GR4-Gm2', year: 4, shift: 'mati', max_students: 20, itinerari: 'Gràfic' },
+    { name: 'GR4-Gt', year: 4, shift: 'tarda', max_students: 20, itinerari: 'Gràfic' },
+    { name: 'GR4-Im', year: 4, shift: 'mati', max_students: 20, itinerari: 'Interiors' },
+    { name: 'GR4-It', year: 4, shift: 'tarda', max_students: 20, itinerari: 'Interiors' },
+    { name: 'GR4-Mm', year: 4, shift: 'mati', max_students: 20, itinerari: 'Moda' },
+    { name: 'GR4-Mt', year: 4, shift: 'tarda', max_students: 20, itinerari: 'Moda' },
     
     // Fourth year - Fine Arts
     { name: 'GB4-M1', year: 4, shift: 'mati', max_students: 30 },
@@ -111,7 +97,7 @@ async function populateStudentGroups() {
         shift: group.shift,
         max_students: group.max_students,
         code: group.name,
-        specialization: group.specialization || null
+        itinerari: group.itinerari || null
       })
 
     if (error) {

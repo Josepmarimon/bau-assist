@@ -23,7 +23,6 @@ import { Textarea } from '@/components/ui/textarea'
 import { toast } from 'sonner'
 import { createClient } from '@/lib/supabase/client'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 interface Software {
   id?: string
@@ -247,9 +246,9 @@ export function SoftwareDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[600px]">
-        <form onSubmit={handleSubmit}>
-          <DialogHeader>
+      <DialogContent className="max-w-[95vw] w-full h-[95vh] overflow-hidden flex flex-col">
+        <form onSubmit={handleSubmit} className="flex flex-col h-full">
+          <DialogHeader className="flex-shrink-0">
             <DialogTitle>
               {software ? 'Editar' : 'Afegir'} Programari
             </DialogTitle>
@@ -260,123 +259,122 @@ export function SoftwareDialog({
             </DialogDescription>
           </DialogHeader>
 
-          <Tabs defaultValue="basic" className="py-4">
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="basic">Informació Bàsica</TabsTrigger>
-              <TabsTrigger value="license">Llicència</TabsTrigger>
-              <TabsTrigger value="provider">Proveïdor</TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="basic" className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="name">Nom del programari *</Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
+          <div className="flex-1 overflow-y-auto py-6 px-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Left Column - Basic Info */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold mb-4">Informació Bàsica</h3>
                 <div className="space-y-2">
-                  <Label htmlFor="version">Versió</Label>
+                  <Label htmlFor="name">Nom del programari *</Label>
                   <Input
-                    id="version"
-                    value={formData.version || ''}
-                    onChange={(e) => setFormData({ ...formData, version: e.target.value })}
-                    placeholder="Opcional"
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
                   />
                 </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="version">Versió</Label>
+                    <Input
+                      id="version"
+                      value={formData.version || ''}
+                      onChange={(e) => setFormData({ ...formData, version: e.target.value })}
+                      placeholder="Opcional"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="category">Categoria *</Label>
+                    <Select
+                      value={formData.category}
+                      onValueChange={(value) => setFormData({ ...formData, category: value })}
+                      required
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Selecciona una categoria" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="general">General</SelectItem>
+                        <SelectItem value="3d_modeling">Modelat 3D</SelectItem>
+                        <SelectItem value="design">Disseny</SelectItem>
+                        <SelectItem value="programming">Programació</SelectItem>
+                        <SelectItem value="web_development">Desenvolupament Web</SelectItem>
+                        <SelectItem value="cad">CAD</SelectItem>
+                        <SelectItem value="audio">Àudio</SelectItem>
+                        <SelectItem value="render">Render</SelectItem>
+                        <SelectItem value="patronatge">Patronatge</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
                 <div className="space-y-2">
-                  <Label htmlFor="category">Categoria *</Label>
-                  <Select
-                    value={formData.category}
-                    onValueChange={(value) => setFormData({ ...formData, category: value })}
-                    required
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Selecciona una categoria" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="general">General</SelectItem>
-                      <SelectItem value="3d_modeling">Modelat 3D</SelectItem>
-                      <SelectItem value="design">Disseny</SelectItem>
-                      <SelectItem value="programming">Programació</SelectItem>
-                      <SelectItem value="web_development">Desenvolupament Web</SelectItem>
-                      <SelectItem value="cad">CAD</SelectItem>
-                      <SelectItem value="audio">Àudio</SelectItem>
-                      <SelectItem value="render">Render</SelectItem>
-                      <SelectItem value="patronatge">Patronatge</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <Label>Sistemes operatius compatibles</Label>
+                  <div className="flex flex-wrap gap-4">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox 
+                        id="windows"
+                        checked={formData.operating_systems?.includes('Windows')}
+                        onCheckedChange={(checked) => {
+                          const os = formData.operating_systems || []
+                          if (checked) {
+                            setFormData({ ...formData, operating_systems: [...os, 'Windows'] })
+                          } else {
+                            setFormData({ ...formData, operating_systems: os.filter(o => o !== 'Windows') })
+                          }
+                        }}
+                      />
+                      <Label htmlFor="windows" className="font-normal">Windows</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox 
+                        id="macos"
+                        checked={formData.operating_systems?.includes('macOS')}
+                        onCheckedChange={(checked) => {
+                          const os = formData.operating_systems || []
+                          if (checked) {
+                            setFormData({ ...formData, operating_systems: [...os, 'macOS'] })
+                          } else {
+                            setFormData({ ...formData, operating_systems: os.filter(o => o !== 'macOS') })
+                          }
+                        }}
+                      />
+                      <Label htmlFor="macos" className="font-normal">macOS</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox 
+                        id="linux"
+                        checked={formData.operating_systems?.includes('Linux')}
+                        onCheckedChange={(checked) => {
+                          const os = formData.operating_systems || []
+                          if (checked) {
+                            setFormData({ ...formData, operating_systems: [...os, 'Linux'] })
+                          } else {
+                            setFormData({ ...formData, operating_systems: os.filter(o => o !== 'Linux') })
+                          }
+                        }}
+                      />
+                      <Label htmlFor="linux" className="font-normal">Linux</Label>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="notes">Notes</Label>
+                  <Textarea
+                    id="notes"
+                    value={formData.notes || ''}
+                    onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                    placeholder="Notes addicionals sobre el programari..."
+                    rows={4}
+                  />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label>Sistemes operatius compatibles</Label>
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="windows"
-                      checked={formData.operating_systems?.includes('Windows')}
-                      onCheckedChange={(checked) => {
-                        const os = formData.operating_systems || []
-                        if (checked) {
-                          setFormData({ ...formData, operating_systems: [...os, 'Windows'] })
-                        } else {
-                          setFormData({ ...formData, operating_systems: os.filter(o => o !== 'Windows') })
-                        }
-                      }}
-                    />
-                    <Label htmlFor="windows" className="font-normal">Windows</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="macos"
-                      checked={formData.operating_systems?.includes('macOS')}
-                      onCheckedChange={(checked) => {
-                        const os = formData.operating_systems || []
-                        if (checked) {
-                          setFormData({ ...formData, operating_systems: [...os, 'macOS'] })
-                        } else {
-                          setFormData({ ...formData, operating_systems: os.filter(o => o !== 'macOS') })
-                        }
-                      }}
-                    />
-                    <Label htmlFor="macos" className="font-normal">macOS</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox 
-                      id="linux"
-                      checked={formData.operating_systems?.includes('Linux')}
-                      onCheckedChange={(checked) => {
-                        const os = formData.operating_systems || []
-                        if (checked) {
-                          setFormData({ ...formData, operating_systems: [...os, 'Linux'] })
-                        } else {
-                          setFormData({ ...formData, operating_systems: os.filter(o => o !== 'Linux') })
-                        }
-                      }}
-                    />
-                    <Label htmlFor="linux" className="font-normal">Linux</Label>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="notes">Notes</Label>
-                <Textarea
-                  id="notes"
-                  value={formData.notes || ''}
-                  onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  placeholder="Notes addicionals sobre el programari..."
-                  rows={3}
-                />
-              </div>
-            </TabsContent>
-
-            <TabsContent value="license" className="space-y-4">
+              {/* Right Column - License & Provider */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold mb-4">Informació de Llicència</h3>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="license_type">Tipus de llicència *</Label>
@@ -390,9 +388,11 @@ export function SoftwareDialog({
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="free">Gratuïta</SelectItem>
+                      <SelectItem value="open_source">Codi obert</SelectItem>
                       <SelectItem value="paid">De pagament</SelectItem>
                       <SelectItem value="educational">Educativa</SelectItem>
                       <SelectItem value="subscription">Subscripció</SelectItem>
+                      <SelectItem value="proprietary">Propietària</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -428,7 +428,7 @@ export function SoftwareDialog({
                 </p>
               </div>
 
-              {formData.license_type !== 'free' && (
+              {formData.license_type !== 'free' && formData.license_type !== 'open_source' && (
                 <>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -491,45 +491,46 @@ export function SoftwareDialog({
                   </div>
                 </>
               )}
-            </TabsContent>
 
-            <TabsContent value="provider" className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="provider_name">Nom del proveïdor</Label>
-                <Input
-                  id="provider_name"
-                  value={formData.provider_name || ''}
-                  onChange={(e) => setFormData({ ...formData, provider_name: e.target.value })}
-                  placeholder="Empresa proveïdora del programari"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
+                <h3 className="text-lg font-semibold mt-6 mb-4">Informació del Proveïdor</h3>
+                
                 <div className="space-y-2">
-                  <Label htmlFor="provider_email">Email de contacte</Label>
+                  <Label htmlFor="provider_name">Nom del proveïdor</Label>
                   <Input
-                    id="provider_email"
-                    type="email"
-                    value={formData.provider_email || ''}
-                    onChange={(e) => setFormData({ ...formData, provider_email: e.target.value })}
-                    placeholder="contacte@proveidor.com"
+                    id="provider_name"
+                    value={formData.provider_name || ''}
+                    onChange={(e) => setFormData({ ...formData, provider_name: e.target.value })}
+                    placeholder="Empresa proveïdora del programari"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="provider_phone">Telèfon de contacte</Label>
-                  <Input
-                    id="provider_phone"
-                    type="tel"
-                    value={formData.provider_phone || ''}
-                    onChange={(e) => setFormData({ ...formData, provider_phone: e.target.value })}
-                    placeholder="+34 900 000 000"
-                  />
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="provider_email">Email de contacte</Label>
+                    <Input
+                      id="provider_email"
+                      type="email"
+                      value={formData.provider_email || ''}
+                      onChange={(e) => setFormData({ ...formData, provider_email: e.target.value })}
+                      placeholder="contacte@proveidor.com"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="provider_phone">Telèfon de contacte</Label>
+                    <Input
+                      id="provider_phone"
+                      type="tel"
+                      value={formData.provider_phone || ''}
+                      onChange={(e) => setFormData({ ...formData, provider_phone: e.target.value })}
+                      placeholder="+34 900 000 000"
+                    />
+                  </div>
                 </div>
               </div>
-            </TabsContent>
-          </Tabs>
+            </div>
+          </div>
 
-          <DialogFooter>
+          <DialogFooter className="flex-shrink-0 px-6 py-4 border-t">
             <Button
               type="button"
               variant="outline"

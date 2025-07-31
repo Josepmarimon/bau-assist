@@ -219,8 +219,17 @@ export async function getClassroomOccupancyData(classroomId: string) {
       }
       
       let programInfo = ''
+      let subjectDisplayName = masterSchedule.subject_name || 'Sense assignatura'
+      
       if (masterSchedule.programs) {
-        programInfo = `[${(masterSchedule.programs as any).code}] `
+        const program = masterSchedule.programs as any
+        // If subject name is null or empty, use program name
+        if (!masterSchedule.subject_name || masterSchedule.subject_name === 'null') {
+          subjectDisplayName = program.name || program.code || 'Programa'
+        } else {
+          // Add program code as prefix only if we have a valid subject name
+          programInfo = `[${program.code}] `
+        }
       }
       
       scheduleAssignments.push({
@@ -228,7 +237,7 @@ export async function getClassroomOccupancyData(classroomId: string) {
         start_time: masterSchedule.start_time,
         end_time: masterSchedule.end_time,
         assignment: {
-          subjectName: programInfo + masterSchedule.subject_name,
+          subjectName: programInfo + subjectDisplayName,
           teacherName: teacherName,
           groupCode: (masterSchedule.programs as any)?.type === 'master' ? 'Màster' : 'Postgrau',
           programColor: (masterSchedule.programs as any)?.color || null,

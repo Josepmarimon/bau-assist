@@ -41,6 +41,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { ClassroomConflictDialog } from '@/components/classrooms/classroom-conflict-dialog'
+import { AssignmentWeeksDialog } from '@/components/schedules/assignment-weeks-dialog'
 
 // Types
 interface Subject {
@@ -96,6 +98,11 @@ interface Assignment {
   time_slot: TimeSlot
   teacher: Teacher | null
   day_of_week: number
+  assignment_classrooms?: Array<{
+    classroom: Classroom
+    is_full_semester: boolean
+    weeks: number[]
+  }>
 }
 
 // Draggable Subject Component
@@ -161,12 +168,26 @@ export default function AssignacionsAulesPage() {
   const [loading, setLoading] = useState(false)
   const [classroomSearchTerm, setClassroomSearchTerm] = useState<string>('')
   const [collapsedClassroomTypes, setCollapsedClassroomTypes] = useState<Set<string>>(new Set())
+  const [currentSemesterId, setCurrentSemesterId] = useState<string | null>(null)
   
   // Drag states
   const [activeId, setActiveId] = useState<string | null>(null)
   const [dragType, setDragType] = useState<'subject' | 'classroom' | 'assignment' | null>(null)
   const [dropZone, setDropZone] = useState<'full' | 'first' | 'second'>('full')
   const dropZoneRef = useRef<'full' | 'first' | 'second'>('full')
+  
+  // Conflict dialog states
+  const [conflictDialogOpen, setConflictDialogOpen] = useState(false)
+  const [currentConflicts, setCurrentConflicts] = useState<any[]>([])
+  const [pendingClassroomAssignment, setPendingClassroomAssignment] = useState<{
+    assignmentId: string
+    classroomId: string
+    classroom: Classroom
+  } | null>(null)
+  
+  // Weeks dialog states
+  const [weeksDialogOpen, setWeeksDialogOpen] = useState(false)
+  const [selectedAssignmentForWeeks, setSelectedAssignmentForWeeks] = useState<Assignment | null>(null)
   
   // Sensors
   const sensors = useSensors(
@@ -181,6 +202,23 @@ export default function AssignacionsAulesPage() {
   useEffect(() => {
     loadDegrees()
     loadClassrooms()
+  }, [])
+  
+  // Add event listener for week editing
+  useEffect(() => {
+    const handleEditWeeks = (e: any) => {
+      const assignment = e.detail as Assignment
+      setSelectedAssignmentForWeeks(assignment)
+      setWeeksDialogOpen(true)
+    }
+    
+    const pageEl = document.querySelector('[data-assignment-page]')
+    if (pageEl) {
+      pageEl.addEventListener('editAssignmentWeeks', handleEditWeeks)
+      return () => {
+        pageEl.removeEventListener('editAssignmentWeeks', handleEditWeeks)
+      }
+    }
   }, [])
 
   // Load groups when degree and year change
@@ -377,6 +415,9 @@ export default function AssignacionsAulesPage() {
         return
       }
       
+      // Store the current semester ID
+      setCurrentSemesterId(semesters?.id || null)
+      
       // Load existing assignments for this group and semester
       const { data: assignmentsData, error } = await supabase
         .from('assignments')
@@ -459,7 +500,11 @@ export default function AssignacionsAulesPage() {
           .from('assignment_classrooms')
           .select(`
             assignment_id,
-            classrooms (*)
+            is_full_semester,
+            classrooms (*),
+            assignment_classroom_weeks (
+              week_number
+            )
           `)
           .in('assignment_id', assignmentIds)
         
@@ -467,15 +512,28 @@ export default function AssignacionsAulesPage() {
           console.error('Error loading assignment classrooms:', classroomsError)
         }
         
-        // Group classrooms by assignment_id
+        // Group classrooms by assignment_id with week information
         const classroomsByAssignment: Record<string, Classroom[]> = {}
+        const assignmentClassroomDetails: Record<string, any[]> = {}
+        
         if (assignmentClassrooms) {
           assignmentClassrooms.forEach(ac => {
             if (!classroomsByAssignment[ac.assignment_id]) {
               classroomsByAssignment[ac.assignment_id] = []
             }
+            if (!assignmentClassroomDetails[ac.assignment_id]) {
+              assignmentClassroomDetails[ac.assignment_id] = []
+            }
+            
             if (ac.classrooms && !Array.isArray(ac.classrooms)) {
               classroomsByAssignment[ac.assignment_id].push(ac.classrooms as Classroom)
+              
+              // Store detailed classroom info with weeks
+              assignmentClassroomDetails[ac.assignment_id].push({
+                classroom: ac.classrooms as Classroom,
+                is_full_semester: ac.is_full_semester,
+                weeks: ac.assignment_classroom_weeks?.map((w: any) => w.week_number) || []
+              })
             }
           })
         }
@@ -488,6 +546,7 @@ export default function AssignacionsAulesPage() {
             student_group: !Array.isArray(a.student_groups) ? a.student_groups : a.student_groups[0],
             classroom: !Array.isArray(a.classrooms) ? a.classrooms : a.classrooms[0], // Keep for backwards compatibility
             classrooms: classroomsByAssignment[a.id] || [], // New: array of classrooms
+            assignment_classrooms: assignmentClassroomDetails[a.id] || [], // New: detailed classroom info with weeks
             time_slot: !Array.isArray(a.time_slots) ? a.time_slots : a.time_slots[0],
             teacher: !Array.isArray(a.teachers) ? a.teachers : a.teachers[0],
             day_of_week: a.time_slots && typeof a.time_slots === 'object' && !Array.isArray(a.time_slots) && 'day_of_week' in a.time_slots ? (a.time_slots as any).day_of_week : undefined
@@ -772,7 +831,7 @@ export default function AssignacionsAulesPage() {
     }
   }
 
-  const updateAssignmentClassroom = async (assignmentId: string, classroomId: string) => {
+  const updateAssignmentClassroom = async (assignmentId: string, classroomId: string, skipConflictCheck = false) => {
     try {
       // Check if this classroom is already assigned
       const { data: existing, error: checkError } = await supabase
@@ -780,11 +839,79 @@ export default function AssignacionsAulesPage() {
         .select('id')
         .eq('assignment_id', assignmentId)
         .eq('classroom_id', classroomId)
-        .single()
+        .maybeSingle()
+      
+      if (checkError) {
+        console.error('Error checking existing assignment:', checkError)
+        // Continue anyway, the insert will fail if it already exists
+      }
       
       if (existing) {
         console.log('Classroom already assigned to this assignment')
         return
+      }
+      
+      // Get the classroom details
+      const { data: classroomData, error: classroomError } = await supabase
+        .from('classrooms')
+        .select('*')
+        .eq('id', classroomId)
+        .single()
+      
+      if (classroomError || !classroomData) {
+        console.error('Error fetching classroom:', classroomError)
+        return
+      }
+      
+      // Get the assignment details to check for conflicts
+      const { data: assignmentData, error: assignmentError } = await supabase
+        .from('assignments')
+        .select(`
+          id,
+          time_slot_id,
+          semester_id,
+          subject_id,
+          subjects!subject_id (name)
+        `)
+        .eq('id', assignmentId)
+        .single()
+      
+      if (assignmentError || !assignmentData) {
+        console.error('Error fetching assignment:', assignmentError)
+        alert('Error al obtenir la información de la assignació')
+        return
+      }
+      
+      // Skip conflict check if explicitly requested (when accepting overlap)
+      if (!skipConflictCheck) {
+        // Check for classroom conflicts using the database function
+        const allWeeks = Array.from({ length: 15 }, (_, i) => i + 1)
+        const { data: conflicts, error: conflictError } = await supabase
+          .rpc('check_classroom_week_conflicts', {
+            p_classroom_id: classroomId,
+            p_time_slot_id: assignmentData.time_slot_id,
+            p_week_numbers: allWeeks,
+            p_exclude_assignment_id: null,
+            p_semester_id: assignmentData.semester_id
+          })
+        
+        if (conflictError) {
+          console.error('Error checking conflicts:', conflictError)
+          alert('Error al comprovar conflictes d\'aula')
+          return
+        }
+        
+        // If there are conflicts, show the dialog
+        if (conflicts && conflicts.length > 0) {
+          setPendingClassroomAssignment({
+            assignmentId,
+            classroomId,
+            classroom: classroomData
+          })
+          setCurrentConflicts(conflicts)
+          setConflictDialogOpen(true)
+          return
+        }
       }
       
       // Add the new classroom to the assignment
@@ -792,18 +919,48 @@ export default function AssignacionsAulesPage() {
         .from('assignment_classrooms')
         .insert({
           assignment_id: assignmentId,
-          classroom_id: classroomId
+          classroom_id: classroomId,
+          is_full_semester: true,
+          week_range_type: 'full'
         })
       
       if (error) {
         console.error('Error adding classroom:', error)
+        alert('Error al assignar l\'aula')
       } else {
         console.log('Classroom added successfully')
         await loadAssignments()
       }
     } catch (error) {
       console.error('Error in updateAssignmentClassroom:', error)
+      alert('Error inesperat al assignar l\'aula')
     }
+  }
+
+  const handleAcceptOverlap = async () => {
+    if (!pendingClassroomAssignment) return
+    
+    setConflictDialogOpen(false)
+    await updateAssignmentClassroom(
+      pendingClassroomAssignment.assignmentId,
+      pendingClassroomAssignment.classroomId,
+      true // Skip conflict check
+    )
+    setPendingClassroomAssignment(null)
+    setCurrentConflicts([])
+  }
+
+  const handleSelectAlternative = async (alternativeClassroomId: string) => {
+    if (!pendingClassroomAssignment) return
+    
+    setConflictDialogOpen(false)
+    await updateAssignmentClassroom(
+      pendingClassroomAssignment.assignmentId,
+      alternativeClassroomId,
+      false // Check conflicts for the alternative
+    )
+    setPendingClassroomAssignment(null)
+    setCurrentConflicts([])
   }
 
   const getAssignmentsForSlot = (day: number, shift: 'morning' | 'afternoon') => {
@@ -823,7 +980,7 @@ export default function AssignacionsAulesPage() {
   ]
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" data-assignment-page>
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Assignació d'Horaris i Espais</h1>
@@ -1180,6 +1337,28 @@ export default function AssignacionsAulesPage() {
           </DragOverlay>
         </DndContext>
       )}
+      
+      {/* Conflict Dialog */}
+      {pendingClassroomAssignment && (
+        <ClassroomConflictDialog
+          open={conflictDialogOpen}
+          onOpenChange={setConflictDialogOpen}
+          conflicts={currentConflicts}
+          selectedClassroom={pendingClassroomAssignment.classroom}
+          onAcceptOverlap={handleAcceptOverlap}
+          onSelectAlternative={handleSelectAlternative}
+          timeSlotId={assignments.find(a => a.id === pendingClassroomAssignment.assignmentId)?.time_slot?.id || ''}
+          semesterId={currentSemesterId || ''}
+        />
+      )}
+      
+      {/* Weeks Dialog */}
+      <AssignmentWeeksDialog
+        open={weeksDialogOpen}
+        onOpenChange={setWeeksDialogOpen}
+        assignment={selectedAssignmentForWeeks}
+        onSuccess={loadAssignments}
+      />
     </div>
   )
 }
@@ -1469,16 +1648,55 @@ function DroppableAssignment({
     data: { type: 'assignment', assignmentId: assignment.id }
   })
 
-  const getSubjectColor = (type: string) => {
-    const colors: Record<string, string> = {
-      'FB': 'bg-blue-500',      // Formació Bàsica
-      'OB': 'bg-green-500',     // Obligatòria
-      'OP': 'bg-purple-500',    // Optativa
-      'PE': 'bg-orange-500',    // Pràctiques Externes
-      'TFG': 'bg-red-500',      // Treball Fi de Grau
-      'TFM': 'bg-red-600',      // Treball Fi de Màster
+  const getSubjectColor = (subject: { type: string, year: number, name: string }, studentGroup?: StudentGroup) => {
+    // Check if it's a Belles Arts subject based on the student group
+    if (studentGroup && (studentGroup.name.startsWith('GB') || studentGroup.name.startsWith('GBA'))) {
+      return 'bg-[#5dbb8f]' // Green for Belles Arts
     }
-    return colors[type] || 'bg-gray-500'
+    
+    // Check if it's an itinerary subject
+    const isItinerarySubject = (name: string) => {
+      const itineraryKeywords = [
+        // Moda itinerary
+        'moda', 'fashion', 'tèxtil', 'textile', 'patronatge', 'confecció',
+        // Gràfic itinerary  
+        'gràfic', 'graphic', 'tipografia', 'typography', 'editorial', 'packaging',
+        // Audiovisual itinerary
+        'audiovisual', 'vídeo', 'video', 'animació', 'animation', 'motion', 'cinema'
+      ]
+      
+      const lowerName = name.toLowerCase()
+      return itineraryKeywords.some(keyword => lowerName.includes(keyword))
+    }
+    
+    // First and some second year subjects are generic (for Design degree)
+    if (subject.year === 1 || (subject.year === 2 && !isItinerarySubject(subject.name))) {
+      return 'bg-[#012853]' // Dark blue for generic subjects
+    }
+    
+    // Itinerary subjects - check the name for specific keywords
+    const lowerName = subject.name.toLowerCase()
+    
+    // Moda itinerary
+    if (lowerName.includes('moda') || lowerName.includes('tèxtil') || 
+        lowerName.includes('fashion') || lowerName.includes('patronatge')) {
+      return 'bg-[#ee4f44]' // Red for fashion
+    }
+    
+    // Gràfic itinerary
+    if (lowerName.includes('gràfic') || lowerName.includes('tipografia') || 
+        lowerName.includes('editorial') || lowerName.includes('packaging')) {
+      return 'bg-[#5ea1a8]' // Teal for graphic design
+    }
+    
+    // Audiovisual itinerary
+    if (lowerName.includes('audiovisual') || lowerName.includes('vídeo') || 
+        lowerName.includes('animació') || lowerName.includes('motion')) {
+      return 'bg-[#59585c]' // Dark gray for audiovisual
+    }
+    
+    // Default to generic color if can't determine
+    return 'bg-[#012853]'
   }
 
   const handleRemoveAssignment = async (e: React.MouseEvent) => {
@@ -1511,6 +1729,19 @@ function DroppableAssignment({
       onUpdate?.()
     }
   }
+  
+  const handleEditWeeks = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    // Find the parent component's setters
+    const parentEl = document.querySelector('[data-assignment-page]')
+    if (parentEl) {
+      const event = new CustomEvent('editAssignmentWeeks', { 
+        detail: assignment,
+        bubbles: true 
+      })
+      parentEl.dispatchEvent(event)
+    }
+  }
 
   return (
     <div
@@ -1518,7 +1749,7 @@ function DroppableAssignment({
       style={style}
       className={cn(
         "rounded-md p-2 text-white flex flex-col gap-1 transition-all shadow-sm relative group overflow-hidden",
-        getSubjectColor(assignment.subject.type),
+        getSubjectColor(assignment.subject, assignment.student_group),
         isOver && "ring-2 ring-offset-2 ring-gray-900",
         (!assignment.classroom && (!assignment.classrooms || assignment.classrooms.length === 0)) && "ring-2 ring-red-500 ring-offset-1"
       )}
@@ -1546,7 +1777,37 @@ function DroppableAssignment({
         </div>
         
         {/* Show multiple classrooms or warning if none */}
-        {assignment.classrooms && assignment.classrooms.length > 0 ? (
+        {assignment.assignment_classrooms && assignment.assignment_classrooms.length > 0 ? (
+          <div className="space-y-1 flex-1">
+            {assignment.assignment_classrooms.map((ac) => (
+              <div key={ac.classroom.id} className="flex items-center gap-1 text-[11px] bg-white/20 rounded px-1 py-0.5 relative group/classroom">
+                <Building2 className="h-3 w-3 flex-shrink-0" />
+                <span className="flex-1 truncate">{ac.classroom.code}</span>
+                {!ac.is_full_semester && ac.weeks.length > 0 && (
+                  <span className="text-[10px] opacity-80">
+                    S.{ac.weeks.length < 4 ? ac.weeks.join(',') : `${ac.weeks[0]}-${ac.weeks[ac.weeks.length-1]}`}
+                  </span>
+                )}
+                <div className="flex items-center gap-0.5 opacity-0 group-hover/classroom:opacity-100 transition-opacity">
+                  <button
+                    onClick={handleEditWeeks}
+                    className="hover:bg-white/30 rounded p-0.5"
+                    title="Editar setmanes"
+                  >
+                    <Calendar className="h-2.5 w-2.5" />
+                  </button>
+                  <button
+                    onClick={(e) => handleRemoveClassroom(e, ac.classroom.id)}
+                    className="hover:bg-white/30 rounded p-0.5"
+                    title="Eliminar aula"
+                  >
+                    <X className="h-2.5 w-2.5" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : assignment.classrooms && assignment.classrooms.length > 0 ? (
           <div className="space-y-1">
             {assignment.classrooms.map((classroom) => (
               <div key={classroom.id} className="flex items-center gap-1 text-[11px] bg-white/20 rounded px-1 py-0.5 relative group/classroom">

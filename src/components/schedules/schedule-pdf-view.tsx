@@ -1,8 +1,8 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
-import { Printer } from 'lucide-react'
+import { Printer, Loader2 } from 'lucide-react'
 import './schedule-pdf-view.css'
 
 interface Assignment {
@@ -25,6 +25,7 @@ interface Assignment {
     start_time: string
     end_time: string
   }
+  color: string
 }
 
 interface StudentGroup {
@@ -35,16 +36,73 @@ interface StudentGroup {
   max_students: number
 }
 
+interface CourseColor {
+  id: string
+  course_name: string
+  course_code: string
+  year: number
+  color: string
+}
+
 interface SchedulePDFViewProps {
   groups: StudentGroup[]
   assignments1: Record<string, Assignment[]>
   assignments2: Record<string, Assignment[]>
   academicYear?: string
+  courseColors?: CourseColor[]
+  isLoading?: boolean
+  loadedGroups?: Set<string>
 }
 
-export function SchedulePDFView({ groups, assignments1, assignments2, academicYear = '2025-2026' }: SchedulePDFViewProps) {
-  const handlePrint = () => {
-    window.print()
+export function SchedulePDFView({ 
+  groups, 
+  assignments1, 
+  assignments2, 
+  academicYear = '2025-2026', 
+  courseColors = [],
+  isLoading = false,
+  loadedGroups = new Set()
+}: SchedulePDFViewProps) {
+  const [isDataLoaded, setIsDataLoaded] = useState(false)
+  const [isPreparing, setIsPreparing] = useState(false)
+  
+  // Check if all data is loaded
+  useEffect(() => {
+    const checkDataLoaded = () => {
+      // If still loading from parent, not ready
+      if (isLoading) {
+        setIsDataLoaded(false)
+        return
+      }
+      
+      // Check if all groups have been loaded
+      const allGroupsLoaded = groups.every(group => loadedGroups.has(group.name))
+      
+      // Check if we have assignments for all groups
+      const allGroupsHaveData = groups.every(group => {
+        const hasAssignments1 = assignments1[group.name] !== undefined
+        const hasAssignments2 = assignments2[group.name] !== undefined
+        return hasAssignments1 && hasAssignments2
+      })
+      
+      setIsDataLoaded(allGroupsLoaded && allGroupsHaveData && !isLoading)
+    }
+    
+    checkDataLoaded()
+  }, [groups, assignments1, assignments2, isLoading, loadedGroups])
+  
+  const handlePrint = async () => {
+    if (!isDataLoaded) {
+      setIsPreparing(true)
+      // Wait a bit more for data to fully load
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      setIsPreparing(false)
+    }
+    
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+      window.print()
+    }, 100)
   }
 
   const getDayAssignments = (assignments: Assignment[], day: number) => {
@@ -52,6 +110,58 @@ export function SchedulePDFView({ groups, assignments1, assignments2, academicYe
       .filter(a => a.time_slot && a.time_slot.day_of_week === day)
       .sort((a, b) => a.time_slot.start_time.localeCompare(b.time_slot.start_time))
   }
+  
+  const getCourseColor = (groupName: string, assignment: Assignment) => {
+    // First check if assignment already has a color
+    if (assignment.color && assignment.color !== '#00CED1') {
+      return assignment.color
+    }
+    
+    // Get course code and year from group name
+    const courseCode = groupName.startsWith('GBA') ? 'GBA' : 'GD'
+    const year = parseInt(groupName.match(/\d+/)?.[0] || '1')
+    
+    // For Design 3rd and 4th year, check itinerary based on subject code
+    if (courseCode === 'GD' && (year === 3 || year === 4)) {
+      const subjectCode = assignment.subject.code
+      let itineraryCode = ''
+      
+      // Detect itinerary from subject code prefix
+      if (subjectCode.startsWith('GDVM')) {
+        itineraryCode = 'MODA'
+      } else if (subjectCode.startsWith('GDVI')) {
+        itineraryCode = 'INTERIORS'
+      } else if (subjectCode.startsWith('GDVG')) {
+        itineraryCode = 'GRAFIC'
+      } else if (subjectCode.startsWith('GDVA')) {
+        itineraryCode = 'AUDIOVISUAL'
+      }
+      
+      if (itineraryCode) {
+        // Find itinerary color
+        const itineraryColor = courseColors.find(cc => 
+          cc.course_code === courseCode && 
+          cc.year === year && 
+          cc.color_type === 'itinerary' &&
+          cc.itinerary_code === itineraryCode
+        )
+        
+        if (itineraryColor) {
+          return itineraryColor.color
+        }
+      }
+    }
+    
+    // Find standard course color
+    const courseColor = courseColors.find(cc => 
+      cc.course_code === courseCode && 
+      cc.year === year &&
+      cc.color_type === 'course'
+    )
+    
+    return courseColor?.color || '#00CED1' // Default color if not found
+  }
+
 
   const weekDays = ['DILLUNS', 'DIMARTS', 'DIMECRES', 'DIJOUS', 'DIVENDRES']
 
@@ -134,7 +244,7 @@ export function SchedulePDFView({ groups, assignments1, assignments2, academicYe
     return Math.max(1, endRow - startRow)
   }
 
-  const renderScheduleTable = (assignments: Assignment[], semester: number, shift: 'mati' | 'tarda') => {
+  const renderScheduleTable = (assignments: Assignment[], semester: number, shift: 'mati' | 'tarda', groupName: string) => {
     const isAfternoon = shift === 'tarda'
     const timeSlots = createTimeSlots(isAfternoon)
     
@@ -217,7 +327,12 @@ export function SchedulePDFView({ groups, assignments1, assignments2, academicYe
                       }
 
                       return (
-                        <td key={day} rowSpan={rowSpan} className="subject-cell">
+                        <td 
+                          key={day} 
+                          rowSpan={rowSpan} 
+                          className="subject-cell"
+                          style={{ backgroundColor: getCourseColor(groupName, assignment) }}
+                        >
                           <div className="subject-content">
                             <div className="subject-name">{assignment.subject.name}</div>
                             {assignment.teacher && (
@@ -254,11 +369,29 @@ export function SchedulePDFView({ groups, assignments1, assignments2, academicYe
 
   return (
     <>
-      <div className="print:hidden mb-4">
-        <Button onClick={handlePrint} className="gap-2">
-          <Printer className="h-4 w-4" />
-          Imprimir / Desar com a PDF
+      <div className="print:hidden mb-4 space-y-2">
+        <Button 
+          onClick={handlePrint} 
+          className="gap-2"
+          disabled={!isDataLoaded || isPreparing}
+        >
+          {isPreparing ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Preparant impressió...
+            </>
+          ) : (
+            <>
+              <Printer className="h-4 w-4" />
+              Imprimir / Desar com a PDF
+            </>
+          )}
         </Button>
+        {!isDataLoaded && (
+          <p className="text-sm text-muted-foreground">
+            Esperant que es carreguin totes les dades...
+          </p>
+        )}
       </div>
 
       <div className="schedule-pdf-container">
@@ -278,13 +411,13 @@ export function SchedulePDFView({ groups, assignments1, assignments2, academicYe
 
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
               {/* First semester */}
-              {renderScheduleTable(assignments1[group.name] || [], 1, group.shift)}
+              {renderScheduleTable(assignments1[group.name] || [], 1, group.shift, group.name)}
               
               {/* Space between semesters */}
               <div className="semester-separator"></div>
               
               {/* Second semester */}
-              {renderScheduleTable(assignments2[group.name] || [], 2, group.shift)}
+              {renderScheduleTable(assignments2[group.name] || [], 2, group.shift, group.name)}
             </div>
           </div>
         ))}

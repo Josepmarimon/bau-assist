@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Printer, ArrowLeft, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
 import { Alert, AlertDescription } from '@/components/ui/alert'
+import './print-page.css'
 
 interface Software {
   id: string
@@ -228,93 +229,48 @@ export default function SoftwarePrintPage() {
   }
 
   return (
-    <>
-      <style jsx>{`
-        @media print {
-          @page {
-            size: A4;
-            margin: 10mm;
-          }
-          
-          body {
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-            color-adjust: exact !important;
-          }
-          
-          .no-print {
-            display: none !important;
-          }
-          
-          .print-only {
-            display: block !important;
-          }
-          
-          .print-container {
-            display: block !important;
-            width: 100% !important;
-            height: auto !important;
-            overflow: visible !important;
-            position: static !important;
-          }
-          
-          .classrooms-wrapper {
-            display: block !important;
-            width: 100% !important;
-            height: auto !important;
-            overflow: visible !important;
-          }
-          
-          .classroom-card {
-            display: inline-block !important;
-            width: calc(33.333% - 10px) !important;
-            margin: 5px !important;
-            vertical-align: top !important;
-            break-inside: avoid !important;
-            page-break-inside: avoid !important;
-          }
-        }
-        
-        @media screen {
-          .print-only {
-            display: none;
-          }
-        }
-      `}</style>
-
-      <div className="print-page">
-        <div className="mb-6 space-y-4 container mx-auto px-6 no-print">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Link href="/programari">
-                <Button variant="ghost" size="sm">
-                  <ArrowLeft className="h-4 w-4 mr-2" />
-                  Tornar a programari
-                </Button>
-              </Link>
-              <h1 className="text-2xl font-bold">Llistat de software</h1>
-            </div>
-            <Button onClick={handlePrint}>
-              <Printer className="h-4 w-4 mr-2" />
-              Imprimir
-            </Button>
+    <div className="print-page">
+      {/* Screen view header */}
+      <div className="mb-6 space-y-4 container mx-auto px-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Link href="/programari">
+              <Button variant="ghost" size="sm">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Tornar a programari
+              </Button>
+            </Link>
+            <h1 className="text-2xl font-bold">Llistat de software</h1>
           </div>
-          <p className="text-muted-foreground">
-            Aquest document mostra el software que s'ha d'instal·lar a cada aula, organitzat per facilitar la instal·lació.
-          </p>
+          <Button onClick={handlePrint}>
+            <Printer className="h-4 w-4 mr-2" />
+            Imprimir
+          </Button>
+        </div>
+        <p className="text-muted-foreground">
+          Aquest document mostra el software que s'ha d'instal·lar a cada aula, organitzat per facilitar la instal·lació.
+        </p>
+      </div>
+
+      {/* Print content - this will be printed */}
+      <div id="print-content" ref={componentRef} style={{ padding: '20px' }}>
+        {/* Print header */}
+        <div style={{ textAlign: 'center', marginBottom: '30px', display: 'none' }} className="print-header">
+          <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '10px' }}>
+            BAU, Centre Universitari d'Arts i Disseny
+          </h1>
+          <h2 style={{ fontSize: '20px', marginBottom: '10px' }}>Llistat de software</h2>
+          <p style={{ fontSize: '14px', color: '#666' }}>{currentDate}</p>
         </div>
 
-        <div className="print-container" id="print-content" ref={componentRef}>
-          <div className="print-only" style={{ textAlign: 'center', marginBottom: '30px' }}>
-            <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '10px' }}>
-              BAU, Centre Universitari d'Arts i Disseny
-            </h1>
-            <h2 style={{ fontSize: '20px', marginBottom: '10px' }}>Llistat de software</h2>
-            <p style={{ fontSize: '14px', color: '#666' }}>{currentDate}</p>
-          </div>
-
-          <div className="classrooms-wrapper">
-            {classroomsWithSoftware.map((classroom, index) => {
+        {/* Classrooms grid with inline styles for print */}
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(3, 1fr)', 
+          gap: '15px',
+          width: '100%'
+        }}>
+          {classroomsWithSoftware.map((classroom, index) => {
               // Group software by type in the desired order
               const allSoftwareList = [
                 ...classroom.paid.sort((a, b) => a.name.localeCompare(b.name)),
@@ -328,15 +284,12 @@ export default function SoftwarePrintPage() {
               return (
                 <div 
                   key={classroom.id} 
-                  className="classroom-card"
                   style={{
-                    display: 'inline-block',
-                    width: 'calc(33.333% - 10px)',
-                    margin: '5px',
-                    verticalAlign: 'top',
                     border: '1px solid #9ca3af',
                     borderRadius: '8px',
                     padding: '12px',
+                    breakInside: 'avoid',
+                    pageBreakInside: 'avoid',
                     backgroundColor: 'white'
                   }}
                 >
@@ -449,19 +402,22 @@ export default function SoftwarePrintPage() {
               )
             })}
           </div>
+        </div>
 
-          <div className="print-only" style={{
-            marginTop: '40px',
-            paddingTop: '20px',
-            borderTop: '1px solid #e5e7eb',
-            textAlign: 'center',
-            fontSize: '10px',
-            color: '#9ca3af'
-          }}>
-            <p>Document generat automàticament - BAU Assist - {currentDate}</p>
-          </div>
+        {/* Print footer */}
+        <div style={{
+          marginTop: '40px',
+          paddingTop: '20px',
+          borderTop: '1px solid #e5e7eb',
+          textAlign: 'center',
+          fontSize: '10px',
+          color: '#9ca3af',
+          display: 'none'
+        }} className="print-footer">
+          <p>Document generat automàticament - BAU Assist - {currentDate}</p>
         </div>
       </div>
-    </>
+
+    </div>
   )
 }

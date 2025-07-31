@@ -85,17 +85,37 @@ export default function ResumPage() {
         return acc
       }, {} as Record<string, number>)
 
-      // Teachers data
+      // Teachers data - calculate workload from assignments
       const { data: teachers } = await supabase
-        .from('teacher_workload')
-        .select('teacher_id, total_hours')
+        .from('teachers')
+        .select('id, first_name, last_name, max_hours')
       
+      const { data: teacherAssignments } = await supabase
+        .from('assignments')
+        .select(`
+          teacher_id,
+          subjects!inner(
+            credits
+          )
+        `)
+        .not('teacher_id', 'is', null)
+      
+      // Calculate workload per teacher
+      const teacherWorkloadMap = new Map<string, number>()
+      teacherAssignments?.forEach(assignment => {
+        if (assignment.teacher_id && assignment.subjects) {
+          const currentHours = teacherWorkloadMap.get(assignment.teacher_id) || 0
+          teacherWorkloadMap.set(assignment.teacher_id, currentHours + (assignment.subjects.credits || 0))
+        }
+      })
+      
+      const workloads = Array.from(teacherWorkloadMap.values())
       const teacherStats = {
         total: teachers?.length || 0,
-        averageWorkload: teachers?.length 
-          ? teachers.reduce((sum, t) => sum + (t.total_hours || 0), 0) / teachers.length 
+        averageWorkload: workloads.length 
+          ? workloads.reduce((sum, hours) => sum + hours, 0) / workloads.length 
           : 0,
-        maxWorkload: Math.max(...(teachers?.map(t => t.total_hours || 0) || [0]))
+        maxWorkload: workloads.length ? Math.max(...workloads) : 0
       }
 
       // Classrooms data
@@ -161,9 +181,46 @@ export default function ResumPage() {
         return acc
       }, {} as Record<string, number>)
 
-      const { count: conflictsCount } = await supabase
-        .from('scheduling_conflicts')
-        .select('*', { count: 'exact', head: true })
+      // Check for conflicts by looking for overlapping assignments
+      // This is a simplified conflict detection - you may want to expand this
+      const { data: potentialConflicts } = await supabase
+        .from('assignments')
+        .select(`
+          id,
+          day_of_week,
+          time_slot_id,
+          classroom_id,
+          teacher_id,
+          semester
+        `)
+      
+      // Count conflicts (same teacher or classroom at same time)
+      let conflictsCount = 0
+      const assignmentMap = new Map<string, any[]>()
+      
+      potentialConflicts?.forEach(assignment => {
+        if (assignment.day_of_week && assignment.time_slot_id) {
+          // Check teacher conflicts
+          if (assignment.teacher_id) {
+            const teacherKey = `teacher-${assignment.teacher_id}-${assignment.day_of_week}-${assignment.time_slot_id}-${assignment.semester}`
+            if (assignmentMap.has(teacherKey)) {
+              conflictsCount++
+            } else {
+              assignmentMap.set(teacherKey, [assignment])
+            }
+          }
+          
+          // Check classroom conflicts
+          if (assignment.classroom_id) {
+            const classroomKey = `classroom-${assignment.classroom_id}-${assignment.day_of_week}-${assignment.time_slot_id}-${assignment.semester}`
+            if (assignmentMap.has(classroomKey)) {
+              conflictsCount++
+            } else {
+              assignmentMap.set(classroomKey, [assignment])
+            }
+          }
+        }
+      })
 
       // Workshops (Tallers)
       const { data: workshops } = await supabase
@@ -215,7 +272,7 @@ export default function ResumPage() {
         assignments: {
           total: allAssignments?.length || 0,
           bySemester: Object.entries(assignmentsBySemester || {}).map(([semester, count]) => ({ semester, count })),
-          conflicts: conflictsCount || 0
+          conflicts: conflictsCount
         },
         workshops: {
           total: workshops?.length || 0,

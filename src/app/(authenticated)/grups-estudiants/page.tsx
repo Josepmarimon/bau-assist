@@ -19,7 +19,12 @@ import {
   GraduationCap,
   Eye,
   ChevronDown,
-  ChevronRight
+  ChevronRight,
+  School,
+  BookOpen,
+  Loader2,
+  X,
+  Check
 } from 'lucide-react'
 import {
   Table,
@@ -36,58 +41,115 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { toast } from 'sonner'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog"
+import { Label } from '@/components/ui/label'
+import { Checkbox } from '@/components/ui/checkbox'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { cn } from '@/lib/utils'
+
+interface StudentGroup {
+  id: string
+  name: string
+  code: string
+  year: number
+  shift: 'mati' | 'tarda'
+  max_students: number
+  itinerari?: string | null
+  created_at: string
+  updated_at: string
+}
+
+interface Subject {
+  id: string
+  code: string
+  name: string
+  year: number
+  semester: string
+  credits: number
+  type: string
+}
 
 interface SubjectGroup {
   id: string
   subject_id: string
-  semester_id: string
   group_code: string
   max_students: number
-  created_at: string
-  updated_at: string
-  // Relations
-  subject?: {
-    id: string
-    code: string
-    name: string
-    year: number
-    credits: number
-    department?: string
-    type: 'OBLIGATORIA' | 'OPTATIVA' | 'TFG'
-    description?: string
-  }
-  semester?: {
-    name: string
-    academic_year?: {
-      name: string
-    }
-  }
-  // Computed fields
-  current_students?: number
-  num_teachers?: number
-  teacher_names?: string
+  subjects?: Subject
 }
 
-export default function StudentGroupsPage() {
-  const [groups, setGroups] = useState<SubjectGroup[]>([])
-  const [loading, setLoading] = useState(true)
-  const [searchTerm, setSearchTerm] = useState('')
-  const [expandedSubjects, setExpandedSubjects] = useState<Set<string>>(new Set())
-  const [filterYear, setFilterYear] = useState<string>('all')
-  const [filterType, setFilterType] = useState<string>('all')
-  const [selectedDegree, setSelectedDegree] = useState<string>('GD')
+export default function GrupsEstudiantsPage() {
   const supabase = createClient()
-  const router = useRouter()
+  const [groups, setGroups] = useState<StudentGroup[]>([])
+  const [subjects, setSubjects] = useState<Subject[]>([])
+  const [subjectGroups, setSubjectGroups] = useState<SubjectGroup[]>([])
+  const [loading, setLoading] = useState(true)
+  const [selectedDegree, setSelectedDegree] = useState<string>('GR') // Default to Design
+  const [selectedYear, setSelectedYear] = useState<string>('3')
+  const [selectedItinerari, setSelectedItinerari] = useState<string>('')
+  const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set())
+  
+  // Dialog states
+  const [dialogOpen, setDialogOpen] = useState(false)
+  const [editingGroup, setEditingGroup] = useState<StudentGroup | null>(null)
+  const [assignDialogOpen, setAssignDialogOpen] = useState(false)
+  const [selectedGroup, setSelectedGroup] = useState<StudentGroup | null>(null)
+  const [selectedSubjects, setSelectedSubjects] = useState<Set<string>>(new Set())
+  const [saving, setSaving] = useState(false)
+  const [subjectFilter, setSubjectFilter] = useState('')
+  
+  // Form states
+  const [formData, setFormData] = useState({
+    name: '',
+    year: 3,
+    shift: 'mati' as 'mati' | 'tarda',
+    max_students: 25,
+    itinerari: ''
+  })
 
   useEffect(() => {
-    loadGroups()
-  }, [selectedDegree])
+    // Clear itinerari when switching to Fine Arts or year 1
+    if (selectedDegree === 'GB' || selectedYear === '1') {
+      setSelectedItinerari('')
+    }
+    loadData()
+  }, [selectedDegree, selectedYear])
 
-  const loadGroups = async () => {
+  const loadData = async () => {
     try {
       setLoading(true)
       
-      const { data, error } = await supabase
+      // Load student groups filtered by degree and year
+      const { data: groupsData, error: groupsError } = await supabase
+        .from('student_groups')
+        .select('*')
+        .eq('year', parseInt(selectedYear))
+        .like('name', `${selectedDegree}%`)
+        .order('name')
+      
+      if (groupsError) throw groupsError
+      setGroups(groupsData || [])
+      
+      // Load subjects for the selected year
+      const { data: subjectsData, error: subjectsError } = await supabase
+        .from('subjects')
+        .select('*')
+        .eq('year', parseInt(selectedYear))
+        .eq('active', true)
+        .order('name')
+      
+      if (subjectsError) throw subjectsError
+      setSubjects(subjectsData || [])
+      
+      // Load all subject groups with their subjects
+      const { data: subjectGroupsData, error: sgError } = await supabase
         .from('subject_groups')
         .select(`
           *,
@@ -96,272 +158,609 @@ export default function StudentGroupsPage() {
             code,
             name,
             year,
+            semester,
             credits,
-            department,
-            type,
-            description
-          ),
-          semesters(
-            name,
-            academic_years(
-              name
-            )
+            type
           )
         `)
-        .like('subjects.code', `${selectedDegree}%`)
-        .order('group_code', { ascending: true })
-
-      if (error) throw error
+        .eq('subjects.year', parseInt(selectedYear))
       
-      console.log('Raw subject groups data:', data?.slice(0, 5)) // Debug first 5 groups
+      if (sgError) throw sgError
+      setSubjectGroups(subjectGroupsData || [])
       
-      // Get teacher names using the RPC function
-      let teacherNames: Record<string, string> = {}
-      
-      const { data: teacherData, error: teacherError } = await supabase
-        .rpc('get_teacher_names_by_degree', { degree_prefix: selectedDegree })
-      
-      if (teacherData) {
-        teacherData.forEach((item: any) => {
-          teacherNames[item.subject_group_id] = item.teacher_names
-        })
-      }
-      
-      // Map the data with teacher names
-      const groupsWithMappedData = (data || []).map((group) => {
-        return {
-          ...group,
-          subject: group.subjects, // Map the subjects relation to subject
-          semester: group.semesters, // Map the semesters relation to semester
-          current_students: Math.floor(Math.random() * group.max_students), // Placeholder
-          teacher_names: teacherNames[group.id] || '' // Get teacher names from our calculation
-        }
-      })
-      
-      setGroups(groupsWithMappedData)
     } catch (error) {
-      console.error('Error loading subject groups:', error)
-      setGroups([])
+      console.error('Error loading data:', error)
+      toast.error('Error carregant dades')
     } finally {
       setLoading(false)
     }
   }
 
-  const filteredGroups = groups.filter(group => {
-    const search = searchTerm.toLowerCase()
-    const matchesSearch = group.group_code.toLowerCase().includes(search) ||
-           (group.subject?.name && group.subject.name.toLowerCase().includes(search)) ||
-           (group.subject?.code && group.subject.code.toLowerCase().includes(search))
-    
-    const matchesYear = filterYear === 'all' || group.subject?.year?.toString() === filterYear
-    const matchesType = filterType === 'all' || group.subject?.type === filterType
-    
-    return matchesSearch && matchesYear && matchesType
-  })
-  
-  // Get unique values for filters
-  const uniqueYears = [...new Set(groups.map(g => g.subject?.year).filter(Boolean))].sort()
-  const uniqueTypes = [...new Set(groups.map(g => g.subject?.type).filter(Boolean))]
+  const handleCreateGroup = () => {
+    setEditingGroup(null)
+    setFormData({
+      name: '',
+      year: parseInt(selectedYear),
+      shift: 'mati',
+      max_students: 25,
+      itinerari: ''
+    })
+    setDialogOpen(true)
+  }
 
-  // Group by subject and sort by subject code
-  const groupedBySubject = filteredGroups.reduce((acc, group) => {
-    const subjectKey = group.subject?.id || 'no-subject'
-    if (!acc[subjectKey]) {
-      acc[subjectKey] = {
-        subject: group.subject,
-        groups: []
+  const handleEditGroup = (group: StudentGroup) => {
+    setEditingGroup(group)
+    setFormData({
+      name: group.name,
+      year: group.year,
+      shift: group.shift,
+      max_students: group.max_students,
+      itinerari: group.itinerari || ''
+    })
+    setDialogOpen(true)
+  }
+
+  const handleDeleteGroup = async (group: StudentGroup) => {
+    if (!confirm(`Segur que vols eliminar el grup ${group.name}?`)) return
+    
+    try {
+      // First delete all subject group assignments
+      const { error: sgError } = await supabase
+        .from('subject_groups')
+        .delete()
+        .eq('group_code', group.name)
+      
+      if (sgError) throw sgError
+      
+      // Then delete the student group
+      const { error } = await supabase
+        .from('student_groups')
+        .delete()
+        .eq('id', group.id)
+      
+      if (error) throw error
+      
+      toast.success('Grup eliminat correctament')
+      loadData()
+    } catch (error) {
+      console.error('Error deleting group:', error)
+      toast.error('Error eliminant el grup')
+    }
+  }
+
+  const handleSaveGroup = async () => {
+    try {
+      setSaving(true)
+      
+      const groupData = {
+        name: formData.name,
+        code: formData.name, // Using name as code
+        year: formData.year,
+        shift: formData.shift,
+        max_students: formData.max_students,
+        itinerari: formData.itinerari || null
       }
+      
+      if (editingGroup) {
+        // Update existing group
+        const { error } = await supabase
+          .from('student_groups')
+          .update(groupData)
+          .eq('id', editingGroup.id)
+        
+        if (error) throw error
+        
+        // If name changed, update subject_groups
+        if (editingGroup.name !== formData.name) {
+          const { error: sgError } = await supabase
+            .from('subject_groups')
+            .update({ group_code: formData.name })
+            .eq('group_code', editingGroup.name)
+          
+          if (sgError) throw sgError
+        }
+        
+        toast.success('Grup actualitzat correctament')
+      } else {
+        // Create new group
+        const { error } = await supabase
+          .from('student_groups')
+          .insert(groupData)
+        
+        if (error) throw error
+        toast.success('Grup creat correctament')
+      }
+      
+      setDialogOpen(false)
+      loadData()
+    } catch (error) {
+      console.error('Error saving group:', error)
+      toast.error('Error guardant el grup')
+    } finally {
+      setSaving(false)
     }
-    acc[subjectKey].groups.push(group)
-    return acc
-  }, {} as Record<string, { subject: any, groups: SubjectGroup[] }>)
-  
-  // Sort the grouped subjects by code
-  const sortedGroupedSubjects = Object.values(groupedBySubject).sort((a, b) => {
-    const codeA = a.subject?.code || 'ZZZ'
-    const codeB = b.subject?.code || 'ZZZ'
-    return codeA.localeCompare(codeB)
+  }
+
+  const handleAssignSubjects = (group: StudentGroup) => {
+    setSelectedGroup(group)
+    
+    // Get current subjects for this group
+    const currentSubjectIds = new Set(
+      subjectGroups
+        .filter(sg => sg.group_code === group.name)
+        .map(sg => sg.subject_id)
+    )
+    
+    setSelectedSubjects(currentSubjectIds)
+    setAssignDialogOpen(true)
+  }
+
+  const handleSaveAssignments = async () => {
+    if (!selectedGroup) return
+    
+    try {
+      setSaving(true)
+      
+      // Get current assignments
+      const currentAssignments = subjectGroups.filter(
+        sg => sg.group_code === selectedGroup.name
+      )
+      
+      // Find subjects to add and remove
+      const currentSubjectIds = new Set(currentAssignments.map(sg => sg.subject_id))
+      const toAdd = Array.from(selectedSubjects).filter(id => !currentSubjectIds.has(id))
+      const toRemove = Array.from(currentSubjectIds).filter(id => !selectedSubjects.has(id))
+      
+      // Get both semesters
+      const { data: semesters } = await supabase
+        .from('semesters')
+        .select('id, name')
+        .eq('academic_year_id', '2b210161-5447-4494-8003-f09a0b553a3f') // 2025-2026
+        .order('name')
+      
+      if (!semesters || semesters.length === 0) {
+        throw new Error('No semesters found for academic year 2025-2026')
+      }
+      
+      // Remove assignments
+      if (toRemove.length > 0) {
+        const { error } = await supabase
+          .from('subject_groups')
+          .delete()
+          .eq('group_code', selectedGroup.name)
+          .in('subject_id', toRemove)
+        
+        if (error) throw error
+      }
+      
+      // Add new assignments
+      if (toAdd.length > 0) {
+        // Create assignments for each subject with the appropriate semester
+        const newAssignments = toAdd.map(subjectId => {
+          // Find the subject to get its semester
+          const subject = subjects.find(s => s.id === subjectId)
+          // Determine which semester ID to use based on subject semester
+          const semesterId = subject?.semester === '1' ? semesters[0].id : semesters[1].id
+          
+          return {
+            subject_id: subjectId,
+            semester_id: semesterId,
+            group_code: selectedGroup.name,
+            max_students: selectedGroup.max_students
+          }
+        })
+        
+        const { error } = await supabase
+          .from('subject_groups')
+          .insert(newAssignments)
+        
+        if (error) throw error
+      }
+      
+      toast.success('Assignacions actualitzades correctament')
+      setAssignDialogOpen(false)
+      loadData()
+    } catch (error) {
+      console.error('Error saving assignments:', error)
+      toast.error('Error guardant assignacions')
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  const getSubjectsForGroup = (groupName: string) => {
+    return subjectGroups
+      .filter(sg => sg.group_code === groupName)
+      .map(sg => sg.subjects)
+      .filter(Boolean) as Subject[]
+  }
+
+  const toggleGroupExpanded = (groupId: string) => {
+    const newExpanded = new Set(expandedGroups)
+    if (newExpanded.has(groupId)) {
+      newExpanded.delete(groupId)
+    } else {
+      newExpanded.add(groupId)
+    }
+    setExpandedGroups(newExpanded)
+  }
+
+  const itineraris = ['Audiovisual', 'Gràfic', 'Interiors', 'Moda']
+
+  const filteredGroups = groups.filter(group => {
+    if (!selectedItinerari) return true
+    
+    // Map itinerari names to group code patterns
+    const itinerariPatterns: Record<string, string> = {
+      'Audiovisual': 'A',
+      'Gràfic': 'G',
+      'Interiors': 'I',
+      'Moda': 'M'
+    }
+    
+    const pattern = itinerariPatterns[selectedItinerari]
+    if (!pattern) return true
+    
+    // Check if group name matches the pattern (e.g., GR3-Am, GR3-At for Audiovisual)
+    const regex = new RegExp(`^GR[234]-${pattern}`)
+    return regex.test(group.name)
   })
 
-  const toggleSubject = (subjectId: string) => {
-    const newExpanded = new Set(expandedSubjects)
-    if (newExpanded.has(subjectId)) {
-      newExpanded.delete(subjectId)
-    } else {
-      newExpanded.add(subjectId)
-    }
-    setExpandedSubjects(newExpanded)
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-96">
+        <Loader2 className="h-8 w-8 animate-spin" />
+      </div>
+    )
   }
-
-  const handleViewGroup = (groupId: string) => {
-    router.push(`/grups-estudiants/${groupId}`)
-  }
-
-  const handleEditGroup = (groupId: string) => {
-    router.push(`/grups-estudiants/${groupId}/edit`)
-  }
-
-  const totalStudents = groups.reduce((sum, group) => sum + (group.current_students || 0), 0)
-  const totalCapacity = groups.reduce((sum, group) => sum + group.max_students, 0)
-  const occupancyRate = totalCapacity > 0 ? Math.round((totalStudents / totalCapacity) * 100) : 0
 
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Grups d'Assignatures</h1>
-          <p className="text-muted-foreground mt-2">
-            Gestiona els grups d'assignatures i les seves assignacions
+          <h1 className="text-3xl font-bold tracking-tight">Grups d'Estudiants</h1>
+          <p className="text-muted-foreground">
+            Gestiona els grups d'estudiants i les seves assignacions a assignatures
           </p>
         </div>
-        <Button>
+        <Button onClick={handleCreateGroup}>
           <Plus className="h-4 w-4 mr-2" />
           Nou Grup
         </Button>
       </div>
 
-      {/* Degree Selector */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Selecciona el Grau</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Select value={selectedDegree} onValueChange={setSelectedDegree}>
-            <SelectTrigger className="w-full">
-              <SelectValue />
+      {/* Filters */}
+      <div className="flex items-center gap-4">
+        <Select value={selectedDegree} onValueChange={setSelectedDegree}>
+          <SelectTrigger className="w-[200px]">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="GR">Grau en Disseny</SelectItem>
+            <SelectItem value="GB">Grau en Belles Arts</SelectItem>
+          </SelectContent>
+        </Select>
+
+        <Select value={selectedYear} onValueChange={setSelectedYear}>
+          <SelectTrigger className="w-[200px]">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="1">1r curs</SelectItem>
+            <SelectItem value="2">2n curs</SelectItem>
+            <SelectItem value="3">3r curs</SelectItem>
+            <SelectItem value="4">4t curs</SelectItem>
+          </SelectContent>
+        </Select>
+
+        {selectedDegree === 'GR' && (selectedYear === '2' || selectedYear === '3' || selectedYear === '4') && (
+          <Select value={selectedItinerari || "all"} onValueChange={(value) => setSelectedItinerari(value === "all" ? "" : value)}>
+            <SelectTrigger className="w-[200px]">
+              <SelectValue placeholder="Tots els itineraris" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="GD">Grau en Disseny</SelectItem>
-              <SelectItem value="GB">Grau en Belles Arts</SelectItem>
+              <SelectItem value="all">Tots els itineraris</SelectItem>
+              {itineraris.map(spec => (
+                <SelectItem key={spec} value={spec}>{spec}</SelectItem>
+              ))}
             </SelectContent>
           </Select>
-        </CardContent>
-      </Card>
+        )}
+      </div>
 
+      {/* Groups Grid */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {filteredGroups.map(group => {
+          const groupSubjects = getSubjectsForGroup(group.name)
+          const isExpanded = expandedGroups.has(group.id)
+          
+          return (
+            <Card key={group.id}>
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <CardTitle className="text-lg">{group.name}</CardTitle>
+                    <div className="space-y-1 mt-2 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2">
+                        <School className="h-3 w-3" />
+                        <span>{group.year}r curs</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="h-3 w-3" />
+                        <span>{group.shift === 'mati' ? 'Matí' : 'Tarda'}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Users className="h-3 w-3" />
+                        <span>{group.max_students} estudiants màx.</span>
+                      </div>
+                      {group.itinerari && (
+                        <Badge variant="secondary" className="mt-1">
+                          {group.itinerari}
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex gap-1">
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      onClick={() => handleEditGroup(group)}
+                    >
+                      <Edit className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      onClick={() => handleDeleteGroup(group)}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-full justify-start"
+                      onClick={() => toggleGroupExpanded(group.id)}
+                    >
+                      {isExpanded ? (
+                        <ChevronDown className="h-4 w-4 mr-2" />
+                      ) : (
+                        <ChevronRight className="h-4 w-4 mr-2" />
+                      )}
+                      <BookOpen className="h-4 w-4 mr-2" />
+                      {groupSubjects.length} assignatures
+                    </Button>
+                  </div>
+                  
+                  {isExpanded && (
+                    <div className="space-y-2 mt-2">
+                      <ScrollArea className="h-[200px]">
+                        <div className="space-y-1 pr-3">
+                          {groupSubjects.length === 0 ? (
+                            <p className="text-sm text-muted-foreground text-center py-4">
+                              Cap assignatura assignada
+                            </p>
+                          ) : (
+                            groupSubjects.map(subject => (
+                              <div
+                                key={subject.id}
+                                className="text-sm p-2 rounded-md bg-muted/50"
+                              >
+                                <div className="font-medium">{subject.name}</div>
+                                <div className="text-xs text-muted-foreground">
+                                  {subject.code} • {subject.credits} crèdits • {subject.semester}
+                                </div>
+                              </div>
+                            ))
+                          )}
+                        </div>
+                      </ScrollArea>
+                    </div>
+                  )}
+                  
+                  <Button
+                    className="w-full"
+                    variant="secondary"
+                    onClick={() => handleAssignSubjects(group)}
+                  >
+                    <BookOpen className="h-4 w-4 mr-2" />
+                    Gestionar Assignatures
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )
+        })}
+      </div>
 
-      {/* Search and list */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Llistat de Grups</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center gap-4 mb-6">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+      {/* Create/Edit Group Dialog */}
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>
+              {editingGroup ? 'Editar Grup' : 'Crear Nou Grup'}
+            </DialogTitle>
+            <DialogDescription>
+              {editingGroup 
+                ? 'Modifica les dades del grup d\'estudiants'
+                : 'Introdueix les dades del nou grup d\'estudiants'}
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="name">Nom del grup</Label>
               <Input
-                placeholder="Cercar per codi de grup, assignatura..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
+                id="name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                placeholder="Ex: GR3-Am"
+              />
+            </div>
+            
+            <div>
+              <Label htmlFor="year">Curs</Label>
+              <Select 
+                value={formData.year.toString()} 
+                onValueChange={(value) => setFormData({ ...formData, year: parseInt(value) })}
+              >
+                <SelectTrigger id="year">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="1">1r curs</SelectItem>
+                  <SelectItem value="2">2n curs</SelectItem>
+                  <SelectItem value="3">3r curs</SelectItem>
+                  <SelectItem value="4">4t curs</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <div>
+              <Label htmlFor="shift">Torn</Label>
+              <Select 
+                value={formData.shift} 
+                onValueChange={(value) => setFormData({ ...formData, shift: value as 'mati' | 'tarda' })}
+              >
+                <SelectTrigger id="shift">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="mati">Matí</SelectItem>
+                  <SelectItem value="tarda">Tarda</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <div>
+              <Label htmlFor="max_students">Capacitat màxima</Label>
+              <Input
+                id="max_students"
+                type="number"
+                value={formData.max_students}
+                onChange={(e) => setFormData({ ...formData, max_students: parseInt(e.target.value) || 25 })}
+              />
+            </div>
+            
+            <div>
+              <Label htmlFor="itinerari">Itinerari (opcional)</Label>
+              <Select 
+                value={formData.itinerari || "none"} 
+                onValueChange={(value) => setFormData({ ...formData, itinerari: value === "none" ? "" : value })}
+              >
+                <SelectTrigger id="itinerari">
+                  <SelectValue placeholder="Selecciona itinerari" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">Cap</SelectItem>
+                  {itineraris.map(spec => (
+                    <SelectItem key={spec} value={spec}>{spec}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDialogOpen(false)}>
+              Cancel·lar
+            </Button>
+            <Button onClick={handleSaveGroup} disabled={saving || !formData.name}>
+              {saving && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+              {editingGroup ? 'Actualitzar' : 'Crear'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Assign Subjects Dialog */}
+      <Dialog open={assignDialogOpen} onOpenChange={(open) => {
+        setAssignDialogOpen(open)
+        if (!open) setSubjectFilter('')
+      }}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Assignar Assignatures a {selectedGroup?.name}</DialogTitle>
+            <DialogDescription>
+              Selecciona les assignatures que pot cursar aquest grup
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="mb-4">
+            <div className="relative">
+              <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Filtrar per nom d'assignatura..."
+                value={subjectFilter}
+                onChange={(e) => setSubjectFilter(e.target.value)}
+                className="pl-9"
               />
             </div>
           </div>
-
-          {loading ? (
-            <div className="flex items-center justify-center h-64">
-              <div className="animate-pulse space-y-4">
-                <div className="h-4 bg-muted rounded w-48"></div>
-                <div className="h-32 bg-muted rounded w-96"></div>
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-4">
-              {sortedGroupedSubjects.map(({ subject, groups }) => {
-                const isExpanded = expandedSubjects.has(subject?.id || 'no-subject')
+          
+          <ScrollArea className="h-[400px]">
+            <div className="space-y-4 pr-3">
+              {subjects
+                .filter(subject => 
+                  subject.name.toLowerCase().includes(subjectFilter.toLowerCase()) ||
+                  subject.code.toLowerCase().includes(subjectFilter.toLowerCase())
+                )
+                .map(subject => {
+                const isSelected = selectedSubjects.has(subject.id)
+                
                 return (
-                  <div key={subject?.id || 'no-subject'} className="border rounded-lg overflow-hidden">
-                    <div 
-                      className="bg-muted/50 px-4 py-3 cursor-pointer hover:bg-muted/70 transition-colors"
-                      onClick={() => toggleSubject(subject?.id || 'no-subject')}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          {isExpanded ? (
-                            <ChevronDown className="h-4 w-4 text-muted-foreground" />
-                          ) : (
-                            <ChevronRight className="h-4 w-4 text-muted-foreground" />
-                          )}
-                          <div>
-                            <h3 className="font-semibold text-lg">
-                              {subject?.name || 'Sense assignatura'}
-                            </h3>
-                            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                              <span>{subject?.code}</span>
-                              <span>{subject?.year}r curs</span>
-                              <span>{subject?.credits} crèdits</span>
-                            </div>
-                          </div>
-                        </div>
-                        <Badge variant="secondary">
-                          {groups.length} grups
-                        </Badge>
-                      </div>
-                    </div>
-                    {isExpanded && (
-                      <Table>
-                        <TableHeader>
-                          <TableRow>
-                            <TableHead className="w-[150px]">Codi Grup</TableHead>
-                            <TableHead>Professors Assignats</TableHead>
-                            <TableHead>Semestre</TableHead>
-                            <TableHead className="text-right">Accions</TableHead>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          {groups.map((group) => (
-                            <TableRow key={group.id}>
-                              <TableCell className="font-medium">
-                                <Badge variant="outline">
-                                  {group.group_code}
-                                </Badge>
-                              </TableCell>
-                              <TableCell>
-                                {group.teacher_names ? (
-                                  <div className="text-sm">
-                                    {group.teacher_names}
-                                  </div>
-                                ) : (
-                                  <span className="text-muted-foreground text-sm">
-                                    Sense professor assignat
-                                  </span>
-                                )}
-                              </TableCell>
-                              <TableCell>
-                                <div className="text-sm">
-                                  {group.semester?.name || '-'}
-                                </div>
-                              </TableCell>
-                              <TableCell className="text-right">
-                                <div className="flex items-center justify-end gap-2">
-                                  <Button 
-                                    variant="ghost" 
-                                    size="icon"
-                                    onClick={() => handleViewGroup(group.id)}
-                                  >
-                                    <Eye className="h-4 w-4" />
-                                  </Button>
-                                  <Button 
-                                    variant="ghost" 
-                                    size="icon"
-                                    onClick={() => handleEditGroup(group.id)}
-                                  >
-                                    <Edit className="h-4 w-4" />
-                                  </Button>
-                                </div>
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
+                  <div
+                    key={subject.id}
+                    className={cn(
+                      "flex items-center space-x-3 p-3 rounded-lg border",
+                      isSelected && "bg-primary/5 border-primary"
                     )}
+                  >
+                    <Checkbox
+                      id={subject.id}
+                      checked={isSelected}
+                      onCheckedChange={(checked) => {
+                        const newSelected = new Set(selectedSubjects)
+                        if (checked) {
+                          newSelected.add(subject.id)
+                        } else {
+                          newSelected.delete(subject.id)
+                        }
+                        setSelectedSubjects(newSelected)
+                      }}
+                    />
+                    <label
+                      htmlFor={subject.id}
+                      className="flex-1 cursor-pointer space-y-1"
+                    >
+                      <div className="font-medium">{subject.name}</div>
+                      <div className="text-sm text-muted-foreground">
+                        {subject.code} • {subject.credits} crèdits • {subject.semester}
+                      </div>
+                    </label>
                   </div>
                 )
               })}
-              </div>
-          )}
-        </CardContent>
-      </Card>
+            </div>
+          </ScrollArea>
+          
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setAssignDialogOpen(false)}>
+              Cancel·lar
+            </Button>
+            <Button onClick={handleSaveAssignments} disabled={saving}>
+              {saving && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+              Guardar Assignacions
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

@@ -1,12 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { createClient } from '@/lib/supabase/client'
+import { toast } from 'sonner'
 import { 
   Settings,
   User,
@@ -17,7 +19,8 @@ import {
   Globe,
   Mail,
   Save,
-  Building
+  Building,
+  GraduationCap
 } from 'lucide-react'
 import {
   Select,
@@ -27,7 +30,27 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+interface CourseColor {
+  id: string
+  course_name: string
+  course_code: string
+  year: number
+  color: string
+  color_type?: string
+  itinerary_code?: string | null
+}
+
+interface DesignItinerary {
+  id: string
+  name: string
+  code: string
+  color: string
+  description: string
+}
+
 export default function SettingsPage() {
+  const supabase = createClient()
+  
   const [generalSettings, setGeneralSettings] = useState({
     centerName: 'BAU - Centre Universitari d\'Arts i Disseny',
     academicYear: '2024-2025',
@@ -35,6 +58,16 @@ export default function SettingsPage() {
     timezone: 'Europe/Madrid',
     dateFormat: 'DD/MM/YYYY'
   })
+  
+  const [appearanceSettings, setAppearanceSettings] = useState({
+    theme: 'light',
+    primaryColor: '#3B82F6',
+    assignmentColor: '#00CED1'
+  })
+  
+  const [courseColors, setCourseColors] = useState<CourseColor[]>([])
+  const [designItineraries, setDesignItineraries] = useState<DesignItinerary[]>([])
+  const [loading, setLoading] = useState(false)
 
   const [notificationSettings, setNotificationSettings] = useState({
     emailNotifications: true,
@@ -50,6 +83,129 @@ export default function SettingsPage() {
     passwordExpiry: '90',
     minPasswordLength: '8'
   })
+
+  useEffect(() => {
+    loadCourseColors()
+    loadDesignItineraries()
+  }, [])
+
+  const loadCourseColors = async () => {
+    try {
+      setLoading(true)
+      const { data, error } = await supabase
+        .from('course_colors')
+        .select('*')
+        .order('course_code')
+        .order('year')
+      
+      if (error) throw error
+      
+      if (data) {
+        setCourseColors(data)
+      }
+    } catch (error) {
+      console.error('Error loading course colors:', error)
+      toast.error('Error carregant els colors dels cursos')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const loadDesignItineraries = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('design_itineraries')
+        .select('*')
+        .order('name')
+      
+      if (error) throw error
+      
+      if (data) {
+        setDesignItineraries(data)
+      }
+    } catch (error) {
+      console.error('Error loading design itineraries:', error)
+      toast.error('Error carregant els itineraris')
+    }
+  }
+
+  const handleUpdateCourseColor = async (courseId: string, newColor: string) => {
+    try {
+      const { error } = await supabase
+        .from('course_colors')
+        .update({ color: newColor })
+        .eq('id', courseId)
+      
+      if (error) throw error
+      
+      // Update local state
+      setCourseColors(prev => 
+        prev.map(course => 
+          course.id === courseId ? { ...course, color: newColor } : course
+        )
+      )
+      
+      toast.success('Color del curs actualitzat correctament')
+    } catch (error) {
+      console.error('Error updating course color:', error)
+      toast.error('Error actualitzant el color del curs')
+    }
+  }
+
+  const handleUpdateItineraryColor = async (itineraryId: string, newColor: string) => {
+    try {
+      // Update itinerary color
+      const { error: itineraryError } = await supabase
+        .from('design_itineraries')
+        .update({ color: newColor })
+        .eq('id', itineraryId)
+      
+      if (itineraryError) throw itineraryError
+      
+      // Update all related course_colors entries
+      const itinerary = designItineraries.find(i => i.id === itineraryId)
+      if (itinerary) {
+        const { error: courseColorError } = await supabase
+          .from('course_colors')
+          .update({ color: newColor })
+          .eq('itinerary_code', itinerary.code)
+        
+        if (courseColorError) throw courseColorError
+      }
+      
+      // Update local state
+      setDesignItineraries(prev => 
+        prev.map(itinerary => 
+          itinerary.id === itineraryId ? { ...itinerary, color: newColor } : itinerary
+        )
+      )
+      
+      // Reload course colors to reflect changes
+      await loadCourseColors()
+      
+      toast.success('Color de l\'itinerari actualitzat correctament')
+    } catch (error) {
+      console.error('Error updating itinerary color:', error)
+      toast.error('Error actualitzant el color de l\'itinerari')
+    }
+  }
+
+  const handleUpdateAssignmentColor = async () => {
+    try {
+      // Update all assignments with the new color
+      const { error } = await supabase
+        .from('assignments')
+        .update({ color: appearanceSettings.assignmentColor })
+        .neq('id', '00000000-0000-0000-0000-000000000000') // Update all rows
+      
+      if (error) throw error
+      
+      toast.success('Color de les assignatures actualitzat correctament')
+    } catch (error) {
+      console.error('Error updating assignment color:', error)
+      toast.error('Error actualitzant el color de les assignatures')
+    }
+  }
 
   return (
     <div className="space-y-6">
@@ -384,12 +540,165 @@ export default function SettingsPage() {
                   <div className="h-10 w-10 rounded-md bg-red-500 cursor-pointer"></div>
                 </div>
               </div>
+              <div className="space-y-2">
+                <Label htmlFor="assignmentColor">Color de les Assignatures</Label>
+                <div className="flex gap-2 items-center">
+                  <Input
+                    id="assignmentColor"
+                    type="color"
+                    value={appearanceSettings.assignmentColor}
+                    onChange={(e) => setAppearanceSettings({...appearanceSettings, assignmentColor: e.target.value})}
+                    className="w-20 h-10"
+                  />
+                  <Input
+                    type="text"
+                    value={appearanceSettings.assignmentColor}
+                    onChange={(e) => setAppearanceSettings({...appearanceSettings, assignmentColor: e.target.value})}
+                    className="w-32"
+                    placeholder="#00CED1"
+                  />
+                  <span className="text-sm text-muted-foreground">
+                    Color que es mostrarà als blocs d'assignatures en els horaris
+                  </span>
+                </div>
+              </div>
               <div className="pt-4">
-                <Button>
+                <Button onClick={handleUpdateAssignmentColor}>
                   <Save className="h-4 w-4 mr-2" />
                   Aplicar Canvis
                 </Button>
               </div>
+            </CardContent>
+          </Card>
+
+          {/* Course Colors Card */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <GraduationCap className="h-5 w-5" />
+                Colors per Curs
+              </CardTitle>
+              <CardDescription>
+                Personalitza els colors de cada curs acadèmic
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {loading ? (
+                <div className="text-center py-4">
+                  <p className="text-muted-foreground">Carregant colors dels cursos...</p>
+                </div>
+              ) : (
+                <div className="space-y-6">
+                  {/* Grau en Disseny */}
+                  <div>
+                    <h3 className="font-medium mb-3">Grau en Disseny</h3>
+                    <div className="grid gap-4">
+                      {/* First and Second Year Colors */}
+                      {courseColors
+                        .filter(course => course.course_code === 'GD' && course.color_type === 'course')
+                        .map(course => (
+                          <div key={course.id} className="flex items-center gap-4">
+                            <Label className="w-32">{course.year}r Curs</Label>
+                            <div className="flex items-center gap-2">
+                              <Input
+                                type="color"
+                                value={course.color}
+                                onChange={(e) => handleUpdateCourseColor(course.id, e.target.value)}
+                                className="w-20 h-10"
+                              />
+                              <Input
+                                type="text"
+                                value={course.color}
+                                onChange={(e) => handleUpdateCourseColor(course.id, e.target.value)}
+                                className="w-32"
+                                placeholder="#000000"
+                              />
+                              <div 
+                                className="w-40 h-10 rounded-md border flex items-center justify-center text-white text-sm font-medium"
+                                style={{ backgroundColor: course.color }}
+                              >
+                                Exemple
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+
+                  {/* Design Itineraries for 3rd and 4th Year */}
+                  <div>
+                    <h3 className="font-medium mb-3">Itineraris de Disseny (3r i 4t curs)</h3>
+                    <div className="grid gap-4">
+                      {designItineraries.map(itinerary => (
+                        <div key={itinerary.id} className="flex items-center gap-4">
+                          <Label className="w-48">{itinerary.name}</Label>
+                          <div className="flex items-center gap-2">
+                            <Input
+                              type="color"
+                              value={itinerary.color}
+                              onChange={(e) => handleUpdateItineraryColor(itinerary.id, e.target.value)}
+                              className="w-20 h-10"
+                            />
+                            <Input
+                              type="text"
+                              value={itinerary.color}
+                              onChange={(e) => handleUpdateItineraryColor(itinerary.id, e.target.value)}
+                              className="w-32"
+                              placeholder="#000000"
+                            />
+                            <div 
+                              className="w-40 h-10 rounded-md border flex items-center justify-center text-white text-sm font-medium"
+                              style={{ backgroundColor: itinerary.color }}
+                            >
+                              Exemple
+                            </div>
+                            {itinerary.description && (
+                              <span className="text-sm text-muted-foreground flex-1">
+                                {itinerary.description}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Grau en Belles Arts */}
+                  <div>
+                    <h3 className="font-medium mb-3">Grau en Belles Arts</h3>
+                    <div className="grid gap-4">
+                      {courseColors
+                        .filter(course => course.course_code === 'GBA')
+                        .map(course => (
+                          <div key={course.id} className="flex items-center gap-4">
+                            <Label className="w-32">{course.year}r Curs</Label>
+                            <div className="flex items-center gap-2">
+                              <Input
+                                type="color"
+                                value={course.color}
+                                onChange={(e) => handleUpdateCourseColor(course.id, e.target.value)}
+                                className="w-20 h-10"
+                              />
+                              <Input
+                                type="text"
+                                value={course.color}
+                                onChange={(e) => handleUpdateCourseColor(course.id, e.target.value)}
+                                className="w-32"
+                                placeholder="#000000"
+                              />
+                              <div 
+                                className="w-40 h-10 rounded-md border flex items-center justify-center text-white text-sm font-medium"
+                                style={{ backgroundColor: course.color }}
+                              >
+                                Exemple
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
         </TabsContent>

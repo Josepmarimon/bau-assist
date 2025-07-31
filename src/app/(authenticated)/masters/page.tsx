@@ -1,11 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { Plus, Calendar, Clock, Building2, User, Trash2, Edit } from 'lucide-react'
+import { useState, useEffect, useMemo } from 'react'
+import { Plus, Calendar, Clock, Building2, User, Trash2, Edit, ChevronDown, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useToast } from '@/hooks/use-toast'
 import { MasterScheduleDialog } from '@/components/masters/master-schedule-dialog'
 import { MastersCalendarView } from '@/components/masters/masters-calendar-view'
@@ -41,6 +42,11 @@ export default function MastersPage() {
   const [loading, setLoading] = useState(true)
   const [dialogOpen, setDialogOpen] = useState(false)
   const [selectedSchedule, setSelectedSchedule] = useState<MasterScheduleWithRelations | null>(null)
+  const [expandedSections, setExpandedSections] = useState<{ master: boolean; postgrau: boolean }>({
+    master: true,
+    postgrau: true
+  })
+  const [expandedPrograms, setExpandedPrograms] = useState<Set<string>>(new Set())
   const { toast } = useToast()
   const supabase = createClient()
 
@@ -177,8 +183,295 @@ export default function MastersPage() {
     ? schedules 
     : schedules.filter(s => s.program_id === selectedProgram)
 
+  // Group schedules by semester, then program type, then program
+  const groupedSchedules = useMemo(() => {
+    const groups = {
+      semester1: {
+        master: {} as Record<string, MasterScheduleWithRelations[]>,
+        postgrau: {} as Record<string, MasterScheduleWithRelations[]>
+      },
+      semester2: {
+        master: {} as Record<string, MasterScheduleWithRelations[]>,
+        postgrau: {} as Record<string, MasterScheduleWithRelations[]>
+      }
+    }
+    
+    filteredSchedules.forEach(schedule => {
+      const type = schedule.programs.type as 'master' | 'postgrau'
+      const programId = schedule.program_id
+      const semesterNum = schedule.semesters?.number
+      
+      if ((type === 'master' || type === 'postgrau') && semesterNum) {
+        const semesterKey = semesterNum === 1 ? 'semester1' : 'semester2'
+        
+        if (!groups[semesterKey][type][programId]) {
+          groups[semesterKey][type][programId] = []
+        }
+        groups[semesterKey][type][programId].push(schedule)
+      }
+    })
+    
+    // Sort schedules within each program by day, then time
+    Object.keys(groups).forEach(semester => {
+      Object.keys(groups[semester as keyof typeof groups]).forEach(type => {
+        Object.keys(groups[semester as keyof typeof groups][type as keyof typeof groups[typeof semester]]).forEach(programId => {
+          groups[semester as keyof typeof groups][type as keyof typeof groups[typeof semester]][programId].sort((a, b) => {
+            // First by day
+            const dayCompare = a.day_of_week - b.day_of_week
+            if (dayCompare !== 0) return dayCompare
+            
+            // Then by start time
+            return a.start_time.localeCompare(b.start_time)
+          })
+        })
+      })
+    })
+    
+    return groups
+  }, [filteredSchedules])
+
+  const toggleSection = (section: 'master' | 'postgrau') => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }))
+  }
+
+  const toggleProgram = (programId: string) => {
+    setExpandedPrograms(prev => {
+      const newSet = new Set(prev)
+      if (newSet.has(programId)) {
+        newSet.delete(programId)
+      } else {
+        newSet.add(programId)
+      }
+      return newSet
+    })
+  }
+
   if (loading) {
     return <div className="flex items-center justify-center min-h-screen">Carregant...</div>
+  }
+
+  // Component to render schedule list for a semester
+  const renderScheduleList = (semesterSchedules: typeof groupedSchedules.semester1) => {
+    const hasSchedules = Object.keys(semesterSchedules.master).length > 0 || Object.keys(semesterSchedules.postgrau).length > 0
+    
+    if (!hasSchedules) {
+      return (
+        <p className="text-center text-muted-foreground py-8">
+          No hi ha horaris assignats per aquest semestre
+        </p>
+      )
+    }
+
+    return (
+      <div className="space-y-4">
+        {/* Masters Section */}
+        {Object.keys(semesterSchedules.master).length > 0 && (
+          <div className="border rounded-lg">
+            <button
+              onClick={() => toggleSection('master')}
+              className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 transition-colors"
+            >
+              <div className="flex items-center gap-2">
+                {expandedSections.master ? <ChevronDown className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
+                <span className="font-semibold text-lg">Màsters</span>
+                <Badge variant="default" className="ml-2">
+                  {Object.values(semesterSchedules.master).flat().length}
+                </Badge>
+              </div>
+            </button>
+            {expandedSections.master && (
+              <div className="border-t">
+                {Object.entries(semesterSchedules.master).map(([programId, schedules]) => {
+                  const program = programs.find(p => p.id === programId)
+                  const isExpanded = expandedPrograms.has(programId)
+                  
+                  return (
+                    <div key={programId} className="border-b last:border-b-0">
+                      <button
+                        onClick={() => toggleProgram(programId)}
+                        className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                      >
+                        <div className="flex items-center gap-2">
+                          {isExpanded ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+                          <div 
+                            className="w-4 h-4 rounded-sm"
+                            style={{ backgroundColor: program?.color || '#6B7280' }}
+                          />
+                          <span className="font-medium">{program?.name || 'Sense nom'}</span>
+                          <Badge variant="outline" className="text-xs">
+                            {schedules.length} {schedules.length === 1 ? 'horari' : 'horaris'}
+                          </Badge>
+                        </div>
+                      </button>
+                      
+                      {isExpanded && (
+                        <div className="bg-gray-50">
+                          {schedules.map(schedule => (
+                            <div
+                              key={schedule.id}
+                              className="flex items-center justify-between px-6 py-3 border-t hover:bg-gray-100"
+                            >
+                              <div className="flex-1">
+                                <div className="flex items-center gap-4 text-sm">
+                                  <div className="flex items-center gap-1">
+                                    <Calendar className="h-4 w-4" />
+                                    {DAYS[schedule.day_of_week - 1]}
+                                  </div>
+                                  <div className="flex items-center gap-1">
+                                    <Clock className="h-4 w-4" />
+                                    {schedule.start_time.slice(0, 5)} - {schedule.end_time.slice(0, 5)}
+                                  </div>
+                                  <div className="flex items-center gap-1">
+                                    <Building2 className="h-4 w-4" />
+                                    {schedule.classrooms.name}
+                                  </div>
+                                  {schedule.teachers && (
+                                    <div className="flex items-center gap-1">
+                                      <User className="h-4 w-4" />
+                                      {schedule.teachers.first_name} {schedule.teachers.last_name}
+                                    </div>
+                                  )}
+                                </div>
+                                {schedule.subject_name && (
+                                  <div className="text-sm text-muted-foreground mt-1">
+                                    {schedule.subject_name}
+                                  </div>
+                                )}
+                              </div>
+                              <div className="flex gap-2">
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => handleEdit(schedule)}
+                                >
+                                  <Edit className="h-4 w-4" />
+                                </Button>
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => handleDelete(schedule.id)}
+                                >
+                                  <Trash2 className="h-4 w-4" />
+                                </Button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Postgraus Section */}
+        {Object.keys(semesterSchedules.postgrau).length > 0 && (
+          <div className="border rounded-lg">
+            <button
+              onClick={() => toggleSection('postgrau')}
+              className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 transition-colors"
+            >
+              <div className="flex items-center gap-2">
+                {expandedSections.postgrau ? <ChevronDown className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
+                <span className="font-semibold text-lg">Postgraus</span>
+                <Badge variant="secondary" className="ml-2">
+                  {Object.values(semesterSchedules.postgrau).flat().length}
+                </Badge>
+              </div>
+            </button>
+            {expandedSections.postgrau && (
+              <div className="border-t">
+                {Object.entries(semesterSchedules.postgrau).map(([programId, schedules]) => {
+                  const program = programs.find(p => p.id === programId)
+                  const isExpanded = expandedPrograms.has(programId)
+                  
+                  return (
+                    <div key={programId} className="border-b last:border-b-0">
+                      <button
+                        onClick={() => toggleProgram(programId)}
+                        className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                      >
+                        <div className="flex items-center gap-2">
+                          {isExpanded ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+                          <div 
+                            className="w-4 h-4 rounded-sm"
+                            style={{ backgroundColor: program?.color || '#6B7280' }}
+                          />
+                          <span className="font-medium">{program?.name || 'Sense nom'}</span>
+                          <Badge variant="outline" className="text-xs">
+                            {schedules.length} {schedules.length === 1 ? 'horari' : 'horaris'}
+                          </Badge>
+                        </div>
+                      </button>
+                      
+                      {isExpanded && (
+                        <div className="bg-gray-50">
+                          {schedules.map(schedule => (
+                            <div
+                              key={schedule.id}
+                              className="flex items-center justify-between px-6 py-3 border-t hover:bg-gray-100"
+                            >
+                              <div className="flex-1">
+                                <div className="flex items-center gap-4 text-sm">
+                                  <div className="flex items-center gap-1">
+                                    <Calendar className="h-4 w-4" />
+                                    {DAYS[schedule.day_of_week - 1]}
+                                  </div>
+                                  <div className="flex items-center gap-1">
+                                    <Clock className="h-4 w-4" />
+                                    {schedule.start_time.slice(0, 5)} - {schedule.end_time.slice(0, 5)}
+                                  </div>
+                                  <div className="flex items-center gap-1">
+                                    <Building2 className="h-4 w-4" />
+                                    {schedule.classrooms.name}
+                                  </div>
+                                  {schedule.teachers && (
+                                    <div className="flex items-center gap-1">
+                                      <User className="h-4 w-4" />
+                                      {schedule.teachers.first_name} {schedule.teachers.last_name}
+                                    </div>
+                                  )}
+                                </div>
+                                {schedule.subject_name && (
+                                  <div className="text-sm text-muted-foreground mt-1">
+                                    {schedule.subject_name}
+                                  </div>
+                                )}
+                              </div>
+                              <div className="flex gap-2">
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => handleEdit(schedule)}
+                                >
+                                  <Edit className="h-4 w-4" />
+                                </Button>
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => handleDelete(schedule.id)}
+                                >
+                                  <Trash2 className="h-4 w-4" />
+                                </Button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    )
   }
 
   return (
@@ -241,77 +534,39 @@ export default function MastersPage() {
       </Card>
 
 
-      {/* List View */}
+      {/* List View with Semester Tabs */}
       <Card>
         <CardHeader>
           <CardTitle>Llista d\'horaris</CardTitle>
-          <CardDescription>Tots els horaris assignats</CardDescription>
+          <CardDescription>Horaris agrupats per semestre, tipus i programa</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-2">
-            {filteredSchedules.length === 0 ? (
-              <p className="text-center text-muted-foreground py-4">
-                No hi ha horaris assignats
-              </p>
-            ) : (
-              filteredSchedules.map(schedule => (
-                <div
-                  key={schedule.id}
-                  className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50"
-                >
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Badge variant={schedule.programs.type === 'master' ? 'default' : 'secondary'}>
-                        {schedule.programs.type === 'master' ? 'Màster' : 'Postgrau'}
-                      </Badge>
-                      <span className="font-semibold">{schedule.programs.name}</span>
-                    </div>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4" />
-                        {DAYS[schedule.day_of_week - 1]}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        {schedule.start_time.slice(0, 5)} - {schedule.end_time.slice(0, 5)}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Building2 className="h-4 w-4" />
-                        {schedule.classrooms.name}
-                      </div>
-                      {schedule.teachers && (
-                        <div className="flex items-center gap-1">
-                          <User className="h-4 w-4" />
-                          {schedule.teachers.first_name} {schedule.teachers.last_name}
-                        </div>
-                      )}
-                    </div>
-                    {schedule.subject_name && (
-                      <div className="text-sm mt-1">
-                        Assignatura: {schedule.subject_name}
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => handleEdit(schedule)}
-                    >
-                      <Edit className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => handleDelete(schedule.id)}
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
+          <Tabs defaultValue="semester1" className="w-full">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="semester1">
+                1r Semestre
+                <Badge variant="outline" className="ml-2 text-xs">
+                  {Object.values(groupedSchedules.semester1.master).flat().length + 
+                   Object.values(groupedSchedules.semester1.postgrau).flat().length}
+                </Badge>
+              </TabsTrigger>
+              <TabsTrigger value="semester2">
+                2n Semestre
+                <Badge variant="outline" className="ml-2 text-xs">
+                  {Object.values(groupedSchedules.semester2.master).flat().length + 
+                   Object.values(groupedSchedules.semester2.postgrau).flat().length}
+                </Badge>
+              </TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="semester1" className="mt-4">
+              {renderScheduleList(groupedSchedules.semester1)}
+            </TabsContent>
+            
+            <TabsContent value="semester2" className="mt-4">
+              {renderScheduleList(groupedSchedules.semester2)}
+            </TabsContent>
+          </Tabs>
         </CardContent>
       </Card>
 

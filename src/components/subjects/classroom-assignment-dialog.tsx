@@ -27,6 +27,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Checkbox } from "@/components/ui/checkbox"
 import { cn } from "@/lib/utils"
 import { Switch } from "@/components/ui/switch"
+import { WeekSelector } from "@/components/schedules/week-selector"
 
 interface ClassroomAssignmentDialogProps {
   open: boolean
@@ -709,13 +710,21 @@ export function ClassroomAssignmentDialog({
       }
       
     } catch (error: any) {
-      console.error("Error saving assignment - Full error:", error)
-      console.error("Error details:", {
-        message: error.message,
-        details: error.details,
-        hint: error.hint,
-        code: error.code
-      })
+      console.error("Error saving assignment:", error)
+      
+      // Log error details properly
+      if (error) {
+        console.error("Error details:", {
+          message: error.message || 'No message',
+          details: error.details || 'No details',
+          hint: error.hint || 'No hint',
+          code: error.code || 'No code',
+          stack: error.stack || 'No stack trace'
+        })
+        
+        // Log the full error object
+        console.error("Full error object:", JSON.stringify(error, Object.getOwnPropertyNames(error)))
+      }
       
       // Check if it's a generic "occupied" error without details
       if (error.message && (error.message.includes('ocupada') || error.message.includes('occupied'))) {
@@ -996,65 +1005,12 @@ export function ClassroomAssignmentDialog({
             </div>
             
             {/* Week selection */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <Switch
-                    checked={!isFullSemester}
-                    onCheckedChange={(checked) => {
-                      setIsFullSemester(!checked)
-                      if (!checked) {
-                        setSelectedWeeks([])
-                      }
-                    }}
-                  />
-                  <Label className="text-sm font-normal">
-                    Només setmanes específiques
-                  </Label>
-                </div>
-              </div>
-              
-              {!isFullSemester && (
-                <div className="space-y-2">
-                  <div className="grid grid-cols-5 gap-2">
-                    {Array.from({ length: 15 }, (_, i) => i + 1).map((week) => (
-                      <div
-                        key={week}
-                        className={cn(
-                          "flex items-center justify-center p-2 border rounded-md cursor-pointer transition-colors",
-                          selectedWeeks.includes(week)
-                            ? "bg-primary text-primary-foreground border-primary"
-                            : "hover:bg-accent hover:text-accent-foreground"
-                        )}
-                        onClick={() => {
-                          if (selectedWeeks.includes(week)) {
-                            setSelectedWeeks(selectedWeeks.filter((w) => w !== week))
-                          } else {
-                            setSelectedWeeks([...selectedWeeks, week].sort((a, b) => a - b))
-                          }
-                        }}
-                      >
-                        <span className="text-sm font-medium">{week}</span>
-                      </div>
-                    ))}
-                  </div>
-                  {selectedWeeks.length > 0 && (
-                    <div className="flex items-center gap-2 mt-2">
-                      <span className="text-sm text-muted-foreground">
-                        Setmanes seleccionades: {selectedWeeks.join(', ')}
-                      </span>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => setSelectedWeeks([])}
-                      >
-                        Esborrar
-                      </Button>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
+            <WeekSelector
+              isFullSemester={isFullSemester}
+              selectedWeeks={selectedWeeks}
+              onFullSemesterChange={setIsFullSemester}
+              onWeeksChange={setSelectedWeeks}
+            />
             
             {/* Classroom selection */}
             <div className="space-y-4">

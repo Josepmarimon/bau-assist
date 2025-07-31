@@ -187,6 +187,11 @@ export function MastersCalendarView({ schedules, onScheduleClick }: MastersCalen
                           <div className="font-semibold text-xs mb-1 truncate">
                             {block.schedule.programs.name}
                           </div>
+                          {block.schedule.semesters && (
+                            <div className="text-xs font-medium text-gray-600">
+                              {block.schedule.semesters.number === 1 ? '1r sem' : '2n sem'}
+                            </div>
+                          )}
                           {block.schedule.subject_name && (
                             <div className="text-xs text-gray-700 truncate">
                               {block.schedule.subject_name}
