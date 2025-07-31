@@ -403,6 +403,7 @@ export default function SoftwarePrintPage() {
             })}
           </div>
         </div>
+        })}
 
         {/* Print footer */}
         <div style={{
