@@ -28,7 +28,9 @@ import {
   User,
   Loader2,
   Check,
-  ChevronsUpDown
+  ChevronsUpDown,
+  Mail,
+  FileSpreadsheet
 } from 'lucide-react'
 import {
   Select,
@@ -56,6 +58,7 @@ import { cn } from "@/lib/utils"
 import { SubjectGroupProfilesList } from '@/components/subject-group-profiles/subject-group-profiles-list'
 import { ClassroomAssignmentDialog } from '@/components/subjects/classroom-assignment-dialog'
 import { SubjectDetailModal } from '@/components/subjects/subject-detail-modal'
+import * as XLSX from 'xlsx'
 
 interface Subject {
   id: string
@@ -605,6 +608,128 @@ export default function AssignaturesGrupsPage() {
     key !== 'grau' && value !== '' && value !== 'all'
   ) || searchTerm !== ''
 
+  const sendCredentials = async (subjectId: string) => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
+        toast.error('Cal estar autenticat per enviar credencials')
+        return
+      }
+
+      const response = await supabase.functions.invoke('send-credentials', {
+        body: { subjectId }
+      })
+
+      if (response.error) {
+        throw response.error
+      }
+
+      const result = response.data
+      if (result.success) {
+        toast.success(`Credencials enviades correctament a ${result.sent} professor${result.sent !== 1 ? 's' : ''}`)
+        if (result.failed > 0) {
+          toast.warning(`No s'han pogut enviar ${result.failed} email${result.failed !== 1 ? 's' : ''}`)
+        }
+      } else {
+        throw new Error(result.error || 'Error desconegut')
+      }
+    } catch (error: any) {
+      console.error('Error sending credentials:', error)
+      toast.error(error.message || 'Error enviant les credencials')
+    }
+  }
+
+  const exportCredentialsToExcel = async () => {
+    try {
+      // Get all subjects with credentials
+      const subjectsWithCredentials = filteredSubjects.filter(s => s.username || s.password)
+      
+      if (subjectsWithCredentials.length === 0) {
+        toast.error('No hi ha assignatures amb credencials per exportar')
+        return
+      }
+
+      const exportData: any[] = []
+
+      // For each subject with credentials
+      for (const subject of subjectsWithCredentials) {
+        // Load groups if not already loaded
+        if (!subjectGroups[subject.id]) {
+          await loadSubjectGroups(subject.id)
+        }
+
+        const groups = subjectGroups[subject.id] || []
+        
+        // Get unique teachers from all groups
+        const teachersMap = new Map<string, any>()
+        
+        for (const group of groups) {
+          // Load teacher assignments if not loaded
+          if (!teacherAssignments[group.id]) {
+            await loadTeacherAssignments(group.id)
+          }
+          
+          const assignments = teacherAssignments[group.id] || []
+          
+          for (const assignment of assignments) {
+            if (assignment.teacher && assignment.teacher.email) {
+              teachersMap.set(assignment.teacher.id, assignment.teacher)
+            }
+          }
+        }
+
+        // Add a row for each unique teacher
+        teachersMap.forEach(teacher => {
+          exportData.push({
+            'Nom': teacher.first_name,
+            'Cognoms': teacher.last_name,
+            'Email': teacher.email,
+            'Assignatura': subject.name,
+            'Codi Assignatura': subject.code,
+            'Usuari': subject.username || '',
+            'Contrasenya': subject.password || '',
+            'Departament': teacher.department || ''
+          })
+        })
+      }
+
+      if (exportData.length === 0) {
+        toast.error('No hi ha professors assignats a les assignatures amb credencials')
+        return
+      }
+
+      // Create workbook
+      const ws = XLSX.utils.json_to_sheet(exportData)
+      const wb = XLSX.utils.book_new()
+      XLSX.utils.book_append_sheet(wb, ws, 'Credencials')
+
+      // Auto-size columns
+      const colWidths = [
+        { wch: 15 }, // Nom
+        { wch: 20 }, // Cognoms
+        { wch: 30 }, // Email
+        { wch: 40 }, // Assignatura
+        { wch: 15 }, // Codi
+        { wch: 20 }, // Usuari
+        { wch: 20 }, // Contrasenya
+        { wch: 20 }  // Departament
+      ]
+      ws['!cols'] = colWidths
+
+      // Generate filename with date
+      const date = new Date().toISOString().split('T')[0]
+      const filename = `credencials_assignatures_${date}.xlsx`
+
+      // Download file
+      XLSX.writeFile(wb, filename)
+      
+      toast.success(`Excel exportat amb ${exportData.length} registres`)
+    } catch (error) {
+      console.error('Error exporting credentials:', error)
+      toast.error('Error exportant les credencials a Excel')
+    }
+  }
+
   // Helper function for teacher assignment UI
   const TeacherAssignmentUI = ({ groupId }: { groupId: string }) => {
     const [selectedTeacherId, setSelectedTeacherId] = useState<string>('')
@@ -772,10 +897,16 @@ export default function AssignaturesGrupsPage() {
             Gestiona les assignatures i els seus grups
           </p>
         </div>
-        <Button onClick={() => setShowSubjectForm(true)}>
-          <Plus className="h-4 w-4 mr-2" />
-          Nova Assignatura
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button variant="outline" onClick={exportCredentialsToExcel}>
+            <FileSpreadsheet className="h-4 w-4 mr-2" />
+            Exportar Credencials
+          </Button>
+          <Button onClick={() => setShowSubjectForm(true)}>
+            <Plus className="h-4 w-4 mr-2" />
+            Nova Assignatura
+          </Button>
+        </div>
       </div>
 
       {/* Stats */}
@@ -1282,6 +1413,15 @@ export default function AssignaturesGrupsPage() {
                                       <span className="ml-2 font-mono text-xs bg-white px-2 py-1 rounded border">{subject.password}</span>
                                     </div>
                                   )}
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="mt-3"
+                                    onClick={() => sendCredentials(subject.id)}
+                                  >
+                                    <Mail className="h-4 w-4 mr-2" />
+                                    Enviar credencials
+                                  </Button>
                                 </dd>
                               </div>
                             )}

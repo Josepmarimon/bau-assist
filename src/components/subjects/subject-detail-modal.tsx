@@ -28,9 +28,11 @@ import {
   Edit,
   X,
   Link,
-  Check
+  Check,
+  Mail
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { toast } from 'sonner'
 
 interface Subject {
   id: string
@@ -267,6 +269,37 @@ export function SubjectDetailModal({
     }
   }
 
+  const sendCredentials = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
+        toast.error('Cal estar autenticat per enviar credencials')
+        return
+      }
+
+      const response = await supabase.functions.invoke('send-credentials', {
+        body: { subjectId: subject.id }
+      })
+
+      if (response.error) {
+        throw response.error
+      }
+
+      const result = response.data
+      if (result.success) {
+        toast.success(`Credencials enviades correctament a ${result.sent} professor${result.sent !== 1 ? 's' : ''}`)
+        if (result.failed > 0) {
+          toast.warning(`No s'han pogut enviar ${result.failed} email${result.failed !== 1 ? 's' : ''}`)
+        }
+      } else {
+        throw new Error(result.error || 'Error desconegut')
+      }
+    } catch (error: any) {
+      console.error('Error sending credentials:', error)
+      toast.error(error.message || 'Error enviant les credencials')
+    }
+  }
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-[90vw] h-[90vh] overflow-hidden flex flex-col">
@@ -497,6 +530,15 @@ export function SubjectDetailModal({
                                       <span className="font-mono text-sm bg-gray-100 px-3 py-1 rounded border">{subject.password}</span>
                                     </div>
                                   )}
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="mt-3"
+                                    onClick={sendCredentials}
+                                  >
+                                    <Mail className="h-4 w-4 mr-2" />
+                                    Enviar credencials
+                                  </Button>
                                 </dd>
                               </div>
                             )}
