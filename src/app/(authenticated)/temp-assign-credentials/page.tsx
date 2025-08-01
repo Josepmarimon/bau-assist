@@ -331,12 +331,16 @@ export default function TempAssignCredentialsPage() {
 
                         <div className="flex items-center gap-2">
                           <Select
-                            value={assignment ? assignment.credentialIndex.toString() : ''}
+                            value={assignment ? assignment.credentialIndex.toString() : 'none'}
                             onValueChange={(value) => {
-                              if (assignment) {
-                                removeAssignment(subject.id)
-                              }
-                              if (value) {
+                              if (value === 'none') {
+                                if (assignment) {
+                                  removeAssignment(subject.id)
+                                }
+                              } else {
+                                if (assignment) {
+                                  removeAssignment(subject.id)
+                                }
                                 addAssignment(subject.id, parseInt(value))
                               }
                             }}
@@ -345,7 +349,7 @@ export default function TempAssignCredentialsPage() {
                               <SelectValue placeholder="Selecciona credencials..." />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="">Cap</SelectItem>
+                              <SelectItem value="none">Cap</SelectItem>
                               {availableCredentials.map((cred, index) => {
                                 const realIndex = credentials.indexOf(cred)
                                 return (
