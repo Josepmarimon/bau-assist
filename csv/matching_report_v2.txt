@@ -1,0 +1,168 @@
+Subject Password Matching Report V2
+===================================
+
+Generated at: 2025-08-01 11:44:07
+
+STATISTICS
+----------
+Total subject users processed: 143
+Successfully matched: 120 (83.9%)
+Unmatched: 23
+High confidence (>= 0.9): 94
+Medium confidence (0.7-0.9): 20
+Low confidence (0.6-0.7): 6
+
+HIGH CONFIDENCE MATCHES (>= 0.9)
+--------------------------------
+analisi_i_teoria_dels_teixits -> GDVM23 (Anàlisi i Teoria dels Teixits) [Confidence: 1.00]
+animacio_digital_i -> GDVA03 (Animació Digital I) [Confidence: 1.00]
+animacio_digital_ii -> GDVA53 (Animació Digital II) [Confidence: 1.00]
+animacio_digital_iii -> GDVA04 (Animació Digital III) [Confidence: 1.00]
+antropologia -> GBF022 (Antropologia) [Confidence: 1.00]
+antropologia_sociocultural -> GDF031 (Antropologia Sociocultural) [Confidence: 1.00]
+creacio_i_autoria_digital_i -> GDVA13 (Creació i Autoria Digital I) [Confidence: 1.00]
+creacio_i_autoria_digital_ii -> GDVA63 (Creació i Autoria Digital II) [Confidence: 1.00]
+creacio_i_autoria_digital_iii -> GDVA14 (Creació i Autoria Digital III) [Confidence: 1.00]
+creacio_i_autoria_digital_iv -> GDVA54 (Creació i Autoria Digital IV) [Confidence: 1.00]
+cultura_audiovisual_i -> GDVA23 (Cultura Audiovisual I) [Confidence: 1.00]
+cultura_audiovisual_ii -> GDVA73 (Cultura Audiovisual II) [Confidence: 1.00]
+cultura_de_la_imatge_i -> GDVG33 (Cultura de la Imatge I) [Confidence: 1.00]
+cultura_de_la_imatge_ii -> GDVG83 (Cultura de la Imatge II) [Confidence: 1.00]
+disseny_i_comunicacio -> GDVG24 (Disseny i Comunicació) [Confidence: 1.00]
+disseny_i_publicitat -> GDVG54 (Disseny i Publicitat) [Confidence: 1.00]
+eines-informatiques-i -> GDF011 (Eines Informàtiques I) [Confidence: 1.00]
+eines-informatiques-ii -> GDF051 (Eines Informàtiques II) [Confidence: 1.00]
+estetica -> GBF031 (Estètica) [Confidence: 1.00]
+estetica_i_teoria_de_les_arts -> GDF071 (Estètica i Teoria de les Arts) [Confidence: 1.00]
+gestio -> GDVI44 (Gestió) [Confidence: 1.00]
+historia_de_la_moda_i -> GDVM33 (Història de la Moda I) [Confidence: 1.00]
+historia_de_la_moda_ii -> GDVM83 (Història de la Moda II) [Confidence: 1.00]
+historia_del_disseny -> GDB032 (Història del Disseny) [Confidence: 1.00]
+iconografia_i_comunicacio -> GDF061 (Iconografia i Comunicació) [Confidence: 1.00]
+imatge_i_comunicacio -> GDVM73 (Imatge i Comunicació) [Confidence: 1.00]
+infografia-i -> GDVG43 (Infografia I) [Confidence: 1.00]
+infografia-ii -> GDVG93 (Infografia II) [Confidence: 1.00]
+introduccio_al_disseny_web -> GDVG34 (Introducció al Disseny Web) [Confidence: 1.00]
+laboratori_de_processos_i_projectes_i -> GBB031 (Laboratori de Processos i Projectes I) [Confidence: 1.00]
+laboratori_de_processos_i_projectes_ii -> GBB022 (Laboratori de Processos i Projectes II) [Confidence: 1.00]
+laboratori_de_processos_i_projectes_iii -> GBB052 (Laboratori de Processos i Projectes III) [Confidence: 1.00]
+laboratori_de_processos_i_projectes_v -> GBB033 (Laboratori de Processos i Projectes V) [Confidence: 1.00]
+llenguatges_audiovisuals_i -> GDB002 (Llenguatges Audiovisuals I) [Confidence: 1.00]
+llenguatges_audiovisuals_ii -> GDB042 (Llenguatges Audiovisuals II) [Confidence: 1.00]
+llenguatges-audiovisuals-ii -> GDB042 (Llenguatges Audiovisuals II) [Confidence: 1.00]
+manipulacio_i_estampacio_de_teixits -> GDVM34 (Manipulació i Estampació de Teixits) [Confidence: 1.00]
+metodologies_transdisciplinaries_i_experimentals -> GBB014 (Metodologies Transdisciplinàries i Experimentals) [Confidence: 1.00]
+pensament_contemporani_i_practiques_artistiques -> GBF002 (Pensament Contemporani i Pràctiques Artístiques) [Confidence: 1.00]
+pensament_modern_i_practiques_artistiques -> GBF001 (Pensament Modern i Pràctiques Artístiques) [Confidence: 1.00]
+producte -> GDVI34 (Producte) [Confidence: 1.00]
+programacio_per_dissenyadors -> GDVG44 (Programació per Dissenyadors) [Confidence: 1.00]
+taller_de_color -> GDF041 (Taller de Color) [Confidence: 1.00]
+taller_de_creativitat -> GDF012 (Taller de Creativitat) [Confidence: 1.00]
+taller_de_dibuix_i -> GBF011 (Taller de Dibuix I) [Confidence: 1.00]
+taller_de_dibuix_ii -> GBF041 (Taller de Dibuix II) [Confidence: 1.00]
+tecniques_infografiques_i -> GDVI23 (Tècniques Infogràfiques I) [Confidence: 1.00]
+tecniques_infografiques_ii -> GDVI73 (Tècniques Infogràfiques II) [Confidence: 1.00]
+tipografia_en_moviment -> GDVA44 (Tipografia en Moviment) [Confidence: 1.00]
+tipografia_i -> GDVG23 (Tipografia I) [Confidence: 1.00]
+tipografia_ii -> GDVG73 (Tipografia II) [Confidence: 1.00]
+treball_final_de_grau -> GDT074 (Treball Final de Grau) [Confidence: 1.00]
+taller_tridimensional_i_dinvestigacio_artistica -> GDF002 (Taller Tridimensional i d'Investigació Artística) [Confidence: 0.99]
+construccio_i_installacions_iii -> GDVI24 (Construcció i Instal·lacions III) [Confidence: 0.98]
+taller_dexpressio_i_comunicacio -> GDF021 (Taller d'Expressió i Comunicació) [Confidence: 0.98]
+construccio_i_installacions_ii -> GDVI93 (Construcció i Instal·lacions II) [Confidence: 0.98]
+construccio_i_installacions_iv -> GDVI54 (Construcció i Instal·lacions IV) [Confidence: 0.98]
+construccio_i_installacions_i -> GDVI43 (Construcció i Instal·lacions I) [Confidence: 0.98]
+economia_empresa_i_disseny -> GDB052 (Economia, Empresa i Disseny) [Confidence: 0.98]
+fonaments_de_disseny_ii -> GDB011 (Fonaments del Disseny II) [Confidence: 0.98]
+fonaments_de_disseny_i -> GDB001 (Fonaments del Disseny I) [Confidence: 0.98]
+2d_llenguatges_tecniques_i_tecnologies -> GBB001 (2D, Llenguatges, Tècniques i Tecnologies) [Confidence: 0.97]
+expresio-grafica-ii -> GDB062 (Expressió Gràfica II) [Confidence: 0.97]
+expresio-grafica-i -> GDB012 (Expressió Gràfica I) [Confidence: 0.97]
+projectes_disseny_audiovisual_iii -> GDVA24 (Projectes de Disseny Audiovisual III) [Confidence: 0.96]
+taller_audiovisual_iii -> GDVA34 (Taller d'Audiovisual III) [Confidence: 0.96]
+projectes_disseny_audiovisual_ii -> GDVA83 (Projectes de Disseny Audiovisual II) [Confidence: 0.96]
+taller_audiovisual_ii -> GDVA93 (Taller d'Audiovisual II) [Confidence: 0.95]
+projectes_disseny_audiovisual_i -> GDVA33 (Projectes de Disseny Audiovisual I) [Confidence: 0.95]
+taller_audiovisual_i -> GDVA43 (Taller d'Audiovisual I) [Confidence: 0.95]
+projectes_disseny_grafic_iii -> GDVG04 (Projectes de Disseny Gràfic III) [Confidence: 0.95]
+3d_llenguatges_tecniques_i_tecnologies -> GBB001 (2D, Llenguatges, Tècniques i Tecnologies) [Confidence: 0.95]
+4d_llenguatges_tecniques_i_tecnologies -> GBB001 (2D, Llenguatges, Tècniques i Tecnologies) [Confidence: 0.95]
+projectes_disseny_grafic_ii -> GDVG53 (Projectes de Disseny Gràfic II) [Confidence: 0.95]
+projectes_disseny_grafic_i -> GDVG03 (Projectes de Disseny Gràfic I) [Confidence: 0.95]
+taller_de_dibuix -> GBF011 (Taller de Dibuix I) [Confidence: 0.94]
+taller_espai_iii -> GDVI14 (Taller d'Espai III) [Confidence: 0.94]
+taller_espai_ii -> GDVI63 (Taller d'Espai II) [Confidence: 0.94]
+taller_espai_i -> GDVI13 (Taller d'Espai I) [Confidence: 0.93]
+expresio_grafica_ii_e -> GDB062 (Expressió Gràfica II) [Confidence: 0.93]
+expresio_grafica_ii_g -> GDB062 (Expressió Gràfica II) [Confidence: 0.93]
+expresio-grafica-ii-m -> GDB062 (Expressió Gràfica II) [Confidence: 0.93]
+projectes_disseny_interiors_iii -> GDVI04 (Projectes de Disseny d'Interiors III) [Confidence: 0.93]
+expresio_grafica_i_a -> GDB012 (Expressió Gràfica I) [Confidence: 0.92]
+expresio_grafica_i_e -> GDB012 (Expressió Gràfica I) [Confidence: 0.92]
+expresio_grafica_i_g -> GDB012 (Expressió Gràfica I) [Confidence: 0.92]
+projectes_disseny_interiors_ii -> GDVI53 (Projectes de Disseny d'Interiors II) [Confidence: 0.92]
+xd_llenguatges_tecniques_i_tecnologias -> GBB001 (2D, Llenguatges, Tècniques i Tecnologies) [Confidence: 0.92]
+projectes_disseny_interiors_i -> GDVI03 (Projectes de Disseny d'Interiors I) [Confidence: 0.92]
+marketing_i_moda -> GDVM44 (Màrqueting i Moda) [Confidence: 0.91]
+taller_moda_iii -> GDVM14 (Taller de Moda III) [Confidence: 0.91]
+historia_disseny_interiors_ii -> GDVI83 (Història del Disseny d'Interiors II) [Confidence: 0.91]
+historia_disseny_interiors_i -> GDVI33 (Història del Disseny d'Interiors I) [Confidence: 0.90]
+taller_moda_ii -> GDVM63 (Taller de Moda II) [Confidence: 0.90]
+
+MEDIUM CONFIDENCE MATCHES (0.7-0.9)
+-----------------------------------
+projectes_disseny_moda_iii -> GDVM04 (Projectes de Disseny de Moda III) [Confidence: 0.90]
+taller_moda_i -> GDVM13 (Taller de Moda I) [Confidence: 0.90]
+iniciacio_projectes_disseny_ii -> GDB072 (Iniciació als Projectes de Disseny II) [Confidence: 0.90]
+projectes_disseny_moda_ii -> GDVM53 (Projectes de Disseny de Moda II) [Confidence: 0.89]
+iniciacio_projectes_disseny_i -> GDB022 (Iniciació als Projectes de Disseny I) [Confidence: 0.89]
+patronaje-iii -> GDVM24 (Patronatge III) [Confidence: 0.89]
+projectes_disseny_moda_i -> GDVM03 (Projectes de Disseny de Moda I) [Confidence: 0.89]
+patronaje-ii -> GDVM93 (Patronatge II) [Confidence: 0.88]
+patronaje-iv -> GDVM54 (Patronatge IV) [Confidence: 0.88]
+patronaje-i -> GDVM43 (Patronatge I) [Confidence: 0.87]
+2d_llenguatges_tecniques_i_tecnologies_instalades -> GBB001 (2D, Llenguatges, Tècniques i Tecnologies) [Confidence: 0.85]
+taller_grafic_i_com_visual_iii -> GDVG14 (Taller de Gràfic i Comunicació Visual III) [Confidence: 0.85]
+taller_grafic_i_com_visual_ii -> GDVG63 (Taller de Gràfic i Comunicació Visual II) [Confidence: 0.84]
+taller_grafic_i_com_visual_i -> GDVG13 (Taller de Gràfic i Comunicació Visual I) [Confidence: 0.84]
+3d_llenguatges_tecniques_i_tecnologias_instalades -> GBB001 (2D, Llenguatges, Tècniques i Tecnologies) [Confidence: 0.83]
+4d_llenguatges_tecniques_i_tecnologias_instalades -> GBB001 (2D, Llenguatges, Tècniques i Tecnologies) [Confidence: 0.83]
+taller_de_dibuix_experimental -> GBF011 (Taller de Dibuix I) [Confidence: 0.77]
+taller_dedicions_dartista -> GDF001 (Taller de Dibuix Artístic) [Confidence: 0.76]
+disseny-i-interaccio -> GDVG24 (Disseny i Comunicació) [Confidence: 0.73]
+taller_de_videoart -> GDF041 (Taller de Color) [Confidence: 0.73]
+
+LOW CONFIDENCE MATCHES (0.6-0.7)
+---------------------------------
+taller_de_performance_i_accio -> GDVM63 (Taller de Moda II) [Confidence: 0.65]
+taller_de_fabricacio_digital -> GDVG13 (Taller de Gràfic i Comunicació Visual I) [Confidence: 0.63]
+disseny-i-pensament-critic -> GDVG54 (Disseny i Publicitat) [Confidence: 0.61]
+taller_dinteraccio -> GDF041 (Taller de Color) [Confidence: 0.61]
+disseny-i-reptes-contemporanis-i -> GDVG24 (Disseny i Comunicació) [Confidence: 0.60]
+taller_de_procediments_pictorics -> GDVM14 (Taller de Moda III) [Confidence: 0.60]
+
+UNMATCHED USERS
+---------------
+art_activisme_mediacio_i_pedagogia - No match found with sufficient confidence
+art_institucio_i_mercat - No match found with sufficient confidence
+art_practices_in_context_seminar - No match found with sufficient confidence
+debats_contamporanis_arts_ciencies_tecnologia - No match found with sufficient confidence
+debats_contemporanis_en_les_arts_i_les_ciencies_socials - No match found with sufficient confidence
+debats_contemporanis_en_les_arts_i_les_humanitats - No match found with sufficient confidence
+disseny-i-reptes-contemporanis-ii - No match found with sufficient confidence
+master-design-research - No match found with sufficient confidence
+practiques_artistiques_i_investigacio - No match found with sufficient confidence
+practiques_critiques_en_les_arts_i_les_ciencies_socials - No match found with sufficient confidence
+practiques_critiques_en_les_arts_i_les_humanitats - No match found with sufficient confidence
+practiques_critiques_en_les_arts_les_ciencies_i_les_tecnologias - No match found with sufficient confidence
+practiques_externes - No match found with sufficient confidence
+practiques_externes_gba - No match found with sufficient confidence
+processes-and-projects-laboratoriy-iv - No match found with sufficient confidence
+taller_danimacio_i_stop_motion - No match found with sufficient confidence
+taller_de_materials_tous_i_estampacio - No match found with sufficient confidence
+taller_de_pedagogies_experimentals - No match found with sufficient confidence
+taller_de_procediments_escultorics - No match found with sufficient confidence
+taller_de_procediments_pictorics_experimentals - No match found with sufficient confidence
+tfg-gba - No match found with sufficient confidence
+visualisation_and_documentation_workshop - No match found with sufficient confidence
+writing_and_communication_workshop - No match found with sufficient confidence
