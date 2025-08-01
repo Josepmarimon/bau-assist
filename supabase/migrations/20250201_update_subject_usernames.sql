@@ -1,0 +1,92 @@
+-- Update usernames for subjects based on Excel data
+-- Generated from usuaris-guies-docents.xlsx matching
+-- Using only high-confidence matches (>= 0.9)
+
+UPDATE subjects SET username = 'analisi_i_teoria_dels_teixits' WHERE code = 'GDVM23';
+UPDATE subjects SET username = 'animacio_digital_i' WHERE code = 'GDVA03';
+UPDATE subjects SET username = 'animacio_digital_ii' WHERE code = 'GDVA53';
+UPDATE subjects SET username = 'animacio_digital_iii' WHERE code = 'GDVA04';
+UPDATE subjects SET username = 'antropologia' WHERE code = 'GBF022';
+UPDATE subjects SET username = 'antropologia_sociocultural' WHERE code = 'GDF031';
+UPDATE subjects SET username = 'creacio_i_autoria_digital_i' WHERE code = 'GDVA13';
+UPDATE subjects SET username = 'creacio_i_autoria_digital_ii' WHERE code = 'GDVA63';
+UPDATE subjects SET username = 'creacio_i_autoria_digital_iii' WHERE code = 'GDVA14';
+UPDATE subjects SET username = 'creacio_i_autoria_digital_iv' WHERE code = 'GDVA54';
+UPDATE subjects SET username = 'cultura_audiovisual_i' WHERE code = 'GDVA23';
+UPDATE subjects SET username = 'cultura_audiovisual_ii' WHERE code = 'GDVA73';
+UPDATE subjects SET username = 'cultura_de_la_imatge_i' WHERE code = 'GDVG33';
+UPDATE subjects SET username = 'cultura_de_la_imatge_ii' WHERE code = 'GDVG83';
+UPDATE subjects SET username = 'disseny_i_comunicacio' WHERE code = 'GDVG24';
+UPDATE subjects SET username = 'disseny_i_publicitat' WHERE code = 'GDVG54';
+UPDATE subjects SET username = 'eines-informatiques-i' WHERE code = 'GDF011';
+UPDATE subjects SET username = 'eines-informatiques-ii' WHERE code = 'GDF051';
+UPDATE subjects SET username = 'estetica' WHERE code = 'GBF031';
+UPDATE subjects SET username = 'estetica_i_teoria_de_les_arts' WHERE code = 'GDF071';
+UPDATE subjects SET username = 'gestio' WHERE code = 'GDVI44';
+UPDATE subjects SET username = 'historia_de_la_moda_i' WHERE code = 'GDVM33';
+UPDATE subjects SET username = 'historia_de_la_moda_ii' WHERE code = 'GDVM83';
+UPDATE subjects SET username = 'historia_del_disseny' WHERE code = 'GDB032';
+UPDATE subjects SET username = 'iconografia_i_comunicacio' WHERE code = 'GDF061';
+UPDATE subjects SET username = 'imatge_i_comunicacio' WHERE code = 'GDVM73';
+UPDATE subjects SET username = 'infografia-i' WHERE code = 'GDVG43';
+UPDATE subjects SET username = 'infografia-ii' WHERE code = 'GDVG93';
+UPDATE subjects SET username = 'introduccio_al_disseny_web' WHERE code = 'GDVG34';
+UPDATE subjects SET username = 'laboratori_de_processos_i_projectes_i' WHERE code = 'GBB031';
+UPDATE subjects SET username = 'laboratori_de_processos_i_projectes_ii' WHERE code = 'GBB022';
+UPDATE subjects SET username = 'laboratori_de_processos_i_projectes_iii' WHERE code = 'GBB052';
+UPDATE subjects SET username = 'laboratori_de_processos_i_projectes_v' WHERE code = 'GBB033';
+UPDATE subjects SET username = 'llenguatges_audiovisuals_i' WHERE code = 'GDB002';
+UPDATE subjects SET username = 'llenguatges_audiovisuals_ii' WHERE code = 'GDB042';
+UPDATE subjects SET username = 'manipulacio_i_estampacio_de_teixits' WHERE code = 'GDVM34';
+UPDATE subjects SET username = 'metodologies_transdisciplinaries_i_experimentals' WHERE code = 'GBB014';
+UPDATE subjects SET username = 'pensament_contemporani_i_practiques_artistiques' WHERE code = 'GBF002';
+UPDATE subjects SET username = 'pensament_modern_i_practiques_artistiques' WHERE code = 'GBF001';
+UPDATE subjects SET username = 'producte' WHERE code = 'GDVI34';
+UPDATE subjects SET username = 'programacio_per_dissenyadors' WHERE code = 'GDVG44';
+UPDATE subjects SET username = 'taller_de_color' WHERE code = 'GDF041';
+UPDATE subjects SET username = 'taller_de_creativitat' WHERE code = 'GDF012';
+UPDATE subjects SET username = 'taller_de_dibuix_i' WHERE code = 'GBF011';
+UPDATE subjects SET username = 'taller_de_dibuix_ii' WHERE code = 'GBF041';
+UPDATE subjects SET username = 'tecniques_infografiques_i' WHERE code = 'GDVI23';
+UPDATE subjects SET username = 'tecniques_infografiques_ii' WHERE code = 'GDVI73';
+UPDATE subjects SET username = 'tipografia_en_moviment' WHERE code = 'GDVA44';
+UPDATE subjects SET username = 'tipografia_i' WHERE code = 'GDVG23';
+UPDATE subjects SET username = 'tipografia_ii' WHERE code = 'GDVG73';
+UPDATE subjects SET username = 'treball_final_de_grau' WHERE code = 'GDT074';
+UPDATE subjects SET username = 'taller_tridimensional_i_dinvestigacio_artistica' WHERE code = 'GDF002';
+UPDATE subjects SET username = 'construccio_i_installacions_iii' WHERE code = 'GDVI24';
+UPDATE subjects SET username = 'taller_dexpressio_i_comunicacio' WHERE code = 'GDF021';
+UPDATE subjects SET username = 'construccio_i_installacions_ii' WHERE code = 'GDVI93';
+UPDATE subjects SET username = 'construccio_i_installacions_iv' WHERE code = 'GDVI54';
+UPDATE subjects SET username = 'construccio_i_installacions_i' WHERE code = 'GDVI43';
+UPDATE subjects SET username = 'economia_empresa_i_disseny' WHERE code = 'GDB052';
+UPDATE subjects SET username = 'fonaments_de_disseny_ii' WHERE code = 'GDB011';
+UPDATE subjects SET username = 'fonaments_de_disseny_i' WHERE code = 'GDB001';
+UPDATE subjects SET username = '2d_llenguatges_tecniques_i_tecnologies' WHERE code = 'GBB001';
+UPDATE subjects SET username = 'expresio-grafica-ii' WHERE code = 'GDB062';
+UPDATE subjects SET username = 'expresio-grafica-i' WHERE code = 'GDB012';
+UPDATE subjects SET username = 'projectes_disseny_audiovisual_iii' WHERE code = 'GDVA24';
+UPDATE subjects SET username = 'taller_audiovisual_iii' WHERE code = 'GDVA34';
+UPDATE subjects SET username = 'projectes_disseny_audiovisual_ii' WHERE code = 'GDVA83';
+UPDATE subjects SET username = 'taller_audiovisual_ii' WHERE code = 'GDVA93';
+UPDATE subjects SET username = 'projectes_disseny_audiovisual_i' WHERE code = 'GDVA33';
+UPDATE subjects SET username = 'taller_audiovisual_i' WHERE code = 'GDVA43';
+UPDATE subjects SET username = 'projectes_disseny_grafic_iii' WHERE code = 'GDVG04';
+UPDATE subjects SET username = 'projectes_disseny_grafic_ii' WHERE code = 'GDVG53';
+UPDATE subjects SET username = 'projectes_disseny_grafic_i' WHERE code = 'GDVG03';
+UPDATE subjects SET username = 'taller_espai_iii' WHERE code = 'GDVI14';
+UPDATE subjects SET username = 'taller_espai_ii' WHERE code = 'GDVI63';
+UPDATE subjects SET username = 'taller_espai_i' WHERE code = 'GDVI13';
+UPDATE subjects SET username = 'projectes_disseny_interiors_iii' WHERE code = 'GDVI04';
+UPDATE subjects SET username = 'projectes_disseny_interiors_ii' WHERE code = 'GDVI53';
+UPDATE subjects SET username = 'projectes_disseny_interiors_i' WHERE code = 'GDVI03';
+UPDATE subjects SET username = 'marketing_i_moda' WHERE code = 'GDVM44';
+UPDATE subjects SET username = 'taller_moda_iii' WHERE code = 'GDVM14';
+UPDATE subjects SET username = 'historia_disseny_interiors_ii' WHERE code = 'GDVI83';
+UPDATE subjects SET username = 'historia_disseny_interiors_i' WHERE code = 'GDVI33';
+UPDATE subjects SET username = 'taller_moda_ii' WHERE code = 'GDVM63';
+
+-- Total unique subjects updated: 83
+
+-- Verify the updates:
+SELECT code, name, username, password FROM subjects WHERE username IS NOT NULL ORDER BY code;

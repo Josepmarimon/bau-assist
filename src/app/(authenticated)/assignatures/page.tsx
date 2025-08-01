@@ -49,6 +49,7 @@ interface Subject {
   itinerari?: string | null
   degree?: string | null
   password?: string | null
+  username?: string | null
 }
 
 interface Filters {

@@ -71,6 +71,7 @@ interface Subject {
   degree?: string | null
   groupCount?: number
   password?: string | null
+  username?: string | null
 }
 
 interface SubjectGroup {
@@ -1265,10 +1266,23 @@ export default function AssignaturesGrupsPage() {
                                 ) : 'No especificat'}
                               </dd>
                             </div>
-                            {subject.password && (
-                              <div className="col-span-2">
-                                <dt className="font-medium text-muted-foreground">Password Guia Docent</dt>
-                                <dd className="mt-1 font-mono text-xs bg-white px-2 py-1 rounded border">{subject.password}</dd>
+                            {(subject.username || subject.password) && (
+                              <div className="col-span-2 space-y-2">
+                                <dt className="font-medium text-muted-foreground">Credencials Guia Docent</dt>
+                                <dd className="mt-1 space-y-2">
+                                  {subject.username && (
+                                    <div>
+                                      <span className="text-xs text-muted-foreground">Usuari:</span>
+                                      <span className="ml-2 font-mono text-xs bg-white px-2 py-1 rounded border">{subject.username}</span>
+                                    </div>
+                                  )}
+                                  {subject.password && (
+                                    <div>
+                                      <span className="text-xs text-muted-foreground">Password:</span>
+                                      <span className="ml-2 font-mono text-xs bg-white px-2 py-1 rounded border">{subject.password}</span>
+                                    </div>
+                                  )}
+                                </dd>
                               </div>
                             )}
                           </dl>
