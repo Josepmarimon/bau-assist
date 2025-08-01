@@ -1265,6 +1265,12 @@ export default function AssignaturesGrupsPage() {
                                 ) : 'No especificat'}
                               </dd>
                             </div>
+                            {subject.password && (
+                              <div className="col-span-2">
+                                <dt className="font-medium text-muted-foreground">Password Guia Docent</dt>
+                                <dd className="mt-1 font-mono text-xs bg-white px-2 py-1 rounded border">{subject.password}</dd>
+                              </div>
+                            )}
                           </dl>
                         </div>
                       </TabsContent>

@@ -44,6 +44,7 @@ interface Subject {
   active: boolean
   itinerari?: string | null
   degree?: string | null
+  password?: string | null
 }
 
 interface SubjectGroup {
@@ -479,6 +480,12 @@ export function SubjectDetailModal({
                                 </Badge>
                               </dd>
                             </div>
+                            {subject.password && (
+                              <div className="col-span-2">
+                                <dt className="text-sm font-medium text-muted-foreground">Password Guia Docent</dt>
+                                <dd className="mt-1 font-mono text-xs bg-gray-100 px-3 py-2 rounded border">{subject.password}</dd>
+                              </div>
+                            )}
                           </dl>
                         </CardContent>
                       </Card>
