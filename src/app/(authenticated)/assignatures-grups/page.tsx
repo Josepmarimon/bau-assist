@@ -70,6 +70,7 @@ interface Subject {
   itinerari?: string | null
   degree?: string | null
   groupCount?: number
+  password?: string | null
 }
 
 interface SubjectGroup {
