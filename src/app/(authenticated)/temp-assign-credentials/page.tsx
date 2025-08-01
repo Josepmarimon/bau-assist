@@ -87,7 +87,6 @@ export default function TempAssignCredentialsPage() {
   })
 
   const assignedCredentials = new Set(assignments.map(a => a.credentialIndex))
-  const availableCredentials = credentials.filter((_, index) => !assignedCredentials.has(index))
 
   const addAssignment = (subjectId: string, credentialIndex: number) => {
     setAssignments(prev => [...prev, { subjectId, credentialIndex }])
@@ -213,7 +212,7 @@ export default function TempAssignCredentialsPage() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-muted-foreground">Credencials disponibles</p>
-              <p className="text-xl font-bold">{availableCredentials.length}</p>
+              <p className="text-xl font-bold">{credentials.length - assignedCredentials.size}</p>
             </div>
             <Key className="h-4 w-4 text-muted-foreground" />
           </div>
@@ -350,19 +349,19 @@ export default function TempAssignCredentialsPage() {
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="none">Cap</SelectItem>
-                              {availableCredentials.map((cred, index) => {
-                                const realIndex = credentials.indexOf(cred)
+                              {credentials.map((cred, index) => {
+                                // Skip if this credential is assigned to another subject
+                                const isAssignedElsewhere = assignments.some(a => 
+                                  a.credentialIndex === index && a.subjectId !== subject.id
+                                )
+                                if (isAssignedElsewhere) return null
+                                
                                 return (
-                                  <SelectItem key={realIndex} value={realIndex.toString()}>
+                                  <SelectItem key={index} value={index.toString()}>
                                     {cred.usuario} ({cred.password})
                                   </SelectItem>
                                 )
                               })}
-                              {assignment && (
-                                <SelectItem value={assignment.credentialIndex.toString()}>
-                                  {assignedCredential!.usuario} (Actual)
-                                </SelectItem>
-                              )}
                             </SelectContent>
                           </Select>
                           
