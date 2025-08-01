@@ -48,6 +48,7 @@ interface Subject {
   active: boolean
   itinerari?: string | null
   degree?: string | null
+  password?: string | null
 }
 
 interface Filters {

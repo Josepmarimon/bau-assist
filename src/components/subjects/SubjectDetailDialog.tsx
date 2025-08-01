@@ -37,6 +37,7 @@ interface SubjectDetailDialogProps {
     type: string
     department?: string | null
     itinerari?: string | null
+    password?: string | null
   } | null
   open: boolean
   onOpenChange: (open: boolean) => void
@@ -312,6 +313,12 @@ export function SubjectDetailDialog({ subject, open, onOpenChange }: SubjectDeta
                   <dt className="font-medium text-muted-foreground">Crèdits ECTS</dt>
                   <dd className="mt-1">{subject.credits}</dd>
                 </div>
+                {subject.password && (
+                  <div className="col-span-2">
+                    <dt className="font-medium text-muted-foreground">Password Guia Docent</dt>
+                    <dd className="mt-1 font-mono text-xs bg-white px-2 py-1 rounded border">{subject.password}</dd>
+                  </div>
+                )}
                 <div>
                   <dt className="font-medium text-muted-foreground">Curs</dt>
                   <dd className="mt-1">{subject.year}r</dd>
