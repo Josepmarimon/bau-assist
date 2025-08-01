@@ -641,39 +641,69 @@ export default function AssignaturesGrupsPage() {
 
   const exportCredentialsToExcel = async () => {
     try {
-      // Get all subjects with credentials
-      const subjectsWithCredentials = filteredSubjects.filter(s => s.username || s.password)
+      // Show loading toast
+      const loadingToast = toast.loading('Carregant dades per exportar...')
+      
+      // Get ALL subjects with credentials, not just filtered ones
+      const { data: allSubjectsData, error: subjectsError } = await supabase
+        .from('subjects')
+        .select('*')
+        .or('username.not.is.null,password.not.is.null')
+        .order('code', { ascending: true })
+
+      if (subjectsError) throw subjectsError
+      
+      const subjectsWithCredentials = allSubjectsData || []
       
       if (subjectsWithCredentials.length === 0) {
+        toast.dismiss(loadingToast)
         toast.error('No hi ha assignatures amb credencials per exportar')
         return
       }
+
+      console.log(`Trobades ${subjectsWithCredentials.length} assignatures amb credencials`)
 
       const exportData: any[] = []
 
       // For each subject with credentials
       for (const subject of subjectsWithCredentials) {
-        // Load groups if not already loaded
-        if (!subjectGroups[subject.id]) {
-          await loadSubjectGroups(subject.id)
+        // Get all groups for this subject
+        const { data: groupsData, error: groupsError } = await supabase
+          .from('subject_groups')
+          .select('id, group_code')
+          .eq('subject_id', subject.id)
+
+        if (groupsError) {
+          console.error(`Error loading groups for subject ${subject.code}:`, groupsError)
+          continue
         }
 
-        const groups = subjectGroups[subject.id] || []
+        const groups = groupsData || []
         
         // Get unique teachers from all groups
         const teachersMap = new Map<string, any>()
         
         for (const group of groups) {
-          // Load teacher assignments if not loaded
-          if (!teacherAssignments[group.id]) {
-            await loadTeacherAssignments(group.id)
+          // Get teacher assignments directly from database
+          const { data: assignmentsData, error: assignmentsError } = await supabase
+            .rpc('get_group_teacher_assignments', { p_group_id: group.id })
+
+          if (assignmentsError) {
+            console.error(`Error loading teachers for group ${group.group_code}:`, assignmentsError)
+            continue
           }
           
-          const assignments = teacherAssignments[group.id] || []
+          const assignments = assignmentsData || []
           
           for (const assignment of assignments) {
-            if (assignment.teacher && assignment.teacher.email) {
-              teachersMap.set(assignment.teacher.id, assignment.teacher)
+            if (assignment.email) {
+              teachersMap.set(assignment.teacher_id, {
+                id: assignment.teacher_id,
+                first_name: assignment.first_name,
+                last_name: assignment.last_name,
+                email: assignment.email,
+                department: assignment.department
+              })
             }
           }
         }
@@ -692,6 +722,8 @@ export default function AssignaturesGrupsPage() {
           })
         })
       }
+
+      toast.dismiss(loadingToast)
 
       if (exportData.length === 0) {
         toast.error('No hi ha professors assignats a les assignatures amb credencials')
