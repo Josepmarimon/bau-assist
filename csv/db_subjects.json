@@ -1,0 +1,788 @@
+[
+  {
+    "id": "d8c68bf1-18d9-4e0a-b243-abb4def9b03e",
+    "codi": "GBB001",
+    "nom": "2D, Llenguatges, Tècniques i Tecnologies",
+    "credits": 6
+  },
+  {
+    "id": "9653cf53-34af-401e-a0f6-016e6942db4f",
+    "codi": "GBB002",
+    "nom": "2D, Llenguatges, Tècniques i Tecnologies Instal·lades",
+    "credits": 6
+  },
+  {
+    "id": "4f7177b8-3b82-48c7-82a8-05ca3b9ed504",
+    "codi": "GBB003",
+    "nom": "Pràctiques Artístiques i Investigació",
+    "credits": 6
+  },
+  {
+    "id": "2fda29a1-aa92-433a-ae9c-091255724a78",
+    "codi": "GBB004",
+    "nom": "Art Practices in Context Seminar II ",
+    "credits": 6
+  },
+  {
+    "id": "15ff88eb-67b3-40e2-87b7-128e5dca76ed",
+    "codi": "GBB011",
+    "nom": "4D, Llenguatges, Tècniques i Tecnologies",
+    "credits": 6
+  },
+  {
+    "id": "e3528f67-80d9-4463-a865-421bc0256d3e",
+    "codi": "GBB012",
+    "nom": "4D, Llenguatges, Tècniques i Tecnologies Instal·lades",
+    "credits": 6
+  },
+  {
+    "id": "a4043476-a6d5-4bff-92e5-44a0166c441c",
+    "codi": "GBB013",
+    "nom": "Laboratori de Processos i Projectes IV",
+    "credits": 6
+  },
+  {
+    "id": "eaf7f938-aebd-4497-a7ae-182d8eed0866",
+    "codi": "GBB014",
+    "nom": "Metodologies Transdisciplinàries i Experimentals",
+    "credits": 6
+  },
+  {
+    "id": "2e23bde7-d6cf-4e94-9236-6ad43ba9ad7a",
+    "codi": "GBB021",
+    "nom": "3D, Llenguatges, Tècniques i Tecnologies",
+    "credits": 6
+  },
+  {
+    "id": "25e5e367-ccb8-4cf4-ae15-e142bca0fdc0",
+    "codi": "GBB022",
+    "nom": "Laboratori de Processos i Projectes II",
+    "credits": 6
+  },
+  {
+    "id": "e1fc7c1f-5496-4dec-baef-6eecc3aa93c5",
+    "codi": "GBB023",
+    "nom": "Art Practices in Context Seminar I",
+    "credits": 6
+  },
+  {
+    "id": "0b12fa6e-3fe3-42e0-994b-b2da40498c75",
+    "codi": "GBB024",
+    "nom": "Laboratori de Processos i Projectes VI",
+    "credits": 6
+  },
+  {
+    "id": "ae8c8d77-dc81-43d4-8453-ce10249cb901",
+    "codi": "GBB031",
+    "nom": "Laboratori de Processos i Projectes I",
+    "credits": 6
+  },
+  {
+    "id": "90aeeefa-6941-49f6-ad2a-8d976cf2dc81",
+    "codi": "GBB032",
+    "nom": "3D, Llenguatges, Tècniques i Tecnologies Instal·lades",
+    "credits": 6
+  },
+  {
+    "id": "eb768767-79b3-48d8-8bb2-a9d643853d31",
+    "codi": "GBB033",
+    "nom": "Laboratori de Processos i Projectes V",
+    "credits": 6
+  },
+  {
+    "id": "35905332-3ce9-48f5-9ef4-f92fe71870ad",
+    "codi": "GBB042",
+    "nom": "XD, Llenguatges, Tècniques i Tecnologies",
+    "credits": 6
+  },
+  {
+    "id": "826b9c1d-588d-44dc-af81-5fd839e671e9",
+    "codi": "GBB052",
+    "nom": "Laboratori de Processos i Projectes III",
+    "credits": 6
+  },
+  {
+    "id": "7fef0c8a-1fa7-4b94-83d9-2e4be6fb5164",
+    "codi": "GBF001",
+    "nom": "Pensament Modern i Pràctiques Artístiques",
+    "credits": 6
+  },
+  {
+    "id": "58a27113-7759-4a62-bfd1-e60476408e0e",
+    "codi": "GBF002",
+    "nom": "Pensament Contemporani i Pràctiques Artístiques",
+    "credits": 6
+  },
+  {
+    "id": "1e37d409-8198-4f8c-a594-365160c1fefc",
+    "codi": "GBF011",
+    "nom": "Taller de Dibuix I",
+    "credits": 6
+  },
+  {
+    "id": "a1eabaed-f078-48fc-a58b-941e93aae441",
+    "codi": "GBF012",
+    "nom": "Writing and Communication Workshop",
+    "credits": 6
+  },
+  {
+    "id": "549afc16-4571-4adb-ae18-5247272e2b29",
+    "codi": "GBF021",
+    "nom": "Visualisation and Documentation Workshop",
+    "credits": 6
+  },
+  {
+    "id": "34c13eb2-6660-4536-9f40-19964859b161",
+    "codi": "GBF022",
+    "nom": "Antropologia",
+    "credits": 6
+  },
+  {
+    "id": "6a983e72-01c1-45fd-8741-4853ce9d9446",
+    "codi": "GBF031",
+    "nom": "Estètica",
+    "credits": 6
+  },
+  {
+    "id": "08e469dc-da66-4894-b6c4-a40d8671d3da",
+    "codi": "GBF032",
+    "nom": "Art, Activisme, Mediació i Pedagogia",
+    "credits": 6
+  },
+  {
+    "id": "751a35ea-5d28-49d2-b5df-52bbb051b10d",
+    "codi": "GBF041",
+    "nom": "Taller de Dibuix II",
+    "credits": 6
+  },
+  {
+    "id": "0d0ff898-13a7-4f38-87ce-973561107d86",
+    "codi": "GBF051",
+    "nom": "Art, Institució i Mercat",
+    "credits": 6
+  },
+  {
+    "id": "be3496cf-1b09-4aef-9346-deb4a0371cf6",
+    "codi": "GBT004",
+    "nom": "Treball de Fi de Grau",
+    "credits": 12
+  },
+  {
+    "id": "791dfeb5-1048-4ed2-9252-d74dae1f6b93",
+    "codi": "GBV00L",
+    "nom": "Taller de Dibuix Experimental",
+    "credits": 6
+  },
+  {
+    "id": "24383b4a-f7d0-4381-bd78-f2a032cdb817",
+    "codi": "GBV00P",
+    "nom": "Pràctiques Crítiques en les Arts i les Humanitats",
+    "credits": 6
+  },
+  {
+    "id": "bb1e7a9b-5618-40b8-961d-d59a57447c91",
+    "codi": "GBV01L",
+    "nom": "Taller de Pedagogies Experimentals",
+    "credits": 6
+  },
+  {
+    "id": "6140f9fa-0a09-4bff-a47e-5c784159421d",
+    "codi": "GBV01P",
+    "nom": "Pràctiques Crítiques en les Arts i les Ciències Socials",
+    "credits": 6
+  },
+  {
+    "id": "05955095-46eb-41f2-a9fe-abfb2ca70f74",
+    "codi": "GBV02L",
+    "nom": "Taller de Procediments Pictòrics",
+    "credits": 6
+  },
+  {
+    "id": "a7db7248-6e75-4ac0-8ca2-7fda49c8d319",
+    "codi": "GBV02P",
+    "nom": "Pràctiques Crítiques en les Arts, les Ciències i les Tecnologies",
+    "credits": 6
+  },
+  {
+    "id": "92c21bbd-8c69-4762-81f0-ced4f62cc71c",
+    "codi": "GBV03L",
+    "nom": "Taller de Procediments Pictòrics Experimentals",
+    "credits": 6
+  },
+  {
+    "id": "d9bad1ee-a349-4261-a07a-323760a15e61",
+    "codi": "GBV03P",
+    "nom": "Debats Contemporanis en les Arts i les Humanitats",
+    "credits": 6
+  },
+  {
+    "id": "21f15019-752b-4e1a-9ff7-b22740fca5fc",
+    "codi": "GBV04L",
+    "nom": "Taller de Procediments Escultòrics",
+    "credits": 6
+  },
+  {
+    "id": "c9137190-8c01-4123-b0ef-f8f5cc8e97b0",
+    "codi": "GBV04P",
+    "nom": "Debats Contemporanis en les Arts i les Ciències Socials",
+    "credits": 6
+  },
+  {
+    "id": "fd7acaad-d979-46fa-803b-3681a91bb6a2",
+    "codi": "GBV05L",
+    "nom": "Taller de Fabricació Digital",
+    "credits": 6
+  },
+  {
+    "id": "01171c24-a766-4fa0-bddc-773332780503",
+    "codi": "GBV05P",
+    "nom": "Debats Contemporanis en les Arts, les Ciències i les Tecnologies",
+    "credits": 6
+  },
+  {
+    "id": "f63fb0ac-675a-4509-bb3a-4d94c357b9b9",
+    "codi": "GBV06L",
+    "nom": "Taller de Performance i Acció",
+    "credits": 6
+  },
+  {
+    "id": "720416b7-9737-468c-84ca-6e94ff48b2c8",
+    "codi": "GBV08L",
+    "nom": "Taller d'Animació i Stop Motion",
+    "credits": 6
+  },
+  {
+    "id": "42763976-b26b-43de-93fc-6f062bd59e16",
+    "codi": "GBV09L",
+    "nom": "Taller de Videoart",
+    "credits": 6
+  },
+  {
+    "id": "5f48ee79-4f45-4e00-95a1-e727ef909af0",
+    "codi": "GBV11L",
+    "nom": "Taller d'Interacció",
+    "credits": 6
+  },
+  {
+    "id": "48dee729-d7b9-440e-8826-931a2b58fed0",
+    "codi": "GBV13L",
+    "nom": "Taller d'Edicions d'Artista",
+    "credits": 6
+  },
+  {
+    "id": "cebfff3d-c6c3-4091-88b2-ebb62c2b8872",
+    "codi": "GBV14L",
+    "nom": "Taller de Materials Tous i Estampació",
+    "credits": 6
+  },
+  {
+    "id": "9878a74c-abb6-49bd-bbe2-1bc733ca4710",
+    "codi": "GDB001",
+    "nom": "Fonaments del Disseny I",
+    "credits": 6
+  },
+  {
+    "id": "fc2f1536-88af-40a6-82c7-f498aa8ca963",
+    "codi": "GDB002",
+    "nom": "Llenguatges Audiovisuals I",
+    "credits": 6
+  },
+  {
+    "id": "9acd432b-aacf-4014-b8b2-58b6ecffc367",
+    "codi": "GDB011",
+    "nom": "Fonaments del Disseny II",
+    "credits": 6
+  },
+  {
+    "id": "7f5af720-7cdb-474f-be09-4fe2e281cc29",
+    "codi": "GDB012",
+    "nom": "Expressió Gràfica I",
+    "credits": 6
+  },
+  {
+    "id": "ec426c8e-ec55-4a09-b520-4dc2c906de39",
+    "codi": "GDB022",
+    "nom": "Iniciació als Projectes de Disseny I",
+    "credits": 6
+  },
+  {
+    "id": "1130f830-c2b2-4e33-8755-8e0bfbcd36d6",
+    "codi": "GDB032",
+    "nom": "Història del Disseny",
+    "credits": 6
+  },
+  {
+    "id": "3ba133c2-ea8b-445d-8366-103e07f9125f",
+    "codi": "GDB042",
+    "nom": "Llenguatges Audiovisuals II",
+    "credits": 6
+  },
+  {
+    "id": "1cf9443a-fe39-4931-9015-0a20fb189021",
+    "codi": "GDB052",
+    "nom": "Economia, Empresa i Disseny",
+    "credits": 6
+  },
+  {
+    "id": "aba834c1-7ae1-4a43-9e35-8f5308e185de",
+    "codi": "GDB062",
+    "nom": "Expressió Gràfica II",
+    "credits": 6
+  },
+  {
+    "id": "5c2e973d-d068-4c28-9289-9c221f1cad57",
+    "codi": "GDB072",
+    "nom": "Iniciació als Projectes de Disseny II",
+    "credits": 6
+  },
+  {
+    "id": "22837e2d-4931-41a1-bd7a-2e56c79b2b74",
+    "codi": "GDF001",
+    "nom": "Taller de Dibuix Artístic",
+    "credits": 6
+  },
+  {
+    "id": "9599b289-060f-46bd-bdc5-592f03706327",
+    "codi": "GDF002",
+    "nom": "Taller Tridimensional i d'Investigació Artística",
+    "credits": 6
+  },
+  {
+    "id": "fe082465-06a8-4ee2-b726-f318cc053436",
+    "codi": "GDF011",
+    "nom": "Eines Informàtiques I",
+    "credits": 6
+  },
+  {
+    "id": "007cb498-3a57-4c46-8809-d1c0e4f8f99b",
+    "codi": "GDF012",
+    "nom": "Taller de Creativitat",
+    "credits": 6
+  },
+  {
+    "id": "c9832dd7-c2eb-45d3-b2d3-4c3411a78d8c",
+    "codi": "GDF021",
+    "nom": "Taller d'Expressió i Comunicació",
+    "credits": 6
+  },
+  {
+    "id": "72c4e437-41a2-42f6-8ee1-7c1269573475",
+    "codi": "GDF031",
+    "nom": "Antropologia Sociocultural",
+    "credits": 6
+  },
+  {
+    "id": "edb4de1b-10a1-4b43-948c-1170f35c2956",
+    "codi": "GDF041",
+    "nom": "Taller de Color",
+    "credits": 6
+  },
+  {
+    "id": "0867ac2f-12f9-472c-bb4d-8fce1c313cc3",
+    "codi": "GDF051",
+    "nom": "Eines Informàtiques II",
+    "credits": 6
+  },
+  {
+    "id": "4a4e4fca-a449-424f-af2f-80e866adf66a",
+    "codi": "GDF061",
+    "nom": "Iconografia i Comunicació",
+    "credits": 6
+  },
+  {
+    "id": "9995dd5b-8f75-4495-b42f-22a308f296b8",
+    "codi": "GDF071",
+    "nom": "Estètica i Teoria de les Arts",
+    "credits": 6
+  },
+  {
+    "id": "9d1955c0-581c-40de-af7c-91e7d712d51c",
+    "codi": "GDT074",
+    "nom": "Treball Final de Grau",
+    "credits": 12
+  },
+  {
+    "id": "69ef14e6-a966-43cb-b9c4-77ac97e7678f",
+    "codi": "GDVA03",
+    "nom": "Animació Digital I",
+    "credits": 6
+  },
+  {
+    "id": "1037eeee-ea76-49e2-bc44-6036115d3024",
+    "codi": "GDVA04",
+    "nom": "Animació Digital III",
+    "credits": 6
+  },
+  {
+    "id": "76611a63-92b6-4d7d-89be-3fa28ffe5413",
+    "codi": "GDVA13",
+    "nom": "Creació i Autoria Digital I",
+    "credits": 6
+  },
+  {
+    "id": "e61b871d-643e-4ed7-8504-d58b65cee54f",
+    "codi": "GDVA14",
+    "nom": "Creació i Autoria Digital III",
+    "credits": 6
+  },
+  {
+    "id": "ec8a45bf-67f1-4a34-9d8f-a81fcf131aa7",
+    "codi": "GDVA23",
+    "nom": "Cultura Audiovisual I",
+    "credits": 6
+  },
+  {
+    "id": "9602cc82-2d04-4c05-8f0c-d86a1fa87b06",
+    "codi": "GDVA24",
+    "nom": "Projectes de Disseny Audiovisual III",
+    "credits": 6
+  },
+  {
+    "id": "1ca4bdea-83c0-4b43-b649-2e6cc7cfa9cb",
+    "codi": "GDVA33",
+    "nom": "Projectes de Disseny Audiovisual I",
+    "credits": 6
+  },
+  {
+    "id": "3aa172ad-6b0f-4d0f-9b8f-0d12c268f60d",
+    "codi": "GDVA34",
+    "nom": "Taller d'Audiovisual III",
+    "credits": 6
+  },
+  {
+    "id": "c53850b7-7b40-4dfc-a330-b743156f34fd",
+    "codi": "GDVA43",
+    "nom": "Taller d'Audiovisual I",
+    "credits": 6
+  },
+  {
+    "id": "c95ade1e-2ea3-4242-b7f4-4c9f2b044269",
+    "codi": "GDVA44",
+    "nom": "Tipografia en Moviment",
+    "credits": 6
+  },
+  {
+    "id": "3467706b-22f0-401e-bc6b-2d3fa83a096a",
+    "codi": "GDVA53",
+    "nom": "Animació Digital II",
+    "credits": 6
+  },
+  {
+    "id": "f57ad65a-300a-446a-816d-68d9238ecc92",
+    "codi": "GDVA54",
+    "nom": "Creació i Autoria Digital IV",
+    "credits": 6
+  },
+  {
+    "id": "f1b4dafb-dc6e-422b-a80e-815238b768b2",
+    "codi": "GDVA63",
+    "nom": "Creació i Autoria Digital II",
+    "credits": 6
+  },
+  {
+    "id": "080de9c1-66b6-4b25-ae4f-c5a8a5b1384a",
+    "codi": "GDVA73",
+    "nom": "Cultura Audiovisual II",
+    "credits": 6
+  },
+  {
+    "id": "c1e9cbd0-d818-4677-a65c-672a9e73d62c",
+    "codi": "GDVA83",
+    "nom": "Projectes de Disseny Audiovisual II",
+    "credits": 6
+  },
+  {
+    "id": "9a3f4d04-6035-473a-a9e1-5346a5d02c49",
+    "codi": "GDVA93",
+    "nom": "Taller d'Audiovisual II",
+    "credits": 6
+  },
+  {
+    "id": "98acd819-f8ee-436e-88e2-e9b53efeeebd",
+    "codi": "GDVG03",
+    "nom": "Projectes de Disseny Gràfic I",
+    "credits": 6
+  },
+  {
+    "id": "b6728bbe-a9a8-4365-a16d-3d1623987a03",
+    "codi": "GDVG04",
+    "nom": "Projectes de Disseny Gràfic III",
+    "credits": 6
+  },
+  {
+    "id": "080c1c5d-76b0-4023-b53e-65c38bc5588f",
+    "codi": "GDVG13",
+    "nom": "Taller de Gràfic i Comunicació Visual I",
+    "credits": 6
+  },
+  {
+    "id": "c7b0a60d-2188-44d1-b9b4-94210ef47411",
+    "codi": "GDVG14",
+    "nom": "Taller de Gràfic i Comunicació Visual III",
+    "credits": 6
+  },
+  {
+    "id": "fc73078f-5a05-4af8-bd55-1011522bc689",
+    "codi": "GDVG23",
+    "nom": "Tipografia I",
+    "credits": 6
+  },
+  {
+    "id": "91d41814-b76e-4561-805a-1714b31c334a",
+    "codi": "GDVG24",
+    "nom": "Disseny i Comunicació",
+    "credits": 6
+  },
+  {
+    "id": "48c90d4b-8a06-4695-9d2b-089d50905a39",
+    "codi": "GDVG33",
+    "nom": "Cultura de la Imatge I",
+    "credits": 6
+  },
+  {
+    "id": "4a742a94-1fa9-4690-a4b0-819f643db331",
+    "codi": "GDVG34",
+    "nom": "Introducció al Disseny Web",
+    "credits": 6
+  },
+  {
+    "id": "98d5c516-c675-4b5f-886d-3a89d13d472f",
+    "codi": "GDVG43",
+    "nom": "Infografia I",
+    "credits": 6
+  },
+  {
+    "id": "c0d6f77f-d958-4289-b4fc-64445b20fbcb",
+    "codi": "GDVG44",
+    "nom": "Programació per Dissenyadors",
+    "credits": 6
+  },
+  {
+    "id": "736ed253-3eb0-47ae-98e4-d1f35bad5568",
+    "codi": "GDVG53",
+    "nom": "Projectes de Disseny Gràfic II",
+    "credits": 6
+  },
+  {
+    "id": "2ee2991d-4d5c-4444-b379-c5863579aea1",
+    "codi": "GDVG54",
+    "nom": "Disseny i Publicitat",
+    "credits": 6
+  },
+  {
+    "id": "f65fab84-9ba5-409f-b87e-6206c9110111",
+    "codi": "GDVG63",
+    "nom": "Taller de Gràfic i Comunicació Visual II",
+    "credits": 6
+  },
+  {
+    "id": "896ad885-128c-4a0e-8877-0929b17fe2de",
+    "codi": "GDVG73",
+    "nom": "Tipografia II",
+    "credits": 6
+  },
+  {
+    "id": "ab491a4e-6a51-4b64-a37c-1997b5d8ac5e",
+    "codi": "GDVG83",
+    "nom": "Cultura de la Imatge II",
+    "credits": 6
+  },
+  {
+    "id": "8110fdb3-3361-4b07-b745-7396836d5ffc",
+    "codi": "GDVG93",
+    "nom": "Infografia II",
+    "credits": 6
+  },
+  {
+    "id": "18cf3a62-18c4-4e62-ac3c-0597583e57a8",
+    "codi": "GDVI03",
+    "nom": "Projectes de Disseny d'Interiors I",
+    "credits": 6
+  },
+  {
+    "id": "40f33eb3-918d-42be-ba2b-b4d7f3570bf0",
+    "codi": "GDVI04",
+    "nom": "Projectes de Disseny d'Interiors III",
+    "credits": 6
+  },
+  {
+    "id": "55f7f3c1-f00d-4ddd-8425-e6aaf80e3097",
+    "codi": "GDVI13",
+    "nom": "Taller d'Espai I",
+    "credits": 6
+  },
+  {
+    "id": "6ec16e87-4a76-4b3b-b074-794fccefa38b",
+    "codi": "GDVI14",
+    "nom": "Taller d'Espai III",
+    "credits": 6
+  },
+  {
+    "id": "bd9e3fb6-ac89-4243-818d-a797962a362c",
+    "codi": "GDVI23",
+    "nom": "Tècniques Infogràfiques I",
+    "credits": 6
+  },
+  {
+    "id": "a22a6125-9fae-4161-9b95-cd6d48f82fb7",
+    "codi": "GDVI24",
+    "nom": "Construcció i Instal·lacions III",
+    "credits": 6
+  },
+  {
+    "id": "cf026efd-f638-4eee-b72f-95a10d65f4bf",
+    "codi": "GDVI33",
+    "nom": "Història del Disseny d'Interiors I",
+    "credits": 6
+  },
+  {
+    "id": "86822f5c-1803-4c59-b813-803ac70e5d16",
+    "codi": "GDVI34",
+    "nom": "Producte",
+    "credits": 6
+  },
+  {
+    "id": "68ba6060-00ed-4b04-88f5-f9d35287726c",
+    "codi": "GDVI43",
+    "nom": "Construcció i Instal·lacions I",
+    "credits": 6
+  },
+  {
+    "id": "08ce4cb1-e391-48d4-bb4f-daf24abe78b2",
+    "codi": "GDVI44",
+    "nom": "Gestió",
+    "credits": 6
+  },
+  {
+    "id": "dc577a0d-f2fc-4590-adff-81148ba37d66",
+    "codi": "GDVI53",
+    "nom": "Projectes de Disseny d'Interiors II",
+    "credits": 6
+  },
+  {
+    "id": "b407d3a2-36e7-435c-ae4d-fdacb7af4831",
+    "codi": "GDVI54",
+    "nom": "Construcció i Instal·lacions IV",
+    "credits": 6
+  },
+  {
+    "id": "8fdfc829-6209-48c5-95c2-55ac42b591af",
+    "codi": "GDVI63",
+    "nom": "Taller d'Espai II",
+    "credits": 6
+  },
+  {
+    "id": "bd236aa4-6169-44cb-9693-5741a90a4519",
+    "codi": "GDVI73",
+    "nom": "Tècniques Infogràfiques II",
+    "credits": 6
+  },
+  {
+    "id": "8ecb0371-409e-450d-89cf-a0d8a13fcfa1",
+    "codi": "GDVI83",
+    "nom": "Història del Disseny d'Interiors II",
+    "credits": 6
+  },
+  {
+    "id": "9c84be3f-7d33-40b2-bfc2-52b96667d615",
+    "codi": "GDVI93",
+    "nom": "Construcció i Instal·lacions II",
+    "credits": 6
+  },
+  {
+    "id": "4fed4a77-5755-4d95-954b-a6c0318953fb",
+    "codi": "GDVM03",
+    "nom": "Projectes de Disseny de Moda I",
+    "credits": 6
+  },
+  {
+    "id": "90b35d90-a37d-4de2-87fa-bb09fd478620",
+    "codi": "GDVM04",
+    "nom": "Projectes de Disseny de Moda III",
+    "credits": 6
+  },
+  {
+    "id": "c2cf9ddc-5b51-4f7f-90a8-0e145d801337",
+    "codi": "GDVM13",
+    "nom": "Taller de Moda I",
+    "credits": 6
+  },
+  {
+    "id": "890152a4-8786-463a-a476-64b7fca527ed",
+    "codi": "GDVM14",
+    "nom": "Taller de Moda III",
+    "credits": 6
+  },
+  {
+    "id": "f243e1eb-fb15-48be-97a1-59c9e53f7a93",
+    "codi": "GDVM23",
+    "nom": "Anàlisi i Teoria dels Teixits",
+    "credits": 6
+  },
+  {
+    "id": "a3f55d0f-e7c6-4817-a40c-9d9fbc74ea9b",
+    "codi": "GDVM24",
+    "nom": "Patronatge III",
+    "credits": 6
+  },
+  {
+    "id": "51d31696-d4c6-467b-aa41-b8d09b82e71b",
+    "codi": "GDVM33",
+    "nom": "Història de la Moda I",
+    "credits": 6
+  },
+  {
+    "id": "c0a0e182-f932-4b44-aeb1-828588429b99",
+    "codi": "GDVM34",
+    "nom": "Manipulació i Estampació de Teixits",
+    "credits": 6
+  },
+  {
+    "id": "500c2d8a-16ac-4fac-96fd-118c8321e595",
+    "codi": "GDVM43",
+    "nom": "Patronatge I",
+    "credits": 6
+  },
+  {
+    "id": "7675c2d7-9a09-47c3-b2f9-8da06d074da4",
+    "codi": "GDVM44",
+    "nom": "Màrqueting i Moda",
+    "credits": 6
+  },
+  {
+    "id": "d4aebd5f-7540-4519-b8c4-a88e54443bb3",
+    "codi": "GDVM53",
+    "nom": "Projectes de Disseny de Moda II",
+    "credits": 6
+  },
+  {
+    "id": "e262ab66-22e4-41aa-9766-a139748f8400",
+    "codi": "GDVM54",
+    "nom": "Patronatge IV",
+    "credits": 6
+  },
+  {
+    "id": "e1cda44d-59ad-4a19-b8d7-197f1cb9ffa0",
+    "codi": "GDVM63",
+    "nom": "Taller de Moda II",
+    "credits": 6
+  },
+  {
+    "id": "b16dd49b-3033-4973-bb8a-72bddf79f53b",
+    "codi": "GDVM73",
+    "nom": "Imatge i Comunicació",
+    "credits": 6
+  },
+  {
+    "id": "3677187d-c01f-4adf-8d07-af1f38e5c543",
+    "codi": "GDVM83",
+    "nom": "Història de la Moda II",
+    "credits": 6
+  },
+  {
+    "id": "ae6bad79-2d7e-4390-a868-bdd43330c466",
+    "codi": "GDVM93",
+    "nom": "Patronatge II",
+    "credits": 6
+  }
+]

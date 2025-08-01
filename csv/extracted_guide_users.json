@@ -1,0 +1,717 @@
+[
+  {
+    "username": "2d_llenguatges_tecniques_i_tecnologies",
+    "email": "2d_llenguatges_tecniques_i_tecnologies@bau.cat",
+    "password": "I38JOvi4D4Fi"
+  },
+  {
+    "username": "2d_llenguatges_tecniques_i_tecnologies_instalades",
+    "email": "2d_llenguatges_tecniques_i_tecnologies_instalades@bau.cat",
+    "password": "N%bLP<AxeN>@"
+  },
+  {
+    "username": "3d_llenguatges_tecniques_i_tecnologias_instalades",
+    "email": "3d_llenguatges_tecniques_i_tecnologias_instalades@bau.cat",
+    "password": "c2u3RKmk_1-Q"
+  },
+  {
+    "username": "3d_llenguatges_tecniques_i_tecnologies",
+    "email": "3d_llenguatges_tecniques_i_tecnologies@bau.cat",
+    "password": "It)JsYBz)%sB"
+  },
+  {
+    "username": "4d_llenguatges_tecniques_i_tecnologias_instalades",
+    "email": "4d_llenguatges_tecniques_i_tecnologias_instalades@bau.cat",
+    "password": "^>e04^xZn)%Q"
+  },
+  {
+    "username": "4d_llenguatges_tecniques_i_tecnologies",
+    "email": "4d_llenguatges_tecniques_i_tecnologies@bau.cat",
+    "password": "R0a%SyC(ccU4"
+  },
+  {
+    "username": "analisi_i_teoria_dels_teixits",
+    "email": "analisi_i_teoria_dels_teixits@bau.cat",
+    "password": "+V&xPLUIw6va"
+  },
+  {
+    "username": "animacio_digital_i",
+    "email": "animacio_digital_i@bau.cat",
+    "password": "8gBB7lZCHb@eNgC3Az0JxNSZ"
+  },
+  {
+    "username": "animacio_digital_ii",
+    "email": "animacio_digital_ii@bau.cat",
+    "password": "*p@HRG(ICV6a4tRA6Of7M!t@"
+  },
+  {
+    "username": "animacio_digital_iii",
+    "email": "animacio_digital_iii@bau.cat",
+    "password": "WxcgO%dG8z1UJu6xg)8$hgvD"
+  },
+  {
+    "username": "antropologia",
+    "email": "antropologia@bau.cat",
+    "password": "ZN=e_R*RBl%F"
+  },
+  {
+    "username": "antropologia_sociocultural",
+    "email": "antropologia_sociocultural@bau.cat",
+    "password": "aQs8Wvgj+@uj"
+  },
+  {
+    "username": "art_activisme_mediacio_i_pedagogia",
+    "email": "art_activisme_mediacio_i_pedagogia@bau.cat",
+    "password": "mMcikdM)?S3?"
+  },
+  {
+    "username": "art_institucio_i_mercat",
+    "email": "art_institucio_i_mercat@bau.cat",
+    "password": "D!_hLF56wHu1"
+  },
+  {
+    "username": "art_practices_in_context_seminar",
+    "email": "art_practices_in_context_seminar@bau.cat",
+    "password": "dqr5TqmhI-ue"
+  },
+  {
+    "username": "construccio_i_installacions_i",
+    "email": "construccio_i_installacions_i@bau.cat",
+    "password": "#F@zuBEK*NRhGFf*pmA%EsIk"
+  },
+  {
+    "username": "construccio_i_installacions_ii",
+    "email": "construccio_i_installacions_ii@bau.cat",
+    "password": "t)Mb(fzD4Z@r&2&j38PvyFW@"
+  },
+  {
+    "username": "construccio_i_installacions_iii",
+    "email": "construccio_i_installacions_iii@bau.cat",
+    "password": "2^P2bnUc4DmI7ruOGBaA$EX6"
+  },
+  {
+    "username": "construccio_i_installacions_iv",
+    "email": "construccio_i_installacions_iv@bau.cat",
+    "password": "6YFlT)VvzLar3#B#KYFWEufV"
+  },
+  {
+    "username": "creacio_i_autoria_digital_i",
+    "email": "creacio_i_autoria_digital_i@bau.cat",
+    "password": "2@O4zeYU%bGtS!W2gFhOKNP4"
+  },
+  {
+    "username": "creacio_i_autoria_digital_ii",
+    "email": "creacio_i_autoria_digital_ii@bau.cat",
+    "password": "8bsbfErpWzs7)s*(uH6MDXFp"
+  },
+  {
+    "username": "creacio_i_autoria_digital_iii",
+    "email": "creacio_i_autoria_digital_iii@bau.cat",
+    "password": "wuJBiOR)&Cr*T#&psIwSXZc0"
+  },
+  {
+    "username": "creacio_i_autoria_digital_iv",
+    "email": "creacio_i_autoria_digital_iv@bau.cat",
+    "password": "hvP3o@mv(RMsfWa3une)nhRH"
+  },
+  {
+    "username": "cultura_audiovisual_i",
+    "email": "cultura_audiovisual_i@bau.cat",
+    "password": "j(EPJ)(DyW*QrrpLK52QEjF%"
+  },
+  {
+    "username": "cultura_audiovisual_ii",
+    "email": "cultura_audiovisual_ii@bau.cat",
+    "password": "etbXvysMQp@^#sIXY&$$36FV"
+  },
+  {
+    "username": "cultura_de_la_imatge_i",
+    "email": "cultura_de_la_imatge_i@bau.cat",
+    "password": ")@*R8LioQBUE#eQ0Q81LuFNo"
+  },
+  {
+    "username": "cultura_de_la_imatge_ii",
+    "email": "cultura_de_la_imatge_ii@bau.cat",
+    "password": "y7JmRTr4erwIryb%3*ll6*My"
+  },
+  {
+    "username": "debats_contamporanis_arts_ciencies_tecnologia",
+    "email": "debats_contamporanis_arts_ciencies_tecnologia@bau.cat",
+    "password": "Rmmo0BplavyP@4Bsi@iwhJlo"
+  },
+  {
+    "username": "debats_contemporanis_en_les_arts_i_les_ciencies_socials",
+    "email": "debats_contemporanis_en_les_arts_i_les_ciencies_socials@bau.cat",
+    "password": "1%nPrYI9fWa0"
+  },
+  {
+    "username": "debats_contemporanis_en_les_arts_i_les_humanitats",
+    "email": "debats_contemporanis_en_les_arts_i_les_humanitats@bau.cat",
+    "password": "yOmZUU2LX0KG"
+  },
+  {
+    "username": "disseny_i_comunicacio",
+    "email": "disseny_i_comunicacio@bau.cat",
+    "password": "n*7kjzw>QwWI"
+  },
+  {
+    "username": "disseny_i_publicitat",
+    "email": "disseny_i_publicitat@bau.cat",
+    "password": "KO?Fty?5>41#"
+  },
+  {
+    "username": "disseny-i-interaccio",
+    "email": "disseny-i-interaccio@bau.cat",
+    "password": "WBAMM4#f84oycihq7@fwryZQ"
+  },
+  {
+    "username": "disseny-i-pensament-critic",
+    "email": "disseny-i-pensament-critic@bau.cat",
+    "password": "Di%3gva*Le4EYtMNaksE)5v#"
+  },
+  {
+    "username": "disseny-i-reptes-contemporanis-i",
+    "email": "disseny-i-reptes-contemporanis-i@bau.cat",
+    "password": "wSZB)fdXUv4IpJvPwt2TgX8k"
+  },
+  {
+    "username": "disseny-i-reptes-contemporanis-ii",
+    "email": "disseny-i-reptes-contemporanis-ii@bau.cat",
+    "password": "0hzt47Z*bhhoQ)pAK1YjZVKV"
+  },
+  {
+    "username": "economia_empresa_i_disseny",
+    "email": "economia_empresa_i_disseny@bau.cat",
+    "password": "$1w=AMhT&t@("
+  },
+  {
+    "username": "eines-informatiques-i",
+    "email": "eines-informatiques-i@bau.cat",
+    "password": "WstQ*%Ntgry5eQqXUul9DYna"
+  },
+  {
+    "username": "eines-informatiques-ii",
+    "email": "eines-informatiques-ii@bau.cat",
+    "password": "4d9@JU^o4wWV51nuQB&!%R*z"
+  },
+  {
+    "username": "estetica",
+    "email": "estetica@bau.cat",
+    "password": "S$hJ%cf09dKx"
+  },
+  {
+    "username": "estetica_i_teoria_de_les_arts",
+    "email": "estetica_i_teoria_de_les_arts@bau.cat",
+    "password": "@R=78f8<v4%4"
+  },
+  {
+    "username": "expresio_grafica_i_a",
+    "email": "expresio_grafica_i_a@bau.cat",
+    "password": "3OPw&kTuLcF0zQ4aUvA16GRa"
+  },
+  {
+    "username": "expresio_grafica_i_e",
+    "email": "expresio_grafica_i_e@bau.cat",
+    "password": "VxGlr(n7v#n#yg)@SY$A1iRS"
+  },
+  {
+    "username": "expresio_grafica_i_g",
+    "email": "expresio_grafica_i_g@bau.cat",
+    "password": "b^a8NkQ%sYm)MQSgQoNp&(kA"
+  },
+  {
+    "username": "expresio_grafica_ii_e",
+    "email": "expresio_grafica_ii_e@bau.cat",
+    "password": "sj3xOKzndhdCA9k7h%F)Tys#"
+  },
+  {
+    "username": "expresio_grafica_ii_g",
+    "email": "expresio_grafica_ii_g@bau.cat",
+    "password": "0NABht#gQzxvzLljbR3hHUXA"
+  },
+  {
+    "username": "expresio-grafica-i",
+    "email": "expresio-grafica-i@bau.cat",
+    "password": "oaQp*bkA7JRO^caLi1!uNa9^"
+  },
+  {
+    "username": "expresio-grafica-ii",
+    "email": "expresio-grafica-ii@bau.cat",
+    "password": "gcYzzVm0tK6*eCn20gk7!HC!"
+  },
+  {
+    "username": "expresio-grafica-ii-m",
+    "email": "expresio-grafica-ii-m@bau.cat",
+    "password": "peOLbrKD#r3J0o8#LpxIXFqu"
+  },
+  {
+    "username": "fonaments_de_disseny_i",
+    "email": "fonaments_de_disseny_i@bau.cat",
+    "password": "h(KpzK7IfHi*Sly)t(W&RN!z"
+  },
+  {
+    "username": "fonaments_de_disseny_ii",
+    "email": "fonaments_de_disseny_ii@bau.cat",
+    "password": "SpVESgRlBcsxuZH5)iDx20&$"
+  },
+  {
+    "username": "gestio",
+    "email": "gestio@bau.cat",
+    "password": "u0ueD_*T*A34"
+  },
+  {
+    "username": "historia_de_la_moda_i",
+    "email": "historia_de_la_moda_i@bau.cat",
+    "password": "V3DY5Cr4ijsMybVxtDLSf368"
+  },
+  {
+    "username": "historia_de_la_moda_ii",
+    "email": "historia_de_la_moda_ii@bau.cat",
+    "password": "Tbh9trr1SvjI8W!rxNJpCQqs"
+  },
+  {
+    "username": "historia_del_disseny",
+    "email": "historia_del_disseny@bau.cat",
+    "password": "Gj2zmYy6#EUA"
+  },
+  {
+    "username": "historia_disseny_interiors_i",
+    "email": "historia_disseny_interiors_i@bau.cat",
+    "password": "rU*23e(bEhi^T1q4AJeGB6N)"
+  },
+  {
+    "username": "historia_disseny_interiors_ii",
+    "email": "historia_disseny_interiors_ii@bau.cat",
+    "password": "2RZyXR7tWKf0qny8SuU*Q2Ji"
+  },
+  {
+    "username": "iconografia_i_comunicacio",
+    "email": "iconografia_i_comunicacio@bau.cat",
+    "password": "JfwItMt7f-XS"
+  },
+  {
+    "username": "imatge_i_comunicacio",
+    "email": "imatge_i_comunicacio@bau.cat",
+    "password": "n8!m*)qGEjQY"
+  },
+  {
+    "username": "infografia-i",
+    "email": "infografia-i@bau.cat",
+    "password": "c&xTOk*qsLpX5^32$kH!h20I"
+  },
+  {
+    "username": "infografia-ii",
+    "email": "infografia-ii@bau.cat",
+    "password": "ZI0bKV)ax%G7&jtEac%@mHlx"
+  },
+  {
+    "username": "iniciacio_projectes_disseny_i",
+    "email": "iniciacio_projectes_disseny_i@bau.cat",
+    "password": "gT9^xYyZ2LLRyAW6UY%(sFDx"
+  },
+  {
+    "username": "iniciacio_projectes_disseny_ii",
+    "email": "iniciacio_projectes_disseny_ii@bau.cat",
+    "password": "1y$Ez07xD)@GSjGY(cQfBLQ8"
+  },
+  {
+    "username": "introduccio_al_disseny_web",
+    "email": "introduccio_al_disseny_web@bau.cat",
+    "password": "zHduO>mfhH2P"
+  },
+  {
+    "username": "laboratori_de_processos_i_projectes_i",
+    "email": "laboratori_de_processos_i_projectes_i@bau.cat",
+    "password": "1@sp%PKn7n$R2mrAXk9bDkJF"
+  },
+  {
+    "username": "laboratori_de_processos_i_projectes_ii",
+    "email": "laboratori_de_processos_i_projectes_ii@bau.cat",
+    "password": "p(Fd$Lt3(^Yjwdbd)NwM%$V6"
+  },
+  {
+    "username": "laboratori_de_processos_i_projectes_iii",
+    "email": "laboratori_de_processos_i_projectes_iii@bau.cat",
+    "password": "B7mA#*IZ59qAJe%)*eJShIqo"
+  },
+  {
+    "username": "laboratori_de_processos_i_projectes_v",
+    "email": "laboratori_de_processos_i_projectes_v@bau.cat",
+    "password": "6t%%TlSNLBrU03lvjdwiyAXv"
+  },
+  {
+    "username": "llenguatges_audiovisuals_i",
+    "email": "llenguatges_audiovisuals_i@bau.cat",
+    "password": "Y207@x1!r(6P2vYNiZGR^MyY"
+  },
+  {
+    "username": "llenguatges_audiovisuals_ii",
+    "email": "llenguatges_audiovisuals_ii@bau.cat",
+    "password": "vV0*rXHIHnGN2s98Mj@cbiBY"
+  },
+  {
+    "username": "llenguatges-audiovisuals-ii",
+    "email": "llenguatges-audiovisuals-ii@bau.cat",
+    "password": "Du3l4r3o3&I7D6T)KQ4qz^ro"
+  },
+  {
+    "username": "manipulacio_i_estampacio_de_teixits",
+    "email": "manipulacio_i_estampacio_de_teixits@bau.cat",
+    "password": "d(ZiijFW!WEM"
+  },
+  {
+    "username": "marketing_i_moda",
+    "email": "marketing_i_moda@bau.cat",
+    "password": "$P%%5iMd#xss"
+  },
+  {
+    "username": "master-design-research",
+    "email": "master-design-research@bau.cat",
+    "password": "!5o0K3lubNNyyelFa()zWaVL"
+  },
+  {
+    "username": "metodologies_transdisciplinaries_i_experimentals",
+    "email": "metodologies_transdisciplinaries_i_experimentals@bau.cat",
+    "password": "R)?@<k#3Uc1O"
+  },
+  {
+    "username": "patronaje-i",
+    "email": "patronaje-i@bau.cat",
+    "password": "uLFPb9vX0Q6H63gRRDhAG$Si"
+  },
+  {
+    "username": "patronaje-ii",
+    "email": "patronaje-ii@bau.cat",
+    "password": "J33@qxeKSUW&oyF(q(^Sjx9U"
+  },
+  {
+    "username": "patronaje-iii",
+    "email": "patronaje-iii@bau.cat",
+    "password": "QgX*@zsLe8L!PZSBRYemjw0F"
+  },
+  {
+    "username": "patronaje-iv",
+    "email": "patronaje-iv@bau.cat",
+    "password": "x^N@z66OsLyBw#vm0Qtv^Oxo"
+  },
+  {
+    "username": "pensament_contemporani_i_practiques_artistiques",
+    "email": "pensament_contemporani_i_practiques_artistiques@bau.cat",
+    "password": "Q?9Hji>5?bTe"
+  },
+  {
+    "username": "pensament_modern_i_practiques_artistiques",
+    "email": "pensament_modern_i_practiques_artistiques@bau.cat",
+    "password": "-!N8+ccL-p5_"
+  },
+  {
+    "username": "practiques_artistiques_i_investigacio",
+    "email": "practiques_artistiques_i_investigacio@bau.cat",
+    "password": "cY6lBkSQTXTm"
+  },
+  {
+    "username": "practiques_critiques_en_les_arts_i_les_ciencies_socials",
+    "email": "practiques_critiques_en_les_arts_i_les_ciencies_socials@bau.cat",
+    "password": "cfR$Q?U6p3kL"
+  },
+  {
+    "username": "practiques_critiques_en_les_arts_i_les_humanitats",
+    "email": "practiques_critiques_en_les_arts_i_les_humanitats@bau.cat",
+    "password": "8_XN-JHsTqH?"
+  },
+  {
+    "username": "practiques_critiques_en_les_arts_les_ciencies_i_les_tecnologias",
+    "email": "practiques_critiques_en_les_arts_les_ciencies_i_les_tecnologias@bau.cat",
+    "password": "O)X1I5%h>?QG"
+  },
+  {
+    "username": "practiques_externes",
+    "email": "practiques-externes@bau.cat",
+    "password": "OVHv@3V70IP7Uu5pU4r20ZB#"
+  },
+  {
+    "username": "practiques_externes_gba",
+    "email": "practiques_externes_gba@bau.cat",
+    "password": "iPFcHPsn57sAS(eZhSPWAsm9"
+  },
+  {
+    "username": "processes-and-projects-laboratoriy-iv",
+    "email": "processes-and-projects-laboratoriy-iv@bau.cat",
+    "password": "A0(z7e&YU*Jl#@9toWx4DFu3"
+  },
+  {
+    "username": "producte",
+    "email": "producte@bau.cat",
+    "password": "R%I3YH_@OFKu"
+  },
+  {
+    "username": "programacio_per_dissenyadors",
+    "email": "programacio_per_dissenyadors@bau.cat",
+    "password": "RN+3_vWYbL<<"
+  },
+  {
+    "username": "projectes_disseny_audiovisual_i",
+    "email": "projectes_disseny_audiovisual_i@bau.cat",
+    "password": "6j7kPB$jV!EEeXBLab2ZoVlS"
+  },
+  {
+    "username": "projectes_disseny_audiovisual_ii",
+    "email": "projectes_disseny_audiovisual_ii@bau.cat",
+    "password": "vgJsOJKZ&vO6)Wuqr5t2kjlA"
+  },
+  {
+    "username": "projectes_disseny_audiovisual_iii",
+    "email": "projectes_disseny_audiovisual_iii@bau.cat",
+    "password": "JkIshH0Id)hkegl4*WPu(8@C"
+  },
+  {
+    "username": "projectes_disseny_grafic_i",
+    "email": "projectes_disseny_grafic_i@bau.cat",
+    "password": "q8VxjPCGiSHcOdE5NGHuozbo"
+  },
+  {
+    "username": "projectes_disseny_grafic_ii",
+    "email": "projectes_disseny_grafic_ii@bau.cat",
+    "password": "4f^uSp8)7ap!qbnZjSlh4$yP"
+  },
+  {
+    "username": "projectes_disseny_grafic_iii",
+    "email": "projectes_disseny_grafic_iii@bau.cat",
+    "password": "dS^Xsdr0xgBcZW4ETovqcG8X"
+  },
+  {
+    "username": "projectes_disseny_interiors_i",
+    "email": "projectes_disseny_interiors_i@bau.cat",
+    "password": "U1bVp4f*yDP9zweuBBgFnr@q"
+  },
+  {
+    "username": "projectes_disseny_interiors_ii",
+    "email": "projectes_disseny_interiors_ii@bau.cat",
+    "password": "5P)7O*HV9CuI^l43PY($fQA)"
+  },
+  {
+    "username": "projectes_disseny_interiors_iii",
+    "email": "projectes_disseny_interiors_iii@bau.cat",
+    "password": "91#OMEF0!lfyaV(egXbPxHWq"
+  },
+  {
+    "username": "projectes_disseny_moda_i",
+    "email": "projectes_disseny_moda_i@bau.cat",
+    "password": "*Wc@0XkPp$eh2(!PH1RpEoY5"
+  },
+  {
+    "username": "projectes_disseny_moda_ii",
+    "email": "projectes_disseny_moda_ii@bau.cat",
+    "password": "DhkU@xVYhTHn5Yy22)MY9VF!"
+  },
+  {
+    "username": "projectes_disseny_moda_iii",
+    "email": "projectes_disseny_moda_iii@bau.cat",
+    "password": "s8ndMPqr1z4p2M0QD#cKz6Y$"
+  },
+  {
+    "username": "taller_audiovisual_i",
+    "email": "taller_audiovisual_i@bau.cat",
+    "password": "LnMO9K!78CmCcyb5It0x!AMj"
+  },
+  {
+    "username": "taller_audiovisual_ii",
+    "email": "taller_audiovisual_ii@bau.cat",
+    "password": "*aE9iH&H)TLJKZa9wUNY*t1S"
+  },
+  {
+    "username": "taller_audiovisual_iii",
+    "email": "taller_audiovisual_iii@bau.cat",
+    "password": "BOxwjMq6fAy@vH9snOw!4Kig"
+  },
+  {
+    "username": "taller_danimacio_i_stop_motion",
+    "email": "taller_danimacio_i_stop_motion@bau.cat",
+    "password": "WG?2LU5DiOgA"
+  },
+  {
+    "username": "taller_de_color",
+    "email": "taller_de_color@bau.cat",
+    "password": ")BsdSo^sN6f1"
+  },
+  {
+    "username": "taller_de_creativitat",
+    "email": "taller_de_creativitat@bau.cat",
+    "password": "hlsBf3YPAWJ&"
+  },
+  {
+    "username": "taller_de_dibuix",
+    "email": "taller_de_dibuix@bau.cat",
+    "password": "FY1Af3Yo0ww?"
+  },
+  {
+    "username": "taller_de_dibuix_experimental",
+    "email": "taller_de_dibuix_experimental@bau.cat",
+    "password": "y*v_D2v3@rW#"
+  },
+  {
+    "username": "taller_de_dibuix_i",
+    "email": "taller_de_dibuix_i@bau.cat",
+    "password": "SxQ(@x6p5s##bdN*(kWVAsgl"
+  },
+  {
+    "username": "taller_de_dibuix_ii",
+    "email": "taller_de_dibuix_ii@bau.cat",
+    "password": "OR2Uv)(Evsu5P^Y#H0gvFLEv"
+  },
+  {
+    "username": "taller_de_fabricacio_digital",
+    "email": "taller_de_fabricacio_digital@bau.cat",
+    "password": "sqp8Vn)ckArO"
+  },
+  {
+    "username": "taller_de_materials_tous_i_estampacio",
+    "email": "taller_de_materials_tous_i_estampacio@bau.cat",
+    "password": "MZ^V^@NGvxO>"
+  },
+  {
+    "username": "taller_de_pedagogies_experimentals",
+    "email": "taller_de_pedagogies_experimentals@bau.cat",
+    "password": "NFLvt>=6hH1V"
+  },
+  {
+    "username": "taller_de_performance_i_accio",
+    "email": "taller_de_performance_i_accio@bau.cat",
+    "password": "l#DFbs%67j^VM1v2oH&8XJ7o"
+  },
+  {
+    "username": "taller_de_procediments_escultorics",
+    "email": "taller_de_procediments_escultorics@bau.cat",
+    "password": ">v6-Tz$xhW-6"
+  },
+  {
+    "username": "taller_de_procediments_pictorics",
+    "email": "taller_de_procediments_pictorics@bau.cat",
+    "password": "gSb#ez?Ny8XK"
+  },
+  {
+    "username": "taller_de_procediments_pictorics_experimentals",
+    "email": "taller_de_procediments_pictorics_experimentals@bau.cat",
+    "password": "gE_=9Ymu>gom"
+  },
+  {
+    "username": "taller_de_videoart",
+    "email": "taller_de_videoart@bau.cat",
+    "password": "4Opv)GwZ5HJ5"
+  },
+  {
+    "username": "taller_dedicions_dartista",
+    "email": "taller_dedicions_dartista@bau.cat",
+    "password": "Q0xml(cAvu$bdyj!vL$DY*Sq"
+  },
+  {
+    "username": "taller_dexpressio_i_comunicacio",
+    "email": "taller_dexpressio_i_comunicacio@bau.cat",
+    "password": "iM9TIFz6^c$j"
+  },
+  {
+    "username": "taller_dinteraccio",
+    "email": "taller_dinteraccio@bau.cat",
+    "password": "lv%6!ghMBWq0"
+  },
+  {
+    "username": "taller_espai_i",
+    "email": "taller_espai_i@bau.cat",
+    "password": "zDTOybLW6#XE7o1GZSB2eY(9"
+  },
+  {
+    "username": "taller_espai_ii",
+    "email": "taller_espai_ii@bau.cat",
+    "password": "mV&ks(afihAzvX9G)AfvaIhd"
+  },
+  {
+    "username": "taller_espai_iii",
+    "email": "taller_espai_iii@bau.cat",
+    "password": "VPjP#GVhVd!zk@q!yPkVz%6N"
+  },
+  {
+    "username": "taller_grafic_i_com_visual_i",
+    "email": "taller_grafic_i_com_visual_i@bau.cat",
+    "password": "uh5ODP)ktkdd#1*CCEGU$GB0"
+  },
+  {
+    "username": "taller_grafic_i_com_visual_ii",
+    "email": "taller_grafic_i_com_visual_ii@bau.cat",
+    "password": "&R!fpsX@X8tAIFDdYhIvU)vn"
+  },
+  {
+    "username": "taller_grafic_i_com_visual_iii",
+    "email": "taller_grafic_i_com_visual_iii@bau.cat",
+    "password": "i&m&teuKbCvX#ygo1bCaG1Lo"
+  },
+  {
+    "username": "taller_moda_i",
+    "email": "taller_moda_i@bau.cat",
+    "password": "q6Syb7#rzvTWy08S(nhVTJSl"
+  },
+  {
+    "username": "taller_moda_ii",
+    "email": "taller_moda_ii@bau.cat",
+    "password": "IUtwzSvp77QRaOQ)TFPu1DRA"
+  },
+  {
+    "username": "taller_moda_iii",
+    "email": "taller_moda_iii@bau.cat",
+    "password": "@NYtDXGzrQ^kLtZK#FZgxjYh"
+  },
+  {
+    "username": "taller_tridimensional_i_dinvestigacio_artistica",
+    "email": "taller_tridimensional_i_dinvestigacio_artistica@bau.cat",
+    "password": "8Qrqgvs*iPva"
+  },
+  {
+    "username": "tecniques_infografiques_i",
+    "email": "tecniques_infografiques_i@bau.cat",
+    "password": "N95@CIEDswwoh8gnNyUw*wUu"
+  },
+  {
+    "username": "tecniques_infografiques_ii",
+    "email": "tecniques_infografiques_ii@bau.cat",
+    "password": "9nadTdaFeNRyF7%f1gW9Okj6"
+  },
+  {
+    "username": "tfg-gba",
+    "email": "tfg-gba@bau.cat",
+    "password": "VI7q15dr#g)Nl4@oFqm#aj8e"
+  },
+  {
+    "username": "tipografia_en_moviment",
+    "email": "tipografia_en_moviment@bau.cat",
+    "password": "L%TZ(y>87O4^"
+  },
+  {
+    "username": "tipografia_i",
+    "email": "tipografia_i@bau.cat",
+    "password": "$VeIX!Dmk)Xth!ERx#kd2lBn"
+  },
+  {
+    "username": "tipografia_ii",
+    "email": "tipografia_ii@bau.cat",
+    "password": "Exr9fSskV6QCV&YGpsTHzDK2"
+  },
+  {
+    "username": "treball_final_de_grau",
+    "email": "treball_final_de_grau@bau.cat",
+    "password": "W2w^rMm!*Q<r"
+  },
+  {
+    "username": "visualisation_and_documentation_workshop",
+    "email": "visualisation_and_documentation_workshop@bau.cat",
+    "password": "jVvDi$WeqI#d"
+  },
+  {
+    "username": "writing_and_communication_workshop",
+    "email": "writing_and_communication_workshop@bau.cat",
+    "password": "+?Bn5(w_fI#="
+  },
+  {
+    "username": "xd_llenguatges_tecniques_i_tecnologias",
+    "email": "xd_llenguatges_tecniques_i_tecnologias@bau.cat",
+    "password": "+%&y%mYlO$qj"
+  }
+]
