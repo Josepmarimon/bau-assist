@@ -267,6 +267,11 @@ export function SubjectDetailDialog({ subject, open, onOpenChange }: SubjectDeta
   }, { total: 0, totalCapacity: 0 })
 
   const sendCredentials = async () => {
+    if (!subject) {
+      toast.error('No s\'ha seleccionat cap assignatura')
+      return
+    }
+    
     try {
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) {
