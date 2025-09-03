@@ -233,9 +233,14 @@ export function SubjectFormDialog({ open, onOpenChange, onSuccess, subject, grau
 
         // Then, insert new software requirements
         if (selectedSoftware.length > 0) {
+          // Get current academic year (you might want to make this dynamic)
+          const currentYear = new Date().getFullYear()
+          const academicYear = `${currentYear}-${currentYear + 1}`
+          
           const softwareRequirements = selectedSoftware.map(softwareId => ({
             subject_id: subjectId,
             software_id: softwareId,
+            academic_year: academicYear,
             is_required: true
           }))
 
