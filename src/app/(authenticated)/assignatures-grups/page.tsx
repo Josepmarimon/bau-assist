@@ -568,9 +568,15 @@ export default function AssignaturesGrupsPage() {
 
   const filteredSubjects = subjects.filter(subject => {
     const search = (filters.nom || searchTerm).toLowerCase()
-    const matchesSearch = !search || 
-      subject.name.toLowerCase().includes(search) || 
-      subject.code.toLowerCase().includes(search)
+    
+    // Cerca flexible: divideix el text de cerca en paraules i comprova que totes estiguin presents
+    const matchesSearch = !search || (() => {
+      const searchWords = search.split(/\s+/).filter(word => word.length > 0)
+      const subjectText = `${subject.name} ${subject.code}`.toLowerCase()
+      
+      // Totes les paraules de cerca han d'estar presents al nom o codi
+      return searchWords.every(word => subjectText.includes(word))
+    })()
     
     const matchesCurs = !filters.curs || filters.curs === 'all' || subject.year.toString() === filters.curs
     const matchesItinerari = !filters.itinerari || filters.itinerari === 'all' || subject.itinerari === filters.itinerari
