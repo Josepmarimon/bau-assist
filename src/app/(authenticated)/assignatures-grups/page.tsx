@@ -1217,13 +1217,7 @@ export default function AssignaturesGrupsPage() {
                       {/* Groups Tab */}
                       <TabsContent value="groups" className="mt-4">
                         <div className="space-y-4">
-                          <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-lg font-semibold">Grups de l'assignatura</h3>
-                            <Button size="sm">
-                              <Plus className="h-4 w-4 mr-2" />
-                              Nou Grup
-                            </Button>
-                          </div>
+                          <h3 className="text-lg font-semibold mb-4">Grups de l'assignatura</h3>
 
                           {loadingGroups[subject.id] ? (
                             <div className="flex items-center justify-center h-32">

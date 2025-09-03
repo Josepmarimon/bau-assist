@@ -50,7 +50,7 @@ export function ClassroomDetail({ classroom, equipment }: ClassroomDetailProps) 
   const groupEquipmentByCategory = () => {
     const grouped: Record<string, any[]> = {}
     equipment.forEach(item => {
-      const category = item.equipment_types?.category || 'Altres'
+      const category = item.equipment_type?.category || 'Altres'
       if (!grouped[category]) {
         grouped[category] = []
       }
@@ -298,10 +298,10 @@ export function ClassroomDetail({ classroom, equipment }: ClassroomDetailProps) 
                         <div key={item.id} className="border rounded-lg p-4 bg-secondary/10">
                           <div className="flex items-start justify-between gap-2">
                             <div className="flex-1">
-                              <p className="font-semibold text-base">{item.equipment_types?.name}</p>
-                              {item.equipment_types?.description && (
+                              <p className="font-semibold text-base">{item.equipment_type?.name}</p>
+                              {item.equipment_type?.description && (
                                 <p className="text-sm text-muted-foreground mt-1">
-                                  {item.equipment_types.description}
+                                  {item.equipment_type.description}
                                 </p>
                               )}
                               {item.notes && (

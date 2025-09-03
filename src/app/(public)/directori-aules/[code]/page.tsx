@@ -51,16 +51,19 @@ export default async function ClassroomDetailPage({ params }: PageProps) {
   // Fetch equipment details if available
   let equipmentDetails = []
   const { data: equipment } = await supabase
-    .from('classroom_equipment')
+    .from('equipment_inventory')
     .select(`
       *,
-      equipment_types (
+      equipment_type:equipment_types (
+        id,
         name,
         category,
-        description
+        description,
+        icon
       )
     `)
     .eq('classroom_id', classroom.id)
+    .order('equipment_type(category)', { ascending: true })
   
   if (equipment) {
     equipmentDetails = equipment
