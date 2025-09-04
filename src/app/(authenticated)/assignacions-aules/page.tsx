@@ -1073,7 +1073,7 @@ export default function AssignacionsAulesPage() {
           onDragEnd={handleDragEnd}
           onDragOver={handleDragOver}
         >
-          <div className="grid grid-cols-[300px_1fr_250px] gap-6">
+          <div className="grid grid-cols-[240px_1fr_250px] gap-6">
             {/* Left Panel - Subjects */}
             <Card className="h-[calc(100vh-20rem)]">
               <CardHeader className="pb-3">
