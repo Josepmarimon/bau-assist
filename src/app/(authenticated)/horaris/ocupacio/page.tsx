@@ -572,13 +572,15 @@ export default function OcupacioPage() {
                                       )}
                                       
                                       {assignment.teachers && assignment.teachers.length > 0 && (
-                                        <div className="text-[9px] opacity-90 flex items-center gap-0.5">
-                                          <GraduationCap className="h-2.5 w-2.5 flex-shrink-0" />
-                                          <span className="truncate">
-                                            {assignment.teachers.map((t) => 
-                                              `${t.first_name} ${t.last_name}`
-                                            ).join(', ')}
-                                          </span>
+                                        <div className="space-y-0.5">
+                                          {assignment.teachers.map((t, idx) => (
+                                            <div key={idx} className="text-[9px] opacity-90 flex items-center gap-0.5">
+                                              <GraduationCap className="h-2.5 w-2.5 flex-shrink-0" />
+                                              <span className="truncate">
+                                                {t.first_name} {t.last_name}
+                                              </span>
+                                            </div>
+                                          ))}
                                         </div>
                                       )}
                                       

@@ -992,13 +992,15 @@ export default function HorarisPage() {
                                           </div>
                                           
                                           {assignment.teachers && assignment.teachers.length > 0 && (
-                                            <div className="text-[11px] opacity-90 flex items-center gap-1">
-                                              <GraduationCap className="h-3 w-3 flex-shrink-0" />
-                                              <span className="truncate">
-                                                {assignment.teachers.map((t, idx) => 
-                                                  `${t.first_name} ${t.last_name}`
-                                                ).join(', ')}
-                                              </span>
+                                            <div className="space-y-0.5">
+                                              {assignment.teachers.map((t, idx) => (
+                                                <div key={idx} className="text-[11px] opacity-90 flex items-center gap-1">
+                                                  <GraduationCap className="h-3 w-3 flex-shrink-0" />
+                                                  <span className="truncate">
+                                                    {t.first_name} {t.last_name}
+                                                  </span>
+                                                </div>
+                                              ))}
                                             </div>
                                           )}
                                           
