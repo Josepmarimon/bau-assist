@@ -57,6 +57,11 @@ interface Assignment {
     first_name: string
     last_name: string
   } | null
+  teachers: {
+    id: string
+    first_name: string
+    last_name: string
+  }[]
   student_group: {
     id: string
     name: string
@@ -304,6 +309,7 @@ export function ClassroomDetailsDialog({
               subject: null,
               subject_group: null,
               teacher: null,
+              teachers: [],
               student_group: null,
               time_slot: null,
               semester: null
@@ -341,7 +347,7 @@ export function ClassroomDetailsDialog({
               }
             }
 
-            // Teacher
+            // Teacher (single - for backward compatibility)
             if (assignment.teacher_id) {
               const { data, error } = await supabase
                 .from('teachers')
@@ -352,6 +358,27 @@ export function ClassroomDetailsDialog({
               if (!error && data) {
                 result.teacher = data
               }
+            }
+            
+            // Teachers (multiple from teacher_group_assignments)
+            if (assignment.subject_group_id) {
+              const { data: teacherAssignments, error } = await supabase
+                .from('teacher_group_assignments')
+                .select(`
+                  teachers!teacher_id (id, first_name, last_name)
+                `)
+                .eq('subject_group_id', assignment.subject_group_id)
+              
+              if (!error && teacherAssignments) {
+                result.teachers = teacherAssignments
+                  .map(ta => ta.teachers)
+                  .filter(Boolean)
+              }
+            }
+            
+            // If no teachers from group assignment, use single teacher
+            if (result.teachers.length === 0 && result.teacher) {
+              result.teachers = [result.teacher]
             }
 
             // Student Group
@@ -777,11 +804,13 @@ export function ClassroomDetailsDialog({
                                       </div>
                                     )}
                                     
-                                    {assignment.teacher && (
+                                    {assignment.teachers && assignment.teachers.length > 0 && (
                                       <div className="text-[10px] opacity-90 flex items-center gap-1">
                                         <GraduationCap className="h-3 w-3 flex-shrink-0" />
                                         <span className="truncate">
-                                          {assignment.teacher.first_name} {assignment.teacher.last_name}
+                                          {assignment.teachers.map((t) => 
+                                            `${t.first_name} ${t.last_name}`
+                                          ).join(', ')}
                                         </span>
                                       </div>
                                     )}

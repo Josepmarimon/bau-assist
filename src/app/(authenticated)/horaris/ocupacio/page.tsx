@@ -51,6 +51,11 @@ interface Assignment {
     first_name: string
     last_name: string
   } | null
+  teachers: {
+    id: string
+    first_name: string
+    last_name: string
+  }[]
   student_group: {
     id: string
     name: string
@@ -66,6 +71,7 @@ interface Assignment {
     name: string
     number: number
   }
+  subject_group_id?: string
 }
 
 export default function OcupacioPage() {
@@ -153,6 +159,7 @@ export default function OcupacioPage() {
           .from('assignments')
           .select(`
             id,
+            subject_group_id,
             subjects!subject_id (id, name, code),
             teachers!teacher_id (id, first_name, last_name),
             student_groups!student_group_id (id, name),
@@ -163,13 +170,42 @@ export default function OcupacioPage() {
           .eq('semester_id', semester.id)
 
         if (assignmentsData) {
+          // Load teachers from teacher_group_assignments
+          const subjectGroupIds = [...new Set(assignmentsData
+            .map(a => a.subject_group_id)
+            .filter(Boolean))]
+          
+          const teachersByGroup: Record<string, any[]> = {}
+          if (subjectGroupIds.length > 0) {
+            const { data: teacherAssignments } = await supabase
+              .from('teacher_group_assignments')
+              .select(`
+                subject_group_id,
+                teachers!teacher_id (id, first_name, last_name)
+              `)
+              .in('subject_group_id', subjectGroupIds)
+            
+            if (teacherAssignments) {
+              teacherAssignments.forEach(ta => {
+                if (!teachersByGroup[ta.subject_group_id]) {
+                  teachersByGroup[ta.subject_group_id] = []
+                }
+                if (ta.teachers) {
+                  teachersByGroup[ta.subject_group_id].push(ta.teachers)
+                }
+              })
+            }
+          }
+
           const transformed = assignmentsData.map(a => ({
             id: a.id,
             subject: a.subjects as any,
             teacher: a.teachers as any,
+            teachers: a.subject_group_id ? (teachersByGroup[a.subject_group_id] || []) : (a.teachers ? [a.teachers] : []),
             student_group: a.student_groups as any,
             time_slot: a.time_slots as any,
-            semester: a.semesters as any
+            semester: a.semesters as any,
+            subject_group_id: a.subject_group_id
           })).filter(a => a.time_slot && a.subject)
 
           newAssignments[classroom.id] = transformed
@@ -535,11 +571,13 @@ export default function OcupacioPage() {
                                         </div>
                                       )}
                                       
-                                      {assignment.teacher && (
+                                      {assignment.teachers && assignment.teachers.length > 0 && (
                                         <div className="text-[9px] opacity-90 flex items-center gap-0.5">
                                           <GraduationCap className="h-2.5 w-2.5 flex-shrink-0" />
                                           <span className="truncate">
-                                            {assignment.teacher.first_name} {assignment.teacher.last_name}
+                                            {assignment.teachers.map((t) => 
+                                              `${t.first_name} ${t.last_name}`
+                                            ).join(', ')}
                                           </span>
                                         </div>
                                       )}

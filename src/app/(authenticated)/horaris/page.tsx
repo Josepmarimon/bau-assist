@@ -36,6 +36,10 @@ interface Assignment {
     first_name: string
     last_name: string
   } | null
+  teachers: {
+    first_name: string
+    last_name: string
+  }[]
   classrooms: {
     code: string
     name: string
@@ -46,6 +50,7 @@ interface Assignment {
     end_time: string
   }
   color: string
+  subject_group_id?: string
 }
 
 interface StudentGroup {
@@ -228,6 +233,7 @@ export default function HorarisPage() {
           .select(`
             id,
             color,
+            subject_group_id,
             subjects!subject_id (name, code, type),
             teachers!teacher_id (first_name, last_name),
             time_slots!time_slot_id (day_of_week, start_time, end_time)
@@ -260,14 +266,43 @@ export default function HorarisPage() {
             })
           }
 
+          // Load teachers from teacher_group_assignments
+          const subjectGroupIds = [...new Set(assignmentsData
+            .map(a => a.subject_group_id)
+            .filter(Boolean))]
+          
+          const teachersByGroup: Record<string, any[]> = {}
+          if (subjectGroupIds.length > 0) {
+            const { data: teacherAssignments } = await supabase
+              .from('teacher_group_assignments')
+              .select(`
+                subject_group_id,
+                teachers!teacher_id (first_name, last_name)
+              `)
+              .in('subject_group_id', subjectGroupIds)
+            
+            if (teacherAssignments) {
+              teacherAssignments.forEach(ta => {
+                if (!teachersByGroup[ta.subject_group_id]) {
+                  teachersByGroup[ta.subject_group_id] = []
+                }
+                if (ta.teachers) {
+                  teachersByGroup[ta.subject_group_id].push(ta.teachers)
+                }
+              })
+            }
+          }
+
           // Transform assignments
           const transformed = assignmentsData.map(a => ({
             id: a.id,
             color: a.color,
             subject: a.subjects as any,
-            teacher: a.teachers as any,
+            teacher: a.teachers as any, // Keep single teacher for backward compatibility
+            teachers: a.subject_group_id ? (teachersByGroup[a.subject_group_id] || []) : (a.teachers ? [a.teachers] : []),
             classrooms: classroomsByAssignment[a.id] || [],
-            time_slot: a.time_slots as any
+            time_slot: a.time_slots as any,
+            subject_group_id: a.subject_group_id
           }))
 
           // Update assignments progressively
@@ -332,6 +367,7 @@ export default function HorarisPage() {
           .select(`
             id,
             color,
+            subject_group_id,
             subjects!subject_id (name, code, type),
             teachers!teacher_id (first_name, last_name),
             time_slots!time_slot_id (day_of_week, start_time, end_time)
@@ -345,6 +381,7 @@ export default function HorarisPage() {
           .select(`
             id,
             color,
+            subject_group_id,
             subjects!subject_id (name, code, type),
             teachers!teacher_id (first_name, last_name),
             time_slots!time_slot_id (day_of_week, start_time, end_time)
@@ -375,13 +412,42 @@ export default function HorarisPage() {
             })
           }
 
+          // Load teachers for semester 1
+          const subjectGroupIds1 = [...new Set(assignmentsData1
+            .map(a => a.subject_group_id)
+            .filter(Boolean))]
+          
+          const teachersByGroup1: Record<string, any[]> = {}
+          if (subjectGroupIds1.length > 0) {
+            const { data: teacherAssignments } = await supabase
+              .from('teacher_group_assignments')
+              .select(`
+                subject_group_id,
+                teachers!teacher_id (first_name, last_name)
+              `)
+              .in('subject_group_id', subjectGroupIds1)
+            
+            if (teacherAssignments) {
+              teacherAssignments.forEach(ta => {
+                if (!teachersByGroup1[ta.subject_group_id]) {
+                  teachersByGroup1[ta.subject_group_id] = []
+                }
+                if (ta.teachers) {
+                  teachersByGroup1[ta.subject_group_id].push(ta.teachers)
+                }
+              })
+            }
+          }
+
           const transformed1 = assignmentsData1.map(a => ({
             id: a.id,
             color: a.color,
             subject: a.subjects as any,
             teacher: a.teachers as any,
+            teachers: a.subject_group_id ? (teachersByGroup1[a.subject_group_id] || []) : (a.teachers ? [a.teachers] : []),
             classrooms: classroomsByAssignment[a.id] || [],
-            time_slot: a.time_slots as any
+            time_slot: a.time_slots as any,
+            subject_group_id: a.subject_group_id
           }))
           
           // Update assignments progressively
@@ -414,13 +480,42 @@ export default function HorarisPage() {
             })
           }
 
+          // Load teachers for semester 2
+          const subjectGroupIds2 = [...new Set(assignmentsData2
+            .map(a => a.subject_group_id)
+            .filter(Boolean))]
+          
+          const teachersByGroup2: Record<string, any[]> = {}
+          if (subjectGroupIds2.length > 0) {
+            const { data: teacherAssignments } = await supabase
+              .from('teacher_group_assignments')
+              .select(`
+                subject_group_id,
+                teachers!teacher_id (first_name, last_name)
+              `)
+              .in('subject_group_id', subjectGroupIds2)
+            
+            if (teacherAssignments) {
+              teacherAssignments.forEach(ta => {
+                if (!teachersByGroup2[ta.subject_group_id]) {
+                  teachersByGroup2[ta.subject_group_id] = []
+                }
+                if (ta.teachers) {
+                  teachersByGroup2[ta.subject_group_id].push(ta.teachers)
+                }
+              })
+            }
+          }
+
           const transformed2 = assignmentsData2.map(a => ({
             id: a.id,
             color: a.color,
             subject: a.subjects as any,
             teacher: a.teachers as any,
+            teachers: a.subject_group_id ? (teachersByGroup2[a.subject_group_id] || []) : (a.teachers ? [a.teachers] : []),
             classrooms: classroomsByAssignment[a.id] || [],
-            time_slot: a.time_slots as any
+            time_slot: a.time_slots as any,
+            subject_group_id: a.subject_group_id
           }))
           
           // Update assignments progressively
@@ -896,11 +991,13 @@ export default function HorarisPage() {
                                             {assignment.subject.name}
                                           </div>
                                           
-                                          {assignment.teacher && (
+                                          {assignment.teachers && assignment.teachers.length > 0 && (
                                             <div className="text-[11px] opacity-90 flex items-center gap-1">
                                               <GraduationCap className="h-3 w-3 flex-shrink-0" />
                                               <span className="truncate">
-                                                {assignment.teacher.first_name} {assignment.teacher.last_name}
+                                                {assignment.teachers.map((t, idx) => 
+                                                  `${t.first_name} ${t.last_name}`
+                                                ).join(', ')}
                                               </span>
                                             </div>
                                           )}
