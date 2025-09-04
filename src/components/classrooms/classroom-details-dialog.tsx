@@ -12,7 +12,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { PhotoGallery } from '@/components/classrooms/photo-gallery'
-import { Building2, Users, MapPin, Monitor, Wifi, Clock } from 'lucide-react'
+import { Building2, Users, MapPin, Monitor, Wifi, Clock, Calendar, GraduationCap } from 'lucide-react'
 import { CLASSROOM_TYPE_LABELS } from '@/lib/constants/classroom-types'
 import { createClient } from '@/lib/supabase/client'
 import { EquipmentWithType } from '@/types/equipment.types'
@@ -522,8 +522,9 @@ export function ClassroomDetailsDialog({
         </DialogHeader>
         
         <Tabs defaultValue="info" className="w-full flex-1 flex flex-col overflow-hidden">
-          <TabsList className="grid w-full grid-cols-5 flex-shrink-0">
+          <TabsList className="grid w-full grid-cols-6 flex-shrink-0">
             <TabsTrigger value="info">Informació</TabsTrigger>
+            <TabsTrigger value="schedule">Horari</TabsTrigger>
             <TabsTrigger value="assignments">Assignatures</TabsTrigger>
             <TabsTrigger value="photos">Fotos</TabsTrigger>
             <TabsTrigger value="equipment">Equipament</TabsTrigger>
@@ -661,6 +662,163 @@ export function ClassroomDetailsDialog({
                   )}
                 </div>
               </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="schedule" className="mt-6 flex-1 overflow-hidden">
+            <div className="h-full overflow-y-auto p-4">
+              {loadingAssignments ? (
+                <div className="flex items-center justify-center h-[400px]">
+                  <div className="text-muted-foreground flex items-center gap-2">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
+                    Carregant horari...
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-6">
+                  <h3 className="text-lg font-medium">Ocupació setmanal</h3>
+                  
+                  {/* Schedule Grid */}
+                  <div className="overflow-x-auto">
+                    <div className="min-w-[900px]">
+                      {/* Header */}
+                      <div className="grid grid-cols-5 gap-1 mb-2">
+                        {['Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres'].map(day => (
+                          <div key={day} className="text-center font-semibold text-sm border-r border-gray-200 last:border-r-0 py-2">
+                            {day}
+                          </div>
+                        ))}
+                      </div>
+                      
+                      {/* Time Grid */}
+                      <div className="grid grid-cols-5 gap-1">
+                        {[1, 2, 3, 4, 5].map(day => {
+                          const dayAssignments = assignments.filter(assignment => 
+                            assignment.time_slot && assignment.time_slot.day_of_week === day
+                          )
+                          
+                          return (
+                            <div key={day} className="bg-gray-50 rounded-lg p-1 h-[400px] relative border-r border-gray-200 last:border-r-0">
+                              {/* Time labels */}
+                              <div className="absolute inset-0 pointer-events-none">
+                                <div className="absolute left-1 top-0 text-[10px] text-gray-400">
+                                  8:00
+                                </div>
+                                <div className="absolute left-1 top-[50%] text-[10px] text-gray-400">
+                                  14:00
+                                </div>
+                                <div className="absolute left-1 bottom-0 text-[10px] text-gray-400">
+                                  20:00
+                                </div>
+                              </div>
+                              
+                              {/* Assignments */}
+                              {dayAssignments.map(assignment => {
+                                if (!assignment.time_slot || !assignment.time_slot.start_time || !assignment.time_slot.end_time) {
+                                  return null
+                                }
+                                
+                                const startHour = parseInt(assignment.time_slot.start_time.split(':')[0])
+                                const endHour = parseInt(assignment.time_slot.end_time.split(':')[0])
+                                const startMinutes = parseInt(assignment.time_slot.start_time.split(':')[1])
+                                const endMinutes = parseInt(assignment.time_slot.end_time.split(':')[1])
+                                
+                                // Calculate position and height (8:00 to 20:00 = 12 hours)
+                                const dayStart = 8 * 60 // 8:00 in minutes
+                                const dayEnd = 20 * 60 // 20:00 in minutes
+                                const totalMinutes = dayEnd - dayStart
+                                
+                                const assignmentStart = (startHour * 60 + startMinutes) - dayStart
+                                const assignmentEnd = (endHour * 60 + endMinutes) - dayStart
+                                
+                                const top = (assignmentStart / totalMinutes) * 100
+                                const height = ((assignmentEnd - assignmentStart) / totalMinutes) * 100
+                                
+                                // Generate a color based on subject code
+                                const subjectCode = assignment.subject.code
+                                let bgColor = '#00CED1' // Default color
+                                
+                                // Use different colors for different course prefixes
+                                if (subjectCode.startsWith('GD')) {
+                                  bgColor = '#3B82F6' // Blue for Design
+                                } else if (subjectCode.startsWith('GBA')) {
+                                  bgColor = '#8B5CF6' // Purple for Belles Arts
+                                } else if (subjectCode.startsWith('TR')) {
+                                  bgColor = '#10B981' // Green for transversal
+                                }
+                                
+                                return (
+                                  <div
+                                    key={assignment.id}
+                                    style={{
+                                      position: 'absolute',
+                                      top: `${top}%`,
+                                      height: `${height}%`,
+                                      left: '4px',
+                                      right: '4px',
+                                      backgroundColor: bgColor
+                                    }}
+                                    className="rounded-md p-2 text-white flex flex-col gap-1 shadow-sm overflow-hidden"
+                                  >
+                                    <div className="font-semibold text-xs line-clamp-2 leading-tight">
+                                      {assignment.subject.name}
+                                    </div>
+                                    
+                                    <div className="text-[10px] opacity-90">
+                                      {assignment.subject.code}
+                                    </div>
+                                    
+                                    {assignment.student_group && (
+                                      <div className="text-[10px] opacity-90 flex items-center gap-1">
+                                        <Users className="h-3 w-3 flex-shrink-0" />
+                                        <span className="truncate">
+                                          {assignment.student_group.name}
+                                        </span>
+                                      </div>
+                                    )}
+                                    
+                                    {assignment.teacher && (
+                                      <div className="text-[10px] opacity-90 flex items-center gap-1">
+                                        <GraduationCap className="h-3 w-3 flex-shrink-0" />
+                                        <span className="truncate">
+                                          {assignment.teacher.first_name} {assignment.teacher.last_name}
+                                        </span>
+                                      </div>
+                                    )}
+                                    
+                                    <div className="text-[10px] opacity-90">
+                                      {assignment.time_slot.start_time} - {assignment.time_slot.end_time}
+                                    </div>
+                                  </div>
+                                )
+                              })}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Legend */}
+                  <div className="border-t pt-4">
+                    <p className="text-sm font-medium mb-2">Llegenda:</p>
+                    <div className="flex flex-wrap gap-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 rounded" style={{ backgroundColor: '#3B82F6' }}></div>
+                        <span className="text-xs">Grau en Disseny</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 rounded" style={{ backgroundColor: '#8B5CF6' }}></div>
+                        <span className="text-xs">Grau en Belles Arts</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 rounded" style={{ backgroundColor: '#10B981' }}></div>
+                        <span className="text-xs">Transversal</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </TabsContent>
           
