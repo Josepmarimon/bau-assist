@@ -46,7 +46,14 @@ interface NavItem {
 
 const navigation: NavItem[] = [
   { name: 'Resum', href: '/resum', icon: BarChart3 },
-  { name: 'Horaris', href: '/horaris', icon: Calendar },
+  { 
+    name: 'Horaris',
+    icon: Calendar,
+    subItems: [
+      { name: 'Vista Horaris', href: '/horaris', icon: Calendar },
+      { name: 'Ocupació Aules', href: '/horaris/ocupacio', icon: CalendarCheck }
+    ]
+  },
   { 
     name: 'Acadèmic', 
     icon: BookOpen,
