@@ -87,6 +87,7 @@ export default function EditGroupPage() {
 
   // Keep ref in sync with state
   useEffect(() => {
+    console.log('Teacher assignments state changed:', teacherAssignments)
     teacherAssignmentsRef.current = teacherAssignments
   }, [teacherAssignments])
 
@@ -94,7 +95,32 @@ export default function EditGroupPage() {
     loadGroup()
     loadSemesters()
     loadTeachers()
+    checkUserAuth()
   }, [params.id])
+
+  const checkUserAuth = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser()
+      console.log('Current authenticated user:', user)
+
+      if (user) {
+        const { data: profile, error } = await supabase
+          .from('user_profiles')
+          .select('role')
+          .eq('id', user.id)
+          .single()
+
+        console.log('User profile:', profile)
+        console.log('User role:', profile?.role)
+
+        if (error) {
+          console.error('Error getting user profile:', error)
+        }
+      }
+    } catch (error) {
+      console.error('Error checking authentication:', error)
+    }
+  }
 
   const loadGroup = async () => {
     try {
@@ -182,7 +208,9 @@ export default function EditGroupPage() {
       }))
       
       console.log('Formatted assignments:', assignments)
+      console.log('Setting teacher assignments to state...')
       setTeacherAssignments(assignments)
+      console.log('Teacher assignments set. Current state should be:', assignments)
     } catch (error) {
       console.error('Error loading teacher assignments:', error)
       setTeacherAssignments([])
@@ -231,6 +259,12 @@ export default function EditGroupPage() {
     console.log('Updated teacher assignments:', updatedAssignments)
 
     setTeacherAssignments(updatedAssignments)
+
+    // Force immediate check
+    setTimeout(() => {
+      console.log('Post-add check - teacherAssignments state:', teacherAssignments)
+      console.log('Post-add check - teacherAssignmentsRef:', teacherAssignmentsRef.current)
+    }, 100)
 
     setSelectedTeacherId('')
     setEctsToAssign('')
@@ -315,7 +349,10 @@ export default function EditGroupPage() {
       }
 
       toast.success('Grup actualitzat correctament')
-      router.push('/grups-estudiants')
+      // Don't redirect immediately to avoid state loss
+      setTimeout(() => {
+        router.push('/grups-estudiants')
+      }, 1000)
     } catch (error) {
       console.error('Error updating group:', error)
       toast.error('Error actualitzant el grup')
@@ -331,6 +368,10 @@ export default function EditGroupPage() {
       </div>
     )
   }
+
+  // Debug: log current state on every render
+  console.log('RENDER - teacherAssignments:', teacherAssignments)
+  console.log('RENDER - teacherAssignments.length:', teacherAssignments.length)
 
   if (!group) {
     return (
@@ -575,6 +616,42 @@ export default function EditGroupPage() {
                     Guardar Canvis
                   </>
                 )}
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  console.log('DEBUG - Current teacherAssignments state:', teacherAssignments)
+                  console.log('DEBUG - Current teacherAssignments ref:', teacherAssignmentsRef.current)
+                  alert(`Professors en estat: ${teacherAssignments.length}, Professors en ref: ${teacherAssignmentsRef.current.length}`)
+                }}
+              >
+                Debug Estat
+              </Button>
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={async () => {
+                  try {
+                    const { data: { user } } = await supabase.auth.getUser()
+                    if (user) {
+                      const { error } = await supabase
+                        .from('user_profiles')
+                        .upsert({ id: user.id, role: 'admin' })
+
+                      if (error) {
+                        console.error('Error creating admin profile:', error)
+                        toast.error('Error creant perfil admin')
+                      } else {
+                        toast.success('Perfil admin creat correctament')
+                      }
+                    }
+                  } catch (error) {
+                    console.error('Error:', error)
+                  }
+                }}
+              >
+                Crear Admin
               </Button>
               <Button
                 type="button"
