@@ -995,7 +995,7 @@ export default function AssignacionsAulesPage() {
           <SelectTrigger className="w-[200px]">
             <SelectValue placeholder="Grau" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="max-h-none">
             {degrees.map(degree => (
               <SelectItem key={degree.value} value={degree.value}>
                 {degree.label}
@@ -1012,7 +1012,7 @@ export default function AssignacionsAulesPage() {
           <SelectTrigger className="w-[200px]">
             <SelectValue placeholder="Any" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="max-h-none">
             {availableYears.map(year => (
               <SelectItem key={year} value={year}>
                 {year}r curs
@@ -1029,7 +1029,7 @@ export default function AssignacionsAulesPage() {
           <SelectTrigger className="w-[200px]">
             <SelectValue placeholder="Grup" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="max-h-none">
             {studentGroups.map(group => (
               <SelectItem key={group.id} value={group.id}>
                 {group.name}
@@ -1046,7 +1046,7 @@ export default function AssignacionsAulesPage() {
           <SelectTrigger className="w-[200px]">
             <SelectValue placeholder="Semestre" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="max-h-none">
             {semesters.map(semester => (
               <SelectItem key={semester.value} value={semester.value}>
                 {semester.label}

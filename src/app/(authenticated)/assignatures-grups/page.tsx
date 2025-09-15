@@ -171,7 +171,8 @@ export default function AssignaturesGrupsPage() {
   // Subject detail modal states
   const [showSubjectDetailModal, setShowSubjectDetailModal] = useState(false)
   const [selectedSubjectForDetail, setSelectedSubjectForDetail] = useState<Subject | null>(null)
-  
+  const [userRole, setUserRole] = useState<string>('')
+
   const supabase = createClient()
 
   useEffect(() => {
@@ -179,7 +180,27 @@ export default function AssignaturesGrupsPage() {
     loadTeachers()
     loadSemesters()
     loadGraus()
+    checkUserRole()
   }, [])
+
+  const checkUserRole = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('user_profiles')
+        .select('role')
+        .single()
+
+      if (error) {
+        console.error('Error checking user role:', error)
+        setUserRole('user') // Default to user role
+      } else {
+        setUserRole(data?.role || 'user')
+      }
+    } catch (error) {
+      console.error('Error in checkUserRole:', error)
+      setUserRole('user')
+    }
+  }
 
   useEffect(() => {
     // Check for subject parameter in URL when subjects are loaded
@@ -485,32 +506,56 @@ export default function AssignaturesGrupsPage() {
         })
         .eq('id', groupId)
 
-      if (groupError) throw groupError
+      if (groupError) {
+        console.error('Error updating group basic info:', groupError)
+        throw groupError
+      }
 
       // Update teacher assignments
+      console.log('Deleting existing teacher assignments for group:', groupId)
       const { error: deleteError } = await supabase
         .from('teacher_group_assignments')
         .delete()
         .eq('subject_group_id', groupId)
         .eq('academic_year', '2025-2026')
 
-      if (deleteError) throw deleteError
+      if (deleteError) {
+        console.error('Error deleting teacher assignments:', deleteError)
+        throw deleteError
+      }
 
       const assignments = teacherAssignments[groupId] || []
-      if (assignments.length > 0) {
-        const { error: insertError } = await supabase
-          .from('teacher_group_assignments')
-          .insert(
-            assignments.map(ta => ({
-              teacher_id: ta.teacher_id,
-              subject_group_id: groupId,
-              academic_year: '2025-2026',
-              ects_assigned: ta.ects_assigned,
-              is_coordinator: false
-            }))
-          )
+      console.log('Teacher assignments to insert:', assignments)
 
-        if (insertError) throw insertError
+      if (assignments.length > 0) {
+        const insertData = assignments.map(ta => ({
+          teacher_id: ta.teacher_id,
+          subject_group_id: groupId,
+          academic_year: '2025-2026',
+          ects_assigned: ta.ects_assigned || 0,
+          is_coordinator: false
+        }))
+
+        console.log('Insert data:', insertData)
+
+        const { data: insertData2, error: insertError } = await supabase
+          .from('teacher_group_assignments')
+          .insert(insertData)
+          .select()
+
+        if (insertError) {
+          console.error('Error inserting teacher assignments:', insertError)
+
+          // Check if it's a permissions error
+          if (insertError.code === 'PGRST301' || insertError.message?.includes('row-level security')) {
+            toast.error('No tens permisos per assignar professors. Contacta amb un administrador.')
+            return
+          }
+
+          throw insertError
+        }
+
+        console.log('Successfully inserted teacher assignments:', insertData2)
       }
 
       toast.success('Grup actualitzat correctament')
@@ -518,9 +563,9 @@ export default function AssignaturesGrupsPage() {
       setEditFormData({})
       // Reload groups
       await loadSubjectGroups(subjectId)
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error updating group:', error)
-      toast.error('Error actualitzant el grup')
+      toast.error(`Error actualitzant el grup: ${error.message || error}`)
     }
   }
 
@@ -783,20 +828,36 @@ export default function AssignaturesGrupsPage() {
         return
       }
 
+      const ectsValue = parseFloat(ectsToAssign)
+      if (isNaN(ectsValue) || ectsValue <= 0) {
+        toast.error('Els ECTS han de ser un número vàlid major que 0')
+        return
+      }
+
       const teacher = teachers.find(t => t.id === selectedTeacherId)
-      if (!teacher) return
+      if (!teacher) {
+        toast.error('Professor no trobat')
+        return
+      }
 
       if (assignments.some(ta => ta.teacher_id === selectedTeacherId)) {
         toast.error('Aquest professor ja està assignat a aquest grup')
         return
       }
 
+      console.log('Adding teacher assignment:', {
+        teacher_id: selectedTeacherId,
+        teacher_name: `${teacher.first_name} ${teacher.last_name}`,
+        ects_assigned: ectsValue,
+        groupId
+      })
+
       setTeacherAssignments(prev => ({
         ...prev,
         [groupId]: [...(prev[groupId] || []), {
           teacher_id: selectedTeacherId,
           teacher: teacher,
-          ects_assigned: parseFloat(ectsToAssign)
+          ects_assigned: ectsValue
         }]
       }))
 
@@ -872,9 +933,18 @@ export default function AssignaturesGrupsPage() {
                     {teachers
                       .filter(t => !assignments.some(ta => ta.teacher_id === t.id))
                       .filter(teacher => {
-                        const searchLower = teacherSearchTerm.toLowerCase()
+                        const searchLower = teacherSearchTerm.toLowerCase().trim()
+                        if (!searchLower) return true
+
                         const fullName = `${teacher.first_name} ${teacher.last_name}`.toLowerCase()
-                        return fullName.includes(searchLower) || teacher.email.toLowerCase().includes(searchLower)
+                        const reversedName = `${teacher.last_name} ${teacher.first_name}`.toLowerCase()
+                        const email = teacher.email.toLowerCase()
+
+                        return fullName.includes(searchLower) ||
+                               reversedName.includes(searchLower) ||
+                               email.includes(searchLower) ||
+                               teacher.first_name.toLowerCase().includes(searchLower) ||
+                               teacher.last_name.toLowerCase().includes(searchLower)
                       })
                       .map((teacher) => (
                         <CommandItem
@@ -1273,7 +1343,35 @@ export default function AssignaturesGrupsPage() {
                                           </div>
                                         </div>
 
-                                        <TeacherAssignmentUI groupId={group.id} />
+                                        {userRole === 'admin' ? (
+                                          <TeacherAssignmentUI groupId={group.id} />
+                                        ) : (
+                                          <div className="space-y-4 mt-4">
+                                            <h4 className="text-sm font-medium">Professors Assignats</h4>
+                                            {teacherAssignments[group.id] && teacherAssignments[group.id].length > 0 ? (
+                                              <div className="space-y-2">
+                                                {teacherAssignments[group.id].map((assignment) => (
+                                                  <div key={assignment.teacher_id} className="flex items-center justify-between p-2 border rounded-lg bg-gray-50">
+                                                    <div className="flex items-center gap-2">
+                                                      <User className="h-4 w-4 text-muted-foreground" />
+                                                      <span className="text-sm">
+                                                        {assignment.teacher?.first_name} {assignment.teacher?.last_name}
+                                                      </span>
+                                                      <Badge variant="outline" className="text-xs">
+                                                        {assignment.ects_assigned} ECTS
+                                                      </Badge>
+                                                    </div>
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            ) : (
+                                              <p className="text-sm text-muted-foreground">No hi ha professors assignats</p>
+                                            )}
+                                            <p className="text-xs text-muted-foreground italic">
+                                              Només els administradors poden assignar professors
+                                            </p>
+                                          </div>
+                                        )}
 
                                         <div className="flex items-center gap-2">
                                           <Button 
@@ -1367,20 +1465,24 @@ export default function AssignaturesGrupsPage() {
                                               </span>
                                             )}
                                           </Button>
-                                          <Button 
-                                            variant="ghost" 
-                                            size="icon"
-                                            onClick={() => startEditGroup(group)}
-                                          >
-                                            <Edit className="h-4 w-4" />
-                                          </Button>
-                                          <Button 
-                                            variant="ghost" 
-                                            size="icon"
-                                            onClick={() => deleteGroup(group.id, subject.id)}
-                                          >
-                                            <Trash2 className="h-4 w-4" />
-                                          </Button>
+                                          {userRole === 'admin' && (
+                                            <>
+                                              <Button
+                                                variant="ghost"
+                                                size="icon"
+                                                onClick={() => startEditGroup(group)}
+                                              >
+                                                <Edit className="h-4 w-4" />
+                                              </Button>
+                                              <Button
+                                                variant="ghost"
+                                                size="icon"
+                                                onClick={() => deleteGroup(group.id, subject.id)}
+                                              >
+                                                <Trash2 className="h-4 w-4" />
+                                              </Button>
+                                            </>
+                                          )}
                                         </div>
                                       </div>
                                     )}
