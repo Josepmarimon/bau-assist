@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -82,7 +82,13 @@ export default function EditGroupPage() {
   const [ectsToAssign, setEctsToAssign] = useState<string>('')
   const [teacherSearchTerm, setTeacherSearchTerm] = useState<string>('')
   const [isTeacherDropdownOpen, setIsTeacherDropdownOpen] = useState(false)
+  const teacherAssignmentsRef = useRef<TeacherAssignment[]>([])
   const supabase = createClient()
+
+  // Keep ref in sync with state
+  useEffect(() => {
+    teacherAssignmentsRef.current = teacherAssignments
+  }, [teacherAssignments])
 
   useEffect(() => {
     loadGroup()
@@ -185,7 +191,7 @@ export default function EditGroupPage() {
     }
   }
 
-  const addTeacherAssignment = () => {
+  const addTeacherAssignment = useCallback(() => {
     if (!selectedTeacherId || !ectsToAssign) {
       toast.error('Selecciona un professor i assigna els ECTS')
       return
@@ -215,24 +221,39 @@ export default function EditGroupPage() {
       ects_assigned: ectsValue
     })
 
-    setTeacherAssignments([...teacherAssignments, {
+    const newAssignment = {
       teacher_id: selectedTeacherId,
       teacher: teacher,
       ects_assigned: ectsValue
-    }])
+    }
+
+    const updatedAssignments = [...teacherAssignments, newAssignment]
+    console.log('Updated teacher assignments:', updatedAssignments)
+
+    setTeacherAssignments(updatedAssignments)
 
     setSelectedTeacherId('')
     setEctsToAssign('')
     setTeacherSearchTerm('')
-  }
+  }, [selectedTeacherId, ectsToAssign, teacherAssignments, teachers])
 
-  const removeTeacherAssignment = (teacherId: string) => {
-    setTeacherAssignments(teacherAssignments.filter(ta => ta.teacher_id !== teacherId))
-  }
+  const removeTeacherAssignment = useCallback((teacherId: string) => {
+    console.log('Removing teacher assignment:', teacherId)
+    const filteredAssignments = teacherAssignments.filter(ta => ta.teacher_id !== teacherId)
+    console.log('Assignments after removal:', filteredAssignments)
+    setTeacherAssignments(filteredAssignments)
+  }, [teacherAssignments])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSaving(true)
+
+    console.log('Starting save process...')
+    console.log('Current teacherAssignments state:', teacherAssignments)
+    console.log('Current teacherAssignments ref:', teacherAssignmentsRef.current)
+
+    // Use the most current value from the ref
+    const currentAssignments = teacherAssignmentsRef.current
 
     try {
       // Update group basic info
@@ -262,8 +283,8 @@ export default function EditGroupPage() {
       }
 
       // Insert new teacher assignments
-      if (teacherAssignments.length > 0) {
-        const insertData = teacherAssignments.map(ta => ({
+      if (currentAssignments.length > 0) {
+        const insertData = currentAssignments.map(ta => ({
           teacher_id: ta.teacher_id,
           subject_group_id: params.id,
           academic_year: '2025-2026',
