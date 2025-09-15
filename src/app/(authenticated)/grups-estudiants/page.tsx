@@ -62,7 +62,7 @@ interface StudentGroup {
   year: number
   shift: 'mati' | 'tarda'
   max_students: number
-  itinerari?: string | null
+  specialization?: string | null
   created_at: string
   updated_at: string
 }
@@ -195,7 +195,7 @@ export default function GrupsEstudiantsPage() {
       year: group.year,
       shift: group.shift,
       max_students: group.max_students,
-      itinerari: group.itinerari || ''
+      itinerari: group.specialization || ''
     })
     setDialogOpen(true)
   }
@@ -238,7 +238,7 @@ export default function GrupsEstudiantsPage() {
         year: formData.year,
         shift: formData.shift,
         max_students: formData.max_students,
-        itinerari: formData.itinerari || null
+        specialization: formData.itinerari || null
       }
       
       if (editingGroup) {
@@ -494,9 +494,9 @@ export default function GrupsEstudiantsPage() {
                         <Users className="h-3 w-3" />
                         <span>{group.max_students} estudiants màx.</span>
                       </div>
-                      {group.itinerari && (
+                      {group.specialization && (
                         <Badge variant="secondary" className="mt-1">
-                          {group.itinerari}
+                          {group.specialization}
                         </Badge>
                       )}
                     </div>
