@@ -335,19 +335,15 @@ export default function GrupsEstudiantsPage() {
       
       // Add new assignments
       if (toAdd.length > 0) {
-        // Create assignments for each subject with the appropriate semester
-        const newAssignments = toAdd.map(subjectId => {
-          // Find the subject to get its semester
-          const subject = subjects.find(s => s.id === subjectId)
-          // Determine which semester ID to use based on subject semester
-          const semesterId = subject?.semester === '1' ? semesters[0].id : semesters[1].id
-          
-          return {
+        // Create assignments for each subject in BOTH semesters
+        const newAssignments = toAdd.flatMap(subjectId => {
+          // Create an assignment for EACH semester
+          return semesters.map(semester => ({
             subject_id: subjectId,
-            semester_id: semesterId,
+            semester_id: semester.id,
             group_code: selectedGroup.name,
             max_students: selectedGroup.max_students
-          }
+          }))
         })
         
         const { error } = await supabase
