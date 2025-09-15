@@ -191,8 +191,17 @@ export default function EditGroupPage() {
       return
     }
 
+    const ectsValue = parseFloat(ectsToAssign)
+    if (isNaN(ectsValue) || ectsValue <= 0) {
+      toast.error('Els ECTS han de ser un número vàlid major que 0')
+      return
+    }
+
     const teacher = teachers.find(t => t.id === selectedTeacherId)
-    if (!teacher) return
+    if (!teacher) {
+      toast.error('Professor no trobat')
+      return
+    }
 
     // Check if teacher is already assigned
     if (teacherAssignments.some(ta => ta.teacher_id === selectedTeacherId)) {
@@ -200,10 +209,16 @@ export default function EditGroupPage() {
       return
     }
 
+    console.log('Adding teacher assignment:', {
+      teacher_id: selectedTeacherId,
+      teacher_name: `${teacher.first_name} ${teacher.last_name}`,
+      ects_assigned: ectsValue
+    })
+
     setTeacherAssignments([...teacherAssignments, {
       teacher_id: selectedTeacherId,
       teacher: teacher,
-      ects_assigned: parseFloat(ectsToAssign)
+      ects_assigned: ectsValue
     }])
 
     setSelectedTeacherId('')
@@ -234,29 +249,48 @@ export default function EditGroupPage() {
       if (groupError) throw groupError
 
       // Delete existing teacher assignments
+      console.log('Deleting existing teacher assignments for group:', params.id)
       const { error: deleteError } = await supabase
         .from('teacher_group_assignments')
         .delete()
         .eq('subject_group_id', params.id)
         .eq('academic_year', '2025-2026')
 
-      if (deleteError) throw deleteError
+      if (deleteError) {
+        console.error('Error deleting teacher assignments:', deleteError)
+        throw deleteError
+      }
 
       // Insert new teacher assignments
       if (teacherAssignments.length > 0) {
-        const { error: insertError } = await supabase
-          .from('teacher_group_assignments')
-          .insert(
-            teacherAssignments.map(ta => ({
-              teacher_id: ta.teacher_id,
-              subject_group_id: params.id,
-              academic_year: '2025-2026',
-              ects_assigned: ta.ects_assigned,
-              is_coordinator: false
-            }))
-          )
+        const insertData = teacherAssignments.map(ta => ({
+          teacher_id: ta.teacher_id,
+          subject_group_id: params.id,
+          academic_year: '2025-2026',
+          ects_assigned: ta.ects_assigned || 0,
+          is_coordinator: false
+        }))
 
-        if (insertError) throw insertError
+        console.log('Inserting teacher assignments:', insertData)
+
+        const { data: insertedData, error: insertError } = await supabase
+          .from('teacher_group_assignments')
+          .insert(insertData)
+          .select()
+
+        if (insertError) {
+          console.error('Error inserting teacher assignments:', insertError)
+
+          // Check if it's a permissions error
+          if (insertError.code === 'PGRST301' || insertError.message?.includes('row-level security')) {
+            toast.error('No tens permisos per assignar professors. Contacta amb un administrador.')
+            return
+          }
+
+          throw insertError
+        }
+
+        console.log('Successfully inserted teacher assignments:', insertedData)
       }
 
       toast.success('Grup actualitzat correctament')
