@@ -103,6 +103,25 @@ interface Assignment {
     is_full_semester: boolean
     weeks: number[]
   }>
+  profile?: {
+    id: string
+    name: string
+  } | null
+  profileVariants?: Array<{
+    id: string
+    profile: {
+      id: string
+      name: string
+    } | null
+    teacher: Teacher | null
+    classroom: Classroom | null
+    classrooms: Classroom[]
+    assignment_classrooms: Array<{
+      classroom: Classroom
+      is_full_semester: boolean
+      weeks: number[]
+    }>
+  }>
 }
 
 // Draggable Subject Component
@@ -401,7 +420,7 @@ export default function AssignacionsAulesPage() {
 
   const loadAssignments = async () => {
     try {
-      
+
       // Find the semester ID from the selected semester for the current academic year
       const { data: semesters, error: semesterError } = await supabase
         .from('semesters')
@@ -409,15 +428,15 @@ export default function AssignacionsAulesPage() {
         .eq('number', parseInt(selectedSemester))
         .eq('academic_year_id', '2b210161-5447-4494-8003-f09a0b553a3f') // 2025-2026
         .single()
-      
+
       if (semesterError) {
         console.error('Error finding semester:', semesterError)
         return
       }
-      
+
       // Store the current semester ID
       setCurrentSemesterId(semesters?.id || null)
-      
+
       // Load existing assignments for this group and semester
       const { data: assignmentsData, error } = await supabase
         .from('assignments')
@@ -435,7 +454,18 @@ export default function AssignacionsAulesPage() {
           student_groups!student_group_id (*),
           classrooms!classroom_id (*),
           time_slots!time_slot_id (*),
-          teachers!teacher_id (id, first_name, last_name, email)
+          teachers!teacher_id (id, first_name, last_name, email),
+          subject_groups!subject_group_id (
+            id,
+            group_code,
+            subject_group_profile_members (
+              profile_id,
+              subject_group_profiles!profile_id (
+                id,
+                name
+              )
+            )
+          )
         `)
         .eq('student_group_id', selectedGroup)
         .eq('semester_id', semesters?.id)
@@ -481,7 +511,18 @@ export default function AssignacionsAulesPage() {
                   student_groups!student_group_id (*),
                   classrooms!classroom_id (*),
                   time_slots!time_slot_id (*),
-                  teachers!teacher_id (id, first_name, last_name, email)
+                  teachers!teacher_id (id, first_name, last_name, email),
+                  subject_groups!subject_group_id (
+                    id,
+                    group_code,
+                    subject_group_profile_members (
+                      profile_id,
+                      subject_group_profiles!profile_id (
+                        id,
+                        name
+                      )
+                    )
+                  )
                 `)
                 .eq('student_group_id', selectedGroup)
                 .eq('semester_id', semesters?.id)
@@ -538,8 +579,154 @@ export default function AssignacionsAulesPage() {
           })
         }
         
+        // Check if this is a generic group view (GR3-Gm1) that should show profile variants
+        const currentGroupData = studentGroups.find(g => g.id === selectedGroup)
+        const isGenericGroupView = currentGroupData?.name === 'GR3-Gm1'
+
+        // If it's a generic view, we need to load related profile assignments
+        let relatedProfileAssignments = []
+        if (isGenericGroupView) {
+          // Load assignments for both profile variants (GR3-Gm1a and GR3-Gm1b)
+          const { data: gm1aAssignments } = await supabase
+            .from('assignments')
+            .select(`
+              id,
+              hours_per_week,
+              subject_id,
+              subject_group_id,
+              student_group_id,
+              classroom_id,
+              time_slot_id,
+              teacher_id,
+              semester_id,
+              subjects!subject_id (*),
+              student_groups!student_group_id (*),
+              classrooms!classroom_id (*),
+              time_slots!time_slot_id (*),
+              teachers!teacher_id (id, first_name, last_name, email),
+              subject_groups!subject_group_id (
+                id,
+                group_code,
+                subject_group_profile_members (
+                  profile_id,
+                  subject_group_profiles!profile_id (
+                    id,
+                    name
+                  )
+                )
+              )
+            `)
+            .eq('student_group_id', (await supabase
+              .from('student_groups')
+              .select('id')
+              .eq('name', 'GR3-Gm1a')
+              .single()
+            ).data?.id)
+            .eq('semester_id', semesters?.id)
+
+          const { data: gm1bAssignments } = await supabase
+            .from('assignments')
+            .select(`
+              id,
+              hours_per_week,
+              subject_id,
+              subject_group_id,
+              student_group_id,
+              classroom_id,
+              time_slot_id,
+              teacher_id,
+              semester_id,
+              subjects!subject_id (*),
+              student_groups!student_group_id (*),
+              classrooms!classroom_id (*),
+              time_slots!time_slot_id (*),
+              teachers!teacher_id (id, first_name, last_name, email),
+              subject_groups!subject_group_id (
+                id,
+                group_code,
+                subject_group_profile_members (
+                  profile_id,
+                  subject_group_profiles!profile_id (
+                    id,
+                    name
+                  )
+                )
+              )
+            `)
+            .eq('student_group_id', (await supabase
+              .from('student_groups')
+              .select('id')
+              .eq('name', 'GR3-Gm1b')
+              .single()
+            ).data?.id)
+            .eq('semester_id', semesters?.id)
+
+          // Add both sets to the related assignments
+          if (gm1aAssignments) relatedProfileAssignments.push(...gm1aAssignments)
+          if (gm1bAssignments) relatedProfileAssignments.push(...gm1bAssignments)
+
+          console.log('Related profile assignments for generic view:', relatedProfileAssignments)
+        }
+
         // Transform data
         const transformedAssignments = assignmentsData.map(a => {
+          // Extract profile information from subject_groups
+          let profile = null
+          console.log('Processing assignment:', a.id, 'Subject:', a.subjects?.name)
+          console.log('Subject groups data:', a.subject_groups)
+
+          if (a.subject_groups && !Array.isArray(a.subject_groups)) {
+            const subjectGroup = a.subject_groups
+            console.log('Subject group profile members:', subjectGroup.subject_group_profile_members)
+
+            if (subjectGroup.subject_group_profile_members && subjectGroup.subject_group_profile_members.length > 0) {
+              const profileMember = subjectGroup.subject_group_profile_members[0]
+              console.log('Profile member:', profileMember)
+
+              if (profileMember.subject_group_profiles) {
+                profile = {
+                  id: profileMember.subject_group_profiles.id,
+                  name: profileMember.subject_group_profiles.name
+                }
+                console.log('Extracted profile:', profile)
+              }
+            }
+          }
+
+          // For generic view, look for related profile assignments in the same time slot
+          let profileVariants = []
+          if (isGenericGroupView && a.time_slot_id) {
+            const relatedInSameSlot = relatedProfileAssignments.filter(ra =>
+              ra.time_slot_id === a.time_slot_id &&
+              ra.subject_id === a.subject_id
+            )
+
+            profileVariants = relatedInSameSlot.map(ra => {
+              let variantProfile = null
+              if (ra.subject_groups && !Array.isArray(ra.subject_groups)) {
+                const subjectGroup = ra.subject_groups
+                if (subjectGroup.subject_group_profile_members && subjectGroup.subject_group_profile_members.length > 0) {
+                  const profileMember = subjectGroup.subject_group_profile_members[0]
+                  if (profileMember.subject_group_profiles) {
+                    variantProfile = {
+                      id: profileMember.subject_group_profiles.id,
+                      name: profileMember.subject_group_profiles.name
+                    }
+                  }
+                }
+              }
+
+              return {
+                id: ra.id,
+                profile: variantProfile,
+                teacher: !Array.isArray(ra.teachers) ? ra.teachers : ra.teachers[0],
+                classroom: !Array.isArray(ra.classrooms) ? ra.classrooms : ra.classrooms[0],
+                classrooms: classroomsByAssignment[ra.id] || [],
+                assignment_classrooms: assignmentClassroomDetails[ra.id] || []
+              }
+            })
+          }
+
           return {
             id: a.id,
             subject: !Array.isArray(a.subjects) ? a.subjects : a.subjects[0],
@@ -549,7 +736,9 @@ export default function AssignacionsAulesPage() {
             assignment_classrooms: assignmentClassroomDetails[a.id] || [], // New: detailed classroom info with weeks
             time_slot: !Array.isArray(a.time_slots) ? a.time_slots : a.time_slots[0],
             teacher: !Array.isArray(a.teachers) ? a.teachers : a.teachers[0],
-            day_of_week: a.time_slots && typeof a.time_slots === 'object' && !Array.isArray(a.time_slots) && 'day_of_week' in a.time_slots ? (a.time_slots as any).day_of_week : undefined
+            day_of_week: a.time_slots && typeof a.time_slots === 'object' && !Array.isArray(a.time_slots) && 'day_of_week' in a.time_slots ? (a.time_slots as any).day_of_week : undefined,
+            profile: profile,
+            profileVariants: profileVariants.length > 0 ? profileVariants : undefined
           }
         })
         
@@ -1763,18 +1952,58 @@ function DroppableAssignment({
 
       <div className="space-y-1 flex flex-col h-full">
         <div className="font-semibold text-xs line-clamp-2 leading-tight">
-          {assignment.subject.name}
+          {assignment.profile ? assignment.profile.name : assignment.subject.name}
         </div>
-        
-        <div className="text-[11px] opacity-90 flex items-center gap-1">
-          <GraduationCap className="h-3 w-3 flex-shrink-0" />
-          <span className="truncate">
-            {assignment.teacher 
-              ? `${assignment.teacher.first_name} ${assignment.teacher.last_name}`
-              : "Sense docent assignat"
-            }
-          </span>
-        </div>
+
+        {/* Show profile variants if available */}
+        {assignment.profileVariants && assignment.profileVariants.length > 0 ? (
+          <div className="space-y-2 flex-1">
+            {assignment.profileVariants.map((variant, index) => (
+              <div key={variant.id} className="border-l-2 border-blue-200 pl-2 space-y-1">
+                <div className="font-medium text-[10px] text-blue-700">
+                  {variant.profile?.name || 'Variant'}
+                </div>
+
+                <div className="text-[11px] opacity-90 flex items-center gap-1">
+                  <GraduationCap className="h-3 w-3 flex-shrink-0" />
+                  <span className="truncate">
+                    {variant.teacher ? `${variant.teacher.first_name} ${variant.teacher.last_name}` : 'Sense professor'}
+                  </span>
+                </div>
+
+                {/* Show classrooms for this variant */}
+                {variant.assignment_classrooms && variant.assignment_classrooms.length > 0 && (
+                  <div className="space-y-1">
+                    {variant.assignment_classrooms.map((ac) => (
+                      <div key={ac.classroom.id} className="flex items-center gap-1 text-[11px] bg-blue-50/50 rounded px-1 py-0.5">
+                        <Building2 className="h-3 w-3 flex-shrink-0" />
+                        <span className="flex-1 truncate">{ac.classroom.code}</span>
+                        {!ac.is_full_semester && ac.weeks.length > 0 && (
+                          <span className="text-[10px] opacity-80">
+                            S.{ac.weeks.length < 4 ? ac.weeks.join(',') : `${ac.weeks[0]}-${ac.weeks[ac.weeks.length-1]}`}
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          /* Original single assignment view */
+          <>
+            <div className="text-[11px] opacity-90 flex items-center gap-1">
+              <GraduationCap className="h-3 w-3 flex-shrink-0" />
+              <span className="truncate">
+                {assignment.teacher
+                  ? `${assignment.teacher.first_name} ${assignment.teacher.last_name}`
+                  : "Sense docent assignat"
+                }
+              </span>
+            </div>
+          </>
+        )}
         
         {/* Show multiple classrooms or warning if none */}
         {assignment.assignment_classrooms && assignment.assignment_classrooms.length > 0 ? (

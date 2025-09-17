@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
+import { Checkbox } from '@/components/ui/checkbox'
 import { createClient } from '@/lib/supabase/client'
 import { 
   BookOpen,
@@ -75,6 +76,7 @@ interface Subject {
   groupCount?: number
   password?: string | null
   username?: string | null
+  hasGroupsWithoutTeachers?: boolean
 }
 
 interface SubjectGroup {
@@ -130,6 +132,245 @@ interface Filters {
   itinerari: string
   semestre: string
   nom: string
+  sense_professor: boolean
+}
+
+// Teacher Assignment UI Component
+interface TeacherAssignmentUIProps {
+  groupId: string
+  teachers: Teacher[]
+  teacherAssignments: Record<string, TeacherAssignment[]>
+  setTeacherAssignments: React.Dispatch<React.SetStateAction<Record<string, TeacherAssignment[]>>>
+  pendingTeacherSelections: Record<string, TeacherAssignment>
+  setPendingTeacherSelections: React.Dispatch<React.SetStateAction<Record<string, TeacherAssignment>>>
+}
+
+const TeacherAssignmentUI = ({
+  groupId,
+  teachers,
+  teacherAssignments,
+  setTeacherAssignments,
+  pendingTeacherSelections,
+  setPendingTeacherSelections
+}: TeacherAssignmentUIProps) => {
+  const [selectedTeacherId, setSelectedTeacherId] = useState<string>('')
+  const [ectsToAssign, setEctsToAssign] = useState<string>('')
+  const [teacherSearchTerm, setTeacherSearchTerm] = useState<string>('')
+  const [isTeacherDropdownOpen, setIsTeacherDropdownOpen] = useState(false)
+
+  // Save current selection to parent component when it changes
+  useEffect(() => {
+    if (selectedTeacherId && ectsToAssign) {
+      const teacher = teachers.find(t => t.id === selectedTeacherId)
+      const ectsValue = parseFloat(ectsToAssign)
+
+      if (teacher && !isNaN(ectsValue) && ectsValue > 0) {
+        // Check if the pending selection has actually changed
+        setPendingTeacherSelections(prev => {
+          const currentPending = prev[groupId]
+          const newPending = {
+            teacher_id: selectedTeacherId,
+            teacher: teacher,
+            ects_assigned: ectsValue
+          }
+
+          // Only update if the selection has actually changed
+          if (!currentPending ||
+              currentPending.teacher_id !== newPending.teacher_id ||
+              currentPending.ects_assigned !== newPending.ects_assigned) {
+            return {
+              ...prev,
+              [groupId]: newPending
+            }
+          }
+          return prev
+        })
+      }
+    } else {
+      // Clear pending selection if no valid selection
+      setPendingTeacherSelections(prev => {
+        if (prev[groupId]) {
+          const newState = { ...prev }
+          delete newState[groupId]
+          return newState
+        }
+        return prev
+      })
+    }
+  }, [selectedTeacherId, ectsToAssign, groupId, teachers, setPendingTeacherSelections])
+
+  const assignments = teacherAssignments[groupId] || []
+
+  const addTeacherAssignment = () => {
+    if (!selectedTeacherId || !ectsToAssign) {
+      toast.error('Selecciona un professor i assigna els ECTS')
+      return
+    }
+
+    const ectsValue = parseFloat(ectsToAssign)
+    if (isNaN(ectsValue) || ectsValue <= 0) {
+      toast.error('Els ECTS han de ser un número vàlid major que 0')
+      return
+    }
+
+    const teacher = teachers.find(t => t.id === selectedTeacherId)
+    if (!teacher) {
+      toast.error('Professor no trobat')
+      return
+    }
+
+    if (assignments.some(ta => ta.teacher_id === selectedTeacherId)) {
+      toast.error('Aquest professor ja està assignat a aquest grup')
+      return
+    }
+
+    const newAssignmentList = [...(teacherAssignments[groupId] || []), {
+      teacher_id: selectedTeacherId,
+      teacher: teacher,
+      ects_assigned: ectsValue
+    }]
+
+    setTeacherAssignments(prev => ({
+      ...prev,
+      [groupId]: newAssignmentList
+    }))
+
+    setSelectedTeacherId('')
+    setEctsToAssign('')
+    setTeacherSearchTerm('')
+  }
+
+  const removeTeacherAssignment = (teacherId: string) => {
+    setTeacherAssignments(prev => ({
+      ...prev,
+      [groupId]: (prev[groupId] || []).filter(ta => ta.teacher_id !== teacherId)
+    }))
+  }
+
+  return (
+    <div className="space-y-4 mt-4">
+      <h4 className="text-sm font-medium">Professors Assignats</h4>
+
+      {assignments.length > 0 ? (
+        <div className="space-y-2">
+          {assignments.map((assignment) => (
+            <div key={assignment.teacher_id} className="flex items-center justify-between p-2 border rounded-lg">
+              <div className="flex items-center gap-2">
+                <User className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm">
+                  {assignment.teacher?.first_name} {assignment.teacher?.last_name}
+                </span>
+                <Badge variant="outline" className="text-xs">
+                  {assignment.ects_assigned} ECTS
+                </Badge>
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => removeTeacherAssignment(assignment.teacher_id)}
+              >
+                <X className="h-3 w-3" />
+              </Button>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="text-sm text-muted-foreground">No hi ha professors assignats</p>
+      )}
+
+      <div className="grid gap-2 grid-cols-3 items-end">
+        <div className="col-span-2">
+          <Popover open={isTeacherDropdownOpen} onOpenChange={setIsTeacherDropdownOpen}>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                role="combobox"
+                size="sm"
+                className="w-full justify-between"
+              >
+                {selectedTeacherId
+                  ? (() => {
+                      const selectedTeacher = teachers.find((t) => t.id === selectedTeacherId)
+                      return selectedTeacher
+                        ? `${selectedTeacher.last_name}, ${selectedTeacher.first_name}`
+                        : "Professor no trobat"
+                    })()
+                  : "Selecciona professor..."}
+                <ChevronsUpDown className="ml-2 h-3 w-3 shrink-0 opacity-50" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-full p-0" align="start">
+              <Command shouldFilter={false}>
+                <CommandInput
+                  placeholder="Buscar professor..."
+                  value={teacherSearchTerm}
+                  onValueChange={setTeacherSearchTerm}
+                />
+                <CommandEmpty>No s'ha trobat cap professor.</CommandEmpty>
+                <CommandGroup className="max-h-48 overflow-auto">
+                  {teachers
+                    .filter(t => !assignments.some(ta => ta.teacher_id === t.id))
+                    .filter(teacher => {
+                      const searchLower = teacherSearchTerm.toLowerCase().trim()
+                      if (!searchLower) return true
+
+                      const fullName = `${teacher.first_name} ${teacher.last_name}`.toLowerCase()
+                      const reversedName = `${teacher.last_name} ${teacher.first_name}`.toLowerCase()
+                      const email = teacher.email.toLowerCase()
+
+                      return fullName.includes(searchLower) ||
+                             reversedName.includes(searchLower) ||
+                             email.includes(searchLower) ||
+                             teacher.first_name.toLowerCase().includes(searchLower) ||
+                             teacher.last_name.toLowerCase().includes(searchLower)
+                    })
+                    .map((teacher) => (
+                      <CommandItem
+                        key={teacher.id}
+                        value={teacher.id}
+                        onSelect={(currentValue) => {
+                          setSelectedTeacherId(currentValue === selectedTeacherId ? "" : currentValue)
+                          setIsTeacherDropdownOpen(false)
+                          setTeacherSearchTerm("")
+                        }}
+                      >
+                        <Check
+                          className={cn(
+                            "mr-2 h-3 w-3",
+                            selectedTeacherId === teacher.id ? "opacity-100" : "opacity-0"
+                          )}
+                        />
+                        <span className="text-sm">{teacher.last_name}, {teacher.first_name}</span>
+                      </CommandItem>
+                    ))}
+                </CommandGroup>
+              </Command>
+            </PopoverContent>
+          </Popover>
+        </div>
+
+        <div className="flex gap-1">
+          <Input
+            type="number"
+            step="0.5"
+            min="0"
+            max="12"
+            value={ectsToAssign}
+            onChange={(e) => setEctsToAssign(e.target.value)}
+            placeholder="ECTS"
+            className="w-20"
+          />
+          <Button
+            size="sm"
+            onClick={addTeacherAssignment}
+            disabled={!selectedTeacherId || !ectsToAssign}
+          >
+            <Plus className="h-3 w-3" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default function AssignaturesGrupsPage() {
@@ -142,7 +383,8 @@ export default function AssignaturesGrupsPage() {
     curs: '',
     itinerari: '',
     semestre: '',
-    nom: ''
+    nom: '',
+    sense_professor: false
   })
   const [subjectGroups, setSubjectGroups] = useState<Record<string, SubjectGroup[]>>({})
   const [loadingGroups, setLoadingGroups] = useState<Record<string, boolean>>({})
@@ -155,6 +397,7 @@ export default function AssignaturesGrupsPage() {
   const [editingGroup, setEditingGroup] = useState<string | null>(null)
   const [editFormData, setEditFormData] = useState<any>({})
   const [teacherAssignments, setTeacherAssignments] = useState<Record<string, TeacherAssignment[]>>({})
+  const [pendingTeacherSelections, setPendingTeacherSelections] = useState<Record<string, TeacherAssignment>>({})
   const [groupAssignments, setGroupAssignments] = useState<Record<string, number>>({})
   const [groupAssignmentDetails, setGroupAssignmentDetails] = useState<Record<string, any[]>>({})
   
@@ -181,7 +424,47 @@ export default function AssignaturesGrupsPage() {
     loadSemesters()
     loadGraus()
     checkUserRole()
+    checkUserAuth()
   }, [])
+
+  const checkUserAuth = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser()
+      console.log('ASSIGNATURES-GRUPS - Current authenticated user:', user)
+
+      if (user) {
+        const { data: profile, error } = await supabase
+          .from('user_profiles')
+          .select('role')
+          .eq('id', user.id)
+          .single()
+
+        console.log('ASSIGNATURES-GRUPS - User profile:', profile)
+        console.log('ASSIGNATURES-GRUPS - User role:', profile?.role)
+
+        if (error) {
+          console.error('ASSIGNATURES-GRUPS - Error getting user profile:', error)
+        }
+
+        // If no profile exists, create admin profile
+        if (error && error.code === 'PGRST116') {
+          console.log('ASSIGNATURES-GRUPS - No profile found, creating admin profile...')
+          const { error: createError } = await supabase
+            .from('user_profiles')
+            .insert({ id: user.id, role: 'admin' })
+
+          if (createError) {
+            console.error('ASSIGNATURES-GRUPS - Error creating admin profile:', createError)
+          } else {
+            console.log('ASSIGNATURES-GRUPS - Admin profile created successfully')
+            toast.success('Perfil admin creat automàticament')
+          }
+        }
+      }
+    } catch (error) {
+      console.error('ASSIGNATURES-GRUPS - Error checking authentication:', error)
+    }
+  }
 
   const checkUserRole = async () => {
     try {
@@ -241,16 +524,39 @@ export default function AssignaturesGrupsPage() {
       const { data, error } = await query
 
       if (error) throw error
-      
-      // Process the data to include group counts
-      const processedData = (data || []).map(subject => {
+
+      // Process the data to include group counts and check for groups without teachers
+      const processedData = await Promise.all((data || []).map(async (subject) => {
         const groupCount = subject.subject_groups?.[0]?.count || 0
+
+        // Check if this subject has groups without assigned teachers
+        let hasGroupsWithoutTeachers = false
+        if (groupCount > 0) {
+          const { data: groupsData } = await supabase
+            .from('subject_groups')
+            .select('id')
+            .eq('subject_id', subject.id)
+
+          if (groupsData && groupsData.length > 0) {
+            // Check if any of these groups have no teacher assignments
+            const { data: assignmentsData } = await supabase
+              .from('teacher_group_assignments')
+              .select('subject_group_id')
+              .in('subject_group_id', groupsData.map(g => g.id))
+              .eq('academic_year', '2025-2026')
+
+            const groupsWithTeachers = new Set((assignmentsData || []).map(a => a.subject_group_id))
+            hasGroupsWithoutTeachers = groupsData.some(group => !groupsWithTeachers.has(group.id))
+          }
+        }
+
         return {
           ...subject,
-          groupCount
+          groupCount,
+          hasGroupsWithoutTeachers
         }
-      })
-      
+      }))
+
       setSubjects(processedData)
     } catch (error) {
       console.error('Error loading subjects:', error)
@@ -511,6 +817,28 @@ export default function AssignaturesGrupsPage() {
         throw groupError
       }
 
+      // Check if there's a pending teacher selection that wasn't added with +
+      let finalAssignments = [...(teacherAssignments[groupId] || [])]
+
+      // Check for pending selection in state
+      const pendingSelection = pendingTeacherSelections[groupId]
+      if (pendingSelection && !finalAssignments.some(ta => ta.teacher_id === pendingSelection.teacher_id)) {
+        console.log('AUTO-ADDING pending teacher selection:', {
+          teacher_id: pendingSelection.teacher_id,
+          teacher_name: `${pendingSelection.teacher.first_name} ${pendingSelection.teacher.last_name}`,
+          ects_assigned: pendingSelection.ects_assigned
+        })
+
+        finalAssignments.push(pendingSelection)
+
+        // Clear the pending selection since we've added it
+        setPendingTeacherSelections(prev => {
+          const newState = { ...prev }
+          delete newState[groupId]
+          return newState
+        })
+      }
+
       // Update teacher assignments
       console.log('Deleting existing teacher assignments for group:', groupId)
       const { error: deleteError } = await supabase
@@ -524,8 +852,15 @@ export default function AssignaturesGrupsPage() {
         throw deleteError
       }
 
-      const assignments = teacherAssignments[groupId] || []
-      console.log('Teacher assignments to insert:', assignments)
+      const assignments = finalAssignments
+      console.log('SAVING - All teacherAssignments state:', teacherAssignments)
+      console.log('SAVING - Assignments for group', groupId, ':', assignments)
+      console.log('SAVING - Assignment keys:', Object.keys(teacherAssignments))
+
+      if (assignments.length === 0) {
+        console.warn('WARNING: No teacher assignments to save! This means state was lost.')
+        console.log('DEBUG - Current teacherAssignments:', teacherAssignments)
+      }
 
       if (assignments.length > 0) {
         const insertData = assignments.map(ta => ({
@@ -613,21 +948,22 @@ export default function AssignaturesGrupsPage() {
 
   const filteredSubjects = subjects.filter(subject => {
     const search = (filters.nom || searchTerm).toLowerCase()
-    
+
     // Cerca flexible: divideix el text de cerca en paraules i comprova que totes estiguin presents
     const matchesSearch = !search || (() => {
       const searchWords = search.split(/\s+/).filter(word => word.length > 0)
       const subjectText = `${subject.name} ${subject.code}`.toLowerCase()
-      
+
       // Totes les paraules de cerca han d'estar presents al nom o codi
       return searchWords.every(word => subjectText.includes(word))
     })()
-    
+
     const matchesCurs = !filters.curs || filters.curs === 'all' || subject.year.toString() === filters.curs
     const matchesItinerari = !filters.itinerari || filters.itinerari === 'all' || subject.itinerari === filters.itinerari
     const matchesSemestre = !filters.semestre || filters.semestre === 'all' || subject.semester === filters.semestre
-    
-    return matchesSearch && matchesCurs && matchesItinerari && matchesSemestre
+    const matchesSenseProfessor = !filters.sense_professor || subject.hasGroupsWithoutTeachers
+
+    return matchesSearch && matchesCurs && matchesItinerari && matchesSemestre && matchesSenseProfessor
   })
 
   const totalECTS = filteredSubjects.reduce((sum, subject) => sum + subject.credits, 0)
@@ -650,13 +986,17 @@ export default function AssignaturesGrupsPage() {
       curs: '',
       itinerari: '',
       semestre: '',
-      nom: ''
+      nom: '',
+      sense_professor: false
     })
     setSearchTerm('')
   }
 
-  const hasActiveFilters = Object.entries(filters).some(([key, value]) => 
-    key !== 'grau' && value !== '' && value !== 'all'
+  const hasActiveFilters = Object.entries(filters).some(([key, value]) =>
+    key !== 'grau' && (
+      (typeof value === 'string' && value !== '' && value !== 'all') ||
+      (typeof value === 'boolean' && value === true)
+    )
   ) || searchTerm !== ''
 
   const sendCredentials = async (subjectId: string) => {
@@ -813,187 +1153,6 @@ export default function AssignaturesGrupsPage() {
     }
   }
 
-  // Helper function for teacher assignment UI
-  const TeacherAssignmentUI = ({ groupId }: { groupId: string }) => {
-    const [selectedTeacherId, setSelectedTeacherId] = useState<string>('')
-    const [ectsToAssign, setEctsToAssign] = useState<string>('')
-    const [teacherSearchTerm, setTeacherSearchTerm] = useState<string>('')
-    const [isTeacherDropdownOpen, setIsTeacherDropdownOpen] = useState(false)
-    
-    const assignments = teacherAssignments[groupId] || []
-
-    const addTeacherAssignment = () => {
-      if (!selectedTeacherId || !ectsToAssign) {
-        toast.error('Selecciona un professor i assigna els ECTS')
-        return
-      }
-
-      const ectsValue = parseFloat(ectsToAssign)
-      if (isNaN(ectsValue) || ectsValue <= 0) {
-        toast.error('Els ECTS han de ser un número vàlid major que 0')
-        return
-      }
-
-      const teacher = teachers.find(t => t.id === selectedTeacherId)
-      if (!teacher) {
-        toast.error('Professor no trobat')
-        return
-      }
-
-      if (assignments.some(ta => ta.teacher_id === selectedTeacherId)) {
-        toast.error('Aquest professor ja està assignat a aquest grup')
-        return
-      }
-
-      console.log('Adding teacher assignment:', {
-        teacher_id: selectedTeacherId,
-        teacher_name: `${teacher.first_name} ${teacher.last_name}`,
-        ects_assigned: ectsValue,
-        groupId
-      })
-
-      setTeacherAssignments(prev => ({
-        ...prev,
-        [groupId]: [...(prev[groupId] || []), {
-          teacher_id: selectedTeacherId,
-          teacher: teacher,
-          ects_assigned: ectsValue
-        }]
-      }))
-
-      setSelectedTeacherId('')
-      setEctsToAssign('')
-      setTeacherSearchTerm('')
-    }
-
-    const removeTeacherAssignment = (teacherId: string) => {
-      setTeacherAssignments(prev => ({
-        ...prev,
-        [groupId]: (prev[groupId] || []).filter(ta => ta.teacher_id !== teacherId)
-      }))
-    }
-
-    return (
-      <div className="space-y-4 mt-4">
-        <h4 className="text-sm font-medium">Professors Assignats</h4>
-        
-        {assignments.length > 0 ? (
-          <div className="space-y-2">
-            {assignments.map((assignment) => (
-              <div key={assignment.teacher_id} className="flex items-center justify-between p-2 border rounded-lg">
-                <div className="flex items-center gap-2">
-                  <User className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm">
-                    {assignment.teacher?.first_name} {assignment.teacher?.last_name}
-                  </span>
-                  <Badge variant="outline" className="text-xs">
-                    {assignment.ects_assigned} ECTS
-                  </Badge>
-                </div>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => removeTeacherAssignment(assignment.teacher_id)}
-                >
-                  <X className="h-3 w-3" />
-                </Button>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="text-sm text-muted-foreground">No hi ha professors assignats</p>
-        )}
-
-        <div className="grid gap-2 grid-cols-3 items-end">
-          <div className="col-span-2">
-            <Popover open={isTeacherDropdownOpen} onOpenChange={setIsTeacherDropdownOpen}>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  role="combobox"
-                  size="sm"
-                  className="w-full justify-between"
-                >
-                  {selectedTeacherId
-                    ? teachers.find((t) => t.id === selectedTeacherId)?.last_name + ", " + 
-                      teachers.find((t) => t.id === selectedTeacherId)?.first_name
-                    : "Selecciona professor..."}
-                  <ChevronsUpDown className="ml-2 h-3 w-3 shrink-0 opacity-50" />
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-full p-0" align="start">
-                <Command>
-                  <CommandInput 
-                    placeholder="Buscar professor..." 
-                    value={teacherSearchTerm}
-                    onValueChange={setTeacherSearchTerm}
-                  />
-                  <CommandEmpty>No s'ha trobat cap professor.</CommandEmpty>
-                  <CommandGroup className="max-h-48 overflow-auto">
-                    {teachers
-                      .filter(t => !assignments.some(ta => ta.teacher_id === t.id))
-                      .filter(teacher => {
-                        const searchLower = teacherSearchTerm.toLowerCase().trim()
-                        if (!searchLower) return true
-
-                        const fullName = `${teacher.first_name} ${teacher.last_name}`.toLowerCase()
-                        const reversedName = `${teacher.last_name} ${teacher.first_name}`.toLowerCase()
-                        const email = teacher.email.toLowerCase()
-
-                        return fullName.includes(searchLower) ||
-                               reversedName.includes(searchLower) ||
-                               email.includes(searchLower) ||
-                               teacher.first_name.toLowerCase().includes(searchLower) ||
-                               teacher.last_name.toLowerCase().includes(searchLower)
-                      })
-                      .map((teacher) => (
-                        <CommandItem
-                          key={teacher.id}
-                          value={teacher.id}
-                          onSelect={(currentValue) => {
-                            setSelectedTeacherId(currentValue === selectedTeacherId ? "" : currentValue)
-                            setIsTeacherDropdownOpen(false)
-                            setTeacherSearchTerm("")
-                          }}
-                        >
-                          <Check
-                            className={cn(
-                              "mr-2 h-3 w-3",
-                              selectedTeacherId === teacher.id ? "opacity-100" : "opacity-0"
-                            )}
-                          />
-                          <span className="text-sm">{teacher.last_name}, {teacher.first_name}</span>
-                        </CommandItem>
-                      ))}
-                  </CommandGroup>
-                </Command>
-              </PopoverContent>
-            </Popover>
-          </div>
-          
-          <div className="flex gap-1">
-            <Input
-              type="number"
-              step="0.5"
-              min="0"
-              max="12"
-              value={ectsToAssign}
-              onChange={(e) => setEctsToAssign(e.target.value)}
-              placeholder="ECTS"
-              className="w-20"
-            />
-            <Button
-              size="sm"
-              onClick={addTeacherAssignment}
-              disabled={!selectedTeacherId || !ectsToAssign}
-            >
-              <Plus className="h-3 w-3" />
-            </Button>
-          </div>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className="space-y-6">
@@ -1063,80 +1222,94 @@ export default function AssignaturesGrupsPage() {
           <CardTitle>Filtres</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {/* Name search - moved to first position */}
-            <div className="relative col-span-2">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                placeholder="Cercar per nom o codi..."
-                value={filters.nom || searchTerm}
-                onChange={(e) => {
-                  setFilters(prev => ({ ...prev, nom: e.target.value }))
-                  setSearchTerm(e.target.value)
-                }}
-                className="pl-10"
-              />
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {/* Name search - moved to first position */}
+              <div className="relative col-span-2">
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  placeholder="Cercar per nom o codi..."
+                  value={filters.nom || searchTerm}
+                  onChange={(e) => {
+                    setFilters(prev => ({ ...prev, nom: e.target.value }))
+                    setSearchTerm(e.target.value)
+                  }}
+                  className="pl-10"
+                />
+              </div>
+
+              {/* Grau filter */}
+              <Select value={filters.grau} onValueChange={(value) => setFilters(prev => ({ ...prev, grau: value }))}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="GD">Grau en Disseny</SelectItem>
+                  <SelectItem value="GB">Grau en Belles Arts</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {/* Curs filter */}
+              <Select value={filters.curs} onValueChange={(value) => setFilters(prev => ({ ...prev, curs: value }))}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Curs" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Tots els cursos</SelectItem>
+                  {uniqueYears.map(year => (
+                    <SelectItem key={year} value={year.toString()}>
+                      {year}r curs
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              {/* Itinerari filter */}
+              <Select value={filters.itinerari} onValueChange={(value) => setFilters(prev => ({ ...prev, itinerari: value }))}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Itinerari" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Tots els itineraris</SelectItem>
+                  {uniqueItineraris.map(itinerari => (
+                    <SelectItem key={itinerari} value={itinerari}>
+                      {itinerari === 'A' ? 'Audiovisual' :
+                       itinerari === 'G' ? 'Gràfic' :
+                       itinerari === 'I' ? 'Espais' :
+                       itinerari === 'M' ? 'Moda' :
+                       itinerari}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              {/* Semestre filter */}
+              <Select value={filters.semestre} onValueChange={(value) => setFilters(prev => ({ ...prev, semestre: value }))}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Semestre" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Tots els semestres</SelectItem>
+                  {uniqueSemesters.map(semester => (
+                    <SelectItem key={semester} value={semester}>
+                      {semester}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
-            {/* Grau filter */}
-            <Select value={filters.grau} onValueChange={(value) => setFilters(prev => ({ ...prev, grau: value }))}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="GD">Grau en Disseny</SelectItem>
-                <SelectItem value="GB">Grau en Belles Arts</SelectItem>
-              </SelectContent>
-            </Select>
-
-            {/* Curs filter */}
-            <Select value={filters.curs} onValueChange={(value) => setFilters(prev => ({ ...prev, curs: value }))}>
-              <SelectTrigger>
-                <SelectValue placeholder="Curs" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Tots els cursos</SelectItem>
-                {uniqueYears.map(year => (
-                  <SelectItem key={year} value={year.toString()}>
-                    {year}r curs
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            {/* Itinerari filter */}
-            <Select value={filters.itinerari} onValueChange={(value) => setFilters(prev => ({ ...prev, itinerari: value }))}>
-              <SelectTrigger>
-                <SelectValue placeholder="Itinerari" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Tots els itineraris</SelectItem>
-                {uniqueItineraris.map(itinerari => (
-                  <SelectItem key={itinerari} value={itinerari}>
-                    {itinerari === 'A' ? 'Audiovisual' :
-                     itinerari === 'G' ? 'Gràfic' :
-                     itinerari === 'I' ? 'Espais' :
-                     itinerari === 'M' ? 'Moda' :
-                     itinerari}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            {/* Semestre filter */}
-            <Select value={filters.semestre} onValueChange={(value) => setFilters(prev => ({ ...prev, semestre: value }))}>
-              <SelectTrigger>
-                <SelectValue placeholder="Semestre" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Tots els semestres</SelectItem>
-                {uniqueSemesters.map(semester => (
-                  <SelectItem key={semester} value={semester}>
-                    {semester}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            {/* Checkbox filter for subjects without teachers */}
+            <div className="flex items-center space-x-2">
+              <Checkbox
+                id="sense-professor"
+                checked={filters.sense_professor}
+                onCheckedChange={(checked) => setFilters(prev => ({ ...prev, sense_professor: checked as boolean }))}
+              />
+              <Label htmlFor="sense-professor" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Mostrar només assignatures amb grups sense professor assignat
+              </Label>
+            </div>
           </div>
 
           {/* Active filters */}
@@ -1168,6 +1341,12 @@ export default function AssignaturesGrupsPage() {
                     clearFilter('nom')
                     setSearchTerm('')
                   }} />
+                </Badge>
+              )}
+              {filters.sense_professor && (
+                <Badge variant="secondary" className="gap-1">
+                  Sense professor
+                  <X className="h-3 w-3 cursor-pointer" onClick={() => setFilters(prev => ({ ...prev, sense_professor: false }))} />
                 </Badge>
               )}
               <Button variant="ghost" size="sm" onClick={clearAllFilters} className="text-xs">
@@ -1253,6 +1432,11 @@ export default function AssignaturesGrupsPage() {
                         <Badge variant="secondary">
                           {subject.groupCount || 0} grups
                         </Badge>
+                        {subject.hasGroupsWithoutTeachers && (
+                          <Badge variant="destructive" className="text-xs">
+                            Sense professor
+                          </Badge>
+                        )}
                         <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
                           <Button 
                             variant="ghost" 
@@ -1344,7 +1528,15 @@ export default function AssignaturesGrupsPage() {
                                         </div>
 
                                         {userRole === 'admin' ? (
-                                          <TeacherAssignmentUI groupId={group.id} />
+                                          <TeacherAssignmentUI
+                                            key={group.id}
+                                            groupId={group.id}
+                                            teachers={teachers}
+                                            teacherAssignments={teacherAssignments}
+                                            setTeacherAssignments={setTeacherAssignments}
+                                            pendingTeacherSelections={pendingTeacherSelections}
+                                            setPendingTeacherSelections={setPendingTeacherSelections}
+                                          />
                                         ) : (
                                           <div className="space-y-4 mt-4">
                                             <h4 className="text-sm font-medium">Professors Assignats</h4>

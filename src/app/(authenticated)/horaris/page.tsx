@@ -51,6 +51,26 @@ interface Assignment {
   }
   color: string
   subject_group_id?: string
+  profile?: {
+    id: string
+    name: string
+  } | null
+  profileVariants?: Array<{
+    id: string
+    profile: {
+      id: string
+      name: string
+    } | null
+    teacher: {
+      first_name: string
+      last_name: string
+    } | null
+    classrooms: {
+      code: string
+      name: string
+    }[]
+    color: string
+  }>
 }
 
 interface StudentGroup {
