@@ -253,6 +253,7 @@ export function SchedulePDFView({
     return (
       <div className="semester-wrapper">
         <div className="semester-title">
+          <span className="semester-icon">{semester === 1 ? '🌿' : '❄️'}</span>
           {semester === 1 ? '1r SEMESTRE' : '2n SEMESTRE'}
         </div>
         <table className="schedule-table">
@@ -401,13 +402,23 @@ export function SchedulePDFView({
           <div key={groupIndex} className="schedule-page">
             {/* Header */}
             <div className="schedule-header">
-              <div>
-                <h1 className="schedule-title">CURS {academicYear}</h1>
-                <p className="course-subtitle">{getCourseType(group.name)} - {group.name}</p>
+              <div className="schedule-header-content">
+                <h1 className="schedule-title">Horaris Curs {academicYear}</h1>
+                <p className="course-subtitle">{getCourseType(group.name)}</p>
               </div>
               <div className="schedule-badges">
-                <span className="schedule-badge">{group.year}</span>
-                <span className="schedule-badge">{group.name}</span>
+                <div className="schedule-badge primary">
+                  <span className="badge-label">Curs</span>
+                  <span className="badge-value">{group.year}r</span>
+                </div>
+                <div className="schedule-badge secondary">
+                  <span className="badge-label">Grup</span>
+                  <span className="badge-value">{group.name}</span>
+                </div>
+                <div className="schedule-badge accent">
+                  <span className="badge-label">Torn</span>
+                  <span className="badge-value">{group.shift === 'mati' ? 'Matí' : 'Tarda'}</span>
+                </div>
               </div>
             </div>
 
