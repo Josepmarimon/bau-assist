@@ -325,13 +325,13 @@ export default function MigrateProfilesPage() {
         const { data: newAssignmentA, error: assignAError } = await supabase
           .from('assignments')
           .insert({
-            subject_id: assignment.subject_id,
+            subject_id: (assignment as any).subject_id,
             subject_group_id: newGroupA.id,
-            student_group_id: assignment.student_group_id,
-            time_slot_id: assignment.time_slot_id,
-            semester_id: assignment.semester_id,
-            hours_per_week: assignment.hours_per_week,
-            teacher_id: assignment.teacher_id
+            student_group_id: (assignment as any).student_group_id,
+            time_slot_id: (assignment as any).time_slot_id,
+            semester_id: (assignment as any).semester_id,
+            hours_per_week: (assignment as any).hours_per_week,
+            teacher_id: (assignment as any).teacher_id
           })
           .select()
           .single()
@@ -342,13 +342,13 @@ export default function MigrateProfilesPage() {
         const { data: newAssignmentB, error: assignBError } = await supabase
           .from('assignments')
           .insert({
-            subject_id: assignment.subject_id,
+            subject_id: (assignment as any).subject_id,
             subject_group_id: newGroupB.id,
-            student_group_id: assignment.student_group_id,
-            time_slot_id: assignment.time_slot_id,
-            semester_id: assignment.semester_id,
-            hours_per_week: assignment.hours_per_week,
-            teacher_id: assignment.teacher_id
+            student_group_id: (assignment as any).student_group_id,
+            time_slot_id: (assignment as any).time_slot_id,
+            semester_id: (assignment as any).semester_id,
+            hours_per_week: (assignment as any).hours_per_week,
+            teacher_id: (assignment as any).teacher_id
           })
           .select()
           .single()

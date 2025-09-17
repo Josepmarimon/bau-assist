@@ -672,11 +672,11 @@ export default function AssignacionsAulesPage() {
         const transformedAssignments = assignmentsData.map(a => {
           // Extract profile information from subject_groups
           let profile = null
-          console.log('Processing assignment:', a.id, 'Subject:', a.subjects?.name)
+          console.log('Processing assignment:', a.id, 'Subject:', (a.subjects as any)?.name)
           console.log('Subject groups data:', a.subject_groups)
 
           if (a.subject_groups && !Array.isArray(a.subject_groups)) {
-            const subjectGroup = a.subject_groups
+            const subjectGroup = a.subject_groups as any
             console.log('Subject group profile members:', subjectGroup.subject_group_profile_members)
 
             if (subjectGroup.subject_group_profile_members && subjectGroup.subject_group_profile_members.length > 0) {
@@ -694,7 +694,7 @@ export default function AssignacionsAulesPage() {
           }
 
           // For generic view, look for related profile assignments in the same time slot
-          let profileVariants = []
+          let profileVariants: any[] = []
           if (isGenericGroupView && a.time_slot_id) {
             const relatedInSameSlot = relatedProfileAssignments.filter(ra =>
               ra.time_slot_id === a.time_slot_id &&
@@ -704,7 +704,7 @@ export default function AssignacionsAulesPage() {
             profileVariants = relatedInSameSlot.map(ra => {
               let variantProfile = null
               if (ra.subject_groups && !Array.isArray(ra.subject_groups)) {
-                const subjectGroup = ra.subject_groups
+                const subjectGroup = ra.subject_groups as any
                 if (subjectGroup.subject_group_profile_members && subjectGroup.subject_group_profile_members.length > 0) {
                   const profileMember = subjectGroup.subject_group_profile_members[0]
                   if (profileMember.subject_group_profiles) {

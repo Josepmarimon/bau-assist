@@ -825,7 +825,7 @@ export default function AssignaturesGrupsPage() {
       if (pendingSelection && !finalAssignments.some(ta => ta.teacher_id === pendingSelection.teacher_id)) {
         console.log('AUTO-ADDING pending teacher selection:', {
           teacher_id: pendingSelection.teacher_id,
-          teacher_name: `${pendingSelection.teacher.first_name} ${pendingSelection.teacher.last_name}`,
+          teacher_name: `${pendingSelection.teacher?.first_name} ${pendingSelection.teacher?.last_name}`,
           ects_assigned: pendingSelection.ects_assigned
         })
 
