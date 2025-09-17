@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import {
   Dialog,
   DialogContent,
@@ -14,6 +14,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Clock, Calendar, Users, RefreshCw } from 'lucide-react'
 import { ClassroomAssignmentDialog } from '@/components/subjects/classroom-assignment-dialog'
+import { NewAssignmentDialog } from '@/components/classrooms/new-assignment-dialog'
 import { Button } from '@/components/ui/button'
 
 interface ClassroomOccupancyDialogProps {
@@ -51,6 +52,99 @@ export function ClassroomOccupancyDialog({
   // State for showing assignment dialog
   const [assignmentDialogOpen, setAssignmentDialogOpen] = useState(false)
   const [selectedSubjectGroup, setSelectedSubjectGroup] = useState<any>(null)
+
+  // State for time slot selection (click and drag)
+  const [isSelecting, setIsSelecting] = useState(false)
+  const [selectionStart, setSelectionStart] = useState<{day: number, time: string} | null>(null)
+  const [selectionEnd, setSelectionEnd] = useState<{day: number, time: string} | null>(null)
+  const [selectedTimeSlots, setSelectedTimeSlots] = useState<Set<string>>(new Set())
+
+  // State for new assignment dialog
+  const [newAssignmentDialogOpen, setNewAssignmentDialogOpen] = useState(false)
+  const [newAssignmentData, setNewAssignmentData] = useState<{
+    day: number
+    startTime: string
+    endTime: string
+    classroomId: string
+  } | null>(null)
+
+  // Helper functions for time slot selection
+  const getCellKey = (day: number, time: string) => `${day}-${time}`
+
+  const handleMouseDown = (day: number, time: string) => {
+    setIsSelecting(true)
+    setSelectionStart({ day, time })
+    setSelectionEnd({ day, time })
+    setSelectedTimeSlots(new Set([getCellKey(day, time)]))
+  }
+
+  const handleMouseEnter = (day: number, time: string) => {
+    if (!isSelecting || !selectionStart) return
+
+    // Only allow selection in the same day
+    if (day !== selectionStart.day) return
+
+    setSelectionEnd({ day, time })
+
+    // Update selected time slots
+    const sortedTimes = Array.from(new Set([...Array(12)].map((_, i) => {
+      const hour = 9 + i
+      return `${hour.toString().padStart(2, '0')}:00:00`
+    }))).sort()
+
+    const startIndex = sortedTimes.indexOf(selectionStart.time)
+    const endIndex = sortedTimes.indexOf(time)
+
+    if (startIndex !== -1 && endIndex !== -1) {
+      const start = Math.min(startIndex, endIndex)
+      const end = Math.max(startIndex, endIndex)
+      const selected = new Set<string>()
+
+      for (let i = start; i <= end; i++) {
+        selected.add(getCellKey(day, sortedTimes[i]))
+      }
+
+      setSelectedTimeSlots(selected)
+    }
+  }
+
+  const handleMouseUp = () => {
+    if (isSelecting && selectionStart && selectionEnd) {
+      // Create new assignment with selected time range
+      const sortedTimes = Array.from(new Set([...Array(12)].map((_, i) => {
+        const hour = 9 + i
+        return `${hour.toString().padStart(2, '0')}:00:00`
+      }))).sort()
+
+      const startIndex = sortedTimes.indexOf(selectionStart.time)
+      const endIndex = sortedTimes.indexOf(selectionEnd.time)
+
+      if (startIndex !== -1 && endIndex !== -1) {
+        const start = Math.min(startIndex, endIndex)
+        const end = Math.max(startIndex, endIndex)
+
+        const startTime = sortedTimes[start]
+        const endTime = sortedTimes[end + 1] || `${20}:00:00` // Next hour or 20:00
+
+        setNewAssignmentData({
+          day: selectionStart.day,
+          startTime,
+          endTime,
+          classroomId: classroom.id
+        })
+        setNewAssignmentDialogOpen(true)
+      }
+    }
+
+    setIsSelecting(false)
+    setSelectionStart(null)
+    setSelectionEnd(null)
+    setSelectedTimeSlots(new Set())
+  }
+
+  const isTimeSlotSelected = (day: number, time: string) => {
+    return selectedTimeSlots.has(getCellKey(day, time))
+  }
 
   const renderTimeGrid = (semesterData: any) => {
     console.log('Rendering semester data:', semesterData)
@@ -145,7 +239,15 @@ export function ClassroomOccupancyDialog({
 
     return (
       <div className="overflow-x-auto">
-        <table className="w-full border-separate" style={{ borderSpacing: '4px 0' }}>
+        <table className="w-full border-separate table-fixed" style={{ borderSpacing: '4px 0' }}>
+          <colgroup>
+            <col style={{ width: '80px' }} />
+            <col style={{ width: 'calc((100% - 80px) / 5)' }} />
+            <col style={{ width: 'calc((100% - 80px) / 5)' }} />
+            <col style={{ width: 'calc((100% - 80px) / 5)' }} />
+            <col style={{ width: 'calc((100% - 80px) / 5)' }} />
+            <col style={{ width: 'calc((100% - 80px) / 5)' }} />
+          </colgroup>
           <thead>
             <tr>
               <th className="border px-2 py-1 bg-muted text-sm">Hora</th>
@@ -208,9 +310,26 @@ export function ClassroomOccupancyDialog({
                         </td>
                       )
                     }
-                    
-                    // Empty cell
-                    return <td key={day} className="border px-2 py-1"></td>
+
+                    // Empty cell - clickable to add new assignment
+                    const isSelected = isTimeSlotSelected(day, time)
+                    return (
+                      <td
+                        key={day}
+                        className={`border px-2 py-1 cursor-pointer transition-colors h-12 min-h-[48px] select-none ${
+                          isSelected
+                            ? 'bg-blue-200 border-blue-400'
+                            : 'hover:bg-gray-50'
+                        }`}
+                        onMouseDown={() => handleMouseDown(day, time)}
+                        onMouseEnter={() => handleMouseEnter(day, time)}
+                        onMouseUp={handleMouseUp}
+                      >
+                        <div className="flex items-center justify-center h-full opacity-30 hover:opacity-60 transition-opacity">
+                          <span className="text-xs text-muted-foreground">+</span>
+                        </div>
+                      </td>
+                    )
                   })}
                 </tr>
               )
@@ -358,6 +477,20 @@ export function ClassroomOccupancyDialog({
           }}
         />
       )}
+
+      {/* New Assignment Dialog */}
+      <NewAssignmentDialog
+        open={newAssignmentDialogOpen}
+        onOpenChange={setNewAssignmentDialogOpen}
+        assignmentData={newAssignmentData}
+        semesterId={selectedSemester}
+        onSuccess={() => {
+          // Refresh the occupancy data after successful assignment
+          if (onRefresh) {
+            onRefresh()
+          }
+        }}
+      />
     </Dialog>
   )
 }
