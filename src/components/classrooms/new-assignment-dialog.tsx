@@ -53,7 +53,6 @@ export function NewAssignmentDialog({
   const [selectedYear, setSelectedYear] = useState('')
   const [selectedSubject, setSelectedSubject] = useState('')
   const [selectedStudentGroup, setSelectedStudentGroup] = useState('')
-  const [selectedMaster, setSelectedMaster] = useState('')
   const [selectedProgram, setSelectedProgram] = useState('')
   const [customStartTime, setCustomStartTime] = useState('')
   const [customEndTime, setCustomEndTime] = useState('')
@@ -62,7 +61,6 @@ export function NewAssignmentDialog({
   const [subjects, setSubjects] = useState<any[]>([])
   const [studentGroups, setStudentGroups] = useState<any[]>([])
   const [masters, setMasters] = useState<any[]>([])
-  const [programs, setPrograms] = useState<any[]>([])
   const [loading, setLoading] = useState(false)
 
   // Reset form when dialog opens
@@ -73,7 +71,6 @@ export function NewAssignmentDialog({
       setSelectedYear('')
       setSelectedSubject('')
       setSelectedStudentGroup('')
-      setSelectedMaster('')
       setSelectedProgram('')
       setCustomStartTime(assignmentData.startTime.slice(0, 5))
       setCustomEndTime(assignmentData.endTime.slice(0, 5))
@@ -89,18 +86,15 @@ export function NewAssignmentDialog({
     }
   }, [selectedDegree, selectedYear])
 
-  // Load programs when master changes
-  useEffect(() => {
-    if (selectedMaster) {
-      loadPrograms()
-    }
-  }, [selectedMaster])
+  // Programs are loaded directly as masters
 
   const loadMasters = async () => {
     try {
       const { data, error } = await supabase
-        .from('masters')
+        .from('programs')
         .select('*')
+        .in('type', ['master', 'postgrau'])
+        .eq('active', true)
         .order('name')
 
       if (error) throw error
@@ -110,31 +104,19 @@ export function NewAssignmentDialog({
     }
   }
 
-  const loadPrograms = async () => {
-    if (!selectedMaster) return
-
-    try {
-      const { data, error } = await supabase
-        .from('master_programs')
-        .select('*')
-        .eq('master_id', selectedMaster)
-        .order('name')
-
-      if (error) throw error
-      setPrograms(data || [])
-    } catch (error) {
-      console.error('Error loading programs:', error)
-    }
-  }
+  // No need for separate programs loading since masters ARE the programs
 
   const loadSubjects = async () => {
     if (!selectedDegree || !selectedYear) return
 
     try {
+      // Map degree selection to code prefix
+      const codePrefix = selectedDegree === 'disseny' ? 'GD' : 'GBA'
+
       const { data, error } = await supabase
         .from('subjects')
         .select('*')
-        .eq('course_type', selectedDegree)
+        .like('code', `${codePrefix}%`)
         .eq('year', parseInt(selectedYear))
         .order('name')
 
@@ -172,7 +154,7 @@ export function NewAssignmentDialog({
         return
       }
     } else {
-      if (!selectedMaster || !selectedProgram) {
+      if (!selectedProgram) {
         toast.error('Si us plau, emplena tots els camps requerits')
         return
       }
@@ -200,23 +182,43 @@ export function NewAssignmentDialog({
       if (timeSlotError) throw timeSlotError
 
       // Create assignment
-      const assignmentPayload: any = {
-        classroom_id: assignmentData.classroomId,
-        time_slot_id: timeSlot.id,
-        semester_id: semesterId,
-        hours_per_week: calculateHours(customStartTime, customEndTime)
-      }
+      let assignmentError: any = null
 
       if (educationType === 'degree') {
-        assignmentPayload.subject_id = selectedSubject
-        assignmentPayload.student_group_id = selectedStudentGroup
-      } else {
-        assignmentPayload.master_program_id = selectedProgram
-      }
+        // Create regular assignment for degrees
+        const assignmentPayload = {
+          subject_id: selectedSubject,
+          subject_group_id: '', // You might need to handle this
+          student_group_id: selectedStudentGroup,
+          classroom_id: assignmentData.classroomId,
+          time_slot_id: timeSlot.id,
+          semester_id: semesterId,
+          hours_per_week: calculateHours(customStartTime, customEndTime)
+        }
 
-      const { error: assignmentError } = await supabase
-        .from('assignments')
-        .insert(assignmentPayload)
+        const { error } = await supabase
+          .from('assignments')
+          .insert(assignmentPayload)
+
+        assignmentError = error
+      } else {
+        // Create master schedule for masters/postgrau
+        const masterSchedulePayload = {
+          program_id: selectedProgram,
+          classroom_id: assignmentData.classroomId,
+          day_of_week: assignmentData.day,
+          start_time: `${customStartTime}:00`,
+          end_time: `${customEndTime}:00`,
+          semester_id: semesterId,
+          active: true
+        }
+
+        const { error } = await supabase
+          .from('master_schedules')
+          .insert(masterSchedulePayload)
+
+        assignmentError = error
+      }
 
       if (assignmentError) throw assignmentError
 
@@ -363,38 +365,20 @@ export function NewAssignmentDialog({
           {educationType === 'master' && (
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label>Màster</Label>
-                <Select value={selectedMaster} onValueChange={setSelectedMaster}>
+                <Label>Programa de Màster / Postgrau</Label>
+                <Select value={selectedProgram} onValueChange={setSelectedProgram}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Selecciona un màster" />
+                    <SelectValue placeholder="Selecciona un programa" />
                   </SelectTrigger>
                   <SelectContent>
-                    {masters.map((master) => (
-                      <SelectItem key={master.id} value={master.id}>
-                        {master.name}
+                    {masters.map((program) => (
+                      <SelectItem key={program.id} value={program.id}>
+                        {program.name} ({program.type === 'master' ? 'Màster' : 'Postgrau'})
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
-
-              {selectedMaster && (
-                <div className="space-y-2">
-                  <Label>Programa</Label>
-                  <Select value={selectedProgram} onValueChange={setSelectedProgram}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Selecciona un programa" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {programs.map((program) => (
-                        <SelectItem key={program.id} value={program.id}>
-                          {program.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              )}
             </div>
           )}
         </div>
