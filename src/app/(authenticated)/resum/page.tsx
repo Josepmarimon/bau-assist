@@ -53,6 +53,17 @@ interface SummaryStats {
     total: number
     bySemester: { semester: string; count: number }[]
     conflicts: number
+    conflictDetails: {
+      type: 'teacher' | 'classroom'
+      resource: string
+      assignments: {
+        subject: string
+        group: string
+        timeSlot: string
+        day: string
+        semester: string
+      }[]
+    }[]
   }
   workshops: {
     total: number
@@ -208,24 +219,51 @@ export default function ResumPage() {
           classroom_id,
           teacher_id,
           semester_id,
-          time_slots(day_of_week, start_time, end_time)
+          time_slots(day_of_week, start_time, end_time),
+          subjects(name),
+          subject_groups(group_code),
+          semesters(name),
+          teachers(first_name, last_name),
+          classrooms(name)
         `)
         .not('time_slot_id', 'is', null)
 
-      // Count conflicts (same teacher or classroom at same time)
+      // Detect conflicts (same teacher or classroom at same time)
       let conflictsCount = 0
+      const conflictDetailsMap = new Map<string, any>()
       const assignmentMap = new Map<string, any[]>()
+
+      const dayNames = ['', 'Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres']
 
       potentialConflicts?.forEach(assignment => {
         const timeSlot = assignment.time_slots as any
         if (timeSlot?.day_of_week && assignment.time_slot_id) {
+          const assignmentInfo = {
+            subject: (assignment.subjects as any)?.name || 'Unknown',
+            group: (assignment.subject_groups as any)?.group_code || 'Unknown',
+            timeSlot: `${timeSlot.start_time} - ${timeSlot.end_time}`,
+            day: dayNames[timeSlot.day_of_week] || 'Unknown',
+            semester: (assignment.semesters as any)?.name || 'Unknown'
+          }
+
           // Check teacher conflicts
           if (assignment.teacher_id) {
             const teacherKey = `teacher-${assignment.teacher_id}-${timeSlot.day_of_week}-${assignment.time_slot_id}-${assignment.semester_id}`
             if (assignmentMap.has(teacherKey)) {
               conflictsCount++
+              const teacher = assignment.teachers as any
+              const teacherName = teacher ? `${teacher.first_name} ${teacher.last_name}` : 'Unknown'
+
+              if (!conflictDetailsMap.has(teacherKey)) {
+                conflictDetailsMap.set(teacherKey, {
+                  type: 'teacher' as const,
+                  resource: teacherName,
+                  assignments: [assignmentMap.get(teacherKey)![0]]
+                })
+              }
+              conflictDetailsMap.get(teacherKey)!.assignments.push(assignmentInfo)
             } else {
-              assignmentMap.set(teacherKey, [assignment])
+              assignmentMap.set(teacherKey, [assignmentInfo])
             }
           }
 
@@ -234,12 +272,25 @@ export default function ResumPage() {
             const classroomKey = `classroom-${assignment.classroom_id}-${timeSlot.day_of_week}-${assignment.time_slot_id}-${assignment.semester_id}`
             if (assignmentMap.has(classroomKey)) {
               conflictsCount++
+              const classroom = assignment.classrooms as any
+              const classroomName = classroom?.name || 'Unknown'
+
+              if (!conflictDetailsMap.has(classroomKey)) {
+                conflictDetailsMap.set(classroomKey, {
+                  type: 'classroom' as const,
+                  resource: classroomName,
+                  assignments: [assignmentMap.get(classroomKey)![0]]
+                })
+              }
+              conflictDetailsMap.get(classroomKey)!.assignments.push(assignmentInfo)
             } else {
-              assignmentMap.set(classroomKey, [assignment])
+              assignmentMap.set(classroomKey, [assignmentInfo])
             }
           }
         }
       })
+
+      const conflictDetails = Array.from(conflictDetailsMap.values())
 
       // Workshops (Tallers) - subjects with 'Taller' in the name
       const { data: workshops } = await supabase
@@ -285,7 +336,8 @@ export default function ResumPage() {
         assignments: {
           total: allAssignments?.length || 0,
           bySemester: Object.entries(assignmentsBySemester || {}).map(([semester, count]) => ({ semester, count })),
-          conflicts: conflictsCount
+          conflicts: conflictsCount,
+          conflictDetails
         },
         workshops: {
           total: workshops?.length || 0,
@@ -610,10 +662,58 @@ export default function ResumPage() {
                 </p>
               </div>
               {stats.assignments.conflicts > 0 && (
-                <div className="mt-4 p-4 bg-red-50 rounded-lg">
-                  <p className="text-sm text-red-700">
-                    Hi ha conflictes d'horari que requereixen atenció. 
-                    Revisa les assignacions per resoldre'ls.
+                <div className="mt-6 space-y-4">
+                  <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+                    <p className="text-sm font-medium text-red-900 mb-4">
+                      Detall dels conflictes detectats:
+                    </p>
+                  </div>
+
+                  {stats.assignments.conflictDetails.map((conflict, index) => (
+                    <Card key={index} className="border-red-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base flex items-center gap-2">
+                          {conflict.type === 'teacher' ? (
+                            <>
+                              <Users className="h-4 w-4 text-red-500" />
+                              Professor: {conflict.resource}
+                            </>
+                          ) : (
+                            <>
+                              <Building2 className="h-4 w-4 text-red-500" />
+                              Aula: {conflict.resource}
+                            </>
+                          )}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-2">
+                          {conflict.assignments.map((assignment, idx) => (
+                            <div
+                              key={idx}
+                              className="flex items-start gap-3 p-3 bg-red-50 rounded-md text-sm"
+                            >
+                              <Clock className="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
+                              <div className="flex-1">
+                                <div className="font-medium text-red-900">
+                                  {assignment.subject} - {assignment.group}
+                                </div>
+                                <div className="text-red-700 text-xs mt-1">
+                                  {assignment.day} · {assignment.timeSlot} · {assignment.semester}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
+              {stats.assignments.conflicts === 0 && (
+                <div className="mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
+                  <p className="text-sm text-green-700 text-center">
+                    ✓ No s'han detectat conflictes d'horari
                   </p>
                 </div>
               )}
