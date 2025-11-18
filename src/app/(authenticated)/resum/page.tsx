@@ -77,10 +77,10 @@ export default function ResumPage() {
       // Programs data
       const { data: programs } = await supabase
         .from('programs')
-        .select('id, program_type')
+        .select('id, type')
       
       const programsByType = programs?.reduce((acc, p) => {
-        const type = p.program_type || 'unknown'
+        const type = p.type || 'unknown'
         acc[type] = (acc[type] || 0) + 1
         return acc
       }, {} as Record<string, number>)
@@ -156,7 +156,7 @@ export default function ResumPage() {
       // Subjects data
       const { data: subjects } = await supabase
         .from('subjects')
-        .select('id, subject_type')
+        .select('id, type')
       
       const { data: subjectAssignments } = await supabase
         .from('assignments')
@@ -169,7 +169,7 @@ export default function ResumPage() {
       ).length || 0
 
       const subjectsByType = subjects?.reduce((acc, s) => {
-        const type = s.subject_type || 'unknown'
+        const type = s.type || 'unknown'
         acc[type] = (acc[type] || 0) + 1
         return acc
       }, {} as Record<string, number>)
@@ -177,46 +177,51 @@ export default function ResumPage() {
       // Assignments and conflicts
       const { data: allAssignments } = await supabase
         .from('assignments')
-        .select('id, semester')
-      
+        .select(`
+          id,
+          semester_id,
+          semesters(name)
+        `)
+
       const assignmentsBySemester = allAssignments?.reduce((acc, a) => {
-        const semester = a.semester || 'unknown'
+        const semester = (a.semesters as any)?.name || 'unknown'
         acc[semester] = (acc[semester] || 0) + 1
         return acc
       }, {} as Record<string, number>)
 
       // Check for conflicts by looking for overlapping assignments
-      // This is a simplified conflict detection - you may want to expand this
       const { data: potentialConflicts } = await supabase
         .from('assignments')
         .select(`
           id,
-          day_of_week,
           time_slot_id,
           classroom_id,
           teacher_id,
-          semester
+          semester_id,
+          time_slots(day_of_week, start_time, end_time)
         `)
-      
+        .not('time_slot_id', 'is', null)
+
       // Count conflicts (same teacher or classroom at same time)
       let conflictsCount = 0
       const assignmentMap = new Map<string, any[]>()
-      
+
       potentialConflicts?.forEach(assignment => {
-        if (assignment.day_of_week && assignment.time_slot_id) {
+        const timeSlot = assignment.time_slots as any
+        if (timeSlot?.day_of_week && assignment.time_slot_id) {
           // Check teacher conflicts
           if (assignment.teacher_id) {
-            const teacherKey = `teacher-${assignment.teacher_id}-${assignment.day_of_week}-${assignment.time_slot_id}-${assignment.semester}`
+            const teacherKey = `teacher-${assignment.teacher_id}-${timeSlot.day_of_week}-${assignment.time_slot_id}-${assignment.semester_id}`
             if (assignmentMap.has(teacherKey)) {
               conflictsCount++
             } else {
               assignmentMap.set(teacherKey, [assignment])
             }
           }
-          
+
           // Check classroom conflicts
           if (assignment.classroom_id) {
-            const classroomKey = `classroom-${assignment.classroom_id}-${assignment.day_of_week}-${assignment.time_slot_id}-${assignment.semester}`
+            const classroomKey = `classroom-${assignment.classroom_id}-${timeSlot.day_of_week}-${assignment.time_slot_id}-${assignment.semester_id}`
             if (assignmentMap.has(classroomKey)) {
               conflictsCount++
             } else {
@@ -226,26 +231,20 @@ export default function ResumPage() {
         }
       })
 
-      // Workshops (Tallers)
+      // Workshops (Tallers) - subjects with 'Taller' in the name
       const { data: workshops } = await supabase
         .from('subjects')
         .select(`
           id,
           name,
-          subject_groups!inner(
-            group_type
-          ),
-          subject_programs!inner(
-            programs(name)
-          )
+          program_id,
+          programs(name)
         `)
-        .eq('subject_groups.group_type', 'taller')
+        .ilike('name', '%Taller%')
 
       const workshopsByProgram = workshops?.reduce((acc, w) => {
-        w.subject_programs?.forEach((sp: any) => {
-          const programName = sp.programs?.name || 'Unknown'
-          acc[programName] = (acc[programName] || 0) + 1
-        })
+        const programName = (w.programs as any)?.name || 'Sense programa'
+        acc[programName] = (acc[programName] || 0) + 1
         return acc
       }, {} as Record<string, number>)
 
