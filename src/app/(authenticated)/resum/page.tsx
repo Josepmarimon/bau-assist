@@ -126,13 +126,23 @@ export default function ResumPage() {
       const { data: classrooms } = await supabase
         .from('classrooms')
         .select('id, name, building, capacity, type')
-      
+
+      // Check both assignments.classroom_id (legacy) and assignment_classrooms table
       const { data: assignments } = await supabase
         .from('assignments')
         .select('classroom_id')
         .not('classroom_id', 'is', null)
-      
-      const assignedClassroomIds = new Set(assignments?.map(a => a.classroom_id))
+
+      const { data: assignmentClassrooms } = await supabase
+        .from('assignment_classrooms')
+        .select('classroom_id')
+
+      // Combine both sources of classroom assignments
+      const assignedClassroomIds = new Set([
+        ...(assignments?.map(a => a.classroom_id) || []),
+        ...(assignmentClassrooms?.map(ac => ac.classroom_id) || [])
+      ])
+
       const classroomsWithoutAssignments = classrooms?.filter(
         c => !assignedClassroomIds.has(c.id)
       ) || []
