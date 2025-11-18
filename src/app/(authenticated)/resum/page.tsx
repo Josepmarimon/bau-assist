@@ -211,6 +211,7 @@ export default function ResumPage() {
       }, {} as Record<string, number>)
 
       // Check for conflicts by looking for overlapping assignments
+      // Only check assignments with student_group_id (actual student schedules)
       const { data: potentialConflicts } = await supabase
         .from('assignments')
         .select(`
@@ -219,6 +220,7 @@ export default function ResumPage() {
           classroom_id,
           teacher_id,
           semester_id,
+          student_group_id,
           time_slots(day_of_week, start_time, end_time),
           subjects(name),
           subject_groups(group_code),
@@ -227,6 +229,7 @@ export default function ResumPage() {
           classrooms(name)
         `)
         .not('time_slot_id', 'is', null)
+        .not('student_group_id', 'is', null)
 
       // Detect conflicts (same teacher or classroom at same time)
       let conflictsCount = 0
