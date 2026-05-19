@@ -91,10 +91,10 @@ export default function SubjectsWithoutSpacesPage() {
       // First get all active subjects
       const { data: allSubjects, error: subjectsError } = await supabase
         .from('subjects')
-        .select('id, code, name, year, semester, ID_Itinerari, type, credits')
+        .select('id, code, name, year, semester, itinerary_code, type, credits')
         .eq('active', true)
         .order('year')
-        .order('ID_Itinerari')
+        .order('itinerary_code')
         .order('semester')
         .order('name')
 
@@ -116,7 +116,7 @@ export default function SubjectsWithoutSpacesPage() {
         subject => !scheduledSubjectIds.includes(subject.id)
       ).map(subject => ({
         ...subject,
-        itinerari: subject.ID_Itinerari
+        itinerari: subject.itinerary_code
       })) || []
 
       setSubjects(subjectsWithoutSpaces)

@@ -35,6 +35,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { AcademicYearSelector } from '@/components/layout/academic-year-selector'
 
 interface NavItem {
   name: string
@@ -206,6 +207,11 @@ export function ModernSidebar({ onCollapsedChange }: ModernSidebarProps = {}) {
                 <ChevronLeft className="h-4 w-4" />
               </Button>
             )}
+          </div>
+
+          {/* Academic Year Selector */}
+          <div className={cn("border-b", isCollapsed ? "px-2 py-3" : "px-4 py-3")}>
+            <AcademicYearSelector collapsed={isCollapsed} />
           </div>
 
           {/* Navigation */}

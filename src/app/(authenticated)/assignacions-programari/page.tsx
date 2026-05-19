@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { createClient } from '@/lib/supabase/client'
+import { useAcademicYear } from '@/contexts/academic-year-context'
 import { 
   Package, 
   Search,
@@ -59,23 +60,87 @@ export default function SoftwareAssignmentsPage() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [selectedSubjects, setSelectedSubjects] = useState<Set<string>>(new Set())
-  
+
   // Filters
   const [subjectSearch, setSubjectSearch] = useState('')
   const [softwareSearch, setSoftwareSearch] = useState('')
   const [selectedYear, setSelectedYear] = useState<string>('all')
   const [selectedType, setSelectedType] = useState<string>('all')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
-  const [academicYear, setAcademicYear] = useState('2025-2026')
-  
+  const [onlyInformatica, setOnlyInformatica] = useState(false)
+  const [informaticaSubjectIds, setInformaticaSubjectIds] = useState<Set<string>>(new Set())
+  const { currentYear, allYears } = useAcademicYear()
+  const academicYear = currentYear?.name ?? ''
+
   // Track changes
   const [modifiedAssignments, setModifiedAssignments] = useState<Set<string>>(new Set())
-  
+
   const supabase = createClient()
 
   useEffect(() => {
+    if (!academicYear) return
     loadData()
   }, [academicYear])
+
+  // Compute which subjects have at least one assignment to an informatica
+  // classroom at the currently-selected academic year.
+  useEffect(() => {
+    if (!currentYear) {
+      setInformaticaSubjectIds(new Set())
+      return
+    }
+    const loadInformaticaSubjects = async () => {
+      // 1. Aules d'informàtica
+      const { data: rooms, error: roomsErr } = await supabase
+        .from('classrooms')
+        .select('id')
+        .eq('type', 'Informàtica')
+      if (roomsErr) {
+        console.error('Error loading informatica classrooms:', roomsErr)
+        return
+      }
+      const roomIds = (rooms || []).map((r: any) => r.id)
+      if (!roomIds.length) {
+        setInformaticaSubjectIds(new Set())
+        return
+      }
+
+      // 2. Semestres del curs actiu
+      const { data: sems, error: semErr } = await supabase
+        .from('semesters')
+        .select('id')
+        .eq('academic_year_id', currentYear.id)
+      if (semErr) {
+        console.error('Error loading semesters:', semErr)
+        return
+      }
+      const semIds = (sems || []).map((s: any) => s.id)
+      if (!semIds.length) {
+        setInformaticaSubjectIds(new Set())
+        return
+      }
+
+      // 3. assignment_classrooms a aula d'informàtica → assignments → subjects
+      const { data: acRows, error: acErr } = await supabase
+        .from('assignment_classrooms')
+        .select('assignments!inner(subject_id, semester_id)')
+        .in('classroom_id', roomIds)
+      if (acErr) {
+        console.error('Error loading assignment_classrooms:', acErr)
+        return
+      }
+      const ids = new Set<string>()
+      for (const row of acRows || []) {
+        const a = (row as any).assignments
+        if (a && semIds.includes(a.semester_id)) {
+          ids.add(a.subject_id)
+        }
+      }
+      console.log('Informatica subjects @', currentYear.name, ':', ids.size)
+      setInformaticaSubjectIds(ids)
+    }
+    loadInformaticaSubjects()
+  }, [currentYear?.id])
 
   const loadData = async () => {
     try {
@@ -84,7 +149,7 @@ export default function SoftwareAssignmentsPage() {
       // Load subjects
       const { data: subjectsData, error: subjectsError } = await supabase
         .from('subjects')
-        .select('id, code, name, year, type, credits, semester, ID_Itinerari')
+        .select('id, code, name, year, type, credits, semester, itinerary_code')
         .order('year')
         .order('code')
 
@@ -285,7 +350,7 @@ export default function SoftwareAssignmentsPage() {
 
   // Filtered data
   const filteredSubjects = subjects.filter(subject => {
-    if (subjectSearch && !subject.name.toLowerCase().includes(subjectSearch.toLowerCase()) && 
+    if (subjectSearch && !subject.name.toLowerCase().includes(subjectSearch.toLowerCase()) &&
         !subject.code.toLowerCase().includes(subjectSearch.toLowerCase())) {
       return false
     }
@@ -293,6 +358,9 @@ export default function SoftwareAssignmentsPage() {
       return false
     }
     if (selectedType !== 'all' && subject.type !== selectedType) {
+      return false
+    }
+    if (onlyInformatica && !informaticaSubjectIds.has(subject.id)) {
       return false
     }
     return true
@@ -363,16 +431,10 @@ export default function SoftwareAssignmentsPage() {
           <div className="grid gap-4 md:grid-cols-4">
             <div>
               <Label>Any Acadèmic</Label>
-              <Select value={academicYear} onValueChange={setAcademicYear}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="2025-2026">2025-2026</SelectItem>
-                  <SelectItem value="2024-2025">2024-2025</SelectItem>
-                  <SelectItem value="2026-2027">2026-2027</SelectItem>
-                </SelectContent>
-              </Select>
+              <div className="flex h-10 items-center rounded-md border border-input bg-muted px-3 text-sm text-muted-foreground">
+                {academicYear || '—'}{' '}
+                <span className="ml-2 text-xs">(canvia-ho al selector lateral)</span>
+              </div>
             </div>
             <div>
               <Label>Copiar d'un altre any</Label>
@@ -381,8 +443,13 @@ export default function SoftwareAssignmentsPage() {
                   <SelectValue placeholder="Selecciona un any" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="2024-2025">Copiar de 2024-2025</SelectItem>
-                  <SelectItem value="2025-2026">Copiar de 2025-2026</SelectItem>
+                  {allYears
+                    .filter((y) => y.name !== academicYear)
+                    .map((y) => (
+                      <SelectItem key={y.id} value={y.name}>
+                        Copiar de {y.name}
+                      </SelectItem>
+                    ))}
                 </SelectContent>
               </Select>
             </div>
@@ -435,6 +502,22 @@ export default function SoftwareAssignmentsPage() {
                     ))}
                   </SelectContent>
                 </Select>
+              </div>
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="only-informatica"
+                  checked={onlyInformatica}
+                  onCheckedChange={(c) => setOnlyInformatica(c === true)}
+                  disabled={informaticaSubjectIds.size === 0}
+                />
+                <Label htmlFor="only-informatica" className="text-sm cursor-pointer">
+                  Només amb aules d&apos;informàtica
+                  {informaticaSubjectIds.size > 0 && (
+                    <span className="ml-1 text-xs text-muted-foreground">
+                      ({informaticaSubjectIds.size})
+                    </span>
+                  )}
+                </Label>
               </div>
               {filteredSubjects.length > 0 && (
                 <div className="flex gap-2">
@@ -580,30 +663,23 @@ export default function SoftwareAssignmentsPage() {
               ) : (
                 <div className="space-y-6">
                   {selectedSubjects.size > 0 ? (
-                    // Subjects selected - show checkboxes
-                    <div className="space-y-2">
-                      <div className="mb-4 p-3 bg-primary/10 rounded-lg">
-                        <p className="text-sm font-medium">
-                          {selectedSubjects.size} assignatura{selectedSubjects.size > 1 ? 'es' : ''} seleccionada{selectedSubjects.size > 1 ? 'es' : ''}
-                        </p>
-                        <p className="text-xs text-muted-foreground mt-1">
-                          Marca els programes necessaris per aquestes assignatures
-                        </p>
-                      </div>
-                      {filteredSoftware.map(sw => {
-                        // Check how many selected subjects have this software
-                        const selectedArray = Array.from(selectedSubjects)
-                        const assignedCount = selectedArray.filter(subjectId => 
-                          isAssigned(subjectId, sw.id)
-                        ).length
-                        const allAssigned = assignedCount === selectedSubjects.size
-                        const someAssigned = assignedCount > 0 && assignedCount < selectedSubjects.size
-                        
-                        // Debug log
-                        if (sw.name === 'Teams') {
-                          console.log(`${sw.name}: assigned=${assignedCount}/${selectedSubjects.size}, all=${allAssigned}, some=${someAssigned}`)
+                    // Subjects selected - show checkboxes split into "assigned" + "available"
+                    (() => {
+                      const selectedArray = Array.from(selectedSubjects)
+                      const swInfo = filteredSoftware.map(sw => {
+                        const assignedCount = selectedArray.filter(id => isAssigned(id, sw.id)).length
+                        return {
+                          sw,
+                          assignedCount,
+                          allAssigned: assignedCount === selectedSubjects.size,
+                          someAssigned: assignedCount > 0 && assignedCount < selectedSubjects.size,
                         }
-                        
+                      })
+                      const assignedItems = swInfo.filter(i => i.assignedCount > 0)
+                      const availableItems = swInfo.filter(i => i.assignedCount === 0)
+
+                      const renderItem = (info: typeof swInfo[number]) => {
+                        const { sw, assignedCount, allAssigned, someAssigned } = info
                         return (
                           <div
                             key={sw.id}
@@ -614,16 +690,11 @@ export default function SoftwareAssignmentsPage() {
                                 checked={allAssigned}
                                 indeterminate={someAssigned}
                                 onCheckedChange={(checked) => {
-                                  // If checked is true, add to all subjects that don't have it
-                                  // If checked is false, remove from all subjects that have it
                                   selectedArray.forEach(subjectId => {
                                     const isCurrentlyAssigned = isAssigned(subjectId, sw.id)
-                                    
                                     if (checked && !isCurrentlyAssigned) {
-                                      // Add assignment
                                       toggleAssignment(subjectId, sw.id)
                                     } else if (!checked && isCurrentlyAssigned) {
-                                      // Remove assignment
                                       toggleAssignment(subjectId, sw.id)
                                     }
                                   })
@@ -635,7 +706,7 @@ export default function SoftwareAssignmentsPage() {
                                   <Badge variant="outline" className="text-xs">
                                     {sw.category}
                                   </Badge>
-                                  <Badge 
+                                  <Badge
                                     variant={sw.license_type === 'proprietary' ? 'destructive' : 'secondary'}
                                     className="text-xs"
                                   >
@@ -651,8 +722,43 @@ export default function SoftwareAssignmentsPage() {
                             </div>
                           </div>
                         )
-                      })}
-                    </div>
+                      }
+
+                      return (
+                        <div className="space-y-2">
+                          <div className="mb-4 p-3 bg-primary/10 rounded-lg">
+                            <p className="text-sm font-medium">
+                              {selectedSubjects.size} assignatura{selectedSubjects.size > 1 ? 'es' : ''} seleccionada{selectedSubjects.size > 1 ? 'es' : ''}
+                            </p>
+                            <p className="text-xs text-muted-foreground mt-1">
+                              Marca els programes necessaris per aquestes assignatures
+                            </p>
+                          </div>
+
+                          <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground py-1 sticky top-0 bg-sky-50/95 backdrop-blur z-10">
+                            Software assignat ({assignedItems.length})
+                          </div>
+                          {assignedItems.length > 0 ? (
+                            <div className="space-y-2">{assignedItems.map(renderItem)}</div>
+                          ) : (
+                            <p className="text-sm text-muted-foreground italic py-2 px-1">
+                              Encara no hi ha software assignat
+                            </p>
+                          )}
+
+                          <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground py-1 mt-4 sticky top-0 bg-sky-50/95 backdrop-blur z-10">
+                            Software disponible ({availableItems.length})
+                          </div>
+                          {availableItems.length > 0 ? (
+                            <div className="space-y-2">{availableItems.map(renderItem)}</div>
+                          ) : (
+                            <p className="text-sm text-muted-foreground italic py-2 px-1">
+                              Tot el software disponible ja està assignat
+                            </p>
+                          )}
+                        </div>
+                      )
+                    })()
                   ) : (
                     // Multiple or no subjects - show software list with counts
                     <div className="space-y-2">

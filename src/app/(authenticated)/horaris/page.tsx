@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Button } from '@/components/ui/button'
 import { SchedulePDFView } from '@/components/schedules/schedule-pdf-view'
+import { useAcademicYear } from '@/contexts/academic-year-context'
 import {
   Select,
   SelectContent,
@@ -93,6 +94,7 @@ interface CourseColor {
 
 export default function HorarisPage() {
   const supabase = createClient()
+  const { currentYear } = useAcademicYear()
   const [assignments, setAssignments] = useState<Record<string, Assignment[]>>({})
   const [assignments1, setAssignments1] = useState<Record<string, Assignment[]>>({})
   const [assignments2, setAssignments2] = useState<Record<string, Assignment[]>>({})
@@ -220,7 +222,7 @@ export default function HorarisPage() {
         .from('semesters')
         .select('id')
         .eq('number', parseInt(selectedSemester))
-        .eq('academic_year_id', '2b210161-5447-4494-8003-f09a0b553a3f')
+        .eq('academic_year_id', currentYear?.id ?? '')
         .single()
 
       if (!semester) {
@@ -356,7 +358,7 @@ export default function HorarisPage() {
         .from('semesters')
         .select('id, number')
         .in('number', [1, 2])
-        .eq('academic_year_id', '2b210161-5447-4494-8003-f09a0b553a3f')
+        .eq('academic_year_id', currentYear?.id ?? '')
 
       if (!semesters || semesters.length !== 2) {
         console.error('Semesters not found')
@@ -843,7 +845,7 @@ export default function HorarisPage() {
           groups={filteredGroups}
           assignments1={assignments1}
           assignments2={assignments2}
-          academicYear="2025-2026"
+          academicYear={currentYear?.name ?? ''}
           courseColors={courseColors}
           isLoading={loading}
           loadedGroups={loadedGroups}

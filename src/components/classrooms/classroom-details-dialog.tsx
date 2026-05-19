@@ -423,7 +423,7 @@ export function ClassroomDetailsDialog({
                 result.semester = { 
                   id: data.id, 
                   name: data.name || 'Sense nom',
-                  academic_year: (data.academic_years as any)?.name || '2025-2026'
+                  academic_year: (data.academic_years as any)?.name || ''
                 }
               } else if (error) {
                 console.error('Error fetching semester:', error)
@@ -438,7 +438,7 @@ export function ClassroomDetailsDialog({
                   result.semester = {
                     id: semesterData.id,
                     name: semesterData.name || 'Semestre',
-                    academic_year: '2025-2026'
+                    academic_year: ''
                   }
                 }
               }

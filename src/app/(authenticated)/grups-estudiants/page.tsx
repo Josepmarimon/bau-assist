@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
+import { useAcademicYear } from '@/contexts/academic-year-context'
 import { 
   Users,
   Search,
@@ -87,6 +88,7 @@ interface SubjectGroup {
 
 export default function GrupsEstudiantsPage() {
   const supabase = createClient()
+  const { currentYear } = useAcademicYear()
   const [groups, setGroups] = useState<StudentGroup[]>([])
   const [subjects, setSubjects] = useState<Subject[]>([])
   const [subjectGroups, setSubjectGroups] = useState<SubjectGroup[]>([])
@@ -315,11 +317,11 @@ export default function GrupsEstudiantsPage() {
       const { data: semesters } = await supabase
         .from('semesters')
         .select('id, name')
-        .eq('academic_year_id', '2b210161-5447-4494-8003-f09a0b553a3f') // 2025-2026
+        .eq('academic_year_id', currentYear?.id ?? '')
         .order('name')
-      
+
       if (!semesters || semesters.length === 0) {
-        throw new Error('No semesters found for academic year 2025-2026')
+        throw new Error(`No semesters found for academic year ${currentYear?.name ?? '(unknown)'}`)
       }
       
       // Remove assignments

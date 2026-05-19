@@ -17,6 +17,19 @@
 .DS_Store
 *.pem
 
+# MCP config conté credentials (Airtable API key, etc.)
+.mcp.json
+
+# Database dumps i backups (poden contenir dades sensibles)
+*.backup
+*.backup.gz
+*.dump
+mydosupsbcehbqipimdy.storage.zip
+
+# Carpetes de migració (dumps locals, no formen part del codi)
+/migration_export/
+/supabase/migrations.bak/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

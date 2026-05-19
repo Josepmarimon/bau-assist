@@ -7,7 +7,8 @@ import { Badge } from '@/components/ui/badge'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Input } from '@/components/ui/input'
 import { createClient } from '@/lib/supabase/client'
-import { 
+import { useAcademicYear } from '@/contexts/academic-year-context'
+import {
   Calendar,
   Building2,
   Users,
@@ -171,7 +172,8 @@ function DraggableSubject({ subject, remainingHours }: { subject: Subject, remai
  */
 export default function AssignacionsAulesPage() {
   const supabase = createClient()
-  
+  const { currentYear } = useAcademicYear()
+
   // Filter states
   const [selectedDegree, setSelectedDegree] = useState<string>('')
   const [selectedYear, setSelectedYear] = useState<string>('')
@@ -426,7 +428,7 @@ export default function AssignacionsAulesPage() {
         .from('semesters')
         .select('id')
         .eq('number', parseInt(selectedSemester))
-        .eq('academic_year_id', '2b210161-5447-4494-8003-f09a0b553a3f') // 2025-2026
+        .eq('academic_year_id', currentYear?.id ?? '')
         .single()
 
       if (semesterError) {
@@ -902,7 +904,7 @@ export default function AssignacionsAulesPage() {
         .from('semesters')
         .select('id')
         .eq('number', parseInt(selectedSemester))
-        .eq('academic_year_id', '2b210161-5447-4494-8003-f09a0b553a3f') // 2025-2026
+        .eq('academic_year_id', currentYear?.id ?? '')
         .single()
       
       if (semesterError) {

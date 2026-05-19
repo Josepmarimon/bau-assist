@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
+import { AcademicYearProvider } from '@/contexts/academic-year-context'
 
 export default function AuthenticatedLayout({
   children,
@@ -32,16 +33,18 @@ export default function AuthenticatedLayout({
   }
 
   return (
-    <div className="flex h-screen bg-background">
-      <ModernSidebar onCollapsedChange={setIsCollapsed} />
-      <main className={cn(
-        "flex-1 overflow-y-auto transition-all duration-300",
-        isCollapsed ? "md:ml-0" : "md:ml-0"
-      )}>
-        <div className="container mx-auto p-6 md:p-8">
-          {children}
-        </div>
-      </main>
-    </div>
+    <AcademicYearProvider>
+      <div className="flex h-screen bg-background">
+        <ModernSidebar onCollapsedChange={setIsCollapsed} />
+        <main className={cn(
+          "flex-1 overflow-y-auto transition-all duration-300",
+          isCollapsed ? "md:ml-0" : "md:ml-0"
+        )}>
+          <div className="container mx-auto p-6 md:p-8">
+            {children}
+          </div>
+        </main>
+      </div>
+    </AcademicYearProvider>
   )
 }

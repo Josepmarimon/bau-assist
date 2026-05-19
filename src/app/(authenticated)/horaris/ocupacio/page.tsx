@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { createClient } from '@/lib/supabase/client'
+import { useAcademicYear } from '@/contexts/academic-year-context'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -76,6 +77,7 @@ interface Assignment {
 
 export default function OcupacioPage() {
   const supabase = createClient()
+  const { currentYear } = useAcademicYear()
   const [classrooms, setClassrooms] = useState<Classroom[]>([])
   const [selectedClassrooms, setSelectedClassrooms] = useState<Classroom[]>([])
   const [assignments, setAssignments] = useState<Record<string, Assignment[]>>({})
@@ -129,7 +131,7 @@ export default function OcupacioPage() {
         .from('semesters')
         .select('id')
         .eq('number', parseInt(selectedSemester))
-        .eq('academic_year_id', '2b210161-5447-4494-8003-f09a0b553a3f')
+        .eq('academic_year_id', currentYear?.id ?? '')
         .single()
 
       if (!semester) {

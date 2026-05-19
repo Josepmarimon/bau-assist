@@ -71,6 +71,7 @@ export default function HorarisPage() {
   const [loadedGroups, setLoadedGroups] = useState<Set<string>>(new Set())
   const [semester1Id, setSemester1Id] = useState<string>('')
   const [semester2Id, setSemester2Id] = useState<string>('')
+  const [academicYearName, setAcademicYearName] = useState<string>('')
 
   useEffect(() => {
     loadInitialData()
@@ -92,6 +93,16 @@ export default function HorarisPage() {
       setLoading(true)
       
       // Load all initial data in parallel
+      const { data: currentAY } = await supabase
+        .from('academic_years')
+        .select('id, name')
+        .eq('is_current', true)
+        .maybeSingle()
+
+      if (currentAY?.name) {
+        setAcademicYearName(currentAY.name)
+      }
+
       const [groupsResult, colorsResult, semestersResult] = await Promise.all([
         supabase.from('student_groups').select('*').order('year').order('name'),
         supabase.from('course_colors').select('*'),
@@ -99,7 +110,7 @@ export default function HorarisPage() {
           .from('semesters')
           .select('id, number')
           .in('number', [1, 2])
-          .eq('academic_year_id', '2b210161-5447-4494-8003-f09a0b553a3f')
+          .eq('academic_year_id', currentAY?.id ?? '')
       ])
 
       if (groupsResult.data) {
@@ -485,7 +496,7 @@ export default function HorarisPage() {
                       groups={[group]}
                       assignments1={{ [group.name]: groupAssignments1 }}
                       assignments2={{ [group.name]: groupAssignments2 }}
-                      academicYear="2025-2026"
+                      academicYear={academicYearName}
                       courseColors={courseColors}
                     />
                   )}

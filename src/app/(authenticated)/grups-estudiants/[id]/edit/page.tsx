@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { createClient } from '@/lib/supabase/client'
+import { useAcademicYear } from '@/contexts/academic-year-context'
 import { ArrowLeft, Save, Loader2, Plus, X, User } from 'lucide-react'
 import {
   Select,
@@ -84,6 +85,7 @@ export default function EditGroupPage() {
   const [isTeacherDropdownOpen, setIsTeacherDropdownOpen] = useState(false)
   const teacherAssignmentsRef = useRef<TeacherAssignment[]>([])
   const supabase = createClient()
+  const { currentYear } = useAcademicYear()
 
   // Keep ref in sync with state
   useEffect(() => {
@@ -309,7 +311,7 @@ export default function EditGroupPage() {
         .from('teacher_group_assignments')
         .delete()
         .eq('subject_group_id', params.id)
-        .eq('academic_year', '2025-2026')
+        .eq('academic_year', currentYear?.name ?? '')
 
       if (deleteError) {
         console.error('Error deleting teacher assignments:', deleteError)
@@ -321,7 +323,7 @@ export default function EditGroupPage() {
         const insertData = currentAssignments.map(ta => ({
           teacher_id: ta.teacher_id,
           subject_group_id: params.id,
-          academic_year: '2025-2026',
+          academic_year: currentYear?.name ?? '',
           ects_assigned: ta.ects_assigned || 0,
           is_coordinator: false
         }))

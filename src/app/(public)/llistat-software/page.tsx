@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { Monitor, Building2, Info, Search, MapPin, X, Download } from 'lucide-react'
+import { Monitor, Building2, Info, Search, MapPin, X, Download, CheckCircle2, AlertTriangle, BookOpen, ChevronRight } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { WeeklyScheduleMini } from '@/components/classrooms/weekly-schedule-mini'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import * as XLSX from 'xlsx'
 
 interface Software {
@@ -18,6 +19,33 @@ interface Software {
   category: string
   license_type: string
   required_by_subjects?: string
+  is_installed: boolean
+  is_required_by_subjects: boolean
+}
+
+interface ClassroomSubject {
+  code: string
+  name: string
+}
+
+interface SubjectNote {
+  subject_id: string
+  subject_code: string
+  subject_name: string
+  category: string
+  content: string
+}
+
+const NOTE_CATEGORY_LABEL: Record<string, string> = {
+  tecnologia_av_prestec: 'Tecnologia AV de préstec',
+  altres: 'Altres',
+  activitats_taller: 'Activitats al taller',
+  materials_professor: 'Materials del professor',
+  materials_estudiants: 'Materials per a l\'estudiant',
+  altres_consideracions: 'Altres consideracions',
+  anotacions: 'Anotacions',
+  altre_software: 'Altre software no llistat',
+  materies_necessaries: 'Matèries necessàries',
 }
 
 interface ClassroomRequirement {
@@ -44,6 +72,8 @@ interface ClassroomWithSoftware {
   educational: Software[]
   free: Software[]
   open_source: Software[]
+  subjects: ClassroomSubject[]
+  notes: SubjectNote[]
 }
 
 const getLicenseTypeName = (type: string): string => {
@@ -66,6 +96,63 @@ const getLicenseTypeColor = (type: string): string => {
   return colors[type] || 'bg-gray-100 text-gray-700'
 }
 
+// Programes que no es mostren al llistat (irrelevants per a la planificació docent).
+const HIDDEN_SOFTWARE = new Set<string>([
+  'Teams',
+])
+
+// Ordre canònic per a que totes les aules mostrin els mateixos programes
+// a la mateixa posició. Software no llistat aquí cau al final, alfabètic.
+const SOFTWARE_PRIORITY: string[] = [
+  'Suite Adobe completa',
+  'Figma',
+  'Autocad',
+  'Rhino',
+  '3D MAX',
+  'VRAY',
+  '5D Render',
+  'Corona Render',
+  'Lumion',
+  'Cinema 4D',
+  'Blender',
+  'Unreal',
+  'Touch Designer',
+  'Processing',
+  'Arduino',
+  'Sublime Text',
+  'Filezilla',
+  'Glyphs',
+  'Clo 3D',
+  'Gerber',
+  'Resolume free',
+  'Resolume Full',
+  'Davinci Resolve',
+  'Audacity',
+  'Cura3D',
+  'Freecad',
+  'Spout',
+  'Inkscape',
+  'Gimp',
+  'Hand brake',
+  'Shotcut',
+  'VLC',
+  'MediaInfo',
+  'LibreOffice',
+  'Enscape',
+  'AnyDesk',
+  'RustDesk',
+]
+const PRIORITY_INDEX = new Map(SOFTWARE_PRIORITY.map((n, i) => [n, i]))
+
+const sortSoftware = (list: Software[]): Software[] => {
+  return [...list].sort((a, b) => {
+    const ia = PRIORITY_INDEX.has(a.name) ? PRIORITY_INDEX.get(a.name)! : Number.POSITIVE_INFINITY
+    const ib = PRIORITY_INDEX.has(b.name) ? PRIORITY_INDEX.get(b.name)! : Number.POSITIVE_INFINITY
+    if (ia !== ib) return ia - ib
+    return a.name.localeCompare(b.name)
+  })
+}
+
 export default function SoftwareListPage() {
   const [classroomsWithSoftware, setClassroomsWithSoftware] = useState<ClassroomWithSoftware[]>([])
   const [loading, setLoading] = useState(true)
@@ -77,12 +164,38 @@ export default function SoftwareListPage() {
   const [classroomsForSelected, setClassroomsForSelected] = useState<ClassroomRequirement[]>([])
   const [loadingClassrooms, setLoadingClassrooms] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
+  const [currentYearName, setCurrentYearName] = useState<string>('')
+  const [availableYears, setAvailableYears] = useState<string[]>([])
+  const [softwareSubjectsMap, setSoftwareSubjectsMap] = useState<Map<string, ClassroomSubject[]>>(new Map())
   const supabase = createClient()
 
   useEffect(() => {
-    loadClassroomRequirements()
-    loadAllSoftware()
+    const init = async () => {
+      const { data: years } = await supabase
+        .from('academic_years')
+        .select('name, is_current, start_date')
+        .order('start_date', { ascending: true })
+      const sortedYears = years || []
+      const list = sortedYears.map(y => y.name)
+      setAvailableYears(list)
+
+      // Default: el curs vinent (el següent al `is_current`). Si no n'hi ha,
+      // fallback al current; si tampoc, agafem l'últim.
+      const currentIdx = sortedYears.findIndex(y => y.is_current)
+      const next = currentIdx >= 0 && currentIdx + 1 < sortedYears.length
+        ? sortedYears[currentIdx + 1]
+        : sortedYears[currentIdx] ?? sortedYears[sortedYears.length - 1]
+      const yearName = next?.name ?? ''
+      setCurrentYearName(yearName)
+      await loadAllSoftware()
+      if (yearName) await loadClassroomRequirements(yearName)
+    }
+    init()
   }, [])
+
+  useEffect(() => {
+    if (currentYearName) loadClassroomRequirements(currentYearName)
+  }, [currentYearName])
 
   useEffect(() => {
     if (searchTerm) {
@@ -109,16 +222,23 @@ export default function SoftwareListPage() {
     }
   }
 
-  const loadClassroomRequirements = async () => {
+  const loadClassroomRequirements = async (yearName: string) => {
     try {
       setLoading(true)
       setError(null)
-      
-      // Load all classroom software requirements that are installed
-      const { data: requirementsData, error: requirementsError } = await supabase
+
+      // Load classroom software requirements:
+      //  · permanently-installed software (academic_year IS NULL) — always shown
+      //  · software needed by subjects at the current academic year
+      let query = supabase
         .from('classroom_software_requirements')
         .select('*')
-        .eq('is_installed', true)
+      if (yearName) {
+        query = query.or(`academic_year.eq.${yearName},academic_year.is.null`)
+      } else {
+        query = query.is('academic_year', null)
+      }
+      const { data: requirementsData, error: requirementsError } = await query
         .order('classroom_code')
         .order('software_name')
 
@@ -128,10 +248,34 @@ export default function SoftwareListPage() {
         return
       }
 
+      // Dedupe: un mateix (classroom, software) pot aparèixer dues vegades
+      // (academic_year=NULL i academic_year=current). Combinem les dues files
+      // perquè el software pugui ser alhora `is_installed` (de classroom_software)
+      // i `required_by_subjects` (de subject_software al curs).
+      const dedupKey = (r: any) => `${r.classroom_id}|||${r.software_id}`
+      const dedupMap = new Map<string, any>()
+      requirementsData?.forEach(req => {
+        const key = dedupKey(req)
+        const existing = dedupMap.get(key)
+        if (!existing) {
+          dedupMap.set(key, { ...req })
+          return
+        }
+        // Combinar: prioritzem is_installed=true i required_by_subjects no buit
+        existing.is_installed = existing.is_installed || req.is_installed
+        if (!existing.required_by_subjects && req.required_by_subjects) {
+          existing.required_by_subjects = req.required_by_subjects
+        }
+        existing.requiring_subject_count = Math.max(
+          existing.requiring_subject_count || 0,
+          req.requiring_subject_count || 0
+        )
+      })
+
       // Group by classroom and collect unique software
       const classroomMap = new Map<string, ClassroomWithSoftware>()
-      
-      requirementsData?.forEach(req => {
+
+      Array.from(dedupMap.values()).forEach(req => {
         if (!classroomMap.has(req.classroom_id)) {
           classroomMap.set(req.classroom_id, {
             id: req.classroom_id,
@@ -141,10 +285,12 @@ export default function SoftwareListPage() {
             paid: [],
             educational: [],
             free: [],
-            open_source: []
+            open_source: [],
+            subjects: [],
+            notes: []
           })
         }
-        
+
         const classroom = classroomMap.get(req.classroom_id)!
         const software: Software = {
           id: req.software_id,
@@ -152,9 +298,11 @@ export default function SoftwareListPage() {
           version: req.software_version,
           category: req.category || 'general',
           license_type: req.license_type,
-          required_by_subjects: req.required_by_subjects
+          required_by_subjects: req.required_by_subjects,
+          is_installed: !!req.is_installed,
+          is_required_by_subjects: (req.requiring_subject_count || 0) > 0
         }
-        
+
         // Categorize software
         if (req.license_type === 'paid') {
           classroom.paid.push(software)
@@ -166,6 +314,116 @@ export default function SoftwareListPage() {
           classroom.open_source.push(software)
         }
       })
+
+      // Carrega les assignatures que demanen cada software al curs seleccionat
+      // (no filtrant per aula). Serveix per mostrar al desplegable de cada software
+      // qui el necessita, encara que aquella aula no l'utilitzi com a requerit.
+      const swSubjMap = new Map<string, ClassroomSubject[]>()
+      if (yearName) {
+        const { data: ssList } = await supabase
+          .from('subject_software')
+          .select('software_id, subjects:subjects(code, name)')
+          .eq('academic_year', yearName)
+          .eq('is_required', true)
+        for (const r of (ssList || []) as any[]) {
+          if (!r.subjects) continue
+          const arr = swSubjMap.get(r.software_id) || []
+          if (!arr.some(x => x.code === r.subjects.code)) {
+            arr.push({ code: r.subjects.code, name: r.subjects.name })
+          }
+          swSubjMap.set(r.software_id, arr)
+        }
+        // Ordena per codi
+        swSubjMap.forEach((list, id) => {
+          list.sort((a, b) => a.code.localeCompare(b.code))
+          swSubjMap.set(id, list)
+        })
+      }
+      setSoftwareSubjectsMap(swSubjMap)
+
+      // Carrega les assignatures impartides a cada aula al curs seleccionat.
+      if (yearName) {
+        const { data: sems } = await supabase
+          .from('semesters')
+          .select('id, academic_years!inner(name)')
+          .eq('academic_years.name', yearName)
+        const semIds = (sems || []).map((s: any) => s.id)
+        if (semIds.length) {
+          const { data: assigs } = await supabase
+            .from('assignments')
+            .select('subject:subjects(code, name), assignment_classrooms(classroom_id)')
+            .in('semester_id', semIds)
+          const subjMap = new Map<string, Map<string, ClassroomSubject>>()
+          for (const a of (assigs || []) as any[]) {
+            const subj = a.subject
+            if (!subj) continue
+            for (const ac of a.assignment_classrooms || []) {
+              if (!subjMap.has(ac.classroom_id)) subjMap.set(ac.classroom_id, new Map())
+              subjMap.get(ac.classroom_id)!.set(subj.code, { code: subj.code, name: subj.name })
+            }
+          }
+          subjMap.forEach((subjects, classroomId) => {
+            const room = classroomMap.get(classroomId)
+            if (room) {
+              room.subjects = Array.from(subjects.values()).sort((a, b) => a.code.localeCompare(b.code))
+            }
+          })
+
+          // Carrega les notes de les assignatures que s'imparteixen a cada aula
+          const allSubjectIds = new Set<string>()
+          subjMap.forEach((m) => m.forEach((s) => {
+            // s only has code/name; we'll fetch by subject_id via assignments table
+          }))
+          // Recuperar subject_ids de tots els classrooms en aquest curs
+          const { data: assigSubjects } = await supabase
+            .from('assignments')
+            .select('subject_id, assignment_classrooms(classroom_id)')
+            .in('semester_id', semIds)
+          const classroomToSubjectIds = new Map<string, Set<string>>()
+          for (const a of (assigSubjects || []) as any[]) {
+            for (const ac of a.assignment_classrooms || []) {
+              if (!classroomToSubjectIds.has(ac.classroom_id)) classroomToSubjectIds.set(ac.classroom_id, new Set())
+              classroomToSubjectIds.get(ac.classroom_id)!.add(a.subject_id)
+              allSubjectIds.add(a.subject_id)
+            }
+          }
+
+          if (allSubjectIds.size) {
+            const { data: notesRows } = await supabase
+              .from('subject_notes')
+              .select('subject_id, category, content, subjects!inner(code, name)')
+              .eq('academic_year', yearName)
+              .in('subject_id', Array.from(allSubjectIds))
+            const notesBySubject = new Map<string, SubjectNote[]>()
+            for (const n of (notesRows || []) as any[]) {
+              const note: SubjectNote = {
+                subject_id: n.subject_id,
+                subject_code: n.subjects?.code || '',
+                subject_name: n.subjects?.name || '',
+                category: n.category,
+                content: n.content,
+              }
+              if (!notesBySubject.has(n.subject_id)) notesBySubject.set(n.subject_id, [])
+              notesBySubject.get(n.subject_id)!.push(note)
+            }
+            classroomToSubjectIds.forEach((subjectIds, classroomId) => {
+              const room = classroomMap.get(classroomId)
+              if (!room) return
+              const allNotes: SubjectNote[] = []
+              subjectIds.forEach(sid => {
+                const ns = notesBySubject.get(sid) || []
+                allNotes.push(...ns)
+              })
+              // Ordenar per codi i categoria
+              allNotes.sort((a, b) => {
+                if (a.subject_code !== b.subject_code) return a.subject_code.localeCompare(b.subject_code)
+                return a.category.localeCompare(b.category)
+              })
+              room.notes = allNotes
+            })
+          }
+        }
+      }
 
       // Sort software within each category
       const sortedClassrooms = Array.from(classroomMap.values()).map(classroom => ({
@@ -230,151 +488,144 @@ export default function SoftwareListPage() {
   }
 
   const downloadExcel = () => {
-    // Create workbook
     const wb = XLSX.utils.book_new()
-    
-    // Create data structure
-    const excelData: any[] = []
-    
-    // Header row with classroom information
-    const headerRow1: any = { 'Tipus': 'AULA' }
-    const headerRow2: any = { 'Tipus': 'EDIFICI' }
-    const headerRow3: any = { 'Tipus': 'NOM' }
-    
-    classroomsWithSoftware.forEach(classroom => {
-      headerRow1[classroom.code] = classroom.code
-      headerRow2[classroom.code] = classroom.building
-      headerRow3[classroom.code] = classroom.name
-    })
-    
-    excelData.push(headerRow1)
-    excelData.push(headerRow2)
-    excelData.push(headerRow3)
-    
-    // Add separator
-    const separatorRow: any = { 'Tipus': '---' }
-    classroomsWithSoftware.forEach(classroom => {
-      separatorRow[classroom.code] = '---'
-    })
-    excelData.push(separatorRow)
-    
-    // Find max number of software per type across all classrooms
-    const maxCounts = {
-      paid: 0,
-      educational: 0,
-      free: 0,
-      open_source: 0
+    const yearLabel = currentYearName || '—'
+
+    // Helpers ----------------------------------------------------------------
+
+    // Llista visible de software per aula (filtrada + ordenada com a la UI)
+    const visibleSoftware = (classroom: ClassroomWithSoftware): Software[] => {
+      return sortSoftware(
+        [
+          ...classroom.paid,
+          ...classroom.educational,
+          ...classroom.free,
+          ...classroom.open_source,
+        ].filter(s => !HIDDEN_SOFTWARE.has(s.name))
+      )
     }
-    
-    classroomsWithSoftware.forEach(classroom => {
-      maxCounts.paid = Math.max(maxCounts.paid, classroom.paid.length)
-      maxCounts.educational = Math.max(maxCounts.educational, classroom.educational.length)
-      maxCounts.free = Math.max(maxCounts.free, classroom.free.length)
-      maxCounts.open_source = Math.max(maxCounts.open_source, classroom.open_source.length)
-    })
-    
-    // Add software by type
-    const sections = [
-      { type: 'paid', label: 'PAGAMENT', data: 'paid' as keyof ClassroomWithSoftware },
-      { type: 'educational', label: 'EDUCATIU', data: 'educational' as keyof ClassroomWithSoftware },
-      { type: 'free', label: 'GRATUÏT', data: 'free' as keyof ClassroomWithSoftware },
-      { type: 'open_source', label: 'CODI OBERT', data: 'open_source' as keyof ClassroomWithSoftware }
-    ]
-    
-    sections.forEach(({ type, label, data }) => {
-      // Section header
-      const sectionHeader: any = { 'Tipus': label }
-      classroomsWithSoftware.forEach(classroom => {
-        sectionHeader[classroom.code] = ''
-      })
-      excelData.push(sectionHeader)
-      
-      // Add rows for this section
-      const maxRows = maxCounts[type as keyof typeof maxCounts]
-      for (let i = 0; i < maxRows; i++) {
-        const row: any = { 'Tipus': '' }
-        
-        classroomsWithSoftware.forEach(classroom => {
-          const softwareList = classroom[data] as Software[]
-          if (i < softwareList.length) {
-            const software = softwareList[i]
-            row[classroom.code] = software.version 
-              ? `${software.name} (v${software.version})`
-              : software.name
-          } else {
-            row[classroom.code] = ''
+
+    const stateLabel = (s: Software) => {
+      if (s.is_required_by_subjects && s.is_installed) return '✓ Instal·lat + Requerit'
+      if (s.is_required_by_subjects && !s.is_installed) return '⚠ Requerit no instal·lat'
+      return '○ Instal·lat'
+    }
+
+    const setColWidths = (ws: XLSX.WorkSheet, widths: number[]) => {
+      ws['!cols'] = widths.map(w => ({ wch: w }))
+    }
+
+    // ── Pestanya 1: Software per aula ───────────────────────────────────────
+    const sw1: any[][] = []
+    sw1.push([`Software per aula — Curs ${yearLabel}`])
+    sw1.push([])
+    sw1.push(['Aula', 'Edifici', 'Software', 'Versió', 'Llicència', 'Estat', 'Assignatures que el demanen'])
+
+    for (const classroom of classroomsWithSoftware) {
+      const list = visibleSoftware(classroom)
+      if (!list.length) {
+        sw1.push([classroom.code, classroom.building, '(cap)', '', '', '', ''])
+        continue
+      }
+      for (const s of list) {
+        const subjectsList = (softwareSubjectsMap.get(s.id) || [])
+          .map(x => `${x.code}: ${x.name}`)
+          .join(' · ')
+        sw1.push([
+          classroom.code,
+          classroom.building,
+          s.name,
+          s.version ? `v${s.version}` : '',
+          getLicenseTypeName(s.license_type),
+          stateLabel(s),
+          subjectsList,
+        ])
+      }
+    }
+
+    const ws1 = XLSX.utils.aoa_to_sheet(sw1)
+    setColWidths(ws1, [14, 22, 32, 10, 14, 28, 60])
+    XLSX.utils.book_append_sheet(wb, ws1, 'Software per Aula')
+
+    // ── Pestanya 2: Assignatures per aula ───────────────────────────────────
+    const sub: any[][] = []
+    sub.push([`Assignatures impartides per aula — Curs ${yearLabel}`])
+    sub.push([])
+    sub.push(['Aula', 'Edifici', 'Codi', 'Assignatura'])
+    for (const classroom of classroomsWithSoftware) {
+      if (!classroom.subjects.length) {
+        sub.push([classroom.code, classroom.building, '', '(cap assignatura assignada)'])
+        continue
+      }
+      for (const s of classroom.subjects) {
+        sub.push([classroom.code, classroom.building, s.code, s.name])
+      }
+    }
+    const ws2 = XLSX.utils.aoa_to_sheet(sub)
+    setColWidths(ws2, [14, 22, 14, 50])
+    XLSX.utils.book_append_sheet(wb, ws2, 'Assignatures per Aula')
+
+    // ── Pestanya 3: Pendents d'instal·lar ──────────────────────────────────
+    const pend: any[][] = []
+    pend.push([`Software requerit pendent d'instal·lar — Curs ${yearLabel}`])
+    pend.push([])
+    pend.push(['Aula', 'Edifici', 'Software', 'Assignatures que el demanen'])
+    let anyPending = false
+    for (const classroom of classroomsWithSoftware) {
+      const pending = visibleSoftware(classroom).filter(
+        s => s.is_required_by_subjects && !s.is_installed
+      )
+      for (const s of pending) {
+        anyPending = true
+        const subjectsList = (softwareSubjectsMap.get(s.id) || [])
+          .map(x => `${x.code}: ${x.name}`)
+          .join(' · ')
+        pend.push([classroom.code, classroom.building, s.name, subjectsList])
+      }
+    }
+    if (!anyPending) pend.push(['—', '—', 'Cap pendent', ''])
+    const ws3 = XLSX.utils.aoa_to_sheet(pend)
+    setColWidths(ws3, [14, 22, 32, 60])
+    XLSX.utils.book_append_sheet(wb, ws3, 'Pendents d\'instal·lar')
+
+    // ── Pestanya 4: Software → assignatures (vista global) ──────────────────
+    const swSubj: any[][] = []
+    swSubj.push([`Assignatures que requereixen cada software — Curs ${yearLabel}`])
+    swSubj.push([])
+    swSubj.push(['Software', 'Nombre assignatures', 'Assignatures'])
+    const orderedIds = Array.from(softwareSubjectsMap.entries())
+      .sort((a, b) => b[1].length - a[1].length)
+    for (const [softwareId, subjects] of orderedIds) {
+      // Trobem el nom del software
+      let name = ''
+      outer: for (const classroom of classroomsWithSoftware) {
+        for (const s of [...classroom.paid, ...classroom.educational, ...classroom.free, ...classroom.open_source]) {
+          if (s.id === softwareId) {
+            name = s.name
+            break outer
           }
-        })
-        
-        excelData.push(row)
-      }
-      
-      // Add empty row between sections (except after last)
-      if (type !== 'open_source') {
-        const emptyRow: any = { 'Tipus': '' }
-        classroomsWithSoftware.forEach(classroom => {
-          emptyRow[classroom.code] = ''
-        })
-        excelData.push(emptyRow)
-      }
-    })
-    
-    // Add summary row at the end
-    const summaryRow: any = { 'Tipus': 'TOTAL SOFTWARE' }
-    classroomsWithSoftware.forEach(classroom => {
-      const total = classroom.paid.length + 
-                   classroom.educational.length + 
-                   classroom.free.length + 
-                   classroom.open_source.length
-      summaryRow[classroom.code] = total.toString()
-    })
-    excelData.push({ 'Tipus': '' })
-    excelData.push(summaryRow)
-    
-    // Create worksheet
-    const ws = XLSX.utils.json_to_sheet(excelData)
-    
-    // Set column widths
-    const colWidths = [{ wch: 15 }] // First column for types
-    classroomsWithSoftware.forEach(() => {
-      colWidths.push({ wch: 40 }) // Wider columns for software lists
-    })
-    ws['!cols'] = colWidths
-    
-    // Apply text wrapping and vertical alignment
-    const range = XLSX.utils.decode_range(ws['!ref'] || 'A1')
-    for (let R = range.s.r; R <= range.e.r; ++R) {
-      for (let C = range.s.c; C <= range.e.c; ++C) {
-        const address = XLSX.utils.encode_cell({ r: R, c: C })
-        if (!ws[address]) continue
-        
-        if (!ws[address].s) ws[address].s = {}
-        ws[address].s.alignment = { vertical: 'top', wrapText: true }
-        
-        // Bold for header rows (first 3 rows)
-        if (R < 3) {
-          ws[address].s.font = { bold: true }
-          // Add background color to header rows for better visibility
-          ws[address].s.fill = { fgColor: { rgb: "E0E0E0" } }
-        }
-        
-        // Bold for section titles in first column
-        if (C === 0 && (ws[address].v === 'PAGAMENT' || ws[address].v === 'EDUCATIU' || 
-            ws[address].v === 'GRATUÏT' || ws[address].v === 'CODI OBERT' || 
-            ws[address].v === 'TOTAL SOFTWARE')) {
-          ws[address].s.font = { bold: true }
         }
       }
+      if (!name) {
+        const fallback = allSoftware.find(s => s.id === softwareId)
+        name = fallback?.name ?? softwareId
+      }
+      swSubj.push([
+        name,
+        subjects.length,
+        subjects.map(s => `${s.code}: ${s.name}`).join(' · '),
+      ])
     }
-    
-    XLSX.utils.book_append_sheet(wb, ws, 'Software per Aula')
-    
-    // Generate filename with current date
+    const ws4 = XLSX.utils.aoa_to_sheet(swSubj)
+    setColWidths(ws4, [28, 18, 80])
+    XLSX.utils.book_append_sheet(wb, ws4, 'Software per Assignatura')
+
+    // ── Nom del fitxer ──────────────────────────────────────────────────────
     const date = new Date()
     const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
-    const filename = `BAU_Software_Llista_${dateStr}.xlsx`
-    
-    // Write file
+    const yearForFile = yearLabel.replace('/', '-')
+    const filename = `BAU_Software_${yearForFile}_${dateStr}.xlsx`
+
     XLSX.writeFile(wb, filename)
   }
 
@@ -399,43 +650,47 @@ export default function SoftwareListPage() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-4">Software instal·lat per aula</h1>
-        <p className="text-gray-600 mb-2">
-          Llistat complet del software disponible a cada aula del centre
-        </p>
-        <div className="flex justify-between items-center">
-          <div className="flex gap-4 text-sm text-gray-500">
-            <span className="flex items-center gap-1">
-              <div className="w-3 h-3 bg-red-100 rounded"></div>
-              Pagament
+        <div className="mb-2">
+          <h1 className="text-3xl font-bold mb-2">Software per aula</h1>
+          <p className="text-gray-600">
+            Software instal·lat + software requerit per les assignatures del curs seleccionat
+          </p>
+        </div>
+
+        {/* Selector de curs acadèmic destacat + accions */}
+        <div className="mt-6 mb-2 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-primary/30 bg-primary/5 px-4 py-3 shadow-sm">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-sm font-semibold uppercase tracking-wide text-primary">
+              Curs acadèmic
             </span>
-            <span className="flex items-center gap-1">
-              <div className="w-3 h-3 bg-blue-100 rounded"></div>
-              Educatiu
-            </span>
-            <span className="flex items-center gap-1">
-              <div className="w-3 h-3 bg-green-100 rounded"></div>
-              Gratuït
-            </span>
-            <span className="flex items-center gap-1">
-              <div className="w-3 h-3 bg-purple-100 rounded"></div>
-              Codi Obert
-            </span>
+            <Tabs value={currentYearName} onValueChange={setCurrentYearName}>
+              <TabsList className="bg-white border border-primary/20">
+                {availableYears.map(y => (
+                  <TabsTrigger
+                    key={y}
+                    value={y}
+                    className="px-4 py-1.5 text-base data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow"
+                  >
+                    {y}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </Tabs>
           </div>
-          <div className="flex gap-2">
-            <Button 
-              variant="destructive" 
+          <div className="flex flex-wrap gap-2">
+            <Button
+              variant="destructive"
               onClick={downloadExcel}
               className="gap-2"
               disabled={classroomsWithSoftware.length === 0}
             >
               <Download className="h-4 w-4" />
-              Descarregar Excel
+              Descarregar
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               onClick={() => setShowSearch(!showSearch)}
-              className="gap-2"
+              className="gap-2 bg-white"
             >
               <Search className="h-4 w-4" />
               {showSearch ? 'Tancar cerca' : 'Cercar software'}
@@ -576,14 +831,93 @@ export default function SoftwareListPage() {
       {/* Classroom grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {classroomsWithSoftware.map((classroom) => {
-          const allSoftwareList = [
-            ...classroom.paid,
-            ...classroom.educational,
-            ...classroom.free,
-            ...classroom.open_source
-          ]
-          
-          const totalSoftware = allSoftwareList.length
+          const mainList = sortSoftware(
+            [
+              ...classroom.paid,
+              ...classroom.educational,
+              ...classroom.free,
+            ].filter(s => !HIDDEN_SOFTWARE.has(s.name))
+          )
+          const openSourceList = sortSoftware(
+            classroom.open_source.filter(s => !HIDDEN_SOFTWARE.has(s.name))
+          )
+
+          const totalSoftware = mainList.length + openSourceList.length
+
+          const renderSoftwareItem = (software: Software) => {
+            const requiredAndInstalled = software.is_installed && software.is_required_by_subjects
+            const requiredNotInstalled = !software.is_installed && software.is_required_by_subjects
+            const installedOnly = software.is_installed && !software.is_required_by_subjects
+            const rowClass = requiredNotInstalled
+              ? 'bg-amber-50 border border-amber-200 rounded px-1'
+              : ''
+
+            // Llistat global d'assignatures que demanen aquest software al curs.
+            // Va més enllà del filtre per aula: així Figma (instal·lat a P.1.2) mostra
+            // que la demanen Infografia II encara que aquella aula no la imparteixi.
+            const globalSubjects = softwareSubjectsMap.get(software.id) || []
+            const subjects = globalSubjects.map(s => `${s.code}: ${s.name}`)
+            const hasSubjects = subjects.length > 0
+
+            const inner = (
+              <>
+                {requiredAndInstalled && (
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
+                )}
+                {requiredNotInstalled && (
+                  <AlertTriangle className="h-4 w-4 text-amber-600 shrink-0" />
+                )}
+                {installedOnly && (
+                  <Monitor className="h-4 w-4 text-gray-300 shrink-0" />
+                )}
+                <div className="flex-1 min-w-0">
+                  <span className={`text-sm truncate block ${requiredNotInstalled ? 'font-semibold text-amber-900' : 'font-medium'}`}>
+                    {software.name}
+                  </span>
+                  {software.version && (
+                    <span className="text-xs text-gray-500">
+                      v{software.version}
+                    </span>
+                  )}
+                </div>
+                {hasSubjects && (
+                  <ChevronRight className="h-3.5 w-3.5 text-gray-400 shrink-0 transition-transform group-open:rotate-90" />
+                )}
+              </>
+            )
+
+            if (!hasSubjects) {
+              return (
+                <div key={software.id} className={`flex items-center gap-2 py-1 ${rowClass}`}>
+                  {inner}
+                </div>
+              )
+            }
+
+            return (
+              <details key={software.id} className="group">
+                <summary
+                  className={`flex items-center gap-2 py-1 cursor-pointer list-none [&::-webkit-details-marker]:hidden ${rowClass}`}
+                >
+                  {inner}
+                </summary>
+                <ul className="mt-1 mb-2 ml-6 space-y-0.5 text-xs text-gray-600">
+                  {subjects.map((s) => {
+                    const m = s.match(/^([A-Z]{2,}\d+\w*):\s*(.+)$/)
+                    if (m) {
+                      return (
+                        <li key={s} className="leading-tight">
+                          <span className="font-mono text-gray-400">{m[1]}</span>
+                          <span className="ml-2">{m[2]}</span>
+                        </li>
+                      )
+                    }
+                    return <li key={s} className="leading-tight">{s}</li>
+                  })}
+                </ul>
+              </details>
+            )
+          }
           
           return (
             <div 
@@ -598,41 +932,101 @@ export default function SoftwareListPage() {
                 </h3>
                 <p className="text-sm text-gray-600 flex items-center gap-2 mt-1">
                   <Building2 className="h-4 w-4" />
-                  {classroom.building} • {totalSoftware} programes
+                  {classroom.building}
                 </p>
               </div>
-              
-              {/* Software list */}
-              <div className="space-y-2">
-                {allSoftwareList.map((software, idx) => {
-                  const colorClass = getLicenseTypeColor(software.license_type)
-                  
-                  return (
-                    <div 
-                      key={software.id} 
-                      className="flex items-center gap-2 py-1"
-                    >
-                      <span className="text-xs text-gray-400 font-mono w-6">
-                        {(idx + 1).toString().padStart(2, '0')}
-                      </span>
-                      <div className="flex-1 min-w-0">
-                        <span className="text-sm font-medium truncate block">
-                          {software.name}
-                        </span>
-                        {software.version && (
-                          <span className="text-xs text-gray-500">
-                            v{software.version}
-                          </span>
-                        )}
-                      </div>
-                      <Badge className={`${colorClass} text-xs px-2 py-0.5`}>
-                        {getLicenseTypeName(software.license_type)}
-                      </Badge>
-                    </div>
-                  )
-                })}
+
+              {/* Assignatures que s'imparteixen a l'aula */}
+              {classroom.subjects.length > 0 && (
+                <details className="mb-3 group">
+                  <summary className="cursor-pointer text-sm font-medium text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
+                    <BookOpen className="h-4 w-4 text-gray-500" />
+                    Assignatures ({classroom.subjects.length})
+                    <span className="text-xs text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
+                    <span className="text-xs text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
+                  </summary>
+                  <ul className="mt-2 space-y-1 text-xs text-gray-600 pl-6">
+                    {classroom.subjects.map(s => (
+                      <li key={s.code} className="leading-tight">
+                        <span className="font-mono text-gray-400">{s.code}</span>
+                        <span className="ml-2">{s.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+
+              {/* Llegenda d'estats */}
+              <div className="flex flex-wrap gap-3 mb-2 text-[10px] text-gray-500">
+                <span className="inline-flex items-center gap-1">
+                  <CheckCircle2 className="h-3 w-3 text-emerald-600" /> instal·lat + requerit
+                </span>
+                <span className="inline-flex items-center gap-1">
+                  <AlertTriangle className="h-3 w-3 text-amber-600" /> requerit, no instal·lat
+                </span>
+                <span className="inline-flex items-center gap-1">
+                  <Monitor className="h-3 w-3 text-gray-400" /> instal·lat
+                </span>
               </div>
-              
+
+              {/* Software list */}
+              <div className="space-y-1">
+                {mainList.map(renderSoftwareItem)}
+              </div>
+
+              {/* Notes i consideracions de les assignatures */}
+              {classroom.notes.length > 0 && (() => {
+                const bySubject = new Map<string, SubjectNote[]>()
+                for (const n of classroom.notes) {
+                  const key = n.subject_id
+                  if (!bySubject.has(key)) bySubject.set(key, [])
+                  bySubject.get(key)!.push(n)
+                }
+                return (
+                  <details className="mt-3 group">
+                    <summary className="cursor-pointer text-sm font-medium text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none border-t border-gray-200 pt-2">
+                      <Info className="h-4 w-4 text-blue-500" />
+                      Notes i consideracions ({classroom.notes.length})
+                      <span className="text-xs text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
+                      <span className="text-xs text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
+                    </summary>
+                    <div className="mt-2 space-y-3 text-xs">
+                      {Array.from(bySubject.entries()).map(([sid, notes]) => (
+                        <div key={sid} className="border-l-2 border-blue-200 pl-2">
+                          <div className="font-medium text-gray-700">
+                            <span className="font-mono text-gray-400 mr-1">{notes[0].subject_code}</span>
+                            {notes[0].subject_name}
+                          </div>
+                          {notes.map((n, idx) => (
+                            <div key={idx} className="mt-1">
+                              <span className="font-semibold text-blue-700">
+                                {NOTE_CATEGORY_LABEL[n.category] || n.category}:
+                              </span>
+                              <span className="ml-1 text-gray-600 whitespace-pre-line">{n.content}</span>
+                            </div>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </details>
+                )
+              })()}
+
+              {/* Codi obert col·lapsable */}
+              {openSourceList.length > 0 && (
+                <details className="mt-3 group">
+                  <summary className="cursor-pointer text-sm font-medium text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none border-t border-gray-200 pt-2">
+                    <Monitor className="h-4 w-4 text-purple-500" />
+                    Codi obert ({openSourceList.length})
+                    <span className="text-xs text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
+                    <span className="text-xs text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
+                  </summary>
+                  <div className="mt-2 space-y-1">
+                    {openSourceList.map(renderSoftwareItem)}
+                  </div>
+                </details>
+              )}
+
               {totalSoftware === 0 && (
                 <div className="text-center py-8 text-gray-500">
                   <Info className="h-8 w-8 mx-auto mb-2" />

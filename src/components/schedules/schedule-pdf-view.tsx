@@ -60,7 +60,7 @@ export function SchedulePDFView({
   groups, 
   assignments1, 
   assignments2, 
-  academicYear = '2025-2026', 
+  academicYear = '',
   courseColors = [],
   isLoading = false,
   loadedGroups = new Set()

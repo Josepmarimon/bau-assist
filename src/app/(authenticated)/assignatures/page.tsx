@@ -90,7 +90,7 @@ export default function SubjectsPage() {
         .from('subjects')
         .select(`
           *,
-          itinerari:"ID Itinerari"
+          itinerari:itinerary_code
         `)
         .order('code', { ascending: true })
 

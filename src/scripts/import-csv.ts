@@ -124,7 +124,7 @@ async function importData() {
                 record['Orientacio assig'] ? 'optativa' : 'obligatoria',
           department: record['Area Coord'] || 'Disseny',
           description: '',
-          'ID Itinerari': record['ID Itinerari'] || null
+          itinerary_code: record['ID Itinerari'] || null
         })
       }
     })

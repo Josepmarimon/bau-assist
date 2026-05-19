@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { Checkbox } from '@/components/ui/checkbox'
 import { createClient } from '@/lib/supabase/client'
+import { useAcademicYear } from '@/contexts/academic-year-context'
 import { 
   BookOpen,
   Search,
@@ -374,6 +375,7 @@ const TeacherAssignmentUI = ({
 }
 
 export default function AssignaturesGrupsPage() {
+  const { currentYear } = useAcademicYear()
   const [subjects, setSubjects] = useState<Subject[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
@@ -504,15 +506,31 @@ export default function AssignaturesGrupsPage() {
     }
   }, [filters.grau])
 
+  useEffect(() => {
+    if (currentYear) {
+      loadSubjects()
+    }
+  }, [currentYear?.id])
+
   const loadSubjects = async () => {
     try {
       setLoading(true)
+
+      // Resolve the current year's semester IDs so all counts are scoped to it.
+      const { data: yearSemesters } = currentYear
+        ? await supabase
+            .from('semesters')
+            .select('id')
+            .eq('academic_year_id', currentYear.id)
+        : { data: [] }
+      const yearSemesterIds = new Set((yearSemesters || []).map((s: any) => s.id as string))
+
       let query = supabase
         .from('subjects')
         .select(`
           *,
-          itinerari:"ID Itinerari",
-          subject_groups(count)
+          itinerari:itinerary_code,
+          subject_groups(id, semester_id)
         `)
         .order('code', { ascending: true })
 
@@ -525,29 +543,25 @@ export default function AssignaturesGrupsPage() {
 
       if (error) throw error
 
-      // Process the data to include group counts and check for groups without teachers
+      // Process the data to include group counts (filtered to current year) and check for
+      // groups without teachers.
       const processedData = await Promise.all((data || []).map(async (subject) => {
-        const groupCount = subject.subject_groups?.[0]?.count || 0
+        const yearGroups = (subject.subject_groups || []).filter((g: any) =>
+          yearSemesterIds.has(g.semester_id)
+        )
+        const groupCount = yearGroups.length
 
-        // Check if this subject has groups without assigned teachers
         let hasGroupsWithoutTeachers = false
         if (groupCount > 0) {
-          const { data: groupsData } = await supabase
-            .from('subject_groups')
-            .select('id')
-            .eq('subject_id', subject.id)
+          const groupIds = yearGroups.map((g: any) => g.id)
+          const { data: assignmentsData } = await supabase
+            .from('teacher_group_assignments')
+            .select('subject_group_id')
+            .in('subject_group_id', groupIds)
+            .eq('academic_year', currentYear?.name ?? '')
 
-          if (groupsData && groupsData.length > 0) {
-            // Check if any of these groups have no teacher assignments
-            const { data: assignmentsData } = await supabase
-              .from('teacher_group_assignments')
-              .select('subject_group_id')
-              .in('subject_group_id', groupsData.map(g => g.id))
-              .eq('academic_year', '2025-2026')
-
-            const groupsWithTeachers = new Set((assignmentsData || []).map(a => a.subject_group_id))
-            hasGroupsWithoutTeachers = groupsData.some(group => !groupsWithTeachers.has(group.id))
-          }
+          const groupsWithTeachers = new Set((assignmentsData || []).map(a => a.subject_group_id))
+          hasGroupsWithoutTeachers = groupIds.some((id: string) => !groupsWithTeachers.has(id))
         }
 
         return {
@@ -610,7 +624,16 @@ export default function AssignaturesGrupsPage() {
   const loadSubjectGroups = async (subjectId: string) => {
     try {
       setLoadingGroups(prev => ({ ...prev, [subjectId]: true }))
-      
+
+      // Limit to semesters of the currently-selected academic year.
+      const { data: yearSemesters } = currentYear
+        ? await supabase
+            .from('semesters')
+            .select('id')
+            .eq('academic_year_id', currentYear.id)
+        : { data: [] }
+      const yearSemesterIds = (yearSemesters || []).map((s: any) => s.id as string)
+
       const { data, error } = await supabase
         .from('subject_groups')
         .select(`
@@ -623,6 +646,7 @@ export default function AssignaturesGrupsPage() {
           )
         `)
         .eq('subject_id', subjectId)
+        .in('semester_id', yearSemesterIds.length ? yearSemesterIds : ['00000000-0000-0000-0000-000000000000'])
         .order('group_code', { ascending: true })
 
       if (error) throw error
@@ -845,7 +869,7 @@ export default function AssignaturesGrupsPage() {
         .from('teacher_group_assignments')
         .delete()
         .eq('subject_group_id', groupId)
-        .eq('academic_year', '2025-2026')
+        .eq('academic_year', currentYear?.name ?? '')
 
       if (deleteError) {
         console.error('Error deleting teacher assignments:', deleteError)
@@ -866,7 +890,7 @@ export default function AssignaturesGrupsPage() {
         const insertData = assignments.map(ta => ({
           teacher_id: ta.teacher_id,
           subject_group_id: groupId,
-          academic_year: '2025-2026',
+          academic_year: currentYear?.name ?? '',
           ects_assigned: ta.ects_assigned || 0,
           is_coordinator: false
         }))

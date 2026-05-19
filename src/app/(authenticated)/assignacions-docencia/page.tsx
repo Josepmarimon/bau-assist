@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { createClient } from '@/lib/supabase/client'
+import { useAcademicYear } from '@/contexts/academic-year-context'
 import { loadCSVAssignments, type CSVAssignment } from '@/lib/load-csv-assignments'
 import { 
   Plus,
@@ -113,6 +114,7 @@ interface Filters {
 }
 
 export default function CourseAssignmentsPage() {
+  const { currentYear } = useAcademicYear()
   const [courseOfferings, setCourseOfferings] = useState<CourseOffering[]>([])
   const [teachingAssignments, setTeachingAssignments] = useState<TeachingAssignment[]>([])
   const [teachers, setTeachers] = useState<Teacher[]>([])
@@ -287,7 +289,7 @@ export default function CourseAssignmentsPage() {
           .from('subjects')
           .select(`
             *,
-            itinerari:"ID Itinerari"
+            itinerari:itinerary_code
           `)
           .order('code')
       ])
@@ -331,7 +333,7 @@ export default function CourseAssignmentsPage() {
       if (subjectsRes.data && subjectsRes.data.length > 0) {
         offerings = subjectsRes.data.map((subject, index) => ({
           id: index + 1,
-          academic_year: '2024-2025',
+          academic_year: currentYear?.name ?? '',
           subject_id: subject.id,
           subject: {
             code: subject.code,

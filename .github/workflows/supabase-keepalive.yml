@@ -1,0 +1,45 @@
+# Manté actiu el projecte Supabase Free Tier evitant la pausa per inactivitat
+# (que es produeix al cap de ~7 dies sense activitat).
+#
+# Cal configurar 2 secrets al repositori:
+#   SUPABASE_URL       — ex. https://abcdefgh.supabase.co
+#   SUPABASE_ANON_KEY  — la clau anon del projecte
+#
+# Configurar a: GitHub → Settings → Secrets and variables → Actions → New repository secret
+
+name: Supabase keepalive
+
+on:
+  schedule:
+    # Cada 6 dies a les 03:00 UTC (suficientment per sota dels 7 dies de pausa)
+    - cron: '0 3 */6 * *'
+  workflow_dispatch:  # permet executar-lo manualment des de la UI
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query Supabase to keep DB warm
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "❌ Cal configurar els secrets SUPABASE_URL i SUPABASE_ANON_KEY"
+            exit 1
+          fi
+          echo "→ Ping a $SUPABASE_URL"
+          RESPONSE=$(curl -sS -w "\n%{http_code}" \
+            "$SUPABASE_URL/rest/v1/academic_years?select=id&limit=1" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY")
+          STATUS=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | head -n-1)
+          echo "→ HTTP $STATUS"
+          echo "→ Response: $BODY"
+          if [ "$STATUS" != "200" ]; then
+            echo "❌ Resposta inesperada"
+            exit 1
+          fi
+          echo "✅ Projecte actiu"
