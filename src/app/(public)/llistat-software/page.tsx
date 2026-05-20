@@ -1055,7 +1055,7 @@ export default function SoftwareListPage() {
               key={classroom.id} 
               className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow"
             >
-              {/* Classroom header */}
+              {/* CAPÇALERA */}
               <div className="border-b border-gray-200 pb-3 mb-3">
                 <h3 className="font-bold text-lg flex items-center gap-2">
                   <Monitor className="h-5 w-5 text-gray-600" />
@@ -1067,73 +1067,111 @@ export default function SoftwareListPage() {
                 </p>
               </div>
 
-              {/* Assignatures que s'imparteixen a l'aula */}
-              {classroom.subjects.length > 0 && (
-                <details className="mb-3 group">
-                  <summary className="cursor-pointer text-sm font-medium text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
-                    <BookOpen className="h-4 w-4 text-gray-500" />
-                    Assignatures ({classroom.subjects.length})
-                    <span className="text-xs text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
-                    <span className="text-xs text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
-                  </summary>
-                  <ul className="mt-2 space-y-1 text-xs text-gray-600 pl-6">
-                    {classroom.subjects.map(s => (
-                      <li key={s.code} className="leading-tight">
-                        <span className="font-mono text-gray-400">{s.code}</span>
-                        <span className="ml-2">{s.name}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
+              {/* ASSIGNATURES */}
+              {(classroom.subjects.length > 0 || classroom.programs.length > 0) && (
+                <section className="mb-4">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 flex items-center gap-1.5">
+                    <BookOpen className="h-3.5 w-3.5" />
+                    Assignatures
+                  </h4>
+
+                  {classroom.subjects.length > 0 && (
+                    <details className="mb-2 group" open>
+                      <summary className="cursor-pointer text-xs font-semibold text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
+                        Grau ({classroom.subjects.length})
+                        <span className="text-[10px] text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
+                        <span className="text-[10px] text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
+                      </summary>
+                      <ul className="mt-1.5 space-y-1 text-xs text-gray-600 pl-4">
+                        {classroom.subjects.map(s => (
+                          <li key={s.code} className="leading-tight">
+                            <span className="font-mono text-gray-400">{s.code}</span>
+                            <span className="ml-2">{s.name}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  )}
+
+                  {classroom.programs.length > 0 && (
+                    <details className="group" open>
+                      <summary className="cursor-pointer text-xs font-semibold text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
+                        <span className="text-purple-500">●</span>
+                        Masters i postgraus ({classroom.programs.length})
+                        <span className="text-[10px] text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
+                        <span className="text-[10px] text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
+                      </summary>
+                      <ul className="mt-1.5 space-y-1.5 text-xs text-gray-600 pl-4">
+                        {classroom.programs.map(p => (
+                          <li key={p.code} className="leading-tight">
+                            <div>
+                              <span className="font-mono text-gray-400">{p.code}</span>
+                              <span className="ml-2 font-medium">{p.name}</span>
+                              <span className="ml-2 text-[10px] uppercase tracking-wide text-purple-500">{p.type}</span>
+                            </div>
+                            {p.software.length > 0 && (
+                              <div className="ml-3 mt-0.5 text-gray-500 text-[11px]">
+                                <span className="font-semibold">Software:</span> {p.software.join(', ')}
+                              </div>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  )}
+                </section>
               )}
 
-              {/* Masters i postgraus que utilitzen l'aula */}
-              {classroom.programs.length > 0 && (
-                <details className="mb-3 group">
-                  <summary className="cursor-pointer text-sm font-medium text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
-                    <Building2 className="h-4 w-4 text-purple-500" />
-                    Masters i postgraus ({classroom.programs.length})
-                    <span className="text-xs text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
-                    <span className="text-xs text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
-                  </summary>
-                  <ul className="mt-2 space-y-2 text-xs text-gray-600 pl-6">
-                    {classroom.programs.map(p => (
-                      <li key={p.code} className="leading-tight">
-                        <div>
-                          <span className="font-mono text-gray-400">{p.code}</span>
-                          <span className="ml-2 font-medium">{p.name}</span>
-                          <span className="ml-2 text-[10px] uppercase tracking-wide text-purple-500">{p.type}</span>
-                        </div>
-                        {p.software.length > 0 && (
-                          <div className="ml-4 mt-0.5 text-gray-500">
-                            <span className="font-semibold">Software:</span> {p.software.join(', ')}
-                          </div>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </details>
+              {/* SOFTWARE */}
+              {(mainList.length > 0 || openSourceList.length > 0) && (
+                <section className="mb-4">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 flex items-center gap-1.5">
+                    <Monitor className="h-3.5 w-3.5" />
+                    Software
+                  </h4>
+
+                  {/* Llegenda d'estats */}
+                  <div className="flex flex-wrap gap-2 mb-2 text-[10px] text-gray-500">
+                    <span className="inline-flex items-center gap-1">
+                      <CheckCircle2 className="h-3 w-3 text-emerald-600" /> inst+req
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <AlertTriangle className="h-3 w-3 text-amber-600" /> requerit no inst
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <Monitor className="h-3 w-3 text-gray-400" /> instal·lat
+                    </span>
+                  </div>
+
+                  {mainList.length > 0 && (
+                    <div className="mb-3">
+                      <div className="text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
+                        <span className="text-red-500">●</span>
+                        Privatiu ({mainList.length})
+                      </div>
+                      <div className="space-y-0.5 pl-2">
+                        {mainList.map(renderSoftwareItem)}
+                      </div>
+                    </div>
+                  )}
+
+                  {openSourceList.length > 0 && (
+                    <details className="group" open>
+                      <summary className="cursor-pointer text-xs font-semibold text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
+                        <span className="text-emerald-500">●</span>
+                        Codi obert ({openSourceList.length})
+                        <span className="text-[10px] text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
+                        <span className="text-[10px] text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
+                      </summary>
+                      <div className="mt-1.5 space-y-0.5 pl-2">
+                        {openSourceList.map(renderSoftwareItem)}
+                      </div>
+                    </details>
+                  )}
+                </section>
               )}
 
-              {/* Llegenda d'estats */}
-              <div className="flex flex-wrap gap-3 mb-2 text-[10px] text-gray-500">
-                <span className="inline-flex items-center gap-1">
-                  <CheckCircle2 className="h-3 w-3 text-emerald-600" /> instal·lat + requerit
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  <AlertTriangle className="h-3 w-3 text-amber-600" /> requerit, no instal·lat
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  <Monitor className="h-3 w-3 text-gray-400" /> instal·lat
-                </span>
-              </div>
-
-              {/* Software list */}
-              <div className="space-y-1">
-                {mainList.map(renderSoftwareItem)}
-              </div>
-
-              {/* Notes i consideracions de les assignatures */}
+              {/* NOTES */}
               {classroom.notes.length > 0 && (() => {
                 const bySubject = new Map<string, SubjectNote[]>()
                 for (const n of classroom.notes) {
@@ -1142,49 +1180,39 @@ export default function SoftwareListPage() {
                   bySubject.get(key)!.push(n)
                 }
                 return (
-                  <details className="mt-3 group">
-                    <summary className="cursor-pointer text-sm font-medium text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none border-t border-gray-200 pt-2">
-                      <Info className="h-4 w-4 text-blue-500" />
-                      Notes i consideracions ({classroom.notes.length})
-                      <span className="text-xs text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
-                      <span className="text-xs text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
-                    </summary>
-                    <div className="mt-2 space-y-3 text-xs">
-                      {Array.from(bySubject.entries()).map(([sid, notes]) => (
-                        <div key={sid} className="border-l-2 border-blue-200 pl-2">
-                          <div className="font-medium text-gray-700">
-                            <span className="font-mono text-gray-400 mr-1">{notes[0].subject_code}</span>
-                            {notes[0].subject_name}
-                          </div>
-                          {notes.map((n, idx) => (
-                            <div key={idx} className="mt-1">
-                              <span className="font-semibold text-blue-700">
-                                {NOTE_CATEGORY_LABEL[n.category] || n.category}:
-                              </span>
-                              <span className="ml-1 text-gray-600 whitespace-pre-line">{n.content}</span>
+                  <section className="border-t border-gray-200 pt-3">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 flex items-center gap-1.5">
+                      <Info className="h-3.5 w-3.5" />
+                      Notes ({classroom.notes.length})
+                    </h4>
+                    <details className="group">
+                      <summary className="cursor-pointer text-xs font-semibold text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
+                        Veure consideracions
+                        <span className="text-[10px] text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
+                        <span className="text-[10px] text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
+                      </summary>
+                      <div className="mt-2 space-y-3 text-xs">
+                        {Array.from(bySubject.entries()).map(([sid, notes]) => (
+                          <div key={sid} className="border-l-2 border-blue-200 pl-2">
+                            <div className="font-medium text-gray-700">
+                              <span className="font-mono text-gray-400 mr-1">{notes[0].subject_code}</span>
+                              {notes[0].subject_name}
                             </div>
-                          ))}
-                        </div>
-                      ))}
-                    </div>
-                  </details>
+                            {notes.map((n, idx) => (
+                              <div key={idx} className="mt-1">
+                                <span className="font-semibold text-blue-700">
+                                  {NOTE_CATEGORY_LABEL[n.category] || n.category}:
+                                </span>
+                                <span className="ml-1 text-gray-600 whitespace-pre-line">{n.content}</span>
+                              </div>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    </details>
+                  </section>
                 )
               })()}
-
-              {/* Codi obert col·lapsable */}
-              {openSourceList.length > 0 && (
-                <details className="mt-3 group">
-                  <summary className="cursor-pointer text-sm font-medium text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none border-t border-gray-200 pt-2">
-                    <Monitor className="h-4 w-4 text-purple-500" />
-                    Codi obert ({openSourceList.length})
-                    <span className="text-xs text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
-                    <span className="text-xs text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
-                  </summary>
-                  <div className="mt-2 space-y-1">
-                    {openSourceList.map(renderSoftwareItem)}
-                  </div>
-                </details>
-              )}
 
               {totalSoftware === 0 && (
                 <div className="text-center py-8 text-gray-500">
