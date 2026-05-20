@@ -63,6 +63,13 @@ interface ClassroomRequirement {
   required_by_subjects?: string
 }
 
+interface ClassroomProgram {
+  code: string
+  name: string
+  type: string
+  software: string[]
+}
+
 interface ClassroomWithSoftware {
   id: string
   code: string
@@ -73,6 +80,7 @@ interface ClassroomWithSoftware {
   free: Software[]
   open_source: Software[]
   subjects: ClassroomSubject[]
+  programs: ClassroomProgram[]
   notes: SubjectNote[]
 }
 
@@ -287,6 +295,7 @@ export default function SoftwareListPage() {
             free: [],
             open_source: [],
             subjects: [],
+            programs: [],
             notes: []
           })
         }
@@ -366,6 +375,128 @@ export default function SoftwareListPage() {
             const room = classroomMap.get(classroomId)
             if (room) {
               room.subjects = Array.from(subjects.values()).sort((a, b) => a.code.localeCompare(b.code))
+            }
+          })
+
+          // Carrega els masters/postgraus que utilitzen cada aula, combinant
+          // master_schedules (horaris reals) + program_classrooms (planificació Airtable).
+          const [{ data: msRows }, { data: pcRows }] = await Promise.all([
+            supabase
+              .from('master_schedules')
+              .select('classroom_id, programs!inner(id, code, name, type)')
+              .eq('active', true)
+              .in('programs.type', ['master', 'postgrau']),
+            supabase
+              .from('program_classrooms')
+              .select('classroom_id, programs!inner(id, code, name, type)')
+              .in('programs.type', ['master', 'postgrau']),
+          ])
+
+          // Map (classroom_id, program_id) → program info, deduplicant
+          const roomToPrograms = new Map<string, Map<string, { id: string; code: string; name: string; type: string }>>()
+          const collectedProgramIds = new Set<string>()
+          const ingestProgram = (classroomId: string, p: any) => {
+            if (!p) return
+            collectedProgramIds.add(p.id)
+            if (!roomToPrograms.has(classroomId)) roomToPrograms.set(classroomId, new Map())
+            if (!roomToPrograms.get(classroomId)!.has(p.id)) {
+              roomToPrograms.get(classroomId)!.set(p.id, {
+                id: p.id, code: p.code, name: p.name, type: p.type,
+              })
+            }
+          }
+          for (const r of (msRows || []) as any[]) ingestProgram(r.classroom_id, r.programs)
+          for (const r of (pcRows || []) as any[]) ingestProgram(r.classroom_id, r.programs)
+
+          // Software per programa al curs actual (o sense any), amb info completa
+          const swByProgram = new Map<string, { id: string; name: string; version?: string; license_type: string; category: string }[]>()
+          if (collectedProgramIds.size) {
+            const { data: psRows } = await supabase
+              .from('program_software')
+              .select('program_id, software:software(id, name, version, license_type, category)')
+              .in('program_id', Array.from(collectedProgramIds))
+              .or(`academic_year.eq.${yearName},academic_year.is.null`)
+            for (const r of (psRows || []) as any[]) {
+              const sw = r.software
+              if (!sw) continue
+              if (!swByProgram.has(r.program_id)) swByProgram.set(r.program_id, [])
+              swByProgram.get(r.program_id)!.push(sw)
+            }
+          }
+
+          // Comprovar quin software està instal·lat a cada aula (via classroom_software)
+          const allRoomIds = Array.from(classroomMap.keys())
+          const installedByRoom = new Map<string, Set<string>>()
+          if (allRoomIds.length) {
+            const { data: csRows } = await supabase
+              .from('classroom_software')
+              .select('classroom_id, software_id')
+              .in('classroom_id', allRoomIds)
+            for (const r of (csRows || []) as any[]) {
+              if (!installedByRoom.has(r.classroom_id)) installedByRoom.set(r.classroom_id, new Set())
+              installedByRoom.get(r.classroom_id)!.add(r.software_id)
+            }
+          }
+
+          roomToPrograms.forEach((progs, classroomId) => {
+            const room = classroomMap.get(classroomId)
+            if (!room) return
+
+            // Llistat per a la secció "Masters i postgraus"
+            room.programs = Array.from(progs.values())
+              .map(p => ({
+                code: p.code,
+                name: p.name,
+                type: p.type,
+                software: (swByProgram.get(p.id) || []).map(s => s.name).sort(),
+              }))
+              .sort((a, b) => a.code.localeCompare(b.code))
+
+            // Barrejar el software dels masters amb el panell principal:
+            // si ja hi és, afegir el master al required_by_subjects; sinó, afegir-lo nou.
+            const programNames = new Map<string, Set<string>>()  // sw_id -> set<program_code>
+            for (const [_pid, p] of progs) {
+              for (const sw of (swByProgram.get(p.id) || [])) {
+                if (!programNames.has(sw.id)) programNames.set(sw.id, new Set())
+                programNames.get(sw.id)!.add(`${p.code}: ${p.name}`)
+              }
+            }
+
+            // Per cada llista (paid/educational/free/open_source), buscar matches
+            const buckets: (keyof ClassroomWithSoftware)[] = ['paid', 'educational', 'free', 'open_source']
+            for (const sw of Array.from(swByProgram.values()).flat()) {
+              const masters = Array.from(programNames.get(sw.id) || [])
+              if (!masters.length) continue
+              const installed = installedByRoom.get(classroomId)?.has(sw.id) || false
+              // Mira si ja hi és a algun bucket
+              let found = false
+              for (const b of buckets) {
+                const arr = room[b] as Software[]
+                const existing = arr.find(x => x.id === sw.id)
+                if (existing) {
+                  existing.is_required_by_subjects = true
+                  const merged = [existing.required_by_subjects, masters.join(', ')].filter(Boolean).join(', ')
+                  existing.required_by_subjects = merged
+                  found = true
+                  break
+                }
+              }
+              if (!found) {
+                const bucket = (sw.license_type as keyof ClassroomWithSoftware) in { paid: 1, educational: 1, free: 1, open_source: 1 }
+                  ? (sw.license_type as keyof ClassroomWithSoftware)
+                  : 'free'
+                const newSw: Software = {
+                  id: sw.id,
+                  name: sw.name,
+                  version: sw.version,
+                  category: sw.category || 'general',
+                  license_type: sw.license_type,
+                  required_by_subjects: masters.join(', '),
+                  is_installed: installed,
+                  is_required_by_subjects: true,
+                }
+                ;(room[bucket] as Software[]).push(newSw)
+              }
             }
           })
 
@@ -950,6 +1081,34 @@ export default function SoftwareListPage() {
                       <li key={s.code} className="leading-tight">
                         <span className="font-mono text-gray-400">{s.code}</span>
                         <span className="ml-2">{s.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+
+              {/* Masters i postgraus que utilitzen l'aula */}
+              {classroom.programs.length > 0 && (
+                <details className="mb-3 group">
+                  <summary className="cursor-pointer text-sm font-medium text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
+                    <Building2 className="h-4 w-4 text-purple-500" />
+                    Masters i postgraus ({classroom.programs.length})
+                    <span className="text-xs text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
+                    <span className="text-xs text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
+                  </summary>
+                  <ul className="mt-2 space-y-2 text-xs text-gray-600 pl-6">
+                    {classroom.programs.map(p => (
+                      <li key={p.code} className="leading-tight">
+                        <div>
+                          <span className="font-mono text-gray-400">{p.code}</span>
+                          <span className="ml-2 font-medium">{p.name}</span>
+                          <span className="ml-2 text-[10px] uppercase tracking-wide text-purple-500">{p.type}</span>
+                        </div>
+                        {p.software.length > 0 && (
+                          <div className="ml-4 mt-0.5 text-gray-500">
+                            <span className="font-semibold">Software:</span> {p.software.join(', ')}
+                          </div>
+                        )}
                       </li>
                     ))}
                   </ul>
