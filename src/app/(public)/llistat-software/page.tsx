@@ -1182,48 +1182,19 @@ export default function SoftwareListPage() {
                 </section>
               )}
 
-              {/* NOTES */}
-              {classroom.notes.length > 0 && (() => {
-                const bySubject = new Map<string, SubjectNote[]>()
-                for (const n of classroom.notes) {
-                  const key = n.subject_id
-                  if (!bySubject.has(key)) bySubject.set(key, [])
-                  bySubject.get(key)!.push(n)
-                }
-                return (
-                  <section className="border-t border-gray-200 pt-3">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 flex items-center gap-1.5">
-                      <Info className="h-3.5 w-3.5" />
-                      Notes ({classroom.notes.length})
-                    </h4>
-                    <details className="group">
-                      <summary className="cursor-pointer text-xs font-semibold text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
-                        Veure consideracions
-                        <span className="text-[10px] text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
-                        <span className="text-[10px] text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
-                      </summary>
-                      <div className="mt-2 space-y-3 text-xs">
-                        {Array.from(bySubject.entries()).map(([sid, notes]) => (
-                          <div key={sid} className="border-l-2 border-blue-200 pl-2">
-                            <div className="font-medium text-gray-700">
-                              <span className="font-mono text-gray-400 mr-1">{notes[0].subject_code}</span>
-                              {notes[0].subject_name}
-                            </div>
-                            {notes.map((n, idx) => (
-                              <div key={idx} className="mt-1">
-                                <span className="font-semibold text-blue-700">
-                                  {NOTE_CATEGORY_LABEL[n.category] || n.category}:
-                                </span>
-                                <span className="ml-1 text-gray-600 whitespace-pre-line">{n.content}</span>
-                              </div>
-                            ))}
-                          </div>
-                        ))}
-                      </div>
-                    </details>
-                  </section>
-                )
-              })()}
+              {/* Comptador de notes amb enllaç a la secció global */}
+              {classroom.notes.length > 0 && (
+                <a
+                  href={`#notes-${classroom.id}`}
+                  className="block border-t border-gray-200 pt-3 text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1.5"
+                >
+                  <Info className="h-3.5 w-3.5" />
+                  <span className="font-semibold">
+                    {classroom.notes.length} {classroom.notes.length === 1 ? 'comentari' : 'comentaris'} del professorat
+                  </span>
+                  <ChevronRight className="h-3 w-3" />
+                </a>
+              )}
 
               {totalSoftware === 0 && (
                 <div className="text-center py-8 text-gray-500">
@@ -1235,6 +1206,118 @@ export default function SoftwareListPage() {
           )
         })}
       </div>
+
+      {/* SECCIÓ GLOBAL: COMENTARIS DEL PROFESSORAT PER AULA */}
+      {(() => {
+        const classroomsWithNotes = classroomsWithSoftware.filter(c => c.notes.length > 0)
+        if (classroomsWithNotes.length === 0) return null
+
+        const totalNotes = classroomsWithNotes.reduce((acc, c) => acc + c.notes.length, 0)
+
+        return (
+          <section className="mt-12 pt-8 border-t-2 border-gray-300">
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold mb-1 flex items-center gap-2">
+                <Info className="h-6 w-6 text-blue-600" />
+                Comentaris del professorat
+              </h2>
+              <p className="text-sm text-gray-600">
+                {totalNotes} {totalNotes === 1 ? 'comentari recollit' : 'comentaris recollits'} a través de les fitxes d'assignatures del curs {currentYearName}, agrupats per aula on s'imparteix la matèria.
+              </p>
+            </div>
+
+            {/* Índex ràpid de navegació */}
+            <div className="mb-8 rounded-lg border border-gray-200 bg-gray-50 p-3">
+              <div className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
+                Saltar a l'aula
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {classroomsWithNotes.map(c => (
+                  <a
+                    key={c.id}
+                    href={`#notes-${c.id}`}
+                    className="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-2 py-1 text-xs font-mono text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 transition-colors"
+                  >
+                    {c.code}
+                    <Badge className="bg-blue-100 text-blue-700 text-[10px] px-1.5 py-0">
+                      {c.notes.length}
+                    </Badge>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              {classroomsWithNotes.map(classroom => {
+                // Agrupar per categoria, dins de cada categoria per assignatura
+                const byCategory = new Map<string, Map<string, SubjectNote[]>>()
+                for (const n of classroom.notes) {
+                  if (!byCategory.has(n.category)) byCategory.set(n.category, new Map())
+                  const bySubj = byCategory.get(n.category)!
+                  if (!bySubj.has(n.subject_id)) bySubj.set(n.subject_id, [])
+                  bySubj.get(n.subject_id)!.push(n)
+                }
+
+                return (
+                  <article
+                    key={classroom.id}
+                    id={`notes-${classroom.id}`}
+                    className="scroll-mt-6 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden"
+                  >
+                    {/* Capçalera de l'aula */}
+                    <header className="bg-gradient-to-r from-blue-50 to-blue-100/60 border-b border-blue-200 px-5 py-3 flex items-center justify-between flex-wrap gap-2">
+                      <div>
+                        <h3 className="text-lg font-bold flex items-center gap-2">
+                          <MapPin className="h-5 w-5 text-blue-700" />
+                          AULA {classroom.code}
+                        </h3>
+                        <p className="text-xs text-gray-600 flex items-center gap-1.5 mt-0.5">
+                          <Building2 className="h-3.5 w-3.5" />
+                          {classroom.building}
+                        </p>
+                      </div>
+                      <Badge className="bg-blue-600 text-white">
+                        {classroom.notes.length} {classroom.notes.length === 1 ? 'comentari' : 'comentaris'}
+                      </Badge>
+                    </header>
+
+                    {/* Llistat de comentaris agrupats per categoria */}
+                    <div className="p-5 space-y-5">
+                      {Array.from(byCategory.entries()).map(([category, bySubject]) => (
+                        <div key={category}>
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-blue-700 mb-2 pb-1 border-b border-blue-100">
+                            {NOTE_CATEGORY_LABEL[category] || category}
+                          </h4>
+                          <ul className="space-y-3">
+                            {Array.from(bySubject.entries()).map(([sid, notes]) => (
+                              <li key={sid} className="pl-3 border-l-4 border-blue-200">
+                                <div className="text-sm font-medium text-gray-800 mb-1">
+                                  <span className="font-mono text-xs text-gray-500 mr-2">
+                                    {notes[0].subject_code}
+                                  </span>
+                                  {notes[0].subject_name}
+                                </div>
+                                {notes.map((n, idx) => (
+                                  <p
+                                    key={idx}
+                                    className="text-sm text-gray-700 whitespace-pre-line leading-relaxed"
+                                  >
+                                    {n.content}
+                                  </p>
+                                ))}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </article>
+                )
+              })}
+            </div>
+          </section>
+        )
+      })()}
     </div>
   )
 }
