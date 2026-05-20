@@ -1067,61 +1067,6 @@ export default function SoftwareListPage() {
                 </p>
               </div>
 
-              {/* ASSIGNATURES */}
-              {(classroom.subjects.length > 0 || classroom.programs.length > 0) && (
-                <section className="mb-4">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 flex items-center gap-1.5">
-                    <BookOpen className="h-3.5 w-3.5" />
-                    Assignatures
-                  </h4>
-
-                  {classroom.subjects.length > 0 && (
-                    <details className="mb-2 group" open>
-                      <summary className="cursor-pointer text-xs font-semibold text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
-                        Grau ({classroom.subjects.length})
-                        <span className="text-[10px] text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
-                        <span className="text-[10px] text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
-                      </summary>
-                      <ul className="mt-1.5 space-y-1 text-xs text-gray-600 pl-4">
-                        {classroom.subjects.map(s => (
-                          <li key={s.code} className="leading-tight">
-                            <span className="font-mono text-gray-400">{s.code}</span>
-                            <span className="ml-2">{s.name}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </details>
-                  )}
-
-                  {classroom.programs.length > 0 && (
-                    <details className="group" open>
-                      <summary className="cursor-pointer text-xs font-semibold text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
-                        <span className="text-purple-500">●</span>
-                        Masters i postgraus ({classroom.programs.length})
-                        <span className="text-[10px] text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
-                        <span className="text-[10px] text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
-                      </summary>
-                      <ul className="mt-1.5 space-y-1.5 text-xs text-gray-600 pl-4">
-                        {classroom.programs.map(p => (
-                          <li key={p.code} className="leading-tight">
-                            <div>
-                              <span className="font-mono text-gray-400">{p.code}</span>
-                              <span className="ml-2 font-medium">{p.name}</span>
-                              <span className="ml-2 text-[10px] uppercase tracking-wide text-purple-500">{p.type}</span>
-                            </div>
-                            {p.software.length > 0 && (
-                              <div className="ml-3 mt-0.5 text-gray-500 text-[11px]">
-                                <span className="font-semibold">Software:</span> {p.software.join(', ')}
-                              </div>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </details>
-                  )}
-                </section>
-              )}
-
               {/* SOFTWARE */}
               {(mainList.length > 0 || openSourceList.length > 0) && (
                 <section className="mb-4">
@@ -1145,8 +1090,7 @@ export default function SoftwareListPage() {
 
                   {mainList.length > 0 && (
                     <div className="mb-3">
-                      <div className="text-xs font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
-                        <span className="text-red-500">●</span>
+                      <div className="text-xs font-semibold text-gray-700 mb-1.5">
                         Privatiu ({mainList.length})
                       </div>
                       <div className="space-y-0.5 pl-2">
@@ -1158,7 +1102,6 @@ export default function SoftwareListPage() {
                   {openSourceList.length > 0 && (
                     <details className="group" open>
                       <summary className="cursor-pointer text-xs font-semibold text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
-                        <span className="text-emerald-500">●</span>
                         Codi obert ({openSourceList.length})
                         <span className="text-[10px] text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
                         <span className="text-[10px] text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
@@ -1166,6 +1109,60 @@ export default function SoftwareListPage() {
                       <div className="mt-1.5 space-y-0.5 pl-2">
                         {openSourceList.map(renderSoftwareItem)}
                       </div>
+                    </details>
+                  )}
+                </section>
+              )}
+
+              {/* ASSIGNATURES */}
+              {(classroom.subjects.length > 0 || classroom.programs.length > 0) && (
+                <section className="mb-4">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 flex items-center gap-1.5">
+                    <BookOpen className="h-3.5 w-3.5" />
+                    Assignatures
+                  </h4>
+
+                  {classroom.subjects.length > 0 && (
+                    <details className="mb-2 group">
+                      <summary className="cursor-pointer text-xs font-semibold text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
+                        Grau ({classroom.subjects.length})
+                        <span className="text-[10px] text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
+                        <span className="text-[10px] text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
+                      </summary>
+                      <ul className="mt-1.5 space-y-1 text-xs text-gray-600 pl-4">
+                        {classroom.subjects.map(s => (
+                          <li key={s.code} className="leading-tight">
+                            <span className="font-mono text-gray-400">{s.code}</span>
+                            <span className="ml-2">{s.name}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  )}
+
+                  {classroom.programs.length > 0 && (
+                    <details className="group">
+                      <summary className="cursor-pointer text-xs font-semibold text-gray-700 hover:text-gray-900 flex items-center gap-2 select-none">
+                        Masters i postgraus ({classroom.programs.length})
+                        <span className="text-[10px] text-gray-400 ml-auto group-open:hidden">obrir ▾</span>
+                        <span className="text-[10px] text-gray-400 ml-auto hidden group-open:inline">tancar ▴</span>
+                      </summary>
+                      <ul className="mt-1.5 space-y-1.5 text-xs text-gray-600 pl-4">
+                        {classroom.programs.map(p => (
+                          <li key={p.code} className="leading-tight">
+                            <div>
+                              <span className="font-mono text-gray-400">{p.code}</span>
+                              <span className="ml-2 font-medium">{p.name}</span>
+                              <span className="ml-2 text-[10px] uppercase tracking-wide text-purple-500">{p.type}</span>
+                            </div>
+                            {p.software.length > 0 && (
+                              <div className="ml-3 mt-0.5 text-gray-500 text-[11px]">
+                                <span className="font-semibold">Software:</span> {p.software.join(', ')}
+                              </div>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
                     </details>
                   )}
                 </section>
