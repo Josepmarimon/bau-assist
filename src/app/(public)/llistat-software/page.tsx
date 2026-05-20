@@ -342,6 +342,20 @@ export default function SoftwareListPage() {
           }
           swSubjMap.set(r.software_id, arr)
         }
+        // També afegim els masters/postgraus que demanen cada software al curs
+        const { data: psList } = await supabase
+          .from('program_software')
+          .select('software_id, programs:programs(code, name)')
+          .or(`academic_year.eq.${yearName},academic_year.is.null`)
+        for (const r of (psList || []) as any[]) {
+          if (!r.programs) continue
+          const arr = swSubjMap.get(r.software_id) || []
+          // Format: codi del master + nom (per coherència amb el render)
+          if (!arr.some(x => x.code === r.programs.code)) {
+            arr.push({ code: r.programs.code, name: r.programs.name })
+          }
+          swSubjMap.set(r.software_id, arr)
+        }
         // Ordena per codi
         swSubjMap.forEach((list, id) => {
           list.sort((a, b) => a.code.localeCompare(b.code))
