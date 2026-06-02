@@ -7,24 +7,42 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { CLASSROOM_TYPE_LABELS } from '@/lib/constants/classroom-types'
-import { 
-  ArrowLeft, 
-  Building2, 
-  MapPin, 
-  Users, 
+import { ClassroomWeeklySchedule } from '@/components/public/classroom-weekly-schedule'
+import {
+  ArrowLeft,
+  Building2,
+  MapPin,
+  Users,
   Monitor,
   Package,
   ChevronLeft,
   ChevronRight,
-  Info
+  Info,
+  HardDrive,
+  AppWindow
 } from 'lucide-react'
 
 interface ClassroomDetailProps {
   classroom: any
   equipment: any[]
+  software?: any[]
 }
 
-export function ClassroomDetail({ classroom, equipment }: ClassroomDetailProps) {
+const LICENSE_TYPE_LABELS: Record<string, string> = {
+  paid: 'Pagament',
+  educational: 'Educatiu',
+  free: 'Gratuït',
+  open_source: 'Codi obert'
+}
+
+const LICENSE_TYPE_COLORS: Record<string, string> = {
+  paid: 'bg-red-100 text-red-700',
+  educational: 'bg-blue-100 text-blue-700',
+  free: 'bg-green-100 text-green-700',
+  open_source: 'bg-purple-100 text-purple-700'
+}
+
+export function ClassroomDetail({ classroom, equipment, software = [] }: ClassroomDetailProps) {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
   const photos = classroom.photos || []
 
@@ -154,17 +172,30 @@ export function ClassroomDetail({ classroom, equipment }: ClassroomDetailProps) 
             )}
 
             {/* Computer info for computer labs */}
-            {classroom.type === 'Informàtica' && classroom.computer_count && (
+            {classroom.type === 'Informàtica' && (classroom.computer_count || classroom.operating_system) && (
               <Card className="mb-6">
-                <CardContent className="flex items-center gap-3 p-4">
-                  <Monitor className="h-8 w-8 text-primary" />
-                  <div>
-                    <p className="text-sm text-muted-foreground">Equipament informàtic</p>
-                    <p className="text-xl font-semibold">{classroom.computer_count} ordinadors</p>
-                    {classroom.computer_type && (
-                      <p className="text-sm text-muted-foreground">{classroom.computer_type}</p>
-                    )}
-                  </div>
+                <CardContent className="space-y-3 p-4">
+                  {classroom.computer_count && (
+                    <div className="flex items-center gap-3">
+                      <Monitor className="h-8 w-8 text-primary shrink-0" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Equipament informàtic</p>
+                        <p className="text-xl font-semibold">{classroom.computer_count} ordinadors</p>
+                        {classroom.computer_type && (
+                          <p className="text-sm text-muted-foreground">{classroom.computer_type}</p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                  {classroom.operating_system && (
+                    <div className="flex items-center gap-3">
+                      <HardDrive className="h-8 w-8 text-primary shrink-0" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Sistema operatiu</p>
+                        <p className="text-lg font-semibold">{classroom.operating_system}</p>
+                      </div>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             )}
@@ -337,6 +368,40 @@ export function ClassroomDetail({ classroom, equipment }: ClassroomDetailProps) 
             </CardContent>
           </Card>
         )}
+
+        {/* Software section */}
+        {software.length > 0 && (
+          <div className="space-y-6 mt-8">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              <AppWindow className="h-6 w-6" />
+              Software instal·lat
+            </h2>
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex flex-wrap gap-2">
+                  {software.map((sw: any) => (
+                    <Badge
+                      key={sw.id}
+                      variant="secondary"
+                      className={`text-sm py-1 px-3 font-normal ${LICENSE_TYPE_COLORS[sw.license_type] || ''}`}
+                      title={LICENSE_TYPE_LABELS[sw.license_type] || sw.license_type}
+                    >
+                      {sw.name}
+                      {sw.version && (
+                        <span className="ml-1.5 opacity-70">{sw.version}</span>
+                      )}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
+        {/* Weekly occupancy schedule */}
+        <div className="mt-8">
+          <ClassroomWeeklySchedule classroomId={classroom.id} />
+        </div>
       </div>
     </div>
   )

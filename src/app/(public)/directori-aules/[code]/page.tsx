@@ -17,7 +17,6 @@ export async function generateMetadata({ params }: PageProps) {
     .from('classrooms')
     .select('*')
     .eq('code', decodedCode)
-    .eq('is_public', true)
     .single()
 
   if (!classroom) {
@@ -41,7 +40,6 @@ export default async function ClassroomDetailPage({ params }: PageProps) {
     .from('classrooms')
     .select('*')
     .eq('code', decodedCode)
-    .eq('is_public', true)
     .single()
 
   if (error || !classroom) {
@@ -69,5 +67,33 @@ export default async function ClassroomDetailPage({ params }: PageProps) {
     equipmentDetails = equipment
   }
 
-  return <ClassroomDetail classroom={classroom} equipment={equipmentDetails} />
+  // Fetch installed software (only relevant for computer labs, but harmless otherwise)
+  let softwareList: any[] = []
+  const { data: software } = await supabase
+    .from('classroom_software')
+    .select(`
+      software:software (
+        id,
+        name,
+        version,
+        license_type,
+        category
+      )
+    `)
+    .eq('classroom_id', classroom.id)
+
+  if (software) {
+    softwareList = software
+      .map((row: any) => row.software)
+      .filter(Boolean)
+      .sort((a: any, b: any) => a.name.localeCompare(b.name))
+  }
+
+  return (
+    <ClassroomDetail
+      classroom={classroom}
+      equipment={equipmentDetails}
+      software={softwareList}
+    />
+  )
 }

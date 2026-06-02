@@ -28,7 +28,8 @@ import {
   ExternalLink,
   ChevronLeft,
   ChevronRight,
-  BarChart3
+  BarChart3,
+  QrCode
 } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -71,7 +72,8 @@ const navigation: NavItem[] = [
     icon: Building2,
     subItems: [
       { name: 'Aules', href: '/aules', icon: Building2 },
-      { name: 'Assignar Aules', href: '/assignacions-aules', icon: Building2 }
+      { name: 'Assignar Aules', href: '/assignacions-aules', icon: Building2 },
+      { name: 'Codis QR', href: '/codis-qr-aules', icon: QrCode }
     ]
   },
   { 
