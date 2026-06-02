@@ -16,8 +16,10 @@ import { isValidBauEmail, requestPublicReservation } from '@/lib/reservations/pu
 interface PublicReservationDialogProps {
   classroomId: string
   classroomName?: string
-  /** Dia (1=Dl … 5=Dv) i hora de la cel·la clicada, per pre-omplir el formulari */
-  defaultDayOfWeek: number | null
+  /** Data exacta (YYYY-MM-DD) de la cel·la clicada. Té prioritat sobre defaultDayOfWeek. */
+  defaultDate?: string | null
+  /** Dia (1=Dl … 5=Dv) de la cel·la clicada (s'usa si no hi ha defaultDate) */
+  defaultDayOfWeek?: number | null
   defaultHour: number | null
   open: boolean
   onOpenChange: (open: boolean) => void
@@ -39,7 +41,7 @@ function nextDateForWeekday(dow: number): string {
 }
 
 export function PublicReservationDialog({
-  classroomId, classroomName, defaultDayOfWeek, defaultHour, open, onOpenChange, onSuccess,
+  classroomId, classroomName, defaultDate, defaultDayOfWeek, defaultHour, open, onOpenChange, onSuccess,
 }: PublicReservationDialogProps) {
   const supabase = useMemo(() => createClient(), [])
   const todayYMD = useMemo(() => toYMD(new Date()), [])
@@ -55,15 +57,14 @@ export function PublicReservationDialog({
   // Pre-omplir en obrir-se a partir de la cel·la clicada
   useEffect(() => {
     if (!open) return
-    const dow = defaultDayOfWeek ?? 1
     const hour = defaultHour ?? 9
-    setDate(nextDateForWeekday(dow))
+    setDate(defaultDate || nextDateForWeekday(defaultDayOfWeek ?? 1))
     setStartTime(`${pad(hour)}:00`)
     setEndTime(`${pad(Math.min(hour + 1, 23))}:00`)
     setName('')
     setEmail('')
     setDescription('')
-  }, [open, defaultDayOfWeek, defaultHour])
+  }, [open, defaultDate, defaultDayOfWeek, defaultHour])
 
   const emailValid = email === '' || isValidBauEmail(email)
   const canSubmit =

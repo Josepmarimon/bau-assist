@@ -1,9 +1,9 @@
 'use client'
 
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useMemo, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
-import { Calendar } from 'lucide-react'
+import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
 import { PublicReservationDialog } from '@/components/reservations/public-reservation-dialog'
 
 interface ClassroomWeeklyScheduleProps {
@@ -13,18 +13,12 @@ interface ClassroomWeeklyScheduleProps {
   classroomName?: string
 }
 
-interface Semester {
-  id: string
-  number: number
-}
-
 type SlotType = 'class' | 'reservation'
 
-interface RawSlot {
-  semesterId: string
-  dayOfWeek: number
+interface Block {
+  dayOfWeek: number // 1..5
   startHour: number
-  endHour: number
+  endHour: number // exclusiu
   type: SlotType
 }
 
@@ -35,133 +29,102 @@ const HOURS = Array.from({ length: END_HOUR - START_HOUR }, (_, i) => START_HOUR
 const DAYS = ['Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres']
 const DAYS_SHORT = ['Dl', 'Dt', 'Dc', 'Dj', 'Dv']
 
+const pad = (n: number) => n.toString().padStart(2, '0')
+const toYMD = (d: Date) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
+const ddmm = (d: Date) => `${pad(d.getDate())}/${pad(d.getMonth() + 1)}`
+
+function mondayOf(date: Date): Date {
+  const d = new Date(date)
+  d.setHours(0, 0, 0, 0)
+  const iso = (d.getDay() + 6) % 7 // Dl=0 … Dg=6
+  d.setDate(d.getDate() - iso)
+  return d
+}
+function addDays(date: Date, n: number): Date {
+  const d = new Date(date)
+  d.setDate(d.getDate() + n)
+  return d
+}
+const minutes = (t: string) => {
+  const [h, m] = t.split(':').map(Number)
+  return h * 60 + (m || 0)
+}
+
 export function ClassroomWeeklySchedule({ classroomId, reservable = false, classroomName }: ClassroomWeeklyScheduleProps) {
-  const [slots, setSlots] = useState<RawSlot[]>([])
-  const [semesters, setSemesters] = useState<Semester[]>([])
-  const [selectedSemester, setSelectedSemester] = useState<string | null>(null)
+  const [monday, setMonday] = useState<Date>(() => mondayOf(new Date()))
+  const [blocks, setBlocks] = useState<Block[]>([])
   const [loading, setLoading] = useState(true)
-  const [reserveCell, setReserveCell] = useState<{ day: number; hour: number } | null>(null)
-  const supabase = createClient()
+  const [reserveCell, setReserveCell] = useState<{ day: number; hour: number; date: string } | null>(null)
+  const supabase = useMemo(() => createClient(), [])
+
+  const todayYMD = useMemo(() => toYMD(new Date()), [])
+  const weekDates = useMemo(() => Array.from({ length: 5 }, (_, i) => addDays(monday, i)), [monday])
 
   useEffect(() => {
+    let active = true
     const load = async () => {
-      try {
-        // Semestres del curs acadèmic actual
-        const { data: currentAY } = await supabase
-          .from('academic_years')
-          .select('id')
-          .eq('is_current', true)
-          .maybeSingle()
-
-        let loadedSemesters: Semester[] = []
-        if (currentAY?.id) {
-          const { data: sems } = await supabase
-            .from('semesters')
-            .select('id, number')
-            .eq('academic_year_id', currentAY.id)
-            .in('number', [1, 2])
-            .order('number')
-          loadedSemesters = sems || []
-        }
-        setSemesters(loadedSemesters)
-        setSelectedSemester(loadedSemesters[0]?.id ?? null)
-
-        // Ocupació de l'aula: tots els blocs amb la seva franja horària
-        const { data: assignments } = await supabase
-          .from('assignment_classrooms')
-          .select(`
-            assignment:assignments!inner (
-              semester_id,
-              time_slot:time_slots!inner (
-                day_of_week,
-                start_time,
-                end_time
-              )
-            )
-          `)
-          .eq('classroom_id', classroomId)
-
-        const rawSlots: RawSlot[] = []
-        for (const ac of assignments || []) {
-          const assignment = (ac as any).assignment
-          const timeSlot = assignment?.time_slot
-          if (!timeSlot) continue
-          rawSlots.push({
-            semesterId: assignment.semester_id,
-            dayOfWeek: timeSlot.day_of_week,
-            startHour: parseInt(timeSlot.start_time.split(':')[0]),
-            endHour: parseInt(timeSlot.end_time.split(':')[0]),
-            type: 'class'
-          })
-        }
-
-        // Reserves aprovades (apareixen igual que les classes a la graella)
-        const { data: reservations } = await supabase
-          .from('classroom_reservation_occupancy')
-          .select('semester_id, day_of_week, start_time, end_time')
-          .eq('classroom_id', classroomId)
-
-        for (const r of (reservations as any[]) || []) {
-          rawSlots.push({
-            semesterId: r.semester_id,
+      setLoading(true)
+      const { data, error } = await supabase.rpc('classroom_week_occupancy', {
+        p_classroom_id: classroomId,
+        p_monday: toYMD(monday),
+      })
+      if (!active) return
+      if (error) {
+        console.error('Error loading week occupancy:', error)
+        setBlocks([])
+      } else {
+        setBlocks(
+          ((data as any[]) || []).map((r) => ({
             dayOfWeek: r.day_of_week,
-            startHour: parseInt(r.start_time.split(':')[0]),
-            endHour: parseInt(r.end_time.split(':')[0]),
-            type: 'reservation'
-          })
-        }
-        setSlots(rawSlots)
-      } catch (error) {
-        console.error('Error loading classroom schedule:', error)
-      } finally {
-        setLoading(false)
+            startHour: Math.floor(minutes(r.start_time) / 60),
+            endHour: Math.ceil(minutes(r.end_time) / 60),
+            type: r.kind as SlotType,
+          }))
+        )
       }
+      setLoading(false)
     }
     load()
-  }, [classroomId])
+    return () => {
+      active = false
+    }
+  }, [classroomId, monday, supabase])
 
   const occupancyAt = (day: number, hour: number): SlotType | null => {
     let result: SlotType | null = null
-    for (const slot of slots) {
-      // El filtre de semestre només aplica a classes; les reserves es mostren sempre
-      if (slot.type === 'class' && selectedSemester && slot.semesterId !== selectedSemester) continue
-      if (slot.dayOfWeek === day && hour >= slot.startHour && hour < slot.endHour) {
-        // Una classe té prioritat visual sobre una reserva si coincidissin
-        if (slot.type === 'class') return 'class'
+    for (const b of blocks) {
+      if (b.dayOfWeek === day && hour >= b.startHour && hour < b.endHour) {
+        if (b.type === 'class') return 'class'
         result = 'reservation'
       }
     }
     return result
   }
 
-  if (loading) {
-    return <div className="w-full h-64 bg-muted/30 rounded-lg animate-pulse" />
-  }
+  const rangeLabel = `${ddmm(monday)} – ${ddmm(addDays(monday, 4))} · ${addDays(monday, 4).getFullYear()}`
 
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 className="text-xl font-bold flex items-center gap-2">
           <Calendar className="h-5 w-5" />
-          Ocupació setmanal
+          Calendari de l&apos;aula
         </h2>
 
-        {semesters.length > 0 && (
-          <div className="flex gap-1 rounded-lg border p-0.5">
-            {semesters.map(sem => (
-              <Button
-                key={sem.id}
-                variant={selectedSemester === sem.id ? 'default' : 'ghost'}
-                size="sm"
-                className="h-7 px-2.5 text-xs"
-                onClick={() => setSelectedSemester(sem.id)}
-              >
-                {sem.number}r sem.
-              </Button>
-            ))}
-          </div>
-        )}
+        <div className="flex items-center gap-1">
+          <Button variant="outline" size="icon" className="h-7 w-7" onClick={() => setMonday(addDays(monday, -7))} aria-label="Setmana anterior">
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+          <Button variant="ghost" size="sm" className="h-7 px-2 text-xs" onClick={() => setMonday(mondayOf(new Date()))}>
+            Avui
+          </Button>
+          <Button variant="outline" size="icon" className="h-7 w-7" onClick={() => setMonday(addDays(monday, 7))} aria-label="Setmana següent">
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
       </div>
+
+      <div className="text-sm font-medium text-muted-foreground">{rangeLabel}</div>
 
       {/* Llegenda */}
       <div className="flex items-center gap-4 text-xs">
@@ -181,34 +144,33 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
 
       {reservable && (
         <p className="text-xs text-muted-foreground">
-          Pica una franja lliure (verda) per demanar una reserva.
+          Pica una franja lliure (verda) per demanar una reserva en aquell dia i hora.
         </p>
       )}
 
-      {/* Graella compacta: 5 dies + columna d'hores, sense scroll a mòbil */}
-      <div
-        className="grid gap-px rounded-md overflow-hidden bg-border text-center"
+      {/* Graella: 5 dies amb dates reals + columna d'hores */}
+      <div className={`grid gap-px rounded-md overflow-hidden bg-border text-center transition-opacity ${loading ? 'opacity-50' : ''}`}
         style={{ gridTemplateColumns: '1.6rem repeat(5, 1fr)' }}
       >
-        {/* Capçalera */}
+        {/* Capçalera amb dates */}
         <div className="bg-background" />
-        {DAYS_SHORT.map((day, i) => (
-          <div
-            key={day}
-            className="bg-background py-1 text-[11px] font-semibold text-muted-foreground"
-            title={DAYS[i]}
-          >
-            {day}
-          </div>
-        ))}
+        {weekDates.map((d, i) => {
+          const isToday = toYMD(d) === todayYMD
+          return (
+            <div key={i} className={`py-1 leading-tight ${isToday ? 'bg-primary/10' : 'bg-background'}`}>
+              <div className="text-[11px] font-semibold text-muted-foreground">{DAYS_SHORT[i]}</div>
+              <div className="text-[9px] text-muted-foreground/80">{ddmm(d)}</div>
+            </div>
+          )
+        })}
 
         {/* Files per hora */}
-        {HOURS.map(hour => (
+        {HOURS.map((hour) => (
           <Fragment key={hour}>
             <div className="bg-background flex items-center justify-end pr-1 text-[9px] leading-none text-muted-foreground">
               {hour}
             </div>
-            {DAYS.map((_, dayIndex) => {
+            {weekDates.map((d, dayIndex) => {
               const occ = occupancyAt(dayIndex + 1, hour)
               const bg = occ === 'class' ? 'bg-rose-400' : occ === 'reservation' ? 'bg-amber-400' : 'bg-emerald-50'
               const label = occ === 'class' ? 'Ocupat' : occ === 'reservation' ? 'Reservat' : 'Lliure'
@@ -218,11 +180,11 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
                   key={dayIndex}
                   role={clickable ? 'button' : undefined}
                   tabIndex={clickable ? 0 : undefined}
-                  onClick={clickable ? () => setReserveCell({ day: dayIndex + 1, hour }) : undefined}
+                  onClick={clickable ? () => setReserveCell({ day: dayIndex + 1, hour, date: toYMD(d) }) : undefined}
                   className={`h-5 ${bg} ${clickable ? 'cursor-pointer hover:bg-emerald-200 hover:ring-1 hover:ring-emerald-500' : ''}`}
                   title={clickable
-                    ? `${DAYS[dayIndex]} ${hour}:00 — Lliure (clica per reservar)`
-                    : `${DAYS[dayIndex]} ${hour}:00 — ${label}`}
+                    ? `${DAYS[dayIndex]} ${ddmm(d)} ${hour}:00 — Lliure (clica per reservar)`
+                    : `${DAYS[dayIndex]} ${ddmm(d)} ${hour}:00 — ${label}`}
                 />
               )
             })}
@@ -234,7 +196,7 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
         <PublicReservationDialog
           classroomId={classroomId}
           classroomName={classroomName}
-          defaultDayOfWeek={reserveCell?.day ?? null}
+          defaultDate={reserveCell?.date ?? null}
           defaultHour={reserveCell?.hour ?? null}
           open={!!reserveCell}
           onOpenChange={(o) => !o && setReserveCell(null)}
