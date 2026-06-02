@@ -14,11 +14,14 @@ interface Semester {
   number: number
 }
 
+type SlotType = 'class' | 'reservation'
+
 interface RawSlot {
   semesterId: string
   dayOfWeek: number
   startHour: number
   endHour: number
+  type: SlotType
 }
 
 // Files de la graella: una per hora, de 8:00 a 21:00.
@@ -82,7 +85,24 @@ export function ClassroomWeeklySchedule({ classroomId }: ClassroomWeeklySchedule
             semesterId: assignment.semester_id,
             dayOfWeek: timeSlot.day_of_week,
             startHour: parseInt(timeSlot.start_time.split(':')[0]),
-            endHour: parseInt(timeSlot.end_time.split(':')[0])
+            endHour: parseInt(timeSlot.end_time.split(':')[0]),
+            type: 'class'
+          })
+        }
+
+        // Reserves aprovades (apareixen igual que les classes a la graella)
+        const { data: reservations } = await supabase
+          .from('classroom_reservation_occupancy')
+          .select('semester_id, day_of_week, start_time, end_time')
+          .eq('classroom_id', classroomId)
+
+        for (const r of (reservations as any[]) || []) {
+          rawSlots.push({
+            semesterId: r.semester_id,
+            dayOfWeek: r.day_of_week,
+            startHour: parseInt(r.start_time.split(':')[0]),
+            endHour: parseInt(r.end_time.split(':')[0]),
+            type: 'reservation'
           })
         }
         setSlots(rawSlots)
@@ -95,11 +115,17 @@ export function ClassroomWeeklySchedule({ classroomId }: ClassroomWeeklySchedule
     load()
   }, [classroomId])
 
-  const isOccupied = (day: number, hour: number): boolean => {
-    return slots.some(slot => {
-      if (selectedSemester && slot.semesterId !== selectedSemester) return false
-      return slot.dayOfWeek === day && hour >= slot.startHour && hour < slot.endHour
-    })
+  const occupancyAt = (day: number, hour: number): SlotType | null => {
+    let result: SlotType | null = null
+    for (const slot of slots) {
+      if (selectedSemester && slot.semesterId !== selectedSemester) continue
+      if (slot.dayOfWeek === day && hour >= slot.startHour && hour < slot.endHour) {
+        // Una classe té prioritat visual sobre una reserva si coincidissin
+        if (slot.type === 'class') return 'class'
+        result = 'reservation'
+      }
+    }
+    return result
   }
 
   if (loading) {
@@ -141,6 +167,10 @@ export function ClassroomWeeklySchedule({ classroomId }: ClassroomWeeklySchedule
           <span className="inline-block h-3 w-3 rounded-sm bg-rose-400 border border-rose-500" />
           <span className="text-muted-foreground">Ocupat</span>
         </div>
+        <div className="flex items-center gap-1.5">
+          <span className="inline-block h-3 w-3 rounded-sm bg-amber-400 border border-amber-500" />
+          <span className="text-muted-foreground">Reservat</span>
+        </div>
       </div>
 
       {/* Graella compacta: 5 dies + columna d'hores, sense scroll a mòbil */}
@@ -167,12 +197,14 @@ export function ClassroomWeeklySchedule({ classroomId }: ClassroomWeeklySchedule
               {hour}
             </div>
             {DAYS.map((_, dayIndex) => {
-              const occupied = isOccupied(dayIndex + 1, hour)
+              const occ = occupancyAt(dayIndex + 1, hour)
+              const bg = occ === 'class' ? 'bg-rose-400' : occ === 'reservation' ? 'bg-amber-400' : 'bg-emerald-50'
+              const label = occ === 'class' ? 'Ocupat' : occ === 'reservation' ? 'Reservat' : 'Lliure'
               return (
                 <div
                   key={dayIndex}
-                  className={`h-5 ${occupied ? 'bg-rose-400' : 'bg-emerald-50'}`}
-                  title={`${DAYS[dayIndex]} ${hour}:00 — ${occupied ? 'Ocupat' : 'Lliure'}`}
+                  className={`h-5 ${bg}`}
+                  title={`${DAYS[dayIndex]} ${hour}:00 — ${label}`}
                 />
               )
             })}
