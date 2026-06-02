@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -9,7 +8,6 @@ import { Badge } from '@/components/ui/badge'
 import { CLASSROOM_TYPE_LABELS } from '@/lib/constants/classroom-types'
 import { ClassroomWeeklySchedule } from '@/components/public/classroom-weekly-schedule'
 import {
-  ArrowLeft,
   Building2,
   MapPin,
   Users,
@@ -92,71 +90,165 @@ export function ClassroomDetail({ classroom, equipment, software = [] }: Classro
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
-        {/* Back button */}
-        <Link href="/directori-aules">
-          <Button variant="ghost" className="mb-6">
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Tornar al directori
-          </Button>
-        </Link>
+      <div className="container mx-auto px-4 py-6 max-w-2xl space-y-8">
 
-        {/* Header with photo gallery */}
-        <div className="grid gap-8 lg:grid-cols-2 mb-8">
-          {/* Left column - Info */}
-          <div>
-            <div className="mb-6">
-              <h1 className="text-4xl font-bold mb-3">{classroom.name}</h1>
-              <div className="flex items-center gap-3 flex-wrap">
-                <Badge variant="outline" className="text-lg py-1 px-3">
-                  {classroom.code}
-                </Badge>
-                <Badge className={`${getTypeColor(classroom.type)} text-sm py-1 px-3`}>
-                  {CLASSROOM_TYPE_LABELS[classroom.type as keyof typeof CLASSROOM_TYPE_LABELS] || classroom.type}
-                </Badge>
+        {/* Nom de l'aula (un sol cop) + tipus */}
+        <header className="space-y-2">
+          <h1 className="text-3xl font-bold">{classroom.name}</h1>
+          <Badge className={`${getTypeColor(classroom.type)} text-sm py-1 px-3`}>
+            {CLASSROOM_TYPE_LABELS[classroom.type as keyof typeof CLASSROOM_TYPE_LABELS] || classroom.type}
+          </Badge>
+        </header>
+
+        {/* Ocupació setmanal — directament sota el nom */}
+        <ClassroomWeeklySchedule classroomId={classroom.id} />
+
+        {/* Capacitat i ubicació */}
+        <div className="grid grid-cols-2 gap-3">
+          <Card>
+            <CardContent className="flex items-center gap-3 p-4">
+              <Users className="h-7 w-7 text-primary shrink-0" />
+              <div>
+                <p className="text-xs text-muted-foreground">Capacitat</p>
+                <p className="text-lg font-semibold">{classroom.capacity}</p>
               </div>
-            </div>
+            </CardContent>
+          </Card>
 
-            {/* Key metrics */}
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <Card>
-                <CardContent className="flex items-center gap-3 p-4">
-                  <Users className="h-8 w-8 text-primary" />
-                  <div>
-                    <p className="text-sm text-muted-foreground">Capacitat</p>
-                    <p className="text-xl font-semibold">{classroom.capacity} persones</p>
-                  </div>
-                </CardContent>
-              </Card>
+          {classroom.building && (
+            <Card>
+              <CardContent className="flex items-center gap-3 p-4">
+                <MapPin className="h-7 w-7 text-primary shrink-0" />
+                <div>
+                  <p className="text-xs text-muted-foreground">Ubicació</p>
+                  <p className="text-base font-semibold leading-tight">
+                    {classroom.building}
+                    {classroom.floor !== null && `, P${classroom.floor}`}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </div>
 
-              {classroom.building && (
-                <Card>
-                  <CardContent className="flex items-center gap-3 p-4">
-                    <MapPin className="h-8 w-8 text-primary" />
-                    <div>
-                      <p className="text-sm text-muted-foreground">Ubicació</p>
-                      <p className="text-lg font-semibold">
-                        {classroom.building}
-                        {classroom.floor !== null && `, P${classroom.floor}`}
-                      </p>
+        {/* Equipament disponible */}
+        {Object.keys(equipmentByCategory).length > 0 && (
+          <section className="space-y-4">
+            <h2 className="text-xl font-bold flex items-center gap-2">
+              <Package className="h-5 w-5" />
+              Equipament disponible
+            </h2>
+
+            <div className="space-y-4">
+              {Object.entries(equipmentByCategory).map(([category, items]) => (
+                <Card key={category}>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-base">
+                      {getCategoryLabel(category)}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {items.map((item: any) => (
+                        <div key={item.id} className="border rounded-lg p-3 bg-secondary/10">
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="flex-1">
+                              <p className="font-semibold text-sm">{item.equipment_type?.name}</p>
+                              {item.equipment_type?.description && (
+                                <p className="text-xs text-muted-foreground mt-1">
+                                  {item.equipment_type.description}
+                                </p>
+                              )}
+                              {item.notes && (
+                                <p className="text-xs text-muted-foreground mt-1 italic">
+                                  {item.notes}
+                                </p>
+                              )}
+                            </div>
+                            {item.quantity > 1 && (
+                              <Badge variant="default" className="ml-2 shrink-0">
+                                {item.quantity}
+                              </Badge>
+                            )}
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </CardContent>
                 </Card>
-              )}
+              ))}
             </div>
-            
-            {/* Dimensions */}
-            {(classroom.width || classroom.depth) && (
-              <Card className="mb-6">
+          </section>
+        )}
+
+        {/* Equipament informàtic + sistema operatiu */}
+        {classroom.type === 'Informàtica' && (classroom.computer_count || classroom.operating_system) && (
+          <div className="grid grid-cols-2 gap-3">
+            {classroom.computer_count && (
+              <Card>
                 <CardContent className="flex items-center gap-3 p-4">
-                  <Building2 className="h-8 w-8 text-primary" />
+                  <Monitor className="h-7 w-7 text-primary shrink-0" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Dimensions</p>
-                    <p className="text-xl font-semibold">
+                    <p className="text-xs text-muted-foreground">Ordinadors</p>
+                    <p className="text-lg font-semibold">{classroom.computer_count}</p>
+                    {classroom.computer_type && (
+                      <p className="text-xs text-muted-foreground">{classroom.computer_type}</p>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+            {classroom.operating_system && (
+              <Card>
+                <CardContent className="flex items-center gap-3 p-4">
+                  <HardDrive className="h-7 w-7 text-primary shrink-0" />
+                  <div>
+                    <p className="text-xs text-muted-foreground">Sistema operatiu</p>
+                    <p className="text-base font-semibold leading-tight">{classroom.operating_system}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </div>
+        )}
+
+        {/* Software instal·lat */}
+        {software.length > 0 && (
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold flex items-center gap-2">
+              <AppWindow className="h-5 w-5" />
+              Software instal·lat
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {software.map((sw: any) => (
+                <Badge
+                  key={sw.id}
+                  variant="secondary"
+                  className={`text-sm py-1 px-3 font-normal ${LICENSE_TYPE_COLORS[sw.license_type] || ''}`}
+                  title={LICENSE_TYPE_LABELS[sw.license_type] || sw.license_type}
+                >
+                  {sw.name}
+                  {sw.version && <span className="ml-1.5 opacity-70">{sw.version}</span>}
+                </Badge>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Dimensions i descripció */}
+        {(classroom.width || classroom.depth || classroom.description) && (
+          <section className="space-y-3">
+            {(classroom.width || classroom.depth) && (
+              <Card>
+                <CardContent className="flex items-center gap-3 p-4">
+                  <Building2 className="h-7 w-7 text-primary shrink-0" />
+                  <div>
+                    <p className="text-xs text-muted-foreground">Dimensions</p>
+                    <p className="text-base font-semibold">
                       {classroom.width && classroom.depth ? (
                         <>
                           {classroom.width}m × {classroom.depth}m
-                          <span className="text-sm text-muted-foreground ml-2">
+                          <span className="text-xs text-muted-foreground ml-2">
                             ({(classroom.width * classroom.depth).toFixed(2)}m²)
                           </span>
                         </>
@@ -171,237 +263,84 @@ export function ClassroomDetail({ classroom, equipment, software = [] }: Classro
               </Card>
             )}
 
-            {/* Computer info for computer labs */}
-            {classroom.type === 'Informàtica' && (classroom.computer_count || classroom.operating_system) && (
-              <Card className="mb-6">
-                <CardContent className="space-y-3 p-4">
-                  {classroom.computer_count && (
-                    <div className="flex items-center gap-3">
-                      <Monitor className="h-8 w-8 text-primary shrink-0" />
-                      <div>
-                        <p className="text-sm text-muted-foreground">Equipament informàtic</p>
-                        <p className="text-xl font-semibold">{classroom.computer_count} ordinadors</p>
-                        {classroom.computer_type && (
-                          <p className="text-sm text-muted-foreground">{classroom.computer_type}</p>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                  {classroom.operating_system && (
-                    <div className="flex items-center gap-3">
-                      <HardDrive className="h-8 w-8 text-primary shrink-0" />
-                      <div>
-                        <p className="text-sm text-muted-foreground">Sistema operatiu</p>
-                        <p className="text-lg font-semibold">{classroom.operating_system}</p>
-                      </div>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Description */}
             {classroom.description && (
               <Card>
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <Info className="h-5 w-5" />
+                  <CardTitle className="text-base flex items-center gap-2">
+                    <Info className="h-4 w-4" />
                     Descripció
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground whitespace-pre-wrap">
+                  <p className="text-sm text-muted-foreground whitespace-pre-wrap">
                     {classroom.description}
                   </p>
                 </CardContent>
               </Card>
             )}
-          </div>
+          </section>
+        )}
 
-          {/* Right column - Photos */}
-          {photos.length > 0 && (
-            <div>
-              <Card className="overflow-hidden">
-                <div className="relative">
-                  <div className="aspect-video relative bg-secondary/10">
-                    <Image
-                      src={photos[currentPhotoIndex].url}
-                      alt={photos[currentPhotoIndex].caption || classroom.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+        {/* Fotos */}
+        {photos.length > 0 && (
+          <Card className="overflow-hidden">
+            <div className="relative">
+              <div className="aspect-video relative bg-secondary/10">
+                <Image
+                  src={photos[currentPhotoIndex].url}
+                  alt={photos[currentPhotoIndex].caption || classroom.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
 
-                  {photos.length > 1 && (
-                    <>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm"
-                        onClick={prevPhoto}
-                      >
-                        <ChevronLeft className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm"
-                        onClick={nextPhoto}
-                      >
-                        <ChevronRight className="h-4 w-4" />
-                      </Button>
-                    </>
-                  )}
-                </div>
-
-                {/* Photo caption and indicators */}
-                <CardContent className="pt-4">
-                  {photos[currentPhotoIndex].caption && (
-                    <p className="text-center text-sm text-muted-foreground mb-3">
-                      {photos[currentPhotoIndex].caption}
-                    </p>
-                  )}
-
-                  {photos.length > 1 && (
-                    <div className="flex justify-center gap-1.5">
-                      {photos.map((_: any, index: number) => (
-                        <button
-                          key={index}
-                          className={`h-2 w-2 rounded-full transition-all ${
-                            index === currentPhotoIndex 
-                              ? 'bg-primary w-6' 
-                              : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                          }`}
-                          onClick={() => setCurrentPhotoIndex(index)}
-                        />
-                      ))}
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-
-              {/* Photo thumbnails */}
               {photos.length > 1 && (
-                <div className="grid grid-cols-4 gap-2 mt-4">
-                  {photos.map((photo: any, index: number) => (
+                <>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm"
+                    onClick={prevPhoto}
+                  >
+                    <ChevronLeft className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm"
+                    onClick={nextPhoto}
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
+                </>
+              )}
+            </div>
+
+            <CardContent className="pt-4">
+              {photos[currentPhotoIndex].caption && (
+                <p className="text-center text-sm text-muted-foreground mb-3">
+                  {photos[currentPhotoIndex].caption}
+                </p>
+              )}
+
+              {photos.length > 1 && (
+                <div className="flex justify-center gap-1.5">
+                  {photos.map((_: any, index: number) => (
                     <button
                       key={index}
-                      className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${
-                        index === currentPhotoIndex 
-                          ? 'border-primary shadow-md' 
-                          : 'border-transparent hover:border-muted-foreground/50'
+                      className={`h-2 w-2 rounded-full transition-all ${
+                        index === currentPhotoIndex
+                          ? 'bg-primary w-6'
+                          : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                       }`}
                       onClick={() => setCurrentPhotoIndex(index)}
-                    >
-                      <Image
-                        src={photo.url}
-                        alt={photo.caption || `Foto ${index + 1}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </button>
+                    />
                   ))}
                 </div>
               )}
-            </div>
-          )}
-        </div>
-
-        {/* Equipment section */}
-        {Object.keys(equipmentByCategory).length > 0 && (
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold flex items-center gap-2">
-              <Package className="h-6 w-6" />
-              Equipament disponible
-            </h2>
-
-            <div className="space-y-6">
-              {Object.entries(equipmentByCategory).map(([category, items]) => (
-                <Card key={category}>
-                  <CardHeader>
-                    <CardTitle className="text-xl">
-                      {getCategoryLabel(category)}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                      {items.map((item: any) => (
-                        <div key={item.id} className="border rounded-lg p-4 bg-secondary/10">
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="flex-1">
-                              <p className="font-semibold text-base">{item.equipment_type?.name}</p>
-                              {item.equipment_type?.description && (
-                                <p className="text-sm text-muted-foreground mt-1">
-                                  {item.equipment_type.description}
-                                </p>
-                              )}
-                              {item.notes && (
-                                <p className="text-sm text-muted-foreground mt-2 italic">
-                                  {item.notes}
-                                </p>
-                              )}
-                            </div>
-                            {item.quantity > 1 && (
-                              <Badge variant="default" className="ml-2 shrink-0">
-                                {item.quantity} unitats
-                              </Badge>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* No equipment message */}
-        {Object.keys(equipmentByCategory).length === 0 && equipment.length === 0 && (
-          <Card>
-            <CardContent className="text-center py-12">
-              <Package className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
-              <p className="text-muted-foreground">
-                No hi ha informació d'equipament disponible per aquesta aula
-              </p>
             </CardContent>
           </Card>
         )}
-
-        {/* Software section */}
-        {software.length > 0 && (
-          <div className="space-y-6 mt-8">
-            <h2 className="text-2xl font-bold flex items-center gap-2">
-              <AppWindow className="h-6 w-6" />
-              Software instal·lat
-            </h2>
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex flex-wrap gap-2">
-                  {software.map((sw: any) => (
-                    <Badge
-                      key={sw.id}
-                      variant="secondary"
-                      className={`text-sm py-1 px-3 font-normal ${LICENSE_TYPE_COLORS[sw.license_type] || ''}`}
-                      title={LICENSE_TYPE_LABELS[sw.license_type] || sw.license_type}
-                    >
-                      {sw.name}
-                      {sw.version && (
-                        <span className="ml-1.5 opacity-70">{sw.version}</span>
-                      )}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        )}
-
-        {/* Weekly occupancy schedule */}
-        <div className="mt-8">
-          <ClassroomWeeklySchedule classroomId={classroom.id} />
-        </div>
       </div>
     </div>
   )

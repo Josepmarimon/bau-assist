@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Calendar } from 'lucide-react'
@@ -26,6 +26,7 @@ const START_HOUR = 8
 const END_HOUR = 21
 const HOURS = Array.from({ length: END_HOUR - START_HOUR }, (_, i) => START_HOUR + i)
 const DAYS = ['Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres']
+const DAYS_SHORT = ['Dl', 'Dt', 'Dc', 'Dj', 'Dv']
 
 export function ClassroomWeeklySchedule({ classroomId }: ClassroomWeeklyScheduleProps) {
   const [slots, setSlots] = useState<RawSlot[]>([])
@@ -106,23 +107,24 @@ export function ClassroomWeeklySchedule({ classroomId }: ClassroomWeeklySchedule
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-2xl font-bold flex items-center gap-2">
-          <Calendar className="h-6 w-6" />
+    <div className="space-y-3">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h2 className="text-xl font-bold flex items-center gap-2">
+          <Calendar className="h-5 w-5" />
           Ocupació setmanal
         </h2>
 
         {semesters.length > 0 && (
-          <div className="flex gap-1 rounded-lg border p-1">
+          <div className="flex gap-1 rounded-lg border p-0.5">
             {semesters.map(sem => (
               <Button
                 key={sem.id}
                 variant={selectedSemester === sem.id ? 'default' : 'ghost'}
                 size="sm"
+                className="h-7 px-2.5 text-xs"
                 onClick={() => setSelectedSemester(sem.id)}
               >
-                {sem.number}r semestre
+                {sem.number}r sem.
               </Button>
             ))}
           </div>
@@ -130,55 +132,52 @@ export function ClassroomWeeklySchedule({ classroomId }: ClassroomWeeklySchedule
       </div>
 
       {/* Llegenda */}
-      <div className="flex items-center gap-4 text-sm">
-        <div className="flex items-center gap-2">
-          <span className="inline-block h-4 w-4 rounded-sm bg-emerald-100 border border-emerald-300" />
+      <div className="flex items-center gap-4 text-xs">
+        <div className="flex items-center gap-1.5">
+          <span className="inline-block h-3 w-3 rounded-sm bg-emerald-100 border border-emerald-300" />
           <span className="text-muted-foreground">Lliure</span>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="inline-block h-4 w-4 rounded-sm bg-rose-400 border border-rose-500" />
+        <div className="flex items-center gap-1.5">
+          <span className="inline-block h-3 w-3 rounded-sm bg-rose-400 border border-rose-500" />
           <span className="text-muted-foreground">Ocupat</span>
         </div>
       </div>
 
-      {/* Graella */}
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse text-sm min-w-[560px]">
-          <thead>
-            <tr>
-              <th className="w-20 p-2 text-left font-medium text-muted-foreground">Hora</th>
-              {DAYS.map(day => (
-                <th key={day} className="p-2 text-center font-medium border-l">
-                  <span className="hidden sm:inline">{day}</span>
-                  <span className="sm:hidden">{day.slice(0, 2)}</span>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {HOURS.map(hour => (
-              <tr key={hour} className="border-t">
-                <td className="p-2 align-top text-xs text-muted-foreground whitespace-nowrap">
-                  {hour.toString().padStart(2, '0')}:00
-                </td>
-                {DAYS.map((_, dayIndex) => {
-                  const occupied = isOccupied(dayIndex + 1, hour)
-                  return (
-                    <td
-                      key={dayIndex}
-                      className={`border-l h-9 transition-colors ${
-                        occupied
-                          ? 'bg-rose-400'
-                          : 'bg-emerald-50'
-                      }`}
-                      title={`${DAYS[dayIndex]} ${hour}:00 - ${occupied ? 'Ocupat' : 'Lliure'}`}
-                    />
-                  )
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* Graella compacta: 5 dies + columna d'hores, sense scroll a mòbil */}
+      <div
+        className="grid gap-px rounded-md overflow-hidden bg-border text-center"
+        style={{ gridTemplateColumns: '1.6rem repeat(5, 1fr)' }}
+      >
+        {/* Capçalera */}
+        <div className="bg-background" />
+        {DAYS_SHORT.map((day, i) => (
+          <div
+            key={day}
+            className="bg-background py-1 text-[11px] font-semibold text-muted-foreground"
+            title={DAYS[i]}
+          >
+            {day}
+          </div>
+        ))}
+
+        {/* Files per hora */}
+        {HOURS.map(hour => (
+          <Fragment key={hour}>
+            <div className="bg-background flex items-center justify-end pr-1 text-[9px] leading-none text-muted-foreground">
+              {hour}
+            </div>
+            {DAYS.map((_, dayIndex) => {
+              const occupied = isOccupied(dayIndex + 1, hour)
+              return (
+                <div
+                  key={dayIndex}
+                  className={`h-5 ${occupied ? 'bg-rose-400' : 'bg-emerald-50'}`}
+                  title={`${DAYS[dayIndex]} ${hour}:00 — ${occupied ? 'Ocupat' : 'Lliure'}`}
+                />
+              )
+            })}
+          </Fragment>
+        ))}
       </div>
     </div>
   )
