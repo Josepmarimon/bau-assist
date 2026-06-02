@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, useEffect, useMemo, useState } from 'react'
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
@@ -11,6 +11,8 @@ interface ClassroomWeeklyScheduleProps {
   /** Si és cert, les franges lliures es poden clicar per demanar una reserva pública */
   reservable?: boolean
   classroomName?: string
+  /** Callback en crear-se una reserva (p.ex. per refrescar llistes externes) */
+  onReservationCreated?: () => void
 }
 
 type SlotType = 'class' | 'reservation'
@@ -33,6 +35,33 @@ const pad = (n: number) => n.toString().padStart(2, '0')
 const toYMD = (d: Date) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
 const ddmm = (d: Date) => `${pad(d.getDate())}/${pad(d.getMonth() + 1)}`
 
+const MONTHS = ['gener', 'febrer', 'març', 'abril', 'maig', 'juny', 'juliol', 'agost', 'setembre', 'octubre', 'novembre', 'desembre']
+const VOWEL_MONTHS = new Set([3, 7, 9]) // abril, agost, octubre → "d'"
+const dePrep = (m: number) => (VOWEL_MONTHS.has(m) ? "d'" : 'de ')
+
+// "Setmana del 22 al 26 de setembre de 2025" (gestiona canvis de mes i d'any)
+function humanWeekLabel(monday: Date): string {
+  const fri = addDays(monday, 4)
+  const d1 = monday.getDate(), d2 = fri.getDate()
+  const m1 = monday.getMonth(), m2 = fri.getMonth()
+  const y1 = monday.getFullYear(), y2 = fri.getFullYear()
+  if (m1 === m2 && y1 === y2) {
+    return `Setmana del ${d1} al ${d2} ${dePrep(m1)}${MONTHS[m1]} de ${y1}`
+  }
+  if (y1 === y2) {
+    return `Setmana del ${d1} ${dePrep(m1)}${MONTHS[m1]} al ${d2} ${dePrep(m2)}${MONTHS[m2]} de ${y1}`
+  }
+  return `Setmana del ${d1} ${dePrep(m1)}${MONTHS[m1]} de ${y1} al ${d2} ${dePrep(m2)}${MONTHS[m2]} de ${y2}`
+}
+
+function relativeWeekLabel(weeksFromNow: number): string {
+  if (weeksFromNow === 0) return 'Aquesta setmana'
+  if (weeksFromNow === 1) return 'La setmana vinent'
+  if (weeksFromNow === -1) return 'La setmana passada'
+  if (weeksFromNow > 1) return `D'aquí ${weeksFromNow} setmanes`
+  return `Fa ${Math.abs(weeksFromNow)} setmanes`
+}
+
 function mondayOf(date: Date): Date {
   const d = new Date(date)
   d.setHours(0, 0, 0, 0)
@@ -50,7 +79,7 @@ const minutes = (t: string) => {
   return h * 60 + (m || 0)
 }
 
-export function ClassroomWeeklySchedule({ classroomId, reservable = false, classroomName }: ClassroomWeeklyScheduleProps) {
+export function ClassroomWeeklySchedule({ classroomId, reservable = false, classroomName, onReservationCreated }: ClassroomWeeklyScheduleProps) {
   const [monday, setMonday] = useState<Date>(() => mondayOf(new Date()))
   const [blocks, setBlocks] = useState<Block[]>([])
   const [loading, setLoading] = useState(true)
@@ -58,7 +87,29 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
   const supabase = useMemo(() => createClient(), [])
 
   const todayYMD = useMemo(() => toYMD(new Date()), [])
+  const todayMonday = useMemo(() => mondayOf(new Date()), [])
   const weekDates = useMemo(() => Array.from({ length: 5 }, (_, i) => addDays(monday, i)), [monday])
+
+  // Swipe horitzontal per canviar de setmana (a part de les fletxes)
+  const touchStart = useRef<{ x: number; y: number } | null>(null)
+  const suppressClick = useRef(false)
+  const onTouchStart = (e: React.TouchEvent) => {
+    suppressClick.current = false
+    const t = e.touches[0]
+    touchStart.current = { x: t.clientX, y: t.clientY }
+  }
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const start = touchStart.current
+    touchStart.current = null
+    if (!start) return
+    const t = e.changedTouches[0]
+    const dx = t.clientX - start.x
+    const dy = t.clientY - start.y
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      suppressClick.current = true // evita que el swipe dispari un clic de reserva
+      setMonday((prev) => addDays(prev, dx < 0 ? 7 : -7))
+    }
+  }
 
   useEffect(() => {
     let active = true
@@ -101,7 +152,7 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
     return result
   }
 
-  const rangeLabel = `${ddmm(monday)} – ${ddmm(addDays(monday, 4))} · ${addDays(monday, 4).getFullYear()}`
+  const weeksFromNow = Math.round((monday.getTime() - todayMonday.getTime()) / (7 * 24 * 3600 * 1000))
 
   return (
     <div className="space-y-3">
@@ -124,7 +175,10 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
         </div>
       </div>
 
-      <div className="text-sm font-medium text-muted-foreground">{rangeLabel}</div>
+      <div className="flex flex-wrap items-baseline gap-x-2">
+        <span className="text-sm font-semibold">{humanWeekLabel(monday)}</span>
+        <span className="text-xs text-muted-foreground">· {relativeWeekLabel(weeksFromNow)}</span>
+      </div>
 
       {/* Llegenda */}
       <div className="flex items-center gap-4 text-xs">
@@ -149,8 +203,10 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
       )}
 
       {/* Graella: 5 dies amb dates reals + columna d'hores */}
-      <div className={`grid gap-px rounded-md overflow-hidden bg-border text-center transition-opacity ${loading ? 'opacity-50' : ''}`}
+      <div className={`grid gap-px rounded-md overflow-hidden bg-border text-center transition-opacity touch-pan-y select-none ${loading ? 'opacity-50' : ''}`}
         style={{ gridTemplateColumns: '1.6rem repeat(5, 1fr)' }}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
       >
         {/* Capçalera amb dates */}
         <div className="bg-background" />
@@ -180,7 +236,10 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
                   key={dayIndex}
                   role={clickable ? 'button' : undefined}
                   tabIndex={clickable ? 0 : undefined}
-                  onClick={clickable ? () => setReserveCell({ day: dayIndex + 1, hour, date: toYMD(d) }) : undefined}
+                  onClick={clickable ? () => {
+                    if (suppressClick.current) { suppressClick.current = false; return }
+                    setReserveCell({ day: dayIndex + 1, hour, date: toYMD(d) })
+                  } : undefined}
                   className={`h-5 ${bg} ${clickable ? 'cursor-pointer hover:bg-emerald-200 hover:ring-1 hover:ring-emerald-500' : ''}`}
                   title={clickable
                     ? `${DAYS[dayIndex]} ${ddmm(d)} ${hour}:00 — Lliure (clica per reservar)`
@@ -200,6 +259,7 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
           defaultHour={reserveCell?.hour ?? null}
           open={!!reserveCell}
           onOpenChange={(o) => !o && setReserveCell(null)}
+          onSuccess={onReservationCreated}
         />
       )}
     </div>
