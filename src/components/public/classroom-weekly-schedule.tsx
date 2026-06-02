@@ -84,7 +84,21 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
   const [blocks, setBlocks] = useState<Block[]>([])
   const [loading, setLoading] = useState(true)
   const [reserveCell, setReserveCell] = useState<{ day: number; hour: number; date: string } | null>(null)
+  const [direction, setDirection] = useState<'next' | 'prev' | null>(null)
   const supabase = useMemo(() => createClient(), [])
+
+  const navigateTo = (newMonday: Date) => {
+    setDirection(newMonday.getTime() > monday.getTime() ? 'next' : newMonday.getTime() < monday.getTime() ? 'prev' : null)
+    setMonday(newMonday)
+  }
+  const goPrev = () => navigateTo(addDays(monday, -7))
+  const goNext = () => navigateTo(addDays(monday, 7))
+  const goToday = () => navigateTo(mondayOf(new Date()))
+
+  const animClass =
+    direction === 'next' ? 'animate-in fade-in slide-in-from-right-16 duration-300'
+      : direction === 'prev' ? 'animate-in fade-in slide-in-from-left-16 duration-300'
+        : 'animate-in fade-in duration-200'
 
   const todayYMD = useMemo(() => toYMD(new Date()), [])
   const todayMonday = useMemo(() => mondayOf(new Date()), [])
@@ -107,7 +121,8 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
     const dy = t.clientY - start.y
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
       suppressClick.current = true // evita que el swipe dispari un clic de reserva
-      setMonday((prev) => addDays(prev, dx < 0 ? 7 : -7))
+      if (dx < 0) goNext()
+      else goPrev()
     }
   }
 
@@ -155,7 +170,7 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
   const weeksFromNow = Math.round((monday.getTime() - todayMonday.getTime()) / (7 * 24 * 3600 * 1000))
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 overflow-x-hidden">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 className="text-xl font-bold flex items-center gap-2">
           <Calendar className="h-5 w-5" />
@@ -163,19 +178,19 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
         </h2>
 
         <div className="flex items-center gap-1">
-          <Button variant="outline" size="icon" className="h-7 w-7" onClick={() => setMonday(addDays(monday, -7))} aria-label="Setmana anterior">
+          <Button variant="outline" size="icon" className="h-7 w-7" onClick={goPrev} aria-label="Setmana anterior">
             <ChevronLeft className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="sm" className="h-7 px-2 text-xs" onClick={() => setMonday(mondayOf(new Date()))}>
+          <Button variant="ghost" size="sm" className="h-7 px-2 text-xs" onClick={goToday}>
             Avui
           </Button>
-          <Button variant="outline" size="icon" className="h-7 w-7" onClick={() => setMonday(addDays(monday, 7))} aria-label="Setmana següent">
+          <Button variant="outline" size="icon" className="h-7 w-7" onClick={goNext} aria-label="Setmana següent">
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
       </div>
 
-      <div className="flex flex-wrap items-baseline gap-x-2">
+      <div key={`label-${toYMD(monday)}`} className="flex flex-wrap items-baseline gap-x-2 animate-in fade-in duration-300">
         <span className="text-sm font-semibold">{humanWeekLabel(monday)}</span>
         <span className="text-xs text-muted-foreground">· {relativeWeekLabel(weeksFromNow)}</span>
       </div>
@@ -203,7 +218,7 @@ export function ClassroomWeeklySchedule({ classroomId, reservable = false, class
       )}
 
       {/* Graella: 5 dies amb dates reals + columna d'hores */}
-      <div className={`grid gap-px rounded-md overflow-hidden bg-border text-center transition-opacity touch-pan-y select-none ${loading ? 'opacity-50' : ''}`}
+      <div key={`grid-${toYMD(monday)}`} className={`grid gap-px rounded-md overflow-hidden bg-border text-center touch-pan-y select-none ${animClass} ${loading ? 'opacity-50' : ''}`}
         style={{ gridTemplateColumns: '1.6rem repeat(5, 1fr)' }}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}

@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/select'
 import { MapPin, X } from 'lucide-react'
 import { ClassroomWeeklySchedule } from '@/components/public/classroom-weekly-schedule'
+import { ReservationAdminManager } from '@/components/reservations/reservation-admin-manager'
 import { cancelReservation } from '@/lib/reservations/actions'
 import { STATUS_LABELS, type ReservationStatus } from '@/lib/reservations/types'
 
@@ -53,6 +54,7 @@ function whenLabel(r: MyReservation): string {
 export function ReservationRequest() {
   const supabase = useMemo(() => createClient(), [])
   const [userId, setUserId] = useState<string | null>(null)
+  const [isAdmin, setIsAdmin] = useState(false)
   const [classrooms, setClassrooms] = useState<Classroom[]>([])
   const [classroomId, setClassroomId] = useState<string>('')
   const [myReservations, setMyReservations] = useState<MyReservation[]>([])
@@ -62,6 +64,9 @@ export function ReservationRequest() {
     const init = async () => {
       const { data: { user } } = await supabase.auth.getUser()
       setUserId(user?.id ?? null)
+
+      const { data: admin } = await supabase.rpc('is_space_admin')
+      setIsAdmin(Boolean(admin))
 
       const { data: rooms } = await supabase
         .from('classrooms')
@@ -166,6 +171,20 @@ export function ReservationRequest() {
           </div>
         )}
       </div>
+
+      {/* Gestió per a administració */}
+      {isAdmin && (
+        <div className="space-y-3 border-t pt-6">
+          <div>
+            <h2 className="text-lg font-semibold">Gestió de reserves (administració)</h2>
+            <p className="text-sm text-muted-foreground">
+              Totes les reserves. Clica-hi per veure els detalls i qui les ha fet, i per
+              acceptar, refusar o anul·lar amb un motiu.
+            </p>
+          </div>
+          <ReservationAdminManager />
+        </div>
+      )}
     </div>
   )
 }

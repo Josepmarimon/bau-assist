@@ -154,6 +154,36 @@ export async function approveReservation(id: string): Promise<ActionResult> {
   return { ok: true }
 }
 
+/** Administració anul·la una reserva (pendent o aprovada), amb motiu. */
+export async function adminCancelReservation(id: string, note?: string): Promise<ActionResult> {
+  const supabase = await createClient()
+
+  if (!(await isSpaceAdmin(supabase))) {
+    return { ok: false, error: 'Només administració pot anul·lar reserves.' }
+  }
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  const { error } = await supabase
+    .from('space_reservations')
+    .update({
+      status: 'cancelled',
+      reviewed_by: user?.id ?? null,
+      reviewed_at: new Date().toISOString(),
+      review_note: note?.trim() || null,
+    })
+    .eq('id', id)
+    .in('status', ['pending', 'approved'])
+
+  if (error) return { ok: false, error: error.message }
+
+  revalidatePath('/reserves')
+  revalidatePath('/reserves/admin')
+  return { ok: true }
+}
+
 /** Administració refusa una reserva, amb motiu opcional. */
 export async function rejectReservation(id: string, note?: string): Promise<ActionResult> {
   const supabase = await createClient()

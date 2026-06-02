@@ -8,10 +8,10 @@ import { Badge } from '@/components/ui/badge'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import {
-  Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter,
+  Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter,
 } from '@/components/ui/dialog'
-import { Check, X } from 'lucide-react'
-import { approveReservation, rejectReservation } from '@/lib/reservations/actions'
+import { Check, X, Ban, Mail, User, MapPin, Clock } from 'lucide-react'
+import { approveReservation, rejectReservation, adminCancelReservation } from '@/lib/reservations/actions'
 import { STATUS_LABELS, type ReservationStatus } from '@/lib/reservations/types'
 
 const DAY_NAMES = ['', 'Dl', 'Dt', 'Dc', 'Dj', 'Dv']
@@ -27,6 +27,7 @@ const statusColor = (s: ReservationStatus) => ({
 export interface AdminReservation {
   id: string
   title: string
+  description: string | null
   status: ReservationStatus
   requester_email: string | null
   requester_name: string | null
@@ -39,7 +40,6 @@ export interface AdminReservation {
   space_reservation_weeks: { week_number: number }[]
 }
 
-// Quan/com es mostra una reserva: per data concreta (pública) o per franja+setmanes
 function whenLabel(r: AdminReservation): string {
   if (r.reservation_date) {
     const start = r.start_time ? fmt(r.start_time) : ''
@@ -57,41 +57,47 @@ const FILTERS: { key: ReservationStatus | 'all'; label: string }[] = [
   { key: 'pending', label: 'Pendents' },
   { key: 'approved', label: 'Aprovades' },
   { key: 'rejected', label: 'Refusades' },
+  { key: 'cancelled', label: 'Anul·lades' },
   { key: 'all', label: 'Totes' },
 ]
 
-export function ReservationAdminTable({ reservations }: { reservations: AdminReservation[] }) {
+export function ReservationAdminTable({
+  reservations,
+  onChanged,
+}: {
+  reservations: AdminReservation[]
+  onChanged?: () => void
+}) {
   const router = useRouter()
   const [filter, setFilter] = useState<ReservationStatus | 'all'>('pending')
   const [pending, startTransition] = useTransition()
-  const [rejectTarget, setRejectTarget] = useState<AdminReservation | null>(null)
-  const [rejectNote, setRejectNote] = useState('')
+  const [selected, setSelected] = useState<AdminReservation | null>(null)
+  const [reason, setReason] = useState('')
 
   const visible = reservations.filter(r => filter === 'all' || r.status === filter)
 
-  const approve = (id: string) => {
+  const refresh = () => {
+    if (onChanged) onChanged()
+    else router.refresh()
+  }
+
+  const run = (fn: () => Promise<{ ok: boolean; error?: string }>, okMsg: string) => {
     startTransition(async () => {
-      const res = await approveReservation(id)
-      if (res.ok) { toast.success('Reserva aprovada.'); router.refresh() }
-      else toast.error(res.error)
+      const res = await fn()
+      if (res.ok) {
+        toast.success(okMsg)
+        setSelected(null)
+        setReason('')
+        refresh()
+      } else {
+        toast.error(res.error || 'Error')
+      }
     })
   }
 
-  const confirmReject = () => {
-    if (!rejectTarget) return
-    const id = rejectTarget.id
-    const note = rejectNote
-    startTransition(async () => {
-      const res = await rejectReservation(id, note)
-      if (res.ok) {
-        toast.success('Reserva refusada.')
-        setRejectTarget(null)
-        setRejectNote('')
-        router.refresh()
-      } else {
-        toast.error(res.error)
-      }
-    })
+  const openDetail = (r: AdminReservation) => {
+    setSelected(r)
+    setReason('')
   }
 
   return (
@@ -118,55 +124,114 @@ export function ReservationAdminTable({ reservations }: { reservations: AdminRes
       ) : (
         <div className="space-y-2">
           {visible.map(r => (
-            <div key={r.id} className="border rounded-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="space-y-1 min-w-0">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-semibold truncate">{r.title}</span>
-                  <Badge className={statusColor(r.status)}>{STATUS_LABELS[r.status]}</Badge>
+            <button
+              key={r.id}
+              onClick={() => openDetail(r)}
+              className="w-full text-left border rounded-lg p-4 hover:bg-accent/40 transition-colors"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="space-y-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-semibold truncate">{r.title}</span>
+                    <Badge className={statusColor(r.status)}>{STATUS_LABELS[r.status]}</Badge>
+                  </div>
+                  <div className="text-sm text-muted-foreground flex items-center gap-3 flex-wrap">
+                    {r.classroom && <span>{r.classroom.name} ({r.classroom.code})</span>}
+                    <span>{whenLabel(r)}</span>
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    {[r.requester_name, r.requester_email].filter(Boolean).join(' · ') || 'Sense identificar'}
+                  </div>
                 </div>
-                <div className="text-sm text-muted-foreground flex items-center gap-3 flex-wrap">
-                  {r.classroom && <span>{r.classroom.name} ({r.classroom.code}){r.classroom.building ? ` · ${r.classroom.building}` : ''}</span>}
-                  <span>{whenLabel(r)}</span>
-                </div>
-                <div className="text-xs text-muted-foreground">
-                  {[r.requester_name, r.requester_email].filter(Boolean).join(' · ') || '—'}
-                </div>
-                {r.status === 'rejected' && r.review_note && (
-                  <p className="text-sm text-rose-700">Motiu: {r.review_note}</p>
-                )}
               </div>
-
-              {r.status === 'pending' && (
-                <div className="flex gap-2 shrink-0">
-                  <Button size="sm" onClick={() => approve(r.id)} disabled={pending}>
-                    <Check className="h-4 w-4 mr-1" /> Acceptar
-                  </Button>
-                  <Button size="sm" variant="outline" onClick={() => { setRejectTarget(r); setRejectNote('') }} disabled={pending}>
-                    <X className="h-4 w-4 mr-1" /> Refusar
-                  </Button>
-                </div>
-              )}
-            </div>
+            </button>
           ))}
         </div>
       )}
 
-      {/* Diàleg de refús amb motiu */}
-      <Dialog open={!!rejectTarget} onOpenChange={(o) => !o && setRejectTarget(null)}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle>Refusar reserva</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-2">
-            <Label htmlFor="reject-note">Motiu (opcional, es mostrarà al sol·licitant)</Label>
-            <Textarea id="reject-note" value={rejectNote} onChange={e => setRejectNote(e.target.value)} rows={3} />
-          </div>
-          <DialogFooter>
-            <Button variant="ghost" onClick={() => setRejectTarget(null)}>Cancel·lar</Button>
-            <Button variant="destructive" onClick={confirmReject} disabled={pending}>
-              {pending ? 'Refusant…' : 'Refusar'}
-            </Button>
-          </DialogFooter>
+      {/* Detall + accions */}
+      <Dialog open={!!selected} onOpenChange={(o) => { if (!o) { setSelected(null); setReason('') } }}>
+        <DialogContent className="max-w-lg">
+          {selected && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                  {selected.title}
+                  <Badge className={statusColor(selected.status)}>{STATUS_LABELS[selected.status]}</Badge>
+                </DialogTitle>
+                <DialogDescription>Detalls de la reserva</DialogDescription>
+              </DialogHeader>
+
+              <div className="space-y-3 text-sm">
+                <div className="flex items-start gap-2">
+                  <User className="h-4 w-4 mt-0.5 text-muted-foreground shrink-0" />
+                  <div>
+                    <div className="font-medium">{selected.requester_name || 'Sense nom'}</div>
+                    {selected.requester_email && (
+                      <a href={`mailto:${selected.requester_email}`} className="text-muted-foreground underline flex items-center gap-1">
+                        <Mail className="h-3 w-3" />{selected.requester_email}
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4 text-muted-foreground shrink-0" />
+                  <span>{selected.classroom ? `${selected.classroom.name} (${selected.classroom.code})${selected.classroom.building ? ` · ${selected.classroom.building}` : ''}` : '—'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-muted-foreground shrink-0" />
+                  <span>{whenLabel(selected)}</span>
+                </div>
+                {selected.description && (
+                  <p className="text-muted-foreground whitespace-pre-wrap border-l-2 pl-3">{selected.description}</p>
+                )}
+                {selected.review_note && (
+                  <p className="text-rose-700">Motiu registrat: {selected.review_note}</p>
+                )}
+              </div>
+
+              {/* Motiu (per refusar o anul·lar) */}
+              {(selected.status === 'pending' || selected.status === 'approved') && (
+                <div className="space-y-1">
+                  <Label htmlFor="admin-reason">Motiu (per refusar o anul·lar)</Label>
+                  <Textarea id="admin-reason" rows={2} value={reason} onChange={e => setReason(e.target.value)} placeholder="S'afegirà a la reserva com a motiu." />
+                </div>
+              )}
+
+              <DialogFooter className="flex-wrap gap-2">
+                {selected.requester_email && (
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      const subject = `Reserva a ${selected.classroom?.name ?? 'aula'} (${whenLabel(selected)})`
+                      const body = `Hola${selected.requester_name ? ' ' + selected.requester_name : ''},\n\n`
+                        + `En relació amb la teva reserva de ${selected.classroom?.name ?? 'aula'} (${whenLabel(selected)}):\n\n`
+                        + `${reason || '[escriu aquí el motiu]'}\n\nSalutacions,\nBAU`
+                      window.location.href = `mailto:${selected.requester_email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+                    }}
+                    disabled={pending}
+                  >
+                    <Mail className="h-4 w-4 mr-1" /> Escriure correu
+                  </Button>
+                )}
+                {selected.status === 'pending' && (
+                  <>
+                    <Button onClick={() => run(() => approveReservation(selected.id), 'Reserva aprovada.')} disabled={pending}>
+                      <Check className="h-4 w-4 mr-1" /> Acceptar
+                    </Button>
+                    <Button variant="outline" onClick={() => run(() => rejectReservation(selected.id, reason), 'Reserva refusada.')} disabled={pending}>
+                      <X className="h-4 w-4 mr-1" /> Refusar
+                    </Button>
+                  </>
+                )}
+                {(selected.status === 'pending' || selected.status === 'approved') && (
+                  <Button variant="destructive" onClick={() => run(() => adminCancelReservation(selected.id, reason), 'Reserva anul·lada.')} disabled={pending}>
+                    <Ban className="h-4 w-4 mr-1" /> Anul·lar
+                  </Button>
+                )}
+              </DialogFooter>
+            </>
+          )}
         </DialogContent>
       </Dialog>
     </div>

@@ -17,7 +17,8 @@ import {
   ChevronRight,
   Info,
   HardDrive,
-  AppWindow
+  AppWindow,
+  AlertTriangle
 } from 'lucide-react'
 
 interface ClassroomDetailProps {
@@ -341,6 +342,14 @@ export function ClassroomDetail({ classroom, equipment, software = [] }: Classro
             </CardContent>
           </Card>
         )}
+
+        {/* Reportar incidència — al final de tot (de moment sense acció) */}
+        <div className="pt-6 flex justify-center">
+          <Button variant="outline" className="gap-2">
+            <AlertTriangle className="h-4 w-4" />
+            Reportar incidència
+          </Button>
+        </div>
       </div>
     </div>
   )
