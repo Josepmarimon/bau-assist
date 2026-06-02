@@ -29,10 +29,28 @@ export interface AdminReservation {
   title: string
   status: ReservationStatus
   requester_email: string | null
+  requester_name: string | null
+  reservation_date: string | null
+  start_time: string | null
+  end_time: string | null
   review_note: string | null
   classroom: { code: string; name: string; building: string | null } | null
   time_slot: { day_of_week: number; start_time: string; end_time: string } | null
   space_reservation_weeks: { week_number: number }[]
+}
+
+// Quan/com es mostra una reserva: per data concreta (pública) o per franja+setmanes
+function whenLabel(r: AdminReservation): string {
+  if (r.reservation_date) {
+    const start = r.start_time ? fmt(r.start_time) : ''
+    const end = r.end_time ? fmt(r.end_time) : ''
+    return `${r.reservation_date} · ${start}–${end}`
+  }
+  if (r.time_slot) {
+    const weeks = r.space_reservation_weeks.map(w => w.week_number).sort((a, b) => a - b).join(', ')
+    return `${DAY_NAMES[r.time_slot.day_of_week]} ${fmt(r.time_slot.start_time)}–${fmt(r.time_slot.end_time)} · Setm. ${weeks}`
+  }
+  return '—'
 }
 
 const FILTERS: { key: ReservationStatus | 'all'; label: string }[] = [
@@ -108,10 +126,11 @@ export function ReservationAdminTable({ reservations }: { reservations: AdminRes
                 </div>
                 <div className="text-sm text-muted-foreground flex items-center gap-3 flex-wrap">
                   {r.classroom && <span>{r.classroom.name} ({r.classroom.code}){r.classroom.building ? ` · ${r.classroom.building}` : ''}</span>}
-                  {r.time_slot && <span>{DAY_NAMES[r.time_slot.day_of_week]} {fmt(r.time_slot.start_time)}–{fmt(r.time_slot.end_time)}</span>}
-                  <span>Setm. {r.space_reservation_weeks.map(w => w.week_number).sort((a, b) => a - b).join(', ')}</span>
+                  <span>{whenLabel(r)}</span>
                 </div>
-                <div className="text-xs text-muted-foreground">{r.requester_email ?? '—'}</div>
+                <div className="text-xs text-muted-foreground">
+                  {[r.requester_name, r.requester_email].filter(Boolean).join(' · ') || '—'}
+                </div>
                 {r.status === 'rejected' && r.review_note && (
                   <p className="text-sm text-rose-700">Motiu: {r.review_note}</p>
                 )}

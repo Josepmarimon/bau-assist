@@ -4,9 +4,13 @@ import { Fragment, useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Calendar } from 'lucide-react'
+import { PublicReservationDialog } from '@/components/reservations/public-reservation-dialog'
 
 interface ClassroomWeeklyScheduleProps {
   classroomId: string
+  /** Si és cert, les franges lliures es poden clicar per demanar una reserva pública */
+  reservable?: boolean
+  classroomName?: string
 }
 
 interface Semester {
@@ -31,11 +35,12 @@ const HOURS = Array.from({ length: END_HOUR - START_HOUR }, (_, i) => START_HOUR
 const DAYS = ['Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres']
 const DAYS_SHORT = ['Dl', 'Dt', 'Dc', 'Dj', 'Dv']
 
-export function ClassroomWeeklySchedule({ classroomId }: ClassroomWeeklyScheduleProps) {
+export function ClassroomWeeklySchedule({ classroomId, reservable = false, classroomName }: ClassroomWeeklyScheduleProps) {
   const [slots, setSlots] = useState<RawSlot[]>([])
   const [semesters, setSemesters] = useState<Semester[]>([])
   const [selectedSemester, setSelectedSemester] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
+  const [reserveCell, setReserveCell] = useState<{ day: number; hour: number } | null>(null)
   const supabase = createClient()
 
   useEffect(() => {
@@ -118,7 +123,8 @@ export function ClassroomWeeklySchedule({ classroomId }: ClassroomWeeklySchedule
   const occupancyAt = (day: number, hour: number): SlotType | null => {
     let result: SlotType | null = null
     for (const slot of slots) {
-      if (selectedSemester && slot.semesterId !== selectedSemester) continue
+      // El filtre de semestre només aplica a classes; les reserves es mostren sempre
+      if (slot.type === 'class' && selectedSemester && slot.semesterId !== selectedSemester) continue
       if (slot.dayOfWeek === day && hour >= slot.startHour && hour < slot.endHour) {
         // Una classe té prioritat visual sobre una reserva si coincidissin
         if (slot.type === 'class') return 'class'
@@ -173,6 +179,12 @@ export function ClassroomWeeklySchedule({ classroomId }: ClassroomWeeklySchedule
         </div>
       </div>
 
+      {reservable && (
+        <p className="text-xs text-muted-foreground">
+          Pica una franja lliure (verda) per demanar una reserva.
+        </p>
+      )}
+
       {/* Graella compacta: 5 dies + columna d'hores, sense scroll a mòbil */}
       <div
         className="grid gap-px rounded-md overflow-hidden bg-border text-center"
@@ -200,17 +212,34 @@ export function ClassroomWeeklySchedule({ classroomId }: ClassroomWeeklySchedule
               const occ = occupancyAt(dayIndex + 1, hour)
               const bg = occ === 'class' ? 'bg-rose-400' : occ === 'reservation' ? 'bg-amber-400' : 'bg-emerald-50'
               const label = occ === 'class' ? 'Ocupat' : occ === 'reservation' ? 'Reservat' : 'Lliure'
+              const clickable = reservable && occ === null
               return (
                 <div
                   key={dayIndex}
-                  className={`h-5 ${bg}`}
-                  title={`${DAYS[dayIndex]} ${hour}:00 — ${label}`}
+                  role={clickable ? 'button' : undefined}
+                  tabIndex={clickable ? 0 : undefined}
+                  onClick={clickable ? () => setReserveCell({ day: dayIndex + 1, hour }) : undefined}
+                  className={`h-5 ${bg} ${clickable ? 'cursor-pointer hover:bg-emerald-200 hover:ring-1 hover:ring-emerald-500' : ''}`}
+                  title={clickable
+                    ? `${DAYS[dayIndex]} ${hour}:00 — Lliure (clica per reservar)`
+                    : `${DAYS[dayIndex]} ${hour}:00 — ${label}`}
                 />
               )
             })}
           </Fragment>
         ))}
       </div>
+
+      {reservable && (
+        <PublicReservationDialog
+          classroomId={classroomId}
+          classroomName={classroomName}
+          defaultDayOfWeek={reserveCell?.day ?? null}
+          defaultHour={reserveCell?.hour ?? null}
+          open={!!reserveCell}
+          onOpenChange={(o) => !o && setReserveCell(null)}
+        />
+      )}
     </div>
   )
 }

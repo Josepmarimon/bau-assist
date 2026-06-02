@@ -23,7 +23,7 @@ export default async function ReservesAdminPage() {
 
   const { data } = await supabase
     .from('space_reservations')
-    .select('id, title, status, requester_email, review_note, created_at, classroom:classrooms(code,name,building), time_slot:time_slots(day_of_week,start_time,end_time), space_reservation_weeks(week_number)')
+    .select('id, title, status, requester_email, requester_name, reservation_date, start_time, end_time, review_note, created_at, classroom:classrooms(code,name,building), time_slot:time_slots(day_of_week,start_time,end_time), space_reservation_weeks(week_number)')
     .order('created_at', { ascending: false })
 
   const reservations = ((data as any[]) ?? []).sort((a, b) => {

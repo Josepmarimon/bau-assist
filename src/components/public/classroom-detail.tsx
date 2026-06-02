@@ -101,7 +101,7 @@ export function ClassroomDetail({ classroom, equipment, software = [] }: Classro
         </header>
 
         {/* Ocupació setmanal — directament sota el nom */}
-        <ClassroomWeeklySchedule classroomId={classroom.id} />
+        <ClassroomWeeklySchedule classroomId={classroom.id} reservable classroomName={classroom.name} />
 
         {/* Capacitat i ubicació */}
         <div className="grid grid-cols-2 gap-3">
