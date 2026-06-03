@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { CLASSROOM_TYPE_LABELS } from '@/lib/constants/classroom-types'
-import { ClassroomWeeklySchedule } from '@/components/public/classroom-weekly-schedule'
 import {
   Building2,
   MapPin,
@@ -101,9 +100,6 @@ export function ClassroomDetail({ classroom, equipment, software = [] }: Classro
             {CLASSROOM_TYPE_LABELS[classroom.type as keyof typeof CLASSROOM_TYPE_LABELS] || classroom.type}
           </Badge>
         </header>
-
-        {/* Ocupació setmanal — directament sota el nom */}
-        <ClassroomWeeklySchedule classroomId={classroom.id} reservable classroomName={classroom.name} />
 
         {/* Capacitat i ubicació */}
         <div className="grid grid-cols-2 gap-3">
