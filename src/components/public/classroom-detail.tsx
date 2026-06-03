@@ -84,7 +84,8 @@ export function ClassroomDetail({ classroom, equipment, software = [] }: Classro
       computing: 'Informàtica',
       furniture: 'Mobiliari',
       climate: 'Climatització',
-      office: 'Oficina'
+      office: 'Oficina',
+      machinery: 'Màquines de Taller'
     }
     return labels[category] || category
   }
