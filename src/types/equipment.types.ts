@@ -1,4 +1,4 @@
-export type EquipmentCategory = 'audiovisual' | 'computing' | 'furniture' | 'climate' | 'office'
+export type EquipmentCategory = 'audiovisual' | 'computing' | 'furniture' | 'climate' | 'office' | 'machinery'
 export type EquipmentStatus = 'operational' | 'maintenance' | 'broken'
 
 export interface EquipmentType {

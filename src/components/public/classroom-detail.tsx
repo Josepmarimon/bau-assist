@@ -132,6 +132,29 @@ export function ClassroomDetail({ classroom, equipment, software = [] }: Classro
           )}
         </div>
 
+        {/* Software instal·lat */}
+        {software.length > 0 && (
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold flex items-center gap-2">
+              <AppWindow className="h-5 w-5" />
+              Software instal·lat
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {software.map((sw: any) => (
+                <Badge
+                  key={sw.id}
+                  variant="secondary"
+                  className={`text-sm py-1 px-3 font-normal ${LICENSE_TYPE_COLORS[sw.license_type] || ''}`}
+                  title={LICENSE_TYPE_LABELS[sw.license_type] || sw.license_type}
+                >
+                  {sw.name}
+                  {sw.version && <span className="ml-1.5 opacity-70">{sw.version}</span>}
+                </Badge>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Equipament disponible */}
         {Object.keys(equipmentByCategory).length > 0 && (
           <section className="space-y-4">
@@ -211,29 +234,6 @@ export function ClassroomDetail({ classroom, equipment, software = [] }: Classro
               </Card>
             )}
           </div>
-        )}
-
-        {/* Software instal·lat */}
-        {software.length > 0 && (
-          <section className="space-y-3">
-            <h2 className="text-xl font-bold flex items-center gap-2">
-              <AppWindow className="h-5 w-5" />
-              Software instal·lat
-            </h2>
-            <div className="flex flex-wrap gap-2">
-              {software.map((sw: any) => (
-                <Badge
-                  key={sw.id}
-                  variant="secondary"
-                  className={`text-sm py-1 px-3 font-normal ${LICENSE_TYPE_COLORS[sw.license_type] || ''}`}
-                  title={LICENSE_TYPE_LABELS[sw.license_type] || sw.license_type}
-                >
-                  {sw.name}
-                  {sw.version && <span className="ml-1.5 opacity-70">{sw.version}</span>}
-                </Badge>
-              ))}
-            </div>
-          </section>
         )}
 
         {/* Dimensions i descripció */}

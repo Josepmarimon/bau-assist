@@ -30,6 +30,11 @@ export const EQUIPMENT_CATEGORIES: Record<EquipmentCategory, {
     label: 'Oficina',
     icon: 'Briefcase',
     color: 'orange'
+  },
+  machinery: {
+    label: 'Màquines de Taller',
+    icon: 'Cog',
+    color: 'red'
   }
 }
 
