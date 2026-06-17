@@ -514,59 +514,7 @@ export default function SoftwareListPage() {
             }
           })
 
-          // Carrega les notes de les assignatures que s'imparteixen a cada aula
-          const allSubjectIds = new Set<string>()
-          subjMap.forEach((m) => m.forEach((s) => {
-            // s only has code/name; we'll fetch by subject_id via assignments table
-          }))
-          // Recuperar subject_ids de tots els classrooms en aquest curs
-          const { data: assigSubjects } = await supabase
-            .from('assignments')
-            .select('subject_id, assignment_classrooms(classroom_id)')
-            .in('semester_id', semIds)
-          const classroomToSubjectIds = new Map<string, Set<string>>()
-          for (const a of (assigSubjects || []) as any[]) {
-            for (const ac of a.assignment_classrooms || []) {
-              if (!classroomToSubjectIds.has(ac.classroom_id)) classroomToSubjectIds.set(ac.classroom_id, new Set())
-              classroomToSubjectIds.get(ac.classroom_id)!.add(a.subject_id)
-              allSubjectIds.add(a.subject_id)
-            }
-          }
-
-          if (allSubjectIds.size) {
-            const { data: notesRows } = await supabase
-              .from('subject_notes')
-              .select('subject_id, category, content, subjects!inner(code, name)')
-              .eq('academic_year', yearName)
-              .in('subject_id', Array.from(allSubjectIds))
-            const notesBySubject = new Map<string, SubjectNote[]>()
-            for (const n of (notesRows || []) as any[]) {
-              const note: SubjectNote = {
-                subject_id: n.subject_id,
-                subject_code: n.subjects?.code || '',
-                subject_name: n.subjects?.name || '',
-                category: n.category,
-                content: n.content,
-              }
-              if (!notesBySubject.has(n.subject_id)) notesBySubject.set(n.subject_id, [])
-              notesBySubject.get(n.subject_id)!.push(note)
-            }
-            classroomToSubjectIds.forEach((subjectIds, classroomId) => {
-              const room = classroomMap.get(classroomId)
-              if (!room) return
-              const allNotes: SubjectNote[] = []
-              subjectIds.forEach(sid => {
-                const ns = notesBySubject.get(sid) || []
-                allNotes.push(...ns)
-              })
-              // Ordenar per codi i categoria
-              allNotes.sort((a, b) => {
-                if (a.subject_code !== b.subject_code) return a.subject_code.localeCompare(b.subject_code)
-                return a.category.localeCompare(b.category)
-              })
-              room.notes = allNotes
-            })
-          }
+          // (Les notes d'assignatures des d'Airtable s'han retirat de l'abast d'assist.)
         }
       }
 

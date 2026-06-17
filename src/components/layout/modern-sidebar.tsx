@@ -73,9 +73,7 @@ const navigation: NavItem[] = [
     subItems: [
       { name: 'Aules', href: '/aules', icon: Building2 },
       { name: 'Assignar Aules', href: '/assignacions-aules', icon: Building2 },
-      { name: 'Codis QR', href: '/codis-qr-aules', icon: QrCode },
-      { name: 'Reserves', href: '/reserves', icon: CalendarCheck },
-      { name: 'Reserves · Admin', href: '/reserves/admin', icon: CalendarCheck }
+      { name: 'Codis QR', href: '/codis-qr-aules', icon: QrCode }
     ]
   },
   { 
