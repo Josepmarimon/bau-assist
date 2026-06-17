@@ -593,6 +593,7 @@ export type Database = {
           photos: any[]
           is_public: boolean
           description: string | null
+          office365_calendar_url: string | null
           created_at: string
           updated_at: string
         }
@@ -612,6 +613,7 @@ export type Database = {
           photos?: any[]
           is_public?: boolean
           description?: string | null
+          office365_calendar_url?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -631,6 +633,7 @@ export type Database = {
           photos?: any[]
           is_public?: boolean
           description?: string | null
+          office365_calendar_url?: string | null
           created_at?: string
           updated_at?: string
         }

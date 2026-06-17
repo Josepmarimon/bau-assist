@@ -17,7 +17,8 @@ import {
   Info,
   HardDrive,
   AppWindow,
-  AlertTriangle
+  AlertTriangle,
+  CalendarDays
 } from 'lucide-react'
 
 interface ClassroomDetailProps {
@@ -128,6 +129,26 @@ export function ClassroomDetail({ classroom, equipment, software = [] }: Classro
             </Card>
           )}
         </div>
+
+        {/* Calendari d'ocupació (Office 365) */}
+        {classroom.office365_calendar_url && (
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold flex items-center gap-2">
+              <CalendarDays className="h-5 w-5" />
+              Ocupació de l&apos;aula
+            </h2>
+            <Card className="overflow-hidden">
+              <div className="aspect-[4/3] sm:aspect-video w-full">
+                <iframe
+                  src={classroom.office365_calendar_url}
+                  title={`Calendari d'ocupació de ${classroom.name}`}
+                  className="h-full w-full border-0"
+                  loading="lazy"
+                />
+              </div>
+            </Card>
+          </section>
+        )}
 
         {/* Software instal·lat */}
         {software.length > 0 && (

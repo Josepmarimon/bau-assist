@@ -62,9 +62,10 @@ export function ClassroomDialog({
     description: '',
     operating_system: '',
     width: null as number | null,
-    depth: null as number | null
+    depth: null as number | null,
+    office365_calendar_url: ''
   })
-  
+
   const supabase = createClient()
 
   useEffect(() => {
@@ -81,7 +82,8 @@ export function ClassroomDialog({
         description: classroom.description || '',
         operating_system: classroom.operating_system || '',
         width: classroom.width || null,
-        depth: classroom.depth || null
+        depth: classroom.depth || null,
+        office365_calendar_url: classroom.office365_calendar_url || ''
       })
     } else {
       setFormData({
@@ -96,7 +98,8 @@ export function ClassroomDialog({
         description: '',
         operating_system: '',
         width: null,
-        depth: null
+        depth: null,
+        office365_calendar_url: ''
       })
     }
   }, [classroom])
@@ -129,6 +132,7 @@ export function ClassroomDialog({
             operating_system: formData.operating_system || null,
             width: formData.width,
             depth: formData.depth,
+            office365_calendar_url: formData.office365_calendar_url.trim() || null,
             updated_at: new Date().toISOString()
           })
           .eq('id', classroom.id)
@@ -152,7 +156,8 @@ export function ClassroomDialog({
             description: formData.description,
             operating_system: formData.operating_system || null,
             width: formData.width,
-            depth: formData.depth
+            depth: formData.depth,
+            office365_calendar_url: formData.office365_calendar_url.trim() || null
           })
 
         if (error) throw error
@@ -334,6 +339,20 @@ export function ClassroomDialog({
                       rows={4}
                       placeholder="Descripció pública de l'aula, les seves característiques i usos recomanats..."
                     />
+                  </div>
+
+                  <div className="space-y-1">
+                    <Label htmlFor="office365_calendar_url">Calendari Office 365 (URL pública)</Label>
+                    <Input
+                      id="office365_calendar_url"
+                      type="url"
+                      value={formData.office365_calendar_url}
+                      onChange={(e) => setFormData({ ...formData, office365_calendar_url: e.target.value })}
+                      placeholder="https://outlook.office365.com/owa/calendar/.../calendar.html"
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      Enganxa l&apos;enllaç del calendari publicat d&apos;Office 365. S&apos;embeurà a la fitxa pública de l&apos;aula.
+                    </p>
                   </div>
                 </div>
               </div>
