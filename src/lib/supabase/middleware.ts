@@ -39,7 +39,8 @@ export async function updateSession(request: NextRequest) {
     '/directori-aules',
     '/horaris',
     '/horaris-public',
-    '/llistat-software'
+    '/llistat-software',
+    '/tfg/login'
   ]
 
   const isPublicRoute = publicRoutes.some(route => 
@@ -49,7 +50,8 @@ export async function updateSession(request: NextRequest) {
 
   if (!user && !isPublicRoute) {
     const url = request.nextUrl.clone()
-    url.pathname = '/login'
+    // Els estudiants accedeixen via /tfg/login (magic link), no via /login (admin/password).
+    url.pathname = request.nextUrl.pathname.startsWith('/tfg') ? '/tfg/login' : '/login'
     return NextResponse.redirect(url)
   }
 

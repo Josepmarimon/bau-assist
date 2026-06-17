@@ -3,7 +3,8 @@ Importa les notes/comentaris de les taules "Graus Disseny Perfil tècnic" i
 "Graus BBAA Perfil tècnic" d'Airtable cap a la taula `subject_notes` de la BD local.
 
 Mapeja noms d'assignatures d'Airtable amb subjects.name (o subjects.code) de la BD.
-Per a cada (subject, academic_year, category), fa UPSERT del content.
+Per a cada (subject, academic_year, category) AGREGA tots els continguts d'Airtable
+amb \\n\\n com a separador (deduplicant exactes) i fa UPSERT del content combinat.
 """
 import json
 import os
@@ -111,10 +112,10 @@ def load_assig_map(table_id):
     return m
 
 
-# 3. Importem
-total_inserted = 0
-total_skipped = 0
+# 3. Recollim TOT primer: (subject_id, year, category) -> [contents]
+aggregated = {}
 unmatched_names = set()
+SEP = '\n\n'
 
 for grau_label, info in TABLES.items():
     print(f"\n=== {grau_label} ===")
@@ -154,23 +155,37 @@ for grau_label, info in TABLES.items():
         if not year:
             continue
 
-        # Per cada camp multilineText, fer UPSERT
         for at_field, category in info['fields'].items():
             content = (f.get(at_field) or '').strip()
             if not content:
                 continue
-            sql = f"""
-                INSERT INTO public.subject_notes (subject_id, academic_year, category, content)
-                VALUES ('{subject_id}', '{year}', '{category}', '{sql_escape(content)}')
-                ON CONFLICT (subject_id, academic_year, category)
-                DO UPDATE SET content = EXCLUDED.content, updated_at = now();
-            """
-            r2 = subprocess.run(['psql', DB, '-c', sql], capture_output=True, text=True)
-            if r2.returncode != 0:
-                total_skipped += 1
-                print(f'  ⚠ {airtable_name} / {category}: {r2.stderr.strip()[:80]}')
-            else:
-                total_inserted += 1
+            aggregated.setdefault((subject_id, year, category), []).append(content)
+
+# 4. UPSERT consolidant múltiples files Airtable per la mateixa clau
+total_inserted = 0
+total_skipped = 0
+for (subject_id, year, category), contents in aggregated.items():
+    # Dedupe preservant ordre
+    seen = set()
+    unique = []
+    for c in contents:
+        if c not in seen:
+            seen.add(c)
+            unique.append(c)
+    merged = SEP.join(unique)
+
+    sql = f"""
+        INSERT INTO public.subject_notes (subject_id, academic_year, category, content)
+        VALUES ('{subject_id}', '{year}', '{category}', '{sql_escape(merged)}')
+        ON CONFLICT (subject_id, academic_year, category)
+        DO UPDATE SET content = EXCLUDED.content, updated_at = now();
+    """
+    r2 = subprocess.run(['psql', DB, '-c', sql], capture_output=True, text=True)
+    if r2.returncode != 0:
+        total_skipped += 1
+        print(f'  ⚠ {subject_id} / {category}: {r2.stderr.strip()[:80]}')
+    else:
+        total_inserted += 1
 
 print(f'\n\nInserts/Updates: {total_inserted}')
 print(f'Errors: {total_skipped}')
