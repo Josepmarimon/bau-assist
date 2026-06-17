@@ -39,7 +39,7 @@ import * as Icons from 'lucide-react'
 const formSchema = z.object({
   code: z.string().min(1, 'El codi és obligatori').max(50),
   name: z.string().min(1, 'El nom és obligatori').max(200),
-  category: z.enum(['audiovisual', 'computing', 'furniture', 'climate', 'office'] as const),
+  category: z.enum(['audiovisual', 'computing', 'furniture', 'climate', 'office', 'machinery'] as const),
   icon: z.string().optional(),
   description: z.string().optional(),
 })
