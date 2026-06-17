@@ -138,7 +138,7 @@ export function ClassroomDetail({ classroom, equipment, software = [] }: Classro
               Ocupació de l&apos;aula
             </h2>
             <Card className="overflow-hidden">
-              <div className="aspect-[4/3] sm:aspect-video w-full">
+              <div className="h-[75vh] min-h-[560px] w-full">
                 <iframe
                   src={classroom.office365_calendar_url}
                   title={`Calendari d'ocupació de ${classroom.name}`}
