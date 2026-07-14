@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { LogIn, Home, Calendar, Building2, Monitor, List } from 'lucide-react'
+import { LogIn, Home, Building2, Monitor } from 'lucide-react'
 
 export function PublicHeader() {
   const pathname = usePathname()
@@ -33,12 +33,6 @@ export function PublicHeader() {
             <Button variant="ghost" size="sm">
               <Home className="h-4 w-4 mr-2" />
               Inici
-            </Button>
-          </Link>
-          <Link href="/horaris-public">
-            <Button variant="ghost" size="sm">
-              <Calendar className="h-4 w-4 mr-2" />
-              Horaris
             </Button>
           </Link>
           <Link href="/directori-aules">

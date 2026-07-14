@@ -11,20 +11,14 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 import {
-  Calendar,
-  GraduationCap,
-  Users,
   Building2,
-  BookOpen,
   Settings,
   LogOut,
   Menu,
   X,
   Cpu,
-  CalendarCheck,
   Package,
   ChevronDown,
-  AlertCircle,
   ExternalLink,
   ChevronLeft,
   ChevronRight,
@@ -48,38 +42,16 @@ interface NavItem {
 
 const navigation: NavItem[] = [
   { name: 'Resum', href: '/resum', icon: BarChart3 },
-  { 
-    name: 'Horaris',
-    icon: Calendar,
-    subItems: [
-      { name: 'Vista Horaris', href: '/horaris', icon: Calendar },
-      { name: 'Ocupació Aules', href: '/horaris/ocupacio', icon: CalendarCheck }
-    ]
-  },
-  { 
-    name: 'Acadèmic', 
-    icon: BookOpen,
-    subItems: [
-      { name: 'Programes', href: '/programes', icon: GraduationCap },
-      { name: 'Màsters', href: '/masters', icon: Calendar },
-      { name: 'Assignatures i Grups', href: '/assignatures-grups', icon: BookOpen },
-      { name: 'Grups d\'Estudiants', href: '/grups-estudiants', icon: Users },
-      { name: 'Professors', href: '/professors', icon: GraduationCap }
-    ]
-  },
-  { 
-    name: 'Espais', 
+  {
+    name: 'Espais',
     icon: Building2,
     subItems: [
       { name: 'Aules', href: '/aules', icon: Building2 },
-      { name: 'Assignar Aules', href: '/assignacions-aules', icon: Building2 },
-      { name: 'Codis QR', href: '/codis-qr-aules', icon: QrCode },
-      { name: 'Reserves', href: '/reserves', icon: CalendarCheck },
-      { name: 'Reserves · Admin', href: '/reserves/admin', icon: CalendarCheck }
+      { name: 'Codis QR', href: '/codis-qr-aules', icon: QrCode }
     ]
   },
-  { 
-    name: 'Recursos', 
+  {
+    name: 'Recursos',
     icon: Cpu,
     subItems: [
       { name: 'Software', href: '/programari', icon: Cpu },
