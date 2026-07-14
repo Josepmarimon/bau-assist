@@ -224,38 +224,8 @@ export default function SoftwarePage() {
         console.log('Unique license types in database:', uniqueLicenseTypes)
       }
       
-      // Load subjects that require each software
-      const { data: subjectSoftwareData, error: subjectError } = await supabase
-        .from('subject_software')
-        .select(`
-          software_id,
-          subject:subjects!subject_id (
-            id,
-            code,
-            name,
-            year,
-            semester
-          )
-        `)
-      
-      if (!subjectError && subjectSoftwareData) {
-        // Group subjects by software_id
-        const subjectsBySoftware = subjectSoftwareData.reduce((acc, item) => {
-          if (!acc[item.software_id]) {
-            acc[item.software_id] = []
-          }
-          if (item.subject && !Array.isArray(item.subject)) {
-            acc[item.software_id].push(item.subject)
-          }
-          return acc
-        }, {} as Record<string, Subject[]>)
-        
-        // Add subjects to software data
-        data?.forEach(sw => {
-          sw.subjects = subjectsBySoftware[sw.id] || []
-        })
-      }
-      
+      // (software requerit per assignatures: eliminat en la poda al nucli aules)
+
       // Load classroom assignments and calculate total licenses
       const { data: classroomSoftwareData, error: classroomError } = await supabase
         .from('classroom_software')
@@ -683,7 +653,6 @@ export default function SoftwarePage() {
                     <TableHead>Categoria</TableHead>
                     <TableHead>Llicència</TableHead>
                     <TableHead>Nº Llicències</TableHead>
-                    <TableHead>Assignatures</TableHead>
                     <TableHead>Aules Instal·lades</TableHead>
                     <TableHead className="text-right">Accions</TableHead>
                   </TableRow>
@@ -743,26 +712,6 @@ export default function SoftwarePage() {
                           ) : (
                             <span className="text-muted-foreground">
                               {sw.license_type === 'free' ? 'Il·limitades' : '-'}
-                            </span>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          {sw.subjects && sw.subjects.length > 0 ? (
-                            <div className="flex flex-wrap gap-1">
-                              {sw.subjects.slice(0, 2).map((subject) => (
-                                <Badge key={subject.id} variant="outline" className="text-xs">
-                                  {subject.code}
-                                </Badge>
-                              ))}
-                              {sw.subjects.length > 2 && (
-                                <Badge variant="outline" className="text-xs">
-                                  +{sw.subjects.length - 2} més
-                                </Badge>
-                              )}
-                            </div>
-                          ) : (
-                            <span className="text-muted-foreground text-sm">
-                              Cap assignatura
                             </span>
                           )}
                         </TableCell>

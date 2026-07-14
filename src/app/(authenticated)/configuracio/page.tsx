@@ -61,8 +61,7 @@ export default function SettingsPage() {
   
   const [appearanceSettings, setAppearanceSettings] = useState({
     theme: 'light',
-    primaryColor: '#3B82F6',
-    assignmentColor: '#00CED1'
+    primaryColor: '#3B82F6'
   })
   
   const [courseColors, setCourseColors] = useState<CourseColor[]>([])
@@ -187,23 +186,6 @@ export default function SettingsPage() {
     } catch (error) {
       console.error('Error updating itinerary color:', error)
       toast.error('Error actualitzant el color de l\'itinerari')
-    }
-  }
-
-  const handleUpdateAssignmentColor = async () => {
-    try {
-      // Update all assignments with the new color
-      const { error } = await supabase
-        .from('assignments')
-        .update({ color: appearanceSettings.assignmentColor })
-        .neq('id', '00000000-0000-0000-0000-000000000000') // Update all rows
-      
-      if (error) throw error
-      
-      toast.success('Color de les assignatures actualitzat correctament')
-    } catch (error) {
-      console.error('Error updating assignment color:', error)
-      toast.error('Error actualitzant el color de les assignatures')
     }
   }
 
@@ -539,34 +521,6 @@ export default function SettingsPage() {
                   <div className="h-10 w-10 rounded-md bg-orange-500 cursor-pointer"></div>
                   <div className="h-10 w-10 rounded-md bg-red-500 cursor-pointer"></div>
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="assignmentColor">Color de les Assignatures</Label>
-                <div className="flex gap-2 items-center">
-                  <Input
-                    id="assignmentColor"
-                    type="color"
-                    value={appearanceSettings.assignmentColor}
-                    onChange={(e) => setAppearanceSettings({...appearanceSettings, assignmentColor: e.target.value})}
-                    className="w-20 h-10"
-                  />
-                  <Input
-                    type="text"
-                    value={appearanceSettings.assignmentColor}
-                    onChange={(e) => setAppearanceSettings({...appearanceSettings, assignmentColor: e.target.value})}
-                    className="w-32"
-                    placeholder="#00CED1"
-                  />
-                  <span className="text-sm text-muted-foreground">
-                    Color que es mostrarà als blocs d'assignatures en els horaris
-                  </span>
-                </div>
-              </div>
-              <div className="pt-4">
-                <Button onClick={handleUpdateAssignmentColor}>
-                  <Save className="h-4 w-4 mr-2" />
-                  Aplicar Canvis
-                </Button>
               </div>
             </CardContent>
           </Card>
