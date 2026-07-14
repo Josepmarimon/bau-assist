@@ -8,14 +8,8 @@ import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
 import { createClient } from '@/lib/supabase/client'
 import { toast } from 'sonner'
-import { Search, Package, Save, AlertCircle, CheckCircle } from 'lucide-react'
+import { Search, Package, Save } from 'lucide-react'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 
 interface Software {
   id: string
@@ -29,16 +23,6 @@ interface Software {
 interface ClassroomSoftware {
   software_id: string
   licenses: number
-}
-
-interface RequiredSoftware {
-  software_id: string
-  software_name: string
-  subjects: {
-    id: string
-    code: string
-    name: string
-  }[]
 }
 
 interface SoftwareSelectorProps {
@@ -65,8 +49,6 @@ export function SoftwareSelector({ classroomId, onSoftwareChange }: SoftwareSele
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [availableSoftware, setAvailableSoftware] = useState<Software[]>([])
-  const [classroomSoftware, setClassroomSoftware] = useState<ClassroomSoftware[]>([])
-  const [requiredSoftware, setRequiredSoftware] = useState<RequiredSoftware[]>([])
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedSoftware, setSelectedSoftware] = useState<Map<string, number>>(new Map())
   const [hasChanges, setHasChanges] = useState(false)
@@ -82,7 +64,7 @@ export function SoftwareSelector({ classroomId, onSoftwareChange }: SoftwareSele
   const loadData = async () => {
     try {
       setLoading(true)
-      
+
       // Load all available software
       const { data: softwareData, error: softwareError } = await supabase
         .from('software')
@@ -99,77 +81,15 @@ export function SoftwareSelector({ classroomId, onSoftwareChange }: SoftwareSele
         .eq('classroom_id', classroomId)
 
       if (assignedError) throw assignedError
-      
+
       const assigned = assignedData || []
-      setClassroomSoftware(assigned)
-      
+
       // Initialize selected software map
       const selectedMap = new Map<string, number>()
       assigned.forEach(item => {
         selectedMap.set(item.software_id, item.licenses || 1)
       })
       setSelectedSoftware(selectedMap)
-      
-      // Load required software from subjects assigned to this classroom
-      const { data: assignmentData, error: assignmentError } = await supabase
-        .from('assignments')
-        .select(`
-          subject_id,
-          subjects (
-            id,
-            code,
-            name
-          )
-        `)
-        .eq('classroom_id', classroomId)
-        .not('subject_id', 'is', null)
-      
-      if (!assignmentError && assignmentData) {
-        // Get unique subject IDs
-        const uniqueSubjectIds = [...new Set(assignmentData.map(assignment => assignment.subject_id).filter(Boolean))]
-        
-        if (uniqueSubjectIds.length > 0) {
-          // Get software requirements for these subjects
-          const { data: requirementsData, error: requirementsError } = await supabase
-            .from('subject_software')
-            .select(`
-              software_id,
-              subject_id,
-              software!inner (
-                id,
-                name
-              )
-            `)
-            .in('subject_id', uniqueSubjectIds)
-          
-          if (!requirementsError && requirementsData) {
-            // Group by software
-            const softwareMap = new Map<string, RequiredSoftware>()
-            
-            requirementsData.forEach(req => {
-              if (req.software && req.software_id) {
-                const subject = assignmentData.find(a => a.subject_id === req.subject_id)?.subjects
-                if (subject) {
-                  if (!softwareMap.has(req.software_id)) {
-                    softwareMap.set(req.software_id, {
-                      software_id: req.software_id,
-                      software_name: req.software && typeof req.software === 'object' && 'name' in req.software ? (req.software as any).name : 'Unknown',
-                      subjects: []
-                    })
-                  }
-                  if (subject && !Array.isArray(subject)) {
-                    softwareMap.get(req.software_id)!.subjects.push(subject)
-                  }
-                }
-              }
-            })
-            
-            const requiredSoftwareArray = Array.from(softwareMap.values())
-            setRequiredSoftware(requiredSoftwareArray)
-          }
-        }
-      }
-      
     } catch (error) {
       console.error('Error loading software:', error)
       toast.error('Error al carregar el software')
@@ -199,7 +119,7 @@ export function SoftwareSelector({ classroomId, onSoftwareChange }: SoftwareSele
 
   const handleSave = async () => {
     if (!classroomId) return
-    
+
     setSaving(true)
     try {
       // Delete all existing assignments
@@ -240,7 +160,7 @@ export function SoftwareSelector({ classroomId, onSoftwareChange }: SoftwareSele
 
   const filteredSoftware = availableSoftware.filter(sw => {
     const search = searchTerm.toLowerCase()
-    return sw.name.toLowerCase().includes(search) || 
+    return sw.name.toLowerCase().includes(search) ||
            getCategoryName(sw.category).toLowerCase().includes(search)
   })
 
@@ -262,52 +182,6 @@ export function SoftwareSelector({ classroomId, onSoftwareChange }: SoftwareSele
 
   return (
     <div className="space-y-4">
-      {/* Required software section */}
-      {requiredSoftware.length > 0 ? (
-        <div className="rounded-lg border bg-muted/50 p-4 space-y-3">
-          <div className="flex items-center gap-2">
-            <AlertCircle className="h-4 w-4 text-orange-500" />
-            <h4 className="font-medium text-sm">Software requerit per les assignatures</h4>
-          </div>
-          <div className="space-y-2">
-            {requiredSoftware.map((req) => {
-              const isInstalled = selectedSoftware.has(req.software_id)
-              return (
-                <div key={req.software_id} className="flex items-start justify-between gap-2">
-                  <div className="flex items-start gap-2">
-                    {isInstalled ? (
-                      <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-                    ) : (
-                      <AlertCircle className="h-4 w-4 text-orange-500 mt-0.5" />
-                    )}
-                    <div>
-                      <span className="font-medium text-sm">{req.software_name}</span>
-                      <div className="text-xs text-muted-foreground">
-                        Requerit per: {req.subjects.map(s => s.code).join(', ')}
-                      </div>
-                    </div>
-                  </div>
-                  {!isInstalled && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={() => handleSoftwareToggle(req.software_id, true)}
-                    >
-                      Afegir
-                    </Button>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      ) : (
-        <div className="rounded-lg border bg-muted/50 p-4 text-sm text-muted-foreground">
-          <p>No hi ha software requerit per les assignatures d'aquesta aula.</p>
-          <p className="text-xs mt-1">Assigna primer assignatures amb requisits de software per veure'ls aquí.</p>
-        </div>
-      )}
-
       {/* Search */}
       <div className="space-y-4">
         <div className="relative">
@@ -337,8 +211,7 @@ export function SoftwareSelector({ classroomId, onSoftwareChange }: SoftwareSele
           {filteredSoftware.map((software) => {
             const isSelected = selectedSoftware.has(software.id)
             const licenses = selectedSoftware.get(software.id) || 1
-            const requiredBySoftware = requiredSoftware.find(r => r.software_id === software.id)
-            
+
             return (
               <div
                 key={software.id}
@@ -347,11 +220,11 @@ export function SoftwareSelector({ classroomId, onSoftwareChange }: SoftwareSele
                 <Checkbox
                   id={`software-${software.id}`}
                   checked={isSelected}
-                  onCheckedChange={(checked) => 
+                  onCheckedChange={(checked) =>
                     handleSoftwareToggle(software.id, checked as boolean)
                   }
                 />
-                
+
                 <div className="flex-1 space-y-1">
                   <label
                     htmlFor={`software-${software.id}`}
@@ -364,22 +237,6 @@ export function SoftwareSelector({ classroomId, onSoftwareChange }: SoftwareSele
                         v{software.version}
                       </span>
                     )}
-                    {requiredBySoftware && (
-                      <TooltipProvider>
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <Badge variant="default" className="text-xs">
-                              Requerit
-                            </Badge>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="text-xs">
-                              Requerit per: {requiredBySoftware.subjects.map(s => s.code).join(', ')}
-                            </p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    )}
                   </label>
                   <div className="flex items-center gap-2">
                     <Badge variant="secondary" className="text-xs">
@@ -390,7 +247,7 @@ export function SoftwareSelector({ classroomId, onSoftwareChange }: SoftwareSele
                     </Badge>
                   </div>
                 </div>
-                
+
                 {isSelected && software.license_type !== 'free' && (
                   <div className="flex items-center gap-2">
                     <Label className="text-xs text-muted-foreground">Llicències:</Label>
@@ -406,7 +263,7 @@ export function SoftwareSelector({ classroomId, onSoftwareChange }: SoftwareSele
               </div>
             )
           })}
-          
+
           {filteredSoftware.length === 0 && (
             <div className="text-center text-muted-foreground py-8">
               No s'ha trobat cap software

@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "import-csv": "tsx src/scripts/import-csv.ts",
     "fix-missing-groups": "tsx scripts/fix_missing_subject_groups.ts",
     "analyze-missing-groups": "tsx scripts/analyze_missing_subject_groups.ts",
     "check-pda": "tsx scripts/check_pda_subjects.ts",
