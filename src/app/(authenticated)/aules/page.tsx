@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { createClient } from '@/lib/supabase/client'
 import { CLASSROOM_TYPES, CLASSROOM_TYPE_LABELS } from '@/lib/constants/classroom-types'
-import { 
+import {
   Building2,
   Search,
   Plus,
@@ -27,7 +27,6 @@ import {
   BookOpen,
   Printer
 } from 'lucide-react'
-import { getAllClassroomsOccupancyData } from './actions'
 import {
   Table,
   TableBody,
@@ -37,7 +36,6 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { ClassroomDialog } from '@/components/classrooms/classroom-dialog'
-import { ClassroomOccupancyDialog } from '@/components/classrooms/classroom-occupancy-dialog'
 import { ClassroomDetailsDialog } from '@/components/classrooms/classroom-details-dialog'
 import { toast } from 'sonner'
 import { Label } from '@/components/ui/label'
@@ -71,22 +69,18 @@ export default function ClassroomsPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [dialogOpen, setDialogOpen] = useState(false)
   const [selectedClassroom, setSelectedClassroom] = useState<any>(null)
-  const [occupancyData, setOccupancyData] = useState<any[]>([])
-  const [occupancyDialogOpen, setOccupancyDialogOpen] = useState(false)
-  const [selectedClassroomOccupancy, setSelectedClassroomOccupancy] = useState<any>(null)
   const [detailsDialogOpen, setDetailsDialogOpen] = useState(false)
   const [selectedClassroomDetails, setSelectedClassroomDetails] = useState<Classroom | null>(null)
-  
+
   // Filtres
   const [selectedBuilding, setSelectedBuilding] = useState<string>('all')
   const [selectedFloor, setSelectedFloor] = useState<string>('all')
   const [selectedType, setSelectedType] = useState<string>('all')
-  
+
   const supabase = createClient()
 
   useEffect(() => {
     loadClassrooms()
-    loadOccupancyData()
   }, [])
 
   const loadClassrooms = async () => {
@@ -162,48 +156,6 @@ export default function ClassroomsPage() {
     }
   }
 
-  const loadOccupancyData = async () => {
-    try {
-      const occupancy = await getAllClassroomsOccupancyData()
-      console.log('Loaded occupancy data:', occupancy)
-      setOccupancyData(occupancy)
-    } catch (error) {
-      console.error('Error loading occupancy data:', error)
-    }
-  }
-
-  const getClassroomOccupancy = (classroomId: string) => {
-    const classroom = occupancyData.find(item => item.classroomId === classroomId)
-    if (!classroom || !classroom.semesters || classroom.semesters.length === 0) {
-      return { morning: 0, afternoon: 0 }
-    }
-    
-    // Calculate average occupancy across all semesters
-    let totalMorning = 0
-    let totalAfternoon = 0
-    
-    classroom.semesters.forEach((semester: any) => {
-      totalMorning += semester.classroomOccupancy.morningOccupancy
-      totalAfternoon += semester.classroomOccupancy.afternoonOccupancy
-    })
-    
-    return {
-      morning: Math.round(totalMorning / classroom.semesters.length),
-      afternoon: Math.round(totalAfternoon / classroom.semesters.length)
-    }
-  }
-
-  const handleViewOccupancy = (classroom: Classroom) => {
-    const occupancy = occupancyData.find(item => item.classroomId === classroom.id)
-    console.log('Viewing occupancy for classroom:', classroom.code)
-    console.log('Found occupancy data:', occupancy)
-    setSelectedClassroomOccupancy({
-      classroom,
-      occupancy
-    })
-    setOccupancyDialogOpen(true)
-  }
-
   const handleViewDetails = (classroom: Classroom) => {
     setSelectedClassroomDetails(classroom)
     setDetailsDialogOpen(true)
@@ -229,7 +181,7 @@ export default function ClassroomsPage() {
         .eq('id', id)
 
       if (error) throw error
-      
+
       toast.success('Aula eliminada correctament')
       loadClassrooms()
     } catch (error: any) {
@@ -244,28 +196,28 @@ export default function ClassroomsPage() {
     if (building === 'G') return 'Edifici Granada'
     return building
   }
-  
+
   // Get unique values for filters
   const buildings = [...new Set(classrooms.map(c => c.building).filter(Boolean))].sort()
   const floors = [...new Set(classrooms.map(c => c.floor).filter(f => f !== null))].sort((a, b) => a! - b!)
   const types = [...new Set(classrooms.map(c => c.type))].sort()
-  
+
   const filteredClassrooms = classrooms.filter(classroom => {
     // Text search
     const search = searchTerm.toLowerCase()
-    const matchesSearch = classroom.name.toLowerCase().includes(search) || 
+    const matchesSearch = classroom.name.toLowerCase().includes(search) ||
            classroom.code.toLowerCase().includes(search) ||
            (classroom.building?.toLowerCase().includes(search) || false)
-    
+
     // Filter by building
     const matchesBuilding = selectedBuilding === 'all' || classroom.building === selectedBuilding
-    
+
     // Filter by floor
     const matchesFloor = selectedFloor === 'all' || classroom.floor?.toString() === selectedFloor
-    
+
     // Filter by type
     const matchesType = selectedType === 'all' || classroom.type === selectedType
-    
+
     return matchesSearch && matchesBuilding && matchesFloor && matchesType
   })
 
@@ -306,7 +258,7 @@ export default function ClassroomsPage() {
                 />
               </div>
             </div>
-            
+
             {/* Filters */}
             <div className="space-y-4">
               <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
@@ -401,7 +353,6 @@ export default function ClassroomsPage() {
                     <TableHead>Planta</TableHead>
                     <TableHead>Capacitat</TableHead>
                     <TableHead>Tipus</TableHead>
-                    <TableHead>Ocupació</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -409,9 +360,9 @@ export default function ClassroomsPage() {
                     <TableRow key={classroom.id} className="group">
                       <TableCell>
                         <div>
-                          <div 
+                          <div
                             className="font-medium cursor-pointer hover:text-primary hover:underline transition-colors"
-                            onClick={() => handleViewOccupancy(classroom)}
+                            onClick={() => handleViewDetails(classroom)}
                           >
                             {classroom.name}
                           </div>
@@ -435,13 +386,6 @@ export default function ClassroomsPage() {
                               className="text-xs text-destructive hover:underline"
                             >
                               Esborrar
-                            </button>
-                            <span className="text-xs text-muted-foreground">|</span>
-                            <button
-                              onClick={() => handleViewOccupancy(classroom)}
-                              className="text-xs text-primary hover:underline"
-                            >
-                              Ocupació
                             </button>
                           </div>
                         </div>
@@ -467,47 +411,6 @@ export default function ClassroomsPage() {
                           )}
                         </div>
                       </TableCell>
-                      <TableCell>
-                        <div>
-                          {(() => {
-                            const occupancy = getClassroomOccupancy(classroom.id)
-                            return (
-                              <>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-xs">Matí:</span>
-                                  <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
-                                    <div 
-                                      className={`h-full ${
-                                        occupancy.morning > 75 ? 'bg-red-500' :
-                                        occupancy.morning > 50 ? 'bg-yellow-500' :
-                                        occupancy.morning > 25 ? 'bg-green-500' :
-                                        'bg-gray-300'
-                                      }`}
-                                      style={{ width: `${occupancy.morning}%` }}
-                                    />
-                                  </div>
-                                  <span className="text-xs font-medium">{occupancy.morning}%</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-xs">Tarda:</span>
-                                  <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
-                                    <div 
-                                      className={`h-full ${
-                                        occupancy.afternoon > 75 ? 'bg-red-500' :
-                                        occupancy.afternoon > 50 ? 'bg-yellow-500' :
-                                        occupancy.afternoon > 25 ? 'bg-green-500' :
-                                        'bg-gray-300'
-                                      }`}
-                                      style={{ width: `${occupancy.afternoon}%` }}
-                                    />
-                                  </div>
-                                  <span className="text-xs font-medium">{occupancy.afternoon}%</span>
-                                </div>
-                              </>
-                            )
-                          })()}
-                        </div>
-                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -521,16 +424,6 @@ export default function ClassroomsPage() {
         onOpenChange={setDialogOpen}
         classroom={selectedClassroom}
         onSuccess={loadClassrooms}
-      />
-
-      {/* Occupancy Dialog */}
-      <ClassroomOccupancyDialog
-        open={occupancyDialogOpen}
-        onOpenChange={setOccupancyDialogOpen}
-        data={selectedClassroomOccupancy}
-        onRefresh={() => {
-          loadOccupancyData()
-        }}
       />
 
       {/* Details Dialog */}
