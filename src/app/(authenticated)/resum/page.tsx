@@ -5,76 +5,50 @@ import { createClient } from '@/lib/supabase/client'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { 
-  GraduationCap, 
-  Users, 
-  Home, 
+import {
+  Users,
+  Home,
   Wrench,
-  AlertCircle,
-  Clock,
-  BookOpen,
-  Calendar,
   Building2,
   Monitor,
-  Lightbulb
+  Package,
+  Cpu,
+  AlertCircle
 } from 'lucide-react'
-import { CLASSROOM_TYPES } from '@/lib/constants/classroom-types'
+import { CLASSROOM_TYPE_LABELS } from '@/lib/constants/classroom-types'
 
 interface SummaryStats {
-  programs: {
-    total: number
-    byType: { type: string; count: number }[]
-  }
-  teachers: {
-    total: number
-    averageWorkload: number
-    maxWorkload: number
-  }
   classrooms: {
     total: number
-    withoutAssignments: { id: string; name: string; building: string }[]
-    byBuilding: { building: string; count: number }[]
-    occupancyRate: number
     totalCapacity: number
-    byType: {
-      polivalent: number
-      taller: number
-      informatica: number
-      projectes: number
-      seminari: number
-    }
-  }
-  subjects: {
-    total: number
+    available: number
     byType: { type: string; count: number }[]
-    withoutAssignments: number
+    byBuilding: { building: string; count: number }[]
   }
-  assignments: {
+  software: {
     total: number
-    bySemester: { semester: string; count: number }[]
-    conflicts: number
-    conflictDetails: {
-      type: 'teacher' | 'classroom'
-      resource: string
-      assignments: {
-        subject: string
-        group: string
-        timeSlot: string
-        day: string
-        semester: string
-      }[]
-    }[]
+    byCategory: { category: string; count: number }[]
+    installations: number
+    classroomsWithSoftware: number
+    topInstalled: { name: string; count: number }[]
   }
-  workshops: {
-    total: number
-    byProgram: { program_name: string; count: number }[]
+  equipment: {
+    totalItems: number
+    totalUnits: number
+    classroomsWithEquipment: number
+    byCategory: { category: string; count: number }[]
+    needsAttention: number
   }
+}
+
+const formatBuildingName = (building: string): string => {
+  if (building === 'G') return 'Edifici Granada'
+  return building
 }
 
 export default function ResumPage() {
   const [loading, setLoading] = useState(true)
   const [stats, setStats] = useState<SummaryStats | null>(null)
-  const [activeTab, setActiveTab] = useState('general')
   const supabase = createClient()
 
   useEffect(() => {
@@ -85,266 +59,96 @@ export default function ResumPage() {
     try {
       setLoading(true)
 
-      // Programs data
-      const { data: programs } = await supabase
-        .from('programs')
-        .select('id, type')
-      
-      const programsByType = programs?.reduce((acc, p) => {
-        const type = p.type || 'unknown'
+      // --- Aules ---
+      const { data: classrooms } = await supabase
+        .from('classrooms')
+        .select('id, name, building, capacity, type, is_available')
+
+      const totalCapacity = classrooms?.reduce((sum, c) => sum + (c.capacity || 0), 0) || 0
+      const available = classrooms?.filter(c => c.is_available).length || 0
+
+      const byTypeMap = (classrooms || []).reduce((acc, c) => {
+        const type = c.type || 'other'
         acc[type] = (acc[type] || 0) + 1
         return acc
       }, {} as Record<string, number>)
 
-      // Teachers data - calculate workload from assignments
-      const { data: teachers } = await supabase
-        .from('teachers')
-        .select('id, first_name, last_name, max_hours')
-      
-      const { data: teacherAssignments } = await supabase
-        .from('assignments')
-        .select(`
-          teacher_id,
-          subjects!inner(
-            credits
-          )
-        `)
-        .not('teacher_id', 'is', null)
-      
-      // Calculate workload per teacher
-      const teacherWorkloadMap = new Map<string, number>()
-      teacherAssignments?.forEach(assignment => {
-        if (assignment.teacher_id && assignment.subjects) {
-          const currentHours = teacherWorkloadMap.get(assignment.teacher_id) || 0
-          // Handle subjects as array (Supabase returns array for joins)
-          const credits = Array.isArray(assignment.subjects) 
-            ? assignment.subjects[0]?.credits || 0
-            : (assignment.subjects as any).credits || 0
-          teacherWorkloadMap.set(assignment.teacher_id, currentHours + credits)
-        }
-      })
-      
-      const workloads = Array.from(teacherWorkloadMap.values())
-      const teacherStats = {
-        total: teachers?.length || 0,
-        averageWorkload: workloads.length 
-          ? workloads.reduce((sum, hours) => sum + hours, 0) / workloads.length 
-          : 0,
-        maxWorkload: workloads.length ? Math.max(...workloads) : 0
-      }
-
-      // Classrooms data
-      const { data: classrooms } = await supabase
-        .from('classrooms')
-        .select('id, name, building, capacity, type')
-
-      // Check both assignments.classroom_id (legacy) and assignment_classrooms table
-      const { data: assignments } = await supabase
-        .from('assignments')
-        .select('classroom_id')
-        .not('classroom_id', 'is', null)
-
-      const { data: assignmentClassrooms } = await supabase
-        .from('assignment_classrooms')
-        .select('classroom_id')
-
-      // Combine both sources of classroom assignments
-      const assignedClassroomIds = new Set([
-        ...(assignments?.map(a => a.classroom_id) || []),
-        ...(assignmentClassrooms?.map(ac => ac.classroom_id) || [])
-      ])
-
-      const classroomsWithoutAssignments = classrooms?.filter(
-        c => !assignedClassroomIds.has(c.id)
-      ) || []
-
-      const classroomsByBuilding = classrooms?.reduce((acc, c) => {
-        const building = c.building || 'Unknown'
+      const byBuildingMap = (classrooms || []).reduce((acc, c) => {
+        const building = c.building || 'Sense edifici'
         acc[building] = (acc[building] || 0) + 1
         return acc
       }, {} as Record<string, number>)
 
-      // Calculate total capacity and classroom types
-      const totalCapacity = classrooms?.reduce((sum, c) => sum + (c.capacity || 0), 0) || 0
-      const classroomsByType = {
-        polivalent: classrooms?.filter(c => c.type === CLASSROOM_TYPES.POLIVALENT).length || 0,
-        taller: classrooms?.filter(c => c.type === CLASSROOM_TYPES.TALLER).length || 0,
-        informatica: classrooms?.filter(c => c.type === CLASSROOM_TYPES.INFORMATICA).length || 0,
-        projectes: classrooms?.filter(c => c.type === CLASSROOM_TYPES.PROJECTES).length || 0,
-        seminari: classrooms?.filter(c => c.type === CLASSROOM_TYPES.SEMINARI).length || 0
-      }
+      // --- Software ---
+      const { data: software } = await supabase
+        .from('software')
+        .select('id, name, category')
 
-      // Subjects data
-      const { data: subjects } = await supabase
-        .from('subjects')
-        .select('id, type')
-      
-      const { data: subjectAssignments } = await supabase
-        .from('assignments')
-        .select('subject_id')
-        .not('subject_id', 'is', null)
-      
-      const assignedSubjectIds = new Set(subjectAssignments?.map(a => a.subject_id))
-      const subjectsWithoutAssignments = subjects?.filter(
-        s => !assignedSubjectIds.has(s.id)
-      ).length || 0
+      const softwareById = new Map((software || []).map(s => [s.id, s]))
 
-      const subjectsByType = subjects?.reduce((acc, s) => {
-        const type = s.type || 'unknown'
-        acc[type] = (acc[type] || 0) + 1
+      const byCategoryMap = (software || []).reduce((acc, s) => {
+        const category = s.category || 'other'
+        acc[category] = (acc[category] || 0) + 1
         return acc
       }, {} as Record<string, number>)
 
-      // Assignments and conflicts
-      const { data: allAssignments } = await supabase
-        .from('assignments')
-        .select(`
-          id,
-          semester_id,
-          semesters(name)
-        `)
+      const { data: classroomSoftware } = await supabase
+        .from('classroom_software')
+        .select('software_id, classroom_id')
 
-      const assignmentsBySemester = allAssignments?.reduce((acc, a) => {
-        const semester = (a.semesters as any)?.name || 'unknown'
-        acc[semester] = (acc[semester] || 0) + 1
+      const installCountBySoftware = (classroomSoftware || []).reduce((acc, cs) => {
+        acc[cs.software_id] = (acc[cs.software_id] || 0) + 1
         return acc
       }, {} as Record<string, number>)
 
-      // Check for conflicts by looking for overlapping assignments
-      // Only check assignments with student_group_id (actual student schedules)
-      const { data: potentialConflicts } = await supabase
-        .from('assignments')
-        .select(`
-          id,
-          time_slot_id,
-          classroom_id,
-          teacher_id,
-          semester_id,
-          student_group_id,
-          time_slots(day_of_week, start_time, end_time),
-          subjects(name),
-          subject_groups(group_code),
-          semesters(name),
-          teachers(first_name, last_name),
-          classrooms(name)
-        `)
-        .not('time_slot_id', 'is', null)
-        .not('student_group_id', 'is', null)
+      const topInstalled = Object.entries(installCountBySoftware)
+        .map(([id, count]) => ({ name: softwareById.get(id)?.name || 'Desconegut', count }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 8)
 
-      // Detect conflicts (same teacher or classroom at same time)
-      let conflictsCount = 0
-      const conflictDetailsMap = new Map<string, any>()
-      const assignmentMap = new Map<string, any[]>()
+      const classroomsWithSoftware = new Set((classroomSoftware || []).map(cs => cs.classroom_id)).size
 
-      const dayNames = ['', 'Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres']
+      // --- Equipament ---
+      const { data: equipmentTypes } = await supabase
+        .from('equipment_types')
+        .select('id, category')
+      const categoryByType = new Map((equipmentTypes || []).map(t => [t.id, t.category]))
 
-      potentialConflicts?.forEach(assignment => {
-        const timeSlot = assignment.time_slots as any
-        if (timeSlot?.day_of_week && assignment.time_slot_id) {
-          const assignmentInfo = {
-            subject: (assignment.subjects as any)?.name || 'Unknown',
-            group: (assignment.subject_groups as any)?.group_code || 'Unknown',
-            timeSlot: `${timeSlot.start_time} - ${timeSlot.end_time}`,
-            day: dayNames[timeSlot.day_of_week] || 'Unknown',
-            semester: (assignment.semesters as any)?.name || 'Unknown'
-          }
+      const { data: inventory } = await supabase
+        .from('equipment_inventory')
+        .select('id, equipment_type_id, classroom_id, quantity, status')
 
-          // Check teacher conflicts
-          if (assignment.teacher_id) {
-            const teacherKey = `teacher-${assignment.teacher_id}-${timeSlot.day_of_week}-${assignment.time_slot_id}-${assignment.semester_id}`
-            if (assignmentMap.has(teacherKey)) {
-              conflictsCount++
-              const teacher = assignment.teachers as any
-              const teacherName = teacher ? `${teacher.first_name} ${teacher.last_name}` : 'Unknown'
+      const totalUnits = (inventory || []).reduce((sum, i) => sum + (i.quantity || 0), 0)
+      const classroomsWithEquipment = new Set((inventory || []).map(i => i.classroom_id)).size
+      const needsAttention = (inventory || []).filter(i => i.status && i.status !== 'operational').length
 
-              if (!conflictDetailsMap.has(teacherKey)) {
-                conflictDetailsMap.set(teacherKey, {
-                  type: 'teacher' as const,
-                  resource: teacherName,
-                  assignments: [assignmentMap.get(teacherKey)![0]]
-                })
-              }
-              conflictDetailsMap.get(teacherKey)!.assignments.push(assignmentInfo)
-            } else {
-              assignmentMap.set(teacherKey, [assignmentInfo])
-            }
-          }
-
-          // Check classroom conflicts
-          if (assignment.classroom_id) {
-            const classroomKey = `classroom-${assignment.classroom_id}-${timeSlot.day_of_week}-${assignment.time_slot_id}-${assignment.semester_id}`
-            if (assignmentMap.has(classroomKey)) {
-              conflictsCount++
-              const classroom = assignment.classrooms as any
-              const classroomName = classroom?.name || 'Unknown'
-
-              if (!conflictDetailsMap.has(classroomKey)) {
-                conflictDetailsMap.set(classroomKey, {
-                  type: 'classroom' as const,
-                  resource: classroomName,
-                  assignments: [assignmentMap.get(classroomKey)![0]]
-                })
-              }
-              conflictDetailsMap.get(classroomKey)!.assignments.push(assignmentInfo)
-            } else {
-              assignmentMap.set(classroomKey, [assignmentInfo])
-            }
-          }
-        }
-      })
-
-      const conflictDetails = Array.from(conflictDetailsMap.values())
-
-      // Workshops (Tallers) - subjects with 'Taller' in the name
-      const { data: workshops } = await supabase
-        .from('subjects')
-        .select(`
-          id,
-          name,
-          program_id,
-          programs(name)
-        `)
-        .ilike('name', '%Taller%')
-
-      const workshopsByProgram = workshops?.reduce((acc, w) => {
-        const programName = (w.programs as any)?.name || 'Sense programa'
-        acc[programName] = (acc[programName] || 0) + 1
+      const equipmentByCategoryMap = (inventory || []).reduce((acc, i) => {
+        const category = categoryByType.get(i.equipment_type_id) || 'other'
+        acc[category] = (acc[category] || 0) + 1
         return acc
       }, {} as Record<string, number>)
-
-      // Calculate occupancy rate
-      const occupancyRate = classrooms?.length 
-        ? ((classrooms.length - classroomsWithoutAssignments.length) / classrooms.length) * 100
-        : 0
 
       setStats({
-        programs: {
-          total: programs?.length || 0,
-          byType: Object.entries(programsByType || {}).map(([type, count]) => ({ type, count }))
-        },
-        teachers: teacherStats,
         classrooms: {
           total: classrooms?.length || 0,
-          withoutAssignments: classroomsWithoutAssignments,
-          byBuilding: Object.entries(classroomsByBuilding || {}).map(([building, count]) => ({ building, count })),
-          occupancyRate,
           totalCapacity,
-          byType: classroomsByType
+          available,
+          byType: Object.entries(byTypeMap).map(([type, count]) => ({ type, count })).sort((a, b) => b.count - a.count),
+          byBuilding: Object.entries(byBuildingMap).map(([building, count]) => ({ building, count })).sort((a, b) => b.count - a.count)
         },
-        subjects: {
-          total: subjects?.length || 0,
-          byType: Object.entries(subjectsByType || {}).map(([type, count]) => ({ type, count })),
-          withoutAssignments: subjectsWithoutAssignments
+        software: {
+          total: software?.length || 0,
+          byCategory: Object.entries(byCategoryMap).map(([category, count]) => ({ category, count })).sort((a, b) => b.count - a.count),
+          installations: classroomSoftware?.length || 0,
+          classroomsWithSoftware,
+          topInstalled
         },
-        assignments: {
-          total: allAssignments?.length || 0,
-          bySemester: Object.entries(assignmentsBySemester || {}).map(([semester, count]) => ({ semester, count })),
-          conflicts: conflictsCount,
-          conflictDetails
-        },
-        workshops: {
-          total: workshops?.length || 0,
-          byProgram: Object.entries(workshopsByProgram || {}).map(([program_name, count]) => ({ program_name, count }))
+        equipment: {
+          totalItems: inventory?.length || 0,
+          totalUnits,
+          classroomsWithEquipment,
+          byCategory: Object.entries(equipmentByCategoryMap).map(([category, count]) => ({ category, count })).sort((a, b) => b.count - a.count),
+          needsAttention
         }
       })
     } catch (error) {
@@ -383,45 +187,11 @@ export default function ResumPage() {
     <div className="container mx-auto p-6 space-y-6">
       <div>
         <h1 className="text-3xl font-bold">Resum de Dades</h1>
-        <p className="text-muted-foreground">Vista general del sistema acadèmic</p>
+        <p className="text-muted-foreground">Vista general d'aules, software i equipament</p>
       </div>
 
       {/* Key Metrics Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Programes</CardTitle>
-            <GraduationCap className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{stats.programs.total}</div>
-            <div className="text-xs text-muted-foreground space-y-1 mt-2">
-              {stats.programs.byType.map(({ type, count }) => (
-                <div key={type} className="flex justify-between">
-                  <span className="capitalize">{type}:</span>
-                  <span>{count}</span>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Professors</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{stats.teachers.total}</div>
-            <div className="text-xs text-muted-foreground">
-              Càrrega mitjana: {stats.teachers.averageWorkload.toFixed(1)}h
-            </div>
-            <div className="text-xs text-muted-foreground">
-              Càrrega màxima: {stats.teachers.maxWorkload}h
-            </div>
-          </CardContent>
-        </Card>
-
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Aules</CardTitle>
@@ -429,55 +199,82 @@ export default function ResumPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats.classrooms.total}</div>
-            <div className="text-xs text-muted-foreground">
-              Ocupació: {stats.classrooms.occupancyRate.toFixed(1)}%
+            <div className="text-xs text-muted-foreground mt-1">
+              Capacitat total: {stats.classrooms.totalCapacity} persones
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
-              <div 
-                className="bg-primary h-2 rounded-full transition-all"
-                style={{ width: `${stats.classrooms.occupancyRate}%` }}
-              />
+            <div className="text-xs text-muted-foreground">
+              Disponibles: {stats.classrooms.available}
             </div>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Tallers</CardTitle>
-            <Wrench className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium">Software</CardTitle>
+            <Monitor className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats.workshops.total}</div>
-            <div className="text-xs text-muted-foreground">
-              En {stats.workshops.byProgram.length} programes
+            <div className="text-2xl font-bold">{stats.software.total}</div>
+            <div className="text-xs text-muted-foreground mt-1">
+              {stats.software.byCategory.length} categories
             </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Instal·lacions</CardTitle>
+            <Cpu className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.software.installations}</div>
+            <div className="text-xs text-muted-foreground mt-1">
+              En {stats.software.classroomsWithSoftware} aules
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Equipament</CardTitle>
+            <Package className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.equipment.totalUnits}</div>
+            <div className="text-xs text-muted-foreground mt-1">
+              {stats.equipment.totalItems} registres · {stats.equipment.classroomsWithEquipment} aules
+            </div>
+            {stats.equipment.needsAttention > 0 && (
+              <div className="text-xs text-orange-600 mt-1">
+                {stats.equipment.needsAttention} amb incidència
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>
 
       {/* Detailed Information Tabs */}
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="general">General</TabsTrigger>
+      <Tabs defaultValue="aules">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="aules">Aules</TabsTrigger>
-          <TabsTrigger value="assignatures">Assignatures</TabsTrigger>
-          <TabsTrigger value="conflictes">Conflictes</TabsTrigger>
+          <TabsTrigger value="software">Software</TabsTrigger>
+          <TabsTrigger value="equipament">Equipament</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="general" className="space-y-4">
+        <TabsContent value="aules" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <BookOpen className="h-5 w-5" />
-                  Assignatures per tipus
+                  <Building2 className="h-5 w-5" />
+                  Aules per tipus
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
-                  {stats.subjects.byType.map(({ type, count }) => (
+                  {stats.classrooms.byType.map(({ type, count }) => (
                     <div key={type} className="flex items-center justify-between">
-                      <span className="capitalize">{type}</span>
+                      <span>{CLASSROOM_TYPE_LABELS[type as keyof typeof CLASSROOM_TYPE_LABELS] || type}</span>
                       <Badge variant="secondary">{count}</Badge>
                     </div>
                   ))}
@@ -488,16 +285,16 @@ export default function ResumPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5" />
-                  Assignacions per semestre
+                  <Home className="h-5 w-5" />
+                  Aules per edifici
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
-                  {stats.assignments.bySemester.map(({ semester, count }) => (
-                    <div key={semester} className="flex items-center justify-between">
-                      <span>{semester}</span>
-                      <Badge variant="secondary">{count}</Badge>
+                  {stats.classrooms.byBuilding.map(({ building, count }) => (
+                    <div key={building} className="flex items-center justify-between">
+                      <span>{formatBuildingName(building)}</span>
+                      <Badge>{count}</Badge>
                     </div>
                   ))}
                 </div>
@@ -506,222 +303,99 @@ export default function ResumPage() {
           </div>
         </TabsContent>
 
-        <TabsContent value="aules" className="space-y-4">
-          {/* Classroom Summary */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Resum d'Aules</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <Building2 className="h-3.5 w-3.5 text-muted-foreground" />
-                    <p className="text-xs font-medium text-muted-foreground">Total</p>
-                  </div>
-                  <p className="text-xl font-bold">{stats.classrooms.total}</p>
-                </div>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <Users className="h-3.5 w-3.5 text-muted-foreground" />
-                    <p className="text-xs font-medium text-muted-foreground">Capacitat</p>
-                  </div>
-                  <p className="text-xl font-bold">{stats.classrooms.totalCapacity}</p>
-                </div>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <Building2 className="h-3.5 w-3.5 text-muted-foreground" />
-                    <p className="text-xs font-medium text-muted-foreground">Polivalent</p>
-                  </div>
-                  <p className="text-xl font-bold">{stats.classrooms.byType.polivalent}</p>
-                </div>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <Wrench className="h-3.5 w-3.5 text-muted-foreground" />
-                    <p className="text-xs font-medium text-muted-foreground">Taller</p>
-                  </div>
-                  <p className="text-xl font-bold">{stats.classrooms.byType.taller}</p>
-                </div>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <Monitor className="h-3.5 w-3.5 text-muted-foreground" />
-                    <p className="text-xs font-medium text-muted-foreground">Informàtica</p>
-                  </div>
-                  <p className="text-xl font-bold">{stats.classrooms.byType.informatica}</p>
-                </div>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <Lightbulb className="h-3.5 w-3.5 text-muted-foreground" />
-                    <p className="text-xs font-medium text-muted-foreground">Projectes</p>
-                  </div>
-                  <p className="text-xl font-bold">{stats.classrooms.byType.projectes}</p>
-                </div>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
-                    <p className="text-xs font-medium text-muted-foreground">Seminari</p>
-                  </div>
-                  <p className="text-xl font-bold">{stats.classrooms.byType.seminari}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Aules per edifici</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                {stats.classrooms.byBuilding.map(({ building, count }) => (
-                  <div key={building} className="flex items-center justify-between">
-                    <span>{building}</span>
-                    <Badge>{count}</Badge>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          {stats.classrooms.withoutAssignments.length > 0 && (
+        <TabsContent value="software" className="space-y-4">
+          <div className="grid gap-4 md:grid-cols-2">
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-orange-600">
-                  <AlertCircle className="h-5 w-5" />
-                  Aules sense assignació horària
+                <CardTitle className="flex items-center gap-2">
+                  <Monitor className="h-5 w-5" />
+                  Software per categoria
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
-                  {stats.classrooms.withoutAssignments.map(classroom => (
-                    <div key={classroom.id} className="flex items-center justify-between p-2 bg-orange-50 rounded">
-                      <span className="font-medium">{classroom.name}</span>
-                      <Badge variant="outline">{classroom.building}</Badge>
+                <div className="space-y-2 max-h-80 overflow-y-auto">
+                  {stats.software.byCategory.map(({ category, count }) => (
+                    <div key={category} className="flex items-center justify-between">
+                      <span className="capitalize">{category.replace(/_/g, ' ')}</span>
+                      <Badge variant="secondary">{count}</Badge>
                     </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
-          )}
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Cpu className="h-5 w-5" />
+                  Software més instal·lat
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {stats.software.topInstalled.length > 0 ? (
+                  <div className="space-y-2">
+                    {stats.software.topInstalled.map(({ name, count }) => (
+                      <div key={name} className="flex items-center justify-between">
+                        <span className="text-sm">{name}</span>
+                        <Badge variant="outline">{count} aules</Badge>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-sm text-muted-foreground">Cap software instal·lat encara</p>
+                )}
+              </CardContent>
+            </Card>
+          </div>
         </TabsContent>
 
-        <TabsContent value="assignatures" className="space-y-4">
+        <TabsContent value="equipament" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
             <Card>
               <CardHeader>
-                <CardTitle>Estadístiques d'assignatures</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <Package className="h-5 w-5" />
+                  Equipament per categoria
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2 max-h-80 overflow-y-auto">
+                  {stats.equipment.byCategory.map(({ category, count }) => (
+                    <div key={category} className="flex items-center justify-between">
+                      <span className="capitalize">{category.replace(/_/g, ' ')}</span>
+                      <Badge variant="secondary">{count}</Badge>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Wrench className="h-5 w-5" />
+                  Estat de l'equipament
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex justify-between">
-                  <span>Total d'assignatures</span>
-                  <span className="font-bold">{stats.subjects.total}</span>
+                  <span>Unitats totals</span>
+                  <span className="font-bold">{stats.equipment.totalUnits}</span>
                 </div>
-                <div className="flex justify-between text-orange-600">
-                  <span>Sense assignacions</span>
-                  <span className="font-bold">{stats.subjects.withoutAssignments}</span>
+                <div className="flex justify-between">
+                  <span>Aules amb equipament</span>
+                  <span className="font-bold">{stats.equipment.classroomsWithEquipment}</span>
                 </div>
-                <div className="flex justify-between text-green-600">
-                  <span>Amb assignacions</span>
-                  <span className="font-bold">
-                    {stats.subjects.total - stats.subjects.withoutAssignments}
+                <div className={`flex justify-between ${stats.equipment.needsAttention > 0 ? 'text-orange-600' : 'text-green-600'}`}>
+                  <span className="flex items-center gap-2">
+                    <AlertCircle className="h-4 w-4" />
+                    Amb incidència
                   </span>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Tallers per programa</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2 max-h-64 overflow-y-auto">
-                  {stats.workshops.byProgram.map(({ program_name, count }) => (
-                    <div key={program_name} className="flex items-center justify-between">
-                      <span className="text-sm">{program_name}</span>
-                      <Badge variant="secondary">{count}</Badge>
-                    </div>
-                  ))}
+                  <span className="font-bold">{stats.equipment.needsAttention}</span>
                 </div>
               </CardContent>
             </Card>
           </div>
-        </TabsContent>
-
-        <TabsContent value="conflictes" className="space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <AlertCircle className="h-5 w-5 text-red-500" />
-                Conflictes d'horari
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-center py-8">
-                <div className="text-4xl font-bold text-red-500">
-                  {stats.assignments.conflicts}
-                </div>
-                <p className="text-muted-foreground mt-2">
-                  conflictes detectats
-                </p>
-              </div>
-              {stats.assignments.conflicts > 0 && (
-                <div className="mt-6 space-y-4">
-                  <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-                    <p className="text-sm font-medium text-red-900 mb-4">
-                      Detall dels conflictes detectats:
-                    </p>
-                  </div>
-
-                  {stats.assignments.conflictDetails.map((conflict, index) => (
-                    <Card key={index} className="border-red-200">
-                      <CardHeader className="pb-3">
-                        <CardTitle className="text-base flex items-center gap-2">
-                          {conflict.type === 'teacher' ? (
-                            <>
-                              <Users className="h-4 w-4 text-red-500" />
-                              Professor: {conflict.resource}
-                            </>
-                          ) : (
-                            <>
-                              <Building2 className="h-4 w-4 text-red-500" />
-                              Aula: {conflict.resource}
-                            </>
-                          )}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="space-y-2">
-                          {conflict.assignments.map((assignment, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-start gap-3 p-3 bg-red-50 rounded-md text-sm"
-                            >
-                              <Clock className="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
-                              <div className="flex-1">
-                                <div className="font-medium text-red-900">
-                                  {assignment.subject} - {assignment.group}
-                                </div>
-                                <div className="text-red-700 text-xs mt-1">
-                                  {assignment.day} · {assignment.timeSlot} · {assignment.semester}
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              )}
-              {stats.assignments.conflicts === 0 && (
-                <div className="mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
-                  <p className="text-sm text-green-700 text-center">
-                    ✓ No s'han detectat conflictes d'horari
-                  </p>
-                </div>
-              )}
-            </CardContent>
-          </Card>
         </TabsContent>
       </Tabs>
     </div>
